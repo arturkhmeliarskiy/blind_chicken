@@ -417,449 +417,456 @@ class _CatalogSearchResultScreenState extends State<CatalogSearchResultScreen> {
             orElse: () {},
           );
         },
-        child: Stack(
-          children: [
-            Stack(
-              alignment: Alignment.bottomLeft,
-              children: [
-                Scaffold(
-                  backgroundColor: BlindChickenColors.backgroundColor,
-                  body: SafeArea(
-                    child: ListView(
-                      controller: _scrollController,
-                      physics: _isScroll
-                          ? const BouncingScrollPhysics()
-                          : NeverScrollableScrollPhysics(),
-                      cacheExtent: _historyPosition,
-                      children: [
-                        const AppBarBlindChicken(),
-                        BlocBuilder<SearchBloc, SearchState>(
-                          builder: (context, state) {
-                            return state.maybeMap(
-                                searchProductsResult: (initState) {
-                                  if (_scrollController.position.pixels == 0) {
-                                    WidgetsBinding.instance.addPostFrameCallback((_) {
-                                      _scrollController.jumpTo(_historyPosition);
-                                    });
-                                  }
-                                  if (initState.offset == 1) {
-                                    _paginationPosition = 0;
-                                  }
-                                  return GestureDetector(
-                                    onHorizontalDragUpdate: (details) {},
-                                    onHorizontalDragEnd: (DragEndDetails details) {
-                                      if (details.velocity.pixelsPerSecond.dx > 0) {
-                                        context.back();
-                                      }
-                                    },
-                                    child: PopScope(
-                                      canPop: false,
-                                      onPopInvoked: (value) {
-                                        context.read<SearchBloc>().add(
-                                              SearchEvent.searchProfucts(initState.query),
-                                            );
+        child: IgnorePointer(
+          ignoring: !_isScroll,
+          child: Stack(
+            children: [
+              Stack(
+                alignment: Alignment.bottomLeft,
+                children: [
+                  Scaffold(
+                    backgroundColor: BlindChickenColors.backgroundColor,
+                    body: SafeArea(
+                      child: ListView(
+                        controller: _scrollController,
+                        physics: _isScroll
+                            ? const BouncingScrollPhysics()
+                            : NeverScrollableScrollPhysics(),
+                        cacheExtent: _historyPosition,
+                        children: [
+                          const AppBarBlindChicken(),
+                          BlocBuilder<SearchBloc, SearchState>(
+                            builder: (context, state) {
+                              return state.maybeMap(
+                                  searchProductsResult: (initState) {
+                                    if (_scrollController.position.pixels == 0) {
+                                      WidgetsBinding.instance.addPostFrameCallback((_) {
+                                        _scrollController.jumpTo(_historyPosition);
+                                      });
+                                    }
+                                    if (initState.offset == 1) {
+                                      _paginationPosition = 0;
+                                    }
+                                    return GestureDetector(
+                                      onHorizontalDragUpdate: (details) {},
+                                      onHorizontalDragEnd: (DragEndDetails details) {
+                                        if (details.velocity.pixelsPerSecond.dx > 0) {
+                                          context.back();
+                                        }
                                       },
-                                      child: Column(
-                                        crossAxisAlignment: CrossAxisAlignment.start,
-                                        children: [
-                                          Padding(
-                                            padding: const EdgeInsets.only(
-                                              top: 17.5,
-                                              bottom: 14,
-                                              left: 10.5,
-                                              right: 10.5,
-                                            ),
-                                            child: RichText(
-                                              text: TextSpan(
-                                                children: [
-                                                  TextSpan(
-                                                    text:
-                                                        'По запросу «${initState.query}» найдено  ',
-                                                    style: Theme.of(context).textTheme.titleSmall,
-                                                  ),
-                                                  TextSpan(
-                                                    text:
-                                                        '${initState.searchResultInfo?.count} товара'
-                                                            .spaceSeparateNumbers(),
-                                                    style: Theme.of(context)
-                                                        .textTheme
-                                                        .bodyMedium
-                                                        ?.copyWith(
-                                                          height: 1.1,
-                                                        ),
-                                                  )
-                                                ],
+                                      child: PopScope(
+                                        canPop: false,
+                                        onPopInvoked: (value) {
+                                          context.read<SearchBloc>().add(
+                                                SearchEvent.searchProfucts(initState.query),
+                                              );
+                                        },
+                                        child: Column(
+                                          crossAxisAlignment: CrossAxisAlignment.start,
+                                          children: [
+                                            Padding(
+                                              padding: const EdgeInsets.only(
+                                                top: 17.5,
+                                                bottom: 14,
+                                                left: 10.5,
+                                                right: 10.5,
+                                              ),
+                                              child: RichText(
+                                                text: TextSpan(
+                                                  children: [
+                                                    TextSpan(
+                                                      text:
+                                                          'По запросу «${initState.query}» найдено  ',
+                                                      style: Theme.of(context).textTheme.titleSmall,
+                                                    ),
+                                                    TextSpan(
+                                                      text:
+                                                          '${initState.searchResultInfo?.count} товара'
+                                                              .spaceSeparateNumbers(),
+                                                      style: Theme.of(context)
+                                                          .textTheme
+                                                          .bodyMedium
+                                                          ?.copyWith(
+                                                            height: 1.1,
+                                                          ),
+                                                    )
+                                                  ],
+                                                ),
                                               ),
                                             ),
-                                          ),
-                                          Container(
-                                            margin: const EdgeInsets.only(
-                                              left: 10.5,
-                                              right: 10.5,
-                                              bottom: 10.5,
-                                            ),
-                                            height: 30,
-                                            child: InkWell(
-                                              onTap: () {
-                                                context
-                                                    .navigateTo(const CatalogSearchFiltersRoute());
-                                              },
-                                              child: Row(
-                                                children: [
-                                                  SvgPicture.asset(
-                                                    'assets/icons/filter.svg',
-                                                    height: 17.5,
-                                                    width: 17.5,
-                                                  ),
-                                                  const SizedBox(
-                                                    width: 3.5,
-                                                  ),
-                                                  Text(
-                                                    'Фильтры',
-                                                    style: Theme.of(context)
-                                                        .textTheme
-                                                        .displayMedium
-                                                        ?.copyWith(
-                                                          fontWeight: FontWeight.w700,
-                                                        ),
-                                                  ),
-                                                  BlocBuilder<SearchBloc, SearchState>(
-                                                      builder: (context, state) {
-                                                    return state.maybeMap(
-                                                      searchProductsResult: (initState) {
-                                                        if (initState.allSelectFilter.isNotEmpty) {
-                                                          return Container(
-                                                            height: 14,
-                                                            padding: const EdgeInsets.only(
-                                                              right: 4,
-                                                              left: 4,
-                                                            ),
-                                                            margin: const EdgeInsets.only(left: 6),
-                                                            alignment: Alignment.center,
-                                                            decoration: BoxDecoration(
-                                                              color: BlindChickenColors
-                                                                  .activeBorderTextField,
-                                                              borderRadius:
-                                                                  BorderRadius.circular(8),
-                                                            ),
-                                                            child: Text(
-                                                              initState.allSelectFilter.length
-                                                                  .toString(),
-                                                              style: Theme.of(context)
-                                                                  .textTheme
-                                                                  .bodyLarge
-                                                                  ?.copyWith(
-                                                                    color: BlindChickenColors
-                                                                        .backgroundColor,
-                                                                    height: 1,
-                                                                  ),
-                                                            ),
-                                                          );
-                                                        } else {
-                                                          return const SizedBox();
-                                                        }
-                                                      },
-                                                      orElse: () => const SizedBox(),
-                                                    );
-                                                  })
-                                                ],
-                                              ),
-                                            ),
-                                          ),
-                                          if (initState.allSelectFilter.isNotEmpty)
                                             Container(
                                               margin: const EdgeInsets.only(
-                                                left: 12,
-                                                right: 12,
+                                                left: 10.5,
+                                                right: 10.5,
+                                                bottom: 10.5,
                                               ),
-                                              height: 34,
-                                              child: ListView(
-                                                  scrollDirection: Axis.horizontal,
+                                              height: 30,
+                                              child: InkWell(
+                                                onTap: () {
+                                                  context.navigateTo(
+                                                      const CatalogSearchFiltersRoute());
+                                                },
+                                                child: Row(
                                                   children: [
-                                                    Row(
-                                                      mainAxisAlignment: MainAxisAlignment.start,
-                                                      crossAxisAlignment: CrossAxisAlignment.start,
-                                                      children: List.generate(
-                                                          initState.allSelectFilter.length,
-                                                          (index) {
-                                                        return InkWell(
-                                                          onTap: () {
-                                                            context.read<SearchBloc>().add(
-                                                                  SearchEvent.deleteCatalogFilter(
-                                                                    key: initState
-                                                                        .allSelectFilter[index]
-                                                                        .keys
-                                                                        .first,
-                                                                    index: index,
-                                                                    item: initState
-                                                                        .allSelectFilter[index]
-                                                                        .values
-                                                                        .first,
+                                                    SvgPicture.asset(
+                                                      'assets/icons/filter.svg',
+                                                      height: 17.5,
+                                                      width: 17.5,
+                                                    ),
+                                                    const SizedBox(
+                                                      width: 3.5,
+                                                    ),
+                                                    Text(
+                                                      'Фильтры',
+                                                      style: Theme.of(context)
+                                                          .textTheme
+                                                          .displayMedium
+                                                          ?.copyWith(
+                                                            fontWeight: FontWeight.w700,
+                                                          ),
+                                                    ),
+                                                    BlocBuilder<SearchBloc, SearchState>(
+                                                        builder: (context, state) {
+                                                      return state.maybeMap(
+                                                        searchProductsResult: (initState) {
+                                                          if (initState
+                                                              .allSelectFilter.isNotEmpty) {
+                                                            return Container(
+                                                              height: 14,
+                                                              padding: const EdgeInsets.only(
+                                                                right: 4,
+                                                                left: 4,
+                                                              ),
+                                                              margin:
+                                                                  const EdgeInsets.only(left: 6),
+                                                              alignment: Alignment.center,
+                                                              decoration: BoxDecoration(
+                                                                color: BlindChickenColors
+                                                                    .activeBorderTextField,
+                                                                borderRadius:
+                                                                    BorderRadius.circular(8),
+                                                              ),
+                                                              child: Text(
+                                                                initState.allSelectFilter.length
+                                                                    .toString(),
+                                                                style: Theme.of(context)
+                                                                    .textTheme
+                                                                    .bodyLarge
+                                                                    ?.copyWith(
+                                                                      color: BlindChickenColors
+                                                                          .backgroundColor,
+                                                                      height: 1,
+                                                                    ),
+                                                              ),
+                                                            );
+                                                          } else {
+                                                            return const SizedBox();
+                                                          }
+                                                        },
+                                                        orElse: () => const SizedBox(),
+                                                      );
+                                                    })
+                                                  ],
+                                                ),
+                                              ),
+                                            ),
+                                            if (initState.allSelectFilter.isNotEmpty)
+                                              Container(
+                                                margin: const EdgeInsets.only(
+                                                  left: 12,
+                                                  right: 12,
+                                                ),
+                                                height: 34,
+                                                child: ListView(
+                                                    scrollDirection: Axis.horizontal,
+                                                    children: [
+                                                      Row(
+                                                        mainAxisAlignment: MainAxisAlignment.start,
+                                                        crossAxisAlignment:
+                                                            CrossAxisAlignment.start,
+                                                        children: List.generate(
+                                                            initState.allSelectFilter.length,
+                                                            (index) {
+                                                          return InkWell(
+                                                            onTap: () {
+                                                              context.read<SearchBloc>().add(
+                                                                    SearchEvent.deleteCatalogFilter(
+                                                                      key: initState
+                                                                          .allSelectFilter[index]
+                                                                          .keys
+                                                                          .first,
+                                                                      index: index,
+                                                                      item: initState
+                                                                          .allSelectFilter[index]
+                                                                          .values
+                                                                          .first,
+                                                                    ),
+                                                                  );
+                                                            },
+                                                            child: Container(
+                                                              decoration: BoxDecoration(
+                                                                color: BlindChickenColors
+                                                                    .backgroundColorItemFilter,
+                                                                borderRadius:
+                                                                    BorderRadius.circular(4),
+                                                              ),
+                                                              margin: EdgeInsets.only(
+                                                                right: initState.allSelectFilter
+                                                                                .length -
+                                                                            1 !=
+                                                                        index
+                                                                    ? 12
+                                                                    : 0,
+                                                              ),
+                                                              padding: const EdgeInsets.all(3.5),
+                                                              height: 27,
+                                                              child: Row(
+                                                                children: [
+                                                                  Text(
+                                                                    initState.allSelectFilter[index]
+                                                                        .values.first.value,
+                                                                    style: Theme.of(context)
+                                                                        .textTheme
+                                                                        .displaySmall,
                                                                   ),
-                                                                );
-                                                          },
-                                                          child: Container(
-                                                            decoration: BoxDecoration(
-                                                              color: BlindChickenColors
-                                                                  .backgroundColorItemFilter,
-                                                              borderRadius:
-                                                                  BorderRadius.circular(4),
+                                                                  const SizedBox(
+                                                                    width: 7,
+                                                                  ),
+                                                                  SvgPicture.asset(
+                                                                    'assets/icons/x.svg',
+                                                                    width: 13.3,
+                                                                    height: 13.3,
+                                                                  )
+                                                                ],
+                                                              ),
                                                             ),
-                                                            margin: EdgeInsets.only(
-                                                              right:
-                                                                  initState.allSelectFilter.length -
-                                                                              1 !=
-                                                                          index
-                                                                      ? 12
-                                                                      : 0,
-                                                            ),
-                                                            padding: const EdgeInsets.all(3.5),
-                                                            height: 27,
-                                                            child: Row(
-                                                              children: [
-                                                                Text(
-                                                                  initState.allSelectFilter[index]
-                                                                      .values.first.value,
-                                                                  style: Theme.of(context)
-                                                                      .textTheme
-                                                                      .displaySmall,
-                                                                ),
-                                                                const SizedBox(
-                                                                  width: 7,
-                                                                ),
-                                                                SvgPicture.asset(
-                                                                  'assets/icons/x.svg',
-                                                                  width: 13.3,
-                                                                  height: 13.3,
-                                                                )
-                                                              ],
-                                                            ),
+                                                          );
+                                                        }),
+                                                      ),
+                                                    ]),
+                                              ),
+                                            Wrap(
+                                              children: List.generate(
+                                                initState.products.length,
+                                                (index) {
+                                                  return Listener(
+                                                    onPointerDown: (details) {
+                                                      _touchCount++;
+                                                      if (_touchCount > 1) {
+                                                        setState(() {
+                                                          _isScroll = false;
+                                                        });
+                                                      } else {
+                                                        setState(() {
+                                                          _isScroll = true;
+                                                        });
+                                                      }
+                                                    },
+                                                    onPointerUp: (details) {
+                                                      _touchCount--;
+                                                      if (_touchCount > 1) {
+                                                        setState(() {
+                                                          _isScroll = false;
+                                                        });
+                                                      } else {
+                                                        setState(() {
+                                                          _isScroll = true;
+                                                        });
+                                                      }
+                                                    },
+                                                    onPointerCancel: (details) {
+                                                      _touchCount--;
+                                                      if (_touchCount > 1) {
+                                                        setState(() {
+                                                          _isScroll = false;
+                                                        });
+                                                      } else {
+                                                        setState(() {
+                                                          _isScroll = true;
+                                                        });
+                                                      }
+                                                    },
+                                                    child: CatalogCardItem(
+                                                      isLike: initState.favouritesProductsId
+                                                          .contains(initState.products[index].id),
+                                                      onSelect: () {
+                                                        context.read<SearchBloc>().add(
+                                                              SearchEvent.getInfoProduct(
+                                                                code: initState.products[index].id
+                                                                    .toString(),
+                                                                titleScreen:
+                                                                    'Карточка товара в резльтате поиска',
+                                                                typeAddProductToShoppingCart:
+                                                                    'Карточка товара',
+                                                                identifierAddProductToShoppingCart:
+                                                                    '1',
+                                                                typeError:
+                                                                    'описание товара в поиске',
+                                                              ),
+                                                            );
+
+                                                        context.navigateTo(
+                                                          CatalogSearchCardInfoResultRoute(
+                                                            isChildRoute: false,
+                                                            item: initState.products[index],
+                                                            isLike: initState.favouritesProductsId
+                                                                .contains(
+                                                                    initState.products[index].id),
+                                                            listItems: initState.products,
+                                                            favouritesProducts:
+                                                                initState.favouritesProducts ?? [],
                                                           ),
                                                         );
-                                                      }),
+                                                      },
+                                                      imageUrl: initState.products[index].images[0],
+                                                      brend: initState.products[index].brend,
+                                                      category: initState.products[index].category,
+                                                      yourPrice: initState.products[index].yourPrice
+                                                          .toString(),
+                                                      price: initState.products[index].price
+                                                          .toString(),
+                                                      isYourPriceDisplayed: initState
+                                                          .products[index].isYourPriceDisplayed,
+                                                      maximumCashback:
+                                                          initState.products[index].maximumCashback,
+                                                      discount: initState.products[index].discount,
+                                                      maximumPersonalDiscount: initState
+                                                          .products[index].maximumPersonalDiscount,
+                                                      isAuth: initState.isAuth,
+                                                      onAddFavouriteProduct: () {
+                                                        context.read<SearchBloc>().add(
+                                                              SearchEvent.addFavouriteProduct(
+                                                                product: initState.products[index],
+                                                                index: initState.products[index].id,
+                                                                typeError:
+                                                                    'добавить товар в избранное в результатах поиска',
+                                                              ),
+                                                            );
+                                                      },
+                                                      pb: initState.products[index].pb,
+                                                      onDeleteFavouriteProduct: () {
+                                                        context.read<SearchBloc>().add(
+                                                              SearchEvent.deleteFavouriteProduct(
+                                                                index: initState.products[index].id,
+                                                                typeError:
+                                                                    'удалить товар из избранного в результатах поиска',
+                                                              ),
+                                                            );
+                                                      },
+                                                      isShop: initState.products[index].isShop,
+                                                      onAddProductToSoppingCart: () {
+                                                        context.read<SearchBloc>().add(
+                                                              SearchEvent.getInfoProductSize(
+                                                                code: initState.products[index].id
+                                                                    .toString(),
+                                                                isShop: initState
+                                                                    .products[index].isShop,
+                                                                titleScreen: 'Результаты поиска',
+                                                              ),
+                                                            );
+                                                      },
+                                                      listSize: initState.listSize,
+                                                      isLoad:
+                                                          int.parse(initState.codeProduct ?? '0') ==
+                                                                  initState.products[index].id &&
+                                                              initState.isLoadGetSizeProduct,
+                                                      userDiscount: initState.userDiscount,
+                                                      sizeProduct: const [],
+                                                      promo: initState.products[index].promo,
+                                                      promoValue:
+                                                          initState.products[index].promoValue,
+                                                      images: initState.products[index].images,
+                                                      video: initState.products[index].video,
+                                                      goSwipeBack: () {
+                                                        context.back();
+                                                      },
+                                                      onScaleStart: () {
+                                                        setState(() {
+                                                          _isScroll = false;
+                                                        });
+                                                      },
+                                                      onScaleStop: () {
+                                                        setState(() {
+                                                          _isScroll = true;
+                                                        });
+                                                      },
                                                     ),
-                                                  ]),
+                                                  );
+                                                },
+                                              ),
                                             ),
-                                          Wrap(
-                                            children: List.generate(
-                                              initState.products.length,
-                                              (index) {
-                                                return Listener(
-                                                  onPointerDown: (details) {
-                                                    _touchCount++;
-                                                    if (_touchCount > 1) {
-                                                      setState(() {
-                                                        _isScroll = false;
-                                                      });
-                                                    } else {
-                                                      setState(() {
-                                                        _isScroll = true;
-                                                      });
-                                                    }
-                                                  },
-                                                  onPointerUp: (details) {
-                                                    _touchCount--;
-                                                    if (_touchCount > 1) {
-                                                      setState(() {
-                                                        _isScroll = false;
-                                                      });
-                                                    } else {
-                                                      setState(() {
-                                                        _isScroll = true;
-                                                      });
-                                                    }
-                                                  },
-                                                  onPointerCancel: (details) {
-                                                    _touchCount--;
-                                                    if (_touchCount > 1) {
-                                                      setState(() {
-                                                        _isScroll = false;
-                                                      });
-                                                    } else {
-                                                      setState(() {
-                                                        _isScroll = true;
-                                                      });
-                                                    }
-                                                  },
-                                                  child: CatalogCardItem(
-                                                    isLike: initState.favouritesProductsId
-                                                        .contains(initState.products[index].id),
-                                                    onSelect: () {
-                                                      context.read<SearchBloc>().add(
-                                                            SearchEvent.getInfoProduct(
-                                                              code: initState.products[index].id
-                                                                  .toString(),
-                                                              titleScreen:
-                                                                  'Карточка товара в резльтате поиска',
-                                                              typeAddProductToShoppingCart:
-                                                                  'Карточка товара',
-                                                              identifierAddProductToShoppingCart:
-                                                                  '1',
-                                                              typeError: 'описание товара в поиске',
-                                                            ),
-                                                          );
-
-                                                      context.navigateTo(
-                                                        CatalogSearchCardInfoResultRoute(
-                                                          isChildRoute: false,
-                                                          item: initState.products[index],
-                                                          isLike: initState.favouritesProductsId
-                                                              .contains(
-                                                                  initState.products[index].id),
-                                                          listItems: initState.products,
-                                                          favouritesProducts:
-                                                              initState.favouritesProducts ?? [],
-                                                        ),
-                                                      );
-                                                    },
-                                                    imageUrl: initState.products[index].images[0],
-                                                    brend: initState.products[index].brend,
-                                                    category: initState.products[index].category,
-                                                    yourPrice: initState.products[index].yourPrice
-                                                        .toString(),
-                                                    price:
-                                                        initState.products[index].price.toString(),
-                                                    isYourPriceDisplayed: initState
-                                                        .products[index].isYourPriceDisplayed,
-                                                    maximumCashback:
-                                                        initState.products[index].maximumCashback,
-                                                    discount: initState.products[index].discount,
-                                                    maximumPersonalDiscount: initState
-                                                        .products[index].maximumPersonalDiscount,
-                                                    isAuth: initState.isAuth,
-                                                    onAddFavouriteProduct: () {
-                                                      context.read<SearchBloc>().add(
-                                                            SearchEvent.addFavouriteProduct(
-                                                              product: initState.products[index],
-                                                              index: initState.products[index].id,
-                                                              typeError:
-                                                                  'добавить товар в избранное в результатах поиска',
-                                                            ),
-                                                          );
-                                                    },
-                                                    pb: initState.products[index].pb,
-                                                    onDeleteFavouriteProduct: () {
-                                                      context.read<SearchBloc>().add(
-                                                            SearchEvent.deleteFavouriteProduct(
-                                                              index: initState.products[index].id,
-                                                              typeError:
-                                                                  'удалить товар из избранного в результатах поиска',
-                                                            ),
-                                                          );
-                                                    },
-                                                    isShop: initState.products[index].isShop,
-                                                    onAddProductToSoppingCart: () {
-                                                      context.read<SearchBloc>().add(
-                                                            SearchEvent.getInfoProductSize(
-                                                              code: initState.products[index].id
-                                                                  .toString(),
-                                                              isShop:
-                                                                  initState.products[index].isShop,
-                                                              titleScreen: 'Результаты поиска',
-                                                            ),
-                                                          );
-                                                    },
-                                                    listSize: initState.listSize,
-                                                    isLoad:
-                                                        int.parse(initState.codeProduct ?? '0') ==
-                                                                initState.products[index].id &&
-                                                            initState.isLoadGetSizeProduct,
-                                                    userDiscount: initState.userDiscount,
-                                                    sizeProduct: const [],
-                                                    promo: initState.products[index].promo,
-                                                    promoValue:
-                                                        initState.products[index].promoValue,
-                                                    images: initState.products[index].images,
-                                                    video: initState.products[index].video,
-                                                    goSwipeBack: () {
-                                                      context.back();
-                                                    },
-                                                    onScaleStart: () {
-                                                      setState(() {
-                                                        _isScroll = false;
-                                                      });
-                                                    },
-                                                    onScaleStop: () {
-                                                      setState(() {
-                                                        _isScroll = true;
-                                                      });
-                                                    },
-                                                  ),
-                                                );
-                                              },
-                                            ),
-                                          ),
-                                        ],
+                                          ],
+                                        ),
                                       ),
-                                    ),
-                                  );
-                                },
-                                orElse: () => const SizedBox());
-                          },
-                        ),
-                      ],
+                                    );
+                                  },
+                                  orElse: () => const SizedBox());
+                            },
+                          ),
+                        ],
+                      ),
                     ),
                   ),
-                ),
-                BlocBuilder<SearchBloc, SearchState>(
-                  builder: (context, state) {
-                    return state.maybeMap(
-                      searchProductsResult: (initState) {
-                        if (initState.isButtonTop && !isLoading) {
-                          return GestureDetector(
-                            onTap: () {
-                              _scrollController.jumpTo(0.0);
-                            },
-                            child: Container(
-                              height: 45,
-                              width: 45,
-                              margin: const EdgeInsets.only(left: 15, bottom: 15),
-                              padding: const EdgeInsets.all(10),
-                              decoration: BoxDecoration(
-                                color: BlindChickenColors.activeBorderTextField,
-                                borderRadius: BorderRadius.circular(25),
+                  BlocBuilder<SearchBloc, SearchState>(
+                    builder: (context, state) {
+                      return state.maybeMap(
+                        searchProductsResult: (initState) {
+                          if (initState.isButtonTop && !isLoading) {
+                            return GestureDetector(
+                              onTap: () {
+                                _scrollController.jumpTo(0.0);
+                              },
+                              child: Container(
+                                height: 45,
+                                width: 45,
+                                margin: const EdgeInsets.only(left: 15, bottom: 15),
+                                padding: const EdgeInsets.all(10),
+                                decoration: BoxDecoration(
+                                  color: BlindChickenColors.activeBorderTextField,
+                                  borderRadius: BorderRadius.circular(25),
+                                ),
+                                child: SvgPicture.asset(
+                                  'assets/icons/chevron-top.svg',
+                                ),
                               ),
-                              child: SvgPicture.asset(
-                                'assets/icons/chevron-top.svg',
+                            );
+                          } else {
+                            return const SizedBox();
+                          }
+                        },
+                        orElse: () => const SizedBox(),
+                      );
+                    },
+                  )
+                ],
+              ),
+              BlocBuilder<SearchBloc, SearchState>(
+                builder: (context, state) {
+                  return state.maybeMap(
+                    load: (value) {
+                      return Center(
+                        child: CircularProgressIndicator(
+                          color: Colors.black,
+                          backgroundColor: Colors.grey.shade400,
+                        ),
+                      );
+                    },
+                    searchProductsResult: (initState) {
+                      return isLoading
+                          ? Center(
+                              child: CircularProgressIndicator(
+                                color: Colors.black,
+                                backgroundColor: Colors.grey.shade400,
                               ),
-                            ),
-                          );
-                        } else {
-                          return const SizedBox();
-                        }
-                      },
-                      orElse: () => const SizedBox(),
-                    );
-                  },
-                )
-              ],
-            ),
-            BlocBuilder<SearchBloc, SearchState>(
-              builder: (context, state) {
-                return state.maybeMap(
-                  load: (value) {
-                    return Center(
-                      child: CircularProgressIndicator(
-                        color: Colors.black,
-                        backgroundColor: Colors.grey.shade400,
-                      ),
-                    );
-                  },
-                  searchProductsResult: (initState) {
-                    return isLoading
-                        ? Center(
-                            child: CircularProgressIndicator(
-                              color: Colors.black,
-                              backgroundColor: Colors.grey.shade400,
-                            ),
-                          )
-                        : const SizedBox();
-                  },
-                  orElse: () => const SizedBox(),
-                );
-              },
-            ),
-          ],
+                            )
+                          : const SizedBox();
+                    },
+                    orElse: () => const SizedBox(),
+                  );
+                },
+              ),
+            ],
+          ),
         ),
       ),
     );

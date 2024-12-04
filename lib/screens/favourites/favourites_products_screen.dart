@@ -462,466 +462,481 @@ class _FavouritesProductsScreenState extends State<FavouritesProductsScreen> {
             orElse: () {},
           );
         },
-        child: GestureDetector(
-          onVerticalDragUpdate: (details) {},
-          onHorizontalDragEnd: (DragEndDetails details) {
-            if (details.velocity.pixelsPerSecond.dx > 0) {
-              context.back();
-              setState(() {
-                _isSwipe = true;
-              });
-            }
-          },
-          child: Stack(
-            children: [
-              Stack(
-                alignment: Alignment.bottomLeft,
-                children: [
-                  SafeArea(
-                    child: Scaffold(
-                      body: PopScope(
-                        canPop: false,
-                        onPopInvoked: (value) {
-                          if (_isSwipe) {
-                            context.back();
-                          }
-                        },
-                        child: ListView(
-                          controller: _scrollController,
-                          physics: _isScroll
-                              ? const BouncingScrollPhysics()
-                              : NeverScrollableScrollPhysics(),
-                          children: [
-                            const AppBarBlindChicken(),
-                            const SizedBox(
-                              height: 17.5,
-                            ),
-                            Padding(
-                              padding: const EdgeInsets.only(
-                                left: 10.5,
-                                right: 10.5,
+        child: IgnorePointer(
+          ignoring: !_isScroll,
+          child: GestureDetector(
+            onVerticalDragUpdate: (details) {},
+            onHorizontalDragEnd: (DragEndDetails details) {
+              if (details.velocity.pixelsPerSecond.dx > 0) {
+                context.back();
+                setState(() {
+                  _isSwipe = true;
+                });
+              }
+            },
+            child: Stack(
+              children: [
+                Stack(
+                  alignment: Alignment.bottomLeft,
+                  children: [
+                    SafeArea(
+                      child: Scaffold(
+                        body: PopScope(
+                          canPop: false,
+                          onPopInvoked: (value) {
+                            if (_isSwipe) {
+                              context.back();
+                            }
+                          },
+                          child: ListView(
+                            controller: _scrollController,
+                            physics: _isScroll
+                                ? const BouncingScrollPhysics()
+                                : NeverScrollableScrollPhysics(),
+                            children: [
+                              const AppBarBlindChicken(),
+                              const SizedBox(
+                                height: 17.5,
                               ),
-                              child: Text(
-                                'Избранное',
-                                style: Theme.of(context).textTheme.titleMedium,
+                              Padding(
+                                padding: const EdgeInsets.only(
+                                  left: 10.5,
+                                  right: 10.5,
+                                ),
+                                child: Text(
+                                  'Избранное',
+                                  style: Theme.of(context).textTheme.titleMedium,
+                                ),
                               ),
-                            ),
-                            BlocBuilder<FavouritesBloc, FavouritesState>(
-                              builder: (context, state) {
-                                return state.maybeMap(
-                                    productsFavourites: (initState) {
-                                      if (_scrollController.position.pixels == 0) {
-                                        WidgetsBinding.instance.addPostFrameCallback((_) {
-                                          _scrollController.jumpTo(_historyPosition);
-                                        });
-                                      }
-                                      if (initState.offset == 1) {
-                                        _paginationPosition = 0;
-                                      }
-                                      return initState.favouritesProducts.isEmpty &&
-                                              initState.selectFilter.isEmpty
-                                          ? Padding(
-                                              padding: const EdgeInsets.only(
-                                                top: 14.0,
-                                                left: 10.5,
-                                                right: 10.5,
-                                              ),
-                                              child: Text(
-                                                'В избранном пока пусто.',
-                                                style: Theme.of(context).textTheme.displayMedium,
-                                              ),
-                                            )
-                                          : Column(
-                                              crossAxisAlignment: CrossAxisAlignment.start,
-                                              children: [
-                                                Container(
-                                                  margin: const EdgeInsets.only(
-                                                    left: 10.5,
-                                                    right: 10.5,
-                                                  ),
-                                                  height: 60,
-                                                  child: InkWell(
-                                                    onTap: () {
-                                                      context.navigateTo(
-                                                          const FavouritesFiltersRoute());
-                                                    },
-                                                    child: Row(
-                                                      children: [
-                                                        SvgPicture.asset(
-                                                          'assets/icons/filter.svg',
-                                                          height: 17.5,
-                                                          width: 17.5,
-                                                        ),
-                                                        const SizedBox(
-                                                          width: 3.5,
-                                                        ),
-                                                        Text(
-                                                          'Фильтры',
-                                                          style: Theme.of(context)
-                                                              .textTheme
-                                                              .displayMedium
-                                                              ?.copyWith(
-                                                                fontWeight: FontWeight.w700,
-                                                              ),
-                                                        ),
-                                                        if (initState.allSelectFilter.isNotEmpty)
-                                                          Container(
-                                                            height: 14,
-                                                            padding: const EdgeInsets.only(
-                                                              right: 4,
-                                                              left: 4,
-                                                            ),
-                                                            margin: const EdgeInsets.only(left: 6),
-                                                            alignment: Alignment.center,
-                                                            decoration: BoxDecoration(
-                                                              color: BlindChickenColors
-                                                                  .activeBorderTextField,
-                                                              borderRadius:
-                                                                  BorderRadius.circular(8),
-                                                            ),
-                                                            child: Text(
-                                                              initState.allSelectFilter.length
-                                                                  .toString(),
-                                                              style: Theme.of(context)
-                                                                  .textTheme
-                                                                  .bodyLarge
-                                                                  ?.copyWith(
-                                                                    color: BlindChickenColors
-                                                                        .backgroundColor,
-                                                                    height: 1,
-                                                                  ),
-                                                            ),
-                                                          )
-                                                        else
-                                                          const SizedBox(),
-                                                      ],
-                                                    ),
-                                                  ),
+                              BlocBuilder<FavouritesBloc, FavouritesState>(
+                                builder: (context, state) {
+                                  return state.maybeMap(
+                                      productsFavourites: (initState) {
+                                        if (_scrollController.position.pixels == 0) {
+                                          WidgetsBinding.instance.addPostFrameCallback((_) {
+                                            _scrollController.jumpTo(_historyPosition);
+                                          });
+                                        }
+                                        if (initState.offset == 1) {
+                                          _paginationPosition = 0;
+                                        }
+                                        return initState.favouritesProducts.isEmpty &&
+                                                initState.selectFilter.isEmpty
+                                            ? Padding(
+                                                padding: const EdgeInsets.only(
+                                                  top: 14.0,
+                                                  left: 10.5,
+                                                  right: 10.5,
                                                 ),
-                                                if (initState.allSelectFilter.isNotEmpty)
+                                                child: Text(
+                                                  'В избранном пока пусто.',
+                                                  style: Theme.of(context).textTheme.displayMedium,
+                                                ),
+                                              )
+                                            : Column(
+                                                crossAxisAlignment: CrossAxisAlignment.start,
+                                                children: [
                                                   Container(
                                                     margin: const EdgeInsets.only(
-                                                      left: 12,
-                                                      right: 12,
+                                                      left: 10.5,
+                                                      right: 10.5,
                                                     ),
-                                                    height: 34,
-                                                    child: ListView(
-                                                        scrollDirection: Axis.horizontal,
+                                                    height: 60,
+                                                    child: InkWell(
+                                                      onTap: () {
+                                                        context.navigateTo(
+                                                            const FavouritesFiltersRoute());
+                                                      },
+                                                      child: Row(
                                                         children: [
-                                                          Row(
-                                                            mainAxisAlignment:
-                                                                MainAxisAlignment.start,
-                                                            crossAxisAlignment:
-                                                                CrossAxisAlignment.start,
-                                                            children: List.generate(
-                                                                initState.allSelectFilter.length,
-                                                                (index) {
-                                                              return InkWell(
-                                                                onTap: () {
-                                                                  context
-                                                                      .read<FavouritesBloc>()
-                                                                      .add(
-                                                                        FavouritesEvent
-                                                                            .deleteCatalogFilter(
-                                                                          key: initState
-                                                                              .allSelectFilter[
-                                                                                  index]
-                                                                              .keys
-                                                                              .first,
-                                                                          index: index,
-                                                                          item: initState
+                                                          SvgPicture.asset(
+                                                            'assets/icons/filter.svg',
+                                                            height: 17.5,
+                                                            width: 17.5,
+                                                          ),
+                                                          const SizedBox(
+                                                            width: 3.5,
+                                                          ),
+                                                          Text(
+                                                            'Фильтры',
+                                                            style: Theme.of(context)
+                                                                .textTheme
+                                                                .displayMedium
+                                                                ?.copyWith(
+                                                                  fontWeight: FontWeight.w700,
+                                                                ),
+                                                          ),
+                                                          if (initState.allSelectFilter.isNotEmpty)
+                                                            Container(
+                                                              height: 14,
+                                                              padding: const EdgeInsets.only(
+                                                                right: 4,
+                                                                left: 4,
+                                                              ),
+                                                              margin:
+                                                                  const EdgeInsets.only(left: 6),
+                                                              alignment: Alignment.center,
+                                                              decoration: BoxDecoration(
+                                                                color: BlindChickenColors
+                                                                    .activeBorderTextField,
+                                                                borderRadius:
+                                                                    BorderRadius.circular(8),
+                                                              ),
+                                                              child: Text(
+                                                                initState.allSelectFilter.length
+                                                                    .toString(),
+                                                                style: Theme.of(context)
+                                                                    .textTheme
+                                                                    .bodyLarge
+                                                                    ?.copyWith(
+                                                                      color: BlindChickenColors
+                                                                          .backgroundColor,
+                                                                      height: 1,
+                                                                    ),
+                                                              ),
+                                                            )
+                                                          else
+                                                            const SizedBox(),
+                                                        ],
+                                                      ),
+                                                    ),
+                                                  ),
+                                                  if (initState.allSelectFilter.isNotEmpty)
+                                                    Container(
+                                                      margin: const EdgeInsets.only(
+                                                        left: 12,
+                                                        right: 12,
+                                                      ),
+                                                      height: 34,
+                                                      child: ListView(
+                                                          scrollDirection: Axis.horizontal,
+                                                          children: [
+                                                            Row(
+                                                              mainAxisAlignment:
+                                                                  MainAxisAlignment.start,
+                                                              crossAxisAlignment:
+                                                                  CrossAxisAlignment.start,
+                                                              children: List.generate(
+                                                                  initState.allSelectFilter.length,
+                                                                  (index) {
+                                                                return InkWell(
+                                                                  onTap: () {
+                                                                    context
+                                                                        .read<FavouritesBloc>()
+                                                                        .add(
+                                                                          FavouritesEvent
+                                                                              .deleteCatalogFilter(
+                                                                            key: initState
+                                                                                .allSelectFilter[
+                                                                                    index]
+                                                                                .keys
+                                                                                .first,
+                                                                            index: index,
+                                                                            item: initState
+                                                                                .allSelectFilter[
+                                                                                    index]
+                                                                                .values
+                                                                                .first,
+                                                                          ),
+                                                                        );
+                                                                  },
+                                                                  child: Container(
+                                                                    decoration: BoxDecoration(
+                                                                      color: BlindChickenColors
+                                                                          .backgroundColorItemFilter,
+                                                                      borderRadius:
+                                                                          BorderRadius.circular(4),
+                                                                    ),
+                                                                    margin: EdgeInsets.only(
+                                                                      right:
+                                                                          initState.allSelectFilter
+                                                                                          .length -
+                                                                                      1 !=
+                                                                                  index
+                                                                              ? 12
+                                                                              : 0,
+                                                                    ),
+                                                                    padding:
+                                                                        const EdgeInsets.all(3.5),
+                                                                    height: 27,
+                                                                    child: Row(
+                                                                      children: [
+                                                                        Text(
+                                                                          initState
                                                                               .allSelectFilter[
                                                                                   index]
                                                                               .values
-                                                                              .first,
+                                                                              .first
+                                                                              .value,
+                                                                          style: Theme.of(context)
+                                                                              .textTheme
+                                                                              .displaySmall,
                                                                         ),
-                                                                      );
-                                                                },
-                                                                child: Container(
-                                                                  decoration: BoxDecoration(
-                                                                    color: BlindChickenColors
-                                                                        .backgroundColorItemFilter,
-                                                                    borderRadius:
-                                                                        BorderRadius.circular(4),
+                                                                        const SizedBox(
+                                                                          width: 7,
+                                                                        ),
+                                                                        SvgPicture.asset(
+                                                                          'assets/icons/x.svg',
+                                                                          width: 13.3,
+                                                                          height: 13.3,
+                                                                        )
+                                                                      ],
+                                                                    ),
                                                                   ),
-                                                                  margin: EdgeInsets.only(
-                                                                    right: initState.allSelectFilter
-                                                                                    .length -
-                                                                                1 !=
-                                                                            index
-                                                                        ? 12
-                                                                        : 0,
-                                                                  ),
-                                                                  padding:
-                                                                      const EdgeInsets.all(3.5),
-                                                                  height: 27,
-                                                                  child: Row(
-                                                                    children: [
-                                                                      Text(
-                                                                        initState
-                                                                            .allSelectFilter[index]
-                                                                            .values
-                                                                            .first
-                                                                            .value,
-                                                                        style: Theme.of(context)
-                                                                            .textTheme
-                                                                            .displaySmall,
-                                                                      ),
-                                                                      const SizedBox(
-                                                                        width: 7,
-                                                                      ),
-                                                                      SvgPicture.asset(
-                                                                        'assets/icons/x.svg',
-                                                                        width: 13.3,
-                                                                        height: 13.3,
-                                                                      )
-                                                                    ],
-                                                                  ),
-                                                                ),
-                                                              );
-                                                            }),
-                                                          ),
-                                                        ]),
-                                                  )
-                                                else
-                                                  const SizedBox(),
-                                                Wrap(
-                                                  children: List.generate(
-                                                      initState.favouritesProducts.length, (index) {
-                                                    return Listener(
-                                                      onPointerDown: (details) {
-                                                        _touchCount++;
-                                                        if (_touchCount > 1) {
-                                                          setState(() {
-                                                            _isScroll = false;
-                                                          });
-                                                        } else {
-                                                          setState(() {
-                                                            _isScroll = true;
-                                                          });
-                                                        }
-                                                      },
-                                                      onPointerUp: (details) {
-                                                        _touchCount--;
-                                                        if (_touchCount > 1) {
-                                                          setState(() {
-                                                            _isScroll = false;
-                                                          });
-                                                        } else {
-                                                          setState(() {
-                                                            _isScroll = true;
-                                                          });
-                                                        }
-                                                      },
-                                                      onPointerCancel: (details) {
-                                                        _touchCount--;
-                                                        if (_touchCount > 1) {
-                                                          setState(() {
-                                                            _isScroll = false;
-                                                          });
-                                                        } else {
-                                                          setState(() {
-                                                            _isScroll = true;
-                                                          });
-                                                        }
-                                                      },
-                                                      child: CatalogCardItem(
-                                                        isLike: true,
-                                                        pb: initState.favouritesProducts[index].pb,
-                                                        images: initState
-                                                            .favouritesProducts[index].images,
-                                                        onSelect: () {
-                                                          context.read<FavouritesBloc>().add(
-                                                                FavouritesEvent.getInfoProduct(
-                                                                  code: initState
-                                                                      .favouritesProducts[index].id
-                                                                      .toString(),
-                                                                  titleScreen:
-                                                                      'Карточка товара в избранном',
-                                                                  typeAddProductToShoppingCart:
-                                                                      'Карточка товара',
-                                                                  identifierAddProductToShoppingCart:
-                                                                      '1',
-                                                                ),
-                                                              );
-                                                          context.navigateTo(
-                                                            FavouritesCardInfoRoute(
-                                                              isChildRoute: false,
-                                                              item: initState
-                                                                  .favouritesProducts[index],
-                                                              isLike: true,
-                                                              listItems:
-                                                                  initState.favouritesProducts,
-                                                              favouritesProducts:
-                                                                  initState.favouritesProducts,
+                                                                );
+                                                              }),
                                                             ),
-                                                          );
+                                                          ]),
+                                                    )
+                                                  else
+                                                    const SizedBox(),
+                                                  Wrap(
+                                                    children: List.generate(
+                                                        initState.favouritesProducts.length,
+                                                        (index) {
+                                                      return Listener(
+                                                        onPointerDown: (details) {
+                                                          _touchCount++;
+                                                          if (_touchCount > 1) {
+                                                            setState(() {
+                                                              _isScroll = false;
+                                                            });
+                                                          } else {
+                                                            setState(() {
+                                                              _isScroll = true;
+                                                            });
+                                                          }
                                                         },
-                                                        isYourPriceDisplayed: initState
-                                                            .favouritesProducts[index]
-                                                            .isYourPriceDisplayed,
-                                                        imageUrl: initState
-                                                            .favouritesProducts[index].images[0],
-                                                        brend: initState
-                                                            .favouritesProducts[index].brend,
-                                                        category: initState
-                                                            .favouritesProducts[index].category,
-                                                        yourPrice: initState
-                                                            .favouritesProducts[index].yourPrice
-                                                            .toString(),
-                                                        maximumCashback: initState
-                                                            .favouritesProducts[index]
-                                                            .maximumCashback,
-                                                        discount: initState
-                                                            .favouritesProducts[index].discount,
-                                                        maximumPersonalDiscount: initState
-                                                            .favouritesProducts[index]
-                                                            .maximumPersonalDiscount,
-                                                        isAuth: initState.isAuth,
-                                                        price: initState
-                                                            .favouritesProducts[index].price
-                                                            .toString(),
-                                                        onAddFavouriteProduct: () {
-                                                          context.read<FavouritesBloc>().add(
-                                                                FavouritesEvent.addFavouriteProduct(
-                                                                  product: initState
-                                                                      .favouritesProducts[index],
-                                                                  index: initState
-                                                                      .favouritesProducts[index].id,
-                                                                ),
-                                                              );
+                                                        onPointerUp: (details) {
+                                                          _touchCount--;
+                                                          if (_touchCount > 1) {
+                                                            setState(() {
+                                                              _isScroll = false;
+                                                            });
+                                                          } else {
+                                                            setState(() {
+                                                              _isScroll = true;
+                                                            });
+                                                          }
                                                         },
-                                                        onDeleteFavouriteProduct: () {
-                                                          context.read<FavouritesBloc>().add(
-                                                                FavouritesEvent
-                                                                    .deleteFavouriteProduct(
-                                                                  index: initState
-                                                                      .favouritesProducts[index].id,
-                                                                ),
-                                                              );
-                                                          context.read<CatalogBloc>().add(
-                                                              const CatalogEvent
-                                                                  .updateFavouritesProducts());
+                                                        onPointerCancel: (details) {
+                                                          _touchCount--;
+                                                          if (_touchCount > 1) {
+                                                            setState(() {
+                                                              _isScroll = false;
+                                                            });
+                                                          } else {
+                                                            setState(() {
+                                                              _isScroll = true;
+                                                            });
+                                                          }
                                                         },
-                                                        isShop: initState
-                                                            .favouritesProducts[index].isShop,
-                                                        onAddProductToSoppingCart: () {
-                                                          context.read<FavouritesBloc>().add(
-                                                                FavouritesEvent.getInfoProductSize(
-                                                                  code: initState
-                                                                      .favouritesProducts[index].id
-                                                                      .toString(),
-                                                                  isShop: initState
+                                                        child: CatalogCardItem(
+                                                          isLike: true,
+                                                          pb: initState
+                                                              .favouritesProducts[index].pb,
+                                                          images: initState
+                                                              .favouritesProducts[index].images,
+                                                          onSelect: () {
+                                                            context.read<FavouritesBloc>().add(
+                                                                  FavouritesEvent.getInfoProduct(
+                                                                    code: initState
+                                                                        .favouritesProducts[index]
+                                                                        .id
+                                                                        .toString(),
+                                                                    titleScreen:
+                                                                        'Карточка товара в избранном',
+                                                                    typeAddProductToShoppingCart:
+                                                                        'Карточка товара',
+                                                                    identifierAddProductToShoppingCart:
+                                                                        '1',
+                                                                  ),
+                                                                );
+                                                            context.navigateTo(
+                                                              FavouritesCardInfoRoute(
+                                                                isChildRoute: false,
+                                                                item: initState
+                                                                    .favouritesProducts[index],
+                                                                isLike: true,
+                                                                listItems:
+                                                                    initState.favouritesProducts,
+                                                                favouritesProducts:
+                                                                    initState.favouritesProducts,
+                                                              ),
+                                                            );
+                                                          },
+                                                          isYourPriceDisplayed: initState
+                                                              .favouritesProducts[index]
+                                                              .isYourPriceDisplayed,
+                                                          imageUrl: initState
+                                                              .favouritesProducts[index].images[0],
+                                                          brend: initState
+                                                              .favouritesProducts[index].brend,
+                                                          category: initState
+                                                              .favouritesProducts[index].category,
+                                                          yourPrice: initState
+                                                              .favouritesProducts[index].yourPrice
+                                                              .toString(),
+                                                          maximumCashback: initState
+                                                              .favouritesProducts[index]
+                                                              .maximumCashback,
+                                                          discount: initState
+                                                              .favouritesProducts[index].discount,
+                                                          maximumPersonalDiscount: initState
+                                                              .favouritesProducts[index]
+                                                              .maximumPersonalDiscount,
+                                                          isAuth: initState.isAuth,
+                                                          price: initState
+                                                              .favouritesProducts[index].price
+                                                              .toString(),
+                                                          onAddFavouriteProduct: () {
+                                                            context.read<FavouritesBloc>().add(
+                                                                  FavouritesEvent
+                                                                      .addFavouriteProduct(
+                                                                    product: initState
+                                                                        .favouritesProducts[index],
+                                                                    index: initState
+                                                                        .favouritesProducts[index]
+                                                                        .id,
+                                                                  ),
+                                                                );
+                                                          },
+                                                          onDeleteFavouriteProduct: () {
+                                                            context.read<FavouritesBloc>().add(
+                                                                  FavouritesEvent
+                                                                      .deleteFavouriteProduct(
+                                                                    index: initState
+                                                                        .favouritesProducts[index]
+                                                                        .id,
+                                                                  ),
+                                                                );
+                                                            context.read<CatalogBloc>().add(
+                                                                const CatalogEvent
+                                                                    .updateFavouritesProducts());
+                                                          },
+                                                          isShop: initState
+                                                              .favouritesProducts[index].isShop,
+                                                          onAddProductToSoppingCart: () {
+                                                            context.read<FavouritesBloc>().add(
+                                                                  FavouritesEvent
+                                                                      .getInfoProductSize(
+                                                                    code: initState
+                                                                        .favouritesProducts[index]
+                                                                        .id
+                                                                        .toString(),
+                                                                    isShop: initState
+                                                                        .favouritesProducts[index]
+                                                                        .isShop,
+                                                                    titleScreen: 'Избранное',
+                                                                  ),
+                                                                );
+                                                          },
+                                                          listSize: initState.listSize,
+                                                          userDiscount: initState.userDiscount,
+                                                          isLoad: int.parse(initState.codeProduct ??
+                                                                      '0') ==
+                                                                  initState
                                                                       .favouritesProducts[index]
-                                                                      .isShop,
-                                                                  titleScreen: 'Избранное',
-                                                                ),
-                                                              );
-                                                        },
-                                                        listSize: initState.listSize,
-                                                        userDiscount: initState.userDiscount,
-                                                        isLoad: int.parse(
-                                                                    initState.codeProduct ?? '0') ==
-                                                                initState
-                                                                    .favouritesProducts[index].id &&
-                                                            initState.isLoadGetSizeProduct,
-                                                        sizeProduct: const [],
-                                                        promo: initState
-                                                            .favouritesProducts[index].promo,
-                                                        promoValue: initState
-                                                            .favouritesProducts[index].promoValue,
-                                                        video: initState
-                                                            .favouritesProducts[index].video,
-                                                        goSwipeBack: () {
-                                                          context.back();
-                                                          setState(() {
-                                                            _isSwipe = true;
-                                                          });
-                                                        },
-                                                        onScaleStart: () {
-                                                          setState(() {
-                                                            _isScroll = false;
-                                                          });
-                                                        },
-                                                        onScaleStop: () {
-                                                          setState(() {
-                                                            _isScroll = true;
-                                                          });
-                                                        },
-                                                      ),
-                                                    );
-                                                  }),
-                                                ),
-                                              ],
-                                            );
-                                    },
-                                    orElse: () => const SizedBox());
-                              },
-                            ),
-                          ],
+                                                                      .id &&
+                                                              initState.isLoadGetSizeProduct,
+                                                          sizeProduct: const [],
+                                                          promo: initState
+                                                              .favouritesProducts[index].promo,
+                                                          promoValue: initState
+                                                              .favouritesProducts[index].promoValue,
+                                                          video: initState
+                                                              .favouritesProducts[index].video,
+                                                          goSwipeBack: () {
+                                                            context.back();
+                                                            setState(() {
+                                                              _isSwipe = true;
+                                                            });
+                                                          },
+                                                          onScaleStart: () {
+                                                            setState(() {
+                                                              _isScroll = false;
+                                                            });
+                                                          },
+                                                          onScaleStop: () {
+                                                            setState(() {
+                                                              _isScroll = true;
+                                                            });
+                                                          },
+                                                        ),
+                                                      );
+                                                    }),
+                                                  ),
+                                                ],
+                                              );
+                                      },
+                                      orElse: () => const SizedBox());
+                                },
+                              ),
+                            ],
+                          ),
                         ),
                       ),
                     ),
-                  ),
-                  BlocBuilder<FavouritesBloc, FavouritesState>(
-                    builder: (context, state) {
-                      return state.maybeMap(
-                        productsFavourites: (initState) {
-                          if (initState.isButtonTop && !isLoading) {
-                            return GestureDetector(
-                              onTap: () {
-                                _scrollController.jumpTo(0.0);
-                              },
-                              child: Container(
-                                height: 45,
-                                width: 45,
-                                margin: const EdgeInsets.only(left: 15, bottom: 15),
-                                padding: const EdgeInsets.all(10),
-                                decoration: BoxDecoration(
-                                  color: BlindChickenColors.activeBorderTextField,
-                                  borderRadius: BorderRadius.circular(25),
+                    BlocBuilder<FavouritesBloc, FavouritesState>(
+                      builder: (context, state) {
+                        return state.maybeMap(
+                          productsFavourites: (initState) {
+                            if (initState.isButtonTop && !isLoading) {
+                              return GestureDetector(
+                                onTap: () {
+                                  _scrollController.jumpTo(0.0);
+                                },
+                                child: Container(
+                                  height: 45,
+                                  width: 45,
+                                  margin: const EdgeInsets.only(left: 15, bottom: 15),
+                                  padding: const EdgeInsets.all(10),
+                                  decoration: BoxDecoration(
+                                    color: BlindChickenColors.activeBorderTextField,
+                                    borderRadius: BorderRadius.circular(25),
+                                  ),
+                                  child: SvgPicture.asset(
+                                    'assets/icons/chevron-top.svg',
+                                  ),
                                 ),
-                                child: SvgPicture.asset(
-                                  'assets/icons/chevron-top.svg',
+                              );
+                            } else {
+                              return const SizedBox();
+                            }
+                          },
+                          orElse: () => const SizedBox(),
+                        );
+                      },
+                    )
+                  ],
+                ),
+                BlocBuilder<FavouritesBloc, FavouritesState>(
+                  builder: (context, state) {
+                    return state.maybeMap(
+                      load: (value) {
+                        return Center(
+                          child: CircularProgressIndicator(
+                            color: Colors.black,
+                            backgroundColor: Colors.grey.shade400,
+                          ),
+                        );
+                      },
+                      productsFavourites: (initState) {
+                        return isLoading
+                            ? Center(
+                                child: CircularProgressIndicator(
+                                  color: Colors.black,
+                                  backgroundColor: Colors.grey.shade400,
                                 ),
-                              ),
-                            );
-                          } else {
-                            return const SizedBox();
-                          }
-                        },
-                        orElse: () => const SizedBox(),
-                      );
-                    },
-                  )
-                ],
-              ),
-              BlocBuilder<FavouritesBloc, FavouritesState>(
-                builder: (context, state) {
-                  return state.maybeMap(
-                    load: (value) {
-                      return Center(
-                        child: CircularProgressIndicator(
-                          color: Colors.black,
-                          backgroundColor: Colors.grey.shade400,
-                        ),
-                      );
-                    },
-                    productsFavourites: (initState) {
-                      return isLoading
-                          ? Center(
-                              child: CircularProgressIndicator(
-                                color: Colors.black,
-                                backgroundColor: Colors.grey.shade400,
-                              ),
-                            )
-                          : const SizedBox();
-                    },
-                    orElse: () => const SizedBox(),
-                  );
-                },
-              ),
-            ],
+                              )
+                            : const SizedBox();
+                      },
+                      orElse: () => const SizedBox(),
+                    );
+                  },
+                ),
+              ],
+            ),
           ),
         ),
       ),
