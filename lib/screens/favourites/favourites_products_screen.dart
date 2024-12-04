@@ -37,6 +37,7 @@ class _FavouritesProductsScreenState extends State<FavouritesProductsScreen> {
   double _historyPosition = 0.0;
   double _paginationPosition = 0.0;
   int _currentPage = 1;
+  int _touchCount = 0;
   double _boundaryOffset = 0.5;
 
   @override
@@ -687,129 +688,167 @@ class _FavouritesProductsScreenState extends State<FavouritesProductsScreen> {
                                                 Wrap(
                                                   children: List.generate(
                                                       initState.favouritesProducts.length, (index) {
-                                                    return CatalogCardItem(
-                                                      isLike: true,
-                                                      pb: initState.favouritesProducts[index].pb,
-                                                      images: initState
-                                                          .favouritesProducts[index].images,
-                                                      onSelect: () {
-                                                        context.read<FavouritesBloc>().add(
-                                                              FavouritesEvent.getInfoProduct(
-                                                                code: initState
-                                                                    .favouritesProducts[index].id
-                                                                    .toString(),
-                                                                titleScreen:
-                                                                    'Карточка товара в избранном',
-                                                                typeAddProductToShoppingCart:
-                                                                    'Карточка товара',
-                                                                identifierAddProductToShoppingCart:
-                                                                    '1',
-                                                              ),
-                                                            );
-                                                        context.navigateTo(
-                                                          FavouritesCardInfoRoute(
-                                                            isChildRoute: false,
-                                                            item:
-                                                                initState.favouritesProducts[index],
-                                                            isLike: true,
-                                                            listItems: initState.favouritesProducts,
-                                                            favouritesProducts:
-                                                                initState.favouritesProducts,
-                                                          ),
-                                                        );
+                                                    return Listener(
+                                                      onPointerDown: (details) {
+                                                        _touchCount++;
+                                                        if (_touchCount > 1) {
+                                                          setState(() {
+                                                            _isScroll = false;
+                                                          });
+                                                        } else {
+                                                          setState(() {
+                                                            _isScroll = true;
+                                                          });
+                                                        }
                                                       },
-                                                      isYourPriceDisplayed: initState
-                                                          .favouritesProducts[index]
-                                                          .isYourPriceDisplayed,
-                                                      imageUrl: initState
-                                                          .favouritesProducts[index].images[0],
-                                                      brend:
-                                                          initState.favouritesProducts[index].brend,
-                                                      category: initState
-                                                          .favouritesProducts[index].category,
-                                                      yourPrice: initState
-                                                          .favouritesProducts[index].yourPrice
-                                                          .toString(),
-                                                      maximumCashback: initState
-                                                          .favouritesProducts[index]
-                                                          .maximumCashback,
-                                                      discount: initState
-                                                          .favouritesProducts[index].discount,
-                                                      maximumPersonalDiscount: initState
-                                                          .favouritesProducts[index]
-                                                          .maximumPersonalDiscount,
-                                                      isAuth: initState.isAuth,
-                                                      price: initState
-                                                          .favouritesProducts[index].price
-                                                          .toString(),
-                                                      onAddFavouriteProduct: () {
-                                                        context.read<FavouritesBloc>().add(
-                                                              FavouritesEvent.addFavouriteProduct(
-                                                                product: initState
-                                                                    .favouritesProducts[index],
-                                                                index: initState
-                                                                    .favouritesProducts[index].id,
-                                                              ),
-                                                            );
+                                                      onPointerUp: (details) {
+                                                        _touchCount--;
+                                                        if (_touchCount > 1) {
+                                                          setState(() {
+                                                            _isScroll = false;
+                                                          });
+                                                        } else {
+                                                          setState(() {
+                                                            _isScroll = true;
+                                                          });
+                                                        }
                                                       },
-                                                      onDeleteFavouriteProduct: () {
-                                                        context.read<FavouritesBloc>().add(
-                                                              FavouritesEvent
-                                                                  .deleteFavouriteProduct(
-                                                                index: initState
-                                                                    .favouritesProducts[index].id,
-                                                              ),
-                                                            );
-                                                        context.read<CatalogBloc>().add(
-                                                            const CatalogEvent
-                                                                .updateFavouritesProducts());
+                                                      onPointerCancel: (details) {
+                                                        _touchCount--;
+                                                        if (_touchCount > 1) {
+                                                          setState(() {
+                                                            _isScroll = false;
+                                                          });
+                                                        } else {
+                                                          setState(() {
+                                                            _isScroll = true;
+                                                          });
+                                                        }
                                                       },
-                                                      isShop: initState
-                                                          .favouritesProducts[index].isShop,
-                                                      onAddProductToSoppingCart: () {
-                                                        context.read<FavouritesBloc>().add(
-                                                              FavouritesEvent.getInfoProductSize(
-                                                                code: initState
-                                                                    .favouritesProducts[index].id
-                                                                    .toString(),
-                                                                isShop: initState
-                                                                    .favouritesProducts[index]
-                                                                    .isShop,
-                                                                titleScreen: 'Избранное',
-                                                              ),
-                                                            );
-                                                      },
-                                                      listSize: initState.listSize,
-                                                      userDiscount: initState.userDiscount,
-                                                      isLoad:
-                                                          int.parse(initState.codeProduct ?? '0') ==
-                                                                  initState
+                                                      child: CatalogCardItem(
+                                                        isLike: true,
+                                                        pb: initState.favouritesProducts[index].pb,
+                                                        images: initState
+                                                            .favouritesProducts[index].images,
+                                                        onSelect: () {
+                                                          context.read<FavouritesBloc>().add(
+                                                                FavouritesEvent.getInfoProduct(
+                                                                  code: initState
+                                                                      .favouritesProducts[index].id
+                                                                      .toString(),
+                                                                  titleScreen:
+                                                                      'Карточка товара в избранном',
+                                                                  typeAddProductToShoppingCart:
+                                                                      'Карточка товара',
+                                                                  identifierAddProductToShoppingCart:
+                                                                      '1',
+                                                                ),
+                                                              );
+                                                          context.navigateTo(
+                                                            FavouritesCardInfoRoute(
+                                                              isChildRoute: false,
+                                                              item: initState
+                                                                  .favouritesProducts[index],
+                                                              isLike: true,
+                                                              listItems:
+                                                                  initState.favouritesProducts,
+                                                              favouritesProducts:
+                                                                  initState.favouritesProducts,
+                                                            ),
+                                                          );
+                                                        },
+                                                        isYourPriceDisplayed: initState
+                                                            .favouritesProducts[index]
+                                                            .isYourPriceDisplayed,
+                                                        imageUrl: initState
+                                                            .favouritesProducts[index].images[0],
+                                                        brend: initState
+                                                            .favouritesProducts[index].brend,
+                                                        category: initState
+                                                            .favouritesProducts[index].category,
+                                                        yourPrice: initState
+                                                            .favouritesProducts[index].yourPrice
+                                                            .toString(),
+                                                        maximumCashback: initState
+                                                            .favouritesProducts[index]
+                                                            .maximumCashback,
+                                                        discount: initState
+                                                            .favouritesProducts[index].discount,
+                                                        maximumPersonalDiscount: initState
+                                                            .favouritesProducts[index]
+                                                            .maximumPersonalDiscount,
+                                                        isAuth: initState.isAuth,
+                                                        price: initState
+                                                            .favouritesProducts[index].price
+                                                            .toString(),
+                                                        onAddFavouriteProduct: () {
+                                                          context.read<FavouritesBloc>().add(
+                                                                FavouritesEvent.addFavouriteProduct(
+                                                                  product: initState
+                                                                      .favouritesProducts[index],
+                                                                  index: initState
+                                                                      .favouritesProducts[index].id,
+                                                                ),
+                                                              );
+                                                        },
+                                                        onDeleteFavouriteProduct: () {
+                                                          context.read<FavouritesBloc>().add(
+                                                                FavouritesEvent
+                                                                    .deleteFavouriteProduct(
+                                                                  index: initState
+                                                                      .favouritesProducts[index].id,
+                                                                ),
+                                                              );
+                                                          context.read<CatalogBloc>().add(
+                                                              const CatalogEvent
+                                                                  .updateFavouritesProducts());
+                                                        },
+                                                        isShop: initState
+                                                            .favouritesProducts[index].isShop,
+                                                        onAddProductToSoppingCart: () {
+                                                          context.read<FavouritesBloc>().add(
+                                                                FavouritesEvent.getInfoProductSize(
+                                                                  code: initState
+                                                                      .favouritesProducts[index].id
+                                                                      .toString(),
+                                                                  isShop: initState
                                                                       .favouritesProducts[index]
-                                                                      .id &&
-                                                              initState.isLoadGetSizeProduct,
-                                                      sizeProduct: const [],
-                                                      promo:
-                                                          initState.favouritesProducts[index].promo,
-                                                      promoValue: initState
-                                                          .favouritesProducts[index].promoValue,
-                                                      video:
-                                                          initState.favouritesProducts[index].video,
-                                                      goSwipeBack: () {
-                                                        context.back();
-                                                        setState(() {
-                                                          _isSwipe = true;
-                                                        });
-                                                      },
-                                                      onScaleStart: () {
-                                                        setState(() {
-                                                          _isScroll = false;
-                                                        });
-                                                      },
-                                                      onScaleStop: () {
-                                                        setState(() {
-                                                          _isScroll = true;
-                                                        });
-                                                      },
+                                                                      .isShop,
+                                                                  titleScreen: 'Избранное',
+                                                                ),
+                                                              );
+                                                        },
+                                                        listSize: initState.listSize,
+                                                        userDiscount: initState.userDiscount,
+                                                        isLoad: int.parse(
+                                                                    initState.codeProduct ?? '0') ==
+                                                                initState
+                                                                    .favouritesProducts[index].id &&
+                                                            initState.isLoadGetSizeProduct,
+                                                        sizeProduct: const [],
+                                                        promo: initState
+                                                            .favouritesProducts[index].promo,
+                                                        promoValue: initState
+                                                            .favouritesProducts[index].promoValue,
+                                                        video: initState
+                                                            .favouritesProducts[index].video,
+                                                        goSwipeBack: () {
+                                                          context.back();
+                                                          setState(() {
+                                                            _isSwipe = true;
+                                                          });
+                                                        },
+                                                        onScaleStart: () {
+                                                          setState(() {
+                                                            _isScroll = false;
+                                                          });
+                                                        },
+                                                        onScaleStop: () {
+                                                          setState(() {
+                                                            _isScroll = true;
+                                                          });
+                                                        },
+                                                      ),
                                                     );
                                                   }),
                                                 ),

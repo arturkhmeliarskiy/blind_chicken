@@ -31,6 +31,7 @@ class _CatalogSearchResultScreenState extends State<CatalogSearchResultScreen> {
   bool _isShowDialogShoppingCartError = false;
   bool isLoading = false;
   bool _isScroll = true;
+  int _touchCount = 0;
   double _paginationPosition = 0.0;
   double _historyPosition = 0.0;
   int _currentPage = 1;
@@ -643,104 +644,147 @@ class _CatalogSearchResultScreenState extends State<CatalogSearchResultScreen> {
                                             children: List.generate(
                                               initState.products.length,
                                               (index) {
-                                                return CatalogCardItem(
-                                                  isLike: initState.favouritesProductsId
-                                                      .contains(initState.products[index].id),
-                                                  onSelect: () {
-                                                    context.read<SearchBloc>().add(
-                                                          SearchEvent.getInfoProduct(
-                                                            code: initState.products[index].id
-                                                                .toString(),
-                                                            titleScreen:
-                                                                'Карточка товара в резльтате поиска',
-                                                            typeAddProductToShoppingCart:
-                                                                'Карточка товара',
-                                                            identifierAddProductToShoppingCart: '1',
-                                                            typeError: 'описание товара в поиске',
-                                                          ),
-                                                        );
+                                                return Listener(
+                                                  onPointerDown: (details) {
+                                                    _touchCount++;
+                                                    if (_touchCount > 1) {
+                                                      setState(() {
+                                                        _isScroll = false;
+                                                      });
+                                                    } else {
+                                                      setState(() {
+                                                        _isScroll = true;
+                                                      });
+                                                    }
+                                                  },
+                                                  onPointerUp: (details) {
+                                                    _touchCount--;
+                                                    if (_touchCount > 1) {
+                                                      setState(() {
+                                                        _isScroll = false;
+                                                      });
+                                                    } else {
+                                                      setState(() {
+                                                        _isScroll = true;
+                                                      });
+                                                    }
+                                                  },
+                                                  onPointerCancel: (details) {
+                                                    _touchCount--;
+                                                    if (_touchCount > 1) {
+                                                      setState(() {
+                                                        _isScroll = false;
+                                                      });
+                                                    } else {
+                                                      setState(() {
+                                                        _isScroll = true;
+                                                      });
+                                                    }
+                                                  },
+                                                  child: CatalogCardItem(
+                                                    isLike: initState.favouritesProductsId
+                                                        .contains(initState.products[index].id),
+                                                    onSelect: () {
+                                                      context.read<SearchBloc>().add(
+                                                            SearchEvent.getInfoProduct(
+                                                              code: initState.products[index].id
+                                                                  .toString(),
+                                                              titleScreen:
+                                                                  'Карточка товара в резльтате поиска',
+                                                              typeAddProductToShoppingCart:
+                                                                  'Карточка товара',
+                                                              identifierAddProductToShoppingCart:
+                                                                  '1',
+                                                              typeError: 'описание товара в поиске',
+                                                            ),
+                                                          );
 
-                                                    context.navigateTo(
-                                                      CatalogSearchCardInfoResultRoute(
-                                                        isChildRoute: false,
-                                                        item: initState.products[index],
-                                                        isLike: initState.favouritesProductsId
-                                                            .contains(initState.products[index].id),
-                                                        listItems: initState.products,
-                                                        favouritesProducts:
-                                                            initState.favouritesProducts ?? [],
-                                                      ),
-                                                    );
-                                                  },
-                                                  imageUrl: initState.products[index].images[0],
-                                                  brend: initState.products[index].brend,
-                                                  category: initState.products[index].category,
-                                                  yourPrice: initState.products[index].yourPrice
-                                                      .toString(),
-                                                  price: initState.products[index].price.toString(),
-                                                  isYourPriceDisplayed: initState
-                                                      .products[index].isYourPriceDisplayed,
-                                                  maximumCashback:
-                                                      initState.products[index].maximumCashback,
-                                                  discount: initState.products[index].discount,
-                                                  maximumPersonalDiscount: initState
-                                                      .products[index].maximumPersonalDiscount,
-                                                  isAuth: initState.isAuth,
-                                                  onAddFavouriteProduct: () {
-                                                    context.read<SearchBloc>().add(
-                                                          SearchEvent.addFavouriteProduct(
-                                                            product: initState.products[index],
-                                                            index: initState.products[index].id,
-                                                            typeError:
-                                                                'добавить товар в избранное в результатах поиска',
-                                                          ),
-                                                        );
-                                                  },
-                                                  pb: initState.products[index].pb,
-                                                  onDeleteFavouriteProduct: () {
-                                                    context.read<SearchBloc>().add(
-                                                          SearchEvent.deleteFavouriteProduct(
-                                                            index: initState.products[index].id,
-                                                            typeError:
-                                                                'удалить товар из избранного в результатах поиска',
-                                                          ),
-                                                        );
-                                                  },
-                                                  isShop: initState.products[index].isShop,
-                                                  onAddProductToSoppingCart: () {
-                                                    context.read<SearchBloc>().add(
-                                                          SearchEvent.getInfoProductSize(
-                                                            code: initState.products[index].id
-                                                                .toString(),
-                                                            isShop:
-                                                                initState.products[index].isShop,
-                                                            titleScreen: 'Результаты поиска',
-                                                          ),
-                                                        );
-                                                  },
-                                                  listSize: initState.listSize,
-                                                  isLoad: int.parse(initState.codeProduct ?? '0') ==
-                                                          initState.products[index].id &&
-                                                      initState.isLoadGetSizeProduct,
-                                                  userDiscount: initState.userDiscount,
-                                                  sizeProduct: const [],
-                                                  promo: initState.products[index].promo,
-                                                  promoValue: initState.products[index].promoValue,
-                                                  images: initState.products[index].images,
-                                                  video: initState.products[index].video,
-                                                  goSwipeBack: () {
-                                                    context.back();
-                                                  },
-                                                  onScaleStart: () {
-                                                    setState(() {
-                                                      _isScroll = false;
-                                                    });
-                                                  },
-                                                  onScaleStop: () {
-                                                    setState(() {
-                                                      _isScroll = true;
-                                                    });
-                                                  },
+                                                      context.navigateTo(
+                                                        CatalogSearchCardInfoResultRoute(
+                                                          isChildRoute: false,
+                                                          item: initState.products[index],
+                                                          isLike: initState.favouritesProductsId
+                                                              .contains(
+                                                                  initState.products[index].id),
+                                                          listItems: initState.products,
+                                                          favouritesProducts:
+                                                              initState.favouritesProducts ?? [],
+                                                        ),
+                                                      );
+                                                    },
+                                                    imageUrl: initState.products[index].images[0],
+                                                    brend: initState.products[index].brend,
+                                                    category: initState.products[index].category,
+                                                    yourPrice: initState.products[index].yourPrice
+                                                        .toString(),
+                                                    price:
+                                                        initState.products[index].price.toString(),
+                                                    isYourPriceDisplayed: initState
+                                                        .products[index].isYourPriceDisplayed,
+                                                    maximumCashback:
+                                                        initState.products[index].maximumCashback,
+                                                    discount: initState.products[index].discount,
+                                                    maximumPersonalDiscount: initState
+                                                        .products[index].maximumPersonalDiscount,
+                                                    isAuth: initState.isAuth,
+                                                    onAddFavouriteProduct: () {
+                                                      context.read<SearchBloc>().add(
+                                                            SearchEvent.addFavouriteProduct(
+                                                              product: initState.products[index],
+                                                              index: initState.products[index].id,
+                                                              typeError:
+                                                                  'добавить товар в избранное в результатах поиска',
+                                                            ),
+                                                          );
+                                                    },
+                                                    pb: initState.products[index].pb,
+                                                    onDeleteFavouriteProduct: () {
+                                                      context.read<SearchBloc>().add(
+                                                            SearchEvent.deleteFavouriteProduct(
+                                                              index: initState.products[index].id,
+                                                              typeError:
+                                                                  'удалить товар из избранного в результатах поиска',
+                                                            ),
+                                                          );
+                                                    },
+                                                    isShop: initState.products[index].isShop,
+                                                    onAddProductToSoppingCart: () {
+                                                      context.read<SearchBloc>().add(
+                                                            SearchEvent.getInfoProductSize(
+                                                              code: initState.products[index].id
+                                                                  .toString(),
+                                                              isShop:
+                                                                  initState.products[index].isShop,
+                                                              titleScreen: 'Результаты поиска',
+                                                            ),
+                                                          );
+                                                    },
+                                                    listSize: initState.listSize,
+                                                    isLoad:
+                                                        int.parse(initState.codeProduct ?? '0') ==
+                                                                initState.products[index].id &&
+                                                            initState.isLoadGetSizeProduct,
+                                                    userDiscount: initState.userDiscount,
+                                                    sizeProduct: const [],
+                                                    promo: initState.products[index].promo,
+                                                    promoValue:
+                                                        initState.products[index].promoValue,
+                                                    images: initState.products[index].images,
+                                                    video: initState.products[index].video,
+                                                    goSwipeBack: () {
+                                                      context.back();
+                                                    },
+                                                    onScaleStart: () {
+                                                      setState(() {
+                                                        _isScroll = false;
+                                                      });
+                                                    },
+                                                    onScaleStop: () {
+                                                      setState(() {
+                                                        _isScroll = true;
+                                                      });
+                                                    },
+                                                  ),
                                                 );
                                               },
                                             ),
