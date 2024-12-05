@@ -132,5 +132,8 @@ Future<void> initBloc(GetIt getIt) async {
         getIt.get<UpdateDataService>(),
         getIt.get<SharedPreferencesService>(),
       ),
+    )
+    ..registerFactory(
+      () => BottomNavigationBloc(),
     );
 }

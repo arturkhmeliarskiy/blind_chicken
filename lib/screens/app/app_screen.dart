@@ -276,219 +276,235 @@ class _DashboardPageState extends State<DashboardPage> {
 
   @override
   Widget build(BuildContext context) {
-    return AutoTabsScaffold(
-      routes: const [
-        HomeAutoRouterRoute(),
-        LoginRoute(),
-        ShoppingCartAutoRouterRoute(),
-        FavouritesRoute(),
-        NewsRoute(),
-      ],
-      bottomNavigationBuilder: (context, tabsRouter) {
-        final child = BottomNavigationBar(
-            backgroundColor: Colors.white,
-            showSelectedLabels: false,
-            showUnselectedLabels: false,
-            items: <BottomNavigationBarItem>[
-              BottomNavigationBarItem(
-                icon: SvgPicture.asset(
-                  'assets/icons/cust_menu_icon.svg',
-                  height: 21,
-                  fit: BoxFit.cover,
-                ),
-                label: '',
-              ),
-              BottomNavigationBarItem(
-                icon: SvgPicture.asset(
-                  'assets/icons/user.svg',
-                  fit: BoxFit.cover,
-                  height: 21,
-                ),
-                label: '',
-              ),
-              BottomNavigationBarItem(
-                icon: SvgPicture.asset(
-                  'assets/icons/shopping-cart.svg',
-                  fit: BoxFit.cover,
-                  height: 21,
-                ),
-                label: '',
-              ),
-              BottomNavigationBarItem(
-                icon: SvgPicture.asset(
-                  'assets/icons/heart.svg',
-                  fit: BoxFit.cover,
-                  height: 21,
-                ),
-                label: '',
-              ),
-              BottomNavigationBarItem(
-                icon: BlocBuilder<NewsBloc, NewsState>(
-                  builder: (context, state) {
-                    return state.maybeMap(
-                      preloadDataCompleted: (initState) {
-                        return _bellWithCountBadges(
-                          initState.countBadgesTotal,
-                          context,
-                          Platform.isAndroid,
-                        );
-                      },
-                      load: (initState) {
-                        return _bellWithCountBadges(
-                          initState.countBadgesTotal ?? 0,
-                          context,
-                          Platform.isAndroid,
-                        );
-                      },
-                      orElse: () => SizedBox(
-                        height: Platform.isAndroid ? 25 : 26,
-                        child: Padding(
-                          padding: EdgeInsets.only(
-                            top: Platform.isAndroid ? 4 : 3,
-                            left: 3,
-                            right: 3,
-                            bottom: Platform.isAndroid ? 2 : 3,
-                          ),
-                          child: SvgPicture.asset(
-                            'assets/icons/bell.svg',
-                            fit: BoxFit.cover,
-                            height: 21,
-                          ),
+    return BlocBuilder<BottomNavigationBloc, BottomNavigationState>(builder: (context, initState) {
+      return initState.maybeMap(
+        preloadDataCompleted: (initState) {
+          return AbsorbPointer(
+            absorbing: initState.absorbing,
+            child: AutoTabsScaffold(
+              routes: const [
+                HomeAutoRouterRoute(),
+                LoginRoute(),
+                ShoppingCartAutoRouterRoute(),
+                FavouritesRoute(),
+                NewsRoute(),
+              ],
+              bottomNavigationBuilder: (context, tabsRouter) {
+                final child = BottomNavigationBar(
+                    backgroundColor: Colors.white,
+                    showSelectedLabels: false,
+                    showUnselectedLabels: false,
+                    items: <BottomNavigationBarItem>[
+                      BottomNavigationBarItem(
+                        icon: SvgPicture.asset(
+                          'assets/icons/cust_menu_icon.svg',
+                          height: 21,
+                          fit: BoxFit.cover,
                         ),
+                        label: '',
                       ),
-                    );
-                  },
-                ),
-                label: '',
-              ),
-            ],
-            currentIndex: tabsRouter.activeIndex,
-            type: BottomNavigationBarType.fixed,
-            selectedItemColor: Colors.green[500],
-            onTap: (int index) {
-              final updateData = GetIt.I.get<UpdateDataService>();
-              // if (updateData.videoController.value.isInitialized &&
-              //     updateData.videoController.value.duration != Duration.zero) {
-              //   updateData.videoController.dispose();
-              //   updateData.videoController = VideoPlayerController.networkUrl(Uri());
-              // }
-
-              if (index == 0) {
-                if (mounted) {
-                  Timer(const Duration(milliseconds: 250), () {
-                    final updateData = GetIt.I.get<UpdateDataService>();
-
-                    context.read<CatalogBloc>().add(
-                          CatalogEvent.subCategory(
-                            a: 'get-main-menu',
-                            b: 0,
-                            id: updateData.selectedIndexGender,
-                            u: '',
-                            pid: 0,
-                            selectedGenderIndex: updateData.selectedIndexGender,
-                          ),
-                        );
-                    context.read<ShoppingCartBloc>().add(const ShoppingCartEvent.init());
-                  });
-                  context.navigateTo(
-                    const DashboardRoute(
-                      children: [
-                        HomeAutoRouterRoute(
-                          children: [
-                            CategoryRoute(),
-                          ],
+                      BottomNavigationBarItem(
+                        icon: SvgPicture.asset(
+                          'assets/icons/user.svg',
+                          fit: BoxFit.cover,
+                          height: 21,
                         ),
-                      ],
-                    ),
-                  );
-                }
-                updateData.lastScreen = 'catalog';
-              } else if (index == 1) {
-                final shared = GetIt.I.get<SharedPreferencesService>();
-                final userAuthorized = shared.getBool(key: SharedPrefKeys.userAuthorized) ?? false;
-                if (userAuthorized) {
-                  context.read<AccountBloc>().add(const AccountEvent.preloadData());
-                  context.read<ShoppingCartBloc>().add(const ShoppingCartEvent.init());
-                  context.navigateTo(const LoginRoute(
-                    children: [
-                      AccountRoute(),
-                    ],
-                  ));
-                } else {
-                  context.read<LoginBloc>().add(const LoginEvent.init());
-
-                  showDialog(
-                      context: context,
-                      builder: (context) {
-                        return LoginPhoneScreen(
-                          successfully: () {
-                            Navigator.of(context, rootNavigator: true).pop();
-                            context.read<AccountBloc>().add(const AccountEvent.preloadData());
-                            context.navigateTo(
-                              const LoginRoute(
-                                children: [
-                                  AccountRoute(),
-                                ],
+                        label: '',
+                      ),
+                      BottomNavigationBarItem(
+                        icon: SvgPicture.asset(
+                          'assets/icons/shopping-cart.svg',
+                          fit: BoxFit.cover,
+                          height: 21,
+                        ),
+                        label: '',
+                      ),
+                      BottomNavigationBarItem(
+                        icon: SvgPicture.asset(
+                          'assets/icons/heart.svg',
+                          fit: BoxFit.cover,
+                          height: 21,
+                        ),
+                        label: '',
+                      ),
+                      BottomNavigationBarItem(
+                        icon: BlocBuilder<NewsBloc, NewsState>(
+                          builder: (context, state) {
+                            return state.maybeMap(
+                              preloadDataCompleted: (initState) {
+                                return _bellWithCountBadges(
+                                  initState.countBadgesTotal,
+                                  context,
+                                  Platform.isAndroid,
+                                );
+                              },
+                              load: (initState) {
+                                return _bellWithCountBadges(
+                                  initState.countBadgesTotal ?? 0,
+                                  context,
+                                  Platform.isAndroid,
+                                );
+                              },
+                              orElse: () => SizedBox(
+                                height: Platform.isAndroid ? 25 : 26,
+                                child: Padding(
+                                  padding: EdgeInsets.only(
+                                    top: Platform.isAndroid ? 4 : 3,
+                                    left: 3,
+                                    right: 3,
+                                    bottom: Platform.isAndroid ? 2 : 3,
+                                  ),
+                                  child: SvgPicture.asset(
+                                    'assets/icons/bell.svg',
+                                    fit: BoxFit.cover,
+                                    height: 21,
+                                  ),
+                                ),
                               ),
                             );
                           },
-                          onBack: () {
-                            context.maybePop();
-                          },
-                        );
-                      });
-                }
-                updateData.lastScreen = 'account';
-              } else if (index == 2) {
-                Timer(const Duration(milliseconds: 150), () {
-                  context.read<ShoppingCartBloc>().add(const ShoppingCartEvent.preloadData());
-                });
-                context.navigateTo(
-                  const ShoppingCartAutoRouterRoute(
-                    children: [
-                      ShoppingCartRoute(),
+                        ),
+                        label: '',
+                      ),
                     ],
-                  ),
-                );
-                updateData.lastScreen = '';
-              } else if (index == 3) {
-                if (!updateData.isOpenShowModalBottomSheetFavouritesScreen) {
-                  Timer(const Duration(milliseconds: 150), () {
-                    context.read<FavouritesBloc>().add(const FavouritesEvent.preloadData());
-                    context.read<ShoppingCartBloc>().add(const ShoppingCartEvent.init());
-                  });
-                }
-                updateData.lastScreen = 'favourites_products';
-                context.navigateTo(
-                  const FavouritesRoute(children: [
-                    FavouritesProductsRoute(),
-                  ]),
-                );
-                AppMetrica.reportEvent('Избранное');
-              } else if (index == 4) {
-                context.read<NewsBloc>().add(const NewsEvent.getNews());
-                context.navigateTo(
-                  NewsRoute(children: [
-                    NewsInfoRoute(
-                      indexPage: 0,
-                    ),
-                  ]),
-                );
-                AppMetrica.reportEvent('Список новостей');
-              } else if (tabsRouter.activeIndex != index) {
-                tabsRouter.setActiveIndex(index);
-              } else {
-                tabsRouter.innerRouterOf<StackRouter>(tabsRouter.current.name)?.popUntilRoot();
-              }
-            });
-        return Platform.isAndroid
-            ? SizedBox(
-                height: 60,
-                child: child,
-              )
-            : child;
-      },
-    );
+                    currentIndex: tabsRouter.activeIndex,
+                    type: BottomNavigationBarType.fixed,
+                    selectedItemColor: Colors.green[500],
+                    onTap: (int index) {
+                      final updateData = GetIt.I.get<UpdateDataService>();
+                      // if (updateData.videoController.value.isInitialized &&
+                      //     updateData.videoController.value.duration != Duration.zero) {
+                      //   updateData.videoController.dispose();
+                      //   updateData.videoController = VideoPlayerController.networkUrl(Uri());
+                      // }
+                      if (index == 0) {
+                        if (mounted) {
+                          Timer(const Duration(milliseconds: 250), () {
+                            final updateData = GetIt.I.get<UpdateDataService>();
+
+                            context.read<CatalogBloc>().add(
+                                  CatalogEvent.subCategory(
+                                    a: 'get-main-menu',
+                                    b: 0,
+                                    id: updateData.selectedIndexGender,
+                                    u: '',
+                                    pid: 0,
+                                    selectedGenderIndex: updateData.selectedIndexGender,
+                                  ),
+                                );
+                            context.read<ShoppingCartBloc>().add(const ShoppingCartEvent.init());
+                          });
+                          context.navigateTo(
+                            const DashboardRoute(
+                              children: [
+                                HomeAutoRouterRoute(
+                                  children: [
+                                    CategoryRoute(),
+                                  ],
+                                ),
+                              ],
+                            ),
+                          );
+                        }
+                        updateData.lastScreen = 'catalog';
+                      } else if (index == 1) {
+                        final shared = GetIt.I.get<SharedPreferencesService>();
+                        final userAuthorized =
+                            shared.getBool(key: SharedPrefKeys.userAuthorized) ?? false;
+                        if (userAuthorized) {
+                          context.read<AccountBloc>().add(const AccountEvent.preloadData());
+                          context.read<ShoppingCartBloc>().add(const ShoppingCartEvent.init());
+                          context.navigateTo(const LoginRoute(
+                            children: [
+                              AccountRoute(),
+                            ],
+                          ));
+                        } else {
+                          context.read<LoginBloc>().add(const LoginEvent.init());
+
+                          showDialog(
+                              context: context,
+                              builder: (context) {
+                                return LoginPhoneScreen(
+                                  successfully: () {
+                                    Navigator.of(context, rootNavigator: true).pop();
+                                    context
+                                        .read<AccountBloc>()
+                                        .add(const AccountEvent.preloadData());
+                                    context.navigateTo(
+                                      const LoginRoute(
+                                        children: [
+                                          AccountRoute(),
+                                        ],
+                                      ),
+                                    );
+                                  },
+                                  onBack: () {
+                                    context.maybePop();
+                                  },
+                                );
+                              });
+                        }
+                        updateData.lastScreen = 'account';
+                      } else if (index == 2) {
+                        Timer(const Duration(milliseconds: 150), () {
+                          context
+                              .read<ShoppingCartBloc>()
+                              .add(const ShoppingCartEvent.preloadData());
+                        });
+                        context.navigateTo(
+                          const ShoppingCartAutoRouterRoute(
+                            children: [
+                              ShoppingCartRoute(),
+                            ],
+                          ),
+                        );
+                        updateData.lastScreen = '';
+                      } else if (index == 3) {
+                        if (!updateData.isOpenShowModalBottomSheetFavouritesScreen) {
+                          Timer(const Duration(milliseconds: 150), () {
+                            context.read<FavouritesBloc>().add(const FavouritesEvent.preloadData());
+                            context.read<ShoppingCartBloc>().add(const ShoppingCartEvent.init());
+                          });
+                        }
+                        updateData.lastScreen = 'favourites_products';
+                        context.navigateTo(
+                          const FavouritesRoute(children: [
+                            FavouritesProductsRoute(),
+                          ]),
+                        );
+                        AppMetrica.reportEvent('Избранное');
+                      } else if (index == 4) {
+                        context.read<NewsBloc>().add(const NewsEvent.getNews());
+                        context.navigateTo(
+                          NewsRoute(children: [
+                            NewsInfoRoute(
+                              indexPage: 0,
+                            ),
+                          ]),
+                        );
+                        AppMetrica.reportEvent('Список новостей');
+                      } else if (tabsRouter.activeIndex != index) {
+                        tabsRouter.setActiveIndex(index);
+                      } else {
+                        tabsRouter
+                            .innerRouterOf<StackRouter>(tabsRouter.current.name)
+                            ?.popUntilRoot();
+                      }
+                    });
+                return Platform.isAndroid
+                    ? SizedBox(
+                        height: 60,
+                        child: child,
+                      )
+                    : child;
+              },
+            ),
+          );
+        },
+        orElse: () => SizedBox(),
+      );
+    });
   }
 }
 

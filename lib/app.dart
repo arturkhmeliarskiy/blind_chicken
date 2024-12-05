@@ -80,6 +80,12 @@ class _AppState extends State<App> {
             ),
         ),
         BlocProvider(
+          create: (context) => GetIt.I.get<BottomNavigationBloc>()
+            ..add(
+              const BottomNavigationEvent.init(),
+            ),
+        ),
+        BlocProvider(
           create: (context) => GetIt.I.get<CatalogBloc>()
             ..add(
               const CatalogEvent.init(),

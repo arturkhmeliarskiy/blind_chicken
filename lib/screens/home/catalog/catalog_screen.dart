@@ -1015,12 +1015,20 @@ class _CatalogScreenState extends State<CatalogScreen> {
                                                           _isZoom = true;
                                                           _isScroll = false;
                                                         });
+                                                        context.read<BottomNavigationBloc>().add(
+                                                              BottomNavigationEvent.switchBlocked(
+                                                                  isBlocked: true),
+                                                            );
                                                       },
                                                       onScaleStop: () {
                                                         setState(() {
                                                           _isZoom = false;
                                                           _isScroll = true;
                                                         });
+                                                        context.read<BottomNavigationBloc>().add(
+                                                              BottomNavigationEvent.switchBlocked(
+                                                                  isBlocked: false),
+                                                            );
                                                       },
                                                     ),
                                                   );
