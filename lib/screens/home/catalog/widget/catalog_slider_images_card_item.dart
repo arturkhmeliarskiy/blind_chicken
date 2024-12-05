@@ -28,7 +28,7 @@ class CatalogSliderImagesCardItem extends StatefulWidget {
 class _CatalogSliderImagesCardItemState extends State<CatalogSliderImagesCardItem> {
   final PageController _pageController = PageController();
   bool _isSwipe = true;
-  bool _isScroll = false;
+  bool _isScroll = true;
   int _page = 0;
 
   @override
