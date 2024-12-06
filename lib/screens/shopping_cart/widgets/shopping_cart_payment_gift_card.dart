@@ -68,6 +68,9 @@ class _ShoppingCartPaymentGiftCardState extends State<ShoppingCartPaymentGiftCar
           return state.maybeMap(
             productsShoppingCart: (initState) {
               int balance = initState.paymentGift?.balance ?? 0;
+              int sum = initState.amountPaid +
+                  (initState.receivingType != 'Самовывоз' ? initState.delivery ?? 0 : 0) -
+                  initState.bonuses;
               return Container(
                 height: _isError
                     ? _height
@@ -334,7 +337,17 @@ class _ShoppingCartPaymentGiftCardState extends State<ShoppingCartPaymentGiftCar
                                       int result = value.isNotEmpty ? int.parse(value) : 0;
                                       setState(() {
                                         if (result > balance) {
-                                          _pay.text = balance.toString();
+                                          if (sum > balance) {
+                                            _pay.text = balance.toString();
+                                          } else {
+                                            _pay.text = sum.toString();
+                                          }
+                                        } else {
+                                          if (result > sum) {
+                                            _pay.text = sum.toString();
+                                          } else {
+                                            _pay.text = result.toString();
+                                          }
                                         }
                                       });
                                     },

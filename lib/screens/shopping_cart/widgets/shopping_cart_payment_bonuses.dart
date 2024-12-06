@@ -10,16 +10,27 @@ class ShoppingCartPaymentBonuses extends StatefulWidget {
   const ShoppingCartPaymentBonuses({
     super.key,
     required this.onAddPayment,
+    this.bonuses = 0,
   });
 
   final ValueChanged<int> onAddPayment;
+  final int bonuses;
 
   @override
   State<ShoppingCartPaymentBonuses> createState() => _ShoppingCartPaymentBonusesState();
 }
 
 class _ShoppingCartPaymentBonusesState extends State<ShoppingCartPaymentBonuses> {
-  final TextEditingController _bonuses = TextEditingController();
+  TextEditingController _bonuses = TextEditingController();
+
+  @override
+  void initState() {
+    _bonuses = TextEditingController(
+      text: widget.bonuses > 0 ? widget.bonuses.toString() : '',
+    );
+    super.initState();
+  }
+
   @override
   Widget build(BuildContext context) {
     return Row(mainAxisAlignment: MainAxisAlignment.center, children: [
@@ -28,6 +39,9 @@ class _ShoppingCartPaymentBonusesState extends State<ShoppingCartPaymentBonuses>
           return state.maybeMap(
             productsShoppingCart: (initState) {
               int balance = initState.paymentBonus?.balance ?? 0;
+              int sum = initState.amountPaid +
+                  (initState.receivingType != 'Самовывоз' ? initState.delivery ?? 0 : 0) -
+                  initState.giftCards;
               return Container(
                 height: !initState.isLoadPaymentBonus && balance > 0 ? 296 : 196,
                 width: MediaQuery.of(context).size.width - 16,
@@ -121,7 +135,17 @@ class _ShoppingCartPaymentBonusesState extends State<ShoppingCartPaymentBonuses>
                                   int result = value.isNotEmpty ? int.parse(value) : 0;
                                   setState(() {
                                     if (result > balance) {
-                                      _bonuses.text = balance.toString();
+                                      if (sum > balance) {
+                                        _bonuses.text = balance.toString();
+                                      } else {
+                                        _bonuses.text = sum.toString();
+                                      }
+                                    } else {
+                                      if (result > sum) {
+                                        _bonuses.text = sum.toString();
+                                      } else {
+                                        _bonuses.text = result.toString();
+                                      }
                                     }
                                   });
                                 },

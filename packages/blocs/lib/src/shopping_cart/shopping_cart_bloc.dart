@@ -929,7 +929,9 @@ class ShoppingCartBloc extends Bloc<ShoppingCartEvent, ShoppingCartState> {
         final paymentBonus = await _basketRepository.getPaymentBonus();
 
         if (paymentBonus.errorMessage.isEmpty) {
-          emit(ShoppingCartState.openShowDialog());
+          emit(ShoppingCartState.openShowDialog(
+            bonuses: initState.bonuses,
+          ));
         }
 
         emit(
@@ -1028,12 +1030,41 @@ class ShoppingCartBloc extends Bloc<ShoppingCartEvent, ShoppingCartState> {
         );
         int numberProducts = 0;
         int amountPaid = 0;
+        int bonuses = 0;
+        int giftCards = 0;
         for (int i = 0; i < basketInfo.basket.length; i++) {
           numberProducts = numberProducts + basketInfo.basket[i].count;
           amountPaid = amountPaid + basketInfo.basket[i].data.price;
         }
 
         if (basketInfo.r == '1') {
+          if (amountPaid + (initState.delivery ?? 0) < initState.bonuses) {
+            bonuses =
+                initState.bonuses + (initState.delivery ?? 0) - (initState.bonuses - amountPaid);
+          } else {
+            if (amountPaid + (initState.delivery ?? 0) < initState.bonuses + initState.giftCards) {
+              bonuses = initState.bonuses +
+                  (initState.delivery ?? 0) -
+                  (initState.bonuses + initState.giftCards - amountPaid) +
+                  (initState.amountPaid - amountPaid) ~/ 2;
+            } else {
+              bonuses = initState.bonuses;
+            }
+          }
+          if (amountPaid + (initState.delivery ?? 0) < initState.giftCards) {
+            giftCards = initState.giftCards +
+                (initState.delivery ?? 0) -
+                (initState.giftCards - amountPaid);
+          } else {
+            if (amountPaid + (initState.delivery ?? 0) < initState.giftCards + bonuses) {
+              giftCards = initState.giftCards +
+                  (initState.delivery ?? 0) -
+                  (initState.giftCards + initState.bonuses - amountPaid) +
+                  (initState.amountPaid - amountPaid) ~/ 2;
+            } else {
+              giftCards = initState.giftCards;
+            }
+          }
           emit(
             initState.copyWith(
               shoppingCart: basketInfo,
@@ -1046,6 +1077,8 @@ class ShoppingCartBloc extends Bloc<ShoppingCartEvent, ShoppingCartState> {
               promoCodeMessage: '',
               promoCode: event.promoCode,
               pickup: event.uid,
+              bonuses: bonuses,
+              giftCards: giftCards,
             ),
           );
         } else {
