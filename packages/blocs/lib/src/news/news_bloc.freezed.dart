@@ -3676,6 +3676,7 @@ mixin _$NewsState {
             String? typeError,
             String? errorMessage,
             bool? isError,
+            bool? isLoadPagination,
             bool? isLoadErrorButton,
             bool? isDisabledVideo)
         preloadDataCompleted,
@@ -3710,6 +3711,7 @@ mixin _$NewsState {
             String? typeError,
             String? errorMessage,
             bool? isError,
+            bool? isLoadPagination,
             bool? isLoadErrorButton,
             bool? isDisabledVideo)?
         preloadDataCompleted,
@@ -3744,6 +3746,7 @@ mixin _$NewsState {
             String? typeError,
             String? errorMessage,
             bool? isError,
+            bool? isLoadPagination,
             bool? isLoadErrorButton,
             bool? isDisabledVideo)?
         preloadDataCompleted,
@@ -3871,6 +3874,7 @@ class _$InitNewsStateImpl implements InitNewsState {
             String? typeError,
             String? errorMessage,
             bool? isError,
+            bool? isLoadPagination,
             bool? isLoadErrorButton,
             bool? isDisabledVideo)
         preloadDataCompleted,
@@ -3908,6 +3912,7 @@ class _$InitNewsStateImpl implements InitNewsState {
             String? typeError,
             String? errorMessage,
             bool? isError,
+            bool? isLoadPagination,
             bool? isLoadErrorButton,
             bool? isDisabledVideo)?
         preloadDataCompleted,
@@ -3945,6 +3950,7 @@ class _$InitNewsStateImpl implements InitNewsState {
             String? typeError,
             String? errorMessage,
             bool? isError,
+            bool? isLoadPagination,
             bool? isLoadErrorButton,
             bool? isDisabledVideo)?
         preloadDataCompleted,
@@ -4138,6 +4144,7 @@ class _$LoadingNewsStateImpl implements LoadingNewsState {
             String? typeError,
             String? errorMessage,
             bool? isError,
+            bool? isLoadPagination,
             bool? isLoadErrorButton,
             bool? isDisabledVideo)
         preloadDataCompleted,
@@ -4176,6 +4183,7 @@ class _$LoadingNewsStateImpl implements LoadingNewsState {
             String? typeError,
             String? errorMessage,
             bool? isError,
+            bool? isLoadPagination,
             bool? isLoadErrorButton,
             bool? isDisabledVideo)?
         preloadDataCompleted,
@@ -4214,6 +4222,7 @@ class _$LoadingNewsStateImpl implements LoadingNewsState {
             String? typeError,
             String? errorMessage,
             bool? isError,
+            bool? isLoadPagination,
             bool? isLoadErrorButton,
             bool? isDisabledVideo)?
         preloadDataCompleted,
@@ -4360,6 +4369,7 @@ class _$LoadingErrorButtonNewsStateImpl implements LoadingErrorButtonNewsState {
             String? typeError,
             String? errorMessage,
             bool? isError,
+            bool? isLoadPagination,
             bool? isLoadErrorButton,
             bool? isDisabledVideo)
         preloadDataCompleted,
@@ -4397,6 +4407,7 @@ class _$LoadingErrorButtonNewsStateImpl implements LoadingErrorButtonNewsState {
             String? typeError,
             String? errorMessage,
             bool? isError,
+            bool? isLoadPagination,
             bool? isLoadErrorButton,
             bool? isDisabledVideo)?
         preloadDataCompleted,
@@ -4434,6 +4445,7 @@ class _$LoadingErrorButtonNewsStateImpl implements LoadingErrorButtonNewsState {
             String? typeError,
             String? errorMessage,
             bool? isError,
+            bool? isLoadPagination,
             bool? isLoadErrorButton,
             bool? isDisabledVideo)?
         preloadDataCompleted,
@@ -4591,6 +4603,7 @@ class _$ErrorNewsStateImpl implements ErrorNewsState {
             String? typeError,
             String? errorMessage,
             bool? isError,
+            bool? isLoadPagination,
             bool? isLoadErrorButton,
             bool? isDisabledVideo)
         preloadDataCompleted,
@@ -4628,6 +4641,7 @@ class _$ErrorNewsStateImpl implements ErrorNewsState {
             String? typeError,
             String? errorMessage,
             bool? isError,
+            bool? isLoadPagination,
             bool? isLoadErrorButton,
             bool? isDisabledVideo)?
         preloadDataCompleted,
@@ -4665,6 +4679,7 @@ class _$ErrorNewsStateImpl implements ErrorNewsState {
             String? typeError,
             String? errorMessage,
             bool? isError,
+            bool? isLoadPagination,
             bool? isLoadErrorButton,
             bool? isDisabledVideo)?
         preloadDataCompleted,
@@ -4761,6 +4776,7 @@ abstract class _$$PreloadDataCompletedNewsStateImplCopyWith<$Res> {
       String? typeError,
       String? errorMessage,
       bool? isError,
+      bool? isLoadPagination,
       bool? isLoadErrorButton,
       bool? isDisabledVideo});
 
@@ -4806,6 +4822,7 @@ class __$$PreloadDataCompletedNewsStateImplCopyWithImpl<$Res>
     Object? typeError = freezed,
     Object? errorMessage = freezed,
     Object? isError = freezed,
+    Object? isLoadPagination = freezed,
     Object? isLoadErrorButton = freezed,
     Object? isDisabledVideo = freezed,
   }) {
@@ -4889,6 +4906,10 @@ class __$$PreloadDataCompletedNewsStateImplCopyWithImpl<$Res>
       isError: freezed == isError
           ? _value.isError
           : isError // ignore: cast_nullable_to_non_nullable
+              as bool?,
+      isLoadPagination: freezed == isLoadPagination
+          ? _value.isLoadPagination
+          : isLoadPagination // ignore: cast_nullable_to_non_nullable
               as bool?,
       isLoadErrorButton: freezed == isLoadErrorButton
           ? _value.isLoadErrorButton
@@ -5001,6 +5022,7 @@ class _$PreloadDataCompletedNewsStateImpl
       this.typeError,
       this.errorMessage,
       this.isError,
+      this.isLoadPagination,
       this.isLoadErrorButton,
       this.isDisabledVideo})
       : _listNewsPath = listNewsPath;
@@ -5052,13 +5074,15 @@ class _$PreloadDataCompletedNewsStateImpl
   @override
   final bool? isError;
   @override
+  final bool? isLoadPagination;
+  @override
   final bool? isLoadErrorButton;
   @override
   final bool? isDisabledVideo;
 
   @override
   String toString() {
-    return 'NewsState.preloadDataCompleted(news: $news, media: $media, notificatios: $notificatios, offsetNews: $offsetNews, offsetMedia: $offsetMedia, offsetNotificatios: $offsetNotificatios, listNewsPath: $listNewsPath, isUpdateVersionApp: $isUpdateVersionApp, isNotification: $isNotification, countBadgesTotal: $countBadgesTotal, countBadgesNews: $countBadgesNews, countBadgesMedia: $countBadgesMedia, countBadgesNotificatios: $countBadgesNotificatios, isButtonTop: $isButtonTop, oneNews: $oneNews, oneMedia: $oneMedia, oneNotification: $oneNotification, typeError: $typeError, errorMessage: $errorMessage, isError: $isError, isLoadErrorButton: $isLoadErrorButton, isDisabledVideo: $isDisabledVideo)';
+    return 'NewsState.preloadDataCompleted(news: $news, media: $media, notificatios: $notificatios, offsetNews: $offsetNews, offsetMedia: $offsetMedia, offsetNotificatios: $offsetNotificatios, listNewsPath: $listNewsPath, isUpdateVersionApp: $isUpdateVersionApp, isNotification: $isNotification, countBadgesTotal: $countBadgesTotal, countBadgesNews: $countBadgesNews, countBadgesMedia: $countBadgesMedia, countBadgesNotificatios: $countBadgesNotificatios, isButtonTop: $isButtonTop, oneNews: $oneNews, oneMedia: $oneMedia, oneNotification: $oneNotification, typeError: $typeError, errorMessage: $errorMessage, isError: $isError, isLoadPagination: $isLoadPagination, isLoadErrorButton: $isLoadErrorButton, isDisabledVideo: $isDisabledVideo)';
   }
 
   @override
@@ -5103,6 +5127,8 @@ class _$PreloadDataCompletedNewsStateImpl
             (identical(other.errorMessage, errorMessage) ||
                 other.errorMessage == errorMessage) &&
             (identical(other.isError, isError) || other.isError == isError) &&
+            (identical(other.isLoadPagination, isLoadPagination) ||
+                other.isLoadPagination == isLoadPagination) &&
             (identical(other.isLoadErrorButton, isLoadErrorButton) ||
                 other.isLoadErrorButton == isLoadErrorButton) &&
             (identical(other.isDisabledVideo, isDisabledVideo) ||
@@ -5132,6 +5158,7 @@ class _$PreloadDataCompletedNewsStateImpl
         typeError,
         errorMessage,
         isError,
+        isLoadPagination,
         isLoadErrorButton,
         isDisabledVideo
       ]);
@@ -5176,6 +5203,7 @@ class _$PreloadDataCompletedNewsStateImpl
             String? typeError,
             String? errorMessage,
             bool? isError,
+            bool? isLoadPagination,
             bool? isLoadErrorButton,
             bool? isDisabledVideo)
         preloadDataCompleted,
@@ -5201,6 +5229,7 @@ class _$PreloadDataCompletedNewsStateImpl
         typeError,
         errorMessage,
         isError,
+        isLoadPagination,
         isLoadErrorButton,
         isDisabledVideo);
   }
@@ -5235,6 +5264,7 @@ class _$PreloadDataCompletedNewsStateImpl
             String? typeError,
             String? errorMessage,
             bool? isError,
+            bool? isLoadPagination,
             bool? isLoadErrorButton,
             bool? isDisabledVideo)?
         preloadDataCompleted,
@@ -5260,6 +5290,7 @@ class _$PreloadDataCompletedNewsStateImpl
         typeError,
         errorMessage,
         isError,
+        isLoadPagination,
         isLoadErrorButton,
         isDisabledVideo);
   }
@@ -5294,6 +5325,7 @@ class _$PreloadDataCompletedNewsStateImpl
             String? typeError,
             String? errorMessage,
             bool? isError,
+            bool? isLoadPagination,
             bool? isLoadErrorButton,
             bool? isDisabledVideo)?
         preloadDataCompleted,
@@ -5321,6 +5353,7 @@ class _$PreloadDataCompletedNewsStateImpl
           typeError,
           errorMessage,
           isError,
+          isLoadPagination,
           isLoadErrorButton,
           isDisabledVideo);
     }
@@ -5393,6 +5426,7 @@ abstract class PreloadDataCompletedNewsState implements NewsState {
       final String? typeError,
       final String? errorMessage,
       final bool? isError,
+      final bool? isLoadPagination,
       final bool? isLoadErrorButton,
       final bool? isDisabledVideo}) = _$PreloadDataCompletedNewsStateImpl;
 
@@ -5416,6 +5450,7 @@ abstract class PreloadDataCompletedNewsState implements NewsState {
   String? get typeError;
   String? get errorMessage;
   bool? get isError;
+  bool? get isLoadPagination;
   bool? get isLoadErrorButton;
   bool? get isDisabledVideo;
 

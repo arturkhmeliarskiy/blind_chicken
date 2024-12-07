@@ -16,12 +16,6 @@ class NewsBloc extends Bloc<NewsEvent, NewsState> {
   final StoreVersionAppRepository _storeVersionAppRepository;
   final SharedPreferencesService _sharedPreferencesService;
   final ImageService _imageService;
-  NewsInfoDataModel _news =
-      NewsInfoDataModel(e: '', r: '', errorMessage: '', list: [], isViewed: false);
-  MediaInfoDataModel _media =
-      MediaInfoDataModel(e: '', r: '', errorMessage: '', list: [], isViewed: false);
-  NotificationInfoDataModel _notificatios =
-      NotificationInfoDataModel(e: '', r: '', errorMessage: '', list: [], isViewed: false);
 
   NewsBloc(
     this._newsRepository,
@@ -55,11 +49,18 @@ class NewsBloc extends Bloc<NewsEvent, NewsState> {
     Emitter<NewsState> emit,
   ) async {
     final countBadges = await _newsRepository.getNumberUnreaNews();
+
+    NewsInfoDataModel news =
+        NewsInfoDataModel(e: '', r: '', errorMessage: '', list: [], isViewed: false);
+    MediaInfoDataModel media =
+        MediaInfoDataModel(e: '', r: '', errorMessage: '', list: [], isViewed: false);
+    NotificationInfoDataModel notificatios =
+        NotificationInfoDataModel(e: '', r: '', errorMessage: '', list: [], isViewed: false);
     emit(
       NewsState.preloadDataCompleted(
-        news: _news,
-        media: _media,
-        notificatios: _notificatios,
+        news: news,
+        media: media,
+        notificatios: notificatios,
         offsetNews: 1,
         offsetMedia: 1,
         offsetNotificatios: 1,
@@ -130,7 +131,7 @@ class NewsBloc extends Bloc<NewsEvent, NewsState> {
           ));
         }
       }
-      _news = NewsInfoDataModel(
+      news = NewsInfoDataModel(
         e: news.e,
         r: news.r,
         errorMessage: news.errorMessage,
@@ -142,7 +143,7 @@ class NewsBloc extends Bloc<NewsEvent, NewsState> {
 
       emit(
         initState.copyWith(
-          news: _news,
+          news: news,
           offsetNews: 1,
           listNewsPath: listNewsPath,
           isError: news.errorMessage.isNotEmpty,
@@ -214,7 +215,7 @@ class NewsBloc extends Bloc<NewsEvent, NewsState> {
         }
       }
 
-      _media = MediaInfoDataModel(
+      media = MediaInfoDataModel(
         e: media.e,
         r: media.r,
         errorMessage: media.errorMessage,
@@ -226,7 +227,7 @@ class NewsBloc extends Bloc<NewsEvent, NewsState> {
 
       emit(
         initState.copyWith(
-          media: _media,
+          media: media,
           offsetMedia: 1,
           listNewsPath: listNewsPath,
           isError: media.errorMessage.isNotEmpty,
@@ -299,7 +300,7 @@ class NewsBloc extends Bloc<NewsEvent, NewsState> {
         }
       }
 
-      _notificatios = NotificationInfoDataModel(
+      notificatios = NotificationInfoDataModel(
         e: notificatios.e,
         r: notificatios.r,
         errorMessage: notificatios.errorMessage,
@@ -311,7 +312,7 @@ class NewsBloc extends Bloc<NewsEvent, NewsState> {
 
       emit(
         initState.copyWith(
-          notificatios: _notificatios,
+          notificatios: notificatios,
           offsetNotificatios: 1,
           listNewsPath: listNewsPath,
           isError: notificatios.errorMessage.isNotEmpty,
@@ -333,9 +334,12 @@ class NewsBloc extends Bloc<NewsEvent, NewsState> {
     Emitter<NewsState> emit,
   ) async {
     await state.mapOrNull(preloadDataCompleted: (initState) async {
+      emit(initState.copyWith(
+        isLoadPagination: true,
+      ));
       int offsetNews = initState.offsetNews + 1;
       List<NewsInfoItemDataModel> listNews = [];
-      late final NewsInfoDataModel news;
+      late NewsInfoDataModel news;
 
       if (initState.offsetNews != offsetNews) {
         news = await _newsRepository.getNews(page: offsetNews);
@@ -373,7 +377,7 @@ class NewsBloc extends Bloc<NewsEvent, NewsState> {
             }
           }
 
-          _news = initState.news.copyWith(
+          news = initState.news.copyWith(
             list: [
               ...initState.news.list,
               ...listNews,
@@ -381,9 +385,10 @@ class NewsBloc extends Bloc<NewsEvent, NewsState> {
           );
 
           emit(initState.copyWith(
-            news: _news,
+            news: news,
             offsetNews: offsetNews,
             isNotification: false,
+            isLoadPagination: false,
           ));
         }
       }
@@ -432,7 +437,7 @@ class NewsBloc extends Bloc<NewsEvent, NewsState> {
           }
         }
 
-        _media = initState.media.copyWith(
+        media = initState.media.copyWith(
           list: [
             ...initState.media.list,
             ...listMedia,
@@ -440,7 +445,7 @@ class NewsBloc extends Bloc<NewsEvent, NewsState> {
         );
 
         emit(initState.copyWith(
-          media: _media,
+          media: media,
           offsetMedia: offsetMedia,
           isNotification: false,
         ));
@@ -492,7 +497,7 @@ class NewsBloc extends Bloc<NewsEvent, NewsState> {
           }
         }
 
-        _notificatios = initState.notificatios.copyWith(
+        notificatios = initState.notificatios.copyWith(
           list: [
             ...initState.notificatios.list,
             ...listNotifications,
@@ -500,7 +505,7 @@ class NewsBloc extends Bloc<NewsEvent, NewsState> {
         );
 
         emit(initState.copyWith(
-          notificatios: _notificatios,
+          notificatios: notificatios,
           offsetNotificatios: offsetNotificatios,
           isNotification: false,
         ));
@@ -518,6 +523,12 @@ class NewsBloc extends Bloc<NewsEvent, NewsState> {
       emit(const NewsState.load());
     }
 
+    NewsInfoDataModel news =
+        NewsInfoDataModel(e: '', r: '', errorMessage: '', list: [], isViewed: false);
+    MediaInfoDataModel media =
+        MediaInfoDataModel(e: '', r: '', errorMessage: '', list: [], isViewed: false);
+    NotificationInfoDataModel notificatios =
+        NotificationInfoDataModel(e: '', r: '', errorMessage: '', list: [], isViewed: false);
     String appStoreInfoVersion = '';
     bool isUpdateVersionApp = false;
     List<NewsSliderImageItemDataModel> images = [];
@@ -602,9 +613,9 @@ class NewsBloc extends Bloc<NewsEvent, NewsState> {
     } else {
       emit(
         NewsState.preloadDataCompleted(
-          news: _news,
-          media: _media,
-          notificatios: _notificatios,
+          news: news,
+          media: media,
+          notificatios: notificatios,
           offsetNews: 1,
           offsetMedia: 1,
           offsetNotificatios: 1,
@@ -641,6 +652,12 @@ class NewsBloc extends Bloc<NewsEvent, NewsState> {
       messageId: event.messageId,
     );
 
+    NewsInfoDataModel news =
+        NewsInfoDataModel(e: '', r: '', errorMessage: '', list: [], isViewed: false);
+    MediaInfoDataModel media =
+        MediaInfoDataModel(e: '', r: '', errorMessage: '', list: [], isViewed: false);
+    NotificationInfoDataModel notificatios =
+        NotificationInfoDataModel(e: '', r: '', errorMessage: '', list: [], isViewed: false);
     double videoImageHeight = 0.0;
     double videoImageWeight = 0.0;
     if (oneMedia.data.videoImage.isNotEmpty) {
@@ -715,9 +732,9 @@ class NewsBloc extends Bloc<NewsEvent, NewsState> {
     } else {
       emit(
         NewsState.preloadDataCompleted(
-          news: _news,
-          media: _media,
-          notificatios: _notificatios,
+          news: news,
+          media: media,
+          notificatios: notificatios,
           offsetNews: 1,
           offsetMedia: 1,
           offsetNotificatios: 1,
@@ -754,6 +771,12 @@ class NewsBloc extends Bloc<NewsEvent, NewsState> {
       messageId: event.messageId,
     );
 
+    NewsInfoDataModel news =
+        NewsInfoDataModel(e: '', r: '', errorMessage: '', list: [], isViewed: false);
+    MediaInfoDataModel media =
+        MediaInfoDataModel(e: '', r: '', errorMessage: '', list: [], isViewed: false);
+    NotificationInfoDataModel notificatios =
+        NotificationInfoDataModel(e: '', r: '', errorMessage: '', list: [], isViewed: false);
     double videoImageHeight = 0.0;
     double videoImageWeight = 0.0;
     if (oneNotifcation.data.videoImage.isNotEmpty) {
@@ -828,9 +851,9 @@ class NewsBloc extends Bloc<NewsEvent, NewsState> {
     } else {
       emit(
         NewsState.preloadDataCompleted(
-          news: _news,
-          media: _media,
-          notificatios: _notificatios,
+          news: news,
+          media: media,
+          notificatios: notificatios,
           offsetNews: 1,
           offsetMedia: 1,
           offsetNotificatios: 1,
@@ -911,6 +934,9 @@ class NewsBloc extends Bloc<NewsEvent, NewsState> {
       int indexNews = 0;
       BadgeOperationInfoDataModel? countBadges;
       final listNewsNotifications = _newsRepository.getNewsNotifications();
+      NewsInfoDataModel news = initState.news;
+      MediaInfoDataModel media = initState.media;
+      NotificationInfoDataModel notificatios = initState.notificatios;
 
       String dateReceiptNewNews = _sharedPreferencesService.getString(
             key: SharedPrefKeys.dateReceiptNewNews,
@@ -924,8 +950,8 @@ class NewsBloc extends Bloc<NewsEvent, NewsState> {
       if (isCheckReadNews) {
         switch (event.typeNews) {
           case 'news':
-            indexNews = _news.list.indexWhere((element) => element.id == event.id);
-            List<NewsInfoItemDataModel> listNews = _news.list.toList();
+            indexNews = news.list.indexWhere((element) => element.id == event.id);
+            List<NewsInfoItemDataModel> listNews = news.list.toList();
             NewsInfoItemDataModel item = listNews[indexNews].copyWith(isViewed: false);
             if (DateTime.parse(item.createAt).isAfter(
               DateTime.parse(dateReceiptNewNews),
@@ -941,14 +967,14 @@ class NewsBloc extends Bloc<NewsEvent, NewsState> {
                 ),
               );
               listNews[indexNews] = item;
-              _news = initState.news.copyWith(list: listNews);
+              news = initState.news.copyWith(list: listNews);
             }
 
             break;
           case 'media':
-            indexNews = _media.list.indexWhere((element) => element.id == event.id);
-            List<MediaInfoItemDataModel> listMedia = _media.list.toList();
-            MediaInfoItemDataModel item = _media.list[indexNews].copyWith(isViewed: false);
+            indexNews = media.list.indexWhere((element) => element.id == event.id);
+            List<MediaInfoItemDataModel> listMedia = media.list.toList();
+            MediaInfoItemDataModel item = media.list[indexNews].copyWith(isViewed: false);
             if (DateTime.parse(item.createAt).isAfter(
               DateTime.parse(dateReceiptNewNews),
             )) {
@@ -963,15 +989,15 @@ class NewsBloc extends Bloc<NewsEvent, NewsState> {
                 ),
               );
               listMedia[indexNews] = item;
-              _media = initState.media.copyWith(list: listMedia);
+              media = initState.media.copyWith(list: listMedia);
             }
 
             break;
           case 'notice':
-            indexNews = _notificatios.list.indexWhere((element) => element.id == event.id);
-            List<NotificationInfoItemDataModel> listNotificatios = _notificatios.list.toList();
+            indexNews = notificatios.list.indexWhere((element) => element.id == event.id);
+            List<NotificationInfoItemDataModel> listNotificatios = notificatios.list.toList();
             NotificationInfoItemDataModel item =
-                _notificatios.list[indexNews].copyWith(isViewed: false);
+                notificatios.list[indexNews].copyWith(isViewed: false);
             if (DateTime.parse(item.createAt).isAfter(
               DateTime.parse(dateReceiptNewNews),
             )) {
@@ -986,7 +1012,7 @@ class NewsBloc extends Bloc<NewsEvent, NewsState> {
                 ),
               );
               listNotificatios[indexNews] = item;
-              _notificatios = initState.notificatios.copyWith(list: listNotificatios);
+              notificatios = initState.notificatios.copyWith(list: listNotificatios);
             }
 
             break;
@@ -997,9 +1023,9 @@ class NewsBloc extends Bloc<NewsEvent, NewsState> {
 
       emit(
         initState.copyWith(
-          news: _news,
-          media: _media,
-          notificatios: _notificatios,
+          news: news,
+          media: media,
+          notificatios: notificatios,
           isError: countBadges?.errorMessage.isNotEmpty ?? false,
           errorMessage: countBadges?.errorMessage ?? '',
           typeError: 'описание ${event.typeNews}',

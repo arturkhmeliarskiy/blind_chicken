@@ -4,6 +4,7 @@ import 'package:appmetrica_plugin/appmetrica_plugin.dart';
 import 'package:auto_route/auto_route.dart';
 import 'package:blind_chicken/screens/app/router/app_router.dart';
 import 'package:blind_chicken/screens/news/widgets/news/news_item_tab_info.dart';
+import 'package:easy_infinite_pagination/easy_infinite_pagination.dart';
 import 'package:get_it/get_it.dart';
 import 'package:shared/shared.dart';
 import 'package:visibility_detector/visibility_detector.dart';
@@ -42,14 +43,14 @@ class _NewsTabInfoState extends State<NewsTabInfo> {
                 _scrollController.position.pixels > 0,
           ),
         );
-    if (_scrollController.position.pixels > (_scrollController.position.maxScrollExtent - 3500) &&
-        (_scrollController.position.maxScrollExtent - 3500) > _paginationPosition &&
-        _scrollController.position.pixels != _scrollController.position.maxScrollExtent) {
-      setState(() {
-        _paginationPosition = _scrollController.position.maxScrollExtent - 3500;
-      });
-      context.read<NewsBloc>().add(const NewsEvent.paginationNews());
-    }
+    // if (_scrollController.position.pixels > (_scrollController.position.maxScrollExtent - 3500) &&
+    //     (_scrollController.position.maxScrollExtent - 3500) > _paginationPosition &&
+    //     _scrollController.position.pixels != _scrollController.position.maxScrollExtent) {
+    //   setState(() {
+    //     _paginationPosition = _scrollController.position.maxScrollExtent - 3500;
+    //   });
+    //   // context.read<NewsBloc>().add(const NewsEvent.paginationNews());
+    // }
 
     _historyPosition = _scrollController.position.pixels;
   }
@@ -82,17 +83,22 @@ class _NewsTabInfoState extends State<NewsTabInfo> {
                     }
                     if (initState.news.list.isNotEmpty) {
                       return Container(
-                          decoration: BoxDecoration(
-                            color: BlindChickenColors.borderBottomColor,
-                            image: DecorationImage(
-                              image: AssetImage('assets/images/news_background.png'),
-                              fit: BoxFit.cover,
-                            ),
+                        decoration: BoxDecoration(
+                          color: BlindChickenColors.borderBottomColor,
+                          image: DecorationImage(
+                            image: AssetImage('assets/images/news_background.png'),
+                            fit: BoxFit.cover,
                           ),
-                          child: ListView.builder(
-                            controller: _scrollController,
+                        ),
+                        child: InfiniteListView(
+                          controller: _scrollController,
+                          delegate: PaginationDelegate(
                             itemCount: initState.news.list.length,
-                            padding: EdgeInsets.zero,
+                            onFetchData: () {
+                              context.read<NewsBloc>().add(const NewsEvent.paginationNews());
+                            },
+                            fetchDataOnStart: false,
+                            isLoading: initState.isLoadPagination ?? false,
                             itemBuilder: (context, index) {
                               return VisibilityDetector(
                                 key: Key(index.toString()),
@@ -214,7 +220,9 @@ class _NewsTabInfoState extends State<NewsTabInfo> {
                                 ),
                               );
                             },
-                          ));
+                          ),
+                        ),
+                      );
                     } else {
                       return LayoutBuilder(builder: (context, constraint) {
                         return Container(

@@ -34,6 +34,7 @@ class NewsState with _$NewsState {
     String? typeError,
     String? errorMessage,
     bool? isError,
+    bool? isLoadPagination,
     bool? isLoadErrorButton,
     bool? isDisabledVideo,
   }) = PreloadDataCompletedNewsState;
