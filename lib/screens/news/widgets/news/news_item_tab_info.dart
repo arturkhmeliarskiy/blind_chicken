@@ -53,7 +53,7 @@ class _NewsItemTabInfoState extends State<NewsItemTabInfo> with AutomaticKeepAli
         ),
         looping: true,
         autoPlay: true,
-        aspectRatio: widget.item.videoImageWeight / widget.item.videoImageHeight,
+        aspectRatio: 1,
       ),
       betterPlayerDataSource: BetterPlayerDataSource(
         BetterPlayerDataSourceType.network,

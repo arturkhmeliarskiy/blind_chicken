@@ -1,5 +1,6 @@
 import 'dart:io';
 
+import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:models/models.dart';
@@ -155,6 +156,7 @@ class NewsBloc extends Bloc<NewsEvent, NewsState> {
           countBadgesMedia: countBadges.media,
           countBadgesNotificatios: countBadges.notice,
           isNotification: false,
+          isLoadPagination: false,
         ),
       );
     });
@@ -359,10 +361,13 @@ class NewsBloc extends Bloc<NewsEvent, NewsState> {
               for (int j = 0; j < (news.list[i].images.length); j++) {
                 final imageInfo =
                     await _imageService.getImageUrlInfo(news.list[i].images[j].imageUrl);
+                videoImageHeight = imageInfo.image.height.toDouble();
+                videoImageWeight = imageInfo.image.width.toDouble();
+
                 images.add(NewsSliderImageItemDataModel(
                   imageUrl: news.list[i].images[j].imageUrl,
-                  imageHeight: imageInfo.image.height.toDouble(),
-                  imageWeight: imageInfo.image.width.toDouble(),
+                  imageHeight: videoImageHeight,
+                  imageWeight: videoImageWeight,
                 ));
               }
 
