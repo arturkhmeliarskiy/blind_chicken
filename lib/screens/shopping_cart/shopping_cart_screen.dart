@@ -317,7 +317,7 @@ class _ShoppingCartScreenState extends State<ShoppingCartScreen> {
                                                               if (initState.shoppingCart
                                                                       .basket[index].code !=
                                                                   '15846') {
-                                                                context
+                                            /*                    context
                                                                     .read<ShoppingCartBloc>()
                                                                     .add(
                                                                       ShoppingCartEvent
@@ -331,16 +331,28 @@ class _ShoppingCartScreenState extends State<ShoppingCartScreen> {
                                                                         identifierAddProductToShoppingCart:
                                                                             '3',
                                                                       ),
-                                                                    );
+                                                                    );*/
                                                                 context.navigateTo(
-                                                                  ShoppingCardInfoRoute(
+                                                                  CardInfoRoute(
                                                                     isChildRoute: false,
-                                                                    item: initState.shoppingCart
+                                                                    favouritesProducts: initState.favouritesProducts,
+                                                                    listProductsCode: initState.listProductsCode,
+                                                                    favouritesProductsId: initState.favouritesProductsId,
+                                                                    isLoadGetSizeProduct: initState.isLoadGetSizeProduct,
+                                                                    codeProduct:  initState.shoppingCart
+                                                                        .basket[index].code,
+                                                                    itemInfo: initState.itemInfo,
+                                                                    product: initState.shoppingCart
                                                                         .basket[index].product,
+                                                                    indexItem: initState.indexItem,
+                                                                    isLoadErrorButton: initState.isLoadErrorButton,
+                                                                    titleScreen: 'Элемента списка в корзине',
+                                                                    typeAddProductToShoppingCart: 'Элемента списка',
+                                                                    identifierAddProductToShoppingCart:
+                                                                    '3',
+                                                                    isShopGetSizeProduct: initState.isShopGetSizeProduct,
                                                                     isLike: false,
                                                                     listItems: const [],
-                                                                    favouritesProducts: initState
-                                                                        .favouritesProducts,
                                                                   ),
                                                                 );
                                                               } else {

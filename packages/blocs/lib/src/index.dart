@@ -13,3 +13,4 @@ export 'internet_connection/internet_connection_bloc.dart';
 export 'news/news_bloc.dart';
 export 'top_banner/top_banner_bloc.dart';
 export 'doctor_appointment/doctor_appointment_bloc.dart';
+export 'card_info/card_info_bloc.dart';

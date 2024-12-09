@@ -21,9 +21,8 @@ import 'package:share_plus/share_plus.dart';
 import 'package:shared/shared.dart';
 import 'package:ui_kit/ui_kit.dart';
 
-@RoutePage()
-class ShoppingCardInfoScreen extends StatefulWidget {
-  const ShoppingCardInfoScreen({
+class CardInfoScreenView extends StatefulWidget {
+  const CardInfoScreenView({
     super.key,
     required this.item,
     required this.isLike,
@@ -39,10 +38,10 @@ class ShoppingCardInfoScreen extends StatefulWidget {
   final bool isChildRoute;
 
   @override
-  State<ShoppingCardInfoScreen> createState() => _ShoppingCardInfoScreenState();
+  State<CardInfoScreenView> createState() => _CardInfoScreenViewState();
 }
 
-class _ShoppingCardInfoScreenState extends State<ShoppingCardInfoScreen> {
+class _CardInfoScreenViewState extends State<CardInfoScreenView> {
   final ScrollController _scrollController = ScrollController();
   BlindChickenMessage message = BlindChickenMessage();
   final BlindChickenShowDialogError _blindChickenShoppingCardInfoProductShowDialogError =
@@ -95,7 +94,7 @@ class _ShoppingCardInfoScreenState extends State<ShoppingCardInfoScreen> {
   }
 
   @override
-  void didUpdateWidget(covariant ShoppingCardInfoScreen oldWidget) {
+  void didUpdateWidget(covariant CardInfoScreenView oldWidget) {
     item = widget.item;
     super.didUpdateWidget(oldWidget);
   }
@@ -108,10 +107,10 @@ class _ShoppingCardInfoScreenState extends State<ShoppingCardInfoScreen> {
 
   @override
   Widget build(BuildContext context) {
-    return BlocListener<ShoppingCartBloc, ShoppingCartState>(
+    return BlocListener<CardInfoBloc, CardInfoState>(
       listener: (context, state) {
         state.maybeMap(
-          productsShoppingCart: (initState) {
+          productInfoCard: (initState) {
             if (initState.isError ?? false) {
               final typeError = initState.typeError ?? '';
               if (!_isShowDialogShoppingCardInfoProductError &&
@@ -124,10 +123,10 @@ class _ShoppingCardInfoScreenState extends State<ShoppingCardInfoScreen> {
                 _blindChickenShoppingCardInfoProductShowDialogError.openShowDualog(
                   context: context,
                   errorMessage: initState.errorMessage ?? '',
-                  widget: BlocBuilder<ShoppingCartBloc, ShoppingCartState>(
+                  widget: BlocBuilder<CardInfoBloc, CardInfoState>(
                     builder: (context, state) {
                       return state.maybeMap(
-                        productsShoppingCart: (value) {
+                        productInfoCard: (value) {
                           if (value.isLoadErrorButton ?? false) {
                             return const SizedBox(
                               height: 15,
@@ -156,8 +155,8 @@ class _ShoppingCardInfoScreenState extends State<ShoppingCardInfoScreen> {
                   onRepeatRequest: () {
                     switch (typeError) {
                       case 'описание товара':
-                        context.read<ShoppingCartBloc>().add(
-                              ShoppingCartEvent.getInfoProduct(
+                        context.read<CardInfoBloc>().add(
+                              CardInfoEvent.getProduct(
                                 code: initState.codeProduct ?? '',
                                 titleScreen: initState.titleScreen ?? '',
                                 typeAddProductToShoppingCart:
@@ -168,8 +167,8 @@ class _ShoppingCardInfoScreenState extends State<ShoppingCardInfoScreen> {
                             );
                         break;
                       case 'выбор размера описание товара':
-                        context.read<ShoppingCartBloc>().add(
-                              ShoppingCartEvent.getInfoProductSize(
+                        context.read<CardInfoBloc>().add(
+                              CardInfoEvent.getInfoProductSize(
                                 code: (initState.detailsProduct?.code ?? 0).toString(),
                                 isShop: initState.isShopGetSizeProduct ?? false,
                               ),
@@ -178,8 +177,8 @@ class _ShoppingCardInfoScreenState extends State<ShoppingCardInfoScreen> {
                       case 'добавить товар в корзину':
                         final itemInfo = initState.itemInfo;
                         if (itemInfo != null) {
-                          context.read<ShoppingCartBloc>().add(
-                                ShoppingCartEvent.addProductToSoppingCart(
+                          context.read<CardInfoBloc>().add(
+                                CardInfoEvent.addProductToSoppingCart(
                                   item: itemInfo,
                                 ),
                               );
@@ -187,8 +186,8 @@ class _ShoppingCardInfoScreenState extends State<ShoppingCardInfoScreen> {
                       case 'добавить товар в избранное':
                         final product = initState.product;
                         if (product != null) {
-                          context.read<ShoppingCartBloc>().add(
-                                ShoppingCartEvent.addFavouriteProduct(
+                          context.read<CardInfoBloc>().add(
+                                CardInfoEvent.addFavouriteProduct(
                                   product: product,
                                   index: initState.indexItem ?? 0,
                                 ),
@@ -196,8 +195,8 @@ class _ShoppingCardInfoScreenState extends State<ShoppingCardInfoScreen> {
                         }
                         break;
                       case 'удалить товар из избранного':
-                        context.read<ShoppingCartBloc>().add(
-                              ShoppingCartEvent.deleteFavouriteProduct(
+                        context.read<CardInfoBloc>().add(
+                              CardInfoEvent.deleteFavouriteProduct(
                                 index: initState.indexItem ?? 0,
                               ),
                             );
@@ -234,7 +233,7 @@ class _ShoppingCardInfoScreenState extends State<ShoppingCardInfoScreen> {
                       updateData.lastScreen = 'shopping_cart';
                       Navigator.pop(context);
                       Timer(const Duration(milliseconds: 150), () {
-                        context.read<ShoppingCartBloc>().add(const ShoppingCartEvent.preloadData());
+                        context.read<CardInfoBloc>().add(const CardInfoEvent.preloadData());
                       });
                       context.navigateTo(
                         const ShoppingCartAutoRouterRoute(
@@ -245,8 +244,8 @@ class _ShoppingCardInfoScreenState extends State<ShoppingCardInfoScreen> {
                       );
                     },
                     addProductToSoppingCart: (size) {
-                      context.read<ShoppingCartBloc>().add(
-                            ShoppingCartEvent.addProductToSoppingCart(
+                      context.read<CardInfoBloc>().add(
+                            CardInfoEvent.addProductToSoppingCart(
                               item: BasketInfoItemDataModel(
                                 code: initState.code,
                                 sku: size.id,
@@ -268,8 +267,8 @@ class _ShoppingCardInfoScreenState extends State<ShoppingCardInfoScreen> {
                           updateData.lastScreen = 'shopping_cart';
                           Timer(const Duration(milliseconds: 150), () {
                             context
-                                .read<ShoppingCartBloc>()
-                                .add(const ShoppingCartEvent.preloadData());
+                                .read<CardInfoBloc>()
+                                .add(const CardInfoEvent.preloadData());
                           });
                           context.navigateTo(
                             const ShoppingCartAutoRouterRoute(
@@ -298,8 +297,8 @@ class _ShoppingCardInfoScreenState extends State<ShoppingCardInfoScreen> {
             }
           },
           addProductToSoppingCart: (initState) {
-            context.read<ShoppingCartBloc>().add(
-                  ShoppingCartEvent.addProductToSoppingCart(
+            context.read<CardInfoBloc>().add(
+                  CardInfoEvent.addProductToSoppingCart(
                     item: BasketInfoItemDataModel(
                       code: initState.code,
                       sku: '',
@@ -321,7 +320,7 @@ class _ShoppingCardInfoScreenState extends State<ShoppingCardInfoScreen> {
                 final updateData = GetIt.I.get<UpdateDataService>();
                 updateData.lastScreen = 'shopping_cart';
                 Timer(const Duration(milliseconds: 150), () {
-                  context.read<ShoppingCartBloc>().add(const ShoppingCartEvent.preloadData());
+                  context.read<CardInfoBloc>().add(const CardInfoEvent.preloadData());
                 });
                 context.navigateTo(
                   const ShoppingCartAutoRouterRoute(
@@ -338,7 +337,7 @@ class _ShoppingCardInfoScreenState extends State<ShoppingCardInfoScreen> {
             final updateData = GetIt.I.get<UpdateDataService>();
             updateData.lastScreen = 'shopping_cart';
             Timer(const Duration(milliseconds: 150), () {
-              context.read<ShoppingCartBloc>().add(const ShoppingCartEvent.preloadData());
+              context.read<CardInfoBloc>().add(const CardInfoEvent.preloadData());
             });
             context.navigateTo(
               const ShoppingCartAutoRouterRoute(
@@ -355,8 +354,8 @@ class _ShoppingCardInfoScreenState extends State<ShoppingCardInfoScreen> {
         onVerticalDragUpdate: (details) {},
         onHorizontalDragEnd: (DragEndDetails details) {
           if (details.velocity.pixelsPerSecond.dx > 0) {
-            context.read<ShoppingCartBloc>().add(
-                  const ShoppingCartEvent.goBackProductInfo(),
+            context.read<CardInfoBloc>().add(
+                  const CardInfoEvent.goBackProductInfo(),
                 );
             setState(() {
               _isSwipe = false;
@@ -375,18 +374,19 @@ class _ShoppingCardInfoScreenState extends State<ShoppingCardInfoScreen> {
                     controller: _scrollController,
                     children: [
                       const AppBarBlindChicken(),
-                      BlocBuilder<ShoppingCartBloc, ShoppingCartState>(builder: (context, state) {
+                      BlocBuilder<CardInfoBloc, CardInfoState>(
+                          builder: (context, state) {
                         return state.maybeMap(
-                          productsShoppingCart: (initState) {
+                          productInfoCard: (initState) {
                             final sky = initState.detailsProduct?.sku ?? [];
                             return PopScope(
                               canPop: false,
                               onPopInvoked: (value) {
                                 if (_isSwipe) {
                                   if (initState.listProductsCode.isNotEmpty) {
-                                    context
-                                        .read<ShoppingCartBloc>()
-                                        .add(const ShoppingCartEvent.goBackProductInfo());
+                                    context.read<CardInfoBloc>().add(
+                                        const CardInfoEvent
+                                            .goBackProductInfo());
                                   } else {
                                     WidgetsBinding.instance.addPostFrameCallback((_) {
                                       context.back();
@@ -401,17 +401,18 @@ class _ShoppingCardInfoScreenState extends State<ShoppingCardInfoScreen> {
                                     isLike: initState.favouritesProductsId
                                         .contains(initState.detailsProduct?.code ?? 0),
                                     goBotton: () {
-                                      context
-                                          .read<ShoppingCartBloc>()
-                                          .add(const ShoppingCartEvent.goBackProductInfo());
+                                      context.read<CardInfoBloc>().add(
+                                          const CardInfoEvent
+                                              .goBackProductInfo());
                                     },
                                     isZoom: false,
                                     addLike: () {
                                       DetailProductDataModel? detailsProduct =
                                           initState.detailsProduct;
                                       if (detailsProduct != null) {
-                                        context.read<ShoppingCartBloc>().add(
-                                              ShoppingCartEvent.addFavouriteProduct(
+                                        context.read<CardInfoBloc>().add(
+                                              CardInfoEvent
+                                                  .addFavouriteProduct(
                                                 product: detailsProduct.product,
                                                 index: detailsProduct.product.id,
                                               ),
@@ -422,8 +423,9 @@ class _ShoppingCardInfoScreenState extends State<ShoppingCardInfoScreen> {
                                       DetailProductDataModel? detailsProduct =
                                           initState.detailsProduct;
                                       if (detailsProduct != null) {
-                                        context.read<ShoppingCartBloc>().add(
-                                              ShoppingCartEvent.deleteFavouriteProduct(
+                                        context.read<CardInfoBloc>().add(
+                                              CardInfoEvent
+                                                  .deleteFavouriteProduct(
                                                 index: detailsProduct.product.id,
                                               ),
                                             );
@@ -439,12 +441,48 @@ class _ShoppingCardInfoScreenState extends State<ShoppingCardInfoScreen> {
                                             context.back();
                                             if (_isChildRoute) {
                                               context.navigateTo(
-                                                ShoppingCardInfoRoute(
+                                                CardInfoRoute(
                                                   isChildRoute: true,
-                                                  item: widget.item,
+                                                  product: widget.item,
                                                   isLike: widget.isLike,
                                                   listItems: widget.listItems,
                                                   favouritesProducts: widget.favouritesProducts,
+                                                  //isChildRoute: false,
+                                                  //favouritesProducts: initState.favouritesProducts,
+                                                  listProductsCode: initState
+                                                      .listProductsCode,
+                                                  favouritesProductsId:
+                                                      initState
+                                                          .favouritesProductsId,
+                                                  isLoadGetSizeProduct:
+                                                      initState
+                                                          .isLoadGetSizeProduct,
+                                                  codeProduct:
+                                                      initState.codeProduct ??
+                                                          '',
+                                                  itemInfo: initState.itemInfo,
+                                                  // product: initState.shoppingCart
+                                                  //     .basket[index].product,
+                                                  indexItem:
+                                                      initState.indexItem,
+                                                  isLoadErrorButton: initState
+                                                      .isLoadErrorButton,
+                                                  titleScreen:
+                                                      initState.titleScreen ??
+                                                          '',
+                                                  typeAddProductToShoppingCart:
+                                                      initState
+                                                              .typeAddProductToShoppingCart ??
+                                                          '',
+                                                  identifierAddProductToShoppingCart:
+                                                      initState
+                                                              .identifierAddProductToShoppingCart ??
+                                                          '',
+                                                  isShopGetSizeProduct:
+                                                      initState
+                                                          .isShopGetSizeProduct,
+                                                  // isLike: false,
+                                                  // listItems: const [],
                                                 ),
                                               );
                                             }
@@ -458,9 +496,9 @@ class _ShoppingCardInfoScreenState extends State<ShoppingCardInfoScreen> {
                                       );
                                     },
                                     goSwipeBack: () {
-                                      context
-                                          .read<ShoppingCartBloc>()
-                                          .add(const ShoppingCartEvent.goBackProductInfo());
+                                      context.read<CardInfoBloc>().add(
+                                          const CardInfoEvent
+                                              .goBackProductInfo());
                                     },
                                     video: initState.detailsProduct?.video ??
                                         DetailProductVideoDataModel(
@@ -791,8 +829,8 @@ class _ShoppingCardInfoScreenState extends State<ShoppingCardInfoScreen> {
                                           pb: int.parse(initState.detailsProduct?.price.pb ?? '0'),
                                           successfullyLogin: () {
                                             Navigator.of(context, rootNavigator: true).pop();
-                                            context.read<ShoppingCartBloc>().add(
-                                                  ShoppingCartEvent.getInfoProduct(
+                                            context.read<CardInfoBloc>().add(
+                                                  CardInfoEvent.getProduct(
                                                     code: (initState.detailsProduct?.code ?? 0)
                                                         .toString(),
                                                     isUpdate: true,
@@ -832,13 +870,20 @@ class _ShoppingCardInfoScreenState extends State<ShoppingCardInfoScreen> {
                                                       onChange: (value) {
                                                         if (value.id.contains('-') &&
                                                             value.id.length > 10) {
-                                                          context.read<ShoppingCartBloc>().add(
-                                                                ShoppingCartEvent.changeSizeProduct(
+                                                          context
+                                                              .read<
+                                                                  CardInfoBloc>()
+                                                              .add(
+                                                                CardInfoEvent
+                                                                    .changeSizeProduct(
                                                                   selectSizeProduct: value,
                                                                 ),
                                                               );
-                                                          context.read<ShoppingCartBloc>().add(
-                                                                ShoppingCartEvent
+                                                          context
+                                                              .read<
+                                                                  CardInfoBloc>()
+                                                              .add(
+                                                                CardInfoEvent
                                                                     .checkProductToSoppingCart(
                                                                   size: value,
                                                                 ),
@@ -846,8 +891,12 @@ class _ShoppingCardInfoScreenState extends State<ShoppingCardInfoScreen> {
                                                           context.back();
                                                         } else {
                                                           context.back();
-                                                          context.read<ShoppingCartBloc>().add(
-                                                                ShoppingCartEvent.getInfoProduct(
+                                                          context
+                                                              .read<
+                                                                  CardInfoBloc>()
+                                                              .add(
+                                                                CardInfoEvent
+                                                                    .getProduct(
                                                                   code: value.id.toString(),
                                                                   size: value,
                                                                   titleScreen:
@@ -918,8 +967,9 @@ class _ShoppingCardInfoScreenState extends State<ShoppingCardInfoScreen> {
                                             if (initState.isShoppingCart ?? false) {
                                               Timer(const Duration(milliseconds: 150), () {
                                                 context
-                                                    .read<ShoppingCartBloc>()
-                                                    .add(const ShoppingCartEvent.preloadData());
+                                                    .read<CardInfoBloc>()
+                                                    .add(const CardInfoEvent
+                                                        .preloadData());
                                               });
                                               context.navigateTo(
                                                 const ShoppingCartAutoRouterRoute(
@@ -929,12 +979,17 @@ class _ShoppingCardInfoScreenState extends State<ShoppingCardInfoScreen> {
                                                 ),
                                               );
                                             } else {
-                                              context.read<ShoppingCartBloc>().add(
-                                                    const ShoppingCartEvent
+                                              context
+                                                  .read<CardInfoBloc>()
+                                                  .add(
+                                                    const CardInfoEvent
                                                         .addProductToSoppingCartInfo(),
                                                   );
-                                              context.read<ShoppingCartBloc>().add(
-                                                    ShoppingCartEvent.addProductToSoppingCart(
+                                              context
+                                                  .read<CardInfoBloc>()
+                                                  .add(
+                                                    CardInfoEvent
+                                                        .addProductToSoppingCart(
                                                       item: BasketInfoItemDataModel(
                                                         code: (initState.detailsProduct?.code ?? 0)
                                                             .toString(),
@@ -1003,8 +1058,11 @@ class _ShoppingCardInfoScreenState extends State<ShoppingCardInfoScreen> {
                                                     initState.detailsProduct?.option ?? [],
                                                 onTap: (product) {
                                                   // в боевой Api раскомментировать
-                                                  context.read<ShoppingCartBloc>().add(
-                                                        ShoppingCartEvent.getInfoProduct(
+                                                  context
+                                                      .read<CardInfoBloc>()
+                                                      .add(
+                                                        CardInfoEvent
+                                                            .getProduct(
                                                           code: product.id.toString(),
                                                           titleScreen:
                                                               'Описание товара в корзине (Варианты)',
@@ -1020,13 +1078,53 @@ class _ShoppingCardInfoScreenState extends State<ShoppingCardInfoScreen> {
                                                       .toList();
 
                                                   context.navigateTo(
-                                                    ShoppingCardInfoRoute(
+                                                    CardInfoRoute(
                                                       isChildRoute: true,
-                                                      item: product,
+                                                      product: product,
                                                       isLike:
                                                           favouritesProductsId.contains(product.id),
                                                       listItems: widget.listItems,
                                                       favouritesProducts: widget.favouritesProducts,
+                                                      //
+                                                      // isChildRoute: false,
+                                                      // favouritesProducts: initState.favouritesProducts,
+                                                      listProductsCode:
+                                                          initState
+                                                              .listProductsCode,
+                                                      favouritesProductsId:
+                                                          initState
+                                                              .favouritesProductsId,
+                                                      isLoadGetSizeProduct:
+                                                          initState
+                                                              .isLoadGetSizeProduct,
+                                                      codeProduct: initState
+                                                              .codeProduct ??
+                                                          '',
+                                                      itemInfo:
+                                                          initState.itemInfo,
+                                                      // product: initState.shoppingCart
+                                                      //     .basket[index].product,
+                                                      indexItem:
+                                                          initState.indexItem,
+                                                      isLoadErrorButton:
+                                                          initState
+                                                              .isLoadErrorButton,
+                                                      titleScreen: initState
+                                                              .titleScreen ??
+                                                          '',
+                                                      typeAddProductToShoppingCart:
+                                                          initState
+                                                                  .typeAddProductToShoppingCart ??
+                                                              '',
+                                                      identifierAddProductToShoppingCart:
+                                                          initState
+                                                                  .identifierAddProductToShoppingCart ??
+                                                              '',
+                                                      isShopGetSizeProduct:
+                                                          initState
+                                                              .isShopGetSizeProduct,
+                                                      // isLike: false,
+                                                      // listItems: const [],
                                                     ),
                                                   );
                                                 },
@@ -1049,10 +1147,11 @@ class _ShoppingCardInfoScreenState extends State<ShoppingCardInfoScreen> {
                                         CatalogDescriptionInfo(
                                           char: initState.detailsProduct?.char ?? [],
                                         ),
-                                        BlocBuilder<ShoppingCartBloc, ShoppingCartState>(
+                                        BlocBuilder<CardInfoBloc,
+                                            CardInfoState>(
                                           builder: (context, state) {
                                             return state.maybeMap(
-                                                productsShoppingCart: (initState) {
+                                                productInfoCard: (initState) {
                                                   if (initState.listProdcutsComplect.isNotEmpty) {
                                                     return Column(
                                                       crossAxisAlignment: CrossAxisAlignment.start,
@@ -1074,8 +1173,12 @@ class _ShoppingCardInfoScreenState extends State<ShoppingCardInfoScreen> {
                                                         ),
                                                         CatalogSliderProducts(
                                                           onSelectProduct: (value) {
-                                                            context.read<ShoppingCartBloc>().add(
-                                                                  ShoppingCartEvent.getInfoProduct(
+                                                            context
+                                                                .read<
+                                                                    CardInfoBloc>()
+                                                                .add(
+                                                                  CardInfoEvent
+                                                                      .getProduct(
                                                                     code: value.id.toString(),
                                                                     titleScreen:
                                                                         'Описание товара в корзине (Носят вместе)',
@@ -1091,8 +1194,11 @@ class _ShoppingCardInfoScreenState extends State<ShoppingCardInfoScreen> {
                                                           favouritesProductsId:
                                                               initState.favouritesProductsId,
                                                           addLike: (index) {
-                                                            context.read<ShoppingCartBloc>().add(
-                                                                  ShoppingCartEvent
+                                                            context
+                                                                .read<
+                                                                    CardInfoBloc>()
+                                                                .add(
+                                                                  CardInfoEvent
                                                                       .addFavouriteProduct(
                                                                     product: initState
                                                                             .listProdcutsComplect[
@@ -1104,8 +1210,11 @@ class _ShoppingCardInfoScreenState extends State<ShoppingCardInfoScreen> {
                                                                 );
                                                           },
                                                           deleteLike: (index) {
-                                                            context.read<ShoppingCartBloc>().add(
-                                                                  ShoppingCartEvent
+                                                            context
+                                                                .read<
+                                                                    CardInfoBloc>()
+                                                                .add(
+                                                                  CardInfoEvent
                                                                       .deleteFavouriteProduct(
                                                                     index: initState
                                                                         .listProdcutsComplect[index]
@@ -1124,10 +1233,11 @@ class _ShoppingCardInfoScreenState extends State<ShoppingCardInfoScreen> {
                                                 orElse: () => const SizedBox());
                                           },
                                         ),
-                                        BlocBuilder<ShoppingCartBloc, ShoppingCartState>(
+                                        BlocBuilder<CardInfoBloc,
+                                            CardInfoState>(
                                           builder: (context, state) {
                                             return state.maybeMap(
-                                                productsShoppingCart: (initState) {
+                                                productInfoCard: (initState) {
                                                   if (initState.listProdcutsStyle.isNotEmpty) {
                                                     return Column(
                                                       crossAxisAlignment: CrossAxisAlignment.start,
@@ -1149,8 +1259,12 @@ class _ShoppingCardInfoScreenState extends State<ShoppingCardInfoScreen> {
                                                         ),
                                                         CatalogSliderProducts(
                                                           onSelectProduct: (value) {
-                                                            context.read<ShoppingCartBloc>().add(
-                                                                  ShoppingCartEvent.getInfoProduct(
+                                                            context
+                                                                .read<
+                                                                    CardInfoBloc>()
+                                                                .add(
+                                                                  CardInfoEvent
+                                                                      .getProduct(
                                                                     code: value.id.toString(),
                                                                     titleScreen:
                                                                         'Описание товара в корзине (Рекомендации стилистов)',
@@ -1165,8 +1279,11 @@ class _ShoppingCardInfoScreenState extends State<ShoppingCardInfoScreen> {
                                                           favouritesProductsId:
                                                               initState.favouritesProductsId,
                                                           addLike: (index) {
-                                                            context.read<ShoppingCartBloc>().add(
-                                                                  ShoppingCartEvent
+                                                            context
+                                                                .read<
+                                                                    CardInfoBloc>()
+                                                                .add(
+                                                                  CardInfoEvent
                                                                       .addFavouriteProduct(
                                                                     product: initState
                                                                         .listProdcutsStyle[index],
@@ -1177,8 +1294,11 @@ class _ShoppingCardInfoScreenState extends State<ShoppingCardInfoScreen> {
                                                                 );
                                                           },
                                                           deleteLike: (index) {
-                                                            context.read<ShoppingCartBloc>().add(
-                                                                  ShoppingCartEvent
+                                                            context
+                                                                .read<
+                                                                    CardInfoBloc>()
+                                                                .add(
+                                                                  CardInfoEvent
                                                                       .deleteFavouriteProduct(
                                                                     index: initState
                                                                         .listProdcutsStyle[index]
@@ -1197,10 +1317,11 @@ class _ShoppingCardInfoScreenState extends State<ShoppingCardInfoScreen> {
                                                 orElse: () => const SizedBox());
                                           },
                                         ),
-                                        BlocBuilder<ShoppingCartBloc, ShoppingCartState>(
+                                        BlocBuilder<CardInfoBloc,
+                                            CardInfoState>(
                                           builder: (context, state) {
                                             return state.maybeMap(
-                                                productsShoppingCart: (initState) {
+                                                productInfoCard: (initState) {
                                                   if (initState.listProdcutsAlso.isNotEmpty) {
                                                     return Column(
                                                       crossAxisAlignment: CrossAxisAlignment.start,
@@ -1222,8 +1343,12 @@ class _ShoppingCardInfoScreenState extends State<ShoppingCardInfoScreen> {
                                                         ),
                                                         CatalogSliderProducts(
                                                           onSelectProduct: (value) {
-                                                            context.read<ShoppingCartBloc>().add(
-                                                                  ShoppingCartEvent.getInfoProduct(
+                                                            context
+                                                                .read<
+                                                                    CardInfoBloc>()
+                                                                .add(
+                                                                  CardInfoEvent
+                                                                      .getProduct(
                                                                     code: value.id.toString(),
                                                                     titleScreen:
                                                                         'Описание товара в корзине (Смотрите также)',
@@ -1238,8 +1363,11 @@ class _ShoppingCardInfoScreenState extends State<ShoppingCardInfoScreen> {
                                                           favouritesProductsId:
                                                               initState.favouritesProductsId,
                                                           addLike: (index) {
-                                                            context.read<ShoppingCartBloc>().add(
-                                                                  ShoppingCartEvent
+                                                            context
+                                                                .read<
+                                                                    CardInfoBloc>()
+                                                                .add(
+                                                                  CardInfoEvent
                                                                       .addFavouriteProduct(
                                                                     product: initState
                                                                         .listProdcutsAlso[index],
@@ -1249,8 +1377,11 @@ class _ShoppingCardInfoScreenState extends State<ShoppingCardInfoScreen> {
                                                                 );
                                                           },
                                                           deleteLike: (index) {
-                                                            context.read<ShoppingCartBloc>().add(
-                                                                  ShoppingCartEvent
+                                                            context
+                                                                .read<
+                                                                    CardInfoBloc>()
+                                                                .add(
+                                                                  CardInfoEvent
                                                                       .deleteFavouriteProduct(
                                                                     index: initState
                                                                         .listProdcutsAlso[index].id,
@@ -1268,10 +1399,11 @@ class _ShoppingCardInfoScreenState extends State<ShoppingCardInfoScreen> {
                                                 orElse: () => const SizedBox());
                                           },
                                         ),
-                                        BlocBuilder<ShoppingCartBloc, ShoppingCartState>(
+                                        BlocBuilder<CardInfoBloc,
+                                            CardInfoState>(
                                           builder: (context, state) {
                                             return state.maybeMap(
-                                              productsShoppingCart: (initState) {
+                                              productInfoCard: (initState) {
                                                 if (initState.detailsProduct?.sections.isNotEmpty ??
                                                     false) {
                                                   return Column(
@@ -1330,10 +1462,11 @@ class _ShoppingCardInfoScreenState extends State<ShoppingCardInfoScreen> {
                                             );
                                           },
                                         ),
-                                        BlocBuilder<ShoppingCartBloc, ShoppingCartState>(
+                                        BlocBuilder<CardInfoBloc,
+                                            CardInfoState>(
                                           builder: (context, state) {
                                             return state.maybeMap(
-                                              productsShoppingCart: (initState) {
+                                              productInfoCard: (initState) {
                                                 if (initState.listProdcutsBrand.isNotEmpty) {
                                                   return Column(
                                                     crossAxisAlignment: CrossAxisAlignment.start,
@@ -1355,8 +1488,12 @@ class _ShoppingCardInfoScreenState extends State<ShoppingCardInfoScreen> {
                                                       ),
                                                       CatalogSliderProducts(
                                                         onSelectProduct: (value) {
-                                                          context.read<ShoppingCartBloc>().add(
-                                                                ShoppingCartEvent.getInfoProduct(
+                                                          context
+                                                              .read<
+                                                                  CardInfoBloc>()
+                                                              .add(
+                                                                CardInfoEvent
+                                                                    .getProduct(
                                                                   code: value.id.toString(),
                                                                   titleScreen:
                                                                       'Описание товара в корзине (Товары бренда)',
@@ -1371,8 +1508,11 @@ class _ShoppingCardInfoScreenState extends State<ShoppingCardInfoScreen> {
                                                         favouritesProductsId:
                                                             initState.favouritesProductsId,
                                                         addLike: (index) {
-                                                          context.read<ShoppingCartBloc>().add(
-                                                                ShoppingCartEvent
+                                                          context
+                                                              .read<
+                                                                  CardInfoBloc>()
+                                                              .add(
+                                                                CardInfoEvent
                                                                     .addFavouriteProduct(
                                                                   product: initState
                                                                       .listProdcutsBrand[index],
@@ -1382,8 +1522,11 @@ class _ShoppingCardInfoScreenState extends State<ShoppingCardInfoScreen> {
                                                               );
                                                         },
                                                         deleteLike: (index) {
-                                                          context.read<ShoppingCartBloc>().add(
-                                                                ShoppingCartEvent
+                                                          context
+                                                              .read<
+                                                                  CardInfoBloc>()
+                                                              .add(
+                                                                CardInfoEvent
                                                                     .deleteFavouriteProduct(
                                                                   index: initState
                                                                       .listProdcutsBrand[index].id,
@@ -1418,7 +1561,7 @@ class _ShoppingCardInfoScreenState extends State<ShoppingCardInfoScreen> {
                     ],
                   )),
                 ),
-                BlocBuilder<ShoppingCartBloc, ShoppingCartState>(
+                BlocBuilder<CardInfoBloc, CardInfoState>(
                   builder: (context, state) {
                     return state.maybeMap(
                       load: (value) {
@@ -1435,10 +1578,10 @@ class _ShoppingCardInfoScreenState extends State<ShoppingCardInfoScreen> {
                 ),
               ],
             ),
-            BlocBuilder<ShoppingCartBloc, ShoppingCartState>(
+            BlocBuilder<CardInfoBloc, CardInfoState>(
               builder: (context, state) {
                 return state.maybeMap(
-                  productsShoppingCart: (initState) {
+                  productInfoCard: (initState) {
                     if (_isShoppingCartButton) {
                       return BlindChickenTitleButton(
                         title: (initState.isShoppingCartDetailsProduct ?? false)
@@ -1446,8 +1589,8 @@ class _ShoppingCardInfoScreenState extends State<ShoppingCardInfoScreen> {
                             : 'Добавить в корзину',
                         onChange: () {
                           if (!initState.isLoadGetSizeProduct) {
-                            context.read<ShoppingCartBloc>().add(
-                                  ShoppingCartEvent.getInfoProductSize(
+                            context.read<CardInfoBloc>().add(
+                                  CardInfoEvent.getInfoProductSize(
                                     code: (initState.detailsProduct?.code ?? 0).toString(),
                                     isShop: initState.isShoppingCart ?? false,
                                   ),

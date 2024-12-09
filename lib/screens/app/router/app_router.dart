@@ -1,4 +1,5 @@
 import 'package:auto_route/auto_route.dart';
+import 'package:blind_chicken/card_info/view/card_info_screen.dart';
 import 'package:blind_chicken/screens/%D1%81ashback_and_discounts/blind_chicken_%D1%81ashback_and_discounts_screen.dart';
 import 'package:blind_chicken/screens/account/account_screen.dart';
 import 'package:blind_chicken/screens/account/electronic_order_forms_screen.dart';
@@ -49,7 +50,6 @@ import 'package:blind_chicken/screens/no_internet/no_internet_screen.dart';
 import 'package:blind_chicken/screens/payment_verification/payment_verification_screen.dart';
 import 'package:blind_chicken/screens/pdf_view/blind_chicken_pdf_view.dart';
 import 'package:blind_chicken/screens/service_card/service_card_screen.dart';
-import 'package:blind_chicken/screens/shopping_cart/shopping_card_info_screen.dart';
 import 'package:blind_chicken/screens/shopping_cart/shopping_cart_auto_route_screen.dart';
 import 'package:blind_chicken/screens/shopping_cart/shopping_cart_screen.dart';
 import 'package:blind_chicken/screens/chat/chat_screen.dart';
@@ -226,7 +226,7 @@ class AppRouter extends RootStackRouter {
             ),
             AutoRoute(
               keepHistory: false,
-              page: ShoppingCardInfoRoute.page,
+              page: CardInfoRoute.page,
               path: "shopping_card_info",
             ),
           ]),
