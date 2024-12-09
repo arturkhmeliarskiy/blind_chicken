@@ -5,8 +5,6 @@ import 'package:auto_route/auto_route.dart';
 import 'package:blind_chicken/screens/app/router/app_router.dart';
 import 'package:blind_chicken/screens/news/widgets/news/news_item_tab_info.dart';
 import 'package:get_it/get_it.dart';
-import 'package:models/models.dart';
-import 'package:paginated_list/paginated_list.dart';
 import 'package:shared/shared.dart';
 import 'package:visibility_detector/visibility_detector.dart';
 import 'package:blocs/blocs.dart';
@@ -48,17 +46,14 @@ class _NewsTabInfoState extends State<NewsTabInfo> {
           ),
         );
 
-    // if (_scrollController.position.pixels > (_scrollController.position.maxScrollExtent - 3500) &&
-    //     (_scrollController.position.maxScrollExtent - 3500) > _paginationPosition &&
-    //     _scrollController.position.pixels != _scrollController.position.maxScrollExtent) {
-    // if (_scrollController.position.pixels > _scrollController.position.maxScrollExtent - 500 &&
-    //     _scrollController.position.pixels > _paginationPosition) {
-    //   setState(() {
-    //     _paginationPosition = (_scrollController.position.maxScrollExtent - 500) * 2;
-    //   });
-    //   log((_count++).toString());
-    //   context.read<NewsBloc>().add(const NewsEvent.paginationNews());
-    // }
+    if (_scrollController.position.maxScrollExtent - 1500 < _scrollController.offset &&
+        (_scrollController.position.maxScrollExtent - 1500) > _paginationPosition) {
+      setState(() {
+        _paginationPosition = _scrollController.position.maxScrollExtent - 1500;
+      });
+      log('page:  ${_count++}');
+      context.read<NewsBloc>().add(NewsEvent.paginationNews());
+    }
 
     _historyPosition = _scrollController.position.pixels;
   }
@@ -105,25 +100,11 @@ class _NewsTabInfoState extends State<NewsTabInfo> {
                         child: Stack(
                           alignment: Alignment.bottomCenter,
                           children: [
-                            PaginatedList<NewsInfoItemDataModel>(
-                              items: initState.news.list,
+                            ListView.builder(
+                              itemCount: initState.news.list.length,
                               padding: EdgeInsets.zero,
-                              isRecentSearch: false,
-                              isLastPage: false,
-                              addSemanticIndexes: false,
-                              loadingIndicator: const Padding(
-                                padding: EdgeInsets.symmetric(vertical: 20),
-                                child: Center(
-                                  child: CircularProgressIndicator(color: Colors.black),
-                                ),
-                              ),
-                              onLoadMore: (index) {
-                                if ((index + 10) / 10 != initState.offsetNews) {
-                                  log('list: ${index.toString()}');
-                                  context.read<NewsBloc>().add(const NewsEvent.paginationNews());
-                                }
-                              },
-                              builder: (item, index) {
+                              controller: _scrollController,
+                              itemBuilder: (context, index) {
                                 return Column(
                                   children: [
                                     VisibilityDetector(
@@ -249,15 +230,15 @@ class _NewsTabInfoState extends State<NewsTabInfo> {
                                         },
                                       ),
                                     ),
-                                    // if (_isLoading && index == initState.news.list.length - 1)
-                                    //   Container(
-                                    //     height: 60,
-                                    //     width: 60,
-                                    //     padding: EdgeInsets.all(15),
-                                    //     child: CircularProgressIndicator(
-                                    //       strokeWidth: 3,
-                                    //     ),
-                                    //   ),
+                                    if (_isLoading && index == initState.news.list.length - 1)
+                                      Container(
+                                        height: 60,
+                                        width: 60,
+                                        padding: EdgeInsets.all(15),
+                                        child: CircularProgressIndicator(
+                                          strokeWidth: 3,
+                                        ),
+                                      ),
                                   ],
                                 );
                               },

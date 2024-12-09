@@ -217,25 +217,24 @@ class NewsBloc extends Bloc<NewsEvent, NewsState> {
         isLoadPagination: true,
       ));
       int offsetNews = initState.offsetNews + 1;
-      late NewsInfoDataModel news;
+      List<NewsInfoItemDataModel> list = initState.news.list.toList();
 
-      if (initState.offsetNews != offsetNews) {
-        news = await _newsRepository.getNews(page: offsetNews);
+      final news = await _newsRepository.getNews(page: offsetNews);
 
-        news = initState.news.copyWith(
-          list: [
-            ...initState.news.list,
-            ...news.list,
-          ],
-        );
+      list.addAll(news.list);
 
-        emit(initState.copyWith(
-          news: news,
-          offsetNews: offsetNews,
-          isNotification: false,
-          isLoadPagination: false,
-        ));
-      }
+      emit(initState.copyWith(
+        news: NewsInfoDataModel(
+          e: news.e,
+          r: news.r,
+          list: list,
+          errorMessage: news.errorMessage,
+          isViewed: news.isViewed,
+        ),
+        offsetNews: offsetNews,
+        isNotification: false,
+        isLoadPagination: false,
+      ));
     });
   }
 
