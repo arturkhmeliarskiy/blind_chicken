@@ -24,6 +24,7 @@ Future<void> initBloc(GetIt getIt) async {
         getIt.get<SharedPreferencesService>(),
         getIt.get<UpdateDataService>(),
         getIt.get<AppMetricaEcommerceService>(),
+        getIt.get<FavouritesRepository>(),
       ),
     )
     ..registerFactory(

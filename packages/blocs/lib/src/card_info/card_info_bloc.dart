@@ -17,6 +17,7 @@ class CardInfoBloc extends Bloc<CardInfoEvent, CardInfoState> {
   final BasketRepository _basketRepository;
   final SharedPreferencesService _sharedPreferencesService;
   final UpdateDataService _updateDataService;
+  final FavouritesRepository _favouritesRepository;
   final AppMetricaEcommerceService _appMetricaEcommerceService;
 
   CardInfoBloc(
@@ -25,15 +26,17 @@ class CardInfoBloc extends Bloc<CardInfoEvent, CardInfoState> {
     this._sharedPreferencesService,
     this._updateDataService,
     this._appMetricaEcommerceService,
+    this._favouritesRepository,
   ) : super(const CardInfoState.init()) {
     on<CardInfoEvent>(
       (event, emit) => event.mapOrNull(
         init: (event) => _init(event, emit),
         getProduct: (event) => _getProduct(event, emit),
-        goBackProductInfo: (GoBackProductInfoCategotyCardInfoEvent event) =>
-            _goBackProductInfo(event, emit),
-        getInfoProductSize: (GetInfoProductSizeCardInfoEvent event) =>
-            _getInfoProductSize(event, emit),
+        goBackProductInfo: (event) => _goBackProductInfo(event, emit),
+        getInfoProductSize: (event) => _getInfoProductSize(event, emit),
+        addFavouriteProduct: (event) => _addFavouriteProduct(event, emit),
+        deleteFavouriteProduct: (event) => _deleteFavouriteProduct(event, emit),
+        changeSizeProduct: (event) => _changeSizeProduct(event, emit),
       ),
     );
   }
@@ -289,59 +292,6 @@ class CardInfoBloc extends Bloc<CardInfoEvent, CardInfoState> {
     });
   }
 
-
-  Future<BasketFullInfoDataModel> getBasketInfo({bool isLocal = true}) async {
-    List<BasketInfoItemDataModel> basket = [];
-    if (isLocal) {
-      final shopping = _catalogRepository.getShoppingCartProducts();
-      for (int i = 0; i < shopping.length; i++) {
-        basket.add(BasketInfoItemDataModel(
-          code: shopping[i].code,
-          sku: shopping[i].sku.contains('-') ? shopping[i].sku : '',
-          count: shopping[i].count,
-          titleScreen: shopping[i].titleScreen,
-          searchQuery: shopping[i].searchQuery,
-          typeAddProductToShoppingCart:
-              shopping[i].typeAddProductToShoppingCart,
-          identifierAddProductToShoppingCart:
-              shopping[i].identifierAddProductToShoppingCart,
-          sectionCategoriesPath: shopping[i].sectionCategoriesPath,
-          productCategoriesPath: shopping[i].productCategoriesPath,
-        ));
-      }
-    }
-
-    final basketInfo = await _basketRepository.getProductToBasketFullInfo(
-      basket: isLocal ? basket : null,
-    );
-
-    if (isLocal) {
-      for (int i = 0; i < basketInfo.basket.length; i++) {
-        _catalogRepository.putShoppingCartProduct(
-          i,
-          BasketInfoItemDataModel(
-            code: basketInfo.basket[i].code,
-            sku: basketInfo.basket[i].sku,
-            count: basketInfo.basket[i].count,
-            titleScreen: basketInfo.basket[i].product.titleScreen ?? '',
-            searchQuery: basketInfo.basket[i].product.searchQuery ?? '',
-            typeAddProductToShoppingCart:
-                basketInfo.basket[i].product.typeAddProductToShoppingCart ?? '',
-            identifierAddProductToShoppingCart: basketInfo
-                    .basket[i].product.identifierAddProductToShoppingCart ??
-                '',
-            sectionCategoriesPath:
-                basketInfo.basket[i].product.sectionCategoriesPath ?? [],
-            productCategoriesPath:
-                basketInfo.basket[i].product.productCategoriesPath ?? [],
-          ),
-        );
-      }
-    }
-
-    return basketInfo;
-  }
-
   Future<void> _getInfoProductSize(
     GetInfoProductSizeCardInfoEvent event,
     Emitter<CardInfoState> emit,
@@ -403,6 +353,181 @@ class CardInfoBloc extends Bloc<CardInfoEvent, CardInfoState> {
         isShopGetSizeProduct: event.isShop,
         typeError: 'выбор размера описание товара',
         isLoadErrorButton: false,
+      ));
+    });
+  }
+
+  Future<void> _addFavouriteProduct(
+    AddFavouriteProductCardInfoEvent event,
+    Emitter<CardInfoState> emit,
+  ) async {
+    await state.mapOrNull(productInfoCard: (initState) async {
+      if (initState.isError ?? false) {
+        emit(initState.copyWith(
+          isLoadErrorButton: true,
+        ));
+      }
+      FavouritesCatalogInfoDataModel? favouritesInfo;
+      FavouritesInfoDataModel? favouritesProductsInfo;
+      bool isAuth = _sharedPreferencesService.getBool(
+            key: SharedPrefKeys.userAuthorized,
+          ) ??
+          false;
+      if (isAuth) {
+        favouritesProductsInfo =
+            await _favouritesRepository.addFavouriteProdcut(
+          code: event.product.id.toString(),
+        );
+        favouritesInfo = await updateFavouritesProducts(
+          isLocal: false,
+        );
+      } else {
+        _catalogRepository.addFavouritesProduct(event.product);
+        favouritesInfo = await updateFavouritesProducts();
+      }
+
+      if ((favouritesProductsInfo?.errorMessage.isEmpty ?? false) ||
+          favouritesInfo.errorMessage.isEmpty) {
+        emit(const CardInfoState.load());
+      }
+      emit(
+        initState.copyWith(
+          favouritesProducts: favouritesInfo.products,
+          isError: (favouritesProductsInfo?.errorMessage.isNotEmpty ?? false) ||
+              favouritesInfo.errorMessage.isNotEmpty,
+          errorMessage: MessageInfo.errorMessage,
+          typeError: 'добавить товар в избранное',
+          indexItem: event.index,
+          product: event.product,
+          isLoadErrorButton: false,
+        ),
+      );
+    });
+  }
+
+  Future<void> _deleteFavouriteProduct(
+    DeleteFavouriteProductCardInfoEvent event,
+    Emitter<CardInfoState> emit,
+  ) async {
+    await state.mapOrNull(productInfoCard: (initState) async {
+      if (initState.isError ?? false) {
+        emit(initState.copyWith(
+          isLoadErrorButton: true,
+        ));
+      }
+      FavouritesCatalogInfoDataModel? favouritesInfo;
+      FavouritesInfoDataModel? favouritesProductsInfo;
+      bool isAuth = _sharedPreferencesService.getBool(
+            key: SharedPrefKeys.userAuthorized,
+          ) ??
+          false;
+      if (isAuth) {
+        favouritesProductsInfo = await _favouritesRepository
+            .deleteFavouriteProdcut(code: event.index.toString());
+        favouritesInfo = await updateFavouritesProducts(
+          isLocal: false,
+        );
+      } else {
+        _catalogRepository.deleteFavouritesProduct(event.index);
+        favouritesInfo = await updateFavouritesProducts();
+      }
+
+      if ((favouritesProductsInfo?.errorMessage.isEmpty ?? false) ||
+          favouritesInfo.errorMessage.isEmpty) {
+        emit(const CardInfoState.load());
+      }
+      emit(
+        initState.copyWith(
+          favouritesProducts: favouritesInfo.products,
+          isError: (favouritesProductsInfo?.errorMessage.isNotEmpty ?? false) ||
+              favouritesInfo.errorMessage.isNotEmpty,
+          errorMessage: MessageInfo.errorMessage,
+          typeError: 'удалить товар из избранного',
+          indexItem: event.index,
+          isLoadErrorButton: false,
+        ),
+      );
+    });
+  }
+
+  Future<FavouritesCatalogInfoDataModel> updateFavouritesProducts({
+    bool isLocal = true,
+  }) async {
+    FavouritesCatalogProductsRequest request =
+        FavouritesCatalogProductsRequest();
+    List<String> favourites = [];
+    if (isLocal) {
+      final favouritesProducts = _catalogRepository.getFavouritesProducts();
+      for (int i = 0; i < favouritesProducts.length; i++) {
+        favourites.add(favouritesProducts[i].id.toString());
+      }
+    }
+
+    final favouritesInfo =
+        await _favouritesRepository.getFavouritesProdcutsInfo(
+      request: request.copyWith(favourites: favourites),
+    );
+
+    return favouritesInfo;
+  }
+
+  Future<BasketFullInfoDataModel> getBasketInfo({bool isLocal = true}) async {
+    List<BasketInfoItemDataModel> basket = [];
+    if (isLocal) {
+      final shopping = _catalogRepository.getShoppingCartProducts();
+      for (int i = 0; i < shopping.length; i++) {
+        basket.add(BasketInfoItemDataModel(
+          code: shopping[i].code,
+          sku: shopping[i].sku.contains('-') ? shopping[i].sku : '',
+          count: shopping[i].count,
+          titleScreen: shopping[i].titleScreen,
+          searchQuery: shopping[i].searchQuery,
+          typeAddProductToShoppingCart:
+              shopping[i].typeAddProductToShoppingCart,
+          identifierAddProductToShoppingCart:
+              shopping[i].identifierAddProductToShoppingCart,
+          sectionCategoriesPath: shopping[i].sectionCategoriesPath,
+          productCategoriesPath: shopping[i].productCategoriesPath,
+        ));
+      }
+    }
+
+    final basketInfo = await _basketRepository.getProductToBasketFullInfo(
+      basket: isLocal ? basket : null,
+    );
+
+    if (isLocal) {
+      for (int i = 0; i < basketInfo.basket.length; i++) {
+        _catalogRepository.putShoppingCartProduct(
+          i,
+          BasketInfoItemDataModel(
+            code: basketInfo.basket[i].code,
+            sku: basketInfo.basket[i].sku,
+            count: basketInfo.basket[i].count,
+            titleScreen: basketInfo.basket[i].product.titleScreen ?? '',
+            searchQuery: basketInfo.basket[i].product.searchQuery ?? '',
+            typeAddProductToShoppingCart:
+                basketInfo.basket[i].product.typeAddProductToShoppingCart ?? '',
+            identifierAddProductToShoppingCart: basketInfo
+                    .basket[i].product.identifierAddProductToShoppingCart ??
+                '',
+            sectionCategoriesPath:
+                basketInfo.basket[i].product.sectionCategoriesPath ?? [],
+            productCategoriesPath:
+                basketInfo.basket[i].product.productCategoriesPath ?? [],
+          ),
+        );
+      }
+    }
+
+    return basketInfo;
+  }
+
+  Future<void> _changeSizeProduct(
+      ChangeSizeProductCardInfoEvent event, Emitter<CardInfoState> emit) async {
+    state.mapOrNull(productInfoCard: (initState) {
+      emit(initState.copyWith(
+        selectSizeProduct: event.selectSizeProduct,
       ));
     });
   }
