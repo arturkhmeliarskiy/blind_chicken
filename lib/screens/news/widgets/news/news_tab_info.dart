@@ -46,10 +46,10 @@ class _NewsTabInfoState extends State<NewsTabInfo> {
           ),
         );
 
-    if (_scrollController.position.maxScrollExtent - 1500 < _scrollController.offset &&
-        (_scrollController.position.maxScrollExtent - 1500) > _paginationPosition) {
+    if (_scrollController.position.maxScrollExtent - 2000 < _scrollController.offset &&
+        (_scrollController.position.maxScrollExtent - 2000) > _paginationPosition) {
       setState(() {
-        _paginationPosition = _scrollController.position.maxScrollExtent - 1500;
+        _paginationPosition = _scrollController.position.maxScrollExtent - 2000;
       });
       log('page:  ${_count++}');
       context.read<NewsBloc>().add(NewsEvent.paginationNews());
