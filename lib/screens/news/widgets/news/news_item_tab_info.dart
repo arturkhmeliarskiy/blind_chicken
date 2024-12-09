@@ -180,7 +180,7 @@ class _NewsItemTabInfoState extends State<NewsItemTabInfo> with AutomaticKeepAli
                             );
                           },
                           child: CachedNetworkImage(
-                            imageUrl: widget.item.images.first.imageUrl,
+                            imageUrl: widget.item.images.first,
                             repeat: ImageRepeat.repeat,
                             width: MediaQuery.of(context).orientation == Orientation.portrait
                                 ? width

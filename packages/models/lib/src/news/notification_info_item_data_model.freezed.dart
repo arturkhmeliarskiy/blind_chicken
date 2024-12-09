@@ -19,8 +19,7 @@ mixin _$NotificationInfoItemDataModel {
   String get id => throw _privateConstructorUsedError;
   String get title => throw _privateConstructorUsedError;
   String get createAt => throw _privateConstructorUsedError;
-  List<NewsSliderImageItemDataModel> get images =>
-      throw _privateConstructorUsedError;
+  List<String> get images => throw _privateConstructorUsedError;
   String get video => throw _privateConstructorUsedError;
   String get typeVideo => throw _privateConstructorUsedError;
   String get videoImage => throw _privateConstructorUsedError;
@@ -54,7 +53,7 @@ abstract class $NotificationInfoItemDataModelCopyWith<$Res> {
       {String id,
       String title,
       String createAt,
-      List<NewsSliderImageItemDataModel> images,
+      List<String> images,
       String video,
       String typeVideo,
       String videoImage,
@@ -122,7 +121,7 @@ class _$NotificationInfoItemDataModelCopyWithImpl<$Res,
       images: null == images
           ? _value.images
           : images // ignore: cast_nullable_to_non_nullable
-              as List<NewsSliderImageItemDataModel>,
+              as List<String>,
       video: null == video
           ? _value.video
           : video // ignore: cast_nullable_to_non_nullable
@@ -200,7 +199,7 @@ abstract class _$$NotificationInfoItemDataModelImplCopyWith<$Res>
       {String id,
       String title,
       String createAt,
-      List<NewsSliderImageItemDataModel> images,
+      List<String> images,
       String video,
       String typeVideo,
       String videoImage,
@@ -267,7 +266,7 @@ class __$$NotificationInfoItemDataModelImplCopyWithImpl<$Res>
       images: null == images
           ? _value._images
           : images // ignore: cast_nullable_to_non_nullable
-              as List<NewsSliderImageItemDataModel>,
+              as List<String>,
       video: null == video
           ? _value.video
           : video // ignore: cast_nullable_to_non_nullable
@@ -340,7 +339,7 @@ class _$NotificationInfoItemDataModelImpl
       {required this.id,
       required this.title,
       required this.createAt,
-      required final List<NewsSliderImageItemDataModel> images,
+      required final List<String> images,
       required this.video,
       required this.typeVideo,
       required this.videoImage,
@@ -365,9 +364,9 @@ class _$NotificationInfoItemDataModelImpl
   final String title;
   @override
   final String createAt;
-  final List<NewsSliderImageItemDataModel> _images;
+  final List<String> _images;
   @override
-  List<NewsSliderImageItemDataModel> get images {
+  List<String> get images {
     if (_images is EqualUnmodifiableListView) return _images;
     // ignore: implicit_dynamic_type
     return EqualUnmodifiableListView(_images);
@@ -486,7 +485,7 @@ abstract class _NotificationInfoItemDataModel
       {required final String id,
       required final String title,
       required final String createAt,
-      required final List<NewsSliderImageItemDataModel> images,
+      required final List<String> images,
       required final String video,
       required final String typeVideo,
       required final String videoImage,
@@ -511,7 +510,7 @@ abstract class _NotificationInfoItemDataModel
   @override
   String get createAt;
   @override
-  List<NewsSliderImageItemDataModel> get images;
+  List<String> get images;
   @override
   String get video;
   @override

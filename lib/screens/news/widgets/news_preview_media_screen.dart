@@ -5,7 +5,6 @@ import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_svg/svg.dart';
-import 'package:models/models.dart';
 import 'package:photo_view/photo_view.dart';
 import 'package:ui_kit/ui_kit.dart';
 
@@ -18,7 +17,7 @@ class NewsPreviewMediaScreen extends StatefulWidget {
     required this.selectIndex,
   });
 
-  final List<NewsSliderImageItemDataModel> media;
+  final List<String> media;
   final VoidCallback goBotton;
   final int selectIndex;
 
@@ -92,7 +91,7 @@ class _NewsPreviewMediaScreenState extends State<NewsPreviewMediaScreen> {
                   controller: _pageController,
                   itemBuilder: (context, index) {
                     return CachedNetworkImage(
-                      imageUrl: widget.media[index].imageUrl,
+                      imageUrl: widget.media[index],
                       fit: BoxFit.cover,
                       imageBuilder: (context, imageProvider) => PhotoView(
                         tightMode: true,
