@@ -37,6 +37,12 @@ class CardInfoBloc extends Bloc<CardInfoEvent, CardInfoState> {
         addFavouriteProduct: (event) => _addFavouriteProduct(event, emit),
         deleteFavouriteProduct: (event) => _deleteFavouriteProduct(event, emit),
         changeSizeProduct: (event) => _changeSizeProduct(event, emit),
+        /*addProductToSoppingCart: (event) =>
+            _addProductToSoppingCart(event, emit),*/
+        addProductToSoppingCartInfo: (event) =>
+            _addProductToSoppingCartInfo(event, emit),
+        checkProductToSoppingCart: (event) =>
+            _checkProductToSoppingCart(event, emit),
       ),
     );
   }
@@ -47,6 +53,7 @@ class CardInfoBloc extends Bloc<CardInfoEvent, CardInfoState> {
           key: SharedPrefKeys.userAuthorized,
         ) ??
         false;
+
     emit(CardInfoState.productInfoCard(
         favouritesProducts: event.favouritesProducts,
         listProductsCode: event.listProductsCode,
@@ -58,7 +65,6 @@ class CardInfoBloc extends Bloc<CardInfoEvent, CardInfoState> {
         favouritesProductsId: event.favouritesProductsId,
         isAuth: isAuth,
         isLoadGetSizeProduct: event.isLoadGetSizeProduct,
-        //todo
         isBlocBackBotton: true,
         codeProduct: event.codeProduct,
         itemInfo: event.itemInfo,
@@ -450,6 +456,211 @@ class CardInfoBloc extends Bloc<CardInfoEvent, CardInfoState> {
     });
   }
 
+  Future<void> _changeSizeProduct(
+      ChangeSizeProductCardInfoEvent event, Emitter<CardInfoState> emit) async {
+    state.mapOrNull(productInfoCard: (initState) {
+      emit(initState.copyWith(
+        selectSizeProduct: event.selectSizeProduct,
+      ));
+    });
+  }
+
+  Future<void> _addProductToSoppingCartInfo(
+    AddProductToSoppingCardInfoEvent event,
+    Emitter<CardInfoState> emit,
+  ) async {
+    await state.mapOrNull(productInfoCard: (initState) async {
+      emit(initState.copyWith(
+        isShoppingCart: true,
+      ));
+    });
+  }
+
+/*  Future<void> _addProductToSoppingCart(
+    AddProductToShoppingCartCardInfoEvent event,
+    Emitter<CardInfoState> emit,
+  ) async {
+    await state.mapOrNull(
+      productInfoCard: (initState) async {
+        AppMetrica.reportEvent('Товар добавлен в корзину');
+        if (event.item.typeAddProductToShoppingCart != '') {
+          _appMetricaEcommerceService.addOrRemoveProductToSoppingCart(
+            titleScreen: event.item.titleScreen,
+            titleProduct: initState.detailsProduct?.name ?? '',
+            codeProduct: (initState.detailsProduct?.code ?? 0).toString(),
+            typeProductToSoppingCart:
+                AppMetricaShoppingCartEnum.addProductToShoppingCart,
+            type: event.item.typeAddProductToShoppingCart,
+            identifier: event.item.identifierAddProductToShoppingCart,
+            quantity: 1,
+            sectionCategoriesPath: event.item.sectionCategoriesPath,
+            productCategoriesPath: event.item.productCategoriesPath,
+            priceActual: initState.detailsProduct?.price.yourPrice ?? 0,
+            priceOriginal: int.parse(initState.detailsProduct?.price.pb ?? '0'),
+            internalComponentsActualPrice: [
+              AppMetricaECommerceAmount(
+                amount: Decimal.fromInt(
+                    initState.detailsProduct?.price.yourPrice ?? 0),
+                currency: event.item.skuName ?? '',
+              ),
+              AppMetricaECommerceAmount(
+                amount: Decimal.fromInt(
+                    initState.detailsProduct?.price.yourPrice ?? 0),
+                currency: event.item.sku,
+              ),
+            ],
+            internalComponentsOriginalPrice: [
+              AppMetricaECommerceAmount(
+                amount:
+                    Decimal.parse(initState.detailsProduct?.price.pb ?? '0'),
+                currency: event.item.skuName ?? '',
+              ),
+              AppMetricaECommerceAmount(
+                amount:
+                    Decimal.parse(initState.detailsProduct?.price.pb ?? '0'),
+                currency: event.item.sku,
+              ),
+            ],
+          );
+        }
+
+        if (initState.isError ?? false) {
+          emit(
+            initState.copyWith(
+              isLoadErrorButton: true,
+            ),
+          );
+        } else {
+          emit(
+            initState.copyWith(
+              isLoadAddProductToShopingCart: true,
+            ),
+          );
+        }
+
+        BasketFullInfoDataModel? basketInfo;
+        BasketDataModel? basketProductInfo;
+        bool isShoppingCart = false;
+        bool isShoppingCartDetailsProduct = false;
+        final detailsProduct = initState.detailsProduct;
+        bool isAuth = _sharedPreferencesService.getBool(
+              key: SharedPrefKeys.userAuthorized,
+            ) ??
+            false;
+
+        if (isAuth) {
+          basketProductInfo = await _basketRepository.addProductToBasket(
+            code: event.item.code,
+            sku: event.item.sku.contains('-') ? event.item.sku : '',
+            count: event.item.count,
+            titleScreen: event.item.titleScreen,
+            searchQuery: event.item.searchQuery,
+            typeAddProductToShoppingCart:
+                event.item.typeAddProductToShoppingCart,
+            identifierAddProductToShoppingCart:
+                event.item.identifierAddProductToShoppingCart,
+            sectionCategoriesPath: event.item.sectionCategoriesPath,
+            productCategoriesPath: event.item.productCategoriesPath,
+          );
+          basketInfo = await updateBasket(
+            isLocal: false,
+            promo: initState.promoCode,
+            pickup: initState.pickup,
+          );
+          log(basketInfo.toString());
+        } else {
+          _catalogRepository.addShoppingCartProduct(
+            event.item,
+          );
+          basketInfo = await updateBasket(
+            promo: initState.promoCode,
+            pickup: initState.pickup,
+          );
+        }
+
+        int numberProducts = 0;
+        int amountPaid = 0;
+        for (int i = 0; i < basketInfo.basket.length; i++) {
+          numberProducts = numberProducts + basketInfo.basket[i].count;
+          amountPaid = amountPaid + basketInfo.basket[i].data.price;
+        }
+
+        if (detailsProduct != null) {
+          SkuProductDataModel selectSizeProduct = initState.selectSizeProduct ??
+              (initState.detailsProduct?.sku.isNotEmpty ?? false
+                  ? (initState.detailsProduct?.sku.first ??
+                      SkuProductDataModel(
+                        id: '',
+                        value: '',
+                      ))
+                  : SkuProductDataModel(
+                      id: '',
+                      value: '',
+                    ));
+          if (selectSizeProduct.id == (event.item.sku) &&
+              (event.item.sku).contains('-')) {
+            isShoppingCart = true;
+          }
+
+          if (selectSizeProduct.id == event.item.sku &&
+              detailsProduct.sku.length == 1 &&
+              !event.item.sku.contains('-')) {
+            isShoppingCart = true;
+            isShoppingCartDetailsProduct = true;
+          }
+
+          if (event.item.sku.isEmpty) {
+            isShoppingCart = true;
+            isShoppingCartDetailsProduct = true;
+          }
+        } else {
+          isShoppingCart = false;
+          isShoppingCartDetailsProduct = true;
+        }
+
+        emit(
+          initState.copyWith(
+            isError: basketProductInfo?.errorMessage.isNotEmpty ??
+                false || basketInfo.errorMessage.isNotEmpty,
+            errorMessage: MessageInfo.errorMessage,
+            itemInfo: event.item,
+            typeError: 'добавить товар в корзину',
+            shoppingCart: basketInfo,
+            numberProducts: numberProducts,
+            amountPaid: amountPaid,
+            isPayInstallmentsSberbank:
+                amountPaid >= 1000 && amountPaid <= 150000,
+            isShoppingCartDetailsProduct: isShoppingCartDetailsProduct,
+            isShoppingCart:
+                (initState.isShoppingCart ?? false) || isShoppingCart,
+            isLoadAddProductToShopingCart: false,
+            isLoadErrorButton: false,
+          ),
+        );
+      },
+    );
+  }*/
+  Future<void> _checkProductToSoppingCart(
+    CheckProductToCardInfoEvent event,
+    Emitter<CardInfoState> emit,
+  ) async {
+    await state.mapOrNull(productInfoCard: (initState) async {
+      bool isAuth = _sharedPreferencesService.getBool(
+            key: SharedPrefKeys.userAuthorized,
+          ) ??
+          false;
+      final basketInfo = await getBasketInfo(isLocal: !isAuth);
+      final soppingCart = basketInfo.basket.where(
+        (element) =>
+            int.parse(element.code) == (initState.detailsProduct?.code ?? 0) &&
+            element.sku == event.size.id,
+      );
+      emit(initState.copyWith(
+        isShoppingCart: soppingCart.isNotEmpty,
+      ));
+    });
+  }
+
   Future<FavouritesCatalogInfoDataModel> updateFavouritesProducts({
     bool isLocal = true,
   }) async {
@@ -523,12 +734,61 @@ class CardInfoBloc extends Bloc<CardInfoEvent, CardInfoState> {
     return basketInfo;
   }
 
-  Future<void> _changeSizeProduct(
-      ChangeSizeProductCardInfoEvent event, Emitter<CardInfoState> emit) async {
-    state.mapOrNull(productInfoCard: (initState) {
-      emit(initState.copyWith(
-        selectSizeProduct: event.selectSizeProduct,
-      ));
-    });
+  Future<BasketFullInfoDataModel> updateBasket({
+    bool isLocal = true,
+    required String promo,
+    required String pickup,
+  }) async {
+    List<BasketInfoItemDataModel> basket = [];
+    if (isLocal) {
+      final shopping = _catalogRepository.getShoppingCartProducts();
+      for (int i = 0; i < shopping.length; i++) {
+        basket.add(BasketInfoItemDataModel(
+          code: shopping[i].code,
+          sku: shopping[i].sku.contains('-') ? shopping[i].sku : '',
+          count: shopping[i].count,
+          titleScreen: shopping[i].titleScreen,
+          searchQuery: shopping[i].searchQuery,
+          typeAddProductToShoppingCart:
+              shopping[i].typeAddProductToShoppingCart,
+          identifierAddProductToShoppingCart:
+              shopping[i].identifierAddProductToShoppingCart,
+          sectionCategoriesPath: shopping[i].sectionCategoriesPath,
+          productCategoriesPath: shopping[i].productCategoriesPath,
+        ));
+      }
+    }
+
+    final basketInfo = await _basketRepository.getProductToBasketFullInfo(
+      promo: promo,
+      pickup: pickup,
+      basket: isLocal ? basket : null,
+    );
+
+    if (isLocal) {
+      for (int i = 0; i < basketInfo.basket.length; i++) {
+        _catalogRepository.putShoppingCartProduct(
+          i,
+          BasketInfoItemDataModel(
+            code: basketInfo.basket[i].code,
+            sku: basketInfo.basket[i].sku,
+            count: basketInfo.basket[i].count,
+            titleScreen: basketInfo.basket[i].product.titleScreen ?? '',
+            searchQuery: basketInfo.basket[i].product.searchQuery ?? '',
+            typeAddProductToShoppingCart:
+                basketInfo.basket[i].product.typeAddProductToShoppingCart ?? '',
+            identifierAddProductToShoppingCart: basketInfo
+                    .basket[i].product.identifierAddProductToShoppingCart ??
+                '',
+            sectionCategoriesPath:
+                basketInfo.basket[i].product.sectionCategoriesPath ?? [],
+            productCategoriesPath:
+                basketInfo.basket[i].product.productCategoriesPath ?? [],
+          ),
+        );
+      }
+    }
+
+    return basketInfo;
   }
 }
