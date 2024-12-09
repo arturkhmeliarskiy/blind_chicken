@@ -1,7 +1,7 @@
 part of 'card_info_bloc.dart';
 
 @freezed
-class CardInfoEvent with _$CardInfoV2Event {
+class CardInfoEvent with _$CardInfoEvent {
   const factory CardInfoEvent.init({
     required List<ProductDataModel> favouritesProducts,
     required List<String> listProductsCode,
@@ -16,8 +16,8 @@ class CardInfoEvent with _$CardInfoV2Event {
     required String typeAddProductToShoppingCart,
     required String identifierAddProductToShoppingCart,
     bool? isShopGetSizeProduct,
-  }) = InitCardInfoV2Event;
-  const factory CardInfoEvent.preloadData() = PreloadDataCardInfoV2Event;
+  }) = InitCardInfoEvent;
+  const factory CardInfoEvent.preloadData() = PreloadDataCardInfoEvent;
   const factory CardInfoEvent.getProduct({
     required String code,
     required String titleScreen,
@@ -25,37 +25,37 @@ class CardInfoEvent with _$CardInfoV2Event {
     required String identifierAddProductToShoppingCart,
     SkuProductDataModel? size,
     bool? isUpdate,
-}) = GetProductCardInfoV2Event;
+}) = GetProductCardInfoEvent;
 
   const factory CardInfoEvent.goBackProductInfo() =
-  GoBackProductInfoCategotyCardInfoV2Event;
+  GoBackProductInfoCategotyCardInfoEvent;
 
   const factory CardInfoEvent.getInfoProductSize({
     required String code,
     required bool isShop,
-  }) = GetInfoProductSizeCardInfoV2Event;
+  }) = GetInfoProductSizeCardInfoEvent;
 
   const factory CardInfoEvent.addFavouriteProduct({
     required int index,
     required ProductDataModel product,
-  }) = AddFavouriteProductCardInfoV2Event;
+  }) = AddFavouriteProductCardInfoEvent;
 
   const factory CardInfoEvent.deleteFavouriteProduct({
     required int index,
-  }) = DeleteFavouriteProductCardInfoV2Event;
+  }) = DeleteFavouriteProductCardInfoEvent;
 
   const factory CardInfoEvent.addProductToSoppingCart({
     required BasketInfoItemDataModel item,
-  }) = AddProductToShoppingCartCardInfoV2Event;
+  }) = AddProductToShoppingCartCardInfoEvent;
 
   const factory CardInfoEvent.addProductToSoppingCartInfo() =
-  AddProductToSoppingCardInfoV2Event;
+  AddProductToSoppingCardInfoEvent;
 
   const factory CardInfoEvent.checkProductToSoppingCart({
     required SkuProductDataModel size,
-  }) = CheckProductToCardInfoV2Event;
+  }) = CheckProductToCardInfoEvent;
 
   const factory CardInfoEvent.changeSizeProduct({
     required SkuProductDataModel selectSizeProduct,
-  }) = ChangeSizeProductCardInfoV2Event;
+  }) = ChangeSizeProductCardInfoEvent;
 }

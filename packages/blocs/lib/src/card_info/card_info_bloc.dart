@@ -30,12 +30,15 @@ class CardInfoBloc extends Bloc<CardInfoEvent, CardInfoState> {
       (event, emit) => event.mapOrNull(
         init: (event) => _init(event, emit),
         getProduct: (event) => _getProduct(event, emit),
-        goBackProductInfo: (GoBackProductInfoCategotyCardInfoV2Event event) => _goBackProductInfo(event, emit),
+        goBackProductInfo: (GoBackProductInfoCategotyCardInfoEvent event) =>
+            _goBackProductInfo(event, emit),
+        getInfoProductSize: (GetInfoProductSizeCardInfoEvent event) =>
+            _getInfoProductSize(event, emit),
       ),
     );
   }
 
-  void _init(InitCardInfoV2Event event, Emitter<CardInfoState> emit) {
+  void _init(InitCardInfoEvent event, Emitter<CardInfoState> emit) {
     emit(const CardInfoState.load());
     bool isAuth = _sharedPreferencesService.getBool(
           key: SharedPrefKeys.userAuthorized,
@@ -48,6 +51,7 @@ class CardInfoBloc extends Bloc<CardInfoEvent, CardInfoState> {
         listProdcutsAlso: [],
         listProdcutsBrand: [],
         listProdcutsComplect: [],
+        listSize: [],
         favouritesProductsId: event.favouritesProductsId,
         isAuth: isAuth,
         isLoadGetSizeProduct: event.isLoadGetSizeProduct,
@@ -67,7 +71,7 @@ class CardInfoBloc extends Bloc<CardInfoEvent, CardInfoState> {
   }
 
   Future<void> _getProduct(
-      GetProductCardInfoV2Event event, Emitter<CardInfoState> emit) async {
+      GetProductCardInfoEvent event, Emitter<CardInfoState> emit) async {
     await state.mapOrNull(productInfoCard: (initState) async {
       SkuProductDataModel? selectSizeProduct;
       bool isShoppingCartDetailsProduct = false;
@@ -227,8 +231,8 @@ class CardInfoBloc extends Bloc<CardInfoEvent, CardInfoState> {
       ));
     });
   }  Future<void> _goBackProductInfo(
-      GoBackProductInfoCategotyCardInfoV2Event event,
-      Emitter<CardInfoState> emit,
+    GoBackProductInfoCategotyCardInfoEvent event,
+    Emitter<CardInfoState> emit,
       ) async {
     await state.mapOrNull(productInfoCard: (initState) async {
       List<String> listProductsCode = initState.listProductsCode.toList();
@@ -336,5 +340,70 @@ class CardInfoBloc extends Bloc<CardInfoEvent, CardInfoState> {
     }
 
     return basketInfo;
+  }
+
+  Future<void> _getInfoProductSize(
+    GetInfoProductSizeCardInfoEvent event,
+    Emitter<CardInfoState> emit,
+  ) async {
+    await state.mapOrNull(productInfoCard: (initState) async {
+      if (initState.isError ?? false) {
+        emit(initState.copyWith(
+          isLoadErrorButton: true,
+        ));
+      } else {
+        emit(initState.copyWith(
+          isLoadGetSizeProduct: true,
+          codeProduct: event.code,
+        ));
+      }
+      final detailsProduct = await _catalogRepository.getDetailsProduct(
+        code: event.code,
+        genderIndex: _updateDataService.selectedIndexGender.toString(),
+      );
+
+      if (detailsProduct.errorMessage.isEmpty) {
+        if (detailsProduct.sku.isNotEmpty) {
+          if (detailsProduct.sku.first.id.contains('-') &&
+              detailsProduct.sku.first.id.length > 10) {
+            emit(CardInfoState.getSizeProduct(
+              code: event.code,
+              listSize: detailsProduct.sku,
+              listSizeToSoppingCart: detailsProduct.skuToSoppingCart,
+            ));
+          } else {
+            if (event.isShop) {
+              emit(const CardInfoState.openSoppingCart());
+            } else {
+              emit(CardInfoState.addProductToSoppingCart(
+                code: event.code,
+              ));
+            }
+          }
+        } else {
+          if (event.isShop) {
+            emit(const CardInfoState.openSoppingCart());
+          } else {
+            emit(CardInfoState.addProductToSoppingCart(
+              code: event.code,
+            ));
+          }
+        }
+      }
+
+      emit(initState.copyWith(
+        detailsProduct: detailsProduct.errorMessage.isNotEmpty
+            ? initState.detailsProduct
+            : detailsProduct,
+        listSize: detailsProduct.sku,
+        isLoadGetSizeProduct: false,
+        codeProduct: event.code,
+        isError: detailsProduct.errorMessage.isNotEmpty,
+        errorMessage: detailsProduct.errorMessage,
+        isShopGetSizeProduct: event.isShop,
+        typeError: 'выбор размера описание товара',
+        isLoadErrorButton: false,
+      ));
+    });
   }
 }

@@ -1,9 +1,9 @@
 part of 'card_info_bloc.dart';
 
 @freezed
-class CardInfoState with _$CardInfoV2State {
-  const factory CardInfoState.init() = InitInfoCardV2State;
-  const factory CardInfoState.load() = LoadingInfoCardV2State;
+class CardInfoState with _$CardInfoState {
+  const factory CardInfoState.init() = InitCardInfoState;
+  const factory CardInfoState.load() = LoadingCardInfoState;
   const factory CardInfoState.productInfoCard({
     required List<ProductDataModel> favouritesProducts,
     required List<String> listProductsCode,
@@ -11,6 +11,7 @@ class CardInfoState with _$CardInfoV2State {
     required List<ProductDataModel> listProdcutsAlso,
     required List<ProductDataModel> listProdcutsBrand,
     required List<ProductDataModel> listProdcutsComplect,
+    required List<SkuProductDataModel> listSize,
     required List<int> favouritesProductsId,
     required bool isAuth,
     required bool isLoadGetSizeProduct,
@@ -31,14 +32,14 @@ class CardInfoState with _$CardInfoV2State {
     required String typeAddProductToShoppingCart,
     required String identifierAddProductToShoppingCart,
     bool? isShopGetSizeProduct,
-  }) = ProductsInfoCardV2State;
-  const factory CardInfoState.openSoppingCart() = OpenSoppingCartCardInfoV2State;
+  }) = ProductsCardInfoState;
+  const factory CardInfoState.openSoppingCart() = OpenSoppingCartCardInfoState;
   const factory CardInfoState.addProductToSoppingCart({
     required String code,
-  }) = AddProductCardInfoV2State;
+  }) = AddProductCardInfoState;
   const factory CardInfoState.getSizeProduct({
     required String code,
     required List<SkuProductDataModel> listSize,
     required List<SkuProductDataModel> listSizeToSoppingCart,
-  }) = GetSizeProductCardInfoV2State;
+  }) = GetSizeProductCardInfoState;
 }

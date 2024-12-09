@@ -15,7 +15,7 @@ final _privateConstructorUsedError = UnsupportedError(
     'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#adding-getters-and-methods-to-our-models');
 
 /// @nodoc
-mixin _$CardInfoV2Event {
+mixin _$CardInfoEvent {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function(
@@ -131,101 +131,99 @@ mixin _$CardInfoV2Event {
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
-    required TResult Function(InitCardInfoV2Event value) init,
-    required TResult Function(PreloadDataCardInfoV2Event value) preloadData,
-    required TResult Function(GetProductCardInfoV2Event value) getProduct,
-    required TResult Function(GoBackProductInfoCategotyCardInfoV2Event value)
+    required TResult Function(InitCardInfoEvent value) init,
+    required TResult Function(PreloadDataCardInfoEvent value) preloadData,
+    required TResult Function(GetProductCardInfoEvent value) getProduct,
+    required TResult Function(GoBackProductInfoCategotyCardInfoEvent value)
         goBackProductInfo,
-    required TResult Function(GetInfoProductSizeCardInfoV2Event value)
+    required TResult Function(GetInfoProductSizeCardInfoEvent value)
         getInfoProductSize,
-    required TResult Function(AddFavouriteProductCardInfoV2Event value)
+    required TResult Function(AddFavouriteProductCardInfoEvent value)
         addFavouriteProduct,
-    required TResult Function(DeleteFavouriteProductCardInfoV2Event value)
+    required TResult Function(DeleteFavouriteProductCardInfoEvent value)
         deleteFavouriteProduct,
-    required TResult Function(AddProductToShoppingCartCardInfoV2Event value)
+    required TResult Function(AddProductToShoppingCartCardInfoEvent value)
         addProductToSoppingCart,
-    required TResult Function(AddProductToSoppingCardInfoV2Event value)
+    required TResult Function(AddProductToSoppingCardInfoEvent value)
         addProductToSoppingCartInfo,
-    required TResult Function(CheckProductToCardInfoV2Event value)
+    required TResult Function(CheckProductToCardInfoEvent value)
         checkProductToSoppingCart,
-    required TResult Function(ChangeSizeProductCardInfoV2Event value)
+    required TResult Function(ChangeSizeProductCardInfoEvent value)
         changeSizeProduct,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(InitCardInfoV2Event value)? init,
-    TResult? Function(PreloadDataCardInfoV2Event value)? preloadData,
-    TResult? Function(GetProductCardInfoV2Event value)? getProduct,
-    TResult? Function(GoBackProductInfoCategotyCardInfoV2Event value)?
+    TResult? Function(InitCardInfoEvent value)? init,
+    TResult? Function(PreloadDataCardInfoEvent value)? preloadData,
+    TResult? Function(GetProductCardInfoEvent value)? getProduct,
+    TResult? Function(GoBackProductInfoCategotyCardInfoEvent value)?
         goBackProductInfo,
-    TResult? Function(GetInfoProductSizeCardInfoV2Event value)?
+    TResult? Function(GetInfoProductSizeCardInfoEvent value)?
         getInfoProductSize,
-    TResult? Function(AddFavouriteProductCardInfoV2Event value)?
+    TResult? Function(AddFavouriteProductCardInfoEvent value)?
         addFavouriteProduct,
-    TResult? Function(DeleteFavouriteProductCardInfoV2Event value)?
+    TResult? Function(DeleteFavouriteProductCardInfoEvent value)?
         deleteFavouriteProduct,
-    TResult? Function(AddProductToShoppingCartCardInfoV2Event value)?
+    TResult? Function(AddProductToShoppingCartCardInfoEvent value)?
         addProductToSoppingCart,
-    TResult? Function(AddProductToSoppingCardInfoV2Event value)?
+    TResult? Function(AddProductToSoppingCardInfoEvent value)?
         addProductToSoppingCartInfo,
-    TResult? Function(CheckProductToCardInfoV2Event value)?
+    TResult? Function(CheckProductToCardInfoEvent value)?
         checkProductToSoppingCart,
-    TResult? Function(ChangeSizeProductCardInfoV2Event value)?
-        changeSizeProduct,
+    TResult? Function(ChangeSizeProductCardInfoEvent value)? changeSizeProduct,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
-    TResult Function(InitCardInfoV2Event value)? init,
-    TResult Function(PreloadDataCardInfoV2Event value)? preloadData,
-    TResult Function(GetProductCardInfoV2Event value)? getProduct,
-    TResult Function(GoBackProductInfoCategotyCardInfoV2Event value)?
+    TResult Function(InitCardInfoEvent value)? init,
+    TResult Function(PreloadDataCardInfoEvent value)? preloadData,
+    TResult Function(GetProductCardInfoEvent value)? getProduct,
+    TResult Function(GoBackProductInfoCategotyCardInfoEvent value)?
         goBackProductInfo,
-    TResult Function(GetInfoProductSizeCardInfoV2Event value)?
-        getInfoProductSize,
-    TResult Function(AddFavouriteProductCardInfoV2Event value)?
+    TResult Function(GetInfoProductSizeCardInfoEvent value)? getInfoProductSize,
+    TResult Function(AddFavouriteProductCardInfoEvent value)?
         addFavouriteProduct,
-    TResult Function(DeleteFavouriteProductCardInfoV2Event value)?
+    TResult Function(DeleteFavouriteProductCardInfoEvent value)?
         deleteFavouriteProduct,
-    TResult Function(AddProductToShoppingCartCardInfoV2Event value)?
+    TResult Function(AddProductToShoppingCartCardInfoEvent value)?
         addProductToSoppingCart,
-    TResult Function(AddProductToSoppingCardInfoV2Event value)?
+    TResult Function(AddProductToSoppingCardInfoEvent value)?
         addProductToSoppingCartInfo,
-    TResult Function(CheckProductToCardInfoV2Event value)?
+    TResult Function(CheckProductToCardInfoEvent value)?
         checkProductToSoppingCart,
-    TResult Function(ChangeSizeProductCardInfoV2Event value)? changeSizeProduct,
+    TResult Function(ChangeSizeProductCardInfoEvent value)? changeSizeProduct,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
 }
 
 /// @nodoc
-abstract class $CardInfoV2EventCopyWith<$Res> {
-  factory $CardInfoV2EventCopyWith(
+abstract class $CardInfoEventCopyWith<$Res> {
+  factory $CardInfoEventCopyWith(
           CardInfoEvent value, $Res Function(CardInfoEvent) then) =
-      _$CardInfoV2EventCopyWithImpl<$Res, CardInfoEvent>;
+      _$CardInfoEventCopyWithImpl<$Res, CardInfoEvent>;
 }
 
 /// @nodoc
-class _$CardInfoV2EventCopyWithImpl<$Res, $Val extends CardInfoEvent>
-    implements $CardInfoV2EventCopyWith<$Res> {
-  _$CardInfoV2EventCopyWithImpl(this._value, this._then);
+class _$CardInfoEventCopyWithImpl<$Res, $Val extends CardInfoEvent>
+    implements $CardInfoEventCopyWith<$Res> {
+  _$CardInfoEventCopyWithImpl(this._value, this._then);
 
   // ignore: unused_field
   final $Val _value;
   // ignore: unused_field
   final $Res Function($Val) _then;
 
-  /// Create a copy of CardInfoV2Event
+  /// Create a copy of CardInfoEvent
   /// with the given fields replaced by the non-null parameter values.
 }
 
 /// @nodoc
-abstract class _$$InitCardInfoV2EventImplCopyWith<$Res> {
-  factory _$$InitCardInfoV2EventImplCopyWith(_$InitCardInfoV2EventImpl value,
-          $Res Function(_$InitCardInfoV2EventImpl) then) =
-      __$$InitCardInfoV2EventImplCopyWithImpl<$Res>;
+abstract class _$$InitCardInfoEventImplCopyWith<$Res> {
+  factory _$$InitCardInfoEventImplCopyWith(_$InitCardInfoEventImpl value,
+          $Res Function(_$InitCardInfoEventImpl) then) =
+      __$$InitCardInfoEventImplCopyWithImpl<$Res>;
   @useResult
   $Res call(
       {List<ProductDataModel> favouritesProducts,
@@ -247,14 +245,14 @@ abstract class _$$InitCardInfoV2EventImplCopyWith<$Res> {
 }
 
 /// @nodoc
-class __$$InitCardInfoV2EventImplCopyWithImpl<$Res>
-    extends _$CardInfoV2EventCopyWithImpl<$Res, _$InitCardInfoV2EventImpl>
-    implements _$$InitCardInfoV2EventImplCopyWith<$Res> {
-  __$$InitCardInfoV2EventImplCopyWithImpl(_$InitCardInfoV2EventImpl _value,
-      $Res Function(_$InitCardInfoV2EventImpl) _then)
+class __$$InitCardInfoEventImplCopyWithImpl<$Res>
+    extends _$CardInfoEventCopyWithImpl<$Res, _$InitCardInfoEventImpl>
+    implements _$$InitCardInfoEventImplCopyWith<$Res> {
+  __$$InitCardInfoEventImplCopyWithImpl(_$InitCardInfoEventImpl _value,
+      $Res Function(_$InitCardInfoEventImpl) _then)
       : super(_value, _then);
 
-  /// Create a copy of CardInfoV2Event
+  /// Create a copy of CardInfoEvent
   /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
@@ -273,7 +271,7 @@ class __$$InitCardInfoV2EventImplCopyWithImpl<$Res>
     Object? identifierAddProductToShoppingCart = null,
     Object? isShopGetSizeProduct = freezed,
   }) {
-    return _then(_$InitCardInfoV2EventImpl(
+    return _then(_$InitCardInfoEventImpl(
       favouritesProducts: null == favouritesProducts
           ? _value._favouritesProducts
           : favouritesProducts // ignore: cast_nullable_to_non_nullable
@@ -330,7 +328,7 @@ class __$$InitCardInfoV2EventImplCopyWithImpl<$Res>
     ));
   }
 
-  /// Create a copy of CardInfoV2Event
+  /// Create a copy of CardInfoEvent
   /// with the given fields replaced by the non-null parameter values.
   @override
   @pragma('vm:prefer-inline')
@@ -344,7 +342,7 @@ class __$$InitCardInfoV2EventImplCopyWithImpl<$Res>
     });
   }
 
-  /// Create a copy of CardInfoV2Event
+  /// Create a copy of CardInfoEvent
   /// with the given fields replaced by the non-null parameter values.
   @override
   @pragma('vm:prefer-inline')
@@ -357,8 +355,8 @@ class __$$InitCardInfoV2EventImplCopyWithImpl<$Res>
 
 /// @nodoc
 
-class _$InitCardInfoV2EventImpl implements InitCardInfoV2Event {
-  const _$InitCardInfoV2EventImpl(
+class _$InitCardInfoEventImpl implements InitCardInfoEvent {
+  const _$InitCardInfoEventImpl(
       {required final List<ProductDataModel> favouritesProducts,
       required final List<String> listProductsCode,
       required final List<int> favouritesProductsId,
@@ -426,14 +424,14 @@ class _$InitCardInfoV2EventImpl implements InitCardInfoV2Event {
 
   @override
   String toString() {
-    return 'CardInfoV2Event.init(favouritesProducts: $favouritesProducts, listProductsCode: $listProductsCode, favouritesProductsId: $favouritesProductsId, isLoadGetSizeProduct: $isLoadGetSizeProduct, codeProduct: $codeProduct, itemInfo: $itemInfo, product: $product, indexItem: $indexItem, isLoadErrorButton: $isLoadErrorButton, titleScreen: $titleScreen, typeAddProductToShoppingCart: $typeAddProductToShoppingCart, identifierAddProductToShoppingCart: $identifierAddProductToShoppingCart, isShopGetSizeProduct: $isShopGetSizeProduct)';
+    return 'CardInfoEvent.init(favouritesProducts: $favouritesProducts, listProductsCode: $listProductsCode, favouritesProductsId: $favouritesProductsId, isLoadGetSizeProduct: $isLoadGetSizeProduct, codeProduct: $codeProduct, itemInfo: $itemInfo, product: $product, indexItem: $indexItem, isLoadErrorButton: $isLoadErrorButton, titleScreen: $titleScreen, typeAddProductToShoppingCart: $typeAddProductToShoppingCart, identifierAddProductToShoppingCart: $identifierAddProductToShoppingCart, isShopGetSizeProduct: $isShopGetSizeProduct)';
   }
 
   @override
   bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$InitCardInfoV2EventImpl &&
+            other is _$InitCardInfoEventImpl &&
             const DeepCollectionEquality()
                 .equals(other._favouritesProducts, _favouritesProducts) &&
             const DeepCollectionEquality()
@@ -482,13 +480,13 @@ class _$InitCardInfoV2EventImpl implements InitCardInfoV2Event {
       identifierAddProductToShoppingCart,
       isShopGetSizeProduct);
 
-  /// Create a copy of CardInfoV2Event
+  /// Create a copy of CardInfoEvent
   /// with the given fields replaced by the non-null parameter values.
   @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
-  _$$InitCardInfoV2EventImplCopyWith<_$InitCardInfoV2EventImpl> get copyWith =>
-      __$$InitCardInfoV2EventImplCopyWithImpl<_$InitCardInfoV2EventImpl>(
+  _$$InitCardInfoEventImplCopyWith<_$InitCardInfoEventImpl> get copyWith =>
+      __$$InitCardInfoEventImplCopyWithImpl<_$InitCardInfoEventImpl>(
           this, _$identity);
 
   @override
@@ -658,24 +656,24 @@ class _$InitCardInfoV2EventImpl implements InitCardInfoV2Event {
   @override
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
-    required TResult Function(InitCardInfoV2Event value) init,
-    required TResult Function(PreloadDataCardInfoV2Event value) preloadData,
-    required TResult Function(GetProductCardInfoV2Event value) getProduct,
-    required TResult Function(GoBackProductInfoCategotyCardInfoV2Event value)
+    required TResult Function(InitCardInfoEvent value) init,
+    required TResult Function(PreloadDataCardInfoEvent value) preloadData,
+    required TResult Function(GetProductCardInfoEvent value) getProduct,
+    required TResult Function(GoBackProductInfoCategotyCardInfoEvent value)
         goBackProductInfo,
-    required TResult Function(GetInfoProductSizeCardInfoV2Event value)
+    required TResult Function(GetInfoProductSizeCardInfoEvent value)
         getInfoProductSize,
-    required TResult Function(AddFavouriteProductCardInfoV2Event value)
+    required TResult Function(AddFavouriteProductCardInfoEvent value)
         addFavouriteProduct,
-    required TResult Function(DeleteFavouriteProductCardInfoV2Event value)
+    required TResult Function(DeleteFavouriteProductCardInfoEvent value)
         deleteFavouriteProduct,
-    required TResult Function(AddProductToShoppingCartCardInfoV2Event value)
+    required TResult Function(AddProductToShoppingCartCardInfoEvent value)
         addProductToSoppingCart,
-    required TResult Function(AddProductToSoppingCardInfoV2Event value)
+    required TResult Function(AddProductToSoppingCardInfoEvent value)
         addProductToSoppingCartInfo,
-    required TResult Function(CheckProductToCardInfoV2Event value)
+    required TResult Function(CheckProductToCardInfoEvent value)
         checkProductToSoppingCart,
-    required TResult Function(ChangeSizeProductCardInfoV2Event value)
+    required TResult Function(ChangeSizeProductCardInfoEvent value)
         changeSizeProduct,
   }) {
     return init(this);
@@ -684,25 +682,24 @@ class _$InitCardInfoV2EventImpl implements InitCardInfoV2Event {
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(InitCardInfoV2Event value)? init,
-    TResult? Function(PreloadDataCardInfoV2Event value)? preloadData,
-    TResult? Function(GetProductCardInfoV2Event value)? getProduct,
-    TResult? Function(GoBackProductInfoCategotyCardInfoV2Event value)?
+    TResult? Function(InitCardInfoEvent value)? init,
+    TResult? Function(PreloadDataCardInfoEvent value)? preloadData,
+    TResult? Function(GetProductCardInfoEvent value)? getProduct,
+    TResult? Function(GoBackProductInfoCategotyCardInfoEvent value)?
         goBackProductInfo,
-    TResult? Function(GetInfoProductSizeCardInfoV2Event value)?
+    TResult? Function(GetInfoProductSizeCardInfoEvent value)?
         getInfoProductSize,
-    TResult? Function(AddFavouriteProductCardInfoV2Event value)?
+    TResult? Function(AddFavouriteProductCardInfoEvent value)?
         addFavouriteProduct,
-    TResult? Function(DeleteFavouriteProductCardInfoV2Event value)?
+    TResult? Function(DeleteFavouriteProductCardInfoEvent value)?
         deleteFavouriteProduct,
-    TResult? Function(AddProductToShoppingCartCardInfoV2Event value)?
+    TResult? Function(AddProductToShoppingCartCardInfoEvent value)?
         addProductToSoppingCart,
-    TResult? Function(AddProductToSoppingCardInfoV2Event value)?
+    TResult? Function(AddProductToSoppingCardInfoEvent value)?
         addProductToSoppingCartInfo,
-    TResult? Function(CheckProductToCardInfoV2Event value)?
+    TResult? Function(CheckProductToCardInfoEvent value)?
         checkProductToSoppingCart,
-    TResult? Function(ChangeSizeProductCardInfoV2Event value)?
-        changeSizeProduct,
+    TResult? Function(ChangeSizeProductCardInfoEvent value)? changeSizeProduct,
   }) {
     return init?.call(this);
   }
@@ -710,24 +707,23 @@ class _$InitCardInfoV2EventImpl implements InitCardInfoV2Event {
   @override
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
-    TResult Function(InitCardInfoV2Event value)? init,
-    TResult Function(PreloadDataCardInfoV2Event value)? preloadData,
-    TResult Function(GetProductCardInfoV2Event value)? getProduct,
-    TResult Function(GoBackProductInfoCategotyCardInfoV2Event value)?
+    TResult Function(InitCardInfoEvent value)? init,
+    TResult Function(PreloadDataCardInfoEvent value)? preloadData,
+    TResult Function(GetProductCardInfoEvent value)? getProduct,
+    TResult Function(GoBackProductInfoCategotyCardInfoEvent value)?
         goBackProductInfo,
-    TResult Function(GetInfoProductSizeCardInfoV2Event value)?
-        getInfoProductSize,
-    TResult Function(AddFavouriteProductCardInfoV2Event value)?
+    TResult Function(GetInfoProductSizeCardInfoEvent value)? getInfoProductSize,
+    TResult Function(AddFavouriteProductCardInfoEvent value)?
         addFavouriteProduct,
-    TResult Function(DeleteFavouriteProductCardInfoV2Event value)?
+    TResult Function(DeleteFavouriteProductCardInfoEvent value)?
         deleteFavouriteProduct,
-    TResult Function(AddProductToShoppingCartCardInfoV2Event value)?
+    TResult Function(AddProductToShoppingCartCardInfoEvent value)?
         addProductToSoppingCart,
-    TResult Function(AddProductToSoppingCardInfoV2Event value)?
+    TResult Function(AddProductToSoppingCardInfoEvent value)?
         addProductToSoppingCartInfo,
-    TResult Function(CheckProductToCardInfoV2Event value)?
+    TResult Function(CheckProductToCardInfoEvent value)?
         checkProductToSoppingCart,
-    TResult Function(ChangeSizeProductCardInfoV2Event value)? changeSizeProduct,
+    TResult Function(ChangeSizeProductCardInfoEvent value)? changeSizeProduct,
     required TResult orElse(),
   }) {
     if (init != null) {
@@ -737,8 +733,8 @@ class _$InitCardInfoV2EventImpl implements InitCardInfoV2Event {
   }
 }
 
-abstract class InitCardInfoV2Event implements CardInfoEvent {
-  const factory InitCardInfoV2Event(
+abstract class InitCardInfoEvent implements CardInfoEvent {
+  const factory InitCardInfoEvent(
       {required final List<ProductDataModel> favouritesProducts,
       required final List<String> listProductsCode,
       required final List<int> favouritesProductsId,
@@ -751,7 +747,7 @@ abstract class InitCardInfoV2Event implements CardInfoEvent {
       required final String titleScreen,
       required final String typeAddProductToShoppingCart,
       required final String identifierAddProductToShoppingCart,
-      final bool? isShopGetSizeProduct}) = _$InitCardInfoV2EventImpl;
+      final bool? isShopGetSizeProduct}) = _$InitCardInfoEventImpl;
 
   List<ProductDataModel> get favouritesProducts;
   List<String> get listProductsCode;
@@ -767,50 +763,49 @@ abstract class InitCardInfoV2Event implements CardInfoEvent {
   String get identifierAddProductToShoppingCart;
   bool? get isShopGetSizeProduct;
 
-  /// Create a copy of CardInfoV2Event
+  /// Create a copy of CardInfoEvent
   /// with the given fields replaced by the non-null parameter values.
   @JsonKey(includeFromJson: false, includeToJson: false)
-  _$$InitCardInfoV2EventImplCopyWith<_$InitCardInfoV2EventImpl> get copyWith =>
+  _$$InitCardInfoEventImplCopyWith<_$InitCardInfoEventImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }
 
 /// @nodoc
-abstract class _$$PreloadDataCardInfoV2EventImplCopyWith<$Res> {
-  factory _$$PreloadDataCardInfoV2EventImplCopyWith(
-          _$PreloadDataCardInfoV2EventImpl value,
-          $Res Function(_$PreloadDataCardInfoV2EventImpl) then) =
-      __$$PreloadDataCardInfoV2EventImplCopyWithImpl<$Res>;
+abstract class _$$PreloadDataCardInfoEventImplCopyWith<$Res> {
+  factory _$$PreloadDataCardInfoEventImplCopyWith(
+          _$PreloadDataCardInfoEventImpl value,
+          $Res Function(_$PreloadDataCardInfoEventImpl) then) =
+      __$$PreloadDataCardInfoEventImplCopyWithImpl<$Res>;
 }
 
 /// @nodoc
-class __$$PreloadDataCardInfoV2EventImplCopyWithImpl<$Res>
-    extends _$CardInfoV2EventCopyWithImpl<$Res,
-        _$PreloadDataCardInfoV2EventImpl>
-    implements _$$PreloadDataCardInfoV2EventImplCopyWith<$Res> {
-  __$$PreloadDataCardInfoV2EventImplCopyWithImpl(
-      _$PreloadDataCardInfoV2EventImpl _value,
-      $Res Function(_$PreloadDataCardInfoV2EventImpl) _then)
+class __$$PreloadDataCardInfoEventImplCopyWithImpl<$Res>
+    extends _$CardInfoEventCopyWithImpl<$Res, _$PreloadDataCardInfoEventImpl>
+    implements _$$PreloadDataCardInfoEventImplCopyWith<$Res> {
+  __$$PreloadDataCardInfoEventImplCopyWithImpl(
+      _$PreloadDataCardInfoEventImpl _value,
+      $Res Function(_$PreloadDataCardInfoEventImpl) _then)
       : super(_value, _then);
 
-  /// Create a copy of CardInfoV2Event
+  /// Create a copy of CardInfoEvent
   /// with the given fields replaced by the non-null parameter values.
 }
 
 /// @nodoc
 
-class _$PreloadDataCardInfoV2EventImpl implements PreloadDataCardInfoV2Event {
-  const _$PreloadDataCardInfoV2EventImpl();
+class _$PreloadDataCardInfoEventImpl implements PreloadDataCardInfoEvent {
+  const _$PreloadDataCardInfoEventImpl();
 
   @override
   String toString() {
-    return 'CardInfoV2Event.preloadData()';
+    return 'CardInfoEvent.preloadData()';
   }
 
   @override
   bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$PreloadDataCardInfoV2EventImpl);
+            other is _$PreloadDataCardInfoEventImpl);
   }
 
   @override
@@ -944,24 +939,24 @@ class _$PreloadDataCardInfoV2EventImpl implements PreloadDataCardInfoV2Event {
   @override
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
-    required TResult Function(InitCardInfoV2Event value) init,
-    required TResult Function(PreloadDataCardInfoV2Event value) preloadData,
-    required TResult Function(GetProductCardInfoV2Event value) getProduct,
-    required TResult Function(GoBackProductInfoCategotyCardInfoV2Event value)
+    required TResult Function(InitCardInfoEvent value) init,
+    required TResult Function(PreloadDataCardInfoEvent value) preloadData,
+    required TResult Function(GetProductCardInfoEvent value) getProduct,
+    required TResult Function(GoBackProductInfoCategotyCardInfoEvent value)
         goBackProductInfo,
-    required TResult Function(GetInfoProductSizeCardInfoV2Event value)
+    required TResult Function(GetInfoProductSizeCardInfoEvent value)
         getInfoProductSize,
-    required TResult Function(AddFavouriteProductCardInfoV2Event value)
+    required TResult Function(AddFavouriteProductCardInfoEvent value)
         addFavouriteProduct,
-    required TResult Function(DeleteFavouriteProductCardInfoV2Event value)
+    required TResult Function(DeleteFavouriteProductCardInfoEvent value)
         deleteFavouriteProduct,
-    required TResult Function(AddProductToShoppingCartCardInfoV2Event value)
+    required TResult Function(AddProductToShoppingCartCardInfoEvent value)
         addProductToSoppingCart,
-    required TResult Function(AddProductToSoppingCardInfoV2Event value)
+    required TResult Function(AddProductToSoppingCardInfoEvent value)
         addProductToSoppingCartInfo,
-    required TResult Function(CheckProductToCardInfoV2Event value)
+    required TResult Function(CheckProductToCardInfoEvent value)
         checkProductToSoppingCart,
-    required TResult Function(ChangeSizeProductCardInfoV2Event value)
+    required TResult Function(ChangeSizeProductCardInfoEvent value)
         changeSizeProduct,
   }) {
     return preloadData(this);
@@ -970,25 +965,24 @@ class _$PreloadDataCardInfoV2EventImpl implements PreloadDataCardInfoV2Event {
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(InitCardInfoV2Event value)? init,
-    TResult? Function(PreloadDataCardInfoV2Event value)? preloadData,
-    TResult? Function(GetProductCardInfoV2Event value)? getProduct,
-    TResult? Function(GoBackProductInfoCategotyCardInfoV2Event value)?
+    TResult? Function(InitCardInfoEvent value)? init,
+    TResult? Function(PreloadDataCardInfoEvent value)? preloadData,
+    TResult? Function(GetProductCardInfoEvent value)? getProduct,
+    TResult? Function(GoBackProductInfoCategotyCardInfoEvent value)?
         goBackProductInfo,
-    TResult? Function(GetInfoProductSizeCardInfoV2Event value)?
+    TResult? Function(GetInfoProductSizeCardInfoEvent value)?
         getInfoProductSize,
-    TResult? Function(AddFavouriteProductCardInfoV2Event value)?
+    TResult? Function(AddFavouriteProductCardInfoEvent value)?
         addFavouriteProduct,
-    TResult? Function(DeleteFavouriteProductCardInfoV2Event value)?
+    TResult? Function(DeleteFavouriteProductCardInfoEvent value)?
         deleteFavouriteProduct,
-    TResult? Function(AddProductToShoppingCartCardInfoV2Event value)?
+    TResult? Function(AddProductToShoppingCartCardInfoEvent value)?
         addProductToSoppingCart,
-    TResult? Function(AddProductToSoppingCardInfoV2Event value)?
+    TResult? Function(AddProductToSoppingCardInfoEvent value)?
         addProductToSoppingCartInfo,
-    TResult? Function(CheckProductToCardInfoV2Event value)?
+    TResult? Function(CheckProductToCardInfoEvent value)?
         checkProductToSoppingCart,
-    TResult? Function(ChangeSizeProductCardInfoV2Event value)?
-        changeSizeProduct,
+    TResult? Function(ChangeSizeProductCardInfoEvent value)? changeSizeProduct,
   }) {
     return preloadData?.call(this);
   }
@@ -996,24 +990,23 @@ class _$PreloadDataCardInfoV2EventImpl implements PreloadDataCardInfoV2Event {
   @override
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
-    TResult Function(InitCardInfoV2Event value)? init,
-    TResult Function(PreloadDataCardInfoV2Event value)? preloadData,
-    TResult Function(GetProductCardInfoV2Event value)? getProduct,
-    TResult Function(GoBackProductInfoCategotyCardInfoV2Event value)?
+    TResult Function(InitCardInfoEvent value)? init,
+    TResult Function(PreloadDataCardInfoEvent value)? preloadData,
+    TResult Function(GetProductCardInfoEvent value)? getProduct,
+    TResult Function(GoBackProductInfoCategotyCardInfoEvent value)?
         goBackProductInfo,
-    TResult Function(GetInfoProductSizeCardInfoV2Event value)?
-        getInfoProductSize,
-    TResult Function(AddFavouriteProductCardInfoV2Event value)?
+    TResult Function(GetInfoProductSizeCardInfoEvent value)? getInfoProductSize,
+    TResult Function(AddFavouriteProductCardInfoEvent value)?
         addFavouriteProduct,
-    TResult Function(DeleteFavouriteProductCardInfoV2Event value)?
+    TResult Function(DeleteFavouriteProductCardInfoEvent value)?
         deleteFavouriteProduct,
-    TResult Function(AddProductToShoppingCartCardInfoV2Event value)?
+    TResult Function(AddProductToShoppingCartCardInfoEvent value)?
         addProductToSoppingCart,
-    TResult Function(AddProductToSoppingCardInfoV2Event value)?
+    TResult Function(AddProductToSoppingCardInfoEvent value)?
         addProductToSoppingCartInfo,
-    TResult Function(CheckProductToCardInfoV2Event value)?
+    TResult Function(CheckProductToCardInfoEvent value)?
         checkProductToSoppingCart,
-    TResult Function(ChangeSizeProductCardInfoV2Event value)? changeSizeProduct,
+    TResult Function(ChangeSizeProductCardInfoEvent value)? changeSizeProduct,
     required TResult orElse(),
   }) {
     if (preloadData != null) {
@@ -1023,16 +1016,16 @@ class _$PreloadDataCardInfoV2EventImpl implements PreloadDataCardInfoV2Event {
   }
 }
 
-abstract class PreloadDataCardInfoV2Event implements CardInfoEvent {
-  const factory PreloadDataCardInfoV2Event() = _$PreloadDataCardInfoV2EventImpl;
+abstract class PreloadDataCardInfoEvent implements CardInfoEvent {
+  const factory PreloadDataCardInfoEvent() = _$PreloadDataCardInfoEventImpl;
 }
 
 /// @nodoc
-abstract class _$$GetProductCardInfoV2EventImplCopyWith<$Res> {
-  factory _$$GetProductCardInfoV2EventImplCopyWith(
-          _$GetProductCardInfoV2EventImpl value,
-          $Res Function(_$GetProductCardInfoV2EventImpl) then) =
-      __$$GetProductCardInfoV2EventImplCopyWithImpl<$Res>;
+abstract class _$$GetProductCardInfoEventImplCopyWith<$Res> {
+  factory _$$GetProductCardInfoEventImplCopyWith(
+          _$GetProductCardInfoEventImpl value,
+          $Res Function(_$GetProductCardInfoEventImpl) then) =
+      __$$GetProductCardInfoEventImplCopyWithImpl<$Res>;
   @useResult
   $Res call(
       {String code,
@@ -1046,15 +1039,15 @@ abstract class _$$GetProductCardInfoV2EventImplCopyWith<$Res> {
 }
 
 /// @nodoc
-class __$$GetProductCardInfoV2EventImplCopyWithImpl<$Res>
-    extends _$CardInfoV2EventCopyWithImpl<$Res, _$GetProductCardInfoV2EventImpl>
-    implements _$$GetProductCardInfoV2EventImplCopyWith<$Res> {
-  __$$GetProductCardInfoV2EventImplCopyWithImpl(
-      _$GetProductCardInfoV2EventImpl _value,
-      $Res Function(_$GetProductCardInfoV2EventImpl) _then)
+class __$$GetProductCardInfoEventImplCopyWithImpl<$Res>
+    extends _$CardInfoEventCopyWithImpl<$Res, _$GetProductCardInfoEventImpl>
+    implements _$$GetProductCardInfoEventImplCopyWith<$Res> {
+  __$$GetProductCardInfoEventImplCopyWithImpl(
+      _$GetProductCardInfoEventImpl _value,
+      $Res Function(_$GetProductCardInfoEventImpl) _then)
       : super(_value, _then);
 
-  /// Create a copy of CardInfoV2Event
+  /// Create a copy of CardInfoEvent
   /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
@@ -1066,7 +1059,7 @@ class __$$GetProductCardInfoV2EventImplCopyWithImpl<$Res>
     Object? size = freezed,
     Object? isUpdate = freezed,
   }) {
-    return _then(_$GetProductCardInfoV2EventImpl(
+    return _then(_$GetProductCardInfoEventImpl(
       code: null == code
           ? _value.code
           : code // ignore: cast_nullable_to_non_nullable
@@ -1095,7 +1088,7 @@ class __$$GetProductCardInfoV2EventImplCopyWithImpl<$Res>
     ));
   }
 
-  /// Create a copy of CardInfoV2Event
+  /// Create a copy of CardInfoEvent
   /// with the given fields replaced by the non-null parameter values.
   @override
   @pragma('vm:prefer-inline')
@@ -1112,8 +1105,8 @@ class __$$GetProductCardInfoV2EventImplCopyWithImpl<$Res>
 
 /// @nodoc
 
-class _$GetProductCardInfoV2EventImpl implements GetProductCardInfoV2Event {
-  const _$GetProductCardInfoV2EventImpl(
+class _$GetProductCardInfoEventImpl implements GetProductCardInfoEvent {
+  const _$GetProductCardInfoEventImpl(
       {required this.code,
       required this.titleScreen,
       required this.typeAddProductToShoppingCart,
@@ -1136,14 +1129,14 @@ class _$GetProductCardInfoV2EventImpl implements GetProductCardInfoV2Event {
 
   @override
   String toString() {
-    return 'CardInfoV2Event.getProduct(code: $code, titleScreen: $titleScreen, typeAddProductToShoppingCart: $typeAddProductToShoppingCart, identifierAddProductToShoppingCart: $identifierAddProductToShoppingCart, size: $size, isUpdate: $isUpdate)';
+    return 'CardInfoEvent.getProduct(code: $code, titleScreen: $titleScreen, typeAddProductToShoppingCart: $typeAddProductToShoppingCart, identifierAddProductToShoppingCart: $identifierAddProductToShoppingCart, size: $size, isUpdate: $isUpdate)';
   }
 
   @override
   bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$GetProductCardInfoV2EventImpl &&
+            other is _$GetProductCardInfoEventImpl &&
             (identical(other.code, code) || other.code == code) &&
             (identical(other.titleScreen, titleScreen) ||
                 other.titleScreen == titleScreen) &&
@@ -1170,14 +1163,14 @@ class _$GetProductCardInfoV2EventImpl implements GetProductCardInfoV2Event {
       size,
       isUpdate);
 
-  /// Create a copy of CardInfoV2Event
+  /// Create a copy of CardInfoEvent
   /// with the given fields replaced by the non-null parameter values.
   @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
-  _$$GetProductCardInfoV2EventImplCopyWith<_$GetProductCardInfoV2EventImpl>
-      get copyWith => __$$GetProductCardInfoV2EventImplCopyWithImpl<
-          _$GetProductCardInfoV2EventImpl>(this, _$identity);
+  _$$GetProductCardInfoEventImplCopyWith<_$GetProductCardInfoEventImpl>
+      get copyWith => __$$GetProductCardInfoEventImplCopyWithImpl<
+          _$GetProductCardInfoEventImpl>(this, _$identity);
 
   @override
   @optionalTypeArgs
@@ -1310,24 +1303,24 @@ class _$GetProductCardInfoV2EventImpl implements GetProductCardInfoV2Event {
   @override
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
-    required TResult Function(InitCardInfoV2Event value) init,
-    required TResult Function(PreloadDataCardInfoV2Event value) preloadData,
-    required TResult Function(GetProductCardInfoV2Event value) getProduct,
-    required TResult Function(GoBackProductInfoCategotyCardInfoV2Event value)
+    required TResult Function(InitCardInfoEvent value) init,
+    required TResult Function(PreloadDataCardInfoEvent value) preloadData,
+    required TResult Function(GetProductCardInfoEvent value) getProduct,
+    required TResult Function(GoBackProductInfoCategotyCardInfoEvent value)
         goBackProductInfo,
-    required TResult Function(GetInfoProductSizeCardInfoV2Event value)
+    required TResult Function(GetInfoProductSizeCardInfoEvent value)
         getInfoProductSize,
-    required TResult Function(AddFavouriteProductCardInfoV2Event value)
+    required TResult Function(AddFavouriteProductCardInfoEvent value)
         addFavouriteProduct,
-    required TResult Function(DeleteFavouriteProductCardInfoV2Event value)
+    required TResult Function(DeleteFavouriteProductCardInfoEvent value)
         deleteFavouriteProduct,
-    required TResult Function(AddProductToShoppingCartCardInfoV2Event value)
+    required TResult Function(AddProductToShoppingCartCardInfoEvent value)
         addProductToSoppingCart,
-    required TResult Function(AddProductToSoppingCardInfoV2Event value)
+    required TResult Function(AddProductToSoppingCardInfoEvent value)
         addProductToSoppingCartInfo,
-    required TResult Function(CheckProductToCardInfoV2Event value)
+    required TResult Function(CheckProductToCardInfoEvent value)
         checkProductToSoppingCart,
-    required TResult Function(ChangeSizeProductCardInfoV2Event value)
+    required TResult Function(ChangeSizeProductCardInfoEvent value)
         changeSizeProduct,
   }) {
     return getProduct(this);
@@ -1336,25 +1329,24 @@ class _$GetProductCardInfoV2EventImpl implements GetProductCardInfoV2Event {
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(InitCardInfoV2Event value)? init,
-    TResult? Function(PreloadDataCardInfoV2Event value)? preloadData,
-    TResult? Function(GetProductCardInfoV2Event value)? getProduct,
-    TResult? Function(GoBackProductInfoCategotyCardInfoV2Event value)?
+    TResult? Function(InitCardInfoEvent value)? init,
+    TResult? Function(PreloadDataCardInfoEvent value)? preloadData,
+    TResult? Function(GetProductCardInfoEvent value)? getProduct,
+    TResult? Function(GoBackProductInfoCategotyCardInfoEvent value)?
         goBackProductInfo,
-    TResult? Function(GetInfoProductSizeCardInfoV2Event value)?
+    TResult? Function(GetInfoProductSizeCardInfoEvent value)?
         getInfoProductSize,
-    TResult? Function(AddFavouriteProductCardInfoV2Event value)?
+    TResult? Function(AddFavouriteProductCardInfoEvent value)?
         addFavouriteProduct,
-    TResult? Function(DeleteFavouriteProductCardInfoV2Event value)?
+    TResult? Function(DeleteFavouriteProductCardInfoEvent value)?
         deleteFavouriteProduct,
-    TResult? Function(AddProductToShoppingCartCardInfoV2Event value)?
+    TResult? Function(AddProductToShoppingCartCardInfoEvent value)?
         addProductToSoppingCart,
-    TResult? Function(AddProductToSoppingCardInfoV2Event value)?
+    TResult? Function(AddProductToSoppingCardInfoEvent value)?
         addProductToSoppingCartInfo,
-    TResult? Function(CheckProductToCardInfoV2Event value)?
+    TResult? Function(CheckProductToCardInfoEvent value)?
         checkProductToSoppingCart,
-    TResult? Function(ChangeSizeProductCardInfoV2Event value)?
-        changeSizeProduct,
+    TResult? Function(ChangeSizeProductCardInfoEvent value)? changeSizeProduct,
   }) {
     return getProduct?.call(this);
   }
@@ -1362,24 +1354,23 @@ class _$GetProductCardInfoV2EventImpl implements GetProductCardInfoV2Event {
   @override
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
-    TResult Function(InitCardInfoV2Event value)? init,
-    TResult Function(PreloadDataCardInfoV2Event value)? preloadData,
-    TResult Function(GetProductCardInfoV2Event value)? getProduct,
-    TResult Function(GoBackProductInfoCategotyCardInfoV2Event value)?
+    TResult Function(InitCardInfoEvent value)? init,
+    TResult Function(PreloadDataCardInfoEvent value)? preloadData,
+    TResult Function(GetProductCardInfoEvent value)? getProduct,
+    TResult Function(GoBackProductInfoCategotyCardInfoEvent value)?
         goBackProductInfo,
-    TResult Function(GetInfoProductSizeCardInfoV2Event value)?
-        getInfoProductSize,
-    TResult Function(AddFavouriteProductCardInfoV2Event value)?
+    TResult Function(GetInfoProductSizeCardInfoEvent value)? getInfoProductSize,
+    TResult Function(AddFavouriteProductCardInfoEvent value)?
         addFavouriteProduct,
-    TResult Function(DeleteFavouriteProductCardInfoV2Event value)?
+    TResult Function(DeleteFavouriteProductCardInfoEvent value)?
         deleteFavouriteProduct,
-    TResult Function(AddProductToShoppingCartCardInfoV2Event value)?
+    TResult Function(AddProductToShoppingCartCardInfoEvent value)?
         addProductToSoppingCart,
-    TResult Function(AddProductToSoppingCardInfoV2Event value)?
+    TResult Function(AddProductToSoppingCardInfoEvent value)?
         addProductToSoppingCartInfo,
-    TResult Function(CheckProductToCardInfoV2Event value)?
+    TResult Function(CheckProductToCardInfoEvent value)?
         checkProductToSoppingCart,
-    TResult Function(ChangeSizeProductCardInfoV2Event value)? changeSizeProduct,
+    TResult Function(ChangeSizeProductCardInfoEvent value)? changeSizeProduct,
     required TResult orElse(),
   }) {
     if (getProduct != null) {
@@ -1389,14 +1380,14 @@ class _$GetProductCardInfoV2EventImpl implements GetProductCardInfoV2Event {
   }
 }
 
-abstract class GetProductCardInfoV2Event implements CardInfoEvent {
-  const factory GetProductCardInfoV2Event(
+abstract class GetProductCardInfoEvent implements CardInfoEvent {
+  const factory GetProductCardInfoEvent(
       {required final String code,
       required final String titleScreen,
       required final String typeAddProductToShoppingCart,
       required final String identifierAddProductToShoppingCart,
       final SkuProductDataModel? size,
-      final bool? isUpdate}) = _$GetProductCardInfoV2EventImpl;
+      final bool? isUpdate}) = _$GetProductCardInfoEventImpl;
 
   String get code;
   String get titleScreen;
@@ -1405,51 +1396,51 @@ abstract class GetProductCardInfoV2Event implements CardInfoEvent {
   SkuProductDataModel? get size;
   bool? get isUpdate;
 
-  /// Create a copy of CardInfoV2Event
+  /// Create a copy of CardInfoEvent
   /// with the given fields replaced by the non-null parameter values.
   @JsonKey(includeFromJson: false, includeToJson: false)
-  _$$GetProductCardInfoV2EventImplCopyWith<_$GetProductCardInfoV2EventImpl>
+  _$$GetProductCardInfoEventImplCopyWith<_$GetProductCardInfoEventImpl>
       get copyWith => throw _privateConstructorUsedError;
 }
 
 /// @nodoc
-abstract class _$$GoBackProductInfoCategotyCardInfoV2EventImplCopyWith<$Res> {
-  factory _$$GoBackProductInfoCategotyCardInfoV2EventImplCopyWith(
-          _$GoBackProductInfoCategotyCardInfoV2EventImpl value,
-          $Res Function(_$GoBackProductInfoCategotyCardInfoV2EventImpl) then) =
-      __$$GoBackProductInfoCategotyCardInfoV2EventImplCopyWithImpl<$Res>;
+abstract class _$$GoBackProductInfoCategotyCardInfoEventImplCopyWith<$Res> {
+  factory _$$GoBackProductInfoCategotyCardInfoEventImplCopyWith(
+          _$GoBackProductInfoCategotyCardInfoEventImpl value,
+          $Res Function(_$GoBackProductInfoCategotyCardInfoEventImpl) then) =
+      __$$GoBackProductInfoCategotyCardInfoEventImplCopyWithImpl<$Res>;
 }
 
 /// @nodoc
-class __$$GoBackProductInfoCategotyCardInfoV2EventImplCopyWithImpl<$Res>
-    extends _$CardInfoV2EventCopyWithImpl<$Res,
-        _$GoBackProductInfoCategotyCardInfoV2EventImpl>
-    implements _$$GoBackProductInfoCategotyCardInfoV2EventImplCopyWith<$Res> {
-  __$$GoBackProductInfoCategotyCardInfoV2EventImplCopyWithImpl(
-      _$GoBackProductInfoCategotyCardInfoV2EventImpl _value,
-      $Res Function(_$GoBackProductInfoCategotyCardInfoV2EventImpl) _then)
+class __$$GoBackProductInfoCategotyCardInfoEventImplCopyWithImpl<$Res>
+    extends _$CardInfoEventCopyWithImpl<$Res,
+        _$GoBackProductInfoCategotyCardInfoEventImpl>
+    implements _$$GoBackProductInfoCategotyCardInfoEventImplCopyWith<$Res> {
+  __$$GoBackProductInfoCategotyCardInfoEventImplCopyWithImpl(
+      _$GoBackProductInfoCategotyCardInfoEventImpl _value,
+      $Res Function(_$GoBackProductInfoCategotyCardInfoEventImpl) _then)
       : super(_value, _then);
 
-  /// Create a copy of CardInfoV2Event
+  /// Create a copy of CardInfoEvent
   /// with the given fields replaced by the non-null parameter values.
 }
 
 /// @nodoc
 
-class _$GoBackProductInfoCategotyCardInfoV2EventImpl
-    implements GoBackProductInfoCategotyCardInfoV2Event {
-  const _$GoBackProductInfoCategotyCardInfoV2EventImpl();
+class _$GoBackProductInfoCategotyCardInfoEventImpl
+    implements GoBackProductInfoCategotyCardInfoEvent {
+  const _$GoBackProductInfoCategotyCardInfoEventImpl();
 
   @override
   String toString() {
-    return 'CardInfoV2Event.goBackProductInfo()';
+    return 'CardInfoEvent.goBackProductInfo()';
   }
 
   @override
   bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$GoBackProductInfoCategotyCardInfoV2EventImpl);
+            other is _$GoBackProductInfoCategotyCardInfoEventImpl);
   }
 
   @override
@@ -1583,24 +1574,24 @@ class _$GoBackProductInfoCategotyCardInfoV2EventImpl
   @override
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
-    required TResult Function(InitCardInfoV2Event value) init,
-    required TResult Function(PreloadDataCardInfoV2Event value) preloadData,
-    required TResult Function(GetProductCardInfoV2Event value) getProduct,
-    required TResult Function(GoBackProductInfoCategotyCardInfoV2Event value)
+    required TResult Function(InitCardInfoEvent value) init,
+    required TResult Function(PreloadDataCardInfoEvent value) preloadData,
+    required TResult Function(GetProductCardInfoEvent value) getProduct,
+    required TResult Function(GoBackProductInfoCategotyCardInfoEvent value)
         goBackProductInfo,
-    required TResult Function(GetInfoProductSizeCardInfoV2Event value)
+    required TResult Function(GetInfoProductSizeCardInfoEvent value)
         getInfoProductSize,
-    required TResult Function(AddFavouriteProductCardInfoV2Event value)
+    required TResult Function(AddFavouriteProductCardInfoEvent value)
         addFavouriteProduct,
-    required TResult Function(DeleteFavouriteProductCardInfoV2Event value)
+    required TResult Function(DeleteFavouriteProductCardInfoEvent value)
         deleteFavouriteProduct,
-    required TResult Function(AddProductToShoppingCartCardInfoV2Event value)
+    required TResult Function(AddProductToShoppingCartCardInfoEvent value)
         addProductToSoppingCart,
-    required TResult Function(AddProductToSoppingCardInfoV2Event value)
+    required TResult Function(AddProductToSoppingCardInfoEvent value)
         addProductToSoppingCartInfo,
-    required TResult Function(CheckProductToCardInfoV2Event value)
+    required TResult Function(CheckProductToCardInfoEvent value)
         checkProductToSoppingCart,
-    required TResult Function(ChangeSizeProductCardInfoV2Event value)
+    required TResult Function(ChangeSizeProductCardInfoEvent value)
         changeSizeProduct,
   }) {
     return goBackProductInfo(this);
@@ -1609,25 +1600,24 @@ class _$GoBackProductInfoCategotyCardInfoV2EventImpl
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(InitCardInfoV2Event value)? init,
-    TResult? Function(PreloadDataCardInfoV2Event value)? preloadData,
-    TResult? Function(GetProductCardInfoV2Event value)? getProduct,
-    TResult? Function(GoBackProductInfoCategotyCardInfoV2Event value)?
+    TResult? Function(InitCardInfoEvent value)? init,
+    TResult? Function(PreloadDataCardInfoEvent value)? preloadData,
+    TResult? Function(GetProductCardInfoEvent value)? getProduct,
+    TResult? Function(GoBackProductInfoCategotyCardInfoEvent value)?
         goBackProductInfo,
-    TResult? Function(GetInfoProductSizeCardInfoV2Event value)?
+    TResult? Function(GetInfoProductSizeCardInfoEvent value)?
         getInfoProductSize,
-    TResult? Function(AddFavouriteProductCardInfoV2Event value)?
+    TResult? Function(AddFavouriteProductCardInfoEvent value)?
         addFavouriteProduct,
-    TResult? Function(DeleteFavouriteProductCardInfoV2Event value)?
+    TResult? Function(DeleteFavouriteProductCardInfoEvent value)?
         deleteFavouriteProduct,
-    TResult? Function(AddProductToShoppingCartCardInfoV2Event value)?
+    TResult? Function(AddProductToShoppingCartCardInfoEvent value)?
         addProductToSoppingCart,
-    TResult? Function(AddProductToSoppingCardInfoV2Event value)?
+    TResult? Function(AddProductToSoppingCardInfoEvent value)?
         addProductToSoppingCartInfo,
-    TResult? Function(CheckProductToCardInfoV2Event value)?
+    TResult? Function(CheckProductToCardInfoEvent value)?
         checkProductToSoppingCart,
-    TResult? Function(ChangeSizeProductCardInfoV2Event value)?
-        changeSizeProduct,
+    TResult? Function(ChangeSizeProductCardInfoEvent value)? changeSizeProduct,
   }) {
     return goBackProductInfo?.call(this);
   }
@@ -1635,24 +1625,23 @@ class _$GoBackProductInfoCategotyCardInfoV2EventImpl
   @override
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
-    TResult Function(InitCardInfoV2Event value)? init,
-    TResult Function(PreloadDataCardInfoV2Event value)? preloadData,
-    TResult Function(GetProductCardInfoV2Event value)? getProduct,
-    TResult Function(GoBackProductInfoCategotyCardInfoV2Event value)?
+    TResult Function(InitCardInfoEvent value)? init,
+    TResult Function(PreloadDataCardInfoEvent value)? preloadData,
+    TResult Function(GetProductCardInfoEvent value)? getProduct,
+    TResult Function(GoBackProductInfoCategotyCardInfoEvent value)?
         goBackProductInfo,
-    TResult Function(GetInfoProductSizeCardInfoV2Event value)?
-        getInfoProductSize,
-    TResult Function(AddFavouriteProductCardInfoV2Event value)?
+    TResult Function(GetInfoProductSizeCardInfoEvent value)? getInfoProductSize,
+    TResult Function(AddFavouriteProductCardInfoEvent value)?
         addFavouriteProduct,
-    TResult Function(DeleteFavouriteProductCardInfoV2Event value)?
+    TResult Function(DeleteFavouriteProductCardInfoEvent value)?
         deleteFavouriteProduct,
-    TResult Function(AddProductToShoppingCartCardInfoV2Event value)?
+    TResult Function(AddProductToShoppingCartCardInfoEvent value)?
         addProductToSoppingCart,
-    TResult Function(AddProductToSoppingCardInfoV2Event value)?
+    TResult Function(AddProductToSoppingCardInfoEvent value)?
         addProductToSoppingCartInfo,
-    TResult Function(CheckProductToCardInfoV2Event value)?
+    TResult Function(CheckProductToCardInfoEvent value)?
         checkProductToSoppingCart,
-    TResult Function(ChangeSizeProductCardInfoV2Event value)? changeSizeProduct,
+    TResult Function(ChangeSizeProductCardInfoEvent value)? changeSizeProduct,
     required TResult orElse(),
   }) {
     if (goBackProductInfo != null) {
@@ -1662,33 +1651,32 @@ class _$GoBackProductInfoCategotyCardInfoV2EventImpl
   }
 }
 
-abstract class GoBackProductInfoCategotyCardInfoV2Event
-    implements CardInfoEvent {
-  const factory GoBackProductInfoCategotyCardInfoV2Event() =
-      _$GoBackProductInfoCategotyCardInfoV2EventImpl;
+abstract class GoBackProductInfoCategotyCardInfoEvent implements CardInfoEvent {
+  const factory GoBackProductInfoCategotyCardInfoEvent() =
+      _$GoBackProductInfoCategotyCardInfoEventImpl;
 }
 
 /// @nodoc
-abstract class _$$GetInfoProductSizeCardInfoV2EventImplCopyWith<$Res> {
-  factory _$$GetInfoProductSizeCardInfoV2EventImplCopyWith(
-          _$GetInfoProductSizeCardInfoV2EventImpl value,
-          $Res Function(_$GetInfoProductSizeCardInfoV2EventImpl) then) =
-      __$$GetInfoProductSizeCardInfoV2EventImplCopyWithImpl<$Res>;
+abstract class _$$GetInfoProductSizeCardInfoEventImplCopyWith<$Res> {
+  factory _$$GetInfoProductSizeCardInfoEventImplCopyWith(
+          _$GetInfoProductSizeCardInfoEventImpl value,
+          $Res Function(_$GetInfoProductSizeCardInfoEventImpl) then) =
+      __$$GetInfoProductSizeCardInfoEventImplCopyWithImpl<$Res>;
   @useResult
   $Res call({String code, bool isShop});
 }
 
 /// @nodoc
-class __$$GetInfoProductSizeCardInfoV2EventImplCopyWithImpl<$Res>
-    extends _$CardInfoV2EventCopyWithImpl<$Res,
-        _$GetInfoProductSizeCardInfoV2EventImpl>
-    implements _$$GetInfoProductSizeCardInfoV2EventImplCopyWith<$Res> {
-  __$$GetInfoProductSizeCardInfoV2EventImplCopyWithImpl(
-      _$GetInfoProductSizeCardInfoV2EventImpl _value,
-      $Res Function(_$GetInfoProductSizeCardInfoV2EventImpl) _then)
+class __$$GetInfoProductSizeCardInfoEventImplCopyWithImpl<$Res>
+    extends _$CardInfoEventCopyWithImpl<$Res,
+        _$GetInfoProductSizeCardInfoEventImpl>
+    implements _$$GetInfoProductSizeCardInfoEventImplCopyWith<$Res> {
+  __$$GetInfoProductSizeCardInfoEventImplCopyWithImpl(
+      _$GetInfoProductSizeCardInfoEventImpl _value,
+      $Res Function(_$GetInfoProductSizeCardInfoEventImpl) _then)
       : super(_value, _then);
 
-  /// Create a copy of CardInfoV2Event
+  /// Create a copy of CardInfoEvent
   /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
@@ -1696,7 +1684,7 @@ class __$$GetInfoProductSizeCardInfoV2EventImplCopyWithImpl<$Res>
     Object? code = null,
     Object? isShop = null,
   }) {
-    return _then(_$GetInfoProductSizeCardInfoV2EventImpl(
+    return _then(_$GetInfoProductSizeCardInfoEventImpl(
       code: null == code
           ? _value.code
           : code // ignore: cast_nullable_to_non_nullable
@@ -1711,9 +1699,9 @@ class __$$GetInfoProductSizeCardInfoV2EventImplCopyWithImpl<$Res>
 
 /// @nodoc
 
-class _$GetInfoProductSizeCardInfoV2EventImpl
-    implements GetInfoProductSizeCardInfoV2Event {
-  const _$GetInfoProductSizeCardInfoV2EventImpl(
+class _$GetInfoProductSizeCardInfoEventImpl
+    implements GetInfoProductSizeCardInfoEvent {
+  const _$GetInfoProductSizeCardInfoEventImpl(
       {required this.code, required this.isShop});
 
   @override
@@ -1723,14 +1711,14 @@ class _$GetInfoProductSizeCardInfoV2EventImpl
 
   @override
   String toString() {
-    return 'CardInfoV2Event.getInfoProductSize(code: $code, isShop: $isShop)';
+    return 'CardInfoEvent.getInfoProductSize(code: $code, isShop: $isShop)';
   }
 
   @override
   bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$GetInfoProductSizeCardInfoV2EventImpl &&
+            other is _$GetInfoProductSizeCardInfoEventImpl &&
             (identical(other.code, code) || other.code == code) &&
             (identical(other.isShop, isShop) || other.isShop == isShop));
   }
@@ -1738,15 +1726,15 @@ class _$GetInfoProductSizeCardInfoV2EventImpl
   @override
   int get hashCode => Object.hash(runtimeType, code, isShop);
 
-  /// Create a copy of CardInfoV2Event
+  /// Create a copy of CardInfoEvent
   /// with the given fields replaced by the non-null parameter values.
   @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
-  _$$GetInfoProductSizeCardInfoV2EventImplCopyWith<
-          _$GetInfoProductSizeCardInfoV2EventImpl>
-      get copyWith => __$$GetInfoProductSizeCardInfoV2EventImplCopyWithImpl<
-          _$GetInfoProductSizeCardInfoV2EventImpl>(this, _$identity);
+  _$$GetInfoProductSizeCardInfoEventImplCopyWith<
+          _$GetInfoProductSizeCardInfoEventImpl>
+      get copyWith => __$$GetInfoProductSizeCardInfoEventImplCopyWithImpl<
+          _$GetInfoProductSizeCardInfoEventImpl>(this, _$identity);
 
   @override
   @optionalTypeArgs
@@ -1876,24 +1864,24 @@ class _$GetInfoProductSizeCardInfoV2EventImpl
   @override
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
-    required TResult Function(InitCardInfoV2Event value) init,
-    required TResult Function(PreloadDataCardInfoV2Event value) preloadData,
-    required TResult Function(GetProductCardInfoV2Event value) getProduct,
-    required TResult Function(GoBackProductInfoCategotyCardInfoV2Event value)
+    required TResult Function(InitCardInfoEvent value) init,
+    required TResult Function(PreloadDataCardInfoEvent value) preloadData,
+    required TResult Function(GetProductCardInfoEvent value) getProduct,
+    required TResult Function(GoBackProductInfoCategotyCardInfoEvent value)
         goBackProductInfo,
-    required TResult Function(GetInfoProductSizeCardInfoV2Event value)
+    required TResult Function(GetInfoProductSizeCardInfoEvent value)
         getInfoProductSize,
-    required TResult Function(AddFavouriteProductCardInfoV2Event value)
+    required TResult Function(AddFavouriteProductCardInfoEvent value)
         addFavouriteProduct,
-    required TResult Function(DeleteFavouriteProductCardInfoV2Event value)
+    required TResult Function(DeleteFavouriteProductCardInfoEvent value)
         deleteFavouriteProduct,
-    required TResult Function(AddProductToShoppingCartCardInfoV2Event value)
+    required TResult Function(AddProductToShoppingCartCardInfoEvent value)
         addProductToSoppingCart,
-    required TResult Function(AddProductToSoppingCardInfoV2Event value)
+    required TResult Function(AddProductToSoppingCardInfoEvent value)
         addProductToSoppingCartInfo,
-    required TResult Function(CheckProductToCardInfoV2Event value)
+    required TResult Function(CheckProductToCardInfoEvent value)
         checkProductToSoppingCart,
-    required TResult Function(ChangeSizeProductCardInfoV2Event value)
+    required TResult Function(ChangeSizeProductCardInfoEvent value)
         changeSizeProduct,
   }) {
     return getInfoProductSize(this);
@@ -1902,25 +1890,24 @@ class _$GetInfoProductSizeCardInfoV2EventImpl
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(InitCardInfoV2Event value)? init,
-    TResult? Function(PreloadDataCardInfoV2Event value)? preloadData,
-    TResult? Function(GetProductCardInfoV2Event value)? getProduct,
-    TResult? Function(GoBackProductInfoCategotyCardInfoV2Event value)?
+    TResult? Function(InitCardInfoEvent value)? init,
+    TResult? Function(PreloadDataCardInfoEvent value)? preloadData,
+    TResult? Function(GetProductCardInfoEvent value)? getProduct,
+    TResult? Function(GoBackProductInfoCategotyCardInfoEvent value)?
         goBackProductInfo,
-    TResult? Function(GetInfoProductSizeCardInfoV2Event value)?
+    TResult? Function(GetInfoProductSizeCardInfoEvent value)?
         getInfoProductSize,
-    TResult? Function(AddFavouriteProductCardInfoV2Event value)?
+    TResult? Function(AddFavouriteProductCardInfoEvent value)?
         addFavouriteProduct,
-    TResult? Function(DeleteFavouriteProductCardInfoV2Event value)?
+    TResult? Function(DeleteFavouriteProductCardInfoEvent value)?
         deleteFavouriteProduct,
-    TResult? Function(AddProductToShoppingCartCardInfoV2Event value)?
+    TResult? Function(AddProductToShoppingCartCardInfoEvent value)?
         addProductToSoppingCart,
-    TResult? Function(AddProductToSoppingCardInfoV2Event value)?
+    TResult? Function(AddProductToSoppingCardInfoEvent value)?
         addProductToSoppingCartInfo,
-    TResult? Function(CheckProductToCardInfoV2Event value)?
+    TResult? Function(CheckProductToCardInfoEvent value)?
         checkProductToSoppingCart,
-    TResult? Function(ChangeSizeProductCardInfoV2Event value)?
-        changeSizeProduct,
+    TResult? Function(ChangeSizeProductCardInfoEvent value)? changeSizeProduct,
   }) {
     return getInfoProductSize?.call(this);
   }
@@ -1928,24 +1915,23 @@ class _$GetInfoProductSizeCardInfoV2EventImpl
   @override
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
-    TResult Function(InitCardInfoV2Event value)? init,
-    TResult Function(PreloadDataCardInfoV2Event value)? preloadData,
-    TResult Function(GetProductCardInfoV2Event value)? getProduct,
-    TResult Function(GoBackProductInfoCategotyCardInfoV2Event value)?
+    TResult Function(InitCardInfoEvent value)? init,
+    TResult Function(PreloadDataCardInfoEvent value)? preloadData,
+    TResult Function(GetProductCardInfoEvent value)? getProduct,
+    TResult Function(GoBackProductInfoCategotyCardInfoEvent value)?
         goBackProductInfo,
-    TResult Function(GetInfoProductSizeCardInfoV2Event value)?
-        getInfoProductSize,
-    TResult Function(AddFavouriteProductCardInfoV2Event value)?
+    TResult Function(GetInfoProductSizeCardInfoEvent value)? getInfoProductSize,
+    TResult Function(AddFavouriteProductCardInfoEvent value)?
         addFavouriteProduct,
-    TResult Function(DeleteFavouriteProductCardInfoV2Event value)?
+    TResult Function(DeleteFavouriteProductCardInfoEvent value)?
         deleteFavouriteProduct,
-    TResult Function(AddProductToShoppingCartCardInfoV2Event value)?
+    TResult Function(AddProductToShoppingCartCardInfoEvent value)?
         addProductToSoppingCart,
-    TResult Function(AddProductToSoppingCardInfoV2Event value)?
+    TResult Function(AddProductToSoppingCardInfoEvent value)?
         addProductToSoppingCartInfo,
-    TResult Function(CheckProductToCardInfoV2Event value)?
+    TResult Function(CheckProductToCardInfoEvent value)?
         checkProductToSoppingCart,
-    TResult Function(ChangeSizeProductCardInfoV2Event value)? changeSizeProduct,
+    TResult Function(ChangeSizeProductCardInfoEvent value)? changeSizeProduct,
     required TResult orElse(),
   }) {
     if (getInfoProductSize != null) {
@@ -1955,28 +1941,28 @@ class _$GetInfoProductSizeCardInfoV2EventImpl
   }
 }
 
-abstract class GetInfoProductSizeCardInfoV2Event implements CardInfoEvent {
-  const factory GetInfoProductSizeCardInfoV2Event(
+abstract class GetInfoProductSizeCardInfoEvent implements CardInfoEvent {
+  const factory GetInfoProductSizeCardInfoEvent(
       {required final String code,
-      required final bool isShop}) = _$GetInfoProductSizeCardInfoV2EventImpl;
+      required final bool isShop}) = _$GetInfoProductSizeCardInfoEventImpl;
 
   String get code;
   bool get isShop;
 
-  /// Create a copy of CardInfoV2Event
+  /// Create a copy of CardInfoEvent
   /// with the given fields replaced by the non-null parameter values.
   @JsonKey(includeFromJson: false, includeToJson: false)
-  _$$GetInfoProductSizeCardInfoV2EventImplCopyWith<
-          _$GetInfoProductSizeCardInfoV2EventImpl>
+  _$$GetInfoProductSizeCardInfoEventImplCopyWith<
+          _$GetInfoProductSizeCardInfoEventImpl>
       get copyWith => throw _privateConstructorUsedError;
 }
 
 /// @nodoc
-abstract class _$$AddFavouriteProductCardInfoV2EventImplCopyWith<$Res> {
-  factory _$$AddFavouriteProductCardInfoV2EventImplCopyWith(
-          _$AddFavouriteProductCardInfoV2EventImpl value,
-          $Res Function(_$AddFavouriteProductCardInfoV2EventImpl) then) =
-      __$$AddFavouriteProductCardInfoV2EventImplCopyWithImpl<$Res>;
+abstract class _$$AddFavouriteProductCardInfoEventImplCopyWith<$Res> {
+  factory _$$AddFavouriteProductCardInfoEventImplCopyWith(
+          _$AddFavouriteProductCardInfoEventImpl value,
+          $Res Function(_$AddFavouriteProductCardInfoEventImpl) then) =
+      __$$AddFavouriteProductCardInfoEventImplCopyWithImpl<$Res>;
   @useResult
   $Res call({int index, ProductDataModel product});
 
@@ -1984,16 +1970,16 @@ abstract class _$$AddFavouriteProductCardInfoV2EventImplCopyWith<$Res> {
 }
 
 /// @nodoc
-class __$$AddFavouriteProductCardInfoV2EventImplCopyWithImpl<$Res>
-    extends _$CardInfoV2EventCopyWithImpl<$Res,
-        _$AddFavouriteProductCardInfoV2EventImpl>
-    implements _$$AddFavouriteProductCardInfoV2EventImplCopyWith<$Res> {
-  __$$AddFavouriteProductCardInfoV2EventImplCopyWithImpl(
-      _$AddFavouriteProductCardInfoV2EventImpl _value,
-      $Res Function(_$AddFavouriteProductCardInfoV2EventImpl) _then)
+class __$$AddFavouriteProductCardInfoEventImplCopyWithImpl<$Res>
+    extends _$CardInfoEventCopyWithImpl<$Res,
+        _$AddFavouriteProductCardInfoEventImpl>
+    implements _$$AddFavouriteProductCardInfoEventImplCopyWith<$Res> {
+  __$$AddFavouriteProductCardInfoEventImplCopyWithImpl(
+      _$AddFavouriteProductCardInfoEventImpl _value,
+      $Res Function(_$AddFavouriteProductCardInfoEventImpl) _then)
       : super(_value, _then);
 
-  /// Create a copy of CardInfoV2Event
+  /// Create a copy of CardInfoEvent
   /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
@@ -2001,7 +1987,7 @@ class __$$AddFavouriteProductCardInfoV2EventImplCopyWithImpl<$Res>
     Object? index = null,
     Object? product = null,
   }) {
-    return _then(_$AddFavouriteProductCardInfoV2EventImpl(
+    return _then(_$AddFavouriteProductCardInfoEventImpl(
       index: null == index
           ? _value.index
           : index // ignore: cast_nullable_to_non_nullable
@@ -2013,7 +1999,7 @@ class __$$AddFavouriteProductCardInfoV2EventImplCopyWithImpl<$Res>
     ));
   }
 
-  /// Create a copy of CardInfoV2Event
+  /// Create a copy of CardInfoEvent
   /// with the given fields replaced by the non-null parameter values.
   @override
   @pragma('vm:prefer-inline')
@@ -2026,9 +2012,9 @@ class __$$AddFavouriteProductCardInfoV2EventImplCopyWithImpl<$Res>
 
 /// @nodoc
 
-class _$AddFavouriteProductCardInfoV2EventImpl
-    implements AddFavouriteProductCardInfoV2Event {
-  const _$AddFavouriteProductCardInfoV2EventImpl(
+class _$AddFavouriteProductCardInfoEventImpl
+    implements AddFavouriteProductCardInfoEvent {
+  const _$AddFavouriteProductCardInfoEventImpl(
       {required this.index, required this.product});
 
   @override
@@ -2038,14 +2024,14 @@ class _$AddFavouriteProductCardInfoV2EventImpl
 
   @override
   String toString() {
-    return 'CardInfoV2Event.addFavouriteProduct(index: $index, product: $product)';
+    return 'CardInfoEvent.addFavouriteProduct(index: $index, product: $product)';
   }
 
   @override
   bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$AddFavouriteProductCardInfoV2EventImpl &&
+            other is _$AddFavouriteProductCardInfoEventImpl &&
             (identical(other.index, index) || other.index == index) &&
             (identical(other.product, product) || other.product == product));
   }
@@ -2053,15 +2039,15 @@ class _$AddFavouriteProductCardInfoV2EventImpl
   @override
   int get hashCode => Object.hash(runtimeType, index, product);
 
-  /// Create a copy of CardInfoV2Event
+  /// Create a copy of CardInfoEvent
   /// with the given fields replaced by the non-null parameter values.
   @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
-  _$$AddFavouriteProductCardInfoV2EventImplCopyWith<
-          _$AddFavouriteProductCardInfoV2EventImpl>
-      get copyWith => __$$AddFavouriteProductCardInfoV2EventImplCopyWithImpl<
-          _$AddFavouriteProductCardInfoV2EventImpl>(this, _$identity);
+  _$$AddFavouriteProductCardInfoEventImplCopyWith<
+          _$AddFavouriteProductCardInfoEventImpl>
+      get copyWith => __$$AddFavouriteProductCardInfoEventImplCopyWithImpl<
+          _$AddFavouriteProductCardInfoEventImpl>(this, _$identity);
 
   @override
   @optionalTypeArgs
@@ -2191,24 +2177,24 @@ class _$AddFavouriteProductCardInfoV2EventImpl
   @override
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
-    required TResult Function(InitCardInfoV2Event value) init,
-    required TResult Function(PreloadDataCardInfoV2Event value) preloadData,
-    required TResult Function(GetProductCardInfoV2Event value) getProduct,
-    required TResult Function(GoBackProductInfoCategotyCardInfoV2Event value)
+    required TResult Function(InitCardInfoEvent value) init,
+    required TResult Function(PreloadDataCardInfoEvent value) preloadData,
+    required TResult Function(GetProductCardInfoEvent value) getProduct,
+    required TResult Function(GoBackProductInfoCategotyCardInfoEvent value)
         goBackProductInfo,
-    required TResult Function(GetInfoProductSizeCardInfoV2Event value)
+    required TResult Function(GetInfoProductSizeCardInfoEvent value)
         getInfoProductSize,
-    required TResult Function(AddFavouriteProductCardInfoV2Event value)
+    required TResult Function(AddFavouriteProductCardInfoEvent value)
         addFavouriteProduct,
-    required TResult Function(DeleteFavouriteProductCardInfoV2Event value)
+    required TResult Function(DeleteFavouriteProductCardInfoEvent value)
         deleteFavouriteProduct,
-    required TResult Function(AddProductToShoppingCartCardInfoV2Event value)
+    required TResult Function(AddProductToShoppingCartCardInfoEvent value)
         addProductToSoppingCart,
-    required TResult Function(AddProductToSoppingCardInfoV2Event value)
+    required TResult Function(AddProductToSoppingCardInfoEvent value)
         addProductToSoppingCartInfo,
-    required TResult Function(CheckProductToCardInfoV2Event value)
+    required TResult Function(CheckProductToCardInfoEvent value)
         checkProductToSoppingCart,
-    required TResult Function(ChangeSizeProductCardInfoV2Event value)
+    required TResult Function(ChangeSizeProductCardInfoEvent value)
         changeSizeProduct,
   }) {
     return addFavouriteProduct(this);
@@ -2217,25 +2203,24 @@ class _$AddFavouriteProductCardInfoV2EventImpl
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(InitCardInfoV2Event value)? init,
-    TResult? Function(PreloadDataCardInfoV2Event value)? preloadData,
-    TResult? Function(GetProductCardInfoV2Event value)? getProduct,
-    TResult? Function(GoBackProductInfoCategotyCardInfoV2Event value)?
+    TResult? Function(InitCardInfoEvent value)? init,
+    TResult? Function(PreloadDataCardInfoEvent value)? preloadData,
+    TResult? Function(GetProductCardInfoEvent value)? getProduct,
+    TResult? Function(GoBackProductInfoCategotyCardInfoEvent value)?
         goBackProductInfo,
-    TResult? Function(GetInfoProductSizeCardInfoV2Event value)?
+    TResult? Function(GetInfoProductSizeCardInfoEvent value)?
         getInfoProductSize,
-    TResult? Function(AddFavouriteProductCardInfoV2Event value)?
+    TResult? Function(AddFavouriteProductCardInfoEvent value)?
         addFavouriteProduct,
-    TResult? Function(DeleteFavouriteProductCardInfoV2Event value)?
+    TResult? Function(DeleteFavouriteProductCardInfoEvent value)?
         deleteFavouriteProduct,
-    TResult? Function(AddProductToShoppingCartCardInfoV2Event value)?
+    TResult? Function(AddProductToShoppingCartCardInfoEvent value)?
         addProductToSoppingCart,
-    TResult? Function(AddProductToSoppingCardInfoV2Event value)?
+    TResult? Function(AddProductToSoppingCardInfoEvent value)?
         addProductToSoppingCartInfo,
-    TResult? Function(CheckProductToCardInfoV2Event value)?
+    TResult? Function(CheckProductToCardInfoEvent value)?
         checkProductToSoppingCart,
-    TResult? Function(ChangeSizeProductCardInfoV2Event value)?
-        changeSizeProduct,
+    TResult? Function(ChangeSizeProductCardInfoEvent value)? changeSizeProduct,
   }) {
     return addFavouriteProduct?.call(this);
   }
@@ -2243,24 +2228,23 @@ class _$AddFavouriteProductCardInfoV2EventImpl
   @override
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
-    TResult Function(InitCardInfoV2Event value)? init,
-    TResult Function(PreloadDataCardInfoV2Event value)? preloadData,
-    TResult Function(GetProductCardInfoV2Event value)? getProduct,
-    TResult Function(GoBackProductInfoCategotyCardInfoV2Event value)?
+    TResult Function(InitCardInfoEvent value)? init,
+    TResult Function(PreloadDataCardInfoEvent value)? preloadData,
+    TResult Function(GetProductCardInfoEvent value)? getProduct,
+    TResult Function(GoBackProductInfoCategotyCardInfoEvent value)?
         goBackProductInfo,
-    TResult Function(GetInfoProductSizeCardInfoV2Event value)?
-        getInfoProductSize,
-    TResult Function(AddFavouriteProductCardInfoV2Event value)?
+    TResult Function(GetInfoProductSizeCardInfoEvent value)? getInfoProductSize,
+    TResult Function(AddFavouriteProductCardInfoEvent value)?
         addFavouriteProduct,
-    TResult Function(DeleteFavouriteProductCardInfoV2Event value)?
+    TResult Function(DeleteFavouriteProductCardInfoEvent value)?
         deleteFavouriteProduct,
-    TResult Function(AddProductToShoppingCartCardInfoV2Event value)?
+    TResult Function(AddProductToShoppingCartCardInfoEvent value)?
         addProductToSoppingCart,
-    TResult Function(AddProductToSoppingCardInfoV2Event value)?
+    TResult Function(AddProductToSoppingCardInfoEvent value)?
         addProductToSoppingCartInfo,
-    TResult Function(CheckProductToCardInfoV2Event value)?
+    TResult Function(CheckProductToCardInfoEvent value)?
         checkProductToSoppingCart,
-    TResult Function(ChangeSizeProductCardInfoV2Event value)? changeSizeProduct,
+    TResult Function(ChangeSizeProductCardInfoEvent value)? changeSizeProduct,
     required TResult orElse(),
   }) {
     if (addFavouriteProduct != null) {
@@ -2270,50 +2254,50 @@ class _$AddFavouriteProductCardInfoV2EventImpl
   }
 }
 
-abstract class AddFavouriteProductCardInfoV2Event implements CardInfoEvent {
-  const factory AddFavouriteProductCardInfoV2Event(
+abstract class AddFavouriteProductCardInfoEvent implements CardInfoEvent {
+  const factory AddFavouriteProductCardInfoEvent(
           {required final int index, required final ProductDataModel product}) =
-      _$AddFavouriteProductCardInfoV2EventImpl;
+      _$AddFavouriteProductCardInfoEventImpl;
 
   int get index;
   ProductDataModel get product;
 
-  /// Create a copy of CardInfoV2Event
+  /// Create a copy of CardInfoEvent
   /// with the given fields replaced by the non-null parameter values.
   @JsonKey(includeFromJson: false, includeToJson: false)
-  _$$AddFavouriteProductCardInfoV2EventImplCopyWith<
-          _$AddFavouriteProductCardInfoV2EventImpl>
+  _$$AddFavouriteProductCardInfoEventImplCopyWith<
+          _$AddFavouriteProductCardInfoEventImpl>
       get copyWith => throw _privateConstructorUsedError;
 }
 
 /// @nodoc
-abstract class _$$DeleteFavouriteProductCardInfoV2EventImplCopyWith<$Res> {
-  factory _$$DeleteFavouriteProductCardInfoV2EventImplCopyWith(
-          _$DeleteFavouriteProductCardInfoV2EventImpl value,
-          $Res Function(_$DeleteFavouriteProductCardInfoV2EventImpl) then) =
-      __$$DeleteFavouriteProductCardInfoV2EventImplCopyWithImpl<$Res>;
+abstract class _$$DeleteFavouriteProductCardInfoEventImplCopyWith<$Res> {
+  factory _$$DeleteFavouriteProductCardInfoEventImplCopyWith(
+          _$DeleteFavouriteProductCardInfoEventImpl value,
+          $Res Function(_$DeleteFavouriteProductCardInfoEventImpl) then) =
+      __$$DeleteFavouriteProductCardInfoEventImplCopyWithImpl<$Res>;
   @useResult
   $Res call({int index});
 }
 
 /// @nodoc
-class __$$DeleteFavouriteProductCardInfoV2EventImplCopyWithImpl<$Res>
-    extends _$CardInfoV2EventCopyWithImpl<$Res,
-        _$DeleteFavouriteProductCardInfoV2EventImpl>
-    implements _$$DeleteFavouriteProductCardInfoV2EventImplCopyWith<$Res> {
-  __$$DeleteFavouriteProductCardInfoV2EventImplCopyWithImpl(
-      _$DeleteFavouriteProductCardInfoV2EventImpl _value,
-      $Res Function(_$DeleteFavouriteProductCardInfoV2EventImpl) _then)
+class __$$DeleteFavouriteProductCardInfoEventImplCopyWithImpl<$Res>
+    extends _$CardInfoEventCopyWithImpl<$Res,
+        _$DeleteFavouriteProductCardInfoEventImpl>
+    implements _$$DeleteFavouriteProductCardInfoEventImplCopyWith<$Res> {
+  __$$DeleteFavouriteProductCardInfoEventImplCopyWithImpl(
+      _$DeleteFavouriteProductCardInfoEventImpl _value,
+      $Res Function(_$DeleteFavouriteProductCardInfoEventImpl) _then)
       : super(_value, _then);
 
-  /// Create a copy of CardInfoV2Event
+  /// Create a copy of CardInfoEvent
   /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
     Object? index = null,
   }) {
-    return _then(_$DeleteFavouriteProductCardInfoV2EventImpl(
+    return _then(_$DeleteFavouriteProductCardInfoEventImpl(
       index: null == index
           ? _value.index
           : index // ignore: cast_nullable_to_non_nullable
@@ -2324,38 +2308,38 @@ class __$$DeleteFavouriteProductCardInfoV2EventImplCopyWithImpl<$Res>
 
 /// @nodoc
 
-class _$DeleteFavouriteProductCardInfoV2EventImpl
-    implements DeleteFavouriteProductCardInfoV2Event {
-  const _$DeleteFavouriteProductCardInfoV2EventImpl({required this.index});
+class _$DeleteFavouriteProductCardInfoEventImpl
+    implements DeleteFavouriteProductCardInfoEvent {
+  const _$DeleteFavouriteProductCardInfoEventImpl({required this.index});
 
   @override
   final int index;
 
   @override
   String toString() {
-    return 'CardInfoV2Event.deleteFavouriteProduct(index: $index)';
+    return 'CardInfoEvent.deleteFavouriteProduct(index: $index)';
   }
 
   @override
   bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$DeleteFavouriteProductCardInfoV2EventImpl &&
+            other is _$DeleteFavouriteProductCardInfoEventImpl &&
             (identical(other.index, index) || other.index == index));
   }
 
   @override
   int get hashCode => Object.hash(runtimeType, index);
 
-  /// Create a copy of CardInfoV2Event
+  /// Create a copy of CardInfoEvent
   /// with the given fields replaced by the non-null parameter values.
   @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
-  _$$DeleteFavouriteProductCardInfoV2EventImplCopyWith<
-          _$DeleteFavouriteProductCardInfoV2EventImpl>
-      get copyWith => __$$DeleteFavouriteProductCardInfoV2EventImplCopyWithImpl<
-          _$DeleteFavouriteProductCardInfoV2EventImpl>(this, _$identity);
+  _$$DeleteFavouriteProductCardInfoEventImplCopyWith<
+          _$DeleteFavouriteProductCardInfoEventImpl>
+      get copyWith => __$$DeleteFavouriteProductCardInfoEventImplCopyWithImpl<
+          _$DeleteFavouriteProductCardInfoEventImpl>(this, _$identity);
 
   @override
   @optionalTypeArgs
@@ -2485,24 +2469,24 @@ class _$DeleteFavouriteProductCardInfoV2EventImpl
   @override
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
-    required TResult Function(InitCardInfoV2Event value) init,
-    required TResult Function(PreloadDataCardInfoV2Event value) preloadData,
-    required TResult Function(GetProductCardInfoV2Event value) getProduct,
-    required TResult Function(GoBackProductInfoCategotyCardInfoV2Event value)
+    required TResult Function(InitCardInfoEvent value) init,
+    required TResult Function(PreloadDataCardInfoEvent value) preloadData,
+    required TResult Function(GetProductCardInfoEvent value) getProduct,
+    required TResult Function(GoBackProductInfoCategotyCardInfoEvent value)
         goBackProductInfo,
-    required TResult Function(GetInfoProductSizeCardInfoV2Event value)
+    required TResult Function(GetInfoProductSizeCardInfoEvent value)
         getInfoProductSize,
-    required TResult Function(AddFavouriteProductCardInfoV2Event value)
+    required TResult Function(AddFavouriteProductCardInfoEvent value)
         addFavouriteProduct,
-    required TResult Function(DeleteFavouriteProductCardInfoV2Event value)
+    required TResult Function(DeleteFavouriteProductCardInfoEvent value)
         deleteFavouriteProduct,
-    required TResult Function(AddProductToShoppingCartCardInfoV2Event value)
+    required TResult Function(AddProductToShoppingCartCardInfoEvent value)
         addProductToSoppingCart,
-    required TResult Function(AddProductToSoppingCardInfoV2Event value)
+    required TResult Function(AddProductToSoppingCardInfoEvent value)
         addProductToSoppingCartInfo,
-    required TResult Function(CheckProductToCardInfoV2Event value)
+    required TResult Function(CheckProductToCardInfoEvent value)
         checkProductToSoppingCart,
-    required TResult Function(ChangeSizeProductCardInfoV2Event value)
+    required TResult Function(ChangeSizeProductCardInfoEvent value)
         changeSizeProduct,
   }) {
     return deleteFavouriteProduct(this);
@@ -2511,25 +2495,24 @@ class _$DeleteFavouriteProductCardInfoV2EventImpl
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(InitCardInfoV2Event value)? init,
-    TResult? Function(PreloadDataCardInfoV2Event value)? preloadData,
-    TResult? Function(GetProductCardInfoV2Event value)? getProduct,
-    TResult? Function(GoBackProductInfoCategotyCardInfoV2Event value)?
+    TResult? Function(InitCardInfoEvent value)? init,
+    TResult? Function(PreloadDataCardInfoEvent value)? preloadData,
+    TResult? Function(GetProductCardInfoEvent value)? getProduct,
+    TResult? Function(GoBackProductInfoCategotyCardInfoEvent value)?
         goBackProductInfo,
-    TResult? Function(GetInfoProductSizeCardInfoV2Event value)?
+    TResult? Function(GetInfoProductSizeCardInfoEvent value)?
         getInfoProductSize,
-    TResult? Function(AddFavouriteProductCardInfoV2Event value)?
+    TResult? Function(AddFavouriteProductCardInfoEvent value)?
         addFavouriteProduct,
-    TResult? Function(DeleteFavouriteProductCardInfoV2Event value)?
+    TResult? Function(DeleteFavouriteProductCardInfoEvent value)?
         deleteFavouriteProduct,
-    TResult? Function(AddProductToShoppingCartCardInfoV2Event value)?
+    TResult? Function(AddProductToShoppingCartCardInfoEvent value)?
         addProductToSoppingCart,
-    TResult? Function(AddProductToSoppingCardInfoV2Event value)?
+    TResult? Function(AddProductToSoppingCardInfoEvent value)?
         addProductToSoppingCartInfo,
-    TResult? Function(CheckProductToCardInfoV2Event value)?
+    TResult? Function(CheckProductToCardInfoEvent value)?
         checkProductToSoppingCart,
-    TResult? Function(ChangeSizeProductCardInfoV2Event value)?
-        changeSizeProduct,
+    TResult? Function(ChangeSizeProductCardInfoEvent value)? changeSizeProduct,
   }) {
     return deleteFavouriteProduct?.call(this);
   }
@@ -2537,24 +2520,23 @@ class _$DeleteFavouriteProductCardInfoV2EventImpl
   @override
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
-    TResult Function(InitCardInfoV2Event value)? init,
-    TResult Function(PreloadDataCardInfoV2Event value)? preloadData,
-    TResult Function(GetProductCardInfoV2Event value)? getProduct,
-    TResult Function(GoBackProductInfoCategotyCardInfoV2Event value)?
+    TResult Function(InitCardInfoEvent value)? init,
+    TResult Function(PreloadDataCardInfoEvent value)? preloadData,
+    TResult Function(GetProductCardInfoEvent value)? getProduct,
+    TResult Function(GoBackProductInfoCategotyCardInfoEvent value)?
         goBackProductInfo,
-    TResult Function(GetInfoProductSizeCardInfoV2Event value)?
-        getInfoProductSize,
-    TResult Function(AddFavouriteProductCardInfoV2Event value)?
+    TResult Function(GetInfoProductSizeCardInfoEvent value)? getInfoProductSize,
+    TResult Function(AddFavouriteProductCardInfoEvent value)?
         addFavouriteProduct,
-    TResult Function(DeleteFavouriteProductCardInfoV2Event value)?
+    TResult Function(DeleteFavouriteProductCardInfoEvent value)?
         deleteFavouriteProduct,
-    TResult Function(AddProductToShoppingCartCardInfoV2Event value)?
+    TResult Function(AddProductToShoppingCartCardInfoEvent value)?
         addProductToSoppingCart,
-    TResult Function(AddProductToSoppingCardInfoV2Event value)?
+    TResult Function(AddProductToSoppingCardInfoEvent value)?
         addProductToSoppingCartInfo,
-    TResult Function(CheckProductToCardInfoV2Event value)?
+    TResult Function(CheckProductToCardInfoEvent value)?
         checkProductToSoppingCart,
-    TResult Function(ChangeSizeProductCardInfoV2Event value)? changeSizeProduct,
+    TResult Function(ChangeSizeProductCardInfoEvent value)? changeSizeProduct,
     required TResult orElse(),
   }) {
     if (deleteFavouriteProduct != null) {
@@ -2564,27 +2546,26 @@ class _$DeleteFavouriteProductCardInfoV2EventImpl
   }
 }
 
-abstract class DeleteFavouriteProductCardInfoV2Event
-    implements CardInfoEvent {
-  const factory DeleteFavouriteProductCardInfoV2Event(
-      {required final int index}) = _$DeleteFavouriteProductCardInfoV2EventImpl;
+abstract class DeleteFavouriteProductCardInfoEvent implements CardInfoEvent {
+  const factory DeleteFavouriteProductCardInfoEvent(
+      {required final int index}) = _$DeleteFavouriteProductCardInfoEventImpl;
 
   int get index;
 
-  /// Create a copy of CardInfoV2Event
+  /// Create a copy of CardInfoEvent
   /// with the given fields replaced by the non-null parameter values.
   @JsonKey(includeFromJson: false, includeToJson: false)
-  _$$DeleteFavouriteProductCardInfoV2EventImplCopyWith<
-          _$DeleteFavouriteProductCardInfoV2EventImpl>
+  _$$DeleteFavouriteProductCardInfoEventImplCopyWith<
+          _$DeleteFavouriteProductCardInfoEventImpl>
       get copyWith => throw _privateConstructorUsedError;
 }
 
 /// @nodoc
-abstract class _$$AddProductToShoppingCartCardInfoV2EventImplCopyWith<$Res> {
-  factory _$$AddProductToShoppingCartCardInfoV2EventImplCopyWith(
-          _$AddProductToShoppingCartCardInfoV2EventImpl value,
-          $Res Function(_$AddProductToShoppingCartCardInfoV2EventImpl) then) =
-      __$$AddProductToShoppingCartCardInfoV2EventImplCopyWithImpl<$Res>;
+abstract class _$$AddProductToShoppingCartCardInfoEventImplCopyWith<$Res> {
+  factory _$$AddProductToShoppingCartCardInfoEventImplCopyWith(
+          _$AddProductToShoppingCartCardInfoEventImpl value,
+          $Res Function(_$AddProductToShoppingCartCardInfoEventImpl) then) =
+      __$$AddProductToShoppingCartCardInfoEventImplCopyWithImpl<$Res>;
   @useResult
   $Res call({BasketInfoItemDataModel item});
 
@@ -2592,23 +2573,23 @@ abstract class _$$AddProductToShoppingCartCardInfoV2EventImplCopyWith<$Res> {
 }
 
 /// @nodoc
-class __$$AddProductToShoppingCartCardInfoV2EventImplCopyWithImpl<$Res>
-    extends _$CardInfoV2EventCopyWithImpl<$Res,
-        _$AddProductToShoppingCartCardInfoV2EventImpl>
-    implements _$$AddProductToShoppingCartCardInfoV2EventImplCopyWith<$Res> {
-  __$$AddProductToShoppingCartCardInfoV2EventImplCopyWithImpl(
-      _$AddProductToShoppingCartCardInfoV2EventImpl _value,
-      $Res Function(_$AddProductToShoppingCartCardInfoV2EventImpl) _then)
+class __$$AddProductToShoppingCartCardInfoEventImplCopyWithImpl<$Res>
+    extends _$CardInfoEventCopyWithImpl<$Res,
+        _$AddProductToShoppingCartCardInfoEventImpl>
+    implements _$$AddProductToShoppingCartCardInfoEventImplCopyWith<$Res> {
+  __$$AddProductToShoppingCartCardInfoEventImplCopyWithImpl(
+      _$AddProductToShoppingCartCardInfoEventImpl _value,
+      $Res Function(_$AddProductToShoppingCartCardInfoEventImpl) _then)
       : super(_value, _then);
 
-  /// Create a copy of CardInfoV2Event
+  /// Create a copy of CardInfoEvent
   /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
     Object? item = null,
   }) {
-    return _then(_$AddProductToShoppingCartCardInfoV2EventImpl(
+    return _then(_$AddProductToShoppingCartCardInfoEventImpl(
       item: null == item
           ? _value.item
           : item // ignore: cast_nullable_to_non_nullable
@@ -2616,7 +2597,7 @@ class __$$AddProductToShoppingCartCardInfoV2EventImplCopyWithImpl<$Res>
     ));
   }
 
-  /// Create a copy of CardInfoV2Event
+  /// Create a copy of CardInfoEvent
   /// with the given fields replaced by the non-null parameter values.
   @override
   @pragma('vm:prefer-inline')
@@ -2629,39 +2610,38 @@ class __$$AddProductToShoppingCartCardInfoV2EventImplCopyWithImpl<$Res>
 
 /// @nodoc
 
-class _$AddProductToShoppingCartCardInfoV2EventImpl
-    implements AddProductToShoppingCartCardInfoV2Event {
-  const _$AddProductToShoppingCartCardInfoV2EventImpl({required this.item});
+class _$AddProductToShoppingCartCardInfoEventImpl
+    implements AddProductToShoppingCartCardInfoEvent {
+  const _$AddProductToShoppingCartCardInfoEventImpl({required this.item});
 
   @override
   final BasketInfoItemDataModel item;
 
   @override
   String toString() {
-    return 'CardInfoV2Event.addProductToSoppingCart(item: $item)';
+    return 'CardInfoEvent.addProductToSoppingCart(item: $item)';
   }
 
   @override
   bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$AddProductToShoppingCartCardInfoV2EventImpl &&
+            other is _$AddProductToShoppingCartCardInfoEventImpl &&
             (identical(other.item, item) || other.item == item));
   }
 
   @override
   int get hashCode => Object.hash(runtimeType, item);
 
-  /// Create a copy of CardInfoV2Event
+  /// Create a copy of CardInfoEvent
   /// with the given fields replaced by the non-null parameter values.
   @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
-  _$$AddProductToShoppingCartCardInfoV2EventImplCopyWith<
-          _$AddProductToShoppingCartCardInfoV2EventImpl>
-      get copyWith =>
-          __$$AddProductToShoppingCartCardInfoV2EventImplCopyWithImpl<
-              _$AddProductToShoppingCartCardInfoV2EventImpl>(this, _$identity);
+  _$$AddProductToShoppingCartCardInfoEventImplCopyWith<
+          _$AddProductToShoppingCartCardInfoEventImpl>
+      get copyWith => __$$AddProductToShoppingCartCardInfoEventImplCopyWithImpl<
+          _$AddProductToShoppingCartCardInfoEventImpl>(this, _$identity);
 
   @override
   @optionalTypeArgs
@@ -2791,24 +2771,24 @@ class _$AddProductToShoppingCartCardInfoV2EventImpl
   @override
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
-    required TResult Function(InitCardInfoV2Event value) init,
-    required TResult Function(PreloadDataCardInfoV2Event value) preloadData,
-    required TResult Function(GetProductCardInfoV2Event value) getProduct,
-    required TResult Function(GoBackProductInfoCategotyCardInfoV2Event value)
+    required TResult Function(InitCardInfoEvent value) init,
+    required TResult Function(PreloadDataCardInfoEvent value) preloadData,
+    required TResult Function(GetProductCardInfoEvent value) getProduct,
+    required TResult Function(GoBackProductInfoCategotyCardInfoEvent value)
         goBackProductInfo,
-    required TResult Function(GetInfoProductSizeCardInfoV2Event value)
+    required TResult Function(GetInfoProductSizeCardInfoEvent value)
         getInfoProductSize,
-    required TResult Function(AddFavouriteProductCardInfoV2Event value)
+    required TResult Function(AddFavouriteProductCardInfoEvent value)
         addFavouriteProduct,
-    required TResult Function(DeleteFavouriteProductCardInfoV2Event value)
+    required TResult Function(DeleteFavouriteProductCardInfoEvent value)
         deleteFavouriteProduct,
-    required TResult Function(AddProductToShoppingCartCardInfoV2Event value)
+    required TResult Function(AddProductToShoppingCartCardInfoEvent value)
         addProductToSoppingCart,
-    required TResult Function(AddProductToSoppingCardInfoV2Event value)
+    required TResult Function(AddProductToSoppingCardInfoEvent value)
         addProductToSoppingCartInfo,
-    required TResult Function(CheckProductToCardInfoV2Event value)
+    required TResult Function(CheckProductToCardInfoEvent value)
         checkProductToSoppingCart,
-    required TResult Function(ChangeSizeProductCardInfoV2Event value)
+    required TResult Function(ChangeSizeProductCardInfoEvent value)
         changeSizeProduct,
   }) {
     return addProductToSoppingCart(this);
@@ -2817,25 +2797,24 @@ class _$AddProductToShoppingCartCardInfoV2EventImpl
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(InitCardInfoV2Event value)? init,
-    TResult? Function(PreloadDataCardInfoV2Event value)? preloadData,
-    TResult? Function(GetProductCardInfoV2Event value)? getProduct,
-    TResult? Function(GoBackProductInfoCategotyCardInfoV2Event value)?
+    TResult? Function(InitCardInfoEvent value)? init,
+    TResult? Function(PreloadDataCardInfoEvent value)? preloadData,
+    TResult? Function(GetProductCardInfoEvent value)? getProduct,
+    TResult? Function(GoBackProductInfoCategotyCardInfoEvent value)?
         goBackProductInfo,
-    TResult? Function(GetInfoProductSizeCardInfoV2Event value)?
+    TResult? Function(GetInfoProductSizeCardInfoEvent value)?
         getInfoProductSize,
-    TResult? Function(AddFavouriteProductCardInfoV2Event value)?
+    TResult? Function(AddFavouriteProductCardInfoEvent value)?
         addFavouriteProduct,
-    TResult? Function(DeleteFavouriteProductCardInfoV2Event value)?
+    TResult? Function(DeleteFavouriteProductCardInfoEvent value)?
         deleteFavouriteProduct,
-    TResult? Function(AddProductToShoppingCartCardInfoV2Event value)?
+    TResult? Function(AddProductToShoppingCartCardInfoEvent value)?
         addProductToSoppingCart,
-    TResult? Function(AddProductToSoppingCardInfoV2Event value)?
+    TResult? Function(AddProductToSoppingCardInfoEvent value)?
         addProductToSoppingCartInfo,
-    TResult? Function(CheckProductToCardInfoV2Event value)?
+    TResult? Function(CheckProductToCardInfoEvent value)?
         checkProductToSoppingCart,
-    TResult? Function(ChangeSizeProductCardInfoV2Event value)?
-        changeSizeProduct,
+    TResult? Function(ChangeSizeProductCardInfoEvent value)? changeSizeProduct,
   }) {
     return addProductToSoppingCart?.call(this);
   }
@@ -2843,24 +2822,23 @@ class _$AddProductToShoppingCartCardInfoV2EventImpl
   @override
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
-    TResult Function(InitCardInfoV2Event value)? init,
-    TResult Function(PreloadDataCardInfoV2Event value)? preloadData,
-    TResult Function(GetProductCardInfoV2Event value)? getProduct,
-    TResult Function(GoBackProductInfoCategotyCardInfoV2Event value)?
+    TResult Function(InitCardInfoEvent value)? init,
+    TResult Function(PreloadDataCardInfoEvent value)? preloadData,
+    TResult Function(GetProductCardInfoEvent value)? getProduct,
+    TResult Function(GoBackProductInfoCategotyCardInfoEvent value)?
         goBackProductInfo,
-    TResult Function(GetInfoProductSizeCardInfoV2Event value)?
-        getInfoProductSize,
-    TResult Function(AddFavouriteProductCardInfoV2Event value)?
+    TResult Function(GetInfoProductSizeCardInfoEvent value)? getInfoProductSize,
+    TResult Function(AddFavouriteProductCardInfoEvent value)?
         addFavouriteProduct,
-    TResult Function(DeleteFavouriteProductCardInfoV2Event value)?
+    TResult Function(DeleteFavouriteProductCardInfoEvent value)?
         deleteFavouriteProduct,
-    TResult Function(AddProductToShoppingCartCardInfoV2Event value)?
+    TResult Function(AddProductToShoppingCartCardInfoEvent value)?
         addProductToSoppingCart,
-    TResult Function(AddProductToSoppingCardInfoV2Event value)?
+    TResult Function(AddProductToSoppingCardInfoEvent value)?
         addProductToSoppingCartInfo,
-    TResult Function(CheckProductToCardInfoV2Event value)?
+    TResult Function(CheckProductToCardInfoEvent value)?
         checkProductToSoppingCart,
-    TResult Function(ChangeSizeProductCardInfoV2Event value)? changeSizeProduct,
+    TResult Function(ChangeSizeProductCardInfoEvent value)? changeSizeProduct,
     required TResult orElse(),
   }) {
     if (addProductToSoppingCart != null) {
@@ -2870,60 +2848,59 @@ class _$AddProductToShoppingCartCardInfoV2EventImpl
   }
 }
 
-abstract class AddProductToShoppingCartCardInfoV2Event
-    implements CardInfoEvent {
-  const factory AddProductToShoppingCartCardInfoV2Event(
+abstract class AddProductToShoppingCartCardInfoEvent implements CardInfoEvent {
+  const factory AddProductToShoppingCartCardInfoEvent(
           {required final BasketInfoItemDataModel item}) =
-      _$AddProductToShoppingCartCardInfoV2EventImpl;
+      _$AddProductToShoppingCartCardInfoEventImpl;
 
   BasketInfoItemDataModel get item;
 
-  /// Create a copy of CardInfoV2Event
+  /// Create a copy of CardInfoEvent
   /// with the given fields replaced by the non-null parameter values.
   @JsonKey(includeFromJson: false, includeToJson: false)
-  _$$AddProductToShoppingCartCardInfoV2EventImplCopyWith<
-          _$AddProductToShoppingCartCardInfoV2EventImpl>
+  _$$AddProductToShoppingCartCardInfoEventImplCopyWith<
+          _$AddProductToShoppingCartCardInfoEventImpl>
       get copyWith => throw _privateConstructorUsedError;
 }
 
 /// @nodoc
-abstract class _$$AddProductToSoppingCardInfoV2EventImplCopyWith<$Res> {
-  factory _$$AddProductToSoppingCardInfoV2EventImplCopyWith(
-          _$AddProductToSoppingCardInfoV2EventImpl value,
-          $Res Function(_$AddProductToSoppingCardInfoV2EventImpl) then) =
-      __$$AddProductToSoppingCardInfoV2EventImplCopyWithImpl<$Res>;
+abstract class _$$AddProductToSoppingCardInfoEventImplCopyWith<$Res> {
+  factory _$$AddProductToSoppingCardInfoEventImplCopyWith(
+          _$AddProductToSoppingCardInfoEventImpl value,
+          $Res Function(_$AddProductToSoppingCardInfoEventImpl) then) =
+      __$$AddProductToSoppingCardInfoEventImplCopyWithImpl<$Res>;
 }
 
 /// @nodoc
-class __$$AddProductToSoppingCardInfoV2EventImplCopyWithImpl<$Res>
-    extends _$CardInfoV2EventCopyWithImpl<$Res,
-        _$AddProductToSoppingCardInfoV2EventImpl>
-    implements _$$AddProductToSoppingCardInfoV2EventImplCopyWith<$Res> {
-  __$$AddProductToSoppingCardInfoV2EventImplCopyWithImpl(
-      _$AddProductToSoppingCardInfoV2EventImpl _value,
-      $Res Function(_$AddProductToSoppingCardInfoV2EventImpl) _then)
+class __$$AddProductToSoppingCardInfoEventImplCopyWithImpl<$Res>
+    extends _$CardInfoEventCopyWithImpl<$Res,
+        _$AddProductToSoppingCardInfoEventImpl>
+    implements _$$AddProductToSoppingCardInfoEventImplCopyWith<$Res> {
+  __$$AddProductToSoppingCardInfoEventImplCopyWithImpl(
+      _$AddProductToSoppingCardInfoEventImpl _value,
+      $Res Function(_$AddProductToSoppingCardInfoEventImpl) _then)
       : super(_value, _then);
 
-  /// Create a copy of CardInfoV2Event
+  /// Create a copy of CardInfoEvent
   /// with the given fields replaced by the non-null parameter values.
 }
 
 /// @nodoc
 
-class _$AddProductToSoppingCardInfoV2EventImpl
-    implements AddProductToSoppingCardInfoV2Event {
-  const _$AddProductToSoppingCardInfoV2EventImpl();
+class _$AddProductToSoppingCardInfoEventImpl
+    implements AddProductToSoppingCardInfoEvent {
+  const _$AddProductToSoppingCardInfoEventImpl();
 
   @override
   String toString() {
-    return 'CardInfoV2Event.addProductToSoppingCartInfo()';
+    return 'CardInfoEvent.addProductToSoppingCartInfo()';
   }
 
   @override
   bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$AddProductToSoppingCardInfoV2EventImpl);
+            other is _$AddProductToSoppingCardInfoEventImpl);
   }
 
   @override
@@ -3057,24 +3034,24 @@ class _$AddProductToSoppingCardInfoV2EventImpl
   @override
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
-    required TResult Function(InitCardInfoV2Event value) init,
-    required TResult Function(PreloadDataCardInfoV2Event value) preloadData,
-    required TResult Function(GetProductCardInfoV2Event value) getProduct,
-    required TResult Function(GoBackProductInfoCategotyCardInfoV2Event value)
+    required TResult Function(InitCardInfoEvent value) init,
+    required TResult Function(PreloadDataCardInfoEvent value) preloadData,
+    required TResult Function(GetProductCardInfoEvent value) getProduct,
+    required TResult Function(GoBackProductInfoCategotyCardInfoEvent value)
         goBackProductInfo,
-    required TResult Function(GetInfoProductSizeCardInfoV2Event value)
+    required TResult Function(GetInfoProductSizeCardInfoEvent value)
         getInfoProductSize,
-    required TResult Function(AddFavouriteProductCardInfoV2Event value)
+    required TResult Function(AddFavouriteProductCardInfoEvent value)
         addFavouriteProduct,
-    required TResult Function(DeleteFavouriteProductCardInfoV2Event value)
+    required TResult Function(DeleteFavouriteProductCardInfoEvent value)
         deleteFavouriteProduct,
-    required TResult Function(AddProductToShoppingCartCardInfoV2Event value)
+    required TResult Function(AddProductToShoppingCartCardInfoEvent value)
         addProductToSoppingCart,
-    required TResult Function(AddProductToSoppingCardInfoV2Event value)
+    required TResult Function(AddProductToSoppingCardInfoEvent value)
         addProductToSoppingCartInfo,
-    required TResult Function(CheckProductToCardInfoV2Event value)
+    required TResult Function(CheckProductToCardInfoEvent value)
         checkProductToSoppingCart,
-    required TResult Function(ChangeSizeProductCardInfoV2Event value)
+    required TResult Function(ChangeSizeProductCardInfoEvent value)
         changeSizeProduct,
   }) {
     return addProductToSoppingCartInfo(this);
@@ -3083,25 +3060,24 @@ class _$AddProductToSoppingCardInfoV2EventImpl
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(InitCardInfoV2Event value)? init,
-    TResult? Function(PreloadDataCardInfoV2Event value)? preloadData,
-    TResult? Function(GetProductCardInfoV2Event value)? getProduct,
-    TResult? Function(GoBackProductInfoCategotyCardInfoV2Event value)?
+    TResult? Function(InitCardInfoEvent value)? init,
+    TResult? Function(PreloadDataCardInfoEvent value)? preloadData,
+    TResult? Function(GetProductCardInfoEvent value)? getProduct,
+    TResult? Function(GoBackProductInfoCategotyCardInfoEvent value)?
         goBackProductInfo,
-    TResult? Function(GetInfoProductSizeCardInfoV2Event value)?
+    TResult? Function(GetInfoProductSizeCardInfoEvent value)?
         getInfoProductSize,
-    TResult? Function(AddFavouriteProductCardInfoV2Event value)?
+    TResult? Function(AddFavouriteProductCardInfoEvent value)?
         addFavouriteProduct,
-    TResult? Function(DeleteFavouriteProductCardInfoV2Event value)?
+    TResult? Function(DeleteFavouriteProductCardInfoEvent value)?
         deleteFavouriteProduct,
-    TResult? Function(AddProductToShoppingCartCardInfoV2Event value)?
+    TResult? Function(AddProductToShoppingCartCardInfoEvent value)?
         addProductToSoppingCart,
-    TResult? Function(AddProductToSoppingCardInfoV2Event value)?
+    TResult? Function(AddProductToSoppingCardInfoEvent value)?
         addProductToSoppingCartInfo,
-    TResult? Function(CheckProductToCardInfoV2Event value)?
+    TResult? Function(CheckProductToCardInfoEvent value)?
         checkProductToSoppingCart,
-    TResult? Function(ChangeSizeProductCardInfoV2Event value)?
-        changeSizeProduct,
+    TResult? Function(ChangeSizeProductCardInfoEvent value)? changeSizeProduct,
   }) {
     return addProductToSoppingCartInfo?.call(this);
   }
@@ -3109,24 +3085,23 @@ class _$AddProductToSoppingCardInfoV2EventImpl
   @override
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
-    TResult Function(InitCardInfoV2Event value)? init,
-    TResult Function(PreloadDataCardInfoV2Event value)? preloadData,
-    TResult Function(GetProductCardInfoV2Event value)? getProduct,
-    TResult Function(GoBackProductInfoCategotyCardInfoV2Event value)?
+    TResult Function(InitCardInfoEvent value)? init,
+    TResult Function(PreloadDataCardInfoEvent value)? preloadData,
+    TResult Function(GetProductCardInfoEvent value)? getProduct,
+    TResult Function(GoBackProductInfoCategotyCardInfoEvent value)?
         goBackProductInfo,
-    TResult Function(GetInfoProductSizeCardInfoV2Event value)?
-        getInfoProductSize,
-    TResult Function(AddFavouriteProductCardInfoV2Event value)?
+    TResult Function(GetInfoProductSizeCardInfoEvent value)? getInfoProductSize,
+    TResult Function(AddFavouriteProductCardInfoEvent value)?
         addFavouriteProduct,
-    TResult Function(DeleteFavouriteProductCardInfoV2Event value)?
+    TResult Function(DeleteFavouriteProductCardInfoEvent value)?
         deleteFavouriteProduct,
-    TResult Function(AddProductToShoppingCartCardInfoV2Event value)?
+    TResult Function(AddProductToShoppingCartCardInfoEvent value)?
         addProductToSoppingCart,
-    TResult Function(AddProductToSoppingCardInfoV2Event value)?
+    TResult Function(AddProductToSoppingCardInfoEvent value)?
         addProductToSoppingCartInfo,
-    TResult Function(CheckProductToCardInfoV2Event value)?
+    TResult Function(CheckProductToCardInfoEvent value)?
         checkProductToSoppingCart,
-    TResult Function(ChangeSizeProductCardInfoV2Event value)? changeSizeProduct,
+    TResult Function(ChangeSizeProductCardInfoEvent value)? changeSizeProduct,
     required TResult orElse(),
   }) {
     if (addProductToSoppingCartInfo != null) {
@@ -3136,17 +3111,17 @@ class _$AddProductToSoppingCardInfoV2EventImpl
   }
 }
 
-abstract class AddProductToSoppingCardInfoV2Event implements CardInfoEvent {
-  const factory AddProductToSoppingCardInfoV2Event() =
-      _$AddProductToSoppingCardInfoV2EventImpl;
+abstract class AddProductToSoppingCardInfoEvent implements CardInfoEvent {
+  const factory AddProductToSoppingCardInfoEvent() =
+      _$AddProductToSoppingCardInfoEventImpl;
 }
 
 /// @nodoc
-abstract class _$$CheckProductToCardInfoV2EventImplCopyWith<$Res> {
-  factory _$$CheckProductToCardInfoV2EventImplCopyWith(
-          _$CheckProductToCardInfoV2EventImpl value,
-          $Res Function(_$CheckProductToCardInfoV2EventImpl) then) =
-      __$$CheckProductToCardInfoV2EventImplCopyWithImpl<$Res>;
+abstract class _$$CheckProductToCardInfoEventImplCopyWith<$Res> {
+  factory _$$CheckProductToCardInfoEventImplCopyWith(
+          _$CheckProductToCardInfoEventImpl value,
+          $Res Function(_$CheckProductToCardInfoEventImpl) then) =
+      __$$CheckProductToCardInfoEventImplCopyWithImpl<$Res>;
   @useResult
   $Res call({SkuProductDataModel size});
 
@@ -3154,23 +3129,22 @@ abstract class _$$CheckProductToCardInfoV2EventImplCopyWith<$Res> {
 }
 
 /// @nodoc
-class __$$CheckProductToCardInfoV2EventImplCopyWithImpl<$Res>
-    extends _$CardInfoV2EventCopyWithImpl<$Res,
-        _$CheckProductToCardInfoV2EventImpl>
-    implements _$$CheckProductToCardInfoV2EventImplCopyWith<$Res> {
-  __$$CheckProductToCardInfoV2EventImplCopyWithImpl(
-      _$CheckProductToCardInfoV2EventImpl _value,
-      $Res Function(_$CheckProductToCardInfoV2EventImpl) _then)
+class __$$CheckProductToCardInfoEventImplCopyWithImpl<$Res>
+    extends _$CardInfoEventCopyWithImpl<$Res, _$CheckProductToCardInfoEventImpl>
+    implements _$$CheckProductToCardInfoEventImplCopyWith<$Res> {
+  __$$CheckProductToCardInfoEventImplCopyWithImpl(
+      _$CheckProductToCardInfoEventImpl _value,
+      $Res Function(_$CheckProductToCardInfoEventImpl) _then)
       : super(_value, _then);
 
-  /// Create a copy of CardInfoV2Event
+  /// Create a copy of CardInfoEvent
   /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
     Object? size = null,
   }) {
-    return _then(_$CheckProductToCardInfoV2EventImpl(
+    return _then(_$CheckProductToCardInfoEventImpl(
       size: null == size
           ? _value.size
           : size // ignore: cast_nullable_to_non_nullable
@@ -3178,7 +3152,7 @@ class __$$CheckProductToCardInfoV2EventImplCopyWithImpl<$Res>
     ));
   }
 
-  /// Create a copy of CardInfoV2Event
+  /// Create a copy of CardInfoEvent
   /// with the given fields replaced by the non-null parameter values.
   @override
   @pragma('vm:prefer-inline')
@@ -3191,38 +3165,36 @@ class __$$CheckProductToCardInfoV2EventImplCopyWithImpl<$Res>
 
 /// @nodoc
 
-class _$CheckProductToCardInfoV2EventImpl
-    implements CheckProductToCardInfoV2Event {
-  const _$CheckProductToCardInfoV2EventImpl({required this.size});
+class _$CheckProductToCardInfoEventImpl implements CheckProductToCardInfoEvent {
+  const _$CheckProductToCardInfoEventImpl({required this.size});
 
   @override
   final SkuProductDataModel size;
 
   @override
   String toString() {
-    return 'CardInfoV2Event.checkProductToSoppingCart(size: $size)';
+    return 'CardInfoEvent.checkProductToSoppingCart(size: $size)';
   }
 
   @override
   bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$CheckProductToCardInfoV2EventImpl &&
+            other is _$CheckProductToCardInfoEventImpl &&
             (identical(other.size, size) || other.size == size));
   }
 
   @override
   int get hashCode => Object.hash(runtimeType, size);
 
-  /// Create a copy of CardInfoV2Event
+  /// Create a copy of CardInfoEvent
   /// with the given fields replaced by the non-null parameter values.
   @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
-  _$$CheckProductToCardInfoV2EventImplCopyWith<
-          _$CheckProductToCardInfoV2EventImpl>
-      get copyWith => __$$CheckProductToCardInfoV2EventImplCopyWithImpl<
-          _$CheckProductToCardInfoV2EventImpl>(this, _$identity);
+  _$$CheckProductToCardInfoEventImplCopyWith<_$CheckProductToCardInfoEventImpl>
+      get copyWith => __$$CheckProductToCardInfoEventImplCopyWithImpl<
+          _$CheckProductToCardInfoEventImpl>(this, _$identity);
 
   @override
   @optionalTypeArgs
@@ -3352,24 +3324,24 @@ class _$CheckProductToCardInfoV2EventImpl
   @override
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
-    required TResult Function(InitCardInfoV2Event value) init,
-    required TResult Function(PreloadDataCardInfoV2Event value) preloadData,
-    required TResult Function(GetProductCardInfoV2Event value) getProduct,
-    required TResult Function(GoBackProductInfoCategotyCardInfoV2Event value)
+    required TResult Function(InitCardInfoEvent value) init,
+    required TResult Function(PreloadDataCardInfoEvent value) preloadData,
+    required TResult Function(GetProductCardInfoEvent value) getProduct,
+    required TResult Function(GoBackProductInfoCategotyCardInfoEvent value)
         goBackProductInfo,
-    required TResult Function(GetInfoProductSizeCardInfoV2Event value)
+    required TResult Function(GetInfoProductSizeCardInfoEvent value)
         getInfoProductSize,
-    required TResult Function(AddFavouriteProductCardInfoV2Event value)
+    required TResult Function(AddFavouriteProductCardInfoEvent value)
         addFavouriteProduct,
-    required TResult Function(DeleteFavouriteProductCardInfoV2Event value)
+    required TResult Function(DeleteFavouriteProductCardInfoEvent value)
         deleteFavouriteProduct,
-    required TResult Function(AddProductToShoppingCartCardInfoV2Event value)
+    required TResult Function(AddProductToShoppingCartCardInfoEvent value)
         addProductToSoppingCart,
-    required TResult Function(AddProductToSoppingCardInfoV2Event value)
+    required TResult Function(AddProductToSoppingCardInfoEvent value)
         addProductToSoppingCartInfo,
-    required TResult Function(CheckProductToCardInfoV2Event value)
+    required TResult Function(CheckProductToCardInfoEvent value)
         checkProductToSoppingCart,
-    required TResult Function(ChangeSizeProductCardInfoV2Event value)
+    required TResult Function(ChangeSizeProductCardInfoEvent value)
         changeSizeProduct,
   }) {
     return checkProductToSoppingCart(this);
@@ -3378,25 +3350,24 @@ class _$CheckProductToCardInfoV2EventImpl
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(InitCardInfoV2Event value)? init,
-    TResult? Function(PreloadDataCardInfoV2Event value)? preloadData,
-    TResult? Function(GetProductCardInfoV2Event value)? getProduct,
-    TResult? Function(GoBackProductInfoCategotyCardInfoV2Event value)?
+    TResult? Function(InitCardInfoEvent value)? init,
+    TResult? Function(PreloadDataCardInfoEvent value)? preloadData,
+    TResult? Function(GetProductCardInfoEvent value)? getProduct,
+    TResult? Function(GoBackProductInfoCategotyCardInfoEvent value)?
         goBackProductInfo,
-    TResult? Function(GetInfoProductSizeCardInfoV2Event value)?
+    TResult? Function(GetInfoProductSizeCardInfoEvent value)?
         getInfoProductSize,
-    TResult? Function(AddFavouriteProductCardInfoV2Event value)?
+    TResult? Function(AddFavouriteProductCardInfoEvent value)?
         addFavouriteProduct,
-    TResult? Function(DeleteFavouriteProductCardInfoV2Event value)?
+    TResult? Function(DeleteFavouriteProductCardInfoEvent value)?
         deleteFavouriteProduct,
-    TResult? Function(AddProductToShoppingCartCardInfoV2Event value)?
+    TResult? Function(AddProductToShoppingCartCardInfoEvent value)?
         addProductToSoppingCart,
-    TResult? Function(AddProductToSoppingCardInfoV2Event value)?
+    TResult? Function(AddProductToSoppingCardInfoEvent value)?
         addProductToSoppingCartInfo,
-    TResult? Function(CheckProductToCardInfoV2Event value)?
+    TResult? Function(CheckProductToCardInfoEvent value)?
         checkProductToSoppingCart,
-    TResult? Function(ChangeSizeProductCardInfoV2Event value)?
-        changeSizeProduct,
+    TResult? Function(ChangeSizeProductCardInfoEvent value)? changeSizeProduct,
   }) {
     return checkProductToSoppingCart?.call(this);
   }
@@ -3404,24 +3375,23 @@ class _$CheckProductToCardInfoV2EventImpl
   @override
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
-    TResult Function(InitCardInfoV2Event value)? init,
-    TResult Function(PreloadDataCardInfoV2Event value)? preloadData,
-    TResult Function(GetProductCardInfoV2Event value)? getProduct,
-    TResult Function(GoBackProductInfoCategotyCardInfoV2Event value)?
+    TResult Function(InitCardInfoEvent value)? init,
+    TResult Function(PreloadDataCardInfoEvent value)? preloadData,
+    TResult Function(GetProductCardInfoEvent value)? getProduct,
+    TResult Function(GoBackProductInfoCategotyCardInfoEvent value)?
         goBackProductInfo,
-    TResult Function(GetInfoProductSizeCardInfoV2Event value)?
-        getInfoProductSize,
-    TResult Function(AddFavouriteProductCardInfoV2Event value)?
+    TResult Function(GetInfoProductSizeCardInfoEvent value)? getInfoProductSize,
+    TResult Function(AddFavouriteProductCardInfoEvent value)?
         addFavouriteProduct,
-    TResult Function(DeleteFavouriteProductCardInfoV2Event value)?
+    TResult Function(DeleteFavouriteProductCardInfoEvent value)?
         deleteFavouriteProduct,
-    TResult Function(AddProductToShoppingCartCardInfoV2Event value)?
+    TResult Function(AddProductToShoppingCartCardInfoEvent value)?
         addProductToSoppingCart,
-    TResult Function(AddProductToSoppingCardInfoV2Event value)?
+    TResult Function(AddProductToSoppingCardInfoEvent value)?
         addProductToSoppingCartInfo,
-    TResult Function(CheckProductToCardInfoV2Event value)?
+    TResult Function(CheckProductToCardInfoEvent value)?
         checkProductToSoppingCart,
-    TResult Function(ChangeSizeProductCardInfoV2Event value)? changeSizeProduct,
+    TResult Function(ChangeSizeProductCardInfoEvent value)? changeSizeProduct,
     required TResult orElse(),
   }) {
     if (checkProductToSoppingCart != null) {
@@ -3431,27 +3401,26 @@ class _$CheckProductToCardInfoV2EventImpl
   }
 }
 
-abstract class CheckProductToCardInfoV2Event implements CardInfoEvent {
-  const factory CheckProductToCardInfoV2Event(
+abstract class CheckProductToCardInfoEvent implements CardInfoEvent {
+  const factory CheckProductToCardInfoEvent(
           {required final SkuProductDataModel size}) =
-      _$CheckProductToCardInfoV2EventImpl;
+      _$CheckProductToCardInfoEventImpl;
 
   SkuProductDataModel get size;
 
-  /// Create a copy of CardInfoV2Event
+  /// Create a copy of CardInfoEvent
   /// with the given fields replaced by the non-null parameter values.
   @JsonKey(includeFromJson: false, includeToJson: false)
-  _$$CheckProductToCardInfoV2EventImplCopyWith<
-          _$CheckProductToCardInfoV2EventImpl>
+  _$$CheckProductToCardInfoEventImplCopyWith<_$CheckProductToCardInfoEventImpl>
       get copyWith => throw _privateConstructorUsedError;
 }
 
 /// @nodoc
-abstract class _$$ChangeSizeProductCardInfoV2EventImplCopyWith<$Res> {
-  factory _$$ChangeSizeProductCardInfoV2EventImplCopyWith(
-          _$ChangeSizeProductCardInfoV2EventImpl value,
-          $Res Function(_$ChangeSizeProductCardInfoV2EventImpl) then) =
-      __$$ChangeSizeProductCardInfoV2EventImplCopyWithImpl<$Res>;
+abstract class _$$ChangeSizeProductCardInfoEventImplCopyWith<$Res> {
+  factory _$$ChangeSizeProductCardInfoEventImplCopyWith(
+          _$ChangeSizeProductCardInfoEventImpl value,
+          $Res Function(_$ChangeSizeProductCardInfoEventImpl) then) =
+      __$$ChangeSizeProductCardInfoEventImplCopyWithImpl<$Res>;
   @useResult
   $Res call({SkuProductDataModel selectSizeProduct});
 
@@ -3459,23 +3428,23 @@ abstract class _$$ChangeSizeProductCardInfoV2EventImplCopyWith<$Res> {
 }
 
 /// @nodoc
-class __$$ChangeSizeProductCardInfoV2EventImplCopyWithImpl<$Res>
-    extends _$CardInfoV2EventCopyWithImpl<$Res,
-        _$ChangeSizeProductCardInfoV2EventImpl>
-    implements _$$ChangeSizeProductCardInfoV2EventImplCopyWith<$Res> {
-  __$$ChangeSizeProductCardInfoV2EventImplCopyWithImpl(
-      _$ChangeSizeProductCardInfoV2EventImpl _value,
-      $Res Function(_$ChangeSizeProductCardInfoV2EventImpl) _then)
+class __$$ChangeSizeProductCardInfoEventImplCopyWithImpl<$Res>
+    extends _$CardInfoEventCopyWithImpl<$Res,
+        _$ChangeSizeProductCardInfoEventImpl>
+    implements _$$ChangeSizeProductCardInfoEventImplCopyWith<$Res> {
+  __$$ChangeSizeProductCardInfoEventImplCopyWithImpl(
+      _$ChangeSizeProductCardInfoEventImpl _value,
+      $Res Function(_$ChangeSizeProductCardInfoEventImpl) _then)
       : super(_value, _then);
 
-  /// Create a copy of CardInfoV2Event
+  /// Create a copy of CardInfoEvent
   /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
     Object? selectSizeProduct = null,
   }) {
-    return _then(_$ChangeSizeProductCardInfoV2EventImpl(
+    return _then(_$ChangeSizeProductCardInfoEventImpl(
       selectSizeProduct: null == selectSizeProduct
           ? _value.selectSizeProduct
           : selectSizeProduct // ignore: cast_nullable_to_non_nullable
@@ -3483,7 +3452,7 @@ class __$$ChangeSizeProductCardInfoV2EventImplCopyWithImpl<$Res>
     ));
   }
 
-  /// Create a copy of CardInfoV2Event
+  /// Create a copy of CardInfoEvent
   /// with the given fields replaced by the non-null parameter values.
   @override
   @pragma('vm:prefer-inline')
@@ -3497,24 +3466,23 @@ class __$$ChangeSizeProductCardInfoV2EventImplCopyWithImpl<$Res>
 
 /// @nodoc
 
-class _$ChangeSizeProductCardInfoV2EventImpl
-    implements ChangeSizeProductCardInfoV2Event {
-  const _$ChangeSizeProductCardInfoV2EventImpl(
-      {required this.selectSizeProduct});
+class _$ChangeSizeProductCardInfoEventImpl
+    implements ChangeSizeProductCardInfoEvent {
+  const _$ChangeSizeProductCardInfoEventImpl({required this.selectSizeProduct});
 
   @override
   final SkuProductDataModel selectSizeProduct;
 
   @override
   String toString() {
-    return 'CardInfoV2Event.changeSizeProduct(selectSizeProduct: $selectSizeProduct)';
+    return 'CardInfoEvent.changeSizeProduct(selectSizeProduct: $selectSizeProduct)';
   }
 
   @override
   bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$ChangeSizeProductCardInfoV2EventImpl &&
+            other is _$ChangeSizeProductCardInfoEventImpl &&
             (identical(other.selectSizeProduct, selectSizeProduct) ||
                 other.selectSizeProduct == selectSizeProduct));
   }
@@ -3522,15 +3490,15 @@ class _$ChangeSizeProductCardInfoV2EventImpl
   @override
   int get hashCode => Object.hash(runtimeType, selectSizeProduct);
 
-  /// Create a copy of CardInfoV2Event
+  /// Create a copy of CardInfoEvent
   /// with the given fields replaced by the non-null parameter values.
   @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
-  _$$ChangeSizeProductCardInfoV2EventImplCopyWith<
-          _$ChangeSizeProductCardInfoV2EventImpl>
-      get copyWith => __$$ChangeSizeProductCardInfoV2EventImplCopyWithImpl<
-          _$ChangeSizeProductCardInfoV2EventImpl>(this, _$identity);
+  _$$ChangeSizeProductCardInfoEventImplCopyWith<
+          _$ChangeSizeProductCardInfoEventImpl>
+      get copyWith => __$$ChangeSizeProductCardInfoEventImplCopyWithImpl<
+          _$ChangeSizeProductCardInfoEventImpl>(this, _$identity);
 
   @override
   @optionalTypeArgs
@@ -3660,24 +3628,24 @@ class _$ChangeSizeProductCardInfoV2EventImpl
   @override
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
-    required TResult Function(InitCardInfoV2Event value) init,
-    required TResult Function(PreloadDataCardInfoV2Event value) preloadData,
-    required TResult Function(GetProductCardInfoV2Event value) getProduct,
-    required TResult Function(GoBackProductInfoCategotyCardInfoV2Event value)
+    required TResult Function(InitCardInfoEvent value) init,
+    required TResult Function(PreloadDataCardInfoEvent value) preloadData,
+    required TResult Function(GetProductCardInfoEvent value) getProduct,
+    required TResult Function(GoBackProductInfoCategotyCardInfoEvent value)
         goBackProductInfo,
-    required TResult Function(GetInfoProductSizeCardInfoV2Event value)
+    required TResult Function(GetInfoProductSizeCardInfoEvent value)
         getInfoProductSize,
-    required TResult Function(AddFavouriteProductCardInfoV2Event value)
+    required TResult Function(AddFavouriteProductCardInfoEvent value)
         addFavouriteProduct,
-    required TResult Function(DeleteFavouriteProductCardInfoV2Event value)
+    required TResult Function(DeleteFavouriteProductCardInfoEvent value)
         deleteFavouriteProduct,
-    required TResult Function(AddProductToShoppingCartCardInfoV2Event value)
+    required TResult Function(AddProductToShoppingCartCardInfoEvent value)
         addProductToSoppingCart,
-    required TResult Function(AddProductToSoppingCardInfoV2Event value)
+    required TResult Function(AddProductToSoppingCardInfoEvent value)
         addProductToSoppingCartInfo,
-    required TResult Function(CheckProductToCardInfoV2Event value)
+    required TResult Function(CheckProductToCardInfoEvent value)
         checkProductToSoppingCart,
-    required TResult Function(ChangeSizeProductCardInfoV2Event value)
+    required TResult Function(ChangeSizeProductCardInfoEvent value)
         changeSizeProduct,
   }) {
     return changeSizeProduct(this);
@@ -3686,25 +3654,24 @@ class _$ChangeSizeProductCardInfoV2EventImpl
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(InitCardInfoV2Event value)? init,
-    TResult? Function(PreloadDataCardInfoV2Event value)? preloadData,
-    TResult? Function(GetProductCardInfoV2Event value)? getProduct,
-    TResult? Function(GoBackProductInfoCategotyCardInfoV2Event value)?
+    TResult? Function(InitCardInfoEvent value)? init,
+    TResult? Function(PreloadDataCardInfoEvent value)? preloadData,
+    TResult? Function(GetProductCardInfoEvent value)? getProduct,
+    TResult? Function(GoBackProductInfoCategotyCardInfoEvent value)?
         goBackProductInfo,
-    TResult? Function(GetInfoProductSizeCardInfoV2Event value)?
+    TResult? Function(GetInfoProductSizeCardInfoEvent value)?
         getInfoProductSize,
-    TResult? Function(AddFavouriteProductCardInfoV2Event value)?
+    TResult? Function(AddFavouriteProductCardInfoEvent value)?
         addFavouriteProduct,
-    TResult? Function(DeleteFavouriteProductCardInfoV2Event value)?
+    TResult? Function(DeleteFavouriteProductCardInfoEvent value)?
         deleteFavouriteProduct,
-    TResult? Function(AddProductToShoppingCartCardInfoV2Event value)?
+    TResult? Function(AddProductToShoppingCartCardInfoEvent value)?
         addProductToSoppingCart,
-    TResult? Function(AddProductToSoppingCardInfoV2Event value)?
+    TResult? Function(AddProductToSoppingCardInfoEvent value)?
         addProductToSoppingCartInfo,
-    TResult? Function(CheckProductToCardInfoV2Event value)?
+    TResult? Function(CheckProductToCardInfoEvent value)?
         checkProductToSoppingCart,
-    TResult? Function(ChangeSizeProductCardInfoV2Event value)?
-        changeSizeProduct,
+    TResult? Function(ChangeSizeProductCardInfoEvent value)? changeSizeProduct,
   }) {
     return changeSizeProduct?.call(this);
   }
@@ -3712,24 +3679,23 @@ class _$ChangeSizeProductCardInfoV2EventImpl
   @override
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
-    TResult Function(InitCardInfoV2Event value)? init,
-    TResult Function(PreloadDataCardInfoV2Event value)? preloadData,
-    TResult Function(GetProductCardInfoV2Event value)? getProduct,
-    TResult Function(GoBackProductInfoCategotyCardInfoV2Event value)?
+    TResult Function(InitCardInfoEvent value)? init,
+    TResult Function(PreloadDataCardInfoEvent value)? preloadData,
+    TResult Function(GetProductCardInfoEvent value)? getProduct,
+    TResult Function(GoBackProductInfoCategotyCardInfoEvent value)?
         goBackProductInfo,
-    TResult Function(GetInfoProductSizeCardInfoV2Event value)?
-        getInfoProductSize,
-    TResult Function(AddFavouriteProductCardInfoV2Event value)?
+    TResult Function(GetInfoProductSizeCardInfoEvent value)? getInfoProductSize,
+    TResult Function(AddFavouriteProductCardInfoEvent value)?
         addFavouriteProduct,
-    TResult Function(DeleteFavouriteProductCardInfoV2Event value)?
+    TResult Function(DeleteFavouriteProductCardInfoEvent value)?
         deleteFavouriteProduct,
-    TResult Function(AddProductToShoppingCartCardInfoV2Event value)?
+    TResult Function(AddProductToShoppingCartCardInfoEvent value)?
         addProductToSoppingCart,
-    TResult Function(AddProductToSoppingCardInfoV2Event value)?
+    TResult Function(AddProductToSoppingCardInfoEvent value)?
         addProductToSoppingCartInfo,
-    TResult Function(CheckProductToCardInfoV2Event value)?
+    TResult Function(CheckProductToCardInfoEvent value)?
         checkProductToSoppingCart,
-    TResult Function(ChangeSizeProductCardInfoV2Event value)? changeSizeProduct,
+    TResult Function(ChangeSizeProductCardInfoEvent value)? changeSizeProduct,
     required TResult orElse(),
   }) {
     if (changeSizeProduct != null) {
@@ -3739,23 +3705,23 @@ class _$ChangeSizeProductCardInfoV2EventImpl
   }
 }
 
-abstract class ChangeSizeProductCardInfoV2Event implements CardInfoEvent {
-  const factory ChangeSizeProductCardInfoV2Event(
+abstract class ChangeSizeProductCardInfoEvent implements CardInfoEvent {
+  const factory ChangeSizeProductCardInfoEvent(
           {required final SkuProductDataModel selectSizeProduct}) =
-      _$ChangeSizeProductCardInfoV2EventImpl;
+      _$ChangeSizeProductCardInfoEventImpl;
 
   SkuProductDataModel get selectSizeProduct;
 
-  /// Create a copy of CardInfoV2Event
+  /// Create a copy of CardInfoEvent
   /// with the given fields replaced by the non-null parameter values.
   @JsonKey(includeFromJson: false, includeToJson: false)
-  _$$ChangeSizeProductCardInfoV2EventImplCopyWith<
-          _$ChangeSizeProductCardInfoV2EventImpl>
+  _$$ChangeSizeProductCardInfoEventImplCopyWith<
+          _$ChangeSizeProductCardInfoEventImpl>
       get copyWith => throw _privateConstructorUsedError;
 }
 
 /// @nodoc
-mixin _$CardInfoV2State {
+mixin _$CardInfoState {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() init,
@@ -3767,6 +3733,7 @@ mixin _$CardInfoV2State {
             List<ProductDataModel> listProdcutsAlso,
             List<ProductDataModel> listProdcutsBrand,
             List<ProductDataModel> listProdcutsComplect,
+            List<SkuProductDataModel> listSize,
             List<int> favouritesProductsId,
             bool isAuth,
             bool isLoadGetSizeProduct,
@@ -3806,6 +3773,7 @@ mixin _$CardInfoV2State {
             List<ProductDataModel> listProdcutsAlso,
             List<ProductDataModel> listProdcutsBrand,
             List<ProductDataModel> listProdcutsComplect,
+            List<SkuProductDataModel> listSize,
             List<int> favouritesProductsId,
             bool isAuth,
             bool isLoadGetSizeProduct,
@@ -3845,6 +3813,7 @@ mixin _$CardInfoV2State {
             List<ProductDataModel> listProdcutsAlso,
             List<ProductDataModel> listProdcutsBrand,
             List<ProductDataModel> listProdcutsComplect,
+            List<SkuProductDataModel> listSize,
             List<int> favouritesProductsId,
             bool isAuth,
             bool isLoadGetSizeProduct,
@@ -3876,95 +3845,93 @@ mixin _$CardInfoV2State {
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
-    required TResult Function(InitInfoCardV2State value) init,
-    required TResult Function(LoadingInfoCardV2State value) load,
-    required TResult Function(ProductsInfoCardV2State value) productInfoCard,
-    required TResult Function(OpenSoppingCartCardInfoV2State value)
+    required TResult Function(InitCardInfoState value) init,
+    required TResult Function(LoadingCardInfoState value) load,
+    required TResult Function(ProductsCardInfoState value) productInfoCard,
+    required TResult Function(OpenSoppingCartCardInfoState value)
         openSoppingCart,
-    required TResult Function(AddProductCardInfoV2State value)
+    required TResult Function(AddProductCardInfoState value)
         addProductToSoppingCart,
-    required TResult Function(GetSizeProductCardInfoV2State value)
-        getSizeProduct,
+    required TResult Function(GetSizeProductCardInfoState value) getSizeProduct,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(InitInfoCardV2State value)? init,
-    TResult? Function(LoadingInfoCardV2State value)? load,
-    TResult? Function(ProductsInfoCardV2State value)? productInfoCard,
-    TResult? Function(OpenSoppingCartCardInfoV2State value)? openSoppingCart,
-    TResult? Function(AddProductCardInfoV2State value)? addProductToSoppingCart,
-    TResult? Function(GetSizeProductCardInfoV2State value)? getSizeProduct,
+    TResult? Function(InitCardInfoState value)? init,
+    TResult? Function(LoadingCardInfoState value)? load,
+    TResult? Function(ProductsCardInfoState value)? productInfoCard,
+    TResult? Function(OpenSoppingCartCardInfoState value)? openSoppingCart,
+    TResult? Function(AddProductCardInfoState value)? addProductToSoppingCart,
+    TResult? Function(GetSizeProductCardInfoState value)? getSizeProduct,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
-    TResult Function(InitInfoCardV2State value)? init,
-    TResult Function(LoadingInfoCardV2State value)? load,
-    TResult Function(ProductsInfoCardV2State value)? productInfoCard,
-    TResult Function(OpenSoppingCartCardInfoV2State value)? openSoppingCart,
-    TResult Function(AddProductCardInfoV2State value)? addProductToSoppingCart,
-    TResult Function(GetSizeProductCardInfoV2State value)? getSizeProduct,
+    TResult Function(InitCardInfoState value)? init,
+    TResult Function(LoadingCardInfoState value)? load,
+    TResult Function(ProductsCardInfoState value)? productInfoCard,
+    TResult Function(OpenSoppingCartCardInfoState value)? openSoppingCart,
+    TResult Function(AddProductCardInfoState value)? addProductToSoppingCart,
+    TResult Function(GetSizeProductCardInfoState value)? getSizeProduct,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
 }
 
 /// @nodoc
-abstract class $CardInfoV2StateCopyWith<$Res> {
-  factory $CardInfoV2StateCopyWith(
+abstract class $CardInfoStateCopyWith<$Res> {
+  factory $CardInfoStateCopyWith(
           CardInfoState value, $Res Function(CardInfoState) then) =
-      _$CardInfoV2StateCopyWithImpl<$Res, CardInfoState>;
+      _$CardInfoStateCopyWithImpl<$Res, CardInfoState>;
 }
 
 /// @nodoc
-class _$CardInfoV2StateCopyWithImpl<$Res, $Val extends CardInfoState>
-    implements $CardInfoV2StateCopyWith<$Res> {
-  _$CardInfoV2StateCopyWithImpl(this._value, this._then);
+class _$CardInfoStateCopyWithImpl<$Res, $Val extends CardInfoState>
+    implements $CardInfoStateCopyWith<$Res> {
+  _$CardInfoStateCopyWithImpl(this._value, this._then);
 
   // ignore: unused_field
   final $Val _value;
   // ignore: unused_field
   final $Res Function($Val) _then;
 
-  /// Create a copy of CardInfoV2State
+  /// Create a copy of CardInfoState
   /// with the given fields replaced by the non-null parameter values.
 }
 
 /// @nodoc
-abstract class _$$InitInfoCardV2StateImplCopyWith<$Res> {
-  factory _$$InitInfoCardV2StateImplCopyWith(_$InitInfoCardV2StateImpl value,
-          $Res Function(_$InitInfoCardV2StateImpl) then) =
-      __$$InitInfoCardV2StateImplCopyWithImpl<$Res>;
+abstract class _$$InitCardInfoStateImplCopyWith<$Res> {
+  factory _$$InitCardInfoStateImplCopyWith(_$InitCardInfoStateImpl value,
+          $Res Function(_$InitCardInfoStateImpl) then) =
+      __$$InitCardInfoStateImplCopyWithImpl<$Res>;
 }
 
 /// @nodoc
-class __$$InitInfoCardV2StateImplCopyWithImpl<$Res>
-    extends _$CardInfoV2StateCopyWithImpl<$Res, _$InitInfoCardV2StateImpl>
-    implements _$$InitInfoCardV2StateImplCopyWith<$Res> {
-  __$$InitInfoCardV2StateImplCopyWithImpl(_$InitInfoCardV2StateImpl _value,
-      $Res Function(_$InitInfoCardV2StateImpl) _then)
+class __$$InitCardInfoStateImplCopyWithImpl<$Res>
+    extends _$CardInfoStateCopyWithImpl<$Res, _$InitCardInfoStateImpl>
+    implements _$$InitCardInfoStateImplCopyWith<$Res> {
+  __$$InitCardInfoStateImplCopyWithImpl(_$InitCardInfoStateImpl _value,
+      $Res Function(_$InitCardInfoStateImpl) _then)
       : super(_value, _then);
 
-  /// Create a copy of CardInfoV2State
+  /// Create a copy of CardInfoState
   /// with the given fields replaced by the non-null parameter values.
 }
 
 /// @nodoc
 
-class _$InitInfoCardV2StateImpl implements InitInfoCardV2State {
-  const _$InitInfoCardV2StateImpl();
+class _$InitCardInfoStateImpl implements InitCardInfoState {
+  const _$InitCardInfoStateImpl();
 
   @override
   String toString() {
-    return 'CardInfoV2State.init()';
+    return 'CardInfoState.init()';
   }
 
   @override
   bool operator ==(Object other) {
     return identical(this, other) ||
-        (other.runtimeType == runtimeType &&
-            other is _$InitInfoCardV2StateImpl);
+        (other.runtimeType == runtimeType && other is _$InitCardInfoStateImpl);
   }
 
   @override
@@ -3982,6 +3949,7 @@ class _$InitInfoCardV2StateImpl implements InitInfoCardV2State {
             List<ProductDataModel> listProdcutsAlso,
             List<ProductDataModel> listProdcutsBrand,
             List<ProductDataModel> listProdcutsComplect,
+            List<SkuProductDataModel> listSize,
             List<int> favouritesProductsId,
             bool isAuth,
             bool isLoadGetSizeProduct,
@@ -4024,6 +3992,7 @@ class _$InitInfoCardV2StateImpl implements InitInfoCardV2State {
             List<ProductDataModel> listProdcutsAlso,
             List<ProductDataModel> listProdcutsBrand,
             List<ProductDataModel> listProdcutsComplect,
+            List<SkuProductDataModel> listSize,
             List<int> favouritesProductsId,
             bool isAuth,
             bool isLoadGetSizeProduct,
@@ -4066,6 +4035,7 @@ class _$InitInfoCardV2StateImpl implements InitInfoCardV2State {
             List<ProductDataModel> listProdcutsAlso,
             List<ProductDataModel> listProdcutsBrand,
             List<ProductDataModel> listProdcutsComplect,
+            List<SkuProductDataModel> listSize,
             List<int> favouritesProductsId,
             bool isAuth,
             bool isLoadGetSizeProduct,
@@ -4103,15 +4073,14 @@ class _$InitInfoCardV2StateImpl implements InitInfoCardV2State {
   @override
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
-    required TResult Function(InitInfoCardV2State value) init,
-    required TResult Function(LoadingInfoCardV2State value) load,
-    required TResult Function(ProductsInfoCardV2State value) productInfoCard,
-    required TResult Function(OpenSoppingCartCardInfoV2State value)
+    required TResult Function(InitCardInfoState value) init,
+    required TResult Function(LoadingCardInfoState value) load,
+    required TResult Function(ProductsCardInfoState value) productInfoCard,
+    required TResult Function(OpenSoppingCartCardInfoState value)
         openSoppingCart,
-    required TResult Function(AddProductCardInfoV2State value)
+    required TResult Function(AddProductCardInfoState value)
         addProductToSoppingCart,
-    required TResult Function(GetSizeProductCardInfoV2State value)
-        getSizeProduct,
+    required TResult Function(GetSizeProductCardInfoState value) getSizeProduct,
   }) {
     return init(this);
   }
@@ -4119,12 +4088,12 @@ class _$InitInfoCardV2StateImpl implements InitInfoCardV2State {
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(InitInfoCardV2State value)? init,
-    TResult? Function(LoadingInfoCardV2State value)? load,
-    TResult? Function(ProductsInfoCardV2State value)? productInfoCard,
-    TResult? Function(OpenSoppingCartCardInfoV2State value)? openSoppingCart,
-    TResult? Function(AddProductCardInfoV2State value)? addProductToSoppingCart,
-    TResult? Function(GetSizeProductCardInfoV2State value)? getSizeProduct,
+    TResult? Function(InitCardInfoState value)? init,
+    TResult? Function(LoadingCardInfoState value)? load,
+    TResult? Function(ProductsCardInfoState value)? productInfoCard,
+    TResult? Function(OpenSoppingCartCardInfoState value)? openSoppingCart,
+    TResult? Function(AddProductCardInfoState value)? addProductToSoppingCart,
+    TResult? Function(GetSizeProductCardInfoState value)? getSizeProduct,
   }) {
     return init?.call(this);
   }
@@ -4132,12 +4101,12 @@ class _$InitInfoCardV2StateImpl implements InitInfoCardV2State {
   @override
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
-    TResult Function(InitInfoCardV2State value)? init,
-    TResult Function(LoadingInfoCardV2State value)? load,
-    TResult Function(ProductsInfoCardV2State value)? productInfoCard,
-    TResult Function(OpenSoppingCartCardInfoV2State value)? openSoppingCart,
-    TResult Function(AddProductCardInfoV2State value)? addProductToSoppingCart,
-    TResult Function(GetSizeProductCardInfoV2State value)? getSizeProduct,
+    TResult Function(InitCardInfoState value)? init,
+    TResult Function(LoadingCardInfoState value)? load,
+    TResult Function(ProductsCardInfoState value)? productInfoCard,
+    TResult Function(OpenSoppingCartCardInfoState value)? openSoppingCart,
+    TResult Function(AddProductCardInfoState value)? addProductToSoppingCart,
+    TResult Function(GetSizeProductCardInfoState value)? getSizeProduct,
     required TResult orElse(),
   }) {
     if (init != null) {
@@ -4147,46 +4116,44 @@ class _$InitInfoCardV2StateImpl implements InitInfoCardV2State {
   }
 }
 
-abstract class InitInfoCardV2State implements CardInfoState {
-  const factory InitInfoCardV2State() = _$InitInfoCardV2StateImpl;
+abstract class InitCardInfoState implements CardInfoState {
+  const factory InitCardInfoState() = _$InitCardInfoStateImpl;
 }
 
 /// @nodoc
-abstract class _$$LoadingInfoCardV2StateImplCopyWith<$Res> {
-  factory _$$LoadingInfoCardV2StateImplCopyWith(
-          _$LoadingInfoCardV2StateImpl value,
-          $Res Function(_$LoadingInfoCardV2StateImpl) then) =
-      __$$LoadingInfoCardV2StateImplCopyWithImpl<$Res>;
+abstract class _$$LoadingCardInfoStateImplCopyWith<$Res> {
+  factory _$$LoadingCardInfoStateImplCopyWith(_$LoadingCardInfoStateImpl value,
+          $Res Function(_$LoadingCardInfoStateImpl) then) =
+      __$$LoadingCardInfoStateImplCopyWithImpl<$Res>;
 }
 
 /// @nodoc
-class __$$LoadingInfoCardV2StateImplCopyWithImpl<$Res>
-    extends _$CardInfoV2StateCopyWithImpl<$Res, _$LoadingInfoCardV2StateImpl>
-    implements _$$LoadingInfoCardV2StateImplCopyWith<$Res> {
-  __$$LoadingInfoCardV2StateImplCopyWithImpl(
-      _$LoadingInfoCardV2StateImpl _value,
-      $Res Function(_$LoadingInfoCardV2StateImpl) _then)
+class __$$LoadingCardInfoStateImplCopyWithImpl<$Res>
+    extends _$CardInfoStateCopyWithImpl<$Res, _$LoadingCardInfoStateImpl>
+    implements _$$LoadingCardInfoStateImplCopyWith<$Res> {
+  __$$LoadingCardInfoStateImplCopyWithImpl(_$LoadingCardInfoStateImpl _value,
+      $Res Function(_$LoadingCardInfoStateImpl) _then)
       : super(_value, _then);
 
-  /// Create a copy of CardInfoV2State
+  /// Create a copy of CardInfoState
   /// with the given fields replaced by the non-null parameter values.
 }
 
 /// @nodoc
 
-class _$LoadingInfoCardV2StateImpl implements LoadingInfoCardV2State {
-  const _$LoadingInfoCardV2StateImpl();
+class _$LoadingCardInfoStateImpl implements LoadingCardInfoState {
+  const _$LoadingCardInfoStateImpl();
 
   @override
   String toString() {
-    return 'CardInfoV2State.load()';
+    return 'CardInfoState.load()';
   }
 
   @override
   bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$LoadingInfoCardV2StateImpl);
+            other is _$LoadingCardInfoStateImpl);
   }
 
   @override
@@ -4204,6 +4171,7 @@ class _$LoadingInfoCardV2StateImpl implements LoadingInfoCardV2State {
             List<ProductDataModel> listProdcutsAlso,
             List<ProductDataModel> listProdcutsBrand,
             List<ProductDataModel> listProdcutsComplect,
+            List<SkuProductDataModel> listSize,
             List<int> favouritesProductsId,
             bool isAuth,
             bool isLoadGetSizeProduct,
@@ -4246,6 +4214,7 @@ class _$LoadingInfoCardV2StateImpl implements LoadingInfoCardV2State {
             List<ProductDataModel> listProdcutsAlso,
             List<ProductDataModel> listProdcutsBrand,
             List<ProductDataModel> listProdcutsComplect,
+            List<SkuProductDataModel> listSize,
             List<int> favouritesProductsId,
             bool isAuth,
             bool isLoadGetSizeProduct,
@@ -4288,6 +4257,7 @@ class _$LoadingInfoCardV2StateImpl implements LoadingInfoCardV2State {
             List<ProductDataModel> listProdcutsAlso,
             List<ProductDataModel> listProdcutsBrand,
             List<ProductDataModel> listProdcutsComplect,
+            List<SkuProductDataModel> listSize,
             List<int> favouritesProductsId,
             bool isAuth,
             bool isLoadGetSizeProduct,
@@ -4325,15 +4295,14 @@ class _$LoadingInfoCardV2StateImpl implements LoadingInfoCardV2State {
   @override
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
-    required TResult Function(InitInfoCardV2State value) init,
-    required TResult Function(LoadingInfoCardV2State value) load,
-    required TResult Function(ProductsInfoCardV2State value) productInfoCard,
-    required TResult Function(OpenSoppingCartCardInfoV2State value)
+    required TResult Function(InitCardInfoState value) init,
+    required TResult Function(LoadingCardInfoState value) load,
+    required TResult Function(ProductsCardInfoState value) productInfoCard,
+    required TResult Function(OpenSoppingCartCardInfoState value)
         openSoppingCart,
-    required TResult Function(AddProductCardInfoV2State value)
+    required TResult Function(AddProductCardInfoState value)
         addProductToSoppingCart,
-    required TResult Function(GetSizeProductCardInfoV2State value)
-        getSizeProduct,
+    required TResult Function(GetSizeProductCardInfoState value) getSizeProduct,
   }) {
     return load(this);
   }
@@ -4341,12 +4310,12 @@ class _$LoadingInfoCardV2StateImpl implements LoadingInfoCardV2State {
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(InitInfoCardV2State value)? init,
-    TResult? Function(LoadingInfoCardV2State value)? load,
-    TResult? Function(ProductsInfoCardV2State value)? productInfoCard,
-    TResult? Function(OpenSoppingCartCardInfoV2State value)? openSoppingCart,
-    TResult? Function(AddProductCardInfoV2State value)? addProductToSoppingCart,
-    TResult? Function(GetSizeProductCardInfoV2State value)? getSizeProduct,
+    TResult? Function(InitCardInfoState value)? init,
+    TResult? Function(LoadingCardInfoState value)? load,
+    TResult? Function(ProductsCardInfoState value)? productInfoCard,
+    TResult? Function(OpenSoppingCartCardInfoState value)? openSoppingCart,
+    TResult? Function(AddProductCardInfoState value)? addProductToSoppingCart,
+    TResult? Function(GetSizeProductCardInfoState value)? getSizeProduct,
   }) {
     return load?.call(this);
   }
@@ -4354,12 +4323,12 @@ class _$LoadingInfoCardV2StateImpl implements LoadingInfoCardV2State {
   @override
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
-    TResult Function(InitInfoCardV2State value)? init,
-    TResult Function(LoadingInfoCardV2State value)? load,
-    TResult Function(ProductsInfoCardV2State value)? productInfoCard,
-    TResult Function(OpenSoppingCartCardInfoV2State value)? openSoppingCart,
-    TResult Function(AddProductCardInfoV2State value)? addProductToSoppingCart,
-    TResult Function(GetSizeProductCardInfoV2State value)? getSizeProduct,
+    TResult Function(InitCardInfoState value)? init,
+    TResult Function(LoadingCardInfoState value)? load,
+    TResult Function(ProductsCardInfoState value)? productInfoCard,
+    TResult Function(OpenSoppingCartCardInfoState value)? openSoppingCart,
+    TResult Function(AddProductCardInfoState value)? addProductToSoppingCart,
+    TResult Function(GetSizeProductCardInfoState value)? getSizeProduct,
     required TResult orElse(),
   }) {
     if (load != null) {
@@ -4369,16 +4338,16 @@ class _$LoadingInfoCardV2StateImpl implements LoadingInfoCardV2State {
   }
 }
 
-abstract class LoadingInfoCardV2State implements CardInfoState {
-  const factory LoadingInfoCardV2State() = _$LoadingInfoCardV2StateImpl;
+abstract class LoadingCardInfoState implements CardInfoState {
+  const factory LoadingCardInfoState() = _$LoadingCardInfoStateImpl;
 }
 
 /// @nodoc
-abstract class _$$ProductsInfoCardV2StateImplCopyWith<$Res> {
-  factory _$$ProductsInfoCardV2StateImplCopyWith(
-          _$ProductsInfoCardV2StateImpl value,
-          $Res Function(_$ProductsInfoCardV2StateImpl) then) =
-      __$$ProductsInfoCardV2StateImplCopyWithImpl<$Res>;
+abstract class _$$ProductsCardInfoStateImplCopyWith<$Res> {
+  factory _$$ProductsCardInfoStateImplCopyWith(
+          _$ProductsCardInfoStateImpl value,
+          $Res Function(_$ProductsCardInfoStateImpl) then) =
+      __$$ProductsCardInfoStateImplCopyWithImpl<$Res>;
   @useResult
   $Res call(
       {List<ProductDataModel> favouritesProducts,
@@ -4387,6 +4356,7 @@ abstract class _$$ProductsInfoCardV2StateImplCopyWith<$Res> {
       List<ProductDataModel> listProdcutsAlso,
       List<ProductDataModel> listProdcutsBrand,
       List<ProductDataModel> listProdcutsComplect,
+      List<SkuProductDataModel> listSize,
       List<int> favouritesProductsId,
       bool isAuth,
       bool isLoadGetSizeProduct,
@@ -4415,15 +4385,14 @@ abstract class _$$ProductsInfoCardV2StateImplCopyWith<$Res> {
 }
 
 /// @nodoc
-class __$$ProductsInfoCardV2StateImplCopyWithImpl<$Res>
-    extends _$CardInfoV2StateCopyWithImpl<$Res, _$ProductsInfoCardV2StateImpl>
-    implements _$$ProductsInfoCardV2StateImplCopyWith<$Res> {
-  __$$ProductsInfoCardV2StateImplCopyWithImpl(
-      _$ProductsInfoCardV2StateImpl _value,
-      $Res Function(_$ProductsInfoCardV2StateImpl) _then)
+class __$$ProductsCardInfoStateImplCopyWithImpl<$Res>
+    extends _$CardInfoStateCopyWithImpl<$Res, _$ProductsCardInfoStateImpl>
+    implements _$$ProductsCardInfoStateImplCopyWith<$Res> {
+  __$$ProductsCardInfoStateImplCopyWithImpl(_$ProductsCardInfoStateImpl _value,
+      $Res Function(_$ProductsCardInfoStateImpl) _then)
       : super(_value, _then);
 
-  /// Create a copy of CardInfoV2State
+  /// Create a copy of CardInfoState
   /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
@@ -4434,6 +4403,7 @@ class __$$ProductsInfoCardV2StateImplCopyWithImpl<$Res>
     Object? listProdcutsAlso = null,
     Object? listProdcutsBrand = null,
     Object? listProdcutsComplect = null,
+    Object? listSize = null,
     Object? favouritesProductsId = null,
     Object? isAuth = null,
     Object? isLoadGetSizeProduct = null,
@@ -4455,7 +4425,7 @@ class __$$ProductsInfoCardV2StateImplCopyWithImpl<$Res>
     Object? identifierAddProductToShoppingCart = null,
     Object? isShopGetSizeProduct = freezed,
   }) {
-    return _then(_$ProductsInfoCardV2StateImpl(
+    return _then(_$ProductsCardInfoStateImpl(
       favouritesProducts: null == favouritesProducts
           ? _value._favouritesProducts
           : favouritesProducts // ignore: cast_nullable_to_non_nullable
@@ -4480,6 +4450,10 @@ class __$$ProductsInfoCardV2StateImplCopyWithImpl<$Res>
           ? _value._listProdcutsComplect
           : listProdcutsComplect // ignore: cast_nullable_to_non_nullable
               as List<ProductDataModel>,
+      listSize: null == listSize
+          ? _value._listSize
+          : listSize // ignore: cast_nullable_to_non_nullable
+              as List<SkuProductDataModel>,
       favouritesProductsId: null == favouritesProductsId
           ? _value._favouritesProductsId
           : favouritesProductsId // ignore: cast_nullable_to_non_nullable
@@ -4564,7 +4538,7 @@ class __$$ProductsInfoCardV2StateImplCopyWithImpl<$Res>
     ));
   }
 
-  /// Create a copy of CardInfoV2State
+  /// Create a copy of CardInfoState
   /// with the given fields replaced by the non-null parameter values.
   @override
   @pragma('vm:prefer-inline')
@@ -4579,7 +4553,7 @@ class __$$ProductsInfoCardV2StateImplCopyWithImpl<$Res>
     });
   }
 
-  /// Create a copy of CardInfoV2State
+  /// Create a copy of CardInfoState
   /// with the given fields replaced by the non-null parameter values.
   @override
   @pragma('vm:prefer-inline')
@@ -4594,7 +4568,7 @@ class __$$ProductsInfoCardV2StateImplCopyWithImpl<$Res>
     });
   }
 
-  /// Create a copy of CardInfoV2State
+  /// Create a copy of CardInfoState
   /// with the given fields replaced by the non-null parameter values.
   @override
   @pragma('vm:prefer-inline')
@@ -4608,7 +4582,7 @@ class __$$ProductsInfoCardV2StateImplCopyWithImpl<$Res>
     });
   }
 
-  /// Create a copy of CardInfoV2State
+  /// Create a copy of CardInfoState
   /// with the given fields replaced by the non-null parameter values.
   @override
   @pragma('vm:prefer-inline')
@@ -4625,14 +4599,15 @@ class __$$ProductsInfoCardV2StateImplCopyWithImpl<$Res>
 
 /// @nodoc
 
-class _$ProductsInfoCardV2StateImpl implements ProductsInfoCardV2State {
-  const _$ProductsInfoCardV2StateImpl(
+class _$ProductsCardInfoStateImpl implements ProductsCardInfoState {
+  const _$ProductsCardInfoStateImpl(
       {required final List<ProductDataModel> favouritesProducts,
       required final List<String> listProductsCode,
       required final List<ProductDataModel> listProdcutsStyle,
       required final List<ProductDataModel> listProdcutsAlso,
       required final List<ProductDataModel> listProdcutsBrand,
       required final List<ProductDataModel> listProdcutsComplect,
+      required final List<SkuProductDataModel> listSize,
       required final List<int> favouritesProductsId,
       required this.isAuth,
       required this.isLoadGetSizeProduct,
@@ -4659,6 +4634,7 @@ class _$ProductsInfoCardV2StateImpl implements ProductsInfoCardV2State {
         _listProdcutsAlso = listProdcutsAlso,
         _listProdcutsBrand = listProdcutsBrand,
         _listProdcutsComplect = listProdcutsComplect,
+        _listSize = listSize,
         _favouritesProductsId = favouritesProductsId;
 
   final List<ProductDataModel> _favouritesProducts;
@@ -4715,6 +4691,14 @@ class _$ProductsInfoCardV2StateImpl implements ProductsInfoCardV2State {
     return EqualUnmodifiableListView(_listProdcutsComplect);
   }
 
+  final List<SkuProductDataModel> _listSize;
+  @override
+  List<SkuProductDataModel> get listSize {
+    if (_listSize is EqualUnmodifiableListView) return _listSize;
+    // ignore: implicit_dynamic_type
+    return EqualUnmodifiableListView(_listSize);
+  }
+
   final List<int> _favouritesProductsId;
   @override
   List<int> get favouritesProductsId {
@@ -4766,14 +4750,14 @@ class _$ProductsInfoCardV2StateImpl implements ProductsInfoCardV2State {
 
   @override
   String toString() {
-    return 'CardInfoV2State.productInfoCard(favouritesProducts: $favouritesProducts, listProductsCode: $listProductsCode, listProdcutsStyle: $listProdcutsStyle, listProdcutsAlso: $listProdcutsAlso, listProdcutsBrand: $listProdcutsBrand, listProdcutsComplect: $listProdcutsComplect, favouritesProductsId: $favouritesProductsId, isAuth: $isAuth, isLoadGetSizeProduct: $isLoadGetSizeProduct, isBlocBackBotton: $isBlocBackBotton, codeProduct: $codeProduct, selectSizeProduct: $selectSizeProduct, isShoppingCart: $isShoppingCart, isShoppingCartDetailsProduct: $isShoppingCartDetailsProduct, detailsProduct: $detailsProduct, itemInfo: $itemInfo, product: $product, indexItem: $indexItem, isLoadErrorButton: $isLoadErrorButton, errorMessage: $errorMessage, typeError: $typeError, isError: $isError, titleScreen: $titleScreen, typeAddProductToShoppingCart: $typeAddProductToShoppingCart, identifierAddProductToShoppingCart: $identifierAddProductToShoppingCart, isShopGetSizeProduct: $isShopGetSizeProduct)';
+    return 'CardInfoState.productInfoCard(favouritesProducts: $favouritesProducts, listProductsCode: $listProductsCode, listProdcutsStyle: $listProdcutsStyle, listProdcutsAlso: $listProdcutsAlso, listProdcutsBrand: $listProdcutsBrand, listProdcutsComplect: $listProdcutsComplect, listSize: $listSize, favouritesProductsId: $favouritesProductsId, isAuth: $isAuth, isLoadGetSizeProduct: $isLoadGetSizeProduct, isBlocBackBotton: $isBlocBackBotton, codeProduct: $codeProduct, selectSizeProduct: $selectSizeProduct, isShoppingCart: $isShoppingCart, isShoppingCartDetailsProduct: $isShoppingCartDetailsProduct, detailsProduct: $detailsProduct, itemInfo: $itemInfo, product: $product, indexItem: $indexItem, isLoadErrorButton: $isLoadErrorButton, errorMessage: $errorMessage, typeError: $typeError, isError: $isError, titleScreen: $titleScreen, typeAddProductToShoppingCart: $typeAddProductToShoppingCart, identifierAddProductToShoppingCart: $identifierAddProductToShoppingCart, isShopGetSizeProduct: $isShopGetSizeProduct)';
   }
 
   @override
   bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$ProductsInfoCardV2StateImpl &&
+            other is _$ProductsCardInfoStateImpl &&
             const DeepCollectionEquality()
                 .equals(other._favouritesProducts, _favouritesProducts) &&
             const DeepCollectionEquality()
@@ -4786,6 +4770,7 @@ class _$ProductsInfoCardV2StateImpl implements ProductsInfoCardV2State {
                 .equals(other._listProdcutsBrand, _listProdcutsBrand) &&
             const DeepCollectionEquality()
                 .equals(other._listProdcutsComplect, _listProdcutsComplect) &&
+            const DeepCollectionEquality().equals(other._listSize, _listSize) &&
             const DeepCollectionEquality()
                 .equals(other._favouritesProductsId, _favouritesProductsId) &&
             (identical(other.isAuth, isAuth) || other.isAuth == isAuth) &&
@@ -4840,6 +4825,7 @@ class _$ProductsInfoCardV2StateImpl implements ProductsInfoCardV2State {
         const DeepCollectionEquality().hash(_listProdcutsAlso),
         const DeepCollectionEquality().hash(_listProdcutsBrand),
         const DeepCollectionEquality().hash(_listProdcutsComplect),
+        const DeepCollectionEquality().hash(_listSize),
         const DeepCollectionEquality().hash(_favouritesProductsId),
         isAuth,
         isLoadGetSizeProduct,
@@ -4862,14 +4848,14 @@ class _$ProductsInfoCardV2StateImpl implements ProductsInfoCardV2State {
         isShopGetSizeProduct
       ]);
 
-  /// Create a copy of CardInfoV2State
+  /// Create a copy of CardInfoState
   /// with the given fields replaced by the non-null parameter values.
   @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
-  _$$ProductsInfoCardV2StateImplCopyWith<_$ProductsInfoCardV2StateImpl>
-      get copyWith => __$$ProductsInfoCardV2StateImplCopyWithImpl<
-          _$ProductsInfoCardV2StateImpl>(this, _$identity);
+  _$$ProductsCardInfoStateImplCopyWith<_$ProductsCardInfoStateImpl>
+      get copyWith => __$$ProductsCardInfoStateImplCopyWithImpl<
+          _$ProductsCardInfoStateImpl>(this, _$identity);
 
   @override
   @optionalTypeArgs
@@ -4883,6 +4869,7 @@ class _$ProductsInfoCardV2StateImpl implements ProductsInfoCardV2State {
             List<ProductDataModel> listProdcutsAlso,
             List<ProductDataModel> listProdcutsBrand,
             List<ProductDataModel> listProdcutsComplect,
+            List<SkuProductDataModel> listSize,
             List<int> favouritesProductsId,
             bool isAuth,
             bool isLoadGetSizeProduct,
@@ -4917,6 +4904,7 @@ class _$ProductsInfoCardV2StateImpl implements ProductsInfoCardV2State {
         listProdcutsAlso,
         listProdcutsBrand,
         listProdcutsComplect,
+        listSize,
         favouritesProductsId,
         isAuth,
         isLoadGetSizeProduct,
@@ -4951,6 +4939,7 @@ class _$ProductsInfoCardV2StateImpl implements ProductsInfoCardV2State {
             List<ProductDataModel> listProdcutsAlso,
             List<ProductDataModel> listProdcutsBrand,
             List<ProductDataModel> listProdcutsComplect,
+            List<SkuProductDataModel> listSize,
             List<int> favouritesProductsId,
             bool isAuth,
             bool isLoadGetSizeProduct,
@@ -4985,6 +4974,7 @@ class _$ProductsInfoCardV2StateImpl implements ProductsInfoCardV2State {
         listProdcutsAlso,
         listProdcutsBrand,
         listProdcutsComplect,
+        listSize,
         favouritesProductsId,
         isAuth,
         isLoadGetSizeProduct,
@@ -5019,6 +5009,7 @@ class _$ProductsInfoCardV2StateImpl implements ProductsInfoCardV2State {
             List<ProductDataModel> listProdcutsAlso,
             List<ProductDataModel> listProdcutsBrand,
             List<ProductDataModel> listProdcutsComplect,
+            List<SkuProductDataModel> listSize,
             List<int> favouritesProductsId,
             bool isAuth,
             bool isLoadGetSizeProduct,
@@ -5055,6 +5046,7 @@ class _$ProductsInfoCardV2StateImpl implements ProductsInfoCardV2State {
           listProdcutsAlso,
           listProdcutsBrand,
           listProdcutsComplect,
+          listSize,
           favouritesProductsId,
           isAuth,
           isLoadGetSizeProduct,
@@ -5082,15 +5074,14 @@ class _$ProductsInfoCardV2StateImpl implements ProductsInfoCardV2State {
   @override
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
-    required TResult Function(InitInfoCardV2State value) init,
-    required TResult Function(LoadingInfoCardV2State value) load,
-    required TResult Function(ProductsInfoCardV2State value) productInfoCard,
-    required TResult Function(OpenSoppingCartCardInfoV2State value)
+    required TResult Function(InitCardInfoState value) init,
+    required TResult Function(LoadingCardInfoState value) load,
+    required TResult Function(ProductsCardInfoState value) productInfoCard,
+    required TResult Function(OpenSoppingCartCardInfoState value)
         openSoppingCart,
-    required TResult Function(AddProductCardInfoV2State value)
+    required TResult Function(AddProductCardInfoState value)
         addProductToSoppingCart,
-    required TResult Function(GetSizeProductCardInfoV2State value)
-        getSizeProduct,
+    required TResult Function(GetSizeProductCardInfoState value) getSizeProduct,
   }) {
     return productInfoCard(this);
   }
@@ -5098,12 +5089,12 @@ class _$ProductsInfoCardV2StateImpl implements ProductsInfoCardV2State {
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(InitInfoCardV2State value)? init,
-    TResult? Function(LoadingInfoCardV2State value)? load,
-    TResult? Function(ProductsInfoCardV2State value)? productInfoCard,
-    TResult? Function(OpenSoppingCartCardInfoV2State value)? openSoppingCart,
-    TResult? Function(AddProductCardInfoV2State value)? addProductToSoppingCart,
-    TResult? Function(GetSizeProductCardInfoV2State value)? getSizeProduct,
+    TResult? Function(InitCardInfoState value)? init,
+    TResult? Function(LoadingCardInfoState value)? load,
+    TResult? Function(ProductsCardInfoState value)? productInfoCard,
+    TResult? Function(OpenSoppingCartCardInfoState value)? openSoppingCart,
+    TResult? Function(AddProductCardInfoState value)? addProductToSoppingCart,
+    TResult? Function(GetSizeProductCardInfoState value)? getSizeProduct,
   }) {
     return productInfoCard?.call(this);
   }
@@ -5111,12 +5102,12 @@ class _$ProductsInfoCardV2StateImpl implements ProductsInfoCardV2State {
   @override
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
-    TResult Function(InitInfoCardV2State value)? init,
-    TResult Function(LoadingInfoCardV2State value)? load,
-    TResult Function(ProductsInfoCardV2State value)? productInfoCard,
-    TResult Function(OpenSoppingCartCardInfoV2State value)? openSoppingCart,
-    TResult Function(AddProductCardInfoV2State value)? addProductToSoppingCart,
-    TResult Function(GetSizeProductCardInfoV2State value)? getSizeProduct,
+    TResult Function(InitCardInfoState value)? init,
+    TResult Function(LoadingCardInfoState value)? load,
+    TResult Function(ProductsCardInfoState value)? productInfoCard,
+    TResult Function(OpenSoppingCartCardInfoState value)? openSoppingCart,
+    TResult Function(AddProductCardInfoState value)? addProductToSoppingCart,
+    TResult Function(GetSizeProductCardInfoState value)? getSizeProduct,
     required TResult orElse(),
   }) {
     if (productInfoCard != null) {
@@ -5126,14 +5117,15 @@ class _$ProductsInfoCardV2StateImpl implements ProductsInfoCardV2State {
   }
 }
 
-abstract class ProductsInfoCardV2State implements CardInfoState {
-  const factory ProductsInfoCardV2State(
+abstract class ProductsCardInfoState implements CardInfoState {
+  const factory ProductsCardInfoState(
       {required final List<ProductDataModel> favouritesProducts,
       required final List<String> listProductsCode,
       required final List<ProductDataModel> listProdcutsStyle,
       required final List<ProductDataModel> listProdcutsAlso,
       required final List<ProductDataModel> listProdcutsBrand,
       required final List<ProductDataModel> listProdcutsComplect,
+      required final List<SkuProductDataModel> listSize,
       required final List<int> favouritesProductsId,
       required final bool isAuth,
       required final bool isLoadGetSizeProduct,
@@ -5153,7 +5145,7 @@ abstract class ProductsInfoCardV2State implements CardInfoState {
       required final String titleScreen,
       required final String typeAddProductToShoppingCart,
       required final String identifierAddProductToShoppingCart,
-      final bool? isShopGetSizeProduct}) = _$ProductsInfoCardV2StateImpl;
+      final bool? isShopGetSizeProduct}) = _$ProductsCardInfoStateImpl;
 
   List<ProductDataModel> get favouritesProducts;
   List<String> get listProductsCode;
@@ -5161,6 +5153,7 @@ abstract class ProductsInfoCardV2State implements CardInfoState {
   List<ProductDataModel> get listProdcutsAlso;
   List<ProductDataModel> get listProdcutsBrand;
   List<ProductDataModel> get listProdcutsComplect;
+  List<SkuProductDataModel> get listSize;
   List<int> get favouritesProductsId;
   bool get isAuth;
   bool get isLoadGetSizeProduct;
@@ -5183,51 +5176,51 @@ abstract class ProductsInfoCardV2State implements CardInfoState {
   String get identifierAddProductToShoppingCart;
   bool? get isShopGetSizeProduct;
 
-  /// Create a copy of CardInfoV2State
+  /// Create a copy of CardInfoState
   /// with the given fields replaced by the non-null parameter values.
   @JsonKey(includeFromJson: false, includeToJson: false)
-  _$$ProductsInfoCardV2StateImplCopyWith<_$ProductsInfoCardV2StateImpl>
+  _$$ProductsCardInfoStateImplCopyWith<_$ProductsCardInfoStateImpl>
       get copyWith => throw _privateConstructorUsedError;
 }
 
 /// @nodoc
-abstract class _$$OpenSoppingCartCardInfoV2StateImplCopyWith<$Res> {
-  factory _$$OpenSoppingCartCardInfoV2StateImplCopyWith(
-          _$OpenSoppingCartCardInfoV2StateImpl value,
-          $Res Function(_$OpenSoppingCartCardInfoV2StateImpl) then) =
-      __$$OpenSoppingCartCardInfoV2StateImplCopyWithImpl<$Res>;
+abstract class _$$OpenSoppingCartCardInfoStateImplCopyWith<$Res> {
+  factory _$$OpenSoppingCartCardInfoStateImplCopyWith(
+          _$OpenSoppingCartCardInfoStateImpl value,
+          $Res Function(_$OpenSoppingCartCardInfoStateImpl) then) =
+      __$$OpenSoppingCartCardInfoStateImplCopyWithImpl<$Res>;
 }
 
 /// @nodoc
-class __$$OpenSoppingCartCardInfoV2StateImplCopyWithImpl<$Res>
-    extends _$CardInfoV2StateCopyWithImpl<$Res,
-        _$OpenSoppingCartCardInfoV2StateImpl>
-    implements _$$OpenSoppingCartCardInfoV2StateImplCopyWith<$Res> {
-  __$$OpenSoppingCartCardInfoV2StateImplCopyWithImpl(
-      _$OpenSoppingCartCardInfoV2StateImpl _value,
-      $Res Function(_$OpenSoppingCartCardInfoV2StateImpl) _then)
+class __$$OpenSoppingCartCardInfoStateImplCopyWithImpl<$Res>
+    extends _$CardInfoStateCopyWithImpl<$Res,
+        _$OpenSoppingCartCardInfoStateImpl>
+    implements _$$OpenSoppingCartCardInfoStateImplCopyWith<$Res> {
+  __$$OpenSoppingCartCardInfoStateImplCopyWithImpl(
+      _$OpenSoppingCartCardInfoStateImpl _value,
+      $Res Function(_$OpenSoppingCartCardInfoStateImpl) _then)
       : super(_value, _then);
 
-  /// Create a copy of CardInfoV2State
+  /// Create a copy of CardInfoState
   /// with the given fields replaced by the non-null parameter values.
 }
 
 /// @nodoc
 
-class _$OpenSoppingCartCardInfoV2StateImpl
-    implements OpenSoppingCartCardInfoV2State {
-  const _$OpenSoppingCartCardInfoV2StateImpl();
+class _$OpenSoppingCartCardInfoStateImpl
+    implements OpenSoppingCartCardInfoState {
+  const _$OpenSoppingCartCardInfoStateImpl();
 
   @override
   String toString() {
-    return 'CardInfoV2State.openSoppingCart()';
+    return 'CardInfoState.openSoppingCart()';
   }
 
   @override
   bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$OpenSoppingCartCardInfoV2StateImpl);
+            other is _$OpenSoppingCartCardInfoStateImpl);
   }
 
   @override
@@ -5245,6 +5238,7 @@ class _$OpenSoppingCartCardInfoV2StateImpl
             List<ProductDataModel> listProdcutsAlso,
             List<ProductDataModel> listProdcutsBrand,
             List<ProductDataModel> listProdcutsComplect,
+            List<SkuProductDataModel> listSize,
             List<int> favouritesProductsId,
             bool isAuth,
             bool isLoadGetSizeProduct,
@@ -5287,6 +5281,7 @@ class _$OpenSoppingCartCardInfoV2StateImpl
             List<ProductDataModel> listProdcutsAlso,
             List<ProductDataModel> listProdcutsBrand,
             List<ProductDataModel> listProdcutsComplect,
+            List<SkuProductDataModel> listSize,
             List<int> favouritesProductsId,
             bool isAuth,
             bool isLoadGetSizeProduct,
@@ -5329,6 +5324,7 @@ class _$OpenSoppingCartCardInfoV2StateImpl
             List<ProductDataModel> listProdcutsAlso,
             List<ProductDataModel> listProdcutsBrand,
             List<ProductDataModel> listProdcutsComplect,
+            List<SkuProductDataModel> listSize,
             List<int> favouritesProductsId,
             bool isAuth,
             bool isLoadGetSizeProduct,
@@ -5366,15 +5362,14 @@ class _$OpenSoppingCartCardInfoV2StateImpl
   @override
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
-    required TResult Function(InitInfoCardV2State value) init,
-    required TResult Function(LoadingInfoCardV2State value) load,
-    required TResult Function(ProductsInfoCardV2State value) productInfoCard,
-    required TResult Function(OpenSoppingCartCardInfoV2State value)
+    required TResult Function(InitCardInfoState value) init,
+    required TResult Function(LoadingCardInfoState value) load,
+    required TResult Function(ProductsCardInfoState value) productInfoCard,
+    required TResult Function(OpenSoppingCartCardInfoState value)
         openSoppingCart,
-    required TResult Function(AddProductCardInfoV2State value)
+    required TResult Function(AddProductCardInfoState value)
         addProductToSoppingCart,
-    required TResult Function(GetSizeProductCardInfoV2State value)
-        getSizeProduct,
+    required TResult Function(GetSizeProductCardInfoState value) getSizeProduct,
   }) {
     return openSoppingCart(this);
   }
@@ -5382,12 +5377,12 @@ class _$OpenSoppingCartCardInfoV2StateImpl
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(InitInfoCardV2State value)? init,
-    TResult? Function(LoadingInfoCardV2State value)? load,
-    TResult? Function(ProductsInfoCardV2State value)? productInfoCard,
-    TResult? Function(OpenSoppingCartCardInfoV2State value)? openSoppingCart,
-    TResult? Function(AddProductCardInfoV2State value)? addProductToSoppingCart,
-    TResult? Function(GetSizeProductCardInfoV2State value)? getSizeProduct,
+    TResult? Function(InitCardInfoState value)? init,
+    TResult? Function(LoadingCardInfoState value)? load,
+    TResult? Function(ProductsCardInfoState value)? productInfoCard,
+    TResult? Function(OpenSoppingCartCardInfoState value)? openSoppingCart,
+    TResult? Function(AddProductCardInfoState value)? addProductToSoppingCart,
+    TResult? Function(GetSizeProductCardInfoState value)? getSizeProduct,
   }) {
     return openSoppingCart?.call(this);
   }
@@ -5395,12 +5390,12 @@ class _$OpenSoppingCartCardInfoV2StateImpl
   @override
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
-    TResult Function(InitInfoCardV2State value)? init,
-    TResult Function(LoadingInfoCardV2State value)? load,
-    TResult Function(ProductsInfoCardV2State value)? productInfoCard,
-    TResult Function(OpenSoppingCartCardInfoV2State value)? openSoppingCart,
-    TResult Function(AddProductCardInfoV2State value)? addProductToSoppingCart,
-    TResult Function(GetSizeProductCardInfoV2State value)? getSizeProduct,
+    TResult Function(InitCardInfoState value)? init,
+    TResult Function(LoadingCardInfoState value)? load,
+    TResult Function(ProductsCardInfoState value)? productInfoCard,
+    TResult Function(OpenSoppingCartCardInfoState value)? openSoppingCart,
+    TResult Function(AddProductCardInfoState value)? addProductToSoppingCart,
+    TResult Function(GetSizeProductCardInfoState value)? getSizeProduct,
     required TResult orElse(),
   }) {
     if (openSoppingCart != null) {
@@ -5410,38 +5405,38 @@ class _$OpenSoppingCartCardInfoV2StateImpl
   }
 }
 
-abstract class OpenSoppingCartCardInfoV2State implements CardInfoState {
-  const factory OpenSoppingCartCardInfoV2State() =
-      _$OpenSoppingCartCardInfoV2StateImpl;
+abstract class OpenSoppingCartCardInfoState implements CardInfoState {
+  const factory OpenSoppingCartCardInfoState() =
+      _$OpenSoppingCartCardInfoStateImpl;
 }
 
 /// @nodoc
-abstract class _$$AddProductCardInfoV2StateImplCopyWith<$Res> {
-  factory _$$AddProductCardInfoV2StateImplCopyWith(
-          _$AddProductCardInfoV2StateImpl value,
-          $Res Function(_$AddProductCardInfoV2StateImpl) then) =
-      __$$AddProductCardInfoV2StateImplCopyWithImpl<$Res>;
+abstract class _$$AddProductCardInfoStateImplCopyWith<$Res> {
+  factory _$$AddProductCardInfoStateImplCopyWith(
+          _$AddProductCardInfoStateImpl value,
+          $Res Function(_$AddProductCardInfoStateImpl) then) =
+      __$$AddProductCardInfoStateImplCopyWithImpl<$Res>;
   @useResult
   $Res call({String code});
 }
 
 /// @nodoc
-class __$$AddProductCardInfoV2StateImplCopyWithImpl<$Res>
-    extends _$CardInfoV2StateCopyWithImpl<$Res, _$AddProductCardInfoV2StateImpl>
-    implements _$$AddProductCardInfoV2StateImplCopyWith<$Res> {
-  __$$AddProductCardInfoV2StateImplCopyWithImpl(
-      _$AddProductCardInfoV2StateImpl _value,
-      $Res Function(_$AddProductCardInfoV2StateImpl) _then)
+class __$$AddProductCardInfoStateImplCopyWithImpl<$Res>
+    extends _$CardInfoStateCopyWithImpl<$Res, _$AddProductCardInfoStateImpl>
+    implements _$$AddProductCardInfoStateImplCopyWith<$Res> {
+  __$$AddProductCardInfoStateImplCopyWithImpl(
+      _$AddProductCardInfoStateImpl _value,
+      $Res Function(_$AddProductCardInfoStateImpl) _then)
       : super(_value, _then);
 
-  /// Create a copy of CardInfoV2State
+  /// Create a copy of CardInfoState
   /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
     Object? code = null,
   }) {
-    return _then(_$AddProductCardInfoV2StateImpl(
+    return _then(_$AddProductCardInfoStateImpl(
       code: null == code
           ? _value.code
           : code // ignore: cast_nullable_to_non_nullable
@@ -5452,36 +5447,36 @@ class __$$AddProductCardInfoV2StateImplCopyWithImpl<$Res>
 
 /// @nodoc
 
-class _$AddProductCardInfoV2StateImpl implements AddProductCardInfoV2State {
-  const _$AddProductCardInfoV2StateImpl({required this.code});
+class _$AddProductCardInfoStateImpl implements AddProductCardInfoState {
+  const _$AddProductCardInfoStateImpl({required this.code});
 
   @override
   final String code;
 
   @override
   String toString() {
-    return 'CardInfoV2State.addProductToSoppingCart(code: $code)';
+    return 'CardInfoState.addProductToSoppingCart(code: $code)';
   }
 
   @override
   bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$AddProductCardInfoV2StateImpl &&
+            other is _$AddProductCardInfoStateImpl &&
             (identical(other.code, code) || other.code == code));
   }
 
   @override
   int get hashCode => Object.hash(runtimeType, code);
 
-  /// Create a copy of CardInfoV2State
+  /// Create a copy of CardInfoState
   /// with the given fields replaced by the non-null parameter values.
   @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
-  _$$AddProductCardInfoV2StateImplCopyWith<_$AddProductCardInfoV2StateImpl>
-      get copyWith => __$$AddProductCardInfoV2StateImplCopyWithImpl<
-          _$AddProductCardInfoV2StateImpl>(this, _$identity);
+  _$$AddProductCardInfoStateImplCopyWith<_$AddProductCardInfoStateImpl>
+      get copyWith => __$$AddProductCardInfoStateImplCopyWithImpl<
+          _$AddProductCardInfoStateImpl>(this, _$identity);
 
   @override
   @optionalTypeArgs
@@ -5495,6 +5490,7 @@ class _$AddProductCardInfoV2StateImpl implements AddProductCardInfoV2State {
             List<ProductDataModel> listProdcutsAlso,
             List<ProductDataModel> listProdcutsBrand,
             List<ProductDataModel> listProdcutsComplect,
+            List<SkuProductDataModel> listSize,
             List<int> favouritesProductsId,
             bool isAuth,
             bool isLoadGetSizeProduct,
@@ -5537,6 +5533,7 @@ class _$AddProductCardInfoV2StateImpl implements AddProductCardInfoV2State {
             List<ProductDataModel> listProdcutsAlso,
             List<ProductDataModel> listProdcutsBrand,
             List<ProductDataModel> listProdcutsComplect,
+            List<SkuProductDataModel> listSize,
             List<int> favouritesProductsId,
             bool isAuth,
             bool isLoadGetSizeProduct,
@@ -5579,6 +5576,7 @@ class _$AddProductCardInfoV2StateImpl implements AddProductCardInfoV2State {
             List<ProductDataModel> listProdcutsAlso,
             List<ProductDataModel> listProdcutsBrand,
             List<ProductDataModel> listProdcutsComplect,
+            List<SkuProductDataModel> listSize,
             List<int> favouritesProductsId,
             bool isAuth,
             bool isLoadGetSizeProduct,
@@ -5616,15 +5614,14 @@ class _$AddProductCardInfoV2StateImpl implements AddProductCardInfoV2State {
   @override
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
-    required TResult Function(InitInfoCardV2State value) init,
-    required TResult Function(LoadingInfoCardV2State value) load,
-    required TResult Function(ProductsInfoCardV2State value) productInfoCard,
-    required TResult Function(OpenSoppingCartCardInfoV2State value)
+    required TResult Function(InitCardInfoState value) init,
+    required TResult Function(LoadingCardInfoState value) load,
+    required TResult Function(ProductsCardInfoState value) productInfoCard,
+    required TResult Function(OpenSoppingCartCardInfoState value)
         openSoppingCart,
-    required TResult Function(AddProductCardInfoV2State value)
+    required TResult Function(AddProductCardInfoState value)
         addProductToSoppingCart,
-    required TResult Function(GetSizeProductCardInfoV2State value)
-        getSizeProduct,
+    required TResult Function(GetSizeProductCardInfoState value) getSizeProduct,
   }) {
     return addProductToSoppingCart(this);
   }
@@ -5632,12 +5629,12 @@ class _$AddProductCardInfoV2StateImpl implements AddProductCardInfoV2State {
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(InitInfoCardV2State value)? init,
-    TResult? Function(LoadingInfoCardV2State value)? load,
-    TResult? Function(ProductsInfoCardV2State value)? productInfoCard,
-    TResult? Function(OpenSoppingCartCardInfoV2State value)? openSoppingCart,
-    TResult? Function(AddProductCardInfoV2State value)? addProductToSoppingCart,
-    TResult? Function(GetSizeProductCardInfoV2State value)? getSizeProduct,
+    TResult? Function(InitCardInfoState value)? init,
+    TResult? Function(LoadingCardInfoState value)? load,
+    TResult? Function(ProductsCardInfoState value)? productInfoCard,
+    TResult? Function(OpenSoppingCartCardInfoState value)? openSoppingCart,
+    TResult? Function(AddProductCardInfoState value)? addProductToSoppingCart,
+    TResult? Function(GetSizeProductCardInfoState value)? getSizeProduct,
   }) {
     return addProductToSoppingCart?.call(this);
   }
@@ -5645,12 +5642,12 @@ class _$AddProductCardInfoV2StateImpl implements AddProductCardInfoV2State {
   @override
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
-    TResult Function(InitInfoCardV2State value)? init,
-    TResult Function(LoadingInfoCardV2State value)? load,
-    TResult Function(ProductsInfoCardV2State value)? productInfoCard,
-    TResult Function(OpenSoppingCartCardInfoV2State value)? openSoppingCart,
-    TResult Function(AddProductCardInfoV2State value)? addProductToSoppingCart,
-    TResult Function(GetSizeProductCardInfoV2State value)? getSizeProduct,
+    TResult Function(InitCardInfoState value)? init,
+    TResult Function(LoadingCardInfoState value)? load,
+    TResult Function(ProductsCardInfoState value)? productInfoCard,
+    TResult Function(OpenSoppingCartCardInfoState value)? openSoppingCart,
+    TResult Function(AddProductCardInfoState value)? addProductToSoppingCart,
+    TResult Function(GetSizeProductCardInfoState value)? getSizeProduct,
     required TResult orElse(),
   }) {
     if (addProductToSoppingCart != null) {
@@ -5660,25 +5657,25 @@ class _$AddProductCardInfoV2StateImpl implements AddProductCardInfoV2State {
   }
 }
 
-abstract class AddProductCardInfoV2State implements CardInfoState {
-  const factory AddProductCardInfoV2State({required final String code}) =
-      _$AddProductCardInfoV2StateImpl;
+abstract class AddProductCardInfoState implements CardInfoState {
+  const factory AddProductCardInfoState({required final String code}) =
+      _$AddProductCardInfoStateImpl;
 
   String get code;
 
-  /// Create a copy of CardInfoV2State
+  /// Create a copy of CardInfoState
   /// with the given fields replaced by the non-null parameter values.
   @JsonKey(includeFromJson: false, includeToJson: false)
-  _$$AddProductCardInfoV2StateImplCopyWith<_$AddProductCardInfoV2StateImpl>
+  _$$AddProductCardInfoStateImplCopyWith<_$AddProductCardInfoStateImpl>
       get copyWith => throw _privateConstructorUsedError;
 }
 
 /// @nodoc
-abstract class _$$GetSizeProductCardInfoV2StateImplCopyWith<$Res> {
-  factory _$$GetSizeProductCardInfoV2StateImplCopyWith(
-          _$GetSizeProductCardInfoV2StateImpl value,
-          $Res Function(_$GetSizeProductCardInfoV2StateImpl) then) =
-      __$$GetSizeProductCardInfoV2StateImplCopyWithImpl<$Res>;
+abstract class _$$GetSizeProductCardInfoStateImplCopyWith<$Res> {
+  factory _$$GetSizeProductCardInfoStateImplCopyWith(
+          _$GetSizeProductCardInfoStateImpl value,
+          $Res Function(_$GetSizeProductCardInfoStateImpl) then) =
+      __$$GetSizeProductCardInfoStateImplCopyWithImpl<$Res>;
   @useResult
   $Res call(
       {String code,
@@ -5687,16 +5684,15 @@ abstract class _$$GetSizeProductCardInfoV2StateImplCopyWith<$Res> {
 }
 
 /// @nodoc
-class __$$GetSizeProductCardInfoV2StateImplCopyWithImpl<$Res>
-    extends _$CardInfoV2StateCopyWithImpl<$Res,
-        _$GetSizeProductCardInfoV2StateImpl>
-    implements _$$GetSizeProductCardInfoV2StateImplCopyWith<$Res> {
-  __$$GetSizeProductCardInfoV2StateImplCopyWithImpl(
-      _$GetSizeProductCardInfoV2StateImpl _value,
-      $Res Function(_$GetSizeProductCardInfoV2StateImpl) _then)
+class __$$GetSizeProductCardInfoStateImplCopyWithImpl<$Res>
+    extends _$CardInfoStateCopyWithImpl<$Res, _$GetSizeProductCardInfoStateImpl>
+    implements _$$GetSizeProductCardInfoStateImplCopyWith<$Res> {
+  __$$GetSizeProductCardInfoStateImplCopyWithImpl(
+      _$GetSizeProductCardInfoStateImpl _value,
+      $Res Function(_$GetSizeProductCardInfoStateImpl) _then)
       : super(_value, _then);
 
-  /// Create a copy of CardInfoV2State
+  /// Create a copy of CardInfoState
   /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
@@ -5705,7 +5701,7 @@ class __$$GetSizeProductCardInfoV2StateImplCopyWithImpl<$Res>
     Object? listSize = null,
     Object? listSizeToSoppingCart = null,
   }) {
-    return _then(_$GetSizeProductCardInfoV2StateImpl(
+    return _then(_$GetSizeProductCardInfoStateImpl(
       code: null == code
           ? _value.code
           : code // ignore: cast_nullable_to_non_nullable
@@ -5724,9 +5720,8 @@ class __$$GetSizeProductCardInfoV2StateImplCopyWithImpl<$Res>
 
 /// @nodoc
 
-class _$GetSizeProductCardInfoV2StateImpl
-    implements GetSizeProductCardInfoV2State {
-  const _$GetSizeProductCardInfoV2StateImpl(
+class _$GetSizeProductCardInfoStateImpl implements GetSizeProductCardInfoState {
+  const _$GetSizeProductCardInfoStateImpl(
       {required this.code,
       required final List<SkuProductDataModel> listSize,
       required final List<SkuProductDataModel> listSizeToSoppingCart})
@@ -5754,14 +5749,14 @@ class _$GetSizeProductCardInfoV2StateImpl
 
   @override
   String toString() {
-    return 'CardInfoV2State.getSizeProduct(code: $code, listSize: $listSize, listSizeToSoppingCart: $listSizeToSoppingCart)';
+    return 'CardInfoState.getSizeProduct(code: $code, listSize: $listSize, listSizeToSoppingCart: $listSizeToSoppingCart)';
   }
 
   @override
   bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$GetSizeProductCardInfoV2StateImpl &&
+            other is _$GetSizeProductCardInfoStateImpl &&
             (identical(other.code, code) || other.code == code) &&
             const DeepCollectionEquality().equals(other._listSize, _listSize) &&
             const DeepCollectionEquality()
@@ -5775,15 +5770,14 @@ class _$GetSizeProductCardInfoV2StateImpl
       const DeepCollectionEquality().hash(_listSize),
       const DeepCollectionEquality().hash(_listSizeToSoppingCart));
 
-  /// Create a copy of CardInfoV2State
+  /// Create a copy of CardInfoState
   /// with the given fields replaced by the non-null parameter values.
   @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
-  _$$GetSizeProductCardInfoV2StateImplCopyWith<
-          _$GetSizeProductCardInfoV2StateImpl>
-      get copyWith => __$$GetSizeProductCardInfoV2StateImplCopyWithImpl<
-          _$GetSizeProductCardInfoV2StateImpl>(this, _$identity);
+  _$$GetSizeProductCardInfoStateImplCopyWith<_$GetSizeProductCardInfoStateImpl>
+      get copyWith => __$$GetSizeProductCardInfoStateImplCopyWithImpl<
+          _$GetSizeProductCardInfoStateImpl>(this, _$identity);
 
   @override
   @optionalTypeArgs
@@ -5797,6 +5791,7 @@ class _$GetSizeProductCardInfoV2StateImpl
             List<ProductDataModel> listProdcutsAlso,
             List<ProductDataModel> listProdcutsBrand,
             List<ProductDataModel> listProdcutsComplect,
+            List<SkuProductDataModel> listSize,
             List<int> favouritesProductsId,
             bool isAuth,
             bool isLoadGetSizeProduct,
@@ -5839,6 +5834,7 @@ class _$GetSizeProductCardInfoV2StateImpl
             List<ProductDataModel> listProdcutsAlso,
             List<ProductDataModel> listProdcutsBrand,
             List<ProductDataModel> listProdcutsComplect,
+            List<SkuProductDataModel> listSize,
             List<int> favouritesProductsId,
             bool isAuth,
             bool isLoadGetSizeProduct,
@@ -5881,6 +5877,7 @@ class _$GetSizeProductCardInfoV2StateImpl
             List<ProductDataModel> listProdcutsAlso,
             List<ProductDataModel> listProdcutsBrand,
             List<ProductDataModel> listProdcutsComplect,
+            List<SkuProductDataModel> listSize,
             List<int> favouritesProductsId,
             bool isAuth,
             bool isLoadGetSizeProduct,
@@ -5918,15 +5915,14 @@ class _$GetSizeProductCardInfoV2StateImpl
   @override
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
-    required TResult Function(InitInfoCardV2State value) init,
-    required TResult Function(LoadingInfoCardV2State value) load,
-    required TResult Function(ProductsInfoCardV2State value) productInfoCard,
-    required TResult Function(OpenSoppingCartCardInfoV2State value)
+    required TResult Function(InitCardInfoState value) init,
+    required TResult Function(LoadingCardInfoState value) load,
+    required TResult Function(ProductsCardInfoState value) productInfoCard,
+    required TResult Function(OpenSoppingCartCardInfoState value)
         openSoppingCart,
-    required TResult Function(AddProductCardInfoV2State value)
+    required TResult Function(AddProductCardInfoState value)
         addProductToSoppingCart,
-    required TResult Function(GetSizeProductCardInfoV2State value)
-        getSizeProduct,
+    required TResult Function(GetSizeProductCardInfoState value) getSizeProduct,
   }) {
     return getSizeProduct(this);
   }
@@ -5934,12 +5930,12 @@ class _$GetSizeProductCardInfoV2StateImpl
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(InitInfoCardV2State value)? init,
-    TResult? Function(LoadingInfoCardV2State value)? load,
-    TResult? Function(ProductsInfoCardV2State value)? productInfoCard,
-    TResult? Function(OpenSoppingCartCardInfoV2State value)? openSoppingCart,
-    TResult? Function(AddProductCardInfoV2State value)? addProductToSoppingCart,
-    TResult? Function(GetSizeProductCardInfoV2State value)? getSizeProduct,
+    TResult? Function(InitCardInfoState value)? init,
+    TResult? Function(LoadingCardInfoState value)? load,
+    TResult? Function(ProductsCardInfoState value)? productInfoCard,
+    TResult? Function(OpenSoppingCartCardInfoState value)? openSoppingCart,
+    TResult? Function(AddProductCardInfoState value)? addProductToSoppingCart,
+    TResult? Function(GetSizeProductCardInfoState value)? getSizeProduct,
   }) {
     return getSizeProduct?.call(this);
   }
@@ -5947,12 +5943,12 @@ class _$GetSizeProductCardInfoV2StateImpl
   @override
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
-    TResult Function(InitInfoCardV2State value)? init,
-    TResult Function(LoadingInfoCardV2State value)? load,
-    TResult Function(ProductsInfoCardV2State value)? productInfoCard,
-    TResult Function(OpenSoppingCartCardInfoV2State value)? openSoppingCart,
-    TResult Function(AddProductCardInfoV2State value)? addProductToSoppingCart,
-    TResult Function(GetSizeProductCardInfoV2State value)? getSizeProduct,
+    TResult Function(InitCardInfoState value)? init,
+    TResult Function(LoadingCardInfoState value)? load,
+    TResult Function(ProductsCardInfoState value)? productInfoCard,
+    TResult Function(OpenSoppingCartCardInfoState value)? openSoppingCart,
+    TResult Function(AddProductCardInfoState value)? addProductToSoppingCart,
+    TResult Function(GetSizeProductCardInfoState value)? getSizeProduct,
     required TResult orElse(),
   }) {
     if (getSizeProduct != null) {
@@ -5962,21 +5958,20 @@ class _$GetSizeProductCardInfoV2StateImpl
   }
 }
 
-abstract class GetSizeProductCardInfoV2State implements CardInfoState {
-  const factory GetSizeProductCardInfoV2State(
+abstract class GetSizeProductCardInfoState implements CardInfoState {
+  const factory GetSizeProductCardInfoState(
           {required final String code,
           required final List<SkuProductDataModel> listSize,
           required final List<SkuProductDataModel> listSizeToSoppingCart}) =
-      _$GetSizeProductCardInfoV2StateImpl;
+      _$GetSizeProductCardInfoStateImpl;
 
   String get code;
   List<SkuProductDataModel> get listSize;
   List<SkuProductDataModel> get listSizeToSoppingCart;
 
-  /// Create a copy of CardInfoV2State
+  /// Create a copy of CardInfoState
   /// with the given fields replaced by the non-null parameter values.
   @JsonKey(includeFromJson: false, includeToJson: false)
-  _$$GetSizeProductCardInfoV2StateImplCopyWith<
-          _$GetSizeProductCardInfoV2StateImpl>
+  _$$GetSizeProductCardInfoStateImplCopyWith<_$GetSizeProductCardInfoStateImpl>
       get copyWith => throw _privateConstructorUsedError;
 }
