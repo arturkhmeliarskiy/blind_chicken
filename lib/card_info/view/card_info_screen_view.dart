@@ -7,6 +7,7 @@ import 'package:blind_chicken/screens/home/catalog/widget/catalog_boutiques_info
 import 'package:blind_chicken/screens/home/catalog/widget/catalog_cashback_info.dart';
 import 'package:blind_chicken/screens/home/catalog/widget/catalog_category_info.dart';
 import 'package:blind_chicken/screens/home/catalog/widget/catalog_description_info.dart';
+import 'package:blind_chicken/screens/home/catalog/widget/catalog_description_product_info.dart';
 import 'package:blind_chicken/screens/home/catalog/widget/catalog_size_product_info.dart';
 import 'package:blind_chicken/screens/home/catalog/widget/catalog_slider_images.dart';
 import 'package:blind_chicken/screens/home/catalog/widget/catalog_slider_products.dart';
@@ -20,6 +21,8 @@ import 'package:models/models.dart';
 import 'package:share_plus/share_plus.dart';
 import 'package:shared/shared.dart';
 import 'package:ui_kit/ui_kit.dart';
+
+import 'widget/payment_in_instalment_widget.dart';
 
 class CardInfoScreenView extends StatefulWidget {
   const CardInfoScreenView({
@@ -379,6 +382,8 @@ class _CardInfoScreenViewState extends State<CardInfoScreenView> {
                         return state.maybeMap(
                           productInfoCard: (initState) {
                             final sky = initState.detailsProduct?.sku ?? [];
+                            final price = int.parse(
+                                initState.detailsProduct?.price.pc ?? '0');
                             return PopScope(
                               canPop: false,
                               onPopInvoked: (value) {
@@ -804,6 +809,7 @@ class _CardInfoScreenViewState extends State<CardInfoScreenView> {
                                               ),
                                             ),
                                           ),
+                                        PaymentInInstalmentWidget(price: price),
                                         const SizedBox(
                                           height: 7,
                                         ),
@@ -1141,8 +1147,23 @@ class _CardInfoScreenViewState extends State<CardInfoScreenView> {
                                                     fontWeight: FontWeight.w700,
                                                   ),
                                         ),
+                                        if (initState.detailsProduct?.text
+                                                .isNotEmpty ??
+                                            false)
+                                          Column(
+                                            children: [
+                                              const SizedBox(
+                                                height: 7,
+                                              ),
+                                              CatalogDescriptionProductInfo(
+                                                text: initState
+                                                        .detailsProduct?.text ??
+                                                    '',
+                                              )
+                                            ],
+                                          ),
                                         const SizedBox(
-                                          height: 8,
+                                          height: 7,
                                         ),
                                         CatalogDescriptionInfo(
                                           char: initState.detailsProduct?.char ?? [],
