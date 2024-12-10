@@ -9,12 +9,14 @@ class NewsState with _$NewsState {
     int? countBadgesMedia,
     int? countBadgesNotificatios,
   }) = LoadingNewsState;
+  const factory NewsState.loadPagination() = LoadPaginationNewsState;
   const factory NewsState.loadErrorButton() = LoadingErrorButtonNewsState;
   const factory NewsState.error({
     required String errorMessage,
   }) = ErrorNewsState;
   const factory NewsState.preloadDataCompleted({
     required NewsInfoDataModel news,
+    required List<NewsInfoItemDataModel> newsList,
     required MediaInfoDataModel media,
     required NotificationInfoDataModel notificatios,
     required int offsetNews,

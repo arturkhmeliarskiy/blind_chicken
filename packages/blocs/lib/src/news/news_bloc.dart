@@ -63,6 +63,7 @@ class NewsBloc extends Bloc<NewsEvent, NewsState> {
         offsetMedia: 1,
         offsetNotificatios: 1,
         listNewsPath: [],
+        newsList: [],
         isUpdateVersionApp: false,
         isNotification: false,
         isButtonTop: false,
@@ -103,6 +104,7 @@ class NewsBloc extends Bloc<NewsEvent, NewsState> {
       emit(
         initState.copyWith(
           news: news,
+          newsList: news.list,
           offsetNews: 1,
           listNewsPath: listNewsPath,
           isError: news.errorMessage.isNotEmpty,
@@ -222,7 +224,7 @@ class NewsBloc extends Bloc<NewsEvent, NewsState> {
       if (offsetNews != initState.offsetNews) {
         final news = await _newsRepository.getNews(page: offsetNews);
 
-        list.addAll(news.list);
+        list.addAll(news.list.toList());
 
         emit(initState.copyWith(
           news: NewsInfoDataModel(
@@ -232,6 +234,7 @@ class NewsBloc extends Bloc<NewsEvent, NewsState> {
             errorMessage: news.errorMessage,
             isViewed: news.isViewed,
           ),
+          newsList: list,
           offsetNews: offsetNews,
           isNotification: false,
           isLoadPagination: false,
@@ -369,6 +372,7 @@ class NewsBloc extends Bloc<NewsEvent, NewsState> {
           offsetNotificatios: 1,
           oneNews: oneNews,
           listNewsPath: [],
+          newsList: [],
           isNotification: true,
           isButtonTop: false,
           isUpdateVersionApp: isUpdateVersionApp,
@@ -465,6 +469,7 @@ class NewsBloc extends Bloc<NewsEvent, NewsState> {
           offsetNotificatios: 1,
           oneMedia: oneMedia,
           listNewsPath: [],
+          newsList: [],
           isNotification: true,
           isButtonTop: false,
           isUpdateVersionApp: isUpdateVersionApp,
@@ -561,6 +566,7 @@ class NewsBloc extends Bloc<NewsEvent, NewsState> {
           offsetNotificatios: 1,
           oneNotification: oneNotifcation,
           listNewsPath: [],
+          newsList: [],
           isNotification: true,
           isButtonTop: false,
           isUpdateVersionApp: isUpdateVersionApp,
