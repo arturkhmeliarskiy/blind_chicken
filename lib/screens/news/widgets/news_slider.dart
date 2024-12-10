@@ -131,7 +131,7 @@ class _NewsSliderState extends State<NewsSlider> {
                   InkWell(
                     onTap: () {
                       setState(() {
-                        if (_indexItem + 1 < widget.media.length) {
+                        if ((_indexItem + 1) < widget.media.length) {
                           _indexItem++;
                           _scrollController.nextPage(
                             curve: Curves.linear,

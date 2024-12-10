@@ -28,9 +28,6 @@ class NewsTabInfo extends StatefulWidget {
 class _NewsTabInfoState extends State<NewsTabInfo> {
   final ScrollController _scrollController = ScrollController();
   double _historyPosition = 0.0;
-  double _paginationPosition = 0.0;
-  int _currentPage = 0;
-  double _boundaryOffset = 0.5;
   bool _isLoading = false;
 
   @override
@@ -46,22 +43,6 @@ class _NewsTabInfoState extends State<NewsTabInfo> {
                 _scrollController.position.pixels > 0,
           ),
         );
-
-    // bool isActive = (_scrollController.position.maxScrollExtent - 2500).toInt() >
-    //         _paginationPosition.toInt() &&
-    //     (_scrollController.position.maxScrollExtent - 2500).toInt() != _paginationPosition.toInt();
-    // //load more data
-    // if ((_scrollController.offset > _scrollController.position.maxScrollExtent * _boundaryOffset) &&
-    //     isActive) {
-    //   _paginationPosition = _scrollController.position.maxScrollExtent - 2500;
-    //   _currentPage++;
-    //   _boundaryOffset = 1 - 1 / (_currentPage * 2);
-
-    //   log(_currentPage.toString());
-
-    //   print('Запрос:  ${_count++}');
-    //   // context.read<NewsBloc>().add(NewsEvent.paginationNews());
-    // }
 
     _historyPosition = _scrollController.position.pixels;
   }
@@ -93,11 +74,6 @@ class _NewsTabInfoState extends State<NewsTabInfo> {
                       _isLoading = initState.isLoadPagination ?? false;
                     }
 
-                    if (initState.offsetNews == 1) {
-                      _paginationPosition = 0;
-                      _currentPage = 0;
-                      _boundaryOffset = 0.5;
-                    }
                     if (initState.news.list.isNotEmpty) {
                       return Container(
                         decoration: BoxDecoration(

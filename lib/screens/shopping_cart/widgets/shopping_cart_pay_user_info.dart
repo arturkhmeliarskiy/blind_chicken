@@ -213,18 +213,24 @@ class _ShoppingCartPayUserInfoState extends State<ShoppingCartPayUserInfo> {
                                 children: [
                                   Row(
                                     children: [
-                                      Text(
-                                        widget.payments[index].name,
-                                        style: Theme.of(context).textTheme.displayMedium?.copyWith(
-                                              color: checkPayments(
-                                                isPayInstallmentsSberbank:
-                                                    widget.isPayInstallmentsSberbank,
-                                                isUponReceipt: widget.isUponReceipt,
-                                                name: widget.payments[index].name,
-                                              )
-                                                  ? BlindChickenColors.activeBorderTextField
-                                                  : BlindChickenColors.textInput,
-                                            ),
+                                      ConstrainedBox(
+                                        constraints: BoxConstraints(
+                                            maxWidth: MediaQuery.of(context).size.width - 60),
+                                        child: Text(
+                                          widget.payments[index].name,
+                                          style:
+                                              Theme.of(context).textTheme.displayMedium?.copyWith(
+                                                    color: checkPayments(
+                                                      isPayInstallmentsSberbank:
+                                                          widget.isPayInstallmentsSberbank,
+                                                      isUponReceipt: widget.isUponReceipt,
+                                                      name: widget.payments[index].name,
+                                                    )
+                                                        ? BlindChickenColors.activeBorderTextField
+                                                        : BlindChickenColors.textInput,
+                                                  ),
+                                          maxLines: 2,
+                                        ),
                                       ),
                                       if (widget.payments[index].name ==
                                           "Плати Частями от Сбербанка")
