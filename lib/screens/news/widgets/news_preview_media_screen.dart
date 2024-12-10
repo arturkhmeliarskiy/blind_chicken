@@ -1,7 +1,6 @@
 import 'dart:developer';
 
 import 'package:auto_route/auto_route.dart';
-import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_svg/svg.dart';
@@ -67,7 +66,6 @@ class _NewsPreviewMediaScreenState extends State<NewsPreviewMediaScreen> {
 
   @override
   Widget build(BuildContext context) {
-    final width = MediaQuery.of(context).size.width;
     return GestureDetector(
       onVerticalDragUpdate: (details) {},
       onHorizontalDragEnd: (DragEndDetails details) {
@@ -83,35 +81,30 @@ class _NewsPreviewMediaScreenState extends State<NewsPreviewMediaScreen> {
         children: [
           Scaffold(
             body: Center(
-              child: SizedBox(
-                width: MediaQuery.of(context).size.width,
-                child: PageView.builder(
-                  scrollDirection: Axis.horizontal,
-                  itemCount: widget.media.length,
-                  controller: _pageController,
-                  itemBuilder: (context, index) {
-                    return CachedNetworkImage(
-                      imageUrl: widget.media[index],
-                      fit: BoxFit.cover,
-                      imageBuilder: (context, imageProvider) => PhotoView(
-                        tightMode: true,
-                        imageProvider: imageProvider,
-                        filterQuality: FilterQuality.high,
-                        gaplessPlayback: false,
-                        basePosition: Alignment.center,
-                        minScale: PhotoViewComputedScale.contained,
-                        customSize: MediaQuery.of(context).size,
-                        backgroundDecoration: const BoxDecoration(
-                          color: BlindChickenColors.backgroundColor,
-                        ),
-                      ),
-                      width: MediaQuery.of(context).orientation == Orientation.portrait
-                          ? width
-                          : width / 2,
-                      errorWidget: (context, url, error) => const Icon(Icons.error),
-                    );
-                  },
+              child: PhotoAndVideoViewGallery.builder(
+                scrollPhysics: const BouncingScrollPhysics(),
+                builder: (BuildContext context, int index) {
+                  return PhotoAndVideoViewGalleryPageOptions(
+                    imageProvider: NetworkImage(widget.media[index]),
+                    initialScale: PhotoViewComputedScale.contained,
+                    maxScale: PhotoViewComputedScale.contained * 5,
+                    minScale: PhotoViewComputedScale.contained,
+                    heroAttributes: PhotoViewHeroAttributes(tag: index),
+                  );
+                },
+                itemCount: widget.media.length,
+                loadingBuilder: (context, event) => Center(
+                  child: Center(
+                    child: CircularProgressIndicator(
+                      color: Colors.black,
+                      backgroundColor: Colors.grey.shade400,
+                    ),
+                  ),
                 ),
+                backgroundDecoration: const BoxDecoration(
+                  color: BlindChickenColors.backgroundColor,
+                ),
+                pageController: _pageController,
               ),
             ),
           ),

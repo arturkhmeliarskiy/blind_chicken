@@ -63,7 +63,6 @@ class NewsBloc extends Bloc<NewsEvent, NewsState> {
         offsetMedia: 1,
         offsetNotificatios: 1,
         listNewsPath: [],
-        newsList: [],
         isUpdateVersionApp: false,
         isNotification: false,
         isButtonTop: false,
@@ -104,7 +103,6 @@ class NewsBloc extends Bloc<NewsEvent, NewsState> {
       emit(
         initState.copyWith(
           news: news,
-          newsList: news.list,
           offsetNews: 1,
           listNewsPath: listNewsPath,
           isError: news.errorMessage.isNotEmpty,
@@ -215,27 +213,42 @@ class NewsBloc extends Bloc<NewsEvent, NewsState> {
     Emitter<NewsState> emit,
   ) async {
     await state.mapOrNull(preloadDataCompleted: (initState) async {
-      emit(initState.copyWith(
-        isLoadPagination: true,
-      ));
+      if (initState.isError ?? false) {
+        emit(initState.copyWith(
+          isLoadErrorButton: true,
+          isError: initState.isError ?? false,
+        ));
+      } else {
+        emit(initState.copyWith(
+          isLoadPagination: true,
+        ));
+      }
+
       int offsetNews = initState.offsetNews + 1;
       List<NewsInfoItemDataModel> list = initState.news.list.toList();
 
       if (offsetNews != initState.offsetNews) {
         final news = await _newsRepository.getNews(page: offsetNews);
 
-        list.addAll(news.list.toList());
+        if (news.errorMessage.isEmpty) {
+          list.addAll(news.list.toList());
+        }
 
         emit(initState.copyWith(
-          news: NewsInfoDataModel(
-            e: news.e,
-            r: news.r,
-            list: list,
-            errorMessage: news.errorMessage,
-            isViewed: news.isViewed,
-          ),
-          newsList: list,
-          offsetNews: offsetNews,
+          news: news.errorMessage.isEmpty
+              ? NewsInfoDataModel(
+                  e: news.e,
+                  r: news.r,
+                  list: list,
+                  errorMessage: news.errorMessage,
+                  isViewed: news.isViewed,
+                )
+              : initState.news,
+          isError: news.errorMessage.isNotEmpty,
+          errorMessage: news.errorMessage,
+          typeError: 'пагинация новости',
+          isLoadErrorButton: false,
+          offsetNews: news.errorMessage.isEmpty ? offsetNews : initState.offsetNews,
           isNotification: false,
           isLoadPagination: false,
         ));
@@ -372,7 +385,6 @@ class NewsBloc extends Bloc<NewsEvent, NewsState> {
           offsetNotificatios: 1,
           oneNews: oneNews,
           listNewsPath: [],
-          newsList: [],
           isNotification: true,
           isButtonTop: false,
           isUpdateVersionApp: isUpdateVersionApp,
@@ -468,8 +480,6 @@ class NewsBloc extends Bloc<NewsEvent, NewsState> {
           offsetMedia: 1,
           offsetNotificatios: 1,
           oneMedia: oneMedia,
-          listNewsPath: [],
-          newsList: [],
           isNotification: true,
           isButtonTop: false,
           isUpdateVersionApp: isUpdateVersionApp,
@@ -477,6 +487,7 @@ class NewsBloc extends Bloc<NewsEvent, NewsState> {
           countBadgesNews: countBadges?.news ?? 0,
           countBadgesMedia: countBadges?.media ?? 0,
           countBadgesNotificatios: countBadges?.notice ?? 0,
+          listNewsPath: [],
         ),
       );
     }
@@ -566,7 +577,6 @@ class NewsBloc extends Bloc<NewsEvent, NewsState> {
           offsetNotificatios: 1,
           oneNotification: oneNotifcation,
           listNewsPath: [],
-          newsList: [],
           isNotification: true,
           isButtonTop: false,
           isUpdateVersionApp: isUpdateVersionApp,
@@ -639,6 +649,7 @@ class NewsBloc extends Bloc<NewsEvent, NewsState> {
           isLoadErrorButton: true,
         ));
       }
+
       int indexNews = 0;
       BadgeOperationInfoDataModel? countBadges;
       final listNewsNotifications = _newsRepository.getNewsNotifications();

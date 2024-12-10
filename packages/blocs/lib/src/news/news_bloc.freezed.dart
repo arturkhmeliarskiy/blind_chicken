@@ -3658,7 +3658,6 @@ mixin _$NewsState {
     required TResult Function(String errorMessage) error,
     required TResult Function(
             NewsInfoDataModel news,
-            List<NewsInfoItemDataModel> newsList,
             MediaInfoDataModel media,
             NotificationInfoDataModel notificatios,
             int offsetNews,
@@ -3695,7 +3694,6 @@ mixin _$NewsState {
     TResult? Function(String errorMessage)? error,
     TResult? Function(
             NewsInfoDataModel news,
-            List<NewsInfoItemDataModel> newsList,
             MediaInfoDataModel media,
             NotificationInfoDataModel notificatios,
             int offsetNews,
@@ -3732,7 +3730,6 @@ mixin _$NewsState {
     TResult Function(String errorMessage)? error,
     TResult Function(
             NewsInfoDataModel news,
-            List<NewsInfoItemDataModel> newsList,
             MediaInfoDataModel media,
             NotificationInfoDataModel notificatios,
             int offsetNews,
@@ -3865,7 +3862,6 @@ class _$InitNewsStateImpl implements InitNewsState {
     required TResult Function(String errorMessage) error,
     required TResult Function(
             NewsInfoDataModel news,
-            List<NewsInfoItemDataModel> newsList,
             MediaInfoDataModel media,
             NotificationInfoDataModel notificatios,
             int offsetNews,
@@ -3905,7 +3901,6 @@ class _$InitNewsStateImpl implements InitNewsState {
     TResult? Function(String errorMessage)? error,
     TResult? Function(
             NewsInfoDataModel news,
-            List<NewsInfoItemDataModel> newsList,
             MediaInfoDataModel media,
             NotificationInfoDataModel notificatios,
             int offsetNews,
@@ -3945,7 +3940,6 @@ class _$InitNewsStateImpl implements InitNewsState {
     TResult Function(String errorMessage)? error,
     TResult Function(
             NewsInfoDataModel news,
-            List<NewsInfoItemDataModel> newsList,
             MediaInfoDataModel media,
             NotificationInfoDataModel notificatios,
             int offsetNews,
@@ -4144,7 +4138,6 @@ class _$LoadingNewsStateImpl implements LoadingNewsState {
     required TResult Function(String errorMessage) error,
     required TResult Function(
             NewsInfoDataModel news,
-            List<NewsInfoItemDataModel> newsList,
             MediaInfoDataModel media,
             NotificationInfoDataModel notificatios,
             int offsetNews,
@@ -4185,7 +4178,6 @@ class _$LoadingNewsStateImpl implements LoadingNewsState {
     TResult? Function(String errorMessage)? error,
     TResult? Function(
             NewsInfoDataModel news,
-            List<NewsInfoItemDataModel> newsList,
             MediaInfoDataModel media,
             NotificationInfoDataModel notificatios,
             int offsetNews,
@@ -4226,7 +4218,6 @@ class _$LoadingNewsStateImpl implements LoadingNewsState {
     TResult Function(String errorMessage)? error,
     TResult Function(
             NewsInfoDataModel news,
-            List<NewsInfoItemDataModel> newsList,
             MediaInfoDataModel media,
             NotificationInfoDataModel notificatios,
             int offsetNews,
@@ -4378,7 +4369,6 @@ class _$LoadPaginationNewsStateImpl implements LoadPaginationNewsState {
     required TResult Function(String errorMessage) error,
     required TResult Function(
             NewsInfoDataModel news,
-            List<NewsInfoItemDataModel> newsList,
             MediaInfoDataModel media,
             NotificationInfoDataModel notificatios,
             int offsetNews,
@@ -4418,7 +4408,6 @@ class _$LoadPaginationNewsStateImpl implements LoadPaginationNewsState {
     TResult? Function(String errorMessage)? error,
     TResult? Function(
             NewsInfoDataModel news,
-            List<NewsInfoItemDataModel> newsList,
             MediaInfoDataModel media,
             NotificationInfoDataModel notificatios,
             int offsetNews,
@@ -4458,7 +4447,6 @@ class _$LoadPaginationNewsStateImpl implements LoadPaginationNewsState {
     TResult Function(String errorMessage)? error,
     TResult Function(
             NewsInfoDataModel news,
-            List<NewsInfoItemDataModel> newsList,
             MediaInfoDataModel media,
             NotificationInfoDataModel notificatios,
             int offsetNews,
@@ -4594,7 +4582,6 @@ class _$LoadingErrorButtonNewsStateImpl implements LoadingErrorButtonNewsState {
     required TResult Function(String errorMessage) error,
     required TResult Function(
             NewsInfoDataModel news,
-            List<NewsInfoItemDataModel> newsList,
             MediaInfoDataModel media,
             NotificationInfoDataModel notificatios,
             int offsetNews,
@@ -4634,7 +4621,6 @@ class _$LoadingErrorButtonNewsStateImpl implements LoadingErrorButtonNewsState {
     TResult? Function(String errorMessage)? error,
     TResult? Function(
             NewsInfoDataModel news,
-            List<NewsInfoItemDataModel> newsList,
             MediaInfoDataModel media,
             NotificationInfoDataModel notificatios,
             int offsetNews,
@@ -4674,7 +4660,6 @@ class _$LoadingErrorButtonNewsStateImpl implements LoadingErrorButtonNewsState {
     TResult Function(String errorMessage)? error,
     TResult Function(
             NewsInfoDataModel news,
-            List<NewsInfoItemDataModel> newsList,
             MediaInfoDataModel media,
             NotificationInfoDataModel notificatios,
             int offsetNews,
@@ -4837,7 +4822,6 @@ class _$ErrorNewsStateImpl implements ErrorNewsState {
     required TResult Function(String errorMessage) error,
     required TResult Function(
             NewsInfoDataModel news,
-            List<NewsInfoItemDataModel> newsList,
             MediaInfoDataModel media,
             NotificationInfoDataModel notificatios,
             int offsetNews,
@@ -4877,7 +4861,6 @@ class _$ErrorNewsStateImpl implements ErrorNewsState {
     TResult? Function(String errorMessage)? error,
     TResult? Function(
             NewsInfoDataModel news,
-            List<NewsInfoItemDataModel> newsList,
             MediaInfoDataModel media,
             NotificationInfoDataModel notificatios,
             int offsetNews,
@@ -4917,7 +4900,6 @@ class _$ErrorNewsStateImpl implements ErrorNewsState {
     TResult Function(String errorMessage)? error,
     TResult Function(
             NewsInfoDataModel news,
-            List<NewsInfoItemDataModel> newsList,
             MediaInfoDataModel media,
             NotificationInfoDataModel notificatios,
             int offsetNews,
@@ -5018,7 +5000,6 @@ abstract class _$$PreloadDataCompletedNewsStateImplCopyWith<$Res> {
   @useResult
   $Res call(
       {NewsInfoDataModel news,
-      List<NewsInfoItemDataModel> newsList,
       MediaInfoDataModel media,
       NotificationInfoDataModel notificatios,
       int offsetNews,
@@ -5065,7 +5046,6 @@ class __$$PreloadDataCompletedNewsStateImplCopyWithImpl<$Res>
   @override
   $Res call({
     Object? news = null,
-    Object? newsList = null,
     Object? media = null,
     Object? notificatios = null,
     Object? offsetNews = null,
@@ -5094,10 +5074,6 @@ class __$$PreloadDataCompletedNewsStateImplCopyWithImpl<$Res>
           ? _value.news
           : news // ignore: cast_nullable_to_non_nullable
               as NewsInfoDataModel,
-      newsList: null == newsList
-          ? _value._newsList
-          : newsList // ignore: cast_nullable_to_non_nullable
-              as List<NewsInfoItemDataModel>,
       media: null == media
           ? _value.media
           : media // ignore: cast_nullable_to_non_nullable
@@ -5270,7 +5246,6 @@ class _$PreloadDataCompletedNewsStateImpl
     implements PreloadDataCompletedNewsState {
   const _$PreloadDataCompletedNewsStateImpl(
       {required this.news,
-      required final List<NewsInfoItemDataModel> newsList,
       required this.media,
       required this.notificatios,
       required this.offsetNews,
@@ -5293,19 +5268,10 @@ class _$PreloadDataCompletedNewsStateImpl
       this.isLoadPagination,
       this.isLoadErrorButton,
       this.isDisabledVideo})
-      : _newsList = newsList,
-        _listNewsPath = listNewsPath;
+      : _listNewsPath = listNewsPath;
 
   @override
   final NewsInfoDataModel news;
-  final List<NewsInfoItemDataModel> _newsList;
-  @override
-  List<NewsInfoItemDataModel> get newsList {
-    if (_newsList is EqualUnmodifiableListView) return _newsList;
-    // ignore: implicit_dynamic_type
-    return EqualUnmodifiableListView(_newsList);
-  }
-
   @override
   final MediaInfoDataModel media;
   @override
@@ -5359,7 +5325,7 @@ class _$PreloadDataCompletedNewsStateImpl
 
   @override
   String toString() {
-    return 'NewsState.preloadDataCompleted(news: $news, newsList: $newsList, media: $media, notificatios: $notificatios, offsetNews: $offsetNews, offsetMedia: $offsetMedia, offsetNotificatios: $offsetNotificatios, listNewsPath: $listNewsPath, isUpdateVersionApp: $isUpdateVersionApp, isNotification: $isNotification, countBadgesTotal: $countBadgesTotal, countBadgesNews: $countBadgesNews, countBadgesMedia: $countBadgesMedia, countBadgesNotificatios: $countBadgesNotificatios, isButtonTop: $isButtonTop, oneNews: $oneNews, oneMedia: $oneMedia, oneNotification: $oneNotification, typeError: $typeError, errorMessage: $errorMessage, isError: $isError, isLoadPagination: $isLoadPagination, isLoadErrorButton: $isLoadErrorButton, isDisabledVideo: $isDisabledVideo)';
+    return 'NewsState.preloadDataCompleted(news: $news, media: $media, notificatios: $notificatios, offsetNews: $offsetNews, offsetMedia: $offsetMedia, offsetNotificatios: $offsetNotificatios, listNewsPath: $listNewsPath, isUpdateVersionApp: $isUpdateVersionApp, isNotification: $isNotification, countBadgesTotal: $countBadgesTotal, countBadgesNews: $countBadgesNews, countBadgesMedia: $countBadgesMedia, countBadgesNotificatios: $countBadgesNotificatios, isButtonTop: $isButtonTop, oneNews: $oneNews, oneMedia: $oneMedia, oneNotification: $oneNotification, typeError: $typeError, errorMessage: $errorMessage, isError: $isError, isLoadPagination: $isLoadPagination, isLoadErrorButton: $isLoadErrorButton, isDisabledVideo: $isDisabledVideo)';
   }
 
   @override
@@ -5368,7 +5334,6 @@ class _$PreloadDataCompletedNewsStateImpl
         (other.runtimeType == runtimeType &&
             other is _$PreloadDataCompletedNewsStateImpl &&
             (identical(other.news, news) || other.news == news) &&
-            const DeepCollectionEquality().equals(other._newsList, _newsList) &&
             (identical(other.media, media) || other.media == media) &&
             (identical(other.notificatios, notificatios) ||
                 other.notificatios == notificatios) &&
@@ -5417,7 +5382,6 @@ class _$PreloadDataCompletedNewsStateImpl
   int get hashCode => Object.hashAll([
         runtimeType,
         news,
-        const DeepCollectionEquality().hash(_newsList),
         media,
         notificatios,
         offsetNews,
@@ -5464,7 +5428,6 @@ class _$PreloadDataCompletedNewsStateImpl
     required TResult Function(String errorMessage) error,
     required TResult Function(
             NewsInfoDataModel news,
-            List<NewsInfoItemDataModel> newsList,
             MediaInfoDataModel media,
             NotificationInfoDataModel notificatios,
             int offsetNews,
@@ -5491,7 +5454,6 @@ class _$PreloadDataCompletedNewsStateImpl
   }) {
     return preloadDataCompleted(
         news,
-        newsList,
         media,
         notificatios,
         offsetNews,
@@ -5528,7 +5490,6 @@ class _$PreloadDataCompletedNewsStateImpl
     TResult? Function(String errorMessage)? error,
     TResult? Function(
             NewsInfoDataModel news,
-            List<NewsInfoItemDataModel> newsList,
             MediaInfoDataModel media,
             NotificationInfoDataModel notificatios,
             int offsetNews,
@@ -5555,7 +5516,6 @@ class _$PreloadDataCompletedNewsStateImpl
   }) {
     return preloadDataCompleted?.call(
         news,
-        newsList,
         media,
         notificatios,
         offsetNews,
@@ -5592,7 +5552,6 @@ class _$PreloadDataCompletedNewsStateImpl
     TResult Function(String errorMessage)? error,
     TResult Function(
             NewsInfoDataModel news,
-            List<NewsInfoItemDataModel> newsList,
             MediaInfoDataModel media,
             NotificationInfoDataModel notificatios,
             int offsetNews,
@@ -5621,7 +5580,6 @@ class _$PreloadDataCompletedNewsStateImpl
     if (preloadDataCompleted != null) {
       return preloadDataCompleted(
           news,
-          newsList,
           media,
           notificatios,
           offsetNews,
@@ -5698,7 +5656,6 @@ class _$PreloadDataCompletedNewsStateImpl
 abstract class PreloadDataCompletedNewsState implements NewsState {
   const factory PreloadDataCompletedNewsState(
       {required final NewsInfoDataModel news,
-      required final List<NewsInfoItemDataModel> newsList,
       required final MediaInfoDataModel media,
       required final NotificationInfoDataModel notificatios,
       required final int offsetNews,
@@ -5723,7 +5680,6 @@ abstract class PreloadDataCompletedNewsState implements NewsState {
       final bool? isDisabledVideo}) = _$PreloadDataCompletedNewsStateImpl;
 
   NewsInfoDataModel get news;
-  List<NewsInfoItemDataModel> get newsList;
   MediaInfoDataModel get media;
   NotificationInfoDataModel get notificatios;
   int get offsetNews;

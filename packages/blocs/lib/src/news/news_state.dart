@@ -16,7 +16,6 @@ class NewsState with _$NewsState {
   }) = ErrorNewsState;
   const factory NewsState.preloadDataCompleted({
     required NewsInfoDataModel news,
-    required List<NewsInfoItemDataModel> newsList,
     required MediaInfoDataModel media,
     required NotificationInfoDataModel notificatios,
     required int offsetNews,

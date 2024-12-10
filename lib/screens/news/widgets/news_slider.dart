@@ -57,119 +57,111 @@ class _NewsSliderState extends State<NewsSlider> {
   @override
   Widget build(BuildContext context) {
     final width = MediaQuery.of(context).size.width;
-    return ConstrainedBox(
-      constraints: BoxConstraints(maxHeight: 300),
-      child: Stack(
-        children: [
-          Column(
-            children: [
-              Expanded(
-                child: PageView.builder(
-                  scrollDirection: Axis.horizontal,
-                  itemCount: widget.media.length,
-                  controller: _scrollController,
-                  onPageChanged: (value) {},
-                  itemBuilder: (context, index) {
-                    return InkWell(
-                      onTap: () {
-                        widget.onTap(index);
-                      },
-                      child: ClipRRect(
-                        borderRadius: BorderRadius.circular(widget.borderRadius),
-                        child: CachedNetworkImage(
-                          imageUrl: widget.media[index],
-                          width: MediaQuery.of(context).orientation == Orientation.portrait
-                              ? width
-                              : width / 2,
-                          fit: BoxFit.cover,
-                          imageBuilder: widget.isBuilder
-                              ? (context, imageProvider) => PhotoView(
-                                    imageProvider: imageProvider,
-                                    filterQuality: FilterQuality.high,
-                                    customSize: Size(width, width),
-                                  )
-                              : null,
-                          errorWidget: (context, url, error) => const Icon(Icons.error),
-                        ),
-                      ),
-                    );
-                  },
+    return Stack(
+      alignment: Alignment.center,
+      children: [
+        ExpandablePageView.builder(
+          scrollDirection: Axis.horizontal,
+          itemCount: widget.media.length,
+          controller: _scrollController,
+          onPageChanged: (value) {},
+          itemBuilder: (context, index) {
+            return InkWell(
+              onTap: () {
+                widget.onTap(index);
+              },
+              child: ClipRRect(
+                borderRadius: BorderRadius.circular(widget.borderRadius),
+                child: CachedNetworkImage(
+                  imageUrl: widget.media[index],
+                  width: MediaQuery.of(context).orientation == Orientation.portrait
+                      ? width
+                      : width / 2,
+                  fit: BoxFit.cover,
+                  imageBuilder: widget.isBuilder
+                      ? (context, imageProvider) => PhotoView(
+                            imageProvider: imageProvider,
+                            filterQuality: FilterQuality.high,
+                            customSize: Size(width, width),
+                          )
+                      : null,
+                  errorWidget: (context, url, error) => const Icon(Icons.error),
                 ),
               ),
+            );
+          },
+        ),
+        if (widget.isSwitch)
+          Column(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+              Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                children: [
+                  InkWell(
+                    onTap: () {
+                      setState(() {
+                        if (_indexItem != 0) {
+                          _indexItem--;
+                          _scrollController.animateTo(
+                            width * _indexItem,
+                            curve: Curves.linear,
+                            duration: const Duration(
+                              milliseconds: 500,
+                            ),
+                          );
+                        }
+                      });
+                    },
+                    child: Container(
+                      height: 38.5,
+                      width: 38.5,
+                      decoration: BoxDecoration(
+                        borderRadius: BorderRadius.circular(20),
+                        color: BlindChickenColors.backgroundColor,
+                      ),
+                      padding: const EdgeInsets.all(10.0),
+                      child: SvgPicture.asset(
+                        'assets/icons/chevron-left.svg',
+                        height: 24,
+                        width: 24,
+                      ),
+                    ),
+                  ),
+                  InkWell(
+                    onTap: () {
+                      setState(() {
+                        if (_indexItem + 1 < widget.media.length) {
+                          _indexItem++;
+                          _scrollController.nextPage(
+                            curve: Curves.linear,
+                            duration: const Duration(
+                              milliseconds: 500,
+                            ),
+                          );
+                        }
+                      });
+                    },
+                    child: Container(
+                      height: 38.5,
+                      width: 38.5,
+                      decoration: BoxDecoration(
+                        borderRadius: BorderRadius.circular(20),
+                        color: BlindChickenColors.backgroundColor,
+                      ),
+                      padding: const EdgeInsets.all(10.0),
+                      child: SvgPicture.asset(
+                        'assets/icons/chevron-right.svg',
+                        height: 24,
+                        width: 24,
+                      ),
+                    ),
+                  ),
+                ],
+              )
             ],
           ),
-          if (widget.isSwitch)
-            Column(
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: [
-                Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                  children: [
-                    InkWell(
-                      onTap: () {
-                        setState(() {
-                          if (_indexItem != 0) {
-                            _indexItem--;
-                            _scrollController.animateTo(
-                              width * _indexItem,
-                              curve: Curves.linear,
-                              duration: const Duration(
-                                milliseconds: 500,
-                              ),
-                            );
-                          }
-                        });
-                      },
-                      child: Container(
-                        height: 38.5,
-                        width: 38.5,
-                        decoration: BoxDecoration(
-                          borderRadius: BorderRadius.circular(20),
-                          color: BlindChickenColors.backgroundColor,
-                        ),
-                        padding: const EdgeInsets.all(10.0),
-                        child: SvgPicture.asset(
-                          'assets/icons/chevron-left.svg',
-                          height: 24,
-                          width: 24,
-                        ),
-                      ),
-                    ),
-                    InkWell(
-                      onTap: () {
-                        setState(() {
-                          if (_indexItem + 1 < widget.media.length) {
-                            _indexItem++;
-                            _scrollController.nextPage(
-                              curve: Curves.linear,
-                              duration: const Duration(
-                                milliseconds: 500,
-                              ),
-                            );
-                          }
-                        });
-                      },
-                      child: Container(
-                        height: 38.5,
-                        width: 38.5,
-                        decoration: BoxDecoration(
-                          borderRadius: BorderRadius.circular(20),
-                          color: BlindChickenColors.backgroundColor,
-                        ),
-                        padding: const EdgeInsets.all(10.0),
-                        child: SvgPicture.asset(
-                          'assets/icons/chevron-right.svg',
-                          height: 24,
-                          width: 24,
-                        ),
-                      ),
-                    ),
-                  ],
-                )
-              ],
-            ),
-        ],
-      ),
+      ],
     );
   }
 }

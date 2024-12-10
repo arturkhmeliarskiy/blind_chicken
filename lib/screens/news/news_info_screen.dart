@@ -126,6 +126,9 @@ class _NewsInfoScreenState extends State<NewsInfoScreen> with TickerProviderStat
                         case 'уведомления':
                           context.read<NewsBloc>().add(const NewsEvent.getNotifications());
                           break;
+                        case 'пагинация новости':
+                          context.read<NewsBloc>().add(NewsEvent.paginationNews());
+                          break;
                       }
                     },
                   );
