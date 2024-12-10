@@ -29,7 +29,6 @@ class NewsSlider extends StatefulWidget {
 
 class _NewsSliderState extends State<NewsSlider> {
   final PageController _scrollController = PageController();
-
   int _indexItem = 0;
 
   @override
@@ -78,6 +77,15 @@ class _NewsSliderState extends State<NewsSlider> {
                       ? width
                       : width / 2,
                   fit: BoxFit.cover,
+                  placeholder: (context, url) {
+                    return Center(
+                      child: SizedBox(
+                        width: 40.0,
+                        height: 40.0,
+                        child: CircularProgressIndicator(),
+                      ),
+                    );
+                  },
                   imageBuilder: widget.isBuilder
                       ? (context, imageProvider) => PhotoView(
                             imageProvider: imageProvider,
