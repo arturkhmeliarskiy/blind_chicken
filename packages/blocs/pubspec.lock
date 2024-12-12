@@ -49,10 +49,10 @@ packages:
     dependency: transitive
     description:
       name: app_links
-      sha256: ad1a6d598e7e39b46a34f746f9a8b011ee147e4c275d407fa457e7a62f84dd99
+      sha256: "433df2e61b10519407475d7f69e470789d23d593f28224c38ba1068597be7950"
       url: "https://pub.dev"
     source: hosted
-    version: "6.3.2"
+    version: "6.3.3"
   app_links_linux:
     dependency: transitive
     description:
@@ -128,10 +128,11 @@ packages:
   better_player:
     dependency: transitive
     description:
-      name: better_player
-      sha256: fc8883218ab7a2fd7e916956c1f59b5c26c3cab1e4dfd6f051901f5e4da39619
-      url: "https://pub.dev"
-    source: hosted
+      path: "."
+      ref: master
+      resolved-ref: "40e88b90b8df2ccb4dab6e782dd7bdc1430c2e68"
+      url: "https://github.com/jhomlala/betterplayer.git"
+    source: git
     version: "0.0.84"
   blind_chicken:
     dependency: transitive
