@@ -1,7 +1,7 @@
 import 'dart:developer';
 
 import 'package:auto_route/auto_route.dart';
-import 'package:better_player/better_player.dart';
+import 'package:better_player_plus/better_player_plus.dart';
 import 'package:blind_chicken/screens/app/router/app_router.dart';
 import 'package:blind_chicken/screens/news/widgets/better_video_player.dart';
 import 'package:blind_chicken/screens/news/widgets/handler_links_news.dart';

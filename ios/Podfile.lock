@@ -91,7 +91,7 @@ PODS:
     - AppMetricaLog (= 5.9.0)
   - audio_session (0.0.1):
     - Flutter
-  - better_player (0.0.1):
+  - better_player_plus (1.0.0):
     - Cache (~> 6.0.0)
     - Flutter
     - GCDWebServer
@@ -281,7 +281,7 @@ DEPENDENCIES:
   - appmetrica_push_plugin (from `.symlinks/plugins/appmetrica_push_plugin/ios`)
   - AppMetricaPush
   - audio_session (from `.symlinks/plugins/audio_session/ios`)
-  - better_player (from `.symlinks/plugins/better_player/ios`)
+  - better_player_plus (from `.symlinks/plugins/better_player_plus/ios`)
   - connectivity_plus (from `.symlinks/plugins/connectivity_plus/ios`)
   - device_info_plus (from `.symlinks/plugins/device_info_plus/ios`)
   - file_picker (from `.symlinks/plugins/file_picker/ios`)
@@ -360,8 +360,8 @@ EXTERNAL SOURCES:
     :path: ".symlinks/plugins/appmetrica_push_plugin/ios"
   audio_session:
     :path: ".symlinks/plugins/audio_session/ios"
-  better_player:
-    :path: ".symlinks/plugins/better_player/ios"
+  better_player_plus:
+    :path: ".symlinks/plugins/better_player_plus/ios"
   connectivity_plus:
     :path: ".symlinks/plugins/connectivity_plus/ios"
   device_info_plus:
@@ -433,7 +433,7 @@ SPEC CHECKSUMS:
   AppMetricaSynchronization: ed4196effc6997921fab53503e79c6505dbae707
   AppMetricaWebKit: 568f2057ae462b792b0b04eeeaffdd3b2af1f2b3
   audio_session: 088d2483ebd1dc43f51d253d4a1c517d9a2e7207
-  better_player: 2406bfe8175203c7a46fa15f9d778d73b12e1646
+  better_player_plus: 89f911bd69171edfe6d2ee689014355036bffdb0
   Cache: 4ca7e00363fca5455f26534e5607634c820ffc2d
   connectivity_plus: bf0076dd84a130856aa636df1c71ccaff908fa1d
   device_info_plus: 97af1d7e84681a90d0693e63169a5d50e0839a0d

@@ -133,15 +133,14 @@ packages:
       url: "https://pub.dev"
     source: hosted
     version: "9.0.0"
-  better_player:
+  better_player_plus:
     dependency: "direct main"
     description:
-      path: "."
-      ref: master
-      resolved-ref: "40e88b90b8df2ccb4dab6e782dd7bdc1430c2e68"
-      url: "https://github.com/jhomlala/betterplayer.git"
-    source: git
-    version: "0.0.84"
+      name: better_player_plus
+      sha256: "69092845e38b2b9bc023f3d5108b01aaeef0c33fa9b5cd2c6a853c09f89e647f"
+      url: "https://pub.dev"
+    source: hosted
+    version: "1.0.7"
   bloc:
     dependency: transitive
     description:
@@ -602,6 +601,11 @@ packages:
       url: "https://pub.dev"
     source: hosted
     version: "5.0.0"
+  flutter_localizations:
+    dependency: transitive
+    description: flutter
+    source: sdk
+    version: "0.0.0"
   flutter_plugin_android_lifecycle:
     dependency: transitive
     description:
@@ -640,18 +644,18 @@ packages:
     dependency: "direct main"
     description:
       name: flutter_widget_from_html
-      sha256: f3967a5b42896662efdd420b5adaf8a7d3692b0f44462a07c80e3b4c173b1a02
+      sha256: b931148824bcfc24c7be6f2daeabf549e237c9e617e93cd63256d924884ce423
       url: "https://pub.dev"
     source: hosted
-    version: "0.15.3"
+    version: "0.15.0"
   flutter_widget_from_html_core:
     dependency: transitive
     description:
       name: flutter_widget_from_html_core
-      sha256: b1048fd119a14762e2361bd057da608148a895477846d6149109b2151d2f7abf
+      sha256: cc1d9be3d187ce668ee02091cd5442dfb050cdaf98e0ab9a4d12ad008f966979
       url: "https://pub.dev"
     source: hosted
-    version: "0.15.2"
+    version: "0.14.12"
   freezed_annotation:
     dependency: transitive
     description:
@@ -688,10 +692,10 @@ packages:
     dependency: transitive
     description:
       name: fwfh_just_audio
-      sha256: "38dc2c55803bd3cef33042c473e0c40b891ad4548078424641a32032f6a1245f"
+      sha256: "209cf9644599e37b0edb6961c4f30ce80d156f5a53a50355f75fb4a22f9fdb0a"
       url: "https://pub.dev"
     source: hosted
-    version: "0.15.2"
+    version: "0.14.3"
   fwfh_svg:
     dependency: transitive
     description:
