@@ -1,6 +1,6 @@
 import 'dart:developer';
 
-import 'package:better_player_plus/better_player_plus.dart';
+import 'package:better_player/better_player.dart';
 import 'package:blind_chicken/screens/news/widgets/better_video_player.dart';
 import 'package:flutter/material.dart';
 import 'package:visibility_detector/visibility_detector.dart';
