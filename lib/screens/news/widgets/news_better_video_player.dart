@@ -2,7 +2,6 @@ import 'dart:developer';
 
 import 'package:better_player/better_player.dart';
 import 'package:blind_chicken/screens/news/widgets/better_video_player.dart';
-import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:visibility_detector/visibility_detector.dart';
 
@@ -10,13 +9,15 @@ class NewsBetterVideoPlayer extends StatefulWidget {
   const NewsBetterVideoPlayer({
     super.key,
     required this.url,
-    required this.image,
+    this.aspectRatio = 1,
+    required this.onAspectRatio,
     required this.onTap,
   });
 
   final String url;
-  final String image;
-  final ValueChanged<double> onTap;
+  final double aspectRatio;
+  final ValueChanged<double> onAspectRatio;
+  final VoidCallback onTap;
 
   @override
   NewsBetterVideoPlayerState createState() => NewsBetterVideoPlayerState();
@@ -46,19 +47,23 @@ class NewsBetterVideoPlayerState extends State<NewsBetterVideoPlayer> {
       betterPlayerDataSource: BetterPlayerDataSource(
         BetterPlayerDataSourceType.network,
         widget.url,
-        placeholder: CachedNetworkImage(
-          imageUrl: widget.image,
-          height: MediaQuery.of(context).size.height,
-          fit: BoxFit.cover,
-          errorWidget: (context, url, error) => const Icon(Icons.error),
+        placeholder: Center(
+          child: Container(
+            width: 40.0,
+            height: 40.0,
+            margin: EdgeInsets.all(10),
+            child: CircularProgressIndicator(),
+          ),
         ),
       ),
     );
     _controller.setVolume(0.0);
     _controller.addEventsListener((BetterPlayerEvent event) {
       if (event.betterPlayerEventType == BetterPlayerEventType.initialized) {
+        widget.onAspectRatio(_controller.videoPlayerController?.value.aspectRatio ?? 0);
         _controller
             .setOverriddenAspectRatio(_controller.videoPlayerController?.value.aspectRatio ?? 0);
+
         _controller.play();
       }
     });
@@ -94,24 +99,24 @@ class NewsBetterVideoPlayerState extends State<NewsBetterVideoPlayer> {
                 ),
                 GestureDetector(
                   onTap: () {
-                    widget.onTap(_controller.getAspectRatio() ?? 0);
                     _controller.pause();
+                    widget.onTap();
                   },
-                  child: Container(
-                    color: Colors.transparent,
+                  child: AspectRatio(
+                    aspectRatio: _controller.getAspectRatio() ?? 0,
+                    child: Container(
+                      color: Colors.transparent,
+                    ),
                   ),
                 )
               ],
             )
-          : GestureDetector(
-              onTap: () {
-                widget.onTap(_controller.getAspectRatio() ?? 0);
-                _controller.pause();
-              },
-              child: CachedNetworkImage(
-                imageUrl: widget.image,
-                fit: BoxFit.cover,
-                errorWidget: (context, url, error) => const Icon(Icons.error),
+          : Center(
+              child: Container(
+                width: 40.0,
+                height: 40.0,
+                margin: EdgeInsets.all(10),
+                child: CircularProgressIndicator(),
               ),
             ),
     );

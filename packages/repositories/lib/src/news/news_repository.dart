@@ -139,12 +139,15 @@ extension on NewsInfoResponse {
               final videoImage = "https://slepayakurica.ru${item.videoImage ?? ''}";
               List<String> images =
                   item.images?.map((item) => "https://slepayakurica.ru$item").toList() ?? [];
+              List<String> videos =
+                  item.videos?.map((item) => "https://slepayakurica.ru$item").toList() ?? [];
 
               return NewsInfoItemDataModel(
                 id: item.id ?? '',
                 title: item.title ?? '',
                 createAt: item.createAt ?? '',
                 images: images.isNotEmpty ? images : [],
+                videos: videos.isNotEmpty ? videos : [],
                 video: (item.typeVideo ?? '') == 'original'
                     ? "https://slepayakurica.ru${item.video ?? ''}"
                     : item.video ?? '',
@@ -301,6 +304,8 @@ extension on OneNewsInfoResponse {
             )
             .toList() ??
         [];
+    List<String> videos =
+        data?.videos?.map((item) => "https://slepayakurica.ru$item").toList() ?? [];
 
     return OneNewsInfoDataModel(
       r: r ?? '',
@@ -311,6 +316,7 @@ extension on OneNewsInfoResponse {
         title: data?.title ?? '',
         createAt: data?.createAt ?? '',
         images: images.isNotEmpty ? images : [],
+        videos: videos.isNotEmpty ? images : [],
         video: (data?.typeVideo ?? '') == 'original'
             ? "https://slepayakurica.ru${data?.video ?? ''}"
             : data?.video ?? '',

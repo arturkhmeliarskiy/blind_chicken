@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
-import 'package:models/models.dart';
 import 'package:photo_view/photo_view.dart'
     show
         LoadingBuilder,
@@ -15,35 +14,36 @@ import 'package:photo_view/src/controller/photo_view_scalestate_controller.dart'
 import 'package:photo_view/src/core/photo_view_gesture_detector.dart';
 import 'package:photo_view/src/photo_view_scale_state.dart';
 import 'package:photo_view/src/utils/photo_view_hero_attributes.dart';
+import 'package:ui_kit/src/widgets/news_photo_and_video_view_gallery/index.dart';
 import 'package:ui_kit/ui_kit.dart';
 
-/// A type definition for a [Function] that receives a index after a page change in [PhotoAndVideoViewGallery]
-typedef PhotoViewGalleryPageChangedCallback = void Function(int index);
+/// A type definition for a [Function] that receives a index after a page change in [NewsPhotoAndVideoViewGallery]
+typedef NewsPhotoViewGalleryPageChangedCallback = void Function(int index);
 
-/// A type definition for a [Function] that defines a page in [PhotoAndVideoViewGallery.build]
-typedef PhotoViewGalleryBuilder = PhotoAndVideoViewGalleryPageOptions Function(
+/// A type definition for a [Function] that defines a page in [NewsPhotoAndVideoViewGallery.build]
+typedef NewsPhotoViewGalleryBuilder = NewsPhotoAndVideoViewGalleryPageOptions Function(
     BuildContext context, int index);
 
 /// A [StatefulWidget] that shows multiple [PhotoView] widgets in a [PageView]
 ///
-/// Some of [PhotoView] constructor options are passed direct to [PhotoAndVideoViewGallery] constructor. Those options will affect the gallery in a whole.
+/// Some of [PhotoView] constructor options are passed direct to [NewsPhotoAndVideoViewGallery] constructor. Those options will affect the gallery in a whole.
 ///
-/// Some of the options may be defined to each image individually, such as `initialScale` or `heroAttributes`. Those must be passed via each [PhotoAndVideoViewGalleryPageOptions].
+/// Some of the options may be defined to each image individually, such as `initialScale` or `heroAttributes`. Those must be passed via each [NewsPhotoAndVideoViewGalleryPageOptions].
 ///
 /// Example of usage as a list of options:
 /// ```
-/// PhotoAndVideoViewGallery(
-///   pageOptions: <PhotoAndVideoViewGalleryPageOptions>[
-///     PhotoAndVideoViewGalleryPageOptions(
+/// NewsPhotoAndVideoViewGallery(
+///   pageOptions: <NewsPhotoAndVideoViewGalleryPageOptions>[
+///     NewsPhotoAndVideoViewGalleryPageOptions(
 ///       imageProvider: AssetImage("assets/gallery1.jpg"),
 ///       heroAttributes: const HeroAttributes(tag: "tag1"),
 ///     ),
-///     PhotoAndVideoViewGalleryPageOptions(
+///     NewsPhotoAndVideoViewGalleryPageOptions(
 ///       imageProvider: AssetImage("assets/gallery2.jpg"),
 ///       heroAttributes: const HeroAttributes(tag: "tag2"),
 ///       maxScale: PhotoViewComputedScale.contained * 0.3
 ///     ),
-///     PhotoAndVideoViewGalleryPageOptions(
+///     NewsPhotoAndVideoViewGalleryPageOptions(
 ///       imageProvider: AssetImage("assets/gallery3.jpg"),
 ///       minScale: PhotoViewComputedScale.contained * 0.8,
 ///       maxScale: PhotoViewComputedScale.covered * 1.1,
@@ -70,10 +70,10 @@ typedef PhotoViewGalleryBuilder = PhotoAndVideoViewGalleryPageOptions Function(
 ///
 /// Example of usage with builder pattern:
 /// ```
-/// PhotoAndVideoViewGallery.builder(
+/// NewsPhotoAndVideoViewGallery.builder(
 ///   scrollPhysics: const BouncingScrollPhysics(),
 ///   builder: (BuildContext context, int index) {
-///     return PhotoAndVideoViewGalleryPageOptions(
+///     return NewsPhotoAndVideoViewGalleryPageOptions(
 ///       imageProvider: AssetImage(widget.galleryItems[index].image),
 ///       initialScale: PhotoViewComputedScale.contained * 0.8,
 ///       minScale: PhotoViewComputedScale.contained * 0.8,
@@ -99,9 +99,9 @@ typedef PhotoViewGalleryBuilder = PhotoAndVideoViewGalleryPageOptions Function(
 ///   onPageChanged: onPageChanged,
 /// )
 /// ```
-class PhotoAndVideoViewGallery extends StatefulWidget {
-  /// Construct a gallery with static items through a list of [PhotoAndVideoViewGalleryPageOptions].
-  const PhotoAndVideoViewGallery({
+class NewsPhotoAndVideoViewGallery extends StatefulWidget {
+  /// Construct a gallery with static items through a list of [NewsPhotoAndVideoViewGalleryPageOptions].
+  const NewsPhotoAndVideoViewGallery({
     Key? key,
     required this.pageOptions,
     this.loadingBuilder,
@@ -117,14 +117,15 @@ class PhotoAndVideoViewGallery extends StatefulWidget {
     this.scrollDirection = Axis.horizontal,
     this.customSize,
     this.allowImplicitScrolling = false,
+    this.videos,
   })  : itemCount = null,
         builder = null,
         super(key: key);
 
   /// Construct a gallery with dynamic items.
   ///
-  /// The builder must return a [PhotoAndVideoViewGalleryPageOptions].
-  const PhotoAndVideoViewGallery.builder({
+  /// The builder must return a [NewsPhotoAndVideoViewGalleryPageOptions].
+  const NewsPhotoAndVideoViewGallery.builder({
     Key? key,
     required this.itemCount,
     required this.builder,
@@ -141,19 +142,20 @@ class PhotoAndVideoViewGallery extends StatefulWidget {
     this.scrollDirection = Axis.horizontal,
     this.customSize,
     this.allowImplicitScrolling = false,
+    this.videos,
   })  : pageOptions = null,
         assert(itemCount != null),
         assert(builder != null),
         super(key: key);
 
   /// A list of options to describe the items in the gallery
-  final List<PhotoAndVideoViewGalleryPageOptions>? pageOptions;
+  final List<NewsPhotoAndVideoViewGalleryPageOptions>? pageOptions;
 
-  /// The count of items in the gallery, only used when constructed via [PhotoAndVideoViewGallery.builder]
+  /// The count of items in the gallery, only used when constructed via [NewsPhotoAndVideoViewGallery.builder]
   final int? itemCount;
 
-  /// Called to build items for the gallery when using [PhotoAndVideoViewGallery.builder]
-  final PhotoViewGalleryBuilder? builder;
+  /// Called to build items for the gallery when using [NewsPhotoAndVideoViewGallery.builder]
+  final NewsPhotoViewGalleryBuilder? builder;
 
   /// [ScrollPhysics] for the internal [PageView]
   final ScrollPhysics? scrollPhysics;
@@ -173,11 +175,11 @@ class PhotoAndVideoViewGallery extends StatefulWidget {
   /// Mirror to [PageView.reverse]
   final bool reverse;
 
-  /// An object that controls the [PageView] inside [PhotoAndVideoViewGallery]
+  /// An object that controls the [PageView] inside [NewsPhotoAndVideoViewGallery]
   final PageController? pageController;
 
   /// An callback to be called on a page change
-  final PhotoViewGalleryPageChangedCallback? onPageChanged;
+  final NewsPhotoViewGalleryPageChangedCallback? onPageChanged;
 
   /// Mirror to [PhotoView.scaleStateChangedCallback]
   final ValueChanged<PhotoViewScaleState>? scaleStateChangedCallback;
@@ -194,15 +196,18 @@ class PhotoAndVideoViewGallery extends StatefulWidget {
   /// When user attempts to move it to the next element, focus will traverse to the next page in the page view.
   final bool allowImplicitScrolling;
 
+  /// Video info
+  final List<String>? videos;
+
   bool get _isBuilder => builder != null;
 
   @override
   State<StatefulWidget> createState() {
-    return _PhotoViewGalleryState();
+    return _NewsNewsPhotoViewGalleryState();
   }
 }
 
-class _PhotoViewGalleryState extends State<PhotoAndVideoViewGallery> {
+class _NewsNewsPhotoViewGalleryState extends State<NewsPhotoAndVideoViewGallery> {
   late final PageController _controller = widget.pageController ?? PageController();
 
   void scaleStateChangedCallback(PhotoViewScaleState scaleState) {
@@ -298,19 +303,18 @@ class _PhotoViewGalleryState extends State<PhotoAndVideoViewGallery> {
             errorBuilder: pageOption.errorBuilder,
           );
 
-    return pageOption.isVideo ?? false
-        ? VideoItemGallery(
-            image: pageOption.video?.i ?? '',
-            video: pageOption.video?.v ?? '',
-            isProgressBar: pageOption.isProgressBar ?? false,
-            isPlay: pageOption.isPlay ?? false,
+    return (widget.videos?.isNotEmpty ?? false) && (widget.videos?.length ?? 0) > index
+        ? NewsVideoItemGallery(
+            video: widget.videos?[index] ?? '',
+            aspectRatio: pageOption.aspectRatio ?? 1,
+            onExitFullScreen: pageOption.onExitFullScreen ?? () {},
           )
         : ClipRect(
             child: photoView,
           );
   }
 
-  PhotoAndVideoViewGalleryPageOptions _buildPageOption(BuildContext context, int index) {
+  NewsPhotoAndVideoViewGalleryPageOptions _buildPageOption(BuildContext context, int index) {
     if (widget._isBuilder) {
       return widget.builder!(context, index);
     }
@@ -318,12 +322,12 @@ class _PhotoViewGalleryState extends State<PhotoAndVideoViewGallery> {
   }
 }
 
-/// A helper class that wraps individual options of a page in [PhotoAndVideoViewGallery]
+/// A helper class that wraps individual options of a page in [NewsPhotoAndVideoViewGallery]
 ///
 /// The [maxScale], [minScale] and [initialScale] options may be [double] or a [PhotoViewComputedScale] constant
 ///
-class PhotoAndVideoViewGalleryPageOptions {
-  PhotoAndVideoViewGalleryPageOptions({
+class NewsPhotoAndVideoViewGalleryPageOptions {
+  NewsPhotoAndVideoViewGalleryPageOptions({
     Key? key,
     required this.imageProvider,
     this.heroAttributes,
@@ -342,15 +346,13 @@ class PhotoAndVideoViewGalleryPageOptions {
     this.filterQuality,
     this.disableGestures,
     this.errorBuilder,
-    this.isVideo,
-    this.isProgressBar,
-    this.isPlay,
-    this.video,
+    this.aspectRatio,
+    this.onExitFullScreen,
   })  : child = null,
         childSize = null,
         assert(imageProvider != null);
 
-  PhotoAndVideoViewGalleryPageOptions.customChild({
+  NewsPhotoAndVideoViewGalleryPageOptions.customChild({
     required this.child,
     this.childSize,
     this.heroAttributes,
@@ -368,10 +370,8 @@ class PhotoAndVideoViewGalleryPageOptions {
     this.tightMode,
     this.filterQuality,
     this.disableGestures,
-    this.isVideo,
-    this.isProgressBar,
-    this.isPlay,
-    this.video,
+    this.aspectRatio,
+    this.onExitFullScreen,
   })  : errorBuilder = null,
         imageProvider = null;
 
@@ -432,15 +432,9 @@ class PhotoAndVideoViewGalleryPageOptions {
   /// Mirror to [PhotoView.errorBuilder]
   final ImageErrorWidgetBuilder? errorBuilder;
 
-  /// Check is video
-  final bool? isVideo;
+  /// Video aspectRatio
+  final double? aspectRatio;
 
-  /// Check is progress bar
-  final bool? isProgressBar;
-
-  /// Check is play video
-  final bool? isPlay;
-
-  /// Video info
-  final DetailProductVideoDataModel? video;
+  /// Video onExitFullScreen
+  final VoidCallback? onExitFullScreen;
 }

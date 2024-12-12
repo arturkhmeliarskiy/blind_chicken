@@ -20,6 +20,7 @@ mixin _$NewsInfoItemDataModel {
   String get title => throw _privateConstructorUsedError;
   String get createAt => throw _privateConstructorUsedError;
   List<String> get images => throw _privateConstructorUsedError;
+  List<String> get videos => throw _privateConstructorUsedError;
   String get video => throw _privateConstructorUsedError;
   String get announcement => throw _privateConstructorUsedError;
   String get typeMedia => throw _privateConstructorUsedError;
@@ -54,6 +55,7 @@ abstract class $NewsInfoItemDataModelCopyWith<$Res> {
       String title,
       String createAt,
       List<String> images,
+      List<String> videos,
       String video,
       String announcement,
       String typeMedia,
@@ -91,6 +93,7 @@ class _$NewsInfoItemDataModelCopyWithImpl<$Res,
     Object? title = null,
     Object? createAt = null,
     Object? images = null,
+    Object? videos = null,
     Object? video = null,
     Object? announcement = null,
     Object? typeMedia = null,
@@ -125,6 +128,10 @@ class _$NewsInfoItemDataModelCopyWithImpl<$Res,
       images: null == images
           ? _value.images
           : images // ignore: cast_nullable_to_non_nullable
+              as List<String>,
+      videos: null == videos
+          ? _value.videos
+          : videos // ignore: cast_nullable_to_non_nullable
               as List<String>,
       video: null == video
           ? _value.video
@@ -212,6 +219,7 @@ abstract class _$$NewsInfoItemDataModelImplCopyWith<$Res>
       String title,
       String createAt,
       List<String> images,
+      List<String> videos,
       String video,
       String announcement,
       String typeMedia,
@@ -247,6 +255,7 @@ class __$$NewsInfoItemDataModelImplCopyWithImpl<$Res>
     Object? title = null,
     Object? createAt = null,
     Object? images = null,
+    Object? videos = null,
     Object? video = null,
     Object? announcement = null,
     Object? typeMedia = null,
@@ -281,6 +290,10 @@ class __$$NewsInfoItemDataModelImplCopyWithImpl<$Res>
       images: null == images
           ? _value._images
           : images // ignore: cast_nullable_to_non_nullable
+              as List<String>,
+      videos: null == videos
+          ? _value._videos
+          : videos // ignore: cast_nullable_to_non_nullable
               as List<String>,
       video: null == video
           ? _value.video
@@ -362,6 +375,7 @@ class _$NewsInfoItemDataModelImpl extends _NewsInfoItemDataModel {
       required this.title,
       required this.createAt,
       required final List<String> images,
+      required final List<String> videos,
       required this.video,
       required this.announcement,
       required this.typeMedia,
@@ -380,6 +394,7 @@ class _$NewsInfoItemDataModelImpl extends _NewsInfoItemDataModel {
       required this.numberViews,
       required this.isViewed})
       : _images = images,
+        _videos = videos,
         super._();
 
   @override
@@ -394,6 +409,14 @@ class _$NewsInfoItemDataModelImpl extends _NewsInfoItemDataModel {
     if (_images is EqualUnmodifiableListView) return _images;
     // ignore: implicit_dynamic_type
     return EqualUnmodifiableListView(_images);
+  }
+
+  final List<String> _videos;
+  @override
+  List<String> get videos {
+    if (_videos is EqualUnmodifiableListView) return _videos;
+    // ignore: implicit_dynamic_type
+    return EqualUnmodifiableListView(_videos);
   }
 
   @override
@@ -433,7 +456,7 @@ class _$NewsInfoItemDataModelImpl extends _NewsInfoItemDataModel {
 
   @override
   String toString() {
-    return 'NewsInfoItemDataModel(id: $id, title: $title, createAt: $createAt, images: $images, video: $video, announcement: $announcement, typeMedia: $typeMedia, description: $description, titleButton: $titleButton, typePath: $typePath, path: $path, code: $code, sort: $sort, filterSelect: $filterSelect, uidStore: $uidStore, typeVideo: $typeVideo, videoImage: $videoImage, videoImageHeight: $videoImageHeight, videoImageWeight: $videoImageWeight, numberViews: $numberViews, isViewed: $isViewed)';
+    return 'NewsInfoItemDataModel(id: $id, title: $title, createAt: $createAt, images: $images, videos: $videos, video: $video, announcement: $announcement, typeMedia: $typeMedia, description: $description, titleButton: $titleButton, typePath: $typePath, path: $path, code: $code, sort: $sort, filterSelect: $filterSelect, uidStore: $uidStore, typeVideo: $typeVideo, videoImage: $videoImage, videoImageHeight: $videoImageHeight, videoImageWeight: $videoImageWeight, numberViews: $numberViews, isViewed: $isViewed)';
   }
 
   @override
@@ -446,6 +469,7 @@ class _$NewsInfoItemDataModelImpl extends _NewsInfoItemDataModel {
             (identical(other.createAt, createAt) ||
                 other.createAt == createAt) &&
             const DeepCollectionEquality().equals(other._images, _images) &&
+            const DeepCollectionEquality().equals(other._videos, _videos) &&
             (identical(other.video, video) || other.video == video) &&
             (identical(other.announcement, announcement) ||
                 other.announcement == announcement) &&
@@ -485,6 +509,7 @@ class _$NewsInfoItemDataModelImpl extends _NewsInfoItemDataModel {
         title,
         createAt,
         const DeepCollectionEquality().hash(_images),
+        const DeepCollectionEquality().hash(_videos),
         video,
         announcement,
         typeMedia,
@@ -518,6 +543,7 @@ abstract class _NewsInfoItemDataModel extends NewsInfoItemDataModel {
       required final String title,
       required final String createAt,
       required final List<String> images,
+      required final List<String> videos,
       required final String video,
       required final String announcement,
       required final String typeMedia,
@@ -545,6 +571,8 @@ abstract class _NewsInfoItemDataModel extends NewsInfoItemDataModel {
   String get createAt;
   @override
   List<String> get images;
+  @override
+  List<String> get videos;
   @override
   String get video;
   @override

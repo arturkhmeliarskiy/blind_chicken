@@ -10,6 +10,7 @@ class NewsInfoItemDataModel with _$NewsInfoItemDataModel {
     required String title,
     required String createAt,
     required List<String> images,
+    required List<String> videos,
     required String video,
     required String announcement,
     required String typeMedia,
