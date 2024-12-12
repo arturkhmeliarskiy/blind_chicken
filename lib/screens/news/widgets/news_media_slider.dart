@@ -1,6 +1,7 @@
 import 'dart:developer';
 
-import 'package:blind_chicken/screens/news/widgets/news_better_video_player.dart';
+import 'package:better_player/better_player.dart';
+import 'package:blind_chicken/screens/news/widgets/news_video_list_widget.dart';
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
@@ -34,17 +35,25 @@ class NewsMediaSlider extends StatefulWidget {
 
 class _NewsMediaSliderState extends State<NewsMediaSlider> {
   final PageController _scrollController = PageController();
+
   int _indexItem = 0;
   double _aspectRatio = 1;
 
   @override
   void initState() {
     _scrollController.addListener(_scrollListener);
-    getImageAspectRatio(widget.images.first).then((value) {
+    if (widget.videos.isNotEmpty) {
       setState(() {
-        _aspectRatio = value;
+        _aspectRatio = getVideoAspectRatio(widget.videos.first);
       });
-    });
+    } else {
+      getImageAspectRatio(widget.images.first).then((value) {
+        setState(() {
+          _aspectRatio = value;
+        });
+      });
+    }
+
     super.initState();
   }
 
@@ -61,6 +70,18 @@ class _NewsMediaSliderState extends State<NewsMediaSlider> {
   Future<double> getImageAspectRatio(String url) async {
     ImageInfo imageInfo = await ImageService().getImageUrlInfo(url);
     return imageInfo.image.width / imageInfo.image.height;
+  }
+
+  double getVideoAspectRatio(String url) {
+    BetterPlayerController controller = BetterPlayerController(
+      BetterPlayerConfiguration(),
+      betterPlayerDataSource: BetterPlayerDataSource(
+        BetterPlayerDataSourceType.network,
+        url,
+      ),
+    );
+
+    return controller.videoPlayerController?.value.aspectRatio ?? 0;
   }
 
   @override
@@ -82,23 +103,25 @@ class _NewsMediaSliderState extends State<NewsMediaSlider> {
             itemCount: widget.images.length,
             controller: _scrollController,
             onPageChanged: (value) {
-              getImageAspectRatio(widget.images[value]).then((item) {
+              if (widget.videos.isNotEmpty && widget.videos.length > value) {
                 setState(() {
-                  _aspectRatio = item;
+                  _aspectRatio = getVideoAspectRatio(widget.videos.first);
                 });
-              });
+              } else {
+                getImageAspectRatio(widget.images[value]).then((item) {
+                  setState(() {
+                    _aspectRatio = item;
+                  });
+                });
+              }
             },
             itemBuilder: (context, index) {
               if (widget.videos.isNotEmpty && widget.videos.length > index) {
-                return NewsBetterVideoPlayer(
+                return NewsVideoListWidget(
                   url: widget.videos[index],
+                  aspectRatio: _aspectRatio,
                   onTap: () {
                     widget.onTap(index);
-                  },
-                  onAspectRatio: (double value) {
-                    setState(() {
-                      _aspectRatio = value;
-                    });
                   },
                 );
               } else {
