@@ -689,28 +689,16 @@ class _FavouritesProductsScreenState extends State<FavouritesProductsScreen> {
                                                       images: initState
                                                           .favouritesProducts[index].images,
                                                       onSelect: () {
-                                                        context.read<FavouritesBloc>().add(
-                                                              FavouritesEvent.getInfoProduct(
-                                                                code: initState
-                                                                    .favouritesProducts[index].id
-                                                                    .toString(),
-                                                                titleScreen:
-                                                                    'Карточка товара в избранном',
-                                                                typeAddProductToShoppingCart:
-                                                                    'Карточка товара',
-                                                                identifierAddProductToShoppingCart:
-                                                                    '1',
-                                                              ),
-                                                            );
                                                         context.navigateTo(
-                                                          FavouritesCardInfoRoute(
+                                                          CardInfoRoute(
                                                             isChildRoute: false,
-                                                            item:
-                                                                initState.favouritesProducts[index],
                                                             isLike: true,
                                                             listItems: initState.favouritesProducts,
-                                                            favouritesProducts:
-                                                                initState.favouritesProducts,
+                                                            favouritesProducts: initState.favouritesProducts,
+                                                            codeProduct:
+                                                            initState.favouritesProducts[index].id.toString(),
+                                                            product: initState.favouritesProducts[index],
+                                                            titleScreen: 'Карточка товара в избранном',
                                                           ),
                                                         );
                                                       },

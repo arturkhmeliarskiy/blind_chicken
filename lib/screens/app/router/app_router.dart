@@ -14,7 +14,6 @@ import 'package:blind_chicken/screens/boutiques/widgets/boutique_preview_media_s
 import 'package:blind_chicken/screens/boutiques/widgets/map/boutique_yandex_map.dart';
 import 'package:blind_chicken/screens/brands/brands_screen.dart';
 import 'package:blind_chicken/screens/chat/chat_messanger_screen.dart';
-import 'package:blind_chicken/screens/favourites/favourites_card_info_screen.dart';
 import 'package:blind_chicken/screens/favourites/favourites_filter_screen.dart';
 import 'package:blind_chicken/screens/favourites/favourites_filter_select_value/favourites_filter_select_value_screen.dart';
 import 'package:blind_chicken/screens/favourites/favourites_filter_select_value_search/favourites_filter_select_value_search_screen.dart';
@@ -237,8 +236,7 @@ class AppRouter extends RootStackRouter {
             ),
             AutoRoute(
               keepHistory: false,
-              page: FavouritesCardInfoRoute.page,
-              path: "favourites_card_info",
+              page: CardInfoRoute.page,
             ),
           ]),
           AutoRoute(

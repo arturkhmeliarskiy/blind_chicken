@@ -54,7 +54,7 @@ class _CardInfoScreenViewState extends State<CardInfoScreenView> {
       BlindChickenShowDialogError();
   final BlindChickenShowDialogError _blindChickenShoppingCartShowDialogError =
       BlindChickenShowDialogError();
-  bool _isShowDialogCardInfoProductError = false;
+  bool _isShowDialogCardInfoError = false;
   bool _isShowDialogShoppingCartError = false;
   bool _isShoppingCartButton = true;
   bool _isSwipe = true;
@@ -123,14 +123,13 @@ class _CardInfoScreenViewState extends State<CardInfoScreenView> {
             if (initState.isError ?? false) {
               final typeError = initState.typeError ?? '';
               if (!_isShowDialogShoppingCartError &&
-                  !_isShowDialogCardInfoProductError &&
+                  !_isShowDialogCardInfoError &&
                   (typeError == 'описание товара' ||
                       typeError == 'выбор размера описание товара' ||
                       typeError == 'добавить товар в корзину' ||
                       typeError == 'добавить товар в избранное' ||
                       typeError == 'удалить товар из избранного')) {
-                _isShowDialogCardInfoProductError = true;
-                //todo разобратся с тем что блока нет в контексте
+                _isShowDialogCardInfoError = true;
                 _blindChickenCardInfoProductShowDialogError.openShowDualog(
                   context: context,
                   errorMessage: initState.errorMessage ?? '',
@@ -211,9 +210,8 @@ class _CardInfoScreenViewState extends State<CardInfoScreenView> {
                 );
               }
             } else {
-              if (_isShowDialogCardInfoProductError &&
-                  !(initState.isError ?? false)) {
-                _isShowDialogCardInfoProductError = false;
+              if (_isShowDialogCardInfoError && !(initState.isError ?? false)) {
+                _isShowDialogCardInfoError = false;
                 _blindChickenCardInfoProductShowDialogError.closeShowDialog();
               }
               final updateData = GetIt.I.get<UpdateDataService>();
@@ -225,7 +223,7 @@ class _CardInfoScreenViewState extends State<CardInfoScreenView> {
             }
           },
           getSizeProduct: (initState) {
-            if (!_isShowDialogCardInfoProductError) {
+            if (!_isShowDialogCardInfoError) {
               final updateData = GetIt.I.get<UpdateDataService>();
               //todo придумать к какому алерту обращатся
               updateData.isOpenShowModalBottomSheetShoppingCardInfoScreen = true;
@@ -343,7 +341,7 @@ class _CardInfoScreenViewState extends State<CardInfoScreenView> {
           state.maybeMap(
             error: (value) {
               if (!_isShowDialogShoppingCartError &&
-                  !_isShowDialogCardInfoProductError &&
+                  !_isShowDialogCardInfoError &&
                   value.titleScreen == widget.titleScreen) {
                 _isShowDialogShoppingCartError = true;
                 _blindChickenShoppingCartShowDialogError.openShowDualog(
@@ -513,25 +511,22 @@ class _CardInfoScreenViewState extends State<CardInfoScreenView> {
                                                   listItems: widget.listItems,
                                                   favouritesProducts: widget.favouritesProducts,
                                                     codeProduct:
-                                                        initState.codeProduct ??
-                                                          '',
-                                                  titleScreen:
-                                                      initState.titleScreen ??
-                                                          '',
-                                                  // isLike: false,
-                                                  // listItems: const [],
+                                                        initState.codeProduct,
+                                                    titleScreen:
+                                                        initState.titleScreen,
+                                                  ),
+                                                );
+                                              }
+                                            },
+                                            video: initState
+                                                    .detailsProduct?.video ??
+                                                DetailProductVideoDataModel(
+                                                  i: '',
+                                                  v: '',
                                                 ),
-                                              );
-                                            }
-                                          },
-                                          video: initState.detailsProduct?.video ??
-                                              DetailProductVideoDataModel(
-                                                i: '',
-                                                v: '',
-                                              ),
-                                        ),
-                                      );
-                                    },
+                                          ),
+                                        );
+                                      },
                                     goSwipeBack: () {
                                         if (initState
                                             .listProductsCode.isNotEmpty) {
@@ -1009,7 +1004,6 @@ class _CardInfoScreenViewState extends State<CardInfoScreenView> {
                                               ),
                                             ],
                                           ),
-                                          //todo общая реализация кнопки
                                           BlindChickenButtonShoppingCartProduct(
                                             title: initState.isShoppingCart ??
                                                     false
@@ -1105,11 +1099,11 @@ class _CardInfoScreenViewState extends State<CardInfoScreenView> {
                                                             code: product.id
                                                                 .toString(),
                                                             titleScreen:
-                                                                'Описание товара в корзине (Варианты)',
+                                                                'Описание товара (Варианты)',
                                                             typeAddProductToShoppingCart:
-                                                                'Карточка товара',
+                                                                'Кнопка',
                                                             identifierAddProductToShoppingCart:
-                                                                '1',
+                                                                '4',
                                                           ),
                                                         );
 
@@ -1207,20 +1201,21 @@ class _CardInfoScreenViewState extends State<CardInfoScreenView> {
                                                                       product:
                                                                           value,
                                                                       code: value.id.toString(),
-                                                                    titleScreen:
-                                                                        'Описание товара в корзине (Носят вместе)',
-                                                                    typeAddProductToShoppingCart:
-                                                                        'Карточка товара',
-                                                                    identifierAddProductToShoppingCart:
-                                                                        '1',
-                                                                  ),
-                                                                );
-                                                          },
-                                                          listProducts:
-                                                              initState.listProdcutsComplect,
-                                                          favouritesProductsId:
-                                                              initState.favouritesProductsId,
-                                                          addLike: (index) {
+                                                                      titleScreen:
+                                                                          'Описание товара (Носят вместе)',
+                                                                      typeAddProductToShoppingCart:
+                                                                          'Карточка товара',
+                                                                      identifierAddProductToShoppingCart:
+                                                                          '1',
+                                                                    ),
+                                                                  );
+                                                            },
+                                                            listProducts: initState
+                                                                .listProdcutsComplect,
+                                                            favouritesProductsId:
+                                                                initState
+                                                                    .favouritesProductsId,
+                                                            addLike: (index) {
                                                             context
                                                                 .read<
                                                                     CardInfoBloc>()
@@ -1290,28 +1285,30 @@ class _CardInfoScreenViewState extends State<CardInfoScreenView> {
                                                         ),
                                                         CatalogSliderProducts(
                                                           onSelectProduct: (value) {
-                                                            context
-                                                                .read<
-                                                                    CardInfoBloc>()
-                                                                .add(
-                                                                  CardInfoEvent
-                                                                      .getProduct(
+                                                              context
+                                                                  .read<
+                                                                      CardInfoBloc>()
+                                                                  .add(
+                                                                    CardInfoEvent
+                                                                        .getProduct(
                                                                       product:
                                                                           value,
                                                                       code: value.id.toString(),
-                                                                    titleScreen:
-                                                                        'Описание товара в корзине (Рекомендации стилистов)',
-                                                                    typeAddProductToShoppingCart:
-                                                                        'Карточка товара',
-                                                                    identifierAddProductToShoppingCart:
-                                                                        '1',
-                                                                  ),
-                                                                );
-                                                          },
-                                                          listProducts: initState.listProdcutsStyle,
-                                                          favouritesProductsId:
-                                                              initState.favouritesProductsId,
-                                                          addLike: (index) {
+                                                                      titleScreen:
+                                                                          'Описание товара (Рекомендации стилистов)',
+                                                                      typeAddProductToShoppingCart:
+                                                                          'Карточка товара',
+                                                                      identifierAddProductToShoppingCart:
+                                                                          '1',
+                                                                    ),
+                                                                  );
+                                                            },
+                                                            listProducts: initState
+                                                                .listProdcutsStyle,
+                                                            favouritesProductsId:
+                                                                initState
+                                                                    .favouritesProductsId,
+                                                            addLike: (index) {
                                                             context
                                                                 .read<
                                                                     CardInfoBloc>()
@@ -1376,28 +1373,28 @@ class _CardInfoScreenViewState extends State<CardInfoScreenView> {
                                                         ),
                                                         CatalogSliderProducts(
                                                           onSelectProduct: (value) {
-                                                            context
-                                                                .read<
-                                                                    CardInfoBloc>()
-                                                                .add(
-                                                                  CardInfoEvent
-                                                                      .getProduct(
+                                                              context
+                                                                  .read<
+                                                                      CardInfoBloc>()
+                                                                  .add(
+                                                                    CardInfoEvent
+                                                                        .getProduct(
                                                                       product:
                                                                           value,
                                                                       code: value.id.toString(),
-                                                                    titleScreen:
-                                                                        'Описание товара в корзине (Смотрите также)',
-                                                                    typeAddProductToShoppingCart:
-                                                                        'Карточка товара',
-                                                                    identifierAddProductToShoppingCart:
-                                                                        '1',
-                                                                  ),
-                                                                );
-                                                          },
-                                                          listProducts: initState.listProdcutsAlso,
-                                                          favouritesProductsId:
-                                                              initState.favouritesProductsId,
-                                                          addLike: (index) {
+                                                                      titleScreen:
+                                                                          'Описание товара (Смотрите также)',
+                                                                      typeAddProductToShoppingCart:
+                                                                          'Карточка товара',
+                                                                      identifierAddProductToShoppingCart:
+                                                                          '1',
+                                                                    ),
+                                                                  );
+                                                            },
+                                                            listProducts: initState.listProdcutsAlso,
+                                                            favouritesProductsId:
+                                                                initState.favouritesProductsId,
+                                                            addLike: (index) {
                                                             context
                                                                 .read<
                                                                     CardInfoBloc>()
@@ -1532,19 +1529,21 @@ class _CardInfoScreenViewState extends State<CardInfoScreenView> {
                                                                     product:
                                                                         value,
                                                                     code: value.id.toString(),
-                                                                  titleScreen:
-                                                                      'Описание товара в корзине (Товары бренда)',
-                                                                  typeAddProductToShoppingCart:
-                                                                      'Карточка товара',
-                                                                  identifierAddProductToShoppingCart:
-                                                                      '1',
-                                                                ),
-                                                              );
-                                                        },
-                                                        listProducts: initState.listProdcutsBrand,
-                                                        favouritesProductsId:
-                                                            initState.favouritesProductsId,
-                                                        addLike: (index) {
+                                                                    titleScreen:
+                                                                        'Описание товара (Товары бренда)',
+                                                                    typeAddProductToShoppingCart:
+                                                                        'Карточка товара',
+                                                                    identifierAddProductToShoppingCart:
+                                                                        '1',
+                                                                  ),
+                                                                );
+                                                          },
+                                                          listProducts: initState
+                                                              .listProdcutsBrand,
+                                                          favouritesProductsId:
+                                                              initState
+                                                                  .favouritesProductsId,
+                                                          addLike: (index) {
                                                           context
                                                               .read<
                                                                   CardInfoBloc>()
@@ -1685,7 +1684,6 @@ class _CardInfoScreenViewState extends State<CardInfoScreenView> {
               code: code,
               sku: size?.id ?? '',
               count: 1,
-              //todo titleScreen
               titleScreen: widget.titleScreen,
               searchQuery: '',
               typeAddProductToShoppingCart: typeAddProductToShoppingCart,
