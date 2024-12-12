@@ -23,14 +23,13 @@ class CardInfoState with _$CardInfoState {
     DetailProductDataModel? detailsProduct,
     BasketInfoItemDataModel? itemInfo,
     ProductDataModel? product,
-    int? indexItem,
     bool? isLoadErrorButton,
     String? errorMessage,
     String? typeError,
     bool? isError,
     required String titleScreen,
-    required String typeAddProductToShoppingCart,
-    required String identifierAddProductToShoppingCart,
+    String? typeAddProductToShoppingCart,
+    String? identifierAddProductToShoppingCart,
     bool? isShopGetSizeProduct,
   }) = ProductsCardInfoState;
   const factory CardInfoState.openSoppingCart() = OpenSoppingCartCardInfoState;

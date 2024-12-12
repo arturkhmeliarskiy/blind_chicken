@@ -143,6 +143,9 @@ class _AppState extends State<App> {
               const AppointmentEvent.preloadData(),
             ),
         ),
+        BlocProvider(
+            create: (context) => GetIt.I.get<CardInfoBloc>()
+              ..add(CardInfoEvent.init())),
       ],
       child: PushNotificationManager(
         openScreen: (notificationMessage) {

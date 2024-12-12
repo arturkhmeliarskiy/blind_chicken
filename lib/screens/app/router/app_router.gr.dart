@@ -472,44 +472,25 @@ class BrandsRouteArgs {
 class CardInfoRoute extends PageRouteInfo<CardInfoRouteArgs> {
   CardInfoRoute({
     Key? key,
-    required List<ProductDataModel> favouritesProducts,
-    required List<String> listProductsCode,
-    required List<int> favouritesProductsId,
-    required bool isLoadGetSizeProduct,
-    required String codeProduct,
-    BasketInfoItemDataModel? itemInfo,
     required ProductDataModel product,
-    int? indexItem,
-    bool? isLoadErrorButton,
-    required String titleScreen,
-    required String typeAddProductToShoppingCart,
-    required String identifierAddProductToShoppingCart,
-    bool? isShopGetSizeProduct,
-    required bool isChildRoute,
     required bool isLike,
     required List<ProductDataModel> listItems,
+    required bool isChildRoute,
+    required String titleScreen,
+    required String codeProduct,
+    required List<ProductDataModel> favouritesProducts,
     List<PageRouteInfo>? children,
   }) : super(
           CardInfoRoute.name,
           args: CardInfoRouteArgs(
             key: key,
-            favouritesProducts: favouritesProducts,
-            listProductsCode: listProductsCode,
-            favouritesProductsId: favouritesProductsId,
-            isLoadGetSizeProduct: isLoadGetSizeProduct,
-            codeProduct: codeProduct,
-            itemInfo: itemInfo,
             product: product,
-            indexItem: indexItem,
-            isLoadErrorButton: isLoadErrorButton,
-            titleScreen: titleScreen,
-            typeAddProductToShoppingCart: typeAddProductToShoppingCart,
-            identifierAddProductToShoppingCart:
-                identifierAddProductToShoppingCart,
-            isShopGetSizeProduct: isShopGetSizeProduct,
-            isChildRoute: isChildRoute,
             isLike: isLike,
             listItems: listItems,
+            isChildRoute: isChildRoute,
+            titleScreen: titleScreen,
+            codeProduct: codeProduct,
+            favouritesProducts: favouritesProducts,
           ),
           initialChildren: children,
         );
@@ -522,23 +503,13 @@ class CardInfoRoute extends PageRouteInfo<CardInfoRouteArgs> {
       final args = data.argsAs<CardInfoRouteArgs>();
       return CardInfoScreen(
         key: args.key,
-        favouritesProducts: args.favouritesProducts,
-        listProductsCode: args.listProductsCode,
-        favouritesProductsId: args.favouritesProductsId,
-        isLoadGetSizeProduct: args.isLoadGetSizeProduct,
-        codeProduct: args.codeProduct,
-        itemInfo: args.itemInfo,
         product: args.product,
-        indexItem: args.indexItem,
-        isLoadErrorButton: args.isLoadErrorButton,
-        titleScreen: args.titleScreen,
-        typeAddProductToShoppingCart: args.typeAddProductToShoppingCart,
-        identifierAddProductToShoppingCart:
-            args.identifierAddProductToShoppingCart,
-        isShopGetSizeProduct: args.isShopGetSizeProduct,
-        isChildRoute: args.isChildRoute,
         isLike: args.isLike,
         listItems: args.listItems,
+        isChildRoute: args.isChildRoute,
+        titleScreen: args.titleScreen,
+        codeProduct: args.codeProduct,
+        favouritesProducts: args.favouritesProducts,
       );
     },
   );
@@ -547,61 +518,34 @@ class CardInfoRoute extends PageRouteInfo<CardInfoRouteArgs> {
 class CardInfoRouteArgs {
   const CardInfoRouteArgs({
     this.key,
-    required this.favouritesProducts,
-    required this.listProductsCode,
-    required this.favouritesProductsId,
-    required this.isLoadGetSizeProduct,
-    required this.codeProduct,
-    this.itemInfo,
     required this.product,
-    this.indexItem,
-    this.isLoadErrorButton,
-    required this.titleScreen,
-    required this.typeAddProductToShoppingCart,
-    required this.identifierAddProductToShoppingCart,
-    this.isShopGetSizeProduct,
-    required this.isChildRoute,
     required this.isLike,
     required this.listItems,
+    required this.isChildRoute,
+    required this.titleScreen,
+    required this.codeProduct,
+    required this.favouritesProducts,
   });
 
   final Key? key;
 
-  final List<ProductDataModel> favouritesProducts;
-
-  final List<String> listProductsCode;
-
-  final List<int> favouritesProductsId;
-
-  final bool isLoadGetSizeProduct;
-
-  final String codeProduct;
-
-  final BasketInfoItemDataModel? itemInfo;
-
   final ProductDataModel product;
-
-  final int? indexItem;
-
-  final bool? isLoadErrorButton;
-
-  final String titleScreen;
-
-  final String typeAddProductToShoppingCart;
-
-  final String identifierAddProductToShoppingCart;
-
-  final bool? isShopGetSizeProduct;
-
-  final bool isChildRoute;
 
   final bool isLike;
 
   final List<ProductDataModel> listItems;
 
+  final bool isChildRoute;
+
+  final String titleScreen;
+
+  final String codeProduct;
+
+  final List<ProductDataModel> favouritesProducts;
+
   @override
   String toString() {
-    return 'CardInfoRouteArgs{key: $key, favouritesProducts: $favouritesProducts, listProductsCode: $listProductsCode, favouritesProductsId: $favouritesProductsId, isLoadGetSizeProduct: $isLoadGetSizeProduct, codeProduct: $codeProduct, itemInfo: $itemInfo, product: $product, indexItem: $indexItem, isLoadErrorButton: $isLoadErrorButton, titleScreen: $titleScreen, typeAddProductToShoppingCart: $typeAddProductToShoppingCart, identifierAddProductToShoppingCart: $identifierAddProductToShoppingCart, isShopGetSizeProduct: $isShopGetSizeProduct, isChildRoute: $isChildRoute, isLike: $isLike, listItems: $listItems}';
+    return 'CardInfoRouteArgs{key: $key, product: $product, isLike: $isLike, listItems: $listItems, isChildRoute: $isChildRoute, titleScreen: $titleScreen, codeProduct: $codeProduct, favouritesProducts: $favouritesProducts}';
   }
 }
 

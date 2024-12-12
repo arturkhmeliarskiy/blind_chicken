@@ -336,21 +336,11 @@ class _ShoppingCartScreenState extends State<ShoppingCartScreen> {
                                                                   CardInfoRoute(
                                                                     isChildRoute: false,
                                                                     favouritesProducts: initState.favouritesProducts,
-                                                                    listProductsCode: initState.listProductsCode,
-                                                                    favouritesProductsId: initState.favouritesProductsId,
-                                                                    isLoadGetSizeProduct: initState.isLoadGetSizeProduct,
                                                                     codeProduct:  initState.shoppingCart
                                                                         .basket[index].code,
-                                                                    itemInfo: initState.itemInfo,
                                                                     product: initState.shoppingCart
                                                                         .basket[index].product,
-                                                                    indexItem: initState.indexItem,
-                                                                    isLoadErrorButton: initState.isLoadErrorButton,
                                                                     titleScreen: 'Элемента списка в корзине',
-                                                                    typeAddProductToShoppingCart: 'Элемента списка',
-                                                                    identifierAddProductToShoppingCart:
-                                                                    '3',
-                                                                    isShopGetSizeProduct: initState.isShopGetSizeProduct,
                                                                     isLike: false,
                                                                     listItems: const [],
                                                                   ),

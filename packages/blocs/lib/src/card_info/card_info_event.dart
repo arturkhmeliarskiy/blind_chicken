@@ -2,27 +2,15 @@ part of 'card_info_bloc.dart';
 
 @freezed
 class CardInfoEvent with _$CardInfoEvent {
-  const factory CardInfoEvent.init({
-    required List<ProductDataModel> favouritesProducts,
-    required List<String> listProductsCode,
-    required List<int> favouritesProductsId,
-    required bool isLoadGetSizeProduct,
-    required String codeProduct,
-    BasketInfoItemDataModel? itemInfo,
-    required ProductDataModel product,
-    int? indexItem,
-    bool? isLoadErrorButton,
-    required String titleScreen,
-    required String typeAddProductToShoppingCart,
-    required String identifierAddProductToShoppingCart,
-    bool? isShopGetSizeProduct,
-  }) = InitCardInfoEvent;
-  const factory CardInfoEvent.preloadData() = PreloadDataCardInfoEvent;
+  const factory CardInfoEvent.init(
+  ) = InitCardInfoEvent;
+ //const factory CardInfoEvent.preloadData() = PreloadDataCardInfoEvent;
   const factory CardInfoEvent.getProduct({
     required String code,
     required String titleScreen,
     required String typeAddProductToShoppingCart,
     required String identifierAddProductToShoppingCart,
+    ProductDataModel? product,
     SkuProductDataModel? size,
     bool? isUpdate,
 }) = GetProductCardInfoEvent;
@@ -45,9 +33,10 @@ class CardInfoEvent with _$CardInfoEvent {
   }) = DeleteFavouriteProductCardInfoEvent;
 
   const factory CardInfoEvent.addProductToSoppingCart({
-    required BasketInfoItemDataModel item,
-  }) = AddProductToShoppingCartCardInfoEvent;
-
+    required SkuProductDataModel size,
+    required String typeAddProductToShoppingCart,
+    required String identifierAddProductToShoppingCart,
+  }) = AddProductToSoppingCartCardInfoEvent;
   const factory CardInfoEvent.addProductToSoppingCartInfo() =
   AddProductToSoppingCardInfoEvent;
 

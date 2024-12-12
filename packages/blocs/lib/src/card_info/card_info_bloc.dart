@@ -1,3 +1,5 @@
+import 'dart:developer';
+
 import 'package:appmetrica_plugin/appmetrica_plugin.dart';
 import 'package:decimal/decimal.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -37,8 +39,8 @@ class CardInfoBloc extends Bloc<CardInfoEvent, CardInfoState> {
         addFavouriteProduct: (event) => _addFavouriteProduct(event, emit),
         deleteFavouriteProduct: (event) => _deleteFavouriteProduct(event, emit),
         changeSizeProduct: (event) => _changeSizeProduct(event, emit),
-        /*addProductToSoppingCart: (event) =>
-            _addProductToSoppingCart(event, emit),*/
+        addProductToSoppingCart: (event) =>
+            _addProductToSoppingCart(event, emit),
         addProductToSoppingCartInfo: (event) =>
             _addProductToSoppingCartInfo(event, emit),
         checkProductToSoppingCart: (event) =>
@@ -55,34 +57,29 @@ class CardInfoBloc extends Bloc<CardInfoEvent, CardInfoState> {
         false;
 
     emit(CardInfoState.productInfoCard(
-        favouritesProducts: event.favouritesProducts,
-        listProductsCode: event.listProductsCode,
+        favouritesProducts: [],
+        listProductsCode: [],
         listProdcutsStyle: [],
         listProdcutsAlso: [],
         listProdcutsBrand: [],
         listProdcutsComplect: [],
         listSize: [],
-        favouritesProductsId: event.favouritesProductsId,
+        favouritesProductsId: [],
         isAuth: isAuth,
-        isLoadGetSizeProduct: event.isLoadGetSizeProduct,
+        isLoadGetSizeProduct: false,
         isBlocBackBotton: true,
-        codeProduct: event.codeProduct,
-        itemInfo: event.itemInfo,
-        product: event.product,
-        indexItem: event.indexItem,
-        isLoadErrorButton: event.isLoadErrorButton,
-        titleScreen: event.titleScreen,
-        typeAddProductToShoppingCart: event.typeAddProductToShoppingCart,
-        identifierAddProductToShoppingCart:
-            event.identifierAddProductToShoppingCart,
-        isShopGetSizeProduct: event.isShopGetSizeProduct,
+        codeProduct: '',
+        titleScreen: 'Карточка продукта',
         typeError: 'описание товара'));
+
   }
 
   Future<void> _getProduct(
       GetProductCardInfoEvent event, Emitter<CardInfoState> emit) async {
     await state.mapOrNull(productInfoCard: (initState) async {
       SkuProductDataModel? selectSizeProduct;
+      List<int> favouritesProductsId = [];
+      List<ProductDataModel> favouritesProducts = [];
       bool isShoppingCartDetailsProduct = false;
       String errorMessage = '';
       bool isError = false;
@@ -128,6 +125,17 @@ class CardInfoBloc extends Bloc<CardInfoEvent, CardInfoState> {
         code: event.code,
         block: 'complect',
       );
+      FavouritesDataModel? favouritesProductsInfo;
+
+      if (isAuth) {
+        favouritesProductsInfo = await _favouritesRepository.getFavouritesProdcuts();
+        favouritesProductsId =
+            favouritesProductsInfo.favorites.map((item) => int.parse(item)).toList();
+        log(favouritesProductsInfo.toString());
+      } else {
+        favouritesProducts = _catalogRepository.getFavouritesProducts();
+        favouritesProductsId = favouritesProducts.map((item) => item.id).toList();
+      }
       List<BasketFullInfoItemDataModel> soppingCart = [];
 
       if (detailsProduct.sku.length > 1) {
@@ -218,6 +226,9 @@ class CardInfoBloc extends Bloc<CardInfoEvent, CardInfoState> {
         }
       }
       emit(initState.copyWith(
+        product: event.product ?? initState.product,
+        favouritesProducts: favouritesProducts,
+        favouritesProductsId: favouritesProductsId,
         isError: isError,
         errorMessage: errorMessage,
         detailsProduct: detailsProduct,
@@ -403,7 +414,6 @@ class CardInfoBloc extends Bloc<CardInfoEvent, CardInfoState> {
               favouritesInfo.errorMessage.isNotEmpty,
           errorMessage: MessageInfo.errorMessage,
           typeError: 'добавить товар в избранное',
-          indexItem: event.index,
           product: event.product,
           isLoadErrorButton: false,
         ),
@@ -449,7 +459,6 @@ class CardInfoBloc extends Bloc<CardInfoEvent, CardInfoState> {
               favouritesInfo.errorMessage.isNotEmpty,
           errorMessage: MessageInfo.errorMessage,
           typeError: 'удалить товар из избранного',
-          indexItem: event.index,
           isLoadErrorButton: false,
         ),
       );
@@ -476,170 +485,91 @@ class CardInfoBloc extends Bloc<CardInfoEvent, CardInfoState> {
     });
   }
 
-/*  Future<void> _addProductToSoppingCart(
-    AddProductToShoppingCartCardInfoEvent event,
+  Future<void> _addProductToSoppingCart(
+    AddProductToSoppingCartCardInfoEvent event,
     Emitter<CardInfoState> emit,
   ) async {
-    await state.mapOrNull(
-      productInfoCard: (initState) async {
-        AppMetrica.reportEvent('Товар добавлен в корзину');
-        if (event.item.typeAddProductToShoppingCart != '') {
-          _appMetricaEcommerceService.addOrRemoveProductToSoppingCart(
-            titleScreen: event.item.titleScreen,
-            titleProduct: initState.detailsProduct?.name ?? '',
-            codeProduct: (initState.detailsProduct?.code ?? 0).toString(),
-            typeProductToSoppingCart:
-                AppMetricaShoppingCartEnum.addProductToShoppingCart,
-            type: event.item.typeAddProductToShoppingCart,
-            identifier: event.item.identifierAddProductToShoppingCart,
-            quantity: 1,
-            sectionCategoriesPath: event.item.sectionCategoriesPath,
-            productCategoriesPath: event.item.productCategoriesPath,
-            priceActual: initState.detailsProduct?.price.yourPrice ?? 0,
-            priceOriginal: int.parse(initState.detailsProduct?.price.pb ?? '0'),
-            internalComponentsActualPrice: [
-              AppMetricaECommerceAmount(
-                amount: Decimal.fromInt(
-                    initState.detailsProduct?.price.yourPrice ?? 0),
-                currency: event.item.skuName ?? '',
-              ),
-              AppMetricaECommerceAmount(
-                amount: Decimal.fromInt(
-                    initState.detailsProduct?.price.yourPrice ?? 0),
-                currency: event.item.sku,
-              ),
-            ],
-            internalComponentsOriginalPrice: [
-              AppMetricaECommerceAmount(
-                amount:
-                    Decimal.parse(initState.detailsProduct?.price.pb ?? '0'),
-                currency: event.item.skuName ?? '',
-              ),
-              AppMetricaECommerceAmount(
-                amount:
-                    Decimal.parse(initState.detailsProduct?.price.pb ?? '0'),
-                currency: event.item.sku,
-              ),
-            ],
-          );
-        }
+    state.mapOrNull(productInfoCard: (initState) {
+      _appMetricaEcommerceService.addOrRemoveProductToSoppingCart(
+        titleScreen: initState.titleScreen,
+        titleProduct: initState.detailsProduct?.name ?? '',
+        codeProduct: (initState.detailsProduct?.code ?? 0).toString(),
+        typeProductToSoppingCart:
+            AppMetricaShoppingCartEnum.addProductToShoppingCart,
+        type: event.typeAddProductToShoppingCart,
+        identifier: event.identifierAddProductToShoppingCart,
+        quantity: 1,
+        sectionCategoriesPath: [],
+        productCategoriesPath: [],
+        priceActual: initState.detailsProduct?.price.yourPrice ?? 0,
+        priceOriginal: int.parse(initState.detailsProduct?.price.pb ?? '0'),
+        internalComponentsActualPrice: [
+          AppMetricaECommerceAmount(
+            amount:
+                Decimal.fromInt(initState.detailsProduct?.price.yourPrice ?? 0),
+            currency: event.size.value,
+          ),
+          AppMetricaECommerceAmount(
+            amount:
+                Decimal.fromInt(initState.detailsProduct?.price.yourPrice ?? 0),
+            currency: event.size.id,
+          ),
+        ],
+        internalComponentsOriginalPrice: [
+          AppMetricaECommerceAmount(
+            amount: Decimal.parse(initState.detailsProduct?.price.pb ?? '0'),
+            currency: event.size.value,
+          ),
+          AppMetricaECommerceAmount(
+            amount: Decimal.parse(initState.detailsProduct?.price.pb ?? '0'),
+            currency: event.size.id,
+          ),
+        ],
+      );
+      bool isShoppingCart = false;
+      bool isShoppingCartDetailsProduct = false;
+      final detailsProduct = initState.detailsProduct;
 
-        if (initState.isError ?? false) {
-          emit(
-            initState.copyWith(
-              isLoadErrorButton: true,
-            ),
-          );
-        } else {
-          emit(
-            initState.copyWith(
-              isLoadAddProductToShopingCart: true,
-            ),
-          );
-        }
-
-        BasketFullInfoDataModel? basketInfo;
-        BasketDataModel? basketProductInfo;
-        bool isShoppingCart = false;
-        bool isShoppingCartDetailsProduct = false;
-        final detailsProduct = initState.detailsProduct;
-        bool isAuth = _sharedPreferencesService.getBool(
-              key: SharedPrefKeys.userAuthorized,
-            ) ??
-            false;
-
-        if (isAuth) {
-          basketProductInfo = await _basketRepository.addProductToBasket(
-            code: event.item.code,
-            sku: event.item.sku.contains('-') ? event.item.sku : '',
-            count: event.item.count,
-            titleScreen: event.item.titleScreen,
-            searchQuery: event.item.searchQuery,
-            typeAddProductToShoppingCart:
-                event.item.typeAddProductToShoppingCart,
-            identifierAddProductToShoppingCart:
-                event.item.identifierAddProductToShoppingCart,
-            sectionCategoriesPath: event.item.sectionCategoriesPath,
-            productCategoriesPath: event.item.productCategoriesPath,
-          );
-          basketInfo = await updateBasket(
-            isLocal: false,
-            promo: initState.promoCode,
-            pickup: initState.pickup,
-          );
-          log(basketInfo.toString());
-        } else {
-          _catalogRepository.addShoppingCartProduct(
-            event.item,
-          );
-          basketInfo = await updateBasket(
-            promo: initState.promoCode,
-            pickup: initState.pickup,
-          );
-        }
-
-        int numberProducts = 0;
-        int amountPaid = 0;
-        for (int i = 0; i < basketInfo.basket.length; i++) {
-          numberProducts = numberProducts + basketInfo.basket[i].count;
-          amountPaid = amountPaid + basketInfo.basket[i].data.price;
-        }
-
-        if (detailsProduct != null) {
-          SkuProductDataModel selectSizeProduct = initState.selectSizeProduct ??
-              (initState.detailsProduct?.sku.isNotEmpty ?? false
-                  ? (initState.detailsProduct?.sku.first ??
-                      SkuProductDataModel(
-                        id: '',
-                        value: '',
-                      ))
-                  : SkuProductDataModel(
+      if (detailsProduct != null) {
+        SkuProductDataModel selectSizeProduct = initState.selectSizeProduct ??
+            (initState.detailsProduct?.sku.isNotEmpty ?? false
+                ? (initState.detailsProduct?.sku.first ??
+                    SkuProductDataModel(
                       id: '',
                       value: '',
-                    ));
-          if (selectSizeProduct.id == (event.item.sku) &&
-              (event.item.sku).contains('-')) {
-            isShoppingCart = true;
-          }
+                    ))
+                : SkuProductDataModel(
+                    id: '',
+                    value: '',
+                  ));
+        if (selectSizeProduct.id == (event.size.id) &&
+            (event.size.id).contains('-')) {
+          isShoppingCart = true;
+        }
 
-          if (selectSizeProduct.id == event.item.sku &&
-              detailsProduct.sku.length == 1 &&
-              !event.item.sku.contains('-')) {
-            isShoppingCart = true;
-            isShoppingCartDetailsProduct = true;
-          }
-
-          if (event.item.sku.isEmpty) {
-            isShoppingCart = true;
-            isShoppingCartDetailsProduct = true;
-          }
-        } else {
-          isShoppingCart = false;
+        if (selectSizeProduct.id == (event.size.id) &&
+            detailsProduct.sku.length == 1 &&
+            !(event.size.id).contains('-')) {
+          isShoppingCart = true;
           isShoppingCartDetailsProduct = true;
         }
 
-        emit(
-          initState.copyWith(
-            isError: basketProductInfo?.errorMessage.isNotEmpty ??
-                false || basketInfo.errorMessage.isNotEmpty,
-            errorMessage: MessageInfo.errorMessage,
-            itemInfo: event.item,
-            typeError: 'добавить товар в корзину',
-            shoppingCart: basketInfo,
-            numberProducts: numberProducts,
-            amountPaid: amountPaid,
-            isPayInstallmentsSberbank:
-                amountPaid >= 1000 && amountPaid <= 150000,
-            isShoppingCartDetailsProduct: isShoppingCartDetailsProduct,
-            isShoppingCart:
-                (initState.isShoppingCart ?? false) || isShoppingCart,
-            isLoadAddProductToShopingCart: false,
-            isLoadErrorButton: false,
-          ),
-        );
-      },
-    );
-  }*/
+        if (event.size.id.isEmpty) {
+          isShoppingCart = true;
+          isShoppingCartDetailsProduct = true;
+        }
+      } else {
+        isShoppingCart = false;
+        isShoppingCartDetailsProduct = true;
+      }
+
+      emit(initState.copyWith(
+        isShoppingCartDetailsProduct: isShoppingCartDetailsProduct,
+        isShoppingCart: (initState.isShoppingCart ?? false) || isShoppingCart,
+      ));
+    });
+  }
+
   Future<void> _checkProductToSoppingCart(
     CheckProductToCardInfoEvent event,
     Emitter<CardInfoState> emit,
@@ -655,9 +585,7 @@ class CardInfoBloc extends Bloc<CardInfoEvent, CardInfoState> {
             int.parse(element.code) == (initState.detailsProduct?.code ?? 0) &&
             element.sku == event.size.id,
       );
-      emit(initState.copyWith(
-        isShoppingCart: soppingCart.isNotEmpty,
-      ));
+      emit(initState.copyWith(isShoppingCart: soppingCart.isNotEmpty));
     });
   }
 

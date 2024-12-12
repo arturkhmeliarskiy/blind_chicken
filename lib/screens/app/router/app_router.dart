@@ -227,7 +227,7 @@ class AppRouter extends RootStackRouter {
             AutoRoute(
               keepHistory: false,
               page: CardInfoRoute.page,
-              path: "shopping_card_info",
+              path: "card_info",
             ),
           ]),
           AutoRoute(page: FavouritesRoute.page, path: 'favourites', children: [
