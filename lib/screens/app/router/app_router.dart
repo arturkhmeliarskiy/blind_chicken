@@ -4,7 +4,6 @@ import 'package:blind_chicken/screens/%D1%81ashback_and_discounts/blind_chicken_
 import 'package:blind_chicken/screens/account/account_screen.dart';
 import 'package:blind_chicken/screens/account/electronic_order_forms_screen.dart';
 import 'package:blind_chicken/screens/account/my_orders_screen.dart';
-import 'package:blind_chicken/screens/account/order_card_info_screen.dart';
 import 'package:blind_chicken/screens/account/order_pdf_blank_view.dart';
 import 'package:blind_chicken/screens/account/tailoring_order_forms_screen.dart';
 import 'package:blind_chicken/screens/app/app_screen.dart';
@@ -211,7 +210,7 @@ class AppRouter extends RootStackRouter {
             ),
             AutoRoute(
               keepHistory: false,
-              page: OrderCardInfoRoute.page,
+              page: CardInfoRoute.page,
             ),
           ]),
           AutoRoute(page: ShoppingCartAutoRouterRoute.page, path: 'shopping_cart', children: [
