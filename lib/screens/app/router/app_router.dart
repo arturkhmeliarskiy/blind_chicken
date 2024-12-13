@@ -24,8 +24,6 @@ import 'package:blind_chicken/screens/gift_card/widgets/map/gift_yandex_map_scre
 import 'package:blind_chicken/screens/home/catalog/catalog_filter_select_value/catalog_filter_select_value_screen.dart';
 import 'package:blind_chicken/screens/home/catalog/catalog_filter_select_value_search/catalog_filter_select_value_search_screen.dart';
 import 'package:blind_chicken/screens/home/catalog/catalog_search_auto_router_screen.dart';
-import 'package:blind_chicken/screens/home/catalog/catalog_search_card_info_screen.dart';
-import 'package:blind_chicken/screens/home/catalog/catalog_search_card_info_screen_result.dart';
 import 'package:blind_chicken/screens/home/catalog/catalog_search_filter_screen.dart';
 import 'package:blind_chicken/screens/home/catalog/catalog_search_screen_result.dart';
 import 'package:blind_chicken/screens/home/catalog/widget/catalog_size_product_screen.dart';
@@ -102,12 +100,12 @@ class AppRouter extends RootStackRouter {
             ),
             AutoRoute(
               keepHistory: false,
-              page: CatalogSearchCardInfoRoute.page,
+              page: CardInfoRoute.page,
               path: 'catalog_search_card_info',
             ),
             AutoRoute(
               keepHistory: false,
-              page: CatalogSearchCardInfoResultRoute.page,
+              page: CardInfoRoute.page,
               path: 'catalog_search_card_info_result',
             ),
             AutoRoute(

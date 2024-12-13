@@ -59,6 +59,7 @@ class _CardInfoScreenViewState extends State<CardInfoScreenView> {
   bool _isShoppingCartButton = true;
   bool _isSwipe = true;
   bool _isChildRoute = false;
+  bool _isNavigateMainScreen = false;
   late ProductDataModel item;
 
   @override
@@ -217,7 +218,9 @@ class _CardInfoScreenViewState extends State<CardInfoScreenView> {
               final updateData = GetIt.I.get<UpdateDataService>();
               if (initState.listProductsCode.isEmpty &&
                   !updateData.isOpenShowModalBottomSheetShoppingCardInfoScreen &&
-                  !initState.isBlocBackBotton) {
+                  !initState.isBlocBackBotton &&
+                  !_isNavigateMainScreen
+              ) {
                 context.back();
               }
             }
@@ -434,7 +437,14 @@ class _CardInfoScreenViewState extends State<CardInfoScreenView> {
                       child: ListView(
                     controller: _scrollController,
                     children: [
-                      const AppBarBlindChicken(),
+                      AppBarBlindChicken(
+                        onBack: () {
+                          setState(() {
+                            _isNavigateMainScreen = true;
+                          });
+                          context.navigateNamedTo('/dashboard/home/main');
+                        },
+                      ),
                       BlocBuilder<CardInfoBloc, CardInfoState>(
                           builder: (context, state) {
                         return state.maybeMap(

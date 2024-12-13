@@ -16,10 +16,7 @@ class CardInfoScreen extends StatefulWidget {
     required this.isChildRoute,
     required this.titleScreen,
     required this.codeProduct,
-    //todo пусть пока будет убрать потом
     required this.favouritesProducts,
-    ///////////// средний приоритет нужон придмать как отпралять
-    ////////
   });
   final List<ProductDataModel> favouritesProducts;
   final String codeProduct;
