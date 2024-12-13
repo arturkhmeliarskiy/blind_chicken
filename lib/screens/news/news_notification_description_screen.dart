@@ -429,21 +429,12 @@ class _NewsNotificationDescriptionScreenState extends State<NewsNotificationDesc
                                                 } else if ((initState.oneNews?.data.typePath ??
                                                         '') ==
                                                     'product') {
-                                                  context.read<CatalogBloc>().add(
-                                                        CatalogEvent.getInfoProduct(
-                                                          code: initState.oneNews?.data.code ?? '',
-                                                          titleScreen:
-                                                              'Описнаие новостей (уведомление)',
-                                                          typeAddProductToShoppingCart: 'Кнопка',
-                                                          identifierAddProductToShoppingCart: '4',
-                                                        ),
-                                                      );
                                                   context.navigateTo(
                                                     DashboardRoute(
                                                       children: [
                                                         HomeAutoRouterRoute(
                                                           children: [
-                                                            CatalogCardInfoRoute(
+                                                            CardInfoRoute(
                                                               isLike: false,
                                                               listItems: const [],
                                                               favouritesProducts: const [],
@@ -451,6 +442,9 @@ class _NewsNotificationDescriptionScreenState extends State<NewsNotificationDesc
                                                               lastPath:
                                                                   'news_notification_description',
                                                               newsInfo: initState.oneNews?.data,
+                                                              codeProduct: initState.oneNews?.data.code ?? '',
+                                                              titleScreen:
+                                                              'Описнаие новостей (уведомление)',
                                                             ),
                                                           ],
                                                         ),

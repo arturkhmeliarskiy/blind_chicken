@@ -1,6 +1,7 @@
 import 'dart:async';
 import 'dart:developer';
 
+import 'package:appmetrica_plugin/appmetrica_plugin.dart';
 import 'package:auto_route/auto_route.dart';
 import 'package:blind_chicken/screens/app/router/app_router.dart';
 import 'package:blind_chicken/screens/home/catalog/widget/catalog_boutiques_info.dart';
@@ -33,14 +34,31 @@ class CardInfoScreenView extends StatefulWidget {
     required this.favouritesProducts,
     required this.isChildRoute,
     required this.titleScreen,
+    //
+    this.code = '',
+    this.lastPath = '',
+    this.newsInfo,
+    this.newsMediaInfo,
+    this.newsNotificationInfo,
+    this.messageId,
+    this.idNews,
   });
 
-  final ProductDataModel item;
+  final ProductDataModel? item;
   final List<ProductDataModel> listItems;
   final List<ProductDataModel> favouritesProducts;
   final bool isLike;
   final bool isChildRoute;
   final String titleScreen;
+
+  ///
+  final String? code;
+  final String lastPath;
+  final String? messageId;
+  final String? idNews;
+  final NewsInfoItemDataModel? newsInfo;
+  final MediaInfoItemDataModel? newsMediaInfo;
+  final NotificationInfoItemDataModel? newsNotificationInfo;
 
   @override
   State<CardInfoScreenView> createState() => _CardInfoScreenViewState();
@@ -60,19 +78,38 @@ class _CardInfoScreenViewState extends State<CardInfoScreenView> {
   bool _isSwipe = true;
   bool _isChildRoute = false;
   bool _isNavigateMainScreen = false;
+  bool _isOpenSizeProduct = false;
+  bool _isGoBack = true;
   late ProductDataModel item;
 
   @override
-  void initState() {
+  void didChangeDependencies() {
     final sharedService = GetIt.I.get<SharedPreferencesService>();
     sharedService.setString(
       key: SharedPrefKeys.lastScreen,
       value: 'card_info',
     );
     _isChildRoute = widget.isChildRoute;
-    item = widget.item;
+    final product = widget.item;
+    if (product != null) {
+      item = product;
+    }
+    if (widget.code?.isNotEmpty ?? false) {
+      Timer(const Duration(milliseconds: 150), () {
+        context.read<CardInfoBloc>().add(
+              //todo обработка messageID вохможно просто убрать код
+              CardInfoEvent.getProduct(
+                code: widget.code ?? '',
+                messageId: widget.messageId,
+                titleScreen: 'Описание товара из push-уведомления',
+                typeAddProductToShoppingCart: 'Уведомление',
+                identifierAddProductToShoppingCart: '2',
+              ),
+            );
+      });
+    }
     _scrollController.addListener(_loadMoreData);
-    super.initState();
+    super.didChangeDependencies();
   }
 
   void _loadMoreData() async {
@@ -105,7 +142,35 @@ class _CardInfoScreenViewState extends State<CardInfoScreenView> {
 
   @override
   void didUpdateWidget(covariant CardInfoScreenView oldWidget) {
-    item = widget.item;
+    final product = widget.item;
+    if (product != null) {
+      item = product;
+    }
+    if (product != null && _isOpenSizeProduct) {
+      context.read<CardInfoBloc>().add(
+          const CardInfoEvent.checkOpenGetInfoProductSize(
+              isOpenGetSizeProduct: false));
+      context.read<CardInfoBloc>().add(
+            CardInfoEvent.getInfoProductSize(
+              code: product.id.toString(),
+              isShop: product.isShop,
+              titleScreen: 'Описание товара',
+            ),
+          );
+    }
+    if (widget.code?.isNotEmpty ?? false) {
+      Timer(const Duration(milliseconds: 150), () {
+        context.read<CardInfoBloc>().add(
+              CardInfoEvent.getProduct(
+                code: widget.code ?? '',
+                titleScreen: 'Описание товара',
+                typeAddProductToShoppingCart: 'Кнопка',
+                identifierAddProductToShoppingCart: '4',
+              ),
+            );
+      });
+    }
+
     super.didUpdateWidget(oldWidget);
   }
 
@@ -183,6 +248,7 @@ class _CardInfoScreenViewState extends State<CardInfoScreenView> {
                               CardInfoEvent.getInfoProductSize(
                                 code: (initState.detailsProduct?.code ?? 0).toString(),
                                 isShop: initState.isShopGetSizeProduct ?? false,
+                                titleScreen: initState.titleScreen,
                               ),
                             );
                         break;
@@ -215,13 +281,90 @@ class _CardInfoScreenViewState extends State<CardInfoScreenView> {
                 _isShowDialogCardInfoError = false;
                 _blindChickenCardInfoProductShowDialogError.closeShowDialog();
               }
+              if (initState.isOpenGetSizeProduct) {
+                _isOpenSizeProduct = true;
+              } else {
+                _isOpenSizeProduct = false;
+              }
               final updateData = GetIt.I.get<UpdateDataService>();
-              if (initState.listProductsCode.isEmpty &&
-                  !updateData.isOpenShowModalBottomSheetShoppingCardInfoScreen &&
-                  !initState.isBlocBackBotton &&
-                  !_isNavigateMainScreen
-              ) {
-                context.back();
+              if (initState.listProductsCode.isEmpty) {
+                if (widget.lastPath == 'news') {
+                  context.navigateTo(
+                    NewsRoute(children: [
+                      NewsInfoRoute(
+                        indexPage: 0,
+                      ),
+                    ]),
+                  );
+                  AppMetrica.reportEvent('Список новостей');
+                }else if (widget.lastPath == 'news_info_description') {
+                  final newsInfo = widget.newsInfo;
+                  if (newsInfo != null) {
+                    context.navigateTo(
+                      NewsInfoDescriptionRoute(
+                        info: newsInfo,
+                      ),
+                    );
+                    AppMetrica.reportEvent('Страница новостей');
+                  }
+                }else if (widget.lastPath == 'media_info_description') {
+                  final newsMediaInfo = widget.newsMediaInfo;
+                  if (newsMediaInfo != null) {
+                    context.navigateTo(
+                      MediaInfoDescriptionRoute(
+                        info: newsMediaInfo,
+                      ),
+                    );
+                  }
+                }else if (widget.lastPath == 'notfication_info_description') {
+                  final newsNotificationInfo = widget.newsNotificationInfo;
+                  if (newsNotificationInfo != null) {
+                    context.navigateTo(
+                      NotificationInfoDescriptionRoute(
+                        info: newsNotificationInfo,
+                      ),
+                    );
+                  }
+                }else if (widget.lastPath == 'media_notiifcation_description') {
+                  context.navigateTo(
+                    MediaNotificationDescriptionRoute(
+                      idNews: widget.idNews ?? '',
+                      isNotification: true,
+                      messageId: widget.messageId,
+                    ),
+                  );
+                }else if (widget.lastPath == 'news_notification_description') {
+                  context.navigateTo(
+                    NewsNotificationDescriptionRoute(
+                      idNews: widget.idNews ?? '',
+                      isNotification: true,
+                      messageId: widget.messageId,
+                    ),
+                  );
+                }else if (widget.lastPath == 'notfication_info_notfication_description') {
+                  context.navigateTo(
+                    NotificationInfoNotificationDescriptionRoute(
+                      idNews: widget.idNews ?? '',
+                      isNotification: true,
+                      messageId: widget.messageId,
+                    ),
+                  );
+                }
+
+              else if (!updateData
+                        .isOpenShowModalBottomSheetShoppingCardInfoScreen &&
+                    !initState.isBlocBackBotton &&
+                    !_isNavigateMainScreen) {
+                  context.back();
+                }else {
+                final sharedService = GetIt.I.get<SharedPreferencesService>();
+                if (sharedService.getString(key: SharedPrefKeys.lastScreen) ==
+                    'catalog_card_info' &&
+                    _isGoBack) {
+                  context.back();
+                  _isGoBack = false;
+                }
+                }
               }
             }
           },
@@ -461,9 +604,78 @@ class _CardInfoScreenViewState extends State<CardInfoScreenView> {
                                         const CardInfoEvent
                                             .goBackProductInfo());
                                   } else {
-                                    WidgetsBinding.instance.addPostFrameCallback((_) {
-                                      context.back();
-                                    });
+                                    if (widget.lastPath.isNotEmpty) {
+                                      if (widget.lastPath == 'news') {
+                                        context.navigateTo(
+                                          NewsRoute(children: [
+                                            NewsInfoRoute(
+                                              indexPage: 0,
+                                            ),
+                                          ]),
+                                        );
+                                        AppMetrica.reportEvent('Список новостей');
+                                      } else if (widget.lastPath == 'news_info_description') {
+                                        final newsInfo = widget.newsInfo;
+                                        if (newsInfo != null) {
+                                          context.navigateTo(
+                                            NewsInfoDescriptionRoute(
+                                              info: newsInfo,
+                                            ),
+                                          );
+                                          AppMetrica.reportEvent('Страница новостей');
+                                        }
+                                      } else if (widget.lastPath == 'media_info_description') {
+                                        final newsMediaInfo = widget.newsMediaInfo;
+                                        if (newsMediaInfo != null) {
+                                          context.navigateTo(
+                                            MediaInfoDescriptionRoute(
+                                              info: newsMediaInfo,
+                                            ),
+                                          );
+                                        }
+                                      } else if (widget.lastPath ==
+                                          'notfication_info_description') {
+                                        final newsNotificationInfo = widget.newsNotificationInfo;
+                                        if (newsNotificationInfo != null) {
+                                          context.navigateTo(
+                                            NotificationInfoDescriptionRoute(
+                                              info: newsNotificationInfo,
+                                            ),
+                                          );
+                                        }
+                                      } else if (widget.lastPath ==
+                                          'media_notiifcation_description') {
+                                        context.navigateTo(
+                                          MediaNotificationDescriptionRoute(
+                                            idNews: widget.idNews ?? '',
+                                            isNotification: true,
+                                            messageId: widget.messageId,
+                                          ),
+                                        );
+                                      } else if (widget.lastPath ==
+                                          'news_notification_description') {
+                                        context.navigateTo(
+                                          NewsNotificationDescriptionRoute(
+                                            idNews: widget.idNews ?? '',
+                                            isNotification: true,
+                                            messageId: widget.messageId,
+                                          ),
+                                        );
+                                      } else if (widget.lastPath ==
+                                          'notfication_info_notfication_description') {
+                                        context.navigateTo(
+                                          NotificationInfoNotificationDescriptionRoute(
+                                            idNews: widget.idNews ?? '',
+                                            isNotification: true,
+                                            messageId: widget.messageId,
+                                          ),
+                                        );
+                                      }
+                                    } else {
+                                      WidgetsBinding.instance.addPostFrameCallback((_) {
+                                        context.back();
+                                      });
+                                    }
                                   }
                                 }
                               },
@@ -487,7 +699,7 @@ class _CardInfoScreenViewState extends State<CardInfoScreenView> {
                                               CardInfoEvent
                                                   .addFavouriteProduct(
                                                 product: detailsProduct.product,
-                                                index: detailsProduct.product.id,
+                                                index: detailsProduct.code,
                                               ),
                                             );
                                       }
@@ -499,7 +711,7 @@ class _CardInfoScreenViewState extends State<CardInfoScreenView> {
                                         context.read<CardInfoBloc>().add(
                                               CardInfoEvent
                                                   .deleteFavouriteProduct(
-                                                index: detailsProduct.product.id,
+                                                index: detailsProduct.code,
                                               ),
                                             );
                                       }
@@ -516,7 +728,7 @@ class _CardInfoScreenViewState extends State<CardInfoScreenView> {
                                               context.navigateTo(
                                                 CardInfoRoute(
                                                   isChildRoute: true,
-                                                  product: widget.item,
+                                                  product: item,
                                                   isLike: widget.isLike,
                                                   listItems: widget.listItems,
                                                   favouritesProducts: widget.favouritesProducts,
@@ -1639,6 +1851,7 @@ class _CardInfoScreenViewState extends State<CardInfoScreenView> {
                                   CardInfoEvent.getInfoProductSize(
                                     code: (initState.detailsProduct?.code ?? 0).toString(),
                                     isShop: initState.isShoppingCart ?? false,
+                                    titleScreen: initState.titleScreen,
                                   ),
                                 );
                           }

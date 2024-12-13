@@ -15,6 +15,7 @@ class CardInfoState with _$CardInfoState {
     required List<int> favouritesProductsId,
     required bool isAuth,
     required bool isLoadGetSizeProduct,
+    required bool isOpenGetSizeProduct,
     required bool isBlocBackBotton, // нужна для блокировки навигации назад при переходе из каталога
     required String codeProduct,
     SkuProductDataModel? selectSizeProduct,
@@ -35,10 +36,12 @@ class CardInfoState with _$CardInfoState {
   const factory CardInfoState.openSoppingCart() = OpenSoppingCartCardInfoState;
   const factory CardInfoState.addProductToSoppingCart({
     required String code,
+    required String titleScreen,
   }) = AddProductCardInfoState;
   const factory CardInfoState.getSizeProduct({
     required String code,
     required List<SkuProductDataModel> listSize,
     required List<SkuProductDataModel> listSizeToSoppingCart,
+    required String titleScreen,
   }) = GetSizeProductCardInfoState;
 }

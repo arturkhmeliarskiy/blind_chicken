@@ -393,20 +393,12 @@ class _MediaNotificationDescriptionScreenState extends State<MediaNotificationDe
                                               ]));
                                             } else if ((initState.oneMedia?.data.typePath ?? '') ==
                                                 'product') {
-                                              context.read<CatalogBloc>().add(
-                                                    CatalogEvent.getInfoProduct(
-                                                      code: initState.oneMedia?.data.code ?? '',
-                                                      titleScreen: 'Описание медиа (уведомление)',
-                                                      typeAddProductToShoppingCart: 'Кнопка',
-                                                      identifierAddProductToShoppingCart: '4',
-                                                    ),
-                                                  );
                                               context.navigateTo(
                                                 DashboardRoute(
                                                   children: [
                                                     HomeAutoRouterRoute(
                                                       children: [
-                                                        CatalogCardInfoRoute(
+                                                        CardInfoRoute(
                                                           isLike: false,
                                                           listItems: const [],
                                                           favouritesProducts: const [],
@@ -414,6 +406,8 @@ class _MediaNotificationDescriptionScreenState extends State<MediaNotificationDe
                                                           lastPath:
                                                               'media_notiifcation_description',
                                                           newsMediaInfo: initState.oneMedia?.data,
+                                                          codeProduct: initState.oneMedia?.data.code ?? '',
+                                                          titleScreen: 'Описание медиа (уведомление)',
                                                         ),
                                                       ],
                                                     ),

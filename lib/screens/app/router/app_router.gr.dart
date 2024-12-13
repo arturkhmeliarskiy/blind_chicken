@@ -472,13 +472,20 @@ class BrandsRouteArgs {
 class CardInfoRoute extends PageRouteInfo<CardInfoRouteArgs> {
   CardInfoRoute({
     Key? key,
-    required ProductDataModel product,
+    ProductDataModel? product,
     required bool isLike,
     required List<ProductDataModel> listItems,
     required bool isChildRoute,
     required String titleScreen,
     required String codeProduct,
     required List<ProductDataModel> favouritesProducts,
+    String deeplinkCode = '',
+    String lastPath = '',
+    String? messageId,
+    String? idNews,
+    NewsInfoItemDataModel? newsInfo,
+    MediaInfoItemDataModel? newsMediaInfo,
+    NotificationInfoItemDataModel? newsNotificationInfo,
     List<PageRouteInfo>? children,
   }) : super(
           CardInfoRoute.name,
@@ -491,6 +498,13 @@ class CardInfoRoute extends PageRouteInfo<CardInfoRouteArgs> {
             titleScreen: titleScreen,
             codeProduct: codeProduct,
             favouritesProducts: favouritesProducts,
+            deeplinkCode: deeplinkCode,
+            lastPath: lastPath,
+            messageId: messageId,
+            idNews: idNews,
+            newsInfo: newsInfo,
+            newsMediaInfo: newsMediaInfo,
+            newsNotificationInfo: newsNotificationInfo,
           ),
           initialChildren: children,
         );
@@ -510,6 +524,13 @@ class CardInfoRoute extends PageRouteInfo<CardInfoRouteArgs> {
         titleScreen: args.titleScreen,
         codeProduct: args.codeProduct,
         favouritesProducts: args.favouritesProducts,
+        deeplinkCode: args.deeplinkCode,
+        lastPath: args.lastPath,
+        messageId: args.messageId,
+        idNews: args.idNews,
+        newsInfo: args.newsInfo,
+        newsMediaInfo: args.newsMediaInfo,
+        newsNotificationInfo: args.newsNotificationInfo,
       );
     },
   );
@@ -518,18 +539,25 @@ class CardInfoRoute extends PageRouteInfo<CardInfoRouteArgs> {
 class CardInfoRouteArgs {
   const CardInfoRouteArgs({
     this.key,
-    required this.product,
+    this.product,
     required this.isLike,
     required this.listItems,
     required this.isChildRoute,
     required this.titleScreen,
     required this.codeProduct,
     required this.favouritesProducts,
+    this.deeplinkCode = '',
+    this.lastPath = '',
+    this.messageId,
+    this.idNews,
+    this.newsInfo,
+    this.newsMediaInfo,
+    this.newsNotificationInfo,
   });
 
   final Key? key;
 
-  final ProductDataModel product;
+  final ProductDataModel? product;
 
   final bool isLike;
 
@@ -543,107 +571,13 @@ class CardInfoRouteArgs {
 
   final List<ProductDataModel> favouritesProducts;
 
-  @override
-  String toString() {
-    return 'CardInfoRouteArgs{key: $key, product: $product, isLike: $isLike, listItems: $listItems, isChildRoute: $isChildRoute, titleScreen: $titleScreen, codeProduct: $codeProduct, favouritesProducts: $favouritesProducts}';
-  }
-}
-
-/// generated route for
-/// [CatalogCardInfoScreen]
-class CatalogCardInfoRoute extends PageRouteInfo<CatalogCardInfoRouteArgs> {
-  CatalogCardInfoRoute({
-    Key? key,
-    ProductDataModel? item,
-    String? code = '',
-    required bool isLike,
-    required List<ProductDataModel> listItems,
-    required List<ProductDataModel> favouritesProducts,
-    required bool isChildRoute,
-    String lastPath = '',
-    NewsInfoItemDataModel? newsInfo,
-    MediaInfoItemDataModel? newsMediaInfo,
-    NotificationInfoItemDataModel? newsNotificationInfo,
-    String? messageId,
-    String? idNews,
-    List<PageRouteInfo>? children,
-  }) : super(
-          CatalogCardInfoRoute.name,
-          args: CatalogCardInfoRouteArgs(
-            key: key,
-            item: item,
-            code: code,
-            isLike: isLike,
-            listItems: listItems,
-            favouritesProducts: favouritesProducts,
-            isChildRoute: isChildRoute,
-            lastPath: lastPath,
-            newsInfo: newsInfo,
-            newsMediaInfo: newsMediaInfo,
-            newsNotificationInfo: newsNotificationInfo,
-            messageId: messageId,
-            idNews: idNews,
-          ),
-          initialChildren: children,
-        );
-
-  static const String name = 'CatalogCardInfoRoute';
-
-  static PageInfo page = PageInfo(
-    name,
-    builder: (data) {
-      final args = data.argsAs<CatalogCardInfoRouteArgs>();
-      return CatalogCardInfoScreen(
-        key: args.key,
-        item: args.item,
-        code: args.code,
-        isLike: args.isLike,
-        listItems: args.listItems,
-        favouritesProducts: args.favouritesProducts,
-        isChildRoute: args.isChildRoute,
-        lastPath: args.lastPath,
-        newsInfo: args.newsInfo,
-        newsMediaInfo: args.newsMediaInfo,
-        newsNotificationInfo: args.newsNotificationInfo,
-        messageId: args.messageId,
-        idNews: args.idNews,
-      );
-    },
-  );
-}
-
-class CatalogCardInfoRouteArgs {
-  const CatalogCardInfoRouteArgs({
-    this.key,
-    this.item,
-    this.code = '',
-    required this.isLike,
-    required this.listItems,
-    required this.favouritesProducts,
-    required this.isChildRoute,
-    this.lastPath = '',
-    this.newsInfo,
-    this.newsMediaInfo,
-    this.newsNotificationInfo,
-    this.messageId,
-    this.idNews,
-  });
-
-  final Key? key;
-
-  final ProductDataModel? item;
-
-  final String? code;
-
-  final bool isLike;
-
-  final List<ProductDataModel> listItems;
-
-  final List<ProductDataModel> favouritesProducts;
-
-  final bool isChildRoute;
+  final String deeplinkCode;
 
   final String lastPath;
+
+  final String? messageId;
+
+  final String? idNews;
 
   final NewsInfoItemDataModel? newsInfo;
 
@@ -651,13 +585,9 @@ class CatalogCardInfoRouteArgs {
 
   final NotificationInfoItemDataModel? newsNotificationInfo;
 
-  final String? messageId;
-
-  final String? idNews;
-
   @override
   String toString() {
-    return 'CatalogCardInfoRouteArgs{key: $key, item: $item, code: $code, isLike: $isLike, listItems: $listItems, favouritesProducts: $favouritesProducts, isChildRoute: $isChildRoute, lastPath: $lastPath, newsInfo: $newsInfo, newsMediaInfo: $newsMediaInfo, newsNotificationInfo: $newsNotificationInfo, messageId: $messageId, idNews: $idNews}';
+    return 'CardInfoRouteArgs{key: $key, product: $product, isLike: $isLike, listItems: $listItems, isChildRoute: $isChildRoute, titleScreen: $titleScreen, codeProduct: $codeProduct, favouritesProducts: $favouritesProducts, deeplinkCode: $deeplinkCode, lastPath: $lastPath, messageId: $messageId, idNews: $idNews, newsInfo: $newsInfo, newsMediaInfo: $newsMediaInfo, newsNotificationInfo: $newsNotificationInfo}';
   }
 }
 

@@ -43,6 +43,7 @@ class CardInfoBloc extends Bloc<CardInfoEvent, CardInfoState> {
             _addProductToSoppingCart(event, emit),
         addProductToSoppingCartInfo: (event) =>
             _addProductToSoppingCartInfo(event, emit),
+        checkOpenGetInfoProductSize: (event) => _checkOpenGetInfoProductSize(event, emit),
         checkProductToSoppingCart: (event) =>
             _checkProductToSoppingCart(event, emit),
       ),
@@ -70,8 +71,10 @@ class CardInfoBloc extends Bloc<CardInfoEvent, CardInfoState> {
         isBlocBackBotton: true,
         codeProduct: '',
         titleScreen: 'Карточка продукта',
-        typeError: 'описание товара'));
-
+        typeError: 'описание товара',
+        isOpenGetSizeProduct: false,
+      ),
+    );
   }
 
   Future<void> _getProduct(
@@ -83,6 +86,7 @@ class CardInfoBloc extends Bloc<CardInfoEvent, CardInfoState> {
       bool isShoppingCartDetailsProduct = false;
       String errorMessage = '';
       bool isError = false;
+      AppMetrica.reportEvent(event.titleScreen);
       List<String> listProductsCode = initState.listProductsCode.toList();
       bool isAuth = _sharedPreferencesService.getBool(
             key: SharedPrefKeys.userAuthorized,
@@ -100,6 +104,7 @@ class CardInfoBloc extends Bloc<CardInfoEvent, CardInfoState> {
       final detailsProduct = await _catalogRepository.getDetailsProduct(
         code: event.code,
         genderIndex: _updateDataService.selectedIndexGender.toString(),
+        messageId: event.messageId,
       );
 
       final additionalProductsDescriptionStyle =
@@ -170,11 +175,17 @@ class CardInfoBloc extends Bloc<CardInfoEvent, CardInfoState> {
       }
 
       _appMetricaEcommerceService.viewingProductPage(
-        titleScreen: event.titleScreen,
+        titleScreen: event.messageId?.isNotEmpty ?? false
+            ? 'Уведомление'
+            : event.titleScreen,
         titleProduct: detailsProduct.name,
         codeProduct: detailsProduct.code.toString(),
-        type: event.typeAddProductToShoppingCart,
-        identifier: event.identifierAddProductToShoppingCart,
+        type: event.messageId?.isNotEmpty ?? false
+            ? 'Уведомление'
+            : event.typeAddProductToShoppingCart,
+        identifier: event.messageId?.isNotEmpty ?? false
+            ? '2'
+            : event.identifierAddProductToShoppingCart,
         sectionCategoriesPath: [],
         productCategoriesPath: [],
         priceActual: detailsProduct.price.yourPrice,
@@ -337,6 +348,7 @@ class CardInfoBloc extends Bloc<CardInfoEvent, CardInfoState> {
               code: event.code,
               listSize: detailsProduct.sku,
               listSizeToSoppingCart: detailsProduct.skuToSoppingCart,
+              titleScreen: event.titleScreen,
             ));
           } else {
             if (event.isShop) {
@@ -344,6 +356,7 @@ class CardInfoBloc extends Bloc<CardInfoEvent, CardInfoState> {
             } else {
               emit(CardInfoState.addProductToSoppingCart(
                 code: event.code,
+                titleScreen: event.titleScreen,
               ));
             }
           }
@@ -353,6 +366,7 @@ class CardInfoBloc extends Bloc<CardInfoEvent, CardInfoState> {
           } else {
             emit(CardInfoState.addProductToSoppingCart(
               code: event.code,
+              titleScreen: event.titleScreen,
             ));
           }
         }
@@ -718,5 +732,15 @@ class CardInfoBloc extends Bloc<CardInfoEvent, CardInfoState> {
     }
 
     return basketInfo;
+  }
+  Future<void> _checkOpenGetInfoProductSize(
+      CheckOpenGetInfoProductSizeCardInfoEvent event,
+      Emitter<CardInfoState> emit,
+      ) async {
+    state.mapOrNull(productInfoCard: (initState) {
+      emit(initState.copyWith(
+        isOpenGetSizeProduct: event.isOpenGetSizeProduct,
+      ));
+    });
   }
 }

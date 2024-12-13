@@ -383,26 +383,20 @@ class _NewsInfoDescriptionScreenState extends State<NewsInfoDescriptionScreen> {
                                           ),
                                         ]));
                                       } else if (widget.info.typePath == 'product') {
-                                        context.read<CatalogBloc>().add(
-                                              CatalogEvent.getInfoProduct(
-                                                code: widget.info.code,
-                                                titleScreen: 'Описание новостей',
-                                                typeAddProductToShoppingCart: 'Кнопка',
-                                                identifierAddProductToShoppingCart: '4',
-                                              ),
-                                            );
                                         context.navigateTo(
                                           DashboardRoute(
                                             children: [
                                               HomeAutoRouterRoute(
                                                 children: [
-                                                  CatalogCardInfoRoute(
+                                                  CardInfoRoute(
                                                     isLike: false,
                                                     listItems: const [],
                                                     favouritesProducts: const [],
                                                     isChildRoute: false,
                                                     lastPath: 'news_info_description',
                                                     newsInfo: widget.info,
+                                                    codeProduct: widget.info.code,
+                                                    titleScreen: 'Описание новостей',
                                                   ),
                                                 ],
                                               ),

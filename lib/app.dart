@@ -52,12 +52,14 @@ class _AppState extends State<App> {
         ),
       );
       _appRouter.push(
-        CatalogCardInfoRoute(
+        CardInfoRoute(
           isLike: false,
           listItems: const [],
           favouritesProducts: const [],
           isChildRoute: false,
-          code: productCode,
+          deeplinkCode: productCode,
+          titleScreen: 'Описание товара из push-уведомления',
+          codeProduct: productCode,
         ),
       );
     });
@@ -169,13 +171,15 @@ class _AppState extends State<App> {
               }
               if (notificationMessage.type == 'product') {
                 _appRouter.push(
-                  CatalogCardInfoRoute(
+                  CardInfoRoute(
                     isLike: false,
                     listItems: const [],
                     favouritesProducts: const [],
                     isChildRoute: false,
-                    code: notificationMessage.codeProduct,
+                    deeplinkCode: notificationMessage.codeProduct,
                     messageId: notificationMessage.idMessage,
+                    titleScreen: 'Описание товара из push-уведомления',
+                    codeProduct:  notificationMessage.codeProduct,
                   ),
                 );
               }
@@ -247,13 +251,14 @@ class _AppState extends State<App> {
                   ),
                 );
                 _appRouter.push(
-                  CatalogCardInfoRoute(
+                  CardInfoRoute(
                     isLike: false,
                     listItems: const [],
                     favouritesProducts: const [],
                     isChildRoute: false,
-                    code: productCode,
-                  ),
+                    deeplinkCode: productCode,
+                    titleScreen: 'Описание товара из push-уведомления',
+                    codeProduct: productCode,                  ),
                 );
               }
             }
@@ -333,13 +338,15 @@ class _AppState extends State<App> {
                     ),
                   );
                   _appRouter.push(
-                    CatalogCardInfoRoute(
+                    CardInfoRoute(
                       isLike: false,
                       listItems: const [],
                       favouritesProducts: const [],
                       isChildRoute: false,
-                      code: codeProduct,
+                      deeplinkCode: codeProduct,
                       messageId: iDMessage,
+                      titleScreen: 'Описание товара из push-уведомления',
+                      codeProduct: codeProduct,
                     ),
                   );
                   updateData.idMessageNotification = iDMessage;

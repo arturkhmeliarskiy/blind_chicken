@@ -405,21 +405,12 @@ class _NotificationInfoNotificationDescriptionScreenState
                                             } else if ((initState.oneNotification?.data.typePath ??
                                                     '') ==
                                                 'product') {
-                                              context.read<CatalogBloc>().add(
-                                                    CatalogEvent.getInfoProduct(
-                                                      code: initState.oneNotification?.data.code ??
-                                                          '',
-                                                      titleScreen: 'Уведомление',
-                                                      typeAddProductToShoppingCart: 'Кнопка',
-                                                      identifierAddProductToShoppingCart: '4',
-                                                    ),
-                                                  );
                                               context.navigateTo(
                                                 DashboardRoute(
                                                   children: [
                                                     HomeAutoRouterRoute(
                                                       children: [
-                                                        CatalogCardInfoRoute(
+                                                        CardInfoRoute(
                                                           isLike: false,
                                                           listItems: const [],
                                                           favouritesProducts: const [],
@@ -428,6 +419,10 @@ class _NotificationInfoNotificationDescriptionScreenState
                                                               'notfication_info_notfication_description',
                                                           newsNotificationInfo:
                                                               initState.oneNotification?.data,
+
+                                                          codeProduct: initState.oneNotification?.data.code ??
+                                                              '',
+                                                          titleScreen: 'Уведомление',
                                                         ),
                                                       ],
                                                     ),

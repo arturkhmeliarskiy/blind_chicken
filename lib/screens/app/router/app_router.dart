@@ -50,7 +50,6 @@ import 'package:blind_chicken/screens/shopping_cart/shopping_cart_auto_route_scr
 import 'package:blind_chicken/screens/shopping_cart/shopping_cart_screen.dart';
 import 'package:blind_chicken/screens/chat/chat_screen.dart';
 import 'package:blind_chicken/screens/favourites/favourites_screen.dart';
-import 'package:blind_chicken/screens/home/catalog/catalog_card_info_screen.dart';
 import 'package:blind_chicken/screens/home/catalog/catalog_preview_images_screen.dart';
 import 'package:blind_chicken/screens/home/catalog/catalog_screen.dart';
 import 'package:blind_chicken/screens/home/catalog/catalog_search_screen.dart';
@@ -95,7 +94,7 @@ class AppRouter extends RootStackRouter {
             ),
             AutoRoute(
               keepHistory: false,
-              page: CatalogCardInfoRoute.page,
+              page: CardInfoRoute.page,
               path: 'catalog_card_info',
             ),
             AutoRoute(

@@ -159,23 +159,17 @@ class _NewsTabInfoState extends State<NewsTabInfo> {
                                     } else if (initState.news.list[index].typePath == 'product') {
                                       AppMetrica.reportEvent(
                                           'Переход в описание товара из списка новостей по кнопке');
-                                      context.read<CatalogBloc>().add(
-                                            CatalogEvent.getInfoProduct(
-                                              code: initState.news.list[index].code,
-                                              titleScreen: 'Список новостей',
-                                              typeAddProductToShoppingCart: 'Кнопка',
-                                              identifierAddProductToShoppingCart: '4',
-                                            ),
-                                          );
                                       context.navigateTo(
                                         HomeAutoRouterRoute(
                                           children: [
-                                            CatalogCardInfoRoute(
+                                            CardInfoRoute(
                                               isLike: false,
                                               listItems: const [],
                                               favouritesProducts: const [],
                                               isChildRoute: false,
                                               lastPath: 'news',
+                                              codeProduct: initState.news.list[index].code,
+                                              titleScreen: 'Список новостей',
                                             ),
                                           ],
                                         ),

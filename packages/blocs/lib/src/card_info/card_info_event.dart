@@ -13,6 +13,7 @@ class CardInfoEvent with _$CardInfoEvent {
     ProductDataModel? product,
     SkuProductDataModel? size,
     bool? isUpdate,
+    String? messageId,
 }) = GetProductCardInfoEvent;
 
   const factory CardInfoEvent.goBackProductInfo() =
@@ -21,6 +22,7 @@ class CardInfoEvent with _$CardInfoEvent {
   const factory CardInfoEvent.getInfoProductSize({
     required String code,
     required bool isShop,
+    required String titleScreen,
   }) = GetInfoProductSizeCardInfoEvent;
 
   const factory CardInfoEvent.addFavouriteProduct({
@@ -43,7 +45,9 @@ class CardInfoEvent with _$CardInfoEvent {
   const factory CardInfoEvent.checkProductToSoppingCart({
     required SkuProductDataModel size,
   }) = CheckProductToCardInfoEvent;
-
+  const factory CardInfoEvent.checkOpenGetInfoProductSize({
+    required bool isOpenGetSizeProduct,
+  }) = CheckOpenGetInfoProductSizeCardInfoEvent;
   const factory CardInfoEvent.changeSizeProduct({
     required SkuProductDataModel selectSizeProduct,
   }) = ChangeSizeProductCardInfoEvent;

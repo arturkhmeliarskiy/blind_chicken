@@ -10,21 +10,37 @@ import 'card_info_screen_view.dart';
 class CardInfoScreen extends StatefulWidget {
   const CardInfoScreen({
     super.key,
-    required this.product,
+    this.product,
     required this.isLike,
     required this.listItems,
     required this.isChildRoute,
     required this.titleScreen,
     required this.codeProduct,
     required this.favouritesProducts,
+    //
+    this.deeplinkCode = '',
+    this.lastPath = '',
+    this.messageId,
+    this.idNews,
+    this.newsInfo,
+    this.newsMediaInfo,
+    this.newsNotificationInfo,
   });
   final List<ProductDataModel> favouritesProducts;
   final String codeProduct;
-  final ProductDataModel product;
+  final ProductDataModel? product;
   final String titleScreen;
   final bool isChildRoute;
   final bool isLike;
   final List<ProductDataModel> listItems;
+
+  final String deeplinkCode;
+  final String lastPath;
+  final String? messageId;
+  final String? idNews;
+  final NewsInfoItemDataModel? newsInfo;
+  final MediaInfoItemDataModel? newsMediaInfo;
+  final NotificationInfoItemDataModel? newsNotificationInfo;
 
   @override
   State<CardInfoScreen> createState() => _CardInfoScreenState();
@@ -52,10 +68,16 @@ class _CardInfoScreenState extends State<CardInfoScreen> {
       item: widget.product,
       isLike: widget.isLike,
       listItems: widget.listItems,
-      //todo возможно проcто убрать
       favouritesProducts: widget.favouritesProducts,
       isChildRoute: widget.isChildRoute,
       titleScreen: widget.titleScreen,
+      code: widget.deeplinkCode,
+      lastPath: widget.lastPath,
+      messageId: widget.messageId,
+      idNews: widget.idNews,
+      newsInfo: widget.newsInfo,
+      newsMediaInfo: widget.newsMediaInfo,
+      newsNotificationInfo: widget.newsNotificationInfo,
     );
   }
 }

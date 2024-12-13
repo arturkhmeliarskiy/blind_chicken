@@ -347,13 +347,15 @@ class _NotificationInfoDescriptionScreenState extends State<NotificationInfoDesc
                                         children: [
                                           HomeAutoRouterRoute(
                                             children: [
-                                              CatalogCardInfoRoute(
+                                              CardInfoRoute(
                                                 isLike: false,
                                                 listItems: const [],
                                                 favouritesProducts: const [],
                                                 isChildRoute: false,
                                                 lastPath: 'notfication_info_description',
                                                 newsNotificationInfo: widget.info,
+                                                codeProduct: widget.info.code,
+                                                titleScreen: 'Уведомление',
                                               ),
                                             ],
                                           ),

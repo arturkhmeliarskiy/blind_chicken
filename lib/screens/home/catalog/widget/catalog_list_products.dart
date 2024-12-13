@@ -50,12 +50,14 @@ class CatalogListProducts extends StatelessWidget {
                       ),
                     );
                 context.navigateTo(
-                  CatalogCardInfoRoute(
-                    item: initState.products[index],
+                  CardInfoRoute(
+                    product: initState.products[index],
                     isLike: initState.favouritesProductsId.contains(initState.products[index].id),
                     listItems: initState.products,
                     favouritesProducts: initState.favouritesProducts,
                     isChildRoute: false,
+                    codeProduct: initState.products[index].id.toString(),
+                    titleScreen: '',
                   ),
                 );
               },
