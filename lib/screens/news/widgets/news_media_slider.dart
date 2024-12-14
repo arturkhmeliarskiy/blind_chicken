@@ -108,7 +108,7 @@ class _NewsMediaSliderState extends State<NewsMediaSlider> {
                   _aspectRatio = getVideoAspectRatio(widget.videos[value]);
                 });
               } else {
-                getImageAspectRatio(widget.images[value]).then((item) {
+                getImageAspectRatio(widget.images[value - 1]).then((item) {
                   setState(() {
                     _aspectRatio = item;
                   });
