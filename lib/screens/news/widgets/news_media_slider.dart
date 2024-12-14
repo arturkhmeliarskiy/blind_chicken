@@ -100,12 +100,12 @@ class _NewsMediaSliderState extends State<NewsMediaSlider> {
         children: [
           ExpandablePageView.builder(
             scrollDirection: Axis.horizontal,
-            itemCount: widget.images.length,
+            itemCount: widget.images.length + widget.videos.length,
             controller: _scrollController,
             onPageChanged: (value) {
               if (widget.videos.isNotEmpty && widget.videos.length > value) {
                 setState(() {
-                  _aspectRatio = getVideoAspectRatio(widget.videos.first);
+                  _aspectRatio = getVideoAspectRatio(widget.videos[value]);
                 });
               } else {
                 getImageAspectRatio(widget.images[value]).then((item) {
@@ -137,7 +137,7 @@ class _NewsMediaSliderState extends State<NewsMediaSlider> {
                   child: ClipRRect(
                     borderRadius: BorderRadius.circular(widget.borderRadius),
                     child: CachedNetworkImage(
-                      imageUrl: widget.images[index],
+                      imageUrl: widget.images[index - 1],
                       width: MediaQuery.of(context).orientation == Orientation.portrait
                           ? width
                           : width / 2,
@@ -209,7 +209,7 @@ class _NewsMediaSliderState extends State<NewsMediaSlider> {
                     InkWell(
                       onTap: () {
                         setState(() {
-                          if ((_indexItem + 1) < widget.images.length) {
+                          if ((_indexItem + 1) < widget.images.length + widget.videos.length) {
                             _indexItem++;
                             _scrollController.nextPage(
                               curve: Curves.linear,

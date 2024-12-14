@@ -96,7 +96,7 @@ class _NewsPreviewMediaScreenState extends State<NewsPreviewMediaInfoScreen> {
                 builder: (BuildContext context, int index) {
                   return NewsPhotoAndVideoViewGalleryPageOptions(
                     imageProvider: widget.videos.length - 1 < index
-                        ? NetworkImage(widget.images[index])
+                        ? NetworkImage(widget.images[index - 1])
                         : NetworkImage(''),
                     initialScale: PhotoViewComputedScale.contained,
                     maxScale: PhotoViewComputedScale.contained * 5,
@@ -111,7 +111,7 @@ class _NewsPreviewMediaScreenState extends State<NewsPreviewMediaInfoScreen> {
                   );
                 },
                 videos: widget.videos,
-                itemCount: widget.images.length,
+                itemCount: widget.images.length + widget.videos.length,
                 loadingBuilder: (context, event) => Center(
                   child: Center(
                     child: CircularProgressIndicator(
