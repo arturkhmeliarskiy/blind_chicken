@@ -39,6 +39,7 @@ import 'package:blind_chicken/screens/news/widgets/media/media_info_description_
 import 'package:blind_chicken/screens/news/widgets/news/news_info_description_screen.dart';
 import 'package:blind_chicken/screens/news/news_info_screen.dart';
 import 'package:blind_chicken/screens/news/news_screen.dart';
+import 'package:blind_chicken/screens/news/widgets/news_preview_media_info_screen.dart';
 import 'package:blind_chicken/screens/news/widgets/news_preview_media_screen.dart';
 import 'package:blind_chicken/screens/news/widgets/news_preview_youtube_player_screen.dart';
 import 'package:blind_chicken/screens/news/widgets/notifications/notification_info_description_screen.dart';
@@ -293,6 +294,10 @@ class AppRouter extends RootStackRouter {
         AutoRoute(
           page: NewsPreviewMediaRoute.page,
           path: '/news_preview_media',
+        ),
+        AutoRoute(
+          page: NewsPreviewMediaInfoRoute.page,
+          path: '/news_preview_media_info',
         ),
         AutoRoute(
           page: FiltersRoute.page,

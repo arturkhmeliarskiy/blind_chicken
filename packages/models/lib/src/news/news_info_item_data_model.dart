@@ -1,5 +1,4 @@
 import 'package:freezed_annotation/freezed_annotation.dart';
-import 'package:models/models.dart';
 
 part 'news_info_item_data_model.freezed.dart';
 
@@ -10,7 +9,8 @@ class NewsInfoItemDataModel with _$NewsInfoItemDataModel {
     required String id,
     required String title,
     required String createAt,
-    required List<NewsSliderImageItemDataModel> images,
+    required List<String> images,
+    required List<String> videos,
     required String video,
     required String announcement,
     required String typeMedia,

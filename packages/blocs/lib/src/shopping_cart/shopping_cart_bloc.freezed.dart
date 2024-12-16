@@ -13575,7 +13575,7 @@ mixin _$ShoppingCartState {
             List<SkuProductDataModel> listSizeToSoppingCart)
         getSizeProduct,
     required TResult Function(String code) addProductToSoppingCart,
-    required TResult Function() openShowDialog,
+    required TResult Function(int bonuses) openShowDialog,
     required TResult Function(
             BasketFullInfoDataModel shoppingCart,
             List<PaymentItemDataModel> payments,
@@ -13659,7 +13659,7 @@ mixin _$ShoppingCartState {
             List<SkuProductDataModel> listSizeToSoppingCart)?
         getSizeProduct,
     TResult? Function(String code)? addProductToSoppingCart,
-    TResult? Function()? openShowDialog,
+    TResult? Function(int bonuses)? openShowDialog,
     TResult? Function(
             BasketFullInfoDataModel shoppingCart,
             List<PaymentItemDataModel> payments,
@@ -13743,7 +13743,7 @@ mixin _$ShoppingCartState {
             List<SkuProductDataModel> listSizeToSoppingCart)?
         getSizeProduct,
     TResult Function(String code)? addProductToSoppingCart,
-    TResult Function()? openShowDialog,
+    TResult Function(int bonuses)? openShowDialog,
     TResult Function(
             BasketFullInfoDataModel shoppingCart,
             List<PaymentItemDataModel> payments,
@@ -13951,7 +13951,7 @@ class _$InitShoppingCartStateImpl implements InitShoppingCartState {
             List<SkuProductDataModel> listSizeToSoppingCart)
         getSizeProduct,
     required TResult Function(String code) addProductToSoppingCart,
-    required TResult Function() openShowDialog,
+    required TResult Function(int bonuses) openShowDialog,
     required TResult Function(
             BasketFullInfoDataModel shoppingCart,
             List<PaymentItemDataModel> payments,
@@ -14038,7 +14038,7 @@ class _$InitShoppingCartStateImpl implements InitShoppingCartState {
             List<SkuProductDataModel> listSizeToSoppingCart)?
         getSizeProduct,
     TResult? Function(String code)? addProductToSoppingCart,
-    TResult? Function()? openShowDialog,
+    TResult? Function(int bonuses)? openShowDialog,
     TResult? Function(
             BasketFullInfoDataModel shoppingCart,
             List<PaymentItemDataModel> payments,
@@ -14125,7 +14125,7 @@ class _$InitShoppingCartStateImpl implements InitShoppingCartState {
             List<SkuProductDataModel> listSizeToSoppingCart)?
         getSizeProduct,
     TResult Function(String code)? addProductToSoppingCart,
-    TResult Function()? openShowDialog,
+    TResult Function(int bonuses)? openShowDialog,
     TResult Function(
             BasketFullInfoDataModel shoppingCart,
             List<PaymentItemDataModel> payments,
@@ -14334,7 +14334,7 @@ class _$LoadingShoppingCartStateImpl implements LoadingShoppingCartState {
             List<SkuProductDataModel> listSizeToSoppingCart)
         getSizeProduct,
     required TResult Function(String code) addProductToSoppingCart,
-    required TResult Function() openShowDialog,
+    required TResult Function(int bonuses) openShowDialog,
     required TResult Function(
             BasketFullInfoDataModel shoppingCart,
             List<PaymentItemDataModel> payments,
@@ -14421,7 +14421,7 @@ class _$LoadingShoppingCartStateImpl implements LoadingShoppingCartState {
             List<SkuProductDataModel> listSizeToSoppingCart)?
         getSizeProduct,
     TResult? Function(String code)? addProductToSoppingCart,
-    TResult? Function()? openShowDialog,
+    TResult? Function(int bonuses)? openShowDialog,
     TResult? Function(
             BasketFullInfoDataModel shoppingCart,
             List<PaymentItemDataModel> payments,
@@ -14508,7 +14508,7 @@ class _$LoadingShoppingCartStateImpl implements LoadingShoppingCartState {
             List<SkuProductDataModel> listSizeToSoppingCart)?
         getSizeProduct,
     TResult Function(String code)? addProductToSoppingCart,
-    TResult Function()? openShowDialog,
+    TResult Function(int bonuses)? openShowDialog,
     TResult Function(
             BasketFullInfoDataModel shoppingCart,
             List<PaymentItemDataModel> payments,
@@ -14718,7 +14718,7 @@ class _$LoadingErrorButtonShoppingCartStateImpl
             List<SkuProductDataModel> listSizeToSoppingCart)
         getSizeProduct,
     required TResult Function(String code) addProductToSoppingCart,
-    required TResult Function() openShowDialog,
+    required TResult Function(int bonuses) openShowDialog,
     required TResult Function(
             BasketFullInfoDataModel shoppingCart,
             List<PaymentItemDataModel> payments,
@@ -14805,7 +14805,7 @@ class _$LoadingErrorButtonShoppingCartStateImpl
             List<SkuProductDataModel> listSizeToSoppingCart)?
         getSizeProduct,
     TResult? Function(String code)? addProductToSoppingCart,
-    TResult? Function()? openShowDialog,
+    TResult? Function(int bonuses)? openShowDialog,
     TResult? Function(
             BasketFullInfoDataModel shoppingCart,
             List<PaymentItemDataModel> payments,
@@ -14892,7 +14892,7 @@ class _$LoadingErrorButtonShoppingCartStateImpl
             List<SkuProductDataModel> listSizeToSoppingCart)?
         getSizeProduct,
     TResult Function(String code)? addProductToSoppingCart,
-    TResult Function()? openShowDialog,
+    TResult Function(int bonuses)? openShowDialog,
     TResult Function(
             BasketFullInfoDataModel shoppingCart,
             List<PaymentItemDataModel> payments,
@@ -15183,7 +15183,7 @@ class _$ErrorShoppingCartStateImpl implements ErrorShoppingCartState {
             List<SkuProductDataModel> listSizeToSoppingCart)
         getSizeProduct,
     required TResult Function(String code) addProductToSoppingCart,
-    required TResult Function() openShowDialog,
+    required TResult Function(int bonuses) openShowDialog,
     required TResult Function(
             BasketFullInfoDataModel shoppingCart,
             List<PaymentItemDataModel> payments,
@@ -15270,7 +15270,7 @@ class _$ErrorShoppingCartStateImpl implements ErrorShoppingCartState {
             List<SkuProductDataModel> listSizeToSoppingCart)?
         getSizeProduct,
     TResult? Function(String code)? addProductToSoppingCart,
-    TResult? Function()? openShowDialog,
+    TResult? Function(int bonuses)? openShowDialog,
     TResult? Function(
             BasketFullInfoDataModel shoppingCart,
             List<PaymentItemDataModel> payments,
@@ -15358,7 +15358,7 @@ class _$ErrorShoppingCartStateImpl implements ErrorShoppingCartState {
             List<SkuProductDataModel> listSizeToSoppingCart)?
         getSizeProduct,
     TResult Function(String code)? addProductToSoppingCart,
-    TResult Function()? openShowDialog,
+    TResult Function(int bonuses)? openShowDialog,
     TResult Function(
             BasketFullInfoDataModel shoppingCart,
             List<PaymentItemDataModel> payments,
@@ -15613,7 +15613,7 @@ class _$CreateOrderSuccessfullyShoppingCartStateImpl
             List<SkuProductDataModel> listSizeToSoppingCart)
         getSizeProduct,
     required TResult Function(String code) addProductToSoppingCart,
-    required TResult Function() openShowDialog,
+    required TResult Function(int bonuses) openShowDialog,
     required TResult Function(
             BasketFullInfoDataModel shoppingCart,
             List<PaymentItemDataModel> payments,
@@ -15700,7 +15700,7 @@ class _$CreateOrderSuccessfullyShoppingCartStateImpl
             List<SkuProductDataModel> listSizeToSoppingCart)?
         getSizeProduct,
     TResult? Function(String code)? addProductToSoppingCart,
-    TResult? Function()? openShowDialog,
+    TResult? Function(int bonuses)? openShowDialog,
     TResult? Function(
             BasketFullInfoDataModel shoppingCart,
             List<PaymentItemDataModel> payments,
@@ -15787,7 +15787,7 @@ class _$CreateOrderSuccessfullyShoppingCartStateImpl
             List<SkuProductDataModel> listSizeToSoppingCart)?
         getSizeProduct,
     TResult Function(String code)? addProductToSoppingCart,
-    TResult Function()? openShowDialog,
+    TResult Function(int bonuses)? openShowDialog,
     TResult Function(
             BasketFullInfoDataModel shoppingCart,
             List<PaymentItemDataModel> payments,
@@ -16009,7 +16009,7 @@ class _$OpenSoppingCartShoppingCartStateImpl
             List<SkuProductDataModel> listSizeToSoppingCart)
         getSizeProduct,
     required TResult Function(String code) addProductToSoppingCart,
-    required TResult Function() openShowDialog,
+    required TResult Function(int bonuses) openShowDialog,
     required TResult Function(
             BasketFullInfoDataModel shoppingCart,
             List<PaymentItemDataModel> payments,
@@ -16096,7 +16096,7 @@ class _$OpenSoppingCartShoppingCartStateImpl
             List<SkuProductDataModel> listSizeToSoppingCart)?
         getSizeProduct,
     TResult? Function(String code)? addProductToSoppingCart,
-    TResult? Function()? openShowDialog,
+    TResult? Function(int bonuses)? openShowDialog,
     TResult? Function(
             BasketFullInfoDataModel shoppingCart,
             List<PaymentItemDataModel> payments,
@@ -16183,7 +16183,7 @@ class _$OpenSoppingCartShoppingCartStateImpl
             List<SkuProductDataModel> listSizeToSoppingCart)?
         getSizeProduct,
     TResult Function(String code)? addProductToSoppingCart,
-    TResult Function()? openShowDialog,
+    TResult Function(int bonuses)? openShowDialog,
     TResult Function(
             BasketFullInfoDataModel shoppingCart,
             List<PaymentItemDataModel> payments,
@@ -16463,7 +16463,7 @@ class _$GetSizeProductShoppingCartStateImpl
             List<SkuProductDataModel> listSizeToSoppingCart)
         getSizeProduct,
     required TResult Function(String code) addProductToSoppingCart,
-    required TResult Function() openShowDialog,
+    required TResult Function(int bonuses) openShowDialog,
     required TResult Function(
             BasketFullInfoDataModel shoppingCart,
             List<PaymentItemDataModel> payments,
@@ -16550,7 +16550,7 @@ class _$GetSizeProductShoppingCartStateImpl
             List<SkuProductDataModel> listSizeToSoppingCart)?
         getSizeProduct,
     TResult? Function(String code)? addProductToSoppingCart,
-    TResult? Function()? openShowDialog,
+    TResult? Function(int bonuses)? openShowDialog,
     TResult? Function(
             BasketFullInfoDataModel shoppingCart,
             List<PaymentItemDataModel> payments,
@@ -16637,7 +16637,7 @@ class _$GetSizeProductShoppingCartStateImpl
             List<SkuProductDataModel> listSizeToSoppingCart)?
         getSizeProduct,
     TResult Function(String code)? addProductToSoppingCart,
-    TResult Function()? openShowDialog,
+    TResult Function(int bonuses)? openShowDialog,
     TResult Function(
             BasketFullInfoDataModel shoppingCart,
             List<PaymentItemDataModel> payments,
@@ -16888,7 +16888,7 @@ class _$AddProductShoppingCartStateImpl implements AddProductShoppingCartState {
             List<SkuProductDataModel> listSizeToSoppingCart)
         getSizeProduct,
     required TResult Function(String code) addProductToSoppingCart,
-    required TResult Function() openShowDialog,
+    required TResult Function(int bonuses) openShowDialog,
     required TResult Function(
             BasketFullInfoDataModel shoppingCart,
             List<PaymentItemDataModel> payments,
@@ -16975,7 +16975,7 @@ class _$AddProductShoppingCartStateImpl implements AddProductShoppingCartState {
             List<SkuProductDataModel> listSizeToSoppingCart)?
         getSizeProduct,
     TResult? Function(String code)? addProductToSoppingCart,
-    TResult? Function()? openShowDialog,
+    TResult? Function(int bonuses)? openShowDialog,
     TResult? Function(
             BasketFullInfoDataModel shoppingCart,
             List<PaymentItemDataModel> payments,
@@ -17062,7 +17062,7 @@ class _$AddProductShoppingCartStateImpl implements AddProductShoppingCartState {
             List<SkuProductDataModel> listSizeToSoppingCart)?
         getSizeProduct,
     TResult Function(String code)? addProductToSoppingCart,
-    TResult Function()? openShowDialog,
+    TResult Function(int bonuses)? openShowDialog,
     TResult Function(
             BasketFullInfoDataModel shoppingCart,
             List<PaymentItemDataModel> payments,
@@ -17226,6 +17226,8 @@ abstract class _$$OpenShowDialogShoppingCartStateImplCopyWith<$Res> {
           _$OpenShowDialogShoppingCartStateImpl value,
           $Res Function(_$OpenShowDialogShoppingCartStateImpl) then) =
       __$$OpenShowDialogShoppingCartStateImplCopyWithImpl<$Res>;
+  @useResult
+  $Res call({int bonuses});
 }
 
 /// @nodoc
@@ -17240,28 +17242,54 @@ class __$$OpenShowDialogShoppingCartStateImplCopyWithImpl<$Res>
 
   /// Create a copy of ShoppingCartState
   /// with the given fields replaced by the non-null parameter values.
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? bonuses = null,
+  }) {
+    return _then(_$OpenShowDialogShoppingCartStateImpl(
+      bonuses: null == bonuses
+          ? _value.bonuses
+          : bonuses // ignore: cast_nullable_to_non_nullable
+              as int,
+    ));
+  }
 }
 
 /// @nodoc
 
 class _$OpenShowDialogShoppingCartStateImpl
     implements OpenShowDialogShoppingCartState {
-  const _$OpenShowDialogShoppingCartStateImpl();
+  const _$OpenShowDialogShoppingCartStateImpl({required this.bonuses});
+
+  @override
+  final int bonuses;
 
   @override
   String toString() {
-    return 'ShoppingCartState.openShowDialog()';
+    return 'ShoppingCartState.openShowDialog(bonuses: $bonuses)';
   }
 
   @override
   bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$OpenShowDialogShoppingCartStateImpl);
+            other is _$OpenShowDialogShoppingCartStateImpl &&
+            (identical(other.bonuses, bonuses) || other.bonuses == bonuses));
   }
 
   @override
-  int get hashCode => runtimeType.hashCode;
+  int get hashCode => Object.hash(runtimeType, bonuses);
+
+  /// Create a copy of ShoppingCartState
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  @override
+  @pragma('vm:prefer-inline')
+  _$$OpenShowDialogShoppingCartStateImplCopyWith<
+          _$OpenShowDialogShoppingCartStateImpl>
+      get copyWith => __$$OpenShowDialogShoppingCartStateImplCopyWithImpl<
+          _$OpenShowDialogShoppingCartStateImpl>(this, _$identity);
 
   @override
   @optionalTypeArgs
@@ -17281,7 +17309,7 @@ class _$OpenShowDialogShoppingCartStateImpl
             List<SkuProductDataModel> listSizeToSoppingCart)
         getSizeProduct,
     required TResult Function(String code) addProductToSoppingCart,
-    required TResult Function() openShowDialog,
+    required TResult Function(int bonuses) openShowDialog,
     required TResult Function(
             BasketFullInfoDataModel shoppingCart,
             List<PaymentItemDataModel> payments,
@@ -17350,7 +17378,7 @@ class _$OpenShowDialogShoppingCartStateImpl
             bool? isLoadDeleteAddress)
         productsShoppingCart,
   }) {
-    return openShowDialog();
+    return openShowDialog(bonuses);
   }
 
   @override
@@ -17368,7 +17396,7 @@ class _$OpenShowDialogShoppingCartStateImpl
             List<SkuProductDataModel> listSizeToSoppingCart)?
         getSizeProduct,
     TResult? Function(String code)? addProductToSoppingCart,
-    TResult? Function()? openShowDialog,
+    TResult? Function(int bonuses)? openShowDialog,
     TResult? Function(
             BasketFullInfoDataModel shoppingCart,
             List<PaymentItemDataModel> payments,
@@ -17437,7 +17465,7 @@ class _$OpenShowDialogShoppingCartStateImpl
             bool? isLoadDeleteAddress)?
         productsShoppingCart,
   }) {
-    return openShowDialog?.call();
+    return openShowDialog?.call(bonuses);
   }
 
   @override
@@ -17455,7 +17483,7 @@ class _$OpenShowDialogShoppingCartStateImpl
             List<SkuProductDataModel> listSizeToSoppingCart)?
         getSizeProduct,
     TResult Function(String code)? addProductToSoppingCart,
-    TResult Function()? openShowDialog,
+    TResult Function(int bonuses)? openShowDialog,
     TResult Function(
             BasketFullInfoDataModel shoppingCart,
             List<PaymentItemDataModel> payments,
@@ -17526,7 +17554,7 @@ class _$OpenShowDialogShoppingCartStateImpl
     required TResult orElse(),
   }) {
     if (openShowDialog != null) {
-      return openShowDialog();
+      return openShowDialog(bonuses);
     }
     return orElse();
   }
@@ -17601,8 +17629,17 @@ class _$OpenShowDialogShoppingCartStateImpl
 }
 
 abstract class OpenShowDialogShoppingCartState implements ShoppingCartState {
-  const factory OpenShowDialogShoppingCartState() =
+  const factory OpenShowDialogShoppingCartState({required final int bonuses}) =
       _$OpenShowDialogShoppingCartStateImpl;
+
+  int get bonuses;
+
+  /// Create a copy of ShoppingCartState
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  _$$OpenShowDialogShoppingCartStateImplCopyWith<
+          _$OpenShowDialogShoppingCartStateImpl>
+      get copyWith => throw _privateConstructorUsedError;
 }
 
 /// @nodoc
@@ -18663,7 +18700,7 @@ class _$ProductsShoppingCartStateImpl implements ProductsShoppingCartState {
             List<SkuProductDataModel> listSizeToSoppingCart)
         getSizeProduct,
     required TResult Function(String code) addProductToSoppingCart,
-    required TResult Function() openShowDialog,
+    required TResult Function(int bonuses) openShowDialog,
     required TResult Function(
             BasketFullInfoDataModel shoppingCart,
             List<PaymentItemDataModel> payments,
@@ -18815,7 +18852,7 @@ class _$ProductsShoppingCartStateImpl implements ProductsShoppingCartState {
             List<SkuProductDataModel> listSizeToSoppingCart)?
         getSizeProduct,
     TResult? Function(String code)? addProductToSoppingCart,
-    TResult? Function()? openShowDialog,
+    TResult? Function(int bonuses)? openShowDialog,
     TResult? Function(
             BasketFullInfoDataModel shoppingCart,
             List<PaymentItemDataModel> payments,
@@ -18967,7 +19004,7 @@ class _$ProductsShoppingCartStateImpl implements ProductsShoppingCartState {
             List<SkuProductDataModel> listSizeToSoppingCart)?
         getSizeProduct,
     TResult Function(String code)? addProductToSoppingCart,
-    TResult Function()? openShowDialog,
+    TResult Function(int bonuses)? openShowDialog,
     TResult Function(
             BasketFullInfoDataModel shoppingCart,
             List<PaymentItemDataModel> payments,

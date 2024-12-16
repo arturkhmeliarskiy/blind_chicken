@@ -9,6 +9,7 @@ class NewsState with _$NewsState {
     int? countBadgesMedia,
     int? countBadgesNotificatios,
   }) = LoadingNewsState;
+  const factory NewsState.loadPagination() = LoadPaginationNewsState;
   const factory NewsState.loadErrorButton() = LoadingErrorButtonNewsState;
   const factory NewsState.error({
     required String errorMessage,
@@ -34,6 +35,7 @@ class NewsState with _$NewsState {
     String? typeError,
     String? errorMessage,
     bool? isError,
+    bool? isLoadPagination,
     bool? isLoadErrorButton,
     bool? isDisabledVideo,
   }) = PreloadDataCompletedNewsState;

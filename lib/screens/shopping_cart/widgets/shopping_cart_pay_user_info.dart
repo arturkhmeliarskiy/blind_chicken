@@ -7,6 +7,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:models/models.dart';
+import 'package:shared/shared.dart';
 import 'package:ui_kit/ui_kit.dart';
 
 class ShoppingCartPayUserInfo extends StatefulWidget {
@@ -132,6 +133,7 @@ class _ShoppingCartPayUserInfoState extends State<ShoppingCartPayUserInfo> {
               builder: (context) {
                 return ShoppingCartPaymentBonuses(
                   onAddPayment: widget.onAddPayment,
+                  bonuses: value.bonuses,
                 );
               },
             );
@@ -211,18 +213,24 @@ class _ShoppingCartPayUserInfoState extends State<ShoppingCartPayUserInfo> {
                                 children: [
                                   Row(
                                     children: [
-                                      Text(
-                                        widget.payments[index].name,
-                                        style: Theme.of(context).textTheme.displayMedium?.copyWith(
-                                              color: checkPayments(
-                                                isPayInstallmentsSberbank:
-                                                    widget.isPayInstallmentsSberbank,
-                                                isUponReceipt: widget.isUponReceipt,
-                                                name: widget.payments[index].name,
-                                              )
-                                                  ? BlindChickenColors.activeBorderTextField
-                                                  : BlindChickenColors.textInput,
-                                            ),
+                                      ConstrainedBox(
+                                        constraints: BoxConstraints(
+                                            maxWidth: MediaQuery.of(context).size.width - 60),
+                                        child: Text(
+                                          widget.payments[index].name,
+                                          style:
+                                              Theme.of(context).textTheme.displayMedium?.copyWith(
+                                                    color: checkPayments(
+                                                      isPayInstallmentsSberbank:
+                                                          widget.isPayInstallmentsSberbank,
+                                                      isUponReceipt: widget.isUponReceipt,
+                                                      name: widget.payments[index].name,
+                                                    )
+                                                        ? BlindChickenColors.activeBorderTextField
+                                                        : BlindChickenColors.textInput,
+                                                  ),
+                                          maxLines: 2,
+                                        ),
                                       ),
                                       if (widget.payments[index].name ==
                                           "Плати Частями от Сбербанка")
@@ -291,6 +299,59 @@ class _ShoppingCartPayUserInfoState extends State<ShoppingCartPayUserInfo> {
                       );
                     }),
                   ),
+                  BlocBuilder<ShoppingCartBloc, ShoppingCartState>(builder: (context, state) {
+                    return state.maybeMap(productsShoppingCart: (initState) {
+                      if (initState.bonuses > 0) {
+                        return Padding(
+                          padding: const EdgeInsets.only(top: 24),
+                          child: Row(
+                            children: [
+                              Text(
+                                'Оплата бонусами ${initState.bonuses.toString().spaceSeparateNumbers()} ₽ ',
+                                style: Theme.of(context).textTheme.headlineLarge,
+                              ),
+                              SizedBox(
+                                width: 7,
+                              ),
+                              GestureDetector(
+                                onTap: () {
+                                  context
+                                      .read<ShoppingCartBloc>()
+                                      .add(const ShoppingCartEvent.paymentBonus());
+                                },
+                                child: Text(
+                                  'изменить',
+                                  style: Theme.of(context).textTheme.headlineLarge?.copyWith(
+                                        decoration: TextDecoration.underline,
+                                      ),
+                                ),
+                              ),
+                              SizedBox(
+                                width: 7,
+                              ),
+                              GestureDetector(
+                                onTap: () {
+                                  context.read<ShoppingCartBloc>().add(
+                                        ShoppingCartEvent.bonuses(bonuses: 0),
+                                      );
+                                },
+                                child: Text(
+                                  'отменить',
+                                  style: Theme.of(context).textTheme.headlineLarge?.copyWith(
+                                        decoration: TextDecoration.underline,
+                                      ),
+                                ),
+                              ),
+                            ],
+                          ),
+                        );
+                      } else {
+                        return SizedBox();
+                      }
+                    }, orElse: () {
+                      return SizedBox();
+                    });
+                  }),
                   const SizedBox(
                     height: 24,
                   ),

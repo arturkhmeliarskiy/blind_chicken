@@ -36,6 +36,7 @@ class NewsService {
           "hash_token": hashToken,
           "innerlink": 1,
           "show": 1,
+          "get_media": 1,
           "video_original": 1,
         },
       );

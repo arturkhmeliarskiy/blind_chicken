@@ -8,25 +8,28 @@ import 'package:photo_view/photo_view.dart';
 import 'package:ui_kit/ui_kit.dart';
 
 @RoutePage()
-class NewsPreviewMediaScreen extends StatefulWidget {
-  const NewsPreviewMediaScreen({
+class NewsPreviewMediaInfoScreen extends StatefulWidget {
+  const NewsPreviewMediaInfoScreen({
     super.key,
-    required this.media,
+    required this.images,
+    required this.videos,
     required this.goBotton,
-    required this.selectIndex,
+    required this.selectedIndex,
   });
 
-  final List<String> media;
+  final List<String> images;
+  final List<String> videos;
   final VoidCallback goBotton;
-  final int selectIndex;
+  final int selectedIndex;
 
   @override
-  State<NewsPreviewMediaScreen> createState() => _NewsPreviewMediaScreenState();
+  State<NewsPreviewMediaInfoScreen> createState() => _NewsPreviewMediaScreenState();
 }
 
-class _NewsPreviewMediaScreenState extends State<NewsPreviewMediaScreen> {
-  PageController _pageController = PageController();
+class _NewsPreviewMediaScreenState extends State<NewsPreviewMediaInfoScreen> {
+  final PageController _pageController = PageController();
   bool _isSwipe = true;
+  int _page = 0;
 
   @override
   void initState() {
@@ -36,9 +39,9 @@ class _NewsPreviewMediaScreenState extends State<NewsPreviewMediaScreen> {
 
   @override
   void didChangeDependencies() {
-    if (widget.selectIndex > 0) {
+    if (widget.selectedIndex > 0) {
       WidgetsBinding.instance.addPostFrameCallback((_) {
-        _pageController.jumpTo(MediaQuery.of(context).size.width * widget.selectIndex.toDouble());
+        _pageController.jumpToPage(widget.selectedIndex);
       });
     }
     super.didChangeDependencies();
@@ -80,19 +83,35 @@ class _NewsPreviewMediaScreenState extends State<NewsPreviewMediaScreen> {
         alignment: Alignment.topRight,
         children: [
           Scaffold(
+            backgroundColor:
+                _page < widget.videos.length ? BlindChickenColors.activeBorderTextField : null,
             body: Center(
-              child: PhotoAndVideoViewGallery.builder(
+              child: NewsPhotoAndVideoViewGallery.builder(
+                onPageChanged: (index) {
+                  setState(() {
+                    _page = index;
+                  });
+                },
                 scrollPhysics: const BouncingScrollPhysics(),
                 builder: (BuildContext context, int index) {
-                  return PhotoAndVideoViewGalleryPageOptions(
-                    imageProvider: NetworkImage(widget.media[index]),
+                  return NewsPhotoAndVideoViewGalleryPageOptions(
+                    imageProvider: widget.videos.length - 1 < index
+                        ? NetworkImage(widget.images[index - 1])
+                        : NetworkImage(''),
                     initialScale: PhotoViewComputedScale.contained,
                     maxScale: PhotoViewComputedScale.contained * 5,
                     minScale: PhotoViewComputedScale.contained,
                     heroAttributes: PhotoViewHeroAttributes(tag: index),
+                    onExitFullScreen: () {
+                      widget.goBotton();
+                      setState(() {
+                        _isSwipe = false;
+                      });
+                    },
                   );
                 },
-                itemCount: widget.media.length,
+                videos: widget.videos,
+                itemCount: widget.images.length + widget.videos.length,
                 loadingBuilder: (context, event) => Center(
                   child: Center(
                     child: CircularProgressIndicator(
@@ -136,6 +155,9 @@ class _NewsPreviewMediaScreenState extends State<NewsPreviewMediaScreen> {
                             'assets/icons/x.svg',
                             height: 28,
                             width: 28,
+                            color: _page < widget.videos.length
+                                ? BlindChickenColors.backgroundColor
+                                : null,
                           ),
                         ),
                       ),

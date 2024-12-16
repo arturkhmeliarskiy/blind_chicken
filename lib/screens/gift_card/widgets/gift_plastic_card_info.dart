@@ -214,14 +214,18 @@ class _GiftPlasticCardInfoState extends State<GiftPlasticCardInfo> {
                         const SizedBox(
                           width: 7,
                         ),
-                        Text(
-                          widget.payments[index].name,
-                          style: Theme.of(context).textTheme.displayMedium?.copyWith(
-                                color: widget.isUponReceipt ||
-                                        widget.payments[index].name != 'При получении'
-                                    ? BlindChickenColors.activeBorderTextField
-                                    : BlindChickenColors.textInput,
-                              ),
+                        ConstrainedBox(
+                          constraints:
+                              BoxConstraints(maxWidth: MediaQuery.of(context).size.width / 2),
+                          child: Text(
+                            widget.payments[index].name,
+                            style: Theme.of(context).textTheme.displayMedium?.copyWith(
+                                  color: widget.isUponReceipt ||
+                                          widget.payments[index].name != 'При получении'
+                                      ? BlindChickenColors.activeBorderTextField
+                                      : BlindChickenColors.textInput,
+                                ),
+                          ),
                         ),
                       ],
                     ),

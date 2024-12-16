@@ -2324,11 +2324,75 @@ class NewsNotificationDescriptionRouteArgs {
 }
 
 /// generated route for
+/// [NewsPreviewMediaInfoScreen]
+class NewsPreviewMediaInfoRoute extends PageRouteInfo<NewsPreviewMediaInfoRouteArgs> {
+  NewsPreviewMediaInfoRoute({
+    Key? key,
+    required List<String> images,
+    required List<String> videos,
+    required VoidCallback goBotton,
+    required int selectedIndex,
+    List<PageRouteInfo>? children,
+  }) : super(
+          NewsPreviewMediaInfoRoute.name,
+          args: NewsPreviewMediaInfoRouteArgs(
+            key: key,
+            images: images,
+            videos: videos,
+            goBotton: goBotton,
+            selectedIndex: selectedIndex,
+          ),
+          initialChildren: children,
+        );
+
+  static const String name = 'NewsPreviewMediaInfoRoute';
+
+  static PageInfo page = PageInfo(
+    name,
+    builder: (data) {
+      final args = data.argsAs<NewsPreviewMediaInfoRouteArgs>();
+      return NewsPreviewMediaInfoScreen(
+        key: args.key,
+        images: args.images,
+        videos: args.videos,
+        goBotton: args.goBotton,
+        selectedIndex: args.selectedIndex,
+      );
+    },
+  );
+}
+
+class NewsPreviewMediaInfoRouteArgs {
+  const NewsPreviewMediaInfoRouteArgs({
+    this.key,
+    required this.images,
+    required this.videos,
+    required this.goBotton,
+    required this.selectedIndex,
+  });
+
+  final Key? key;
+
+  final List<String> images;
+
+  final List<String> videos;
+
+  final VoidCallback goBotton;
+
+  final int selectedIndex;
+
+  @override
+  String toString() {
+    return 'NewsPreviewMediaInfoRouteArgs{key: $key, images: $images, videos: $videos, goBotton: $goBotton, selectedIndex: $selectedIndex}';
+  }
+}
+
+/// generated route for
 /// [NewsPreviewMediaScreen]
 class NewsPreviewMediaRoute extends PageRouteInfo<NewsPreviewMediaRouteArgs> {
   NewsPreviewMediaRoute({
     Key? key,
-    required List<NewsSliderImageItemDataModel> media,
+    required List<String> media,
     required VoidCallback goBotton,
     required int selectIndex,
     List<PageRouteInfo>? children,
@@ -2369,7 +2433,7 @@ class NewsPreviewMediaRouteArgs {
 
   final Key? key;
 
-  final List<NewsSliderImageItemDataModel> media;
+  final List<String> media;
 
   final VoidCallback goBotton;
 

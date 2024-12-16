@@ -91,6 +91,8 @@ class CatalogListProducts extends StatelessWidget {
               promoValue: initState.products[index].promoValue,
               images: initState.products[index].images,
               goSwipeBack: () {},
+              onScaleStart: () {},
+              onScaleStop: () {},
             );
           },
         ));

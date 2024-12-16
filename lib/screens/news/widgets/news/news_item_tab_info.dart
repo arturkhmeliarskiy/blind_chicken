@@ -5,6 +5,7 @@ import 'package:better_player/better_player.dart';
 import 'package:blind_chicken/screens/app/router/app_router.dart';
 import 'package:blind_chicken/screens/news/widgets/better_video_player.dart';
 import 'package:blind_chicken/screens/news/widgets/handler_links_news.dart';
+import 'package:blind_chicken/screens/news/widgets/news_media_slider.dart';
 import 'package:blind_chicken/screens/news/widgets/news_slider.dart';
 import 'package:blind_chicken/screens/news/widgets/news_video_player.dart';
 import 'package:blind_chicken/screens/news/widgets/news_youtube_video_player.dart';
@@ -53,7 +54,7 @@ class _NewsItemTabInfoState extends State<NewsItemTabInfo> with AutomaticKeepAli
         ),
         looping: true,
         autoPlay: true,
-        aspectRatio: widget.item.videoImageWeight / widget.item.videoImageHeight,
+        aspectRatio: 1,
       ),
       betterPlayerDataSource: BetterPlayerDataSource(
         BetterPlayerDataSourceType.network,
@@ -161,6 +162,33 @@ class _NewsItemTabInfoState extends State<NewsItemTabInfo> with AutomaticKeepAli
                       );
                     },
                   ),
+                  if (widget.item.typeMedia == 'media')
+                    Column(
+                      children: [
+                        const SizedBox(
+                          height: 12,
+                        ),
+                        NewsMediaSlider(
+                          images: widget.item.images,
+                          videos: widget.item.videos,
+                          goBotton: () {
+                            context.back();
+                          },
+                          onTap: (index) {
+                            context.navigateTo(
+                              NewsPreviewMediaInfoRoute(
+                                selectedIndex: index,
+                                images: widget.item.images,
+                                videos: widget.item.videos,
+                                goBotton: () {
+                                  context.back();
+                                },
+                              ),
+                            );
+                          },
+                        ),
+                      ],
+                    ),
                   if (widget.item.typeMedia == 'images' && widget.item.images.length == 1)
                     Column(
                       children: [
@@ -180,7 +208,7 @@ class _NewsItemTabInfoState extends State<NewsItemTabInfo> with AutomaticKeepAli
                             );
                           },
                           child: CachedNetworkImage(
-                            imageUrl: widget.item.images.first.imageUrl,
+                            imageUrl: widget.item.images.first,
                             repeat: ImageRepeat.repeat,
                             width: MediaQuery.of(context).orientation == Orientation.portrait
                                 ? width
@@ -307,38 +335,6 @@ class _NewsItemTabInfoState extends State<NewsItemTabInfo> with AutomaticKeepAli
                             }
                           },
                         )
-
-                        // NewsBetterVideoPlayer(
-                        //   url: widget.item.video,
-                        //   image: widget.item.videoImage,
-                        //   onTap: (aspectRatio) {
-                        //     setState(() {
-                        //       _isFullScreenVideo = true;
-                        //     });
-                        //     showDialog(
-                        //       context: context,
-                        //       barrierColor: BlindChickenColors.activeBorderTextField,
-                        //       builder: (context) {
-                        //         return Scaffold(
-                        //           backgroundColor: BlindChickenColors.activeBorderTextField,
-                        //           body: NewsVideoPlayer(
-                        //             url: widget.item.video,
-                        //             image: widget.item.videoImage,
-                        //             isFullScreenVideo: _isFullScreenVideo,
-                        //             onEnterFullScreen: (aspectRatio) {},
-                        //             aspectRatio: aspectRatio,
-                        //             onExitFullScreen: () {
-                        //               Navigator.pop(context);
-                        //               setState(() {
-                        //                 _isFullScreenVideo = false;
-                        //               });
-                        //             },
-                        //           ),
-                        //         );
-                        //       },
-                        //     );
-                        //   },
-                        // ),
                       ],
                     ),
                   if (widget.item.titleButton.isNotEmpty)

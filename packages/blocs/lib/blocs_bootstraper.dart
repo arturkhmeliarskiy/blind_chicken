@@ -126,7 +126,6 @@ Future<void> initBloc(GetIt getIt) async {
       () => NewsBloc(
         getIt.get<NewsRepository>(),
         getIt.get<StoreVersionAppRepository>(),
-        getIt.get<ImageService>(),
         getIt.get<SharedPreferencesService>(),
       ),
     )
@@ -142,5 +141,8 @@ Future<void> initBloc(GetIt getIt) async {
         getIt.get<UpdateDataService>(),
         getIt.get<SharedPreferencesService>(),
       ),
+    )
+    ..registerFactory(
+      () => BottomNavigationBloc(),
     );
 }

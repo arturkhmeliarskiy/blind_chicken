@@ -11,11 +11,15 @@ class CatalogSliderImagesCardItem extends StatefulWidget {
     required this.images,
     required this.goSwipeBack,
     required this.video,
+    required this.onScaleStart,
+    required this.onScaleStop,
   });
 
   final List<String> images;
   final VoidCallback goSwipeBack;
   final DetailProductVideoDataModel video;
+  final VoidCallback onScaleStart;
+  final VoidCallback onScaleStop;
 
   @override
   State<CatalogSliderImagesCardItem> createState() => _CatalogSliderImagesCardItemState();
@@ -24,6 +28,7 @@ class CatalogSliderImagesCardItem extends StatefulWidget {
 class _CatalogSliderImagesCardItemState extends State<CatalogSliderImagesCardItem> {
   final PageController _pageController = PageController();
   bool _isSwipe = true;
+  bool _isScroll = true;
   int _page = 0;
 
   @override
@@ -59,7 +64,7 @@ class _CatalogSliderImagesCardItemState extends State<CatalogSliderImagesCardIte
         children: [
           PageView.builder(
             controller: _pageController,
-            physics: const BouncingScrollPhysics(),
+            physics: _isScroll ? const BouncingScrollPhysics() : NeverScrollableScrollPhysics(),
             itemCount: widget.images.length,
             onPageChanged: (value) {
               setState(() {
@@ -75,17 +80,28 @@ class _CatalogSliderImagesCardItemState extends State<CatalogSliderImagesCardIte
                   isPlayIcon: false,
                 );
               } else {
-                return BlindChickenPinchZoomReleaseUnzoomWidget(
-                  minScale: 1,
-                  maxScale: 4,
-                  resetDuration: const Duration(milliseconds: 200),
-                  boundaryMargin: const EdgeInsets.only(bottom: 0),
-                  clipBehavior: Clip.none,
-                  useOverlay: true,
-                  rootOverlay: true,
-                  maxOverlayOpacity: 0.5,
-                  overlayColor: BlindChickenColors.activeBorderTextField,
-                  fingersRequiredToPinch: 2,
+                return BlindChickenZoomOverlay(
+                  modalBarrierColor: Colors.black12, // Optional
+                  minScale: 1, // Optional
+                  maxScale: 4, // Optional
+                  animationCurve: Curves
+                      .fastOutSlowIn, // Defaults to fastOutSlowIn which mimics IOS instagram behavior
+                  animationDuration: Duration(
+                      milliseconds:
+                          300), // Defaults to 100 Milliseconds. Recommended duration is 300 milliseconds for Curves.fastOutSlowIn
+                  onScaleStart: () {
+                    widget.onScaleStart();
+                    setState(() {
+                      _isScroll = false;
+                    });
+                  }, // optional VoidCallback
+                  onScaleStop: () {
+                    widget.onScaleStop();
+                    setState(() {
+                      _isScroll = true;
+                    });
+                  }, // optional VoidCallback
+                  twoTouchOnly: true,
                   child: CachedNetworkImage(
                     imageUrl: widget.images[index],
                     fit: BoxFit.fill,

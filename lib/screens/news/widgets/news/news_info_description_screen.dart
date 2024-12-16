@@ -2,6 +2,7 @@ import 'package:appmetrica_plugin/appmetrica_plugin.dart';
 import 'package:auto_route/auto_route.dart';
 import 'package:blind_chicken/screens/app/router/app_router.dart';
 import 'package:blind_chicken/screens/news/widgets/handler_links_news.dart';
+import 'package:blind_chicken/screens/news/widgets/news_media_slider.dart';
 import 'package:blind_chicken/screens/news/widgets/news_slider.dart';
 import 'package:blind_chicken/screens/news/widgets/news_video_player.dart';
 import 'package:blind_chicken/screens/news/widgets/news_youtube_video_player.dart';
@@ -212,6 +213,33 @@ class _NewsInfoDescriptionScreenState extends State<NewsInfoDescriptionScreen> {
                                         color: BlindChickenColors.textInput,
                                       ),
                                 ),
+                                if (widget.info.typeMedia == 'media')
+                                  Column(
+                                    children: [
+                                      const SizedBox(
+                                        height: 12,
+                                      ),
+                                      NewsMediaSlider(
+                                        images: widget.info.images,
+                                        videos: widget.info.videos,
+                                        goBotton: () {
+                                          context.back();
+                                        },
+                                        onTap: (index) {
+                                          context.navigateTo(
+                                            NewsPreviewMediaInfoRoute(
+                                              selectedIndex: index,
+                                              images: widget.info.images,
+                                              videos: widget.info.videos,
+                                              goBotton: () {
+                                                context.back();
+                                              },
+                                            ),
+                                          );
+                                        },
+                                      ),
+                                    ],
+                                  ),
                                 if (widget.info.typeMedia == 'images' &&
                                     widget.info.images.length == 1)
                                   Column(
@@ -232,7 +260,7 @@ class _NewsInfoDescriptionScreenState extends State<NewsInfoDescriptionScreen> {
                                           );
                                         },
                                         child: CachedNetworkImage(
-                                          imageUrl: widget.info.images.first.imageUrl,
+                                          imageUrl: widget.info.images.first,
                                           width: MediaQuery.of(context).orientation ==
                                                   Orientation.portrait
                                               ? width

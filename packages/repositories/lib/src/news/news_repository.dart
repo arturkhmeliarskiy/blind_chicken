@@ -137,22 +137,17 @@ extension on NewsInfoResponse {
                   )
                   .isEmpty;
               final videoImage = "https://slepayakurica.ru${item.videoImage ?? ''}";
-              List<NewsSliderImageItemDataModel> images = item.images
-                      ?.map(
-                        (item) => NewsSliderImageItemDataModel(
-                          imageUrl: "https://slepayakurica.ru$item",
-                          imageHeight: 0,
-                          imageWeight: 0,
-                        ),
-                      )
-                      .toList() ??
-                  [];
+              List<String> images =
+                  item.images?.map((item) => "https://slepayakurica.ru$item").toList() ?? [];
+              List<String> videos =
+                  item.videos?.map((item) => "https://slepayakurica.ru$item").toList() ?? [];
 
               return NewsInfoItemDataModel(
                 id: item.id ?? '',
                 title: item.title ?? '',
                 createAt: item.createAt ?? '',
                 images: images.isNotEmpty ? images : [],
+                videos: videos.isNotEmpty ? videos : [],
                 video: (item.typeVideo ?? '') == 'original'
                     ? "https://slepayakurica.ru${item.video ?? ''}"
                     : item.video ?? '',
@@ -201,13 +196,9 @@ extension on MediaInfoResponse {
                   )
                   .isEmpty;
               final videoImage = "https://slepayakurica.ru${item.videoImage ?? ''}";
-              List<NewsSliderImageItemDataModel> images = item.images
+              List<String> images = item.images
                       ?.map(
-                        (item) => NewsSliderImageItemDataModel(
-                          imageUrl: "https://slepayakurica.ru$item",
-                          imageHeight: 0,
-                          imageWeight: 0,
-                        ),
+                        (item) => "https://slepayakurica.ru$item",
                       )
                       .toList() ??
                   [];
@@ -264,13 +255,9 @@ extension on NotificationInfoResponse {
                   )
                   .isEmpty;
               final videoImage = "https://slepayakurica.ru${item.videoImage ?? ''}";
-              List<NewsSliderImageItemDataModel> images = item.images
+              List<String> images = item.images
                       ?.map(
-                        (item) => NewsSliderImageItemDataModel(
-                          imageUrl: "https://slepayakurica.ru$item",
-                          imageHeight: 0,
-                          imageWeight: 0,
-                        ),
+                        (item) => "https://slepayakurica.ru$item",
                       )
                       .toList() ??
                   [];
@@ -311,16 +298,14 @@ extension on NotificationInfoResponse {
 extension on OneNewsInfoResponse {
   OneNewsInfoDataModel toOneNews() {
     final videoImage = "https://slepayakurica.ru${data?.videoImage ?? ''}";
-    List<NewsSliderImageItemDataModel> images = data?.images
+    List<String> images = data?.images
             ?.map(
-              (item) => NewsSliderImageItemDataModel(
-                imageUrl: "https://slepayakurica.ru$item",
-                imageHeight: 0,
-                imageWeight: 0,
-              ),
+              (item) => "https://slepayakurica.ru$item",
             )
             .toList() ??
         [];
+    List<String> videos =
+        data?.videos?.map((item) => "https://slepayakurica.ru$item").toList() ?? [];
 
     return OneNewsInfoDataModel(
       r: r ?? '',
@@ -331,6 +316,7 @@ extension on OneNewsInfoResponse {
         title: data?.title ?? '',
         createAt: data?.createAt ?? '',
         images: images.isNotEmpty ? images : [],
+        videos: videos.isNotEmpty ? images : [],
         video: (data?.typeVideo ?? '') == 'original'
             ? "https://slepayakurica.ru${data?.video ?? ''}"
             : data?.video ?? '',
@@ -359,13 +345,9 @@ extension on OneNewsInfoResponse {
 extension on OneMediaInfoResponse {
   OneMediaInfoDataModel toOneMedia() {
     final videoImage = "https://slepayakurica.ru${data?.videoImage ?? ''}";
-    List<NewsSliderImageItemDataModel> images = data?.images
+    List<String> images = data?.images
             ?.map(
-              (item) => NewsSliderImageItemDataModel(
-                imageUrl: "https://slepayakurica.ru$item",
-                imageHeight: 0,
-                imageWeight: 0,
-              ),
+              (item) => "https://slepayakurica.ru$item",
             )
             .toList() ??
         [];
@@ -405,13 +387,9 @@ extension on OneMediaInfoResponse {
 extension on OneNotificationInfoResponse {
   OneNotificationInfoDataModel toOneNotification() {
     final videoImage = "https://slepayakurica.ru${data?.videoImage ?? ''}";
-    List<NewsSliderImageItemDataModel> images = data?.images
+    List<String> images = data?.images
             ?.map(
-              (item) => NewsSliderImageItemDataModel(
-                imageUrl: "https://slepayakurica.ru$item",
-                imageHeight: 0,
-                imageWeight: 0,
-              ),
+              (item) => "https://slepayakurica.ru$item",
             )
             .toList() ??
         [];

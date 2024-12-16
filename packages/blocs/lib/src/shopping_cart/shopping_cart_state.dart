@@ -23,7 +23,9 @@ class ShoppingCartState with _$ShoppingCartState {
   const factory ShoppingCartState.addProductToSoppingCart({
     required String code,
   }) = AddProductShoppingCartState;
-  const factory ShoppingCartState.openShowDialog() = OpenShowDialogShoppingCartState;
+  const factory ShoppingCartState.openShowDialog({
+    required int bonuses,
+  }) = OpenShowDialogShoppingCartState;
   const factory ShoppingCartState.productsShoppingCart({
     required BasketFullInfoDataModel shoppingCart,
     required List<PaymentItemDataModel> payments,

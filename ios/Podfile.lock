@@ -8,71 +8,87 @@ PODS:
     - appmetrica_plugin
     - AppMetricaPush (~> 2.0)
     - Flutter
-  - AppMetricaAdSupport (5.8.2):
-    - AppMetricaCore (= 5.8.2)
-    - AppMetricaCoreExtension (= 5.8.2)
-  - AppMetricaAnalytics (5.8.2):
-    - AppMetricaAdSupport (= 5.8.2)
-    - AppMetricaCore (= 5.8.2)
-    - AppMetricaCrashes (= 5.8.2)
-    - AppMetricaWebKit (= 5.8.2)
-  - AppMetricaCore (5.8.2):
-    - AppMetricaCoreUtils (= 5.8.2)
-    - AppMetricaEncodingUtils (= 5.8.2)
-    - AppMetricaFMDB (= 5.8.2)
-    - AppMetricaHostState (= 5.8.2)
-    - AppMetricaLog (= 5.8.2)
-    - AppMetricaNetwork (= 5.8.2)
-    - AppMetricaPlatform (= 5.8.2)
-    - AppMetricaProtobuf (= 5.8.2)
-    - AppMetricaProtobufUtils (= 5.8.2)
-    - AppMetricaStorageUtils (= 5.8.2)
-  - AppMetricaCoreExtension (5.8.2):
-    - AppMetricaCore (= 5.8.2)
-    - AppMetricaStorageUtils (= 5.8.2)
-  - AppMetricaCoreUtils (5.8.2):
-    - AppMetricaLog (= 5.8.2)
-  - AppMetricaCrashes (5.8.2):
-    - AppMetricaCore (= 5.8.2)
-    - AppMetricaCoreExtension (= 5.8.2)
-    - AppMetricaCoreUtils (= 5.8.2)
-    - AppMetricaEncodingUtils (= 5.8.2)
-    - AppMetricaHostState (= 5.8.2)
-    - AppMetricaLog (= 5.8.2)
-    - AppMetricaPlatform (= 5.8.2)
-    - AppMetricaProtobufUtils (= 5.8.2)
-    - AppMetricaStorageUtils (= 5.8.2)
+  - AppMetricaAdSupport (5.9.0):
+    - AppMetricaCore (= 5.9.0)
+    - AppMetricaCoreExtension (= 5.9.0)
+  - AppMetricaAnalytics (5.9.0):
+    - AppMetricaAdSupport (= 5.9.0)
+    - AppMetricaCore (= 5.9.0)
+    - AppMetricaCrashes (= 5.9.0)
+    - AppMetricaWebKit (= 5.9.0)
+  - AppMetricaCore (5.9.0):
+    - AppMetricaCoreUtils (= 5.9.0)
+    - AppMetricaEncodingUtils (= 5.9.0)
+    - AppMetricaFMDB (= 5.9.0)
+    - AppMetricaHostState (= 5.9.0)
+    - AppMetricaIdentifiers (= 5.9.0)
+    - AppMetricaKeychain (= 5.9.0)
+    - AppMetricaLog (= 5.9.0)
+    - AppMetricaNetwork (= 5.9.0)
+    - AppMetricaPlatform (= 5.9.0)
+    - AppMetricaProtobuf (= 5.9.0)
+    - AppMetricaProtobufUtils (= 5.9.0)
+    - AppMetricaStorageUtils (= 5.9.0)
+  - AppMetricaCoreExtension (5.9.0):
+    - AppMetricaCore (= 5.9.0)
+    - AppMetricaStorageUtils (= 5.9.0)
+  - AppMetricaCoreUtils (5.9.0):
+    - AppMetricaLog (= 5.9.0)
+  - AppMetricaCrashes (5.9.0):
+    - AppMetricaCore (= 5.9.0)
+    - AppMetricaCoreExtension (= 5.9.0)
+    - AppMetricaCoreUtils (= 5.9.0)
+    - AppMetricaEncodingUtils (= 5.9.0)
+    - AppMetricaHostState (= 5.9.0)
+    - AppMetricaLog (= 5.9.0)
+    - AppMetricaPlatform (= 5.9.0)
+    - AppMetricaProtobufUtils (= 5.9.0)
+    - AppMetricaStorageUtils (= 5.9.0)
     - KSCrash/Recording (< 2.1.0, >= 2.0.0-rc.1)
-  - AppMetricaEncodingUtils (5.8.2):
-    - AppMetricaCoreUtils (= 5.8.2)
-    - AppMetricaLog (= 5.8.2)
-    - AppMetricaPlatform (= 5.8.2)
-  - AppMetricaFMDB (5.8.2)
-  - AppMetricaHostState (5.8.2):
-    - AppMetricaCoreUtils (= 5.8.2)
-    - AppMetricaLog (= 5.8.2)
-  - AppMetricaLog (5.8.2)
-  - AppMetricaNetwork (5.8.2):
-    - AppMetricaCoreUtils (= 5.8.2)
-    - AppMetricaLog (= 5.8.2)
-    - AppMetricaPlatform (= 5.8.2)
-  - AppMetricaPlatform (5.8.2):
-    - AppMetricaCoreUtils (= 5.8.2)
-    - AppMetricaLog (= 5.8.2)
-  - AppMetricaProtobuf (5.8.2)
-  - AppMetricaProtobufUtils (5.8.2):
-    - AppMetricaProtobuf (= 5.8.2)
+  - AppMetricaEncodingUtils (5.9.0):
+    - AppMetricaCoreUtils (= 5.9.0)
+    - AppMetricaLog (= 5.9.0)
+    - AppMetricaPlatform (= 5.9.0)
+  - AppMetricaFMDB (5.9.0)
+  - AppMetricaHostState (5.9.0):
+    - AppMetricaCoreUtils (= 5.9.0)
+    - AppMetricaLog (= 5.9.0)
+  - AppMetricaIdentifiers (5.9.0):
+    - AppMetricaKeychain (= 5.9.0)
+    - AppMetricaLogSwift (= 5.9.0)
+    - AppMetricaPlatform (= 5.9.0)
+    - AppMetricaStorageUtils (= 5.9.0)
+    - AppMetricaSynchronization (= 5.9.0)
+  - AppMetricaKeychain (5.9.0):
+    - AppMetricaCoreUtils (= 5.9.0)
+    - AppMetricaLog (= 5.9.0)
+    - AppMetricaStorageUtils (= 5.9.0)
+  - AppMetricaLog (5.9.0)
+  - AppMetricaLogSwift (5.9.0):
+    - AppMetricaLog (= 5.9.0)
+  - AppMetricaNetwork (5.9.0):
+    - AppMetricaCoreUtils (= 5.9.0)
+    - AppMetricaLog (= 5.9.0)
+    - AppMetricaPlatform (= 5.9.0)
+  - AppMetricaPlatform (5.9.0):
+    - AppMetricaCoreUtils (= 5.9.0)
+    - AppMetricaLog (= 5.9.0)
+  - AppMetricaProtobuf (5.9.0)
+  - AppMetricaProtobufUtils (5.9.0):
+    - AppMetricaProtobuf (= 5.9.0)
   - AppMetricaPush (2.2.1):
     - AppMetricaCore (~> 5.2)
     - AppMetricaCoreExtension (~> 5.2)
     - AppMetricaCoreUtils (~> 5.2)
-  - AppMetricaStorageUtils (5.8.2):
-    - AppMetricaCoreUtils (= 5.8.2)
-    - AppMetricaLog (= 5.8.2)
-  - AppMetricaWebKit (5.8.2):
-    - AppMetricaCore (= 5.8.2)
-    - AppMetricaCoreUtils (= 5.8.2)
-    - AppMetricaLog (= 5.8.2)
+  - AppMetricaStorageUtils (5.9.0):
+    - AppMetricaCoreUtils (= 5.9.0)
+    - AppMetricaLog (= 5.9.0)
+  - AppMetricaSynchronization (5.9.0):
+    - AppMetricaLogSwift (= 5.9.0)
+  - AppMetricaWebKit (5.9.0):
+    - AppMetricaCore (= 5.9.0)
+    - AppMetricaCoreUtils (= 5.9.0)
+    - AppMetricaLog (= 5.9.0)
   - audio_session (0.0.1):
     - Flutter
   - better_player (0.0.1):
@@ -161,7 +177,7 @@ PODS:
   - flutter_inappwebview_ios/Core (0.0.1):
     - Flutter
     - OrderedSet (~> 6.0.3)
-  - flutter_upgrade_version (1.1.6):
+  - flutter_upgrade_version (1.1.7):
     - Flutter
   - GCDWebServer (3.5.4):
     - GCDWebServer/Core (= 3.5.4)
@@ -202,10 +218,10 @@ PODS:
     - PINCache (>= 3.0.1-beta.3)
   - just_audio (0.0.1):
     - Flutter
-  - KSCrash/Core (2.0.0-rc.6)
-  - KSCrash/Recording (2.0.0-rc.6):
+  - KSCrash/Core (2.0.0-rc.8)
+  - KSCrash/Recording (2.0.0-rc.8):
     - KSCrash/RecordingCore
-  - KSCrash/RecordingCore (2.0.0-rc.6):
+  - KSCrash/RecordingCore (2.0.0-rc.8):
     - KSCrash/Core
   - nanopb (2.30910.0):
     - nanopb/decode (= 2.30910.0)
@@ -238,7 +254,7 @@ PODS:
   - shared_preferences_foundation (0.0.1):
     - Flutter
     - FlutterMacOS
-  - sqflite (0.0.3):
+  - sqflite_darwin (0.0.4):
     - Flutter
     - FlutterMacOS
   - SwiftyGif (5.4.5)
@@ -281,7 +297,7 @@ DEPENDENCIES:
   - permission_handler_apple (from `.symlinks/plugins/permission_handler_apple/ios`)
   - share_plus (from `.symlinks/plugins/share_plus/ios`)
   - shared_preferences_foundation (from `.symlinks/plugins/shared_preferences_foundation/darwin`)
-  - sqflite (from `.symlinks/plugins/sqflite/darwin`)
+  - sqflite_darwin (from `.symlinks/plugins/sqflite_darwin/darwin`)
   - syncfusion_flutter_pdfviewer (from `.symlinks/plugins/syncfusion_flutter_pdfviewer/ios`)
   - url_launcher_ios (from `.symlinks/plugins/url_launcher_ios/ios`)
   - video_player_avfoundation (from `.symlinks/plugins/video_player_avfoundation/darwin`)
@@ -300,13 +316,17 @@ SPEC REPOS:
     - AppMetricaEncodingUtils
     - AppMetricaFMDB
     - AppMetricaHostState
+    - AppMetricaIdentifiers
+    - AppMetricaKeychain
     - AppMetricaLog
+    - AppMetricaLogSwift
     - AppMetricaNetwork
     - AppMetricaPlatform
     - AppMetricaProtobuf
     - AppMetricaProtobufUtils
     - AppMetricaPush
     - AppMetricaStorageUtils
+    - AppMetricaSynchronization
     - AppMetricaWebKit
     - Cache
     - DKImagePickerController
@@ -372,8 +392,8 @@ EXTERNAL SOURCES:
     :path: ".symlinks/plugins/share_plus/ios"
   shared_preferences_foundation:
     :path: ".symlinks/plugins/shared_preferences_foundation/darwin"
-  sqflite:
-    :path: ".symlinks/plugins/sqflite/darwin"
+  sqflite_darwin:
+    :path: ".symlinks/plugins/sqflite_darwin/darwin"
   syncfusion_flutter_pdfviewer:
     :path: ".symlinks/plugins/syncfusion_flutter_pdfviewer/ios"
   url_launcher_ios:
@@ -391,23 +411,27 @@ SPEC CHECKSUMS:
   app_links: e7a6750a915a9e161c58d91bc610e8cd1d4d0ad0
   appmetrica_plugin: 22d4d1eb9d070509fce428774b7f0d0686564010
   appmetrica_push_plugin: 091da389ab39ee11a00ddb4932601f296cd29bcd
-  AppMetricaAdSupport: 6fd6e54fc9d330f152e97c38cd92775071e353b8
-  AppMetricaAnalytics: 93374c9f748f85f4d62f2ed2714eeb058eee1d33
-  AppMetricaCore: bf95c826ec74260b8c81cca9fc21efb8aea52a70
-  AppMetricaCoreExtension: 9cf386437072bb2bb578eb0b7654b3e3f53f3abf
-  AppMetricaCoreUtils: e272b7ae0d4da73e178cc9d7cf391ce67c713d61
-  AppMetricaCrashes: 2a47cc39a691f9751c2a73e20ce5e06f5a9cdc64
-  AppMetricaEncodingUtils: ee11733ecad85bf10d513920ef091bbc0ae5f2c7
-  AppMetricaFMDB: 44ffa4aa173513c04af2a1fbf6dfc180f266872a
-  AppMetricaHostState: c6a10727120cdd4d7eaaabf57f9e562ec9cd6b0f
-  AppMetricaLog: 49eb3d5ef7d4288a388cc34eaa53cbcd42241b8a
-  AppMetricaNetwork: f29d5bedc1abb6dff4be1f89422e5403dcda7dee
-  AppMetricaPlatform: f3423676add2e9a61b6b67f2692f385b62bf87a8
-  AppMetricaProtobuf: d895f7478c9e90ac3a50bd2f2ae8bd022205dbd1
-  AppMetricaProtobufUtils: 2e4134f486620a27306940347265c824784c906c
+  AppMetricaAdSupport: 030ecf754defdf915849ed5b2c0a9f2a2f44658d
+  AppMetricaAnalytics: 9c05ad0993395f88e68ba9a28ab1212fb68376c6
+  AppMetricaCore: cdad94c505967ebac86f81da48841df3136ef696
+  AppMetricaCoreExtension: b9c8695bac86ec7f4ef90f905131f7b9d31d8295
+  AppMetricaCoreUtils: 3c7aa8a78895f98f557f1bc88bce4eb80a6bcd2a
+  AppMetricaCrashes: 7641b5c23c581693e6c8ae253948635f8f3ff071
+  AppMetricaEncodingUtils: 61f9fd1c510e517e2b4981b940bc510f9498e1bc
+  AppMetricaFMDB: 743a9d6833380eebfa0ca0f1db2883bb05b41c16
+  AppMetricaHostState: 5c9196539244397f7fb8a4db44bddc1bbc67b93b
+  AppMetricaIdentifiers: b870d30d6a5acd9cc9df9e30a37e4bf8a0e03a25
+  AppMetricaKeychain: 767acc62243599c034bab686093640b3e86d3893
+  AppMetricaLog: 9fdc87723f6a1b497866f6827143117d7ff667c4
+  AppMetricaLogSwift: 9d67b9ce5097cfed6ff56a6a4ec7770f2ce2df07
+  AppMetricaNetwork: 81342ff33cd3786bcdbe06c5b580179aec7c95c2
+  AppMetricaPlatform: cb4699122820183ce3dc29fc386bada3afde99d5
+  AppMetricaProtobuf: 8d9ad65007f56af94b324dbc31096ee8be04d412
+  AppMetricaProtobufUtils: 33f29ccee2f898b537eece0c4fe04e14e1bdab9a
   AppMetricaPush: 3ab3d17c2bc19866d6e01eff810a217695e89a6b
-  AppMetricaStorageUtils: d4b1470acba258fe9a07d9860defdeb93096b89b
-  AppMetricaWebKit: 900bc1bdc8c35d0605a3dfe9ba8b8b69a77f73b8
+  AppMetricaStorageUtils: 42c3f8163226516aec3e183db4f3e1a29fac1c41
+  AppMetricaSynchronization: ed4196effc6997921fab53503e79c6505dbae707
+  AppMetricaWebKit: 568f2057ae462b792b0b04eeeaffdd3b2af1f2b3
   audio_session: 088d2483ebd1dc43f51d253d4a1c517d9a2e7207
   better_player: 2406bfe8175203c7a46fa15f9d778d73b12e1646
   Cache: 4ca7e00363fca5455f26534e5607634c820ffc2d
@@ -425,17 +449,17 @@ SPEC CHECKSUMS:
   FirebaseMessaging: 88950ba9485052891ebe26f6c43a52bb62248952
   Flutter: e0871f40cf51350855a761d2e70bf5af5b9b5de7
   flutter_inappwebview_ios: 6f63631e2c62a7c350263b13fa5427aedefe81d4
-  flutter_upgrade_version: 056fb7aec8e30182a1db6d436b4fdc615582d996
+  flutter_upgrade_version: 92bd8b205af3cc91986c3578fcb6361bd4d68b5b
   GCDWebServer: 2c156a56c8226e2d5c0c3f208a3621ccffbe3ce4
-  geolocator_apple: 6cbaf322953988e009e5ecb481f07efece75c450
+  geolocator_apple: 9bcea1918ff7f0062d98345d238ae12718acfbc1
   GoogleDataTransport: 6c09b596d841063d76d4288cc2d2f42cc36e1e2a
   GoogleUtilities: ea963c370a38a8069cc5f7ba4ca849a60b6d7d15
   HLSCachingReverseProxyServer: 59935e1e0244ad7f3375d75b5ef46e8eb26ab181
   just_audio: baa7252489dbcf47a4c7cc9ca663e9661c99aafa
-  KSCrash: 1ce184fa831eada99cc873f46ad556918d5dc817
+  KSCrash: 946472c56073afdaf6bae37d886e3f562027075c
   nanopb: 438bc412db1928dac798aa6fd75726007be04262
   OrderedSet: e539b66b644ff081c73a262d24ad552a69be3a94
-  package_info_plus: 58f0028419748fad15bf008b270aaa8e54380b1c
+  package_info_plus: c0502532a26c7662a62a356cebe2692ec5fe4ec4
   path_provider_foundation: 2b6b4c569c0fb62ec74538f866245ac84301af46
   permission_handler_apple: 9878588469a2b0d0fc1e048d9f43605f92e6cec2
   PINCache: d9a87a0ff397acffe9e2f0db972ac14680441158
@@ -445,7 +469,7 @@ SPEC CHECKSUMS:
   SDWebImage: 73c6079366fea25fa4bb9640d5fb58f0893facd8
   share_plus: 8875f4f2500512ea181eef553c3e27dba5135aad
   shared_preferences_foundation: fcdcbc04712aee1108ac7fda236f363274528f78
-  sqflite: 673a0e54cc04b7d6dba8d24fb8095b31c3a99eec
+  sqflite_darwin: 5a7236e3b501866c1c9befc6771dfd73ffb8702d
   SwiftyGif: 706c60cf65fa2bc5ee0313beece843c8eb8194d4
   syncfusion_flutter_pdfviewer: bb9998884b864cfedf72628df3503bdf57e397c0
   url_launcher_ios: 5334b05cef931de560670eeae103fd3e431ac3fe

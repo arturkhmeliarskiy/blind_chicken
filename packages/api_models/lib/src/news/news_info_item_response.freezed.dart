@@ -25,6 +25,7 @@ mixin _$NewsInfoItemResponse {
   @JsonKey(name: 'create_at')
   String? get createAt => throw _privateConstructorUsedError;
   List<String>? get images => throw _privateConstructorUsedError;
+  List<String>? get videos => throw _privateConstructorUsedError;
   String? get video => throw _privateConstructorUsedError;
   @JsonKey(name: 'type_video')
   String? get typeVideo => throw _privateConstructorUsedError;
@@ -68,6 +69,7 @@ abstract class $NewsInfoItemResponseCopyWith<$Res> {
       String? title,
       @JsonKey(name: 'create_at') String? createAt,
       List<String>? images,
+      List<String>? videos,
       String? video,
       @JsonKey(name: 'type_video') String? typeVideo,
       @JsonKey(name: 'video_image') String? videoImage,
@@ -103,6 +105,7 @@ class _$NewsInfoItemResponseCopyWithImpl<$Res,
     Object? title = freezed,
     Object? createAt = freezed,
     Object? images = freezed,
+    Object? videos = freezed,
     Object? video = freezed,
     Object? typeVideo = freezed,
     Object? videoImage = freezed,
@@ -135,6 +138,10 @@ class _$NewsInfoItemResponseCopyWithImpl<$Res,
       images: freezed == images
           ? _value.images
           : images // ignore: cast_nullable_to_non_nullable
+              as List<String>?,
+      videos: freezed == videos
+          ? _value.videos
+          : videos // ignore: cast_nullable_to_non_nullable
               as List<String>?,
       video: freezed == video
           ? _value.video
@@ -213,6 +220,7 @@ abstract class _$$NewsInfoItemResponseImplCopyWith<$Res>
       String? title,
       @JsonKey(name: 'create_at') String? createAt,
       List<String>? images,
+      List<String>? videos,
       String? video,
       @JsonKey(name: 'type_video') String? typeVideo,
       @JsonKey(name: 'video_image') String? videoImage,
@@ -245,6 +253,7 @@ class __$$NewsInfoItemResponseImplCopyWithImpl<$Res>
     Object? title = freezed,
     Object? createAt = freezed,
     Object? images = freezed,
+    Object? videos = freezed,
     Object? video = freezed,
     Object? typeVideo = freezed,
     Object? videoImage = freezed,
@@ -277,6 +286,10 @@ class __$$NewsInfoItemResponseImplCopyWithImpl<$Res>
       images: freezed == images
           ? _value._images
           : images // ignore: cast_nullable_to_non_nullable
+              as List<String>?,
+      videos: freezed == videos
+          ? _value._videos
+          : videos // ignore: cast_nullable_to_non_nullable
               as List<String>?,
       video: freezed == video
           ? _value.video
@@ -350,6 +363,7 @@ class _$NewsInfoItemResponseImpl extends _NewsInfoItemResponse {
       this.title,
       @JsonKey(name: 'create_at') this.createAt,
       final List<String>? images,
+      final List<String>? videos,
       this.video,
       @JsonKey(name: 'type_video') this.typeVideo,
       @JsonKey(name: 'video_image') this.videoImage,
@@ -366,6 +380,7 @@ class _$NewsInfoItemResponseImpl extends _NewsInfoItemResponse {
       @JsonKey(name: 'number_views') this.numberViews,
       @JsonKey(name: 'is_viewed') this.isViewed})
       : _images = images,
+        _videos = videos,
         super._();
 
   factory _$NewsInfoItemResponseImpl.fromJson(Map<String, dynamic> json) =>
@@ -384,6 +399,16 @@ class _$NewsInfoItemResponseImpl extends _NewsInfoItemResponse {
     final value = _images;
     if (value == null) return null;
     if (_images is EqualUnmodifiableListView) return _images;
+    // ignore: implicit_dynamic_type
+    return EqualUnmodifiableListView(value);
+  }
+
+  final List<String>? _videos;
+  @override
+  List<String>? get videos {
+    final value = _videos;
+    if (value == null) return null;
+    if (_videos is EqualUnmodifiableListView) return _videos;
     // ignore: implicit_dynamic_type
     return EqualUnmodifiableListView(value);
   }
@@ -431,7 +456,7 @@ class _$NewsInfoItemResponseImpl extends _NewsInfoItemResponse {
 
   @override
   String toString() {
-    return 'NewsInfoItemResponse(id: $id, title: $title, createAt: $createAt, images: $images, video: $video, typeVideo: $typeVideo, videoImage: $videoImage, announcement: $announcement, typeMedia: $typeMedia, description: $description, titleButton: $titleButton, typePath: $typePath, path: $path, code: $code, sort: $sort, filterSelect: $filterSelect, uidStore: $uidStore, numberViews: $numberViews, isViewed: $isViewed)';
+    return 'NewsInfoItemResponse(id: $id, title: $title, createAt: $createAt, images: $images, videos: $videos, video: $video, typeVideo: $typeVideo, videoImage: $videoImage, announcement: $announcement, typeMedia: $typeMedia, description: $description, titleButton: $titleButton, typePath: $typePath, path: $path, code: $code, sort: $sort, filterSelect: $filterSelect, uidStore: $uidStore, numberViews: $numberViews, isViewed: $isViewed)';
   }
 
   @override
@@ -444,6 +469,7 @@ class _$NewsInfoItemResponseImpl extends _NewsInfoItemResponse {
             (identical(other.createAt, createAt) ||
                 other.createAt == createAt) &&
             const DeepCollectionEquality().equals(other._images, _images) &&
+            const DeepCollectionEquality().equals(other._videos, _videos) &&
             (identical(other.video, video) || other.video == video) &&
             (identical(other.typeVideo, typeVideo) ||
                 other.typeVideo == typeVideo) &&
@@ -480,6 +506,7 @@ class _$NewsInfoItemResponseImpl extends _NewsInfoItemResponse {
         title,
         createAt,
         const DeepCollectionEquality().hash(_images),
+        const DeepCollectionEquality().hash(_videos),
         video,
         typeVideo,
         videoImage,
@@ -519,6 +546,7 @@ abstract class _NewsInfoItemResponse extends NewsInfoItemResponse {
           final String? title,
           @JsonKey(name: 'create_at') final String? createAt,
           final List<String>? images,
+          final List<String>? videos,
           final String? video,
           @JsonKey(name: 'type_video') final String? typeVideo,
           @JsonKey(name: 'video_image') final String? videoImage,
@@ -549,6 +577,8 @@ abstract class _NewsInfoItemResponse extends NewsInfoItemResponse {
   String? get createAt;
   @override
   List<String>? get images;
+  @override
+  List<String>? get videos;
   @override
   String? get video;
   @override

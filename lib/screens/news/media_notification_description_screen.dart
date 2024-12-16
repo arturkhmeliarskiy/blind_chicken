@@ -12,7 +12,7 @@ import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_svg/flutter_svg.dart';
-import 'package:flutter_widget_from_html_core/flutter_widget_from_html_core.dart';
+import 'package:flutter_widget_from_html/flutter_widget_from_html.dart';
 import 'package:get_it/get_it.dart';
 import 'package:shared/shared.dart';
 import 'package:ui_kit/ui_kit.dart';
@@ -256,9 +256,7 @@ class _MediaNotificationDescriptionScreenState extends State<MediaNotificationDe
                                             );
                                           },
                                           child: CachedNetworkImage(
-                                            imageUrl:
-                                                initState.oneMedia?.data.images.first.imageUrl ??
-                                                    '',
+                                            imageUrl: initState.oneMedia?.data.images.first ?? '',
                                             width: MediaQuery.of(context).orientation ==
                                                     Orientation.portrait
                                                 ? width

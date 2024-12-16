@@ -11,9 +11,14 @@ import 'package:ui_kit/src/widgets/blind_chicken_top_banner.dart';
 import 'package:ui_kit/ui_kit.dart';
 
 class AppBarBlindChicken extends StatefulWidget {
-  const AppBarBlindChicken({super.key, this.onBack});
+  const AppBarBlindChicken({
+    super.key,
+    this.onBack,
+    this.isTopBanner = true,
+  });
 
   final VoidCallback? onBack;
+  final bool isTopBanner;
 
   @override
   State<AppBarBlindChicken> createState() => _AppBarBlindChickenState();
@@ -54,7 +59,7 @@ class _AppBarBlindChickenState extends State<AppBarBlindChicken> {
   Widget build(BuildContext context) {
     return Column(
       children: [
-        const BlindChickenTopBanner(),
+        if (widget.isTopBanner) const BlindChickenTopBanner(),
         AppBar(
           backgroundColor: BlindChickenColors.backgroundColor,
           elevation: 0,

@@ -1,4 +1,7 @@
 import 'dart:developer';
+
+import 'package:better_player/better_player.dart';
+import 'package:blind_chicken/screens/news/widgets/news_better_video_player.dart';
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
@@ -6,10 +9,11 @@ import 'package:photo_view/photo_view.dart';
 import 'package:shared/shared.dart';
 import 'package:ui_kit/ui_kit.dart';
 
-class NewsSlider extends StatefulWidget {
-  const NewsSlider({
+class NewsMediaSlider extends StatefulWidget {
+  const NewsMediaSlider({
     super.key,
-    required this.media,
+    required this.images,
+    required this.videos,
     required this.goBotton,
     required this.onTap,
     this.isSwitch = true,
@@ -17,7 +21,8 @@ class NewsSlider extends StatefulWidget {
     this.borderRadius = 4,
   });
 
-  final List<String> media;
+  final List<String> images;
+  final List<String> videos;
   final VoidCallback goBotton;
   final ValueChanged<int> onTap;
   final double borderRadius;
@@ -25,22 +30,30 @@ class NewsSlider extends StatefulWidget {
   final bool isBuilder;
 
   @override
-  State<NewsSlider> createState() => _NewsSliderState();
+  State<NewsMediaSlider> createState() => _NewsMediaSliderState();
 }
 
-class _NewsSliderState extends State<NewsSlider> {
+class _NewsMediaSliderState extends State<NewsMediaSlider> {
   final PageController _scrollController = PageController();
+
   int _indexItem = 0;
   double _aspectRatio = 1;
 
   @override
   void initState() {
     _scrollController.addListener(_scrollListener);
-    getImageAspectRatio(widget.media.first).then((value) {
+    if (widget.videos.isNotEmpty) {
       setState(() {
-        _aspectRatio = value;
+        _aspectRatio = getVideoAspectRatio(widget.videos.first);
       });
-    });
+    } else {
+      getImageAspectRatio(widget.images.first).then((value) {
+        setState(() {
+          _aspectRatio = value;
+        });
+      });
+    }
+
     super.initState();
   }
 
@@ -59,6 +72,18 @@ class _NewsSliderState extends State<NewsSlider> {
     return imageInfo.image.width / imageInfo.image.height;
   }
 
+  double getVideoAspectRatio(String url) {
+    BetterPlayerController controller = BetterPlayerController(
+      BetterPlayerConfiguration(),
+      betterPlayerDataSource: BetterPlayerDataSource(
+        BetterPlayerDataSourceType.network,
+        url,
+      ),
+    );
+
+    return controller.videoPlayerController?.value.aspectRatio ?? 0;
+  }
+
   @override
   void dispose() {
     _scrollController.dispose();
@@ -75,51 +100,73 @@ class _NewsSliderState extends State<NewsSlider> {
         children: [
           ExpandablePageView.builder(
             scrollDirection: Axis.horizontal,
-            itemCount: widget.media.length,
+            itemCount: widget.images.length + widget.videos.length,
             controller: _scrollController,
             onPageChanged: (value) {
-              getImageAspectRatio(widget.media[value]).then((item) {
+              if (widget.videos.isNotEmpty && widget.videos.length > value) {
                 setState(() {
-                  _aspectRatio = item;
+                  _aspectRatio = getVideoAspectRatio(widget.videos[value]);
                 });
-              });
+              } else {
+                getImageAspectRatio(widget.images[value - 1]).then((item) {
+                  setState(() {
+                    _aspectRatio = item;
+                  });
+                });
+              }
             },
             itemBuilder: (context, index) {
-              return InkWell(
-                onTap: () {
-                  widget.onTap(index);
-                },
-                child: ClipRRect(
-                  borderRadius: BorderRadius.circular(widget.borderRadius),
-                  child: CachedNetworkImage(
-                    imageUrl: widget.media[index],
-                    width: MediaQuery.of(context).orientation == Orientation.portrait
-                        ? width
-                        : width / 2,
-                    fit: BoxFit.cover,
-                    placeholder: (context, url) {
-                      return AspectRatio(
-                        aspectRatio: _aspectRatio,
-                        child: Center(
-                          child: SizedBox(
-                            width: 40.0,
-                            height: 40.0,
-                            child: CircularProgressIndicator(),
+              if (widget.videos.isNotEmpty && widget.videos.length > index) {
+                return NewsBetterVideoPlayer(
+                  url: widget.videos[index],
+                  aspectRatio: _aspectRatio,
+                  onTap: () {
+                    widget.onTap(index);
+                  },
+                  onAspectRatio: (value) {
+                    setState(() {
+                      _aspectRatio = value;
+                    });
+                  },
+                );
+              } else {
+                return InkWell(
+                  onTap: () {
+                    widget.onTap(index);
+                  },
+                  child: ClipRRect(
+                    borderRadius: BorderRadius.circular(widget.borderRadius),
+                    child: CachedNetworkImage(
+                      imageUrl: widget.images[index - 1],
+                      width: MediaQuery.of(context).orientation == Orientation.portrait
+                          ? width
+                          : width / 2,
+                      fit: BoxFit.cover,
+                      placeholder: (context, url) {
+                        return AspectRatio(
+                          aspectRatio: _aspectRatio,
+                          child: Center(
+                            child: Container(
+                              width: 40.0,
+                              height: 40.0,
+                              margin: EdgeInsets.all(10),
+                              child: CircularProgressIndicator(),
+                            ),
                           ),
-                        ),
-                      );
-                    },
-                    imageBuilder: widget.isBuilder
-                        ? (context, imageProvider) => PhotoView(
-                              imageProvider: imageProvider,
-                              filterQuality: FilterQuality.high,
-                              customSize: Size(width, width),
-                            )
-                        : null,
-                    errorWidget: (context, url, error) => const Icon(Icons.error),
+                        );
+                      },
+                      imageBuilder: widget.isBuilder
+                          ? (context, imageProvider) => PhotoView(
+                                imageProvider: imageProvider,
+                                filterQuality: FilterQuality.high,
+                                customSize: Size(width, width),
+                              )
+                          : null,
+                      errorWidget: (context, url, error) => const Icon(Icons.error),
+                    ),
                   ),
-                ),
-              );
+                );
+              }
             },
           ),
           if (widget.isSwitch)
@@ -162,7 +209,7 @@ class _NewsSliderState extends State<NewsSlider> {
                     InkWell(
                       onTap: () {
                         setState(() {
-                          if ((_indexItem + 1) < widget.media.length) {
+                          if ((_indexItem + 1) < widget.images.length + widget.videos.length) {
                             _indexItem++;
                             _scrollController.nextPage(
                               curve: Curves.linear,
