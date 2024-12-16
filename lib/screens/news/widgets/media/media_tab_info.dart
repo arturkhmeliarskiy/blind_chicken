@@ -28,7 +28,6 @@ class _MediaTabInfoState extends State<MediaTabInfo> {
 
   @override
   void initState() {
-    context.read<NewsBloc>().add(const NewsEvent.getMedia());
     final idNews = widget.idNews;
     if (idNews != null) {
       context.read<NewsBloc>().add(NewsEvent.updateReadNews(
@@ -38,6 +37,16 @@ class _MediaTabInfoState extends State<MediaTabInfo> {
     }
     _scrollController.addListener(_loadMoreData);
     super.initState();
+  }
+
+  @override
+  void didChangeDependencies() {
+    Future.delayed(Duration(milliseconds: 300), () {
+      // ignore: use_build_context_synchronously
+      context.read<NewsBloc>().add(const NewsEvent.getMedia());
+    });
+
+    super.didChangeDependencies();
   }
 
   void _loadMoreData() async {

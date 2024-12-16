@@ -86,7 +86,7 @@ class NewsBetterVideoPlayerState extends State<NewsBetterVideoPlayer> {
         } else {
           // Pause the video if it's not the active video or is less than 50% visible
           if (_controller.videoPlayerController?.value.initialized ?? false) {
-            _controller.pause();
+            _controller.dispose();
             log("Video paused", name: "VideoState");
           }
         }

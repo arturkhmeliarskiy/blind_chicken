@@ -1,7 +1,7 @@
 import 'dart:developer';
 
 import 'package:better_player/better_player.dart';
-import 'package:blind_chicken/screens/news/widgets/news_better_video_player.dart';
+import 'package:blind_chicken/screens/news/widgets/news_video_player_slider.dart';
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
@@ -117,7 +117,7 @@ class _NewsMediaSliderState extends State<NewsMediaSlider> {
             },
             itemBuilder: (context, index) {
               if (widget.videos.isNotEmpty && widget.videos.length > index) {
-                return NewsBetterVideoPlayer(
+                return NewsVideoPlayerSlider(
                   url: widget.videos[index],
                   aspectRatio: _aspectRatio,
                   onTap: () {

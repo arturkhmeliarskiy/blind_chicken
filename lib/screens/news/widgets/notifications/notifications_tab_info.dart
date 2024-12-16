@@ -29,7 +29,6 @@ class _NotificationsTabInfoState extends State<NotificationsTabInfo> {
 
   @override
   void initState() {
-    context.read<NewsBloc>().add(const NewsEvent.getNotifications());
     final idNews = widget.idNews;
     if (idNews != null) {
       context.read<NewsBloc>().add(NewsEvent.updateReadNews(
@@ -39,6 +38,16 @@ class _NotificationsTabInfoState extends State<NotificationsTabInfo> {
     }
     _scrollController.addListener(_loadMoreData);
     super.initState();
+  }
+
+  @override
+  void didChangeDependencies() {
+    Future.delayed(Duration(milliseconds: 300), () {
+      // ignore: use_build_context_synchronously
+      context.read<NewsBloc>().add(const NewsEvent.getNotifications());
+    });
+
+    super.didChangeDependencies();
   }
 
   void _loadMoreData() async {

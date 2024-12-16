@@ -29,6 +29,7 @@ class _NewsInfoScreenState extends State<NewsInfoScreen> with TickerProviderStat
   bool _isShowDialogNewsInfoError = false;
   late final TabController _tabController;
   bool _isSwipe = true;
+  bool _isLoading = false;
   double _heightAppBar = 105;
 
   @override
@@ -135,6 +136,12 @@ class _NewsInfoScreenState extends State<NewsInfoScreen> with TickerProviderStat
                   );
                 }
               } else {
+                if (_isLoading) {
+                  setState(() {
+                    _isLoading = false;
+                  });
+                }
+
                 if (_isShowDialogNewsInfoError) {
                   _isShowDialogNewsInfoError = false;
                   _blindChickenNewsInfoShowDialogError.closeShowDialog();
@@ -159,6 +166,11 @@ class _NewsInfoScreenState extends State<NewsInfoScreen> with TickerProviderStat
                   }
                 }
               }
+            },
+            load: (value) {
+              setState(() {
+                _isLoading = true;
+              });
             },
             orElse: () {},
           );
@@ -225,123 +237,132 @@ class _NewsInfoScreenState extends State<NewsInfoScreen> with TickerProviderStat
                         Expanded(
                           child: Material(
                             color: BlindChickenColors.backgroundColor,
-                            child: TabBar.secondary(
-                              padding: EdgeInsets.zero,
-                              labelPadding: EdgeInsets.zero,
-                              indicatorPadding: EdgeInsets.zero,
-                              indicatorSize: TabBarIndicatorSize.label,
-                              controller: _tabController,
-                              onTap: (index) {
-                                setState(() {
-                                  _tabController.index = index;
-                                  // _selectedIndex = index;
-                                });
+                            child: IgnorePointer(
+                              ignoring: _isLoading,
+                              child: TabBar.secondary(
+                                padding: EdgeInsets.zero,
+                                labelPadding: EdgeInsets.zero,
+                                indicatorPadding: EdgeInsets.zero,
+                                indicatorSize: TabBarIndicatorSize.label,
+                                controller: _tabController,
+                                onTap: (index) {
+                                  setState(() {
+                                    _tabController.index = index;
+                                    // _selectedIndex = index;
+                                  });
 
-                                if (index == 0) {
-                                  context.read<NewsBloc>().add(const NewsEvent.getNews());
-                                  AppMetrica.reportEvent(
-                                      'Переход на страницу новостей из верхней панели навигации');
-                                } else if (index == 1) {
-                                  AppMetrica.reportEvent(
-                                      'Переход на страницу медиа из верхней панели навигации');
-                                } else if (index == 2) {
-                                  AppMetrica.reportEvent(
-                                      'Переход на страницу уведомлений из верхней панели навигации');
-                                }
-                              },
-                              tabs: <Widget>[
-                                Tab(
-                                  child: Row(
-                                    mainAxisAlignment: MainAxisAlignment.center,
-                                    children: [
-                                      Text(
-                                        'Новости',
-                                        style: Theme.of(context).textTheme.displayMedium?.copyWith(
-                                              fontWeight: _tabController.index == 0
-                                                  ? FontWeight.w700
-                                                  : null,
-                                            ),
-                                      ),
-                                      BlocBuilder<NewsBloc, NewsState>(
-                                        builder: (context, state) {
-                                          return state.maybeMap(
-                                            preloadDataCompleted: (initState) {
-                                              return _countBadges(
-                                                  initState.countBadgesNews, context);
-                                            },
-                                            load: (initState) {
-                                              return _countBadges(
-                                                  initState.countBadgesNews ?? 0, context);
-                                            },
-                                            orElse: () => SizedBox(),
-                                          );
-                                        },
-                                      )
-                                    ],
+                                  if (index == 0) {
+                                    context.read<NewsBloc>().add(const NewsEvent.getNews());
+                                    AppMetrica.reportEvent(
+                                        'Переход на страницу новостей из верхней панели навигации');
+                                  } else if (index == 1) {
+                                    AppMetrica.reportEvent(
+                                        'Переход на страницу медиа из верхней панели навигации');
+                                  } else if (index == 2) {
+                                    AppMetrica.reportEvent(
+                                        'Переход на страницу уведомлений из верхней панели навигации');
+                                  }
+                                },
+                                tabs: <Widget>[
+                                  Tab(
+                                    child: Row(
+                                      mainAxisAlignment: MainAxisAlignment.center,
+                                      children: [
+                                        Text(
+                                          'Новости',
+                                          style:
+                                              Theme.of(context).textTheme.displayMedium?.copyWith(
+                                                    fontWeight: _tabController.index == 0
+                                                        ? FontWeight.w700
+                                                        : null,
+                                                  ),
+                                        ),
+                                        BlocBuilder<NewsBloc, NewsState>(
+                                          builder: (context, state) {
+                                            return state.maybeMap(
+                                              preloadDataCompleted: (initState) {
+                                                return _countBadges(
+                                                    initState.countBadgesNews, context);
+                                              },
+                                              load: (initState) {
+                                                return _countBadges(
+                                                    initState.countBadgesNews ?? 0, context);
+                                              },
+                                              orElse: () => SizedBox(),
+                                            );
+                                          },
+                                        )
+                                      ],
+                                    ),
                                   ),
-                                ),
-                                Tab(
-                                  child: Row(
-                                    mainAxisAlignment: MainAxisAlignment.center,
-                                    children: [
-                                      Text(
-                                        'Медиа',
-                                        style: Theme.of(context).textTheme.displayMedium?.copyWith(
-                                              fontWeight: _tabController.index == 1
-                                                  ? FontWeight.w700
-                                                  : null,
-                                              fontSize: _tabController.index == 1 ? 13.8 : null,
-                                            ),
-                                      ),
-                                      BlocBuilder<NewsBloc, NewsState>(
-                                        builder: (context, state) {
-                                          return state.maybeMap(
-                                            preloadDataCompleted: (initState) {
-                                              return _countBadges(
-                                                  initState.countBadgesMedia, context);
-                                            },
-                                            load: (initState) {
-                                              return _countBadges(
-                                                  initState.countBadgesMedia ?? 0, context);
-                                            },
-                                            orElse: () => SizedBox(),
-                                          );
-                                        },
-                                      ),
-                                    ],
+                                  Tab(
+                                    child: Row(
+                                      mainAxisAlignment: MainAxisAlignment.center,
+                                      children: [
+                                        Text(
+                                          'Медиа',
+                                          style: Theme.of(context)
+                                              .textTheme
+                                              .displayMedium
+                                              ?.copyWith(
+                                                fontWeight: _tabController.index == 1
+                                                    ? FontWeight.w700
+                                                    : null,
+                                                fontSize: _tabController.index == 1 ? 13.8 : null,
+                                              ),
+                                        ),
+                                        BlocBuilder<NewsBloc, NewsState>(
+                                          builder: (context, state) {
+                                            return state.maybeMap(
+                                              preloadDataCompleted: (initState) {
+                                                return _countBadges(
+                                                    initState.countBadgesMedia, context);
+                                              },
+                                              load: (initState) {
+                                                return _countBadges(
+                                                    initState.countBadgesMedia ?? 0, context);
+                                              },
+                                              orElse: () => SizedBox(),
+                                            );
+                                          },
+                                        ),
+                                      ],
+                                    ),
                                   ),
-                                ),
-                                Tab(
-                                  child: Row(
-                                    mainAxisAlignment: MainAxisAlignment.center,
-                                    children: [
-                                      Text(
-                                        'Уведомления',
-                                        style: Theme.of(context).textTheme.displayMedium?.copyWith(
-                                              fontWeight: _tabController.index == 2
-                                                  ? FontWeight.w700
-                                                  : null,
-                                            ),
-                                      ),
-                                      BlocBuilder<NewsBloc, NewsState>(
-                                        builder: (context, state) {
-                                          return state.maybeMap(
-                                            preloadDataCompleted: (initState) {
-                                              return _countBadges(
-                                                  initState.countBadgesNotificatios, context);
-                                            },
-                                            load: (initState) {
-                                              return _countBadges(
-                                                  initState.countBadgesNotificatios ?? 0, context);
-                                            },
-                                            orElse: () => SizedBox(),
-                                          );
-                                        },
-                                      )
-                                    ],
+                                  Tab(
+                                    child: Row(
+                                      mainAxisAlignment: MainAxisAlignment.center,
+                                      children: [
+                                        Text(
+                                          'Уведомления',
+                                          style:
+                                              Theme.of(context).textTheme.displayMedium?.copyWith(
+                                                    fontWeight: _tabController.index == 2
+                                                        ? FontWeight.w700
+                                                        : null,
+                                                  ),
+                                        ),
+                                        BlocBuilder<NewsBloc, NewsState>(
+                                          builder: (context, state) {
+                                            return state.maybeMap(
+                                              preloadDataCompleted: (initState) {
+                                                return _countBadges(
+                                                    initState.countBadgesNotificatios, context);
+                                              },
+                                              load: (initState) {
+                                                return _countBadges(
+                                                    initState.countBadgesNotificatios ?? 0,
+                                                    context);
+                                              },
+                                              orElse: () => SizedBox(),
+                                            );
+                                          },
+                                        )
+                                      ],
+                                    ),
                                   ),
-                                ),
-                              ],
+                                ],
+                              ),
                             ),
                           ),
                         ),
