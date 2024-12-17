@@ -475,7 +475,9 @@ class _DashboardPageState extends State<DashboardPage> {
                         );
                         AppMetrica.reportEvent('Избранное');
                       } else if (index == 4) {
-                        context.read<NewsBloc>().add(const NewsEvent.getNews());
+                        Timer(const Duration(milliseconds: 150), () {
+                          context.read<NewsBloc>().add(const NewsEvent.getNews());
+                        });
                         context.navigateTo(
                           NewsRoute(children: [
                             NewsInfoRoute(

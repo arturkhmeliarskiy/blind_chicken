@@ -25,6 +25,7 @@ class NewsBetterVideoPlayer extends StatefulWidget {
 
 class NewsBetterVideoPlayerState extends State<NewsBetterVideoPlayer> {
   late BetterPlayerController _controller;
+  double _aspectRatio = 1;
 
   @override
   void didChangeDependencies() {
@@ -43,6 +44,7 @@ class NewsBetterVideoPlayerState extends State<NewsBetterVideoPlayer> {
         looping: true,
         autoPlay: true,
         rotation: 1,
+        aspectRatio: _aspectRatio,
       ),
       betterPlayerDataSource: BetterPlayerDataSource(
         BetterPlayerDataSourceType.network,
@@ -61,12 +63,19 @@ class NewsBetterVideoPlayerState extends State<NewsBetterVideoPlayer> {
     _controller.addEventsListener((BetterPlayerEvent event) {
       if (event.betterPlayerEventType == BetterPlayerEventType.initialized) {
         widget.onAspectRatio(_controller.videoPlayerController?.value.aspectRatio ?? 0);
+        _aspectRatio = _controller.videoPlayerController?.value.aspectRatio ?? 0;
         _controller
             .setOverriddenAspectRatio(_controller.videoPlayerController?.value.aspectRatio ?? 0);
 
         _controller.play();
       }
     });
+  }
+
+  @override
+  void dispose() {
+    _controller.dispose();
+    super.dispose();
   }
 
   @override
@@ -86,7 +95,7 @@ class NewsBetterVideoPlayerState extends State<NewsBetterVideoPlayer> {
         } else {
           // Pause the video if it's not the active video or is less than 50% visible
           if (_controller.videoPlayerController?.value.initialized ?? false) {
-            _controller.dispose();
+            _controller.pause();
             log("Video paused", name: "VideoState");
           }
         }
@@ -120,11 +129,5 @@ class NewsBetterVideoPlayerState extends State<NewsBetterVideoPlayer> {
               ),
             ),
     );
-  }
-
-  @override
-  void dispose() {
-    _controller.dispose();
-    super.dispose();
   }
 }

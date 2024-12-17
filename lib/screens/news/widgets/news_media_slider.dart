@@ -1,7 +1,6 @@
 import 'dart:developer';
 
-import 'package:better_player/better_player.dart';
-import 'package:blind_chicken/screens/news/widgets/news_video_player_slider.dart';
+import 'package:blind_chicken/screens/news/widgets/news_better_video_player.dart';
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
@@ -35,18 +34,14 @@ class NewsMediaSlider extends StatefulWidget {
 
 class _NewsMediaSliderState extends State<NewsMediaSlider> {
   final PageController _scrollController = PageController();
-
   int _indexItem = 0;
   double _aspectRatio = 1;
+  final Map<int, double> _videosAspectRatio = {};
 
   @override
   void initState() {
     _scrollController.addListener(_scrollListener);
-    if (widget.videos.isNotEmpty) {
-      setState(() {
-        _aspectRatio = getVideoAspectRatio(widget.videos.first);
-      });
-    } else {
+    if (widget.videos.isEmpty) {
       getImageAspectRatio(widget.images.first).then((value) {
         setState(() {
           _aspectRatio = value;
@@ -59,7 +54,7 @@ class _NewsMediaSliderState extends State<NewsMediaSlider> {
 
   _scrollListener() {
     setState(() {
-      if (_scrollController.position.pixels < -80) {
+      if (_scrollController.position.pixels < -160) {
         widget.goBotton();
       }
 
@@ -70,18 +65,6 @@ class _NewsMediaSliderState extends State<NewsMediaSlider> {
   Future<double> getImageAspectRatio(String url) async {
     ImageInfo imageInfo = await ImageService().getImageUrlInfo(url);
     return imageInfo.image.width / imageInfo.image.height;
-  }
-
-  double getVideoAspectRatio(String url) {
-    BetterPlayerController controller = BetterPlayerController(
-      BetterPlayerConfiguration(),
-      betterPlayerDataSource: BetterPlayerDataSource(
-        BetterPlayerDataSourceType.network,
-        url,
-      ),
-    );
-
-    return controller.videoPlayerController?.value.aspectRatio ?? 0;
   }
 
   @override
@@ -105,7 +88,7 @@ class _NewsMediaSliderState extends State<NewsMediaSlider> {
             onPageChanged: (value) {
               if (widget.videos.isNotEmpty && widget.videos.length > value) {
                 setState(() {
-                  _aspectRatio = getVideoAspectRatio(widget.videos[value]);
+                  _aspectRatio = _videosAspectRatio[value] ?? 0;
                 });
               } else {
                 getImageAspectRatio(widget.images[value - 1]).then((item) {
@@ -117,7 +100,7 @@ class _NewsMediaSliderState extends State<NewsMediaSlider> {
             },
             itemBuilder: (context, index) {
               if (widget.videos.isNotEmpty && widget.videos.length > index) {
-                return NewsVideoPlayerSlider(
+                return NewsBetterVideoPlayer(
                   url: widget.videos[index],
                   aspectRatio: _aspectRatio,
                   onTap: () {
@@ -126,6 +109,7 @@ class _NewsMediaSliderState extends State<NewsMediaSlider> {
                   onAspectRatio: (value) {
                     setState(() {
                       _aspectRatio = value;
+                      _videosAspectRatio[index] = value;
                     });
                   },
                 );

@@ -46,7 +46,7 @@ class _NewsSliderState extends State<NewsSlider> {
 
   _scrollListener() {
     setState(() {
-      if (_scrollController.position.pixels < -80) {
+      if (_scrollController.position.pixels < -160) {
         widget.goBotton();
       }
 
