@@ -73,12 +73,6 @@ class NewsBetterVideoPlayerState extends State<NewsBetterVideoPlayer> {
   }
 
   @override
-  void dispose() {
-    _controller.dispose();
-    super.dispose();
-  }
-
-  @override
   Widget build(BuildContext context) {
     return VisibilityDetector(
       key: Key('video_${widget.url}'),
@@ -129,5 +123,11 @@ class NewsBetterVideoPlayerState extends State<NewsBetterVideoPlayer> {
               ),
             ),
     );
+  }
+
+  @override
+  void dispose() {
+    _controller.dispose();
+    super.dispose();
   }
 }
