@@ -19,7 +19,7 @@ mixin _$NewsEvent {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() init,
-    required TResult Function() getNews,
+    required TResult Function(bool isGoBack) getNews,
     required TResult Function(
             String id, bool? isNotification, String? messageId)
         getNewsDescriptionInfo,
@@ -44,7 +44,7 @@ mixin _$NewsEvent {
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? init,
-    TResult? Function()? getNews,
+    TResult? Function(bool isGoBack)? getNews,
     TResult? Function(String id, bool? isNotification, String? messageId)?
         getNewsDescriptionInfo,
     TResult? Function()? getMedia,
@@ -66,7 +66,7 @@ mixin _$NewsEvent {
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? init,
-    TResult Function()? getNews,
+    TResult Function(bool isGoBack)? getNews,
     TResult Function(String id, bool? isNotification, String? messageId)?
         getNewsDescriptionInfo,
     TResult Function()? getMedia,
@@ -221,7 +221,7 @@ class _$InitNewsEventImpl implements InitNewsEvent {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() init,
-    required TResult Function() getNews,
+    required TResult Function(bool isGoBack) getNews,
     required TResult Function(
             String id, bool? isNotification, String? messageId)
         getNewsDescriptionInfo,
@@ -249,7 +249,7 @@ class _$InitNewsEventImpl implements InitNewsEvent {
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? init,
-    TResult? Function()? getNews,
+    TResult? Function(bool isGoBack)? getNews,
     TResult? Function(String id, bool? isNotification, String? messageId)?
         getNewsDescriptionInfo,
     TResult? Function()? getMedia,
@@ -274,7 +274,7 @@ class _$InitNewsEventImpl implements InitNewsEvent {
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? init,
-    TResult Function()? getNews,
+    TResult Function(bool isGoBack)? getNews,
     TResult Function(String id, bool? isNotification, String? messageId)?
         getNewsDescriptionInfo,
     TResult Function()? getMedia,
@@ -392,6 +392,8 @@ abstract class _$$GetNewsEventImplCopyWith<$Res> {
   factory _$$GetNewsEventImplCopyWith(
           _$GetNewsEventImpl value, $Res Function(_$GetNewsEventImpl) then) =
       __$$GetNewsEventImplCopyWithImpl<$Res>;
+  @useResult
+  $Res call({bool isGoBack});
 }
 
 /// @nodoc
@@ -404,32 +406,58 @@ class __$$GetNewsEventImplCopyWithImpl<$Res>
 
   /// Create a copy of NewsEvent
   /// with the given fields replaced by the non-null parameter values.
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? isGoBack = null,
+  }) {
+    return _then(_$GetNewsEventImpl(
+      isGoBack: null == isGoBack
+          ? _value.isGoBack
+          : isGoBack // ignore: cast_nullable_to_non_nullable
+              as bool,
+    ));
+  }
 }
 
 /// @nodoc
 
 class _$GetNewsEventImpl implements GetNewsEvent {
-  const _$GetNewsEventImpl();
+  const _$GetNewsEventImpl({required this.isGoBack});
+
+  @override
+  final bool isGoBack;
 
   @override
   String toString() {
-    return 'NewsEvent.getNews()';
+    return 'NewsEvent.getNews(isGoBack: $isGoBack)';
   }
 
   @override
   bool operator ==(Object other) {
     return identical(this, other) ||
-        (other.runtimeType == runtimeType && other is _$GetNewsEventImpl);
+        (other.runtimeType == runtimeType &&
+            other is _$GetNewsEventImpl &&
+            (identical(other.isGoBack, isGoBack) ||
+                other.isGoBack == isGoBack));
   }
 
   @override
-  int get hashCode => runtimeType.hashCode;
+  int get hashCode => Object.hash(runtimeType, isGoBack);
+
+  /// Create a copy of NewsEvent
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  @override
+  @pragma('vm:prefer-inline')
+  _$$GetNewsEventImplCopyWith<_$GetNewsEventImpl> get copyWith =>
+      __$$GetNewsEventImplCopyWithImpl<_$GetNewsEventImpl>(this, _$identity);
 
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() init,
-    required TResult Function() getNews,
+    required TResult Function(bool isGoBack) getNews,
     required TResult Function(
             String id, bool? isNotification, String? messageId)
         getNewsDescriptionInfo,
@@ -450,14 +478,14 @@ class _$GetNewsEventImpl implements GetNewsEvent {
     required TResult Function(bool isButtonTop) checkButtonTop,
     required TResult Function(bool isDisabledVideo) checkiDisabledVideo,
   }) {
-    return getNews();
+    return getNews(isGoBack);
   }
 
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? init,
-    TResult? Function()? getNews,
+    TResult? Function(bool isGoBack)? getNews,
     TResult? Function(String id, bool? isNotification, String? messageId)?
         getNewsDescriptionInfo,
     TResult? Function()? getMedia,
@@ -475,14 +503,14 @@ class _$GetNewsEventImpl implements GetNewsEvent {
     TResult? Function(bool isButtonTop)? checkButtonTop,
     TResult? Function(bool isDisabledVideo)? checkiDisabledVideo,
   }) {
-    return getNews?.call();
+    return getNews?.call(isGoBack);
   }
 
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? init,
-    TResult Function()? getNews,
+    TResult Function(bool isGoBack)? getNews,
     TResult Function(String id, bool? isNotification, String? messageId)?
         getNewsDescriptionInfo,
     TResult Function()? getMedia,
@@ -502,7 +530,7 @@ class _$GetNewsEventImpl implements GetNewsEvent {
     required TResult orElse(),
   }) {
     if (getNews != null) {
-      return getNews();
+      return getNews(isGoBack);
     }
     return orElse();
   }
@@ -592,7 +620,16 @@ class _$GetNewsEventImpl implements GetNewsEvent {
 }
 
 abstract class GetNewsEvent implements NewsEvent {
-  const factory GetNewsEvent() = _$GetNewsEventImpl;
+  const factory GetNewsEvent({required final bool isGoBack}) =
+      _$GetNewsEventImpl;
+
+  bool get isGoBack;
+
+  /// Create a copy of NewsEvent
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  _$$GetNewsEventImplCopyWith<_$GetNewsEventImpl> get copyWith =>
+      throw _privateConstructorUsedError;
 }
 
 /// @nodoc
@@ -688,7 +725,7 @@ class _$GetNewsDescriptionInfoNewsEventImpl
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() init,
-    required TResult Function() getNews,
+    required TResult Function(bool isGoBack) getNews,
     required TResult Function(
             String id, bool? isNotification, String? messageId)
         getNewsDescriptionInfo,
@@ -716,7 +753,7 @@ class _$GetNewsDescriptionInfoNewsEventImpl
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? init,
-    TResult? Function()? getNews,
+    TResult? Function(bool isGoBack)? getNews,
     TResult? Function(String id, bool? isNotification, String? messageId)?
         getNewsDescriptionInfo,
     TResult? Function()? getMedia,
@@ -741,7 +778,7 @@ class _$GetNewsDescriptionInfoNewsEventImpl
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? init,
-    TResult Function()? getNews,
+    TResult Function(bool isGoBack)? getNews,
     TResult Function(String id, bool? isNotification, String? messageId)?
         getNewsDescriptionInfo,
     TResult Function()? getMedia,
@@ -910,7 +947,7 @@ class _$GetMediaEventImpl implements GetMediaEvent {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() init,
-    required TResult Function() getNews,
+    required TResult Function(bool isGoBack) getNews,
     required TResult Function(
             String id, bool? isNotification, String? messageId)
         getNewsDescriptionInfo,
@@ -938,7 +975,7 @@ class _$GetMediaEventImpl implements GetMediaEvent {
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? init,
-    TResult? Function()? getNews,
+    TResult? Function(bool isGoBack)? getNews,
     TResult? Function(String id, bool? isNotification, String? messageId)?
         getNewsDescriptionInfo,
     TResult? Function()? getMedia,
@@ -963,7 +1000,7 @@ class _$GetMediaEventImpl implements GetMediaEvent {
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? init,
-    TResult Function()? getNews,
+    TResult Function(bool isGoBack)? getNews,
     TResult Function(String id, bool? isNotification, String? messageId)?
         getNewsDescriptionInfo,
     TResult Function()? getMedia,
@@ -1170,7 +1207,7 @@ class _$GetMediaDescriptionInfoNewsEventImpl
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() init,
-    required TResult Function() getNews,
+    required TResult Function(bool isGoBack) getNews,
     required TResult Function(
             String id, bool? isNotification, String? messageId)
         getNewsDescriptionInfo,
@@ -1198,7 +1235,7 @@ class _$GetMediaDescriptionInfoNewsEventImpl
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? init,
-    TResult? Function()? getNews,
+    TResult? Function(bool isGoBack)? getNews,
     TResult? Function(String id, bool? isNotification, String? messageId)?
         getNewsDescriptionInfo,
     TResult? Function()? getMedia,
@@ -1223,7 +1260,7 @@ class _$GetMediaDescriptionInfoNewsEventImpl
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? init,
-    TResult Function()? getNews,
+    TResult Function(bool isGoBack)? getNews,
     TResult Function(String id, bool? isNotification, String? messageId)?
         getNewsDescriptionInfo,
     TResult Function()? getMedia,
@@ -1394,7 +1431,7 @@ class _$GetNotificationsEventImpl implements GetNotificationsEvent {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() init,
-    required TResult Function() getNews,
+    required TResult Function(bool isGoBack) getNews,
     required TResult Function(
             String id, bool? isNotification, String? messageId)
         getNewsDescriptionInfo,
@@ -1422,7 +1459,7 @@ class _$GetNotificationsEventImpl implements GetNotificationsEvent {
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? init,
-    TResult? Function()? getNews,
+    TResult? Function(bool isGoBack)? getNews,
     TResult? Function(String id, bool? isNotification, String? messageId)?
         getNewsDescriptionInfo,
     TResult? Function()? getMedia,
@@ -1447,7 +1484,7 @@ class _$GetNotificationsEventImpl implements GetNotificationsEvent {
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? init,
-    TResult Function()? getNews,
+    TResult Function(bool isGoBack)? getNews,
     TResult Function(String id, bool? isNotification, String? messageId)?
         getNewsDescriptionInfo,
     TResult Function()? getMedia,
@@ -1655,7 +1692,7 @@ class _$GetNotificationDescriptionInfoNewsEventImpl
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() init,
-    required TResult Function() getNews,
+    required TResult Function(bool isGoBack) getNews,
     required TResult Function(
             String id, bool? isNotification, String? messageId)
         getNewsDescriptionInfo,
@@ -1683,7 +1720,7 @@ class _$GetNotificationDescriptionInfoNewsEventImpl
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? init,
-    TResult? Function()? getNews,
+    TResult? Function(bool isGoBack)? getNews,
     TResult? Function(String id, bool? isNotification, String? messageId)?
         getNewsDescriptionInfo,
     TResult? Function()? getMedia,
@@ -1708,7 +1745,7 @@ class _$GetNotificationDescriptionInfoNewsEventImpl
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? init,
-    TResult Function()? getNews,
+    TResult Function(bool isGoBack)? getNews,
     TResult Function(String id, bool? isNotification, String? messageId)?
         getNewsDescriptionInfo,
     TResult Function()? getMedia,
@@ -1880,7 +1917,7 @@ class _$PaginationNewsNewsEventImpl implements PaginationNewsNewsEvent {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() init,
-    required TResult Function() getNews,
+    required TResult Function(bool isGoBack) getNews,
     required TResult Function(
             String id, bool? isNotification, String? messageId)
         getNewsDescriptionInfo,
@@ -1908,7 +1945,7 @@ class _$PaginationNewsNewsEventImpl implements PaginationNewsNewsEvent {
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? init,
-    TResult? Function()? getNews,
+    TResult? Function(bool isGoBack)? getNews,
     TResult? Function(String id, bool? isNotification, String? messageId)?
         getNewsDescriptionInfo,
     TResult? Function()? getMedia,
@@ -1933,7 +1970,7 @@ class _$PaginationNewsNewsEventImpl implements PaginationNewsNewsEvent {
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? init,
-    TResult Function()? getNews,
+    TResult Function(bool isGoBack)? getNews,
     TResult Function(String id, bool? isNotification, String? messageId)?
         getNewsDescriptionInfo,
     TResult Function()? getMedia,
@@ -2091,7 +2128,7 @@ class _$PaginationMediasNewsEventImpl implements PaginationMediasNewsEvent {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() init,
-    required TResult Function() getNews,
+    required TResult Function(bool isGoBack) getNews,
     required TResult Function(
             String id, bool? isNotification, String? messageId)
         getNewsDescriptionInfo,
@@ -2119,7 +2156,7 @@ class _$PaginationMediasNewsEventImpl implements PaginationMediasNewsEvent {
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? init,
-    TResult? Function()? getNews,
+    TResult? Function(bool isGoBack)? getNews,
     TResult? Function(String id, bool? isNotification, String? messageId)?
         getNewsDescriptionInfo,
     TResult? Function()? getMedia,
@@ -2144,7 +2181,7 @@ class _$PaginationMediasNewsEventImpl implements PaginationMediasNewsEvent {
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? init,
-    TResult Function()? getNews,
+    TResult Function(bool isGoBack)? getNews,
     TResult Function(String id, bool? isNotification, String? messageId)?
         getNewsDescriptionInfo,
     TResult Function()? getMedia,
@@ -2304,7 +2341,7 @@ class _$PaginationNotificationsNewsEventImpl
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() init,
-    required TResult Function() getNews,
+    required TResult Function(bool isGoBack) getNews,
     required TResult Function(
             String id, bool? isNotification, String? messageId)
         getNewsDescriptionInfo,
@@ -2332,7 +2369,7 @@ class _$PaginationNotificationsNewsEventImpl
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? init,
-    TResult? Function()? getNews,
+    TResult? Function(bool isGoBack)? getNews,
     TResult? Function(String id, bool? isNotification, String? messageId)?
         getNewsDescriptionInfo,
     TResult? Function()? getMedia,
@@ -2357,7 +2394,7 @@ class _$PaginationNotificationsNewsEventImpl
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? init,
-    TResult Function()? getNews,
+    TResult Function(bool isGoBack)? getNews,
     TResult Function(String id, bool? isNotification, String? messageId)?
         getNewsDescriptionInfo,
     TResult Function()? getMedia,
@@ -2516,7 +2553,7 @@ class _$GoBackNewsInfoNewsEventImpl implements GoBackNewsInfoNewsEvent {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() init,
-    required TResult Function() getNews,
+    required TResult Function(bool isGoBack) getNews,
     required TResult Function(
             String id, bool? isNotification, String? messageId)
         getNewsDescriptionInfo,
@@ -2544,7 +2581,7 @@ class _$GoBackNewsInfoNewsEventImpl implements GoBackNewsInfoNewsEvent {
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? init,
-    TResult? Function()? getNews,
+    TResult? Function(bool isGoBack)? getNews,
     TResult? Function(String id, bool? isNotification, String? messageId)?
         getNewsDescriptionInfo,
     TResult? Function()? getMedia,
@@ -2569,7 +2606,7 @@ class _$GoBackNewsInfoNewsEventImpl implements GoBackNewsInfoNewsEvent {
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? init,
-    TResult Function()? getNews,
+    TResult Function(bool isGoBack)? getNews,
     TResult Function(String id, bool? isNotification, String? messageId)?
         getNewsDescriptionInfo,
     TResult Function()? getMedia,
@@ -2761,7 +2798,7 @@ class _$UpdateReadNewsEventImpl implements UpdateReadNewsEvent {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() init,
-    required TResult Function() getNews,
+    required TResult Function(bool isGoBack) getNews,
     required TResult Function(
             String id, bool? isNotification, String? messageId)
         getNewsDescriptionInfo,
@@ -2789,7 +2826,7 @@ class _$UpdateReadNewsEventImpl implements UpdateReadNewsEvent {
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? init,
-    TResult? Function()? getNews,
+    TResult? Function(bool isGoBack)? getNews,
     TResult? Function(String id, bool? isNotification, String? messageId)?
         getNewsDescriptionInfo,
     TResult? Function()? getMedia,
@@ -2814,7 +2851,7 @@ class _$UpdateReadNewsEventImpl implements UpdateReadNewsEvent {
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? init,
-    TResult Function()? getNews,
+    TResult Function(bool isGoBack)? getNews,
     TResult Function(String id, bool? isNotification, String? messageId)?
         getNewsDescriptionInfo,
     TResult Function()? getMedia,
@@ -2982,7 +3019,7 @@ class _$CheckingReadNewsEventImpl implements CheckingReadNewsEvent {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() init,
-    required TResult Function() getNews,
+    required TResult Function(bool isGoBack) getNews,
     required TResult Function(
             String id, bool? isNotification, String? messageId)
         getNewsDescriptionInfo,
@@ -3010,7 +3047,7 @@ class _$CheckingReadNewsEventImpl implements CheckingReadNewsEvent {
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? init,
-    TResult? Function()? getNews,
+    TResult? Function(bool isGoBack)? getNews,
     TResult? Function(String id, bool? isNotification, String? messageId)?
         getNewsDescriptionInfo,
     TResult? Function()? getMedia,
@@ -3035,7 +3072,7 @@ class _$CheckingReadNewsEventImpl implements CheckingReadNewsEvent {
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? init,
-    TResult Function()? getNews,
+    TResult Function(bool isGoBack)? getNews,
     TResult Function(String id, bool? isNotification, String? messageId)?
         getNewsDescriptionInfo,
     TResult Function()? getMedia,
@@ -3221,7 +3258,7 @@ class _$CheckButtonTopNewsEventImpl implements CheckButtonTopNewsEvent {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() init,
-    required TResult Function() getNews,
+    required TResult Function(bool isGoBack) getNews,
     required TResult Function(
             String id, bool? isNotification, String? messageId)
         getNewsDescriptionInfo,
@@ -3249,7 +3286,7 @@ class _$CheckButtonTopNewsEventImpl implements CheckButtonTopNewsEvent {
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? init,
-    TResult? Function()? getNews,
+    TResult? Function(bool isGoBack)? getNews,
     TResult? Function(String id, bool? isNotification, String? messageId)?
         getNewsDescriptionInfo,
     TResult? Function()? getMedia,
@@ -3274,7 +3311,7 @@ class _$CheckButtonTopNewsEventImpl implements CheckButtonTopNewsEvent {
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? init,
-    TResult Function()? getNews,
+    TResult Function(bool isGoBack)? getNews,
     TResult Function(String id, bool? isNotification, String? messageId)?
         getNewsDescriptionInfo,
     TResult Function()? getMedia,
@@ -3469,7 +3506,7 @@ class _$CheckDisabledVideoNewsEventImpl implements CheckDisabledVideoNewsEvent {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() init,
-    required TResult Function() getNews,
+    required TResult Function(bool isGoBack) getNews,
     required TResult Function(
             String id, bool? isNotification, String? messageId)
         getNewsDescriptionInfo,
@@ -3497,7 +3534,7 @@ class _$CheckDisabledVideoNewsEventImpl implements CheckDisabledVideoNewsEvent {
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? init,
-    TResult? Function()? getNews,
+    TResult? Function(bool isGoBack)? getNews,
     TResult? Function(String id, bool? isNotification, String? messageId)?
         getNewsDescriptionInfo,
     TResult? Function()? getMedia,
@@ -3522,7 +3559,7 @@ class _$CheckDisabledVideoNewsEventImpl implements CheckDisabledVideoNewsEvent {
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? init,
-    TResult Function()? getNews,
+    TResult Function(bool isGoBack)? getNews,
     TResult Function(String id, bool? isNotification, String? messageId)?
         getNewsDescriptionInfo,
     TResult Function()? getMedia,
@@ -3677,6 +3714,7 @@ mixin _$NewsState {
             String? typeError,
             String? errorMessage,
             bool? isError,
+            bool? isGoBack,
             bool? isLoadPagination,
             bool? isLoadErrorButton,
             bool? isDisabledVideo)
@@ -3713,6 +3751,7 @@ mixin _$NewsState {
             String? typeError,
             String? errorMessage,
             bool? isError,
+            bool? isGoBack,
             bool? isLoadPagination,
             bool? isLoadErrorButton,
             bool? isDisabledVideo)?
@@ -3749,6 +3788,7 @@ mixin _$NewsState {
             String? typeError,
             String? errorMessage,
             bool? isError,
+            bool? isGoBack,
             bool? isLoadPagination,
             bool? isLoadErrorButton,
             bool? isDisabledVideo)?
@@ -3881,6 +3921,7 @@ class _$InitNewsStateImpl implements InitNewsState {
             String? typeError,
             String? errorMessage,
             bool? isError,
+            bool? isGoBack,
             bool? isLoadPagination,
             bool? isLoadErrorButton,
             bool? isDisabledVideo)
@@ -3920,6 +3961,7 @@ class _$InitNewsStateImpl implements InitNewsState {
             String? typeError,
             String? errorMessage,
             bool? isError,
+            bool? isGoBack,
             bool? isLoadPagination,
             bool? isLoadErrorButton,
             bool? isDisabledVideo)?
@@ -3959,6 +4001,7 @@ class _$InitNewsStateImpl implements InitNewsState {
             String? typeError,
             String? errorMessage,
             bool? isError,
+            bool? isGoBack,
             bool? isLoadPagination,
             bool? isLoadErrorButton,
             bool? isDisabledVideo)?
@@ -4157,6 +4200,7 @@ class _$LoadingNewsStateImpl implements LoadingNewsState {
             String? typeError,
             String? errorMessage,
             bool? isError,
+            bool? isGoBack,
             bool? isLoadPagination,
             bool? isLoadErrorButton,
             bool? isDisabledVideo)
@@ -4197,6 +4241,7 @@ class _$LoadingNewsStateImpl implements LoadingNewsState {
             String? typeError,
             String? errorMessage,
             bool? isError,
+            bool? isGoBack,
             bool? isLoadPagination,
             bool? isLoadErrorButton,
             bool? isDisabledVideo)?
@@ -4237,6 +4282,7 @@ class _$LoadingNewsStateImpl implements LoadingNewsState {
             String? typeError,
             String? errorMessage,
             bool? isError,
+            bool? isGoBack,
             bool? isLoadPagination,
             bool? isLoadErrorButton,
             bool? isDisabledVideo)?
@@ -4388,6 +4434,7 @@ class _$LoadPaginationNewsStateImpl implements LoadPaginationNewsState {
             String? typeError,
             String? errorMessage,
             bool? isError,
+            bool? isGoBack,
             bool? isLoadPagination,
             bool? isLoadErrorButton,
             bool? isDisabledVideo)
@@ -4427,6 +4474,7 @@ class _$LoadPaginationNewsStateImpl implements LoadPaginationNewsState {
             String? typeError,
             String? errorMessage,
             bool? isError,
+            bool? isGoBack,
             bool? isLoadPagination,
             bool? isLoadErrorButton,
             bool? isDisabledVideo)?
@@ -4466,6 +4514,7 @@ class _$LoadPaginationNewsStateImpl implements LoadPaginationNewsState {
             String? typeError,
             String? errorMessage,
             bool? isError,
+            bool? isGoBack,
             bool? isLoadPagination,
             bool? isLoadErrorButton,
             bool? isDisabledVideo)?
@@ -4601,6 +4650,7 @@ class _$LoadingErrorButtonNewsStateImpl implements LoadingErrorButtonNewsState {
             String? typeError,
             String? errorMessage,
             bool? isError,
+            bool? isGoBack,
             bool? isLoadPagination,
             bool? isLoadErrorButton,
             bool? isDisabledVideo)
@@ -4640,6 +4690,7 @@ class _$LoadingErrorButtonNewsStateImpl implements LoadingErrorButtonNewsState {
             String? typeError,
             String? errorMessage,
             bool? isError,
+            bool? isGoBack,
             bool? isLoadPagination,
             bool? isLoadErrorButton,
             bool? isDisabledVideo)?
@@ -4679,6 +4730,7 @@ class _$LoadingErrorButtonNewsStateImpl implements LoadingErrorButtonNewsState {
             String? typeError,
             String? errorMessage,
             bool? isError,
+            bool? isGoBack,
             bool? isLoadPagination,
             bool? isLoadErrorButton,
             bool? isDisabledVideo)?
@@ -4841,6 +4893,7 @@ class _$ErrorNewsStateImpl implements ErrorNewsState {
             String? typeError,
             String? errorMessage,
             bool? isError,
+            bool? isGoBack,
             bool? isLoadPagination,
             bool? isLoadErrorButton,
             bool? isDisabledVideo)
@@ -4880,6 +4933,7 @@ class _$ErrorNewsStateImpl implements ErrorNewsState {
             String? typeError,
             String? errorMessage,
             bool? isError,
+            bool? isGoBack,
             bool? isLoadPagination,
             bool? isLoadErrorButton,
             bool? isDisabledVideo)?
@@ -4919,6 +4973,7 @@ class _$ErrorNewsStateImpl implements ErrorNewsState {
             String? typeError,
             String? errorMessage,
             bool? isError,
+            bool? isGoBack,
             bool? isLoadPagination,
             bool? isLoadErrorButton,
             bool? isDisabledVideo)?
@@ -5019,6 +5074,7 @@ abstract class _$$PreloadDataCompletedNewsStateImplCopyWith<$Res> {
       String? typeError,
       String? errorMessage,
       bool? isError,
+      bool? isGoBack,
       bool? isLoadPagination,
       bool? isLoadErrorButton,
       bool? isDisabledVideo});
@@ -5065,6 +5121,7 @@ class __$$PreloadDataCompletedNewsStateImplCopyWithImpl<$Res>
     Object? typeError = freezed,
     Object? errorMessage = freezed,
     Object? isError = freezed,
+    Object? isGoBack = freezed,
     Object? isLoadPagination = freezed,
     Object? isLoadErrorButton = freezed,
     Object? isDisabledVideo = freezed,
@@ -5149,6 +5206,10 @@ class __$$PreloadDataCompletedNewsStateImplCopyWithImpl<$Res>
       isError: freezed == isError
           ? _value.isError
           : isError // ignore: cast_nullable_to_non_nullable
+              as bool?,
+      isGoBack: freezed == isGoBack
+          ? _value.isGoBack
+          : isGoBack // ignore: cast_nullable_to_non_nullable
               as bool?,
       isLoadPagination: freezed == isLoadPagination
           ? _value.isLoadPagination
@@ -5265,6 +5326,7 @@ class _$PreloadDataCompletedNewsStateImpl
       this.typeError,
       this.errorMessage,
       this.isError,
+      this.isGoBack,
       this.isLoadPagination,
       this.isLoadErrorButton,
       this.isDisabledVideo})
@@ -5317,6 +5379,8 @@ class _$PreloadDataCompletedNewsStateImpl
   @override
   final bool? isError;
   @override
+  final bool? isGoBack;
+  @override
   final bool? isLoadPagination;
   @override
   final bool? isLoadErrorButton;
@@ -5325,7 +5389,7 @@ class _$PreloadDataCompletedNewsStateImpl
 
   @override
   String toString() {
-    return 'NewsState.preloadDataCompleted(news: $news, media: $media, notificatios: $notificatios, offsetNews: $offsetNews, offsetMedia: $offsetMedia, offsetNotificatios: $offsetNotificatios, listNewsPath: $listNewsPath, isUpdateVersionApp: $isUpdateVersionApp, isNotification: $isNotification, countBadgesTotal: $countBadgesTotal, countBadgesNews: $countBadgesNews, countBadgesMedia: $countBadgesMedia, countBadgesNotificatios: $countBadgesNotificatios, isButtonTop: $isButtonTop, oneNews: $oneNews, oneMedia: $oneMedia, oneNotification: $oneNotification, typeError: $typeError, errorMessage: $errorMessage, isError: $isError, isLoadPagination: $isLoadPagination, isLoadErrorButton: $isLoadErrorButton, isDisabledVideo: $isDisabledVideo)';
+    return 'NewsState.preloadDataCompleted(news: $news, media: $media, notificatios: $notificatios, offsetNews: $offsetNews, offsetMedia: $offsetMedia, offsetNotificatios: $offsetNotificatios, listNewsPath: $listNewsPath, isUpdateVersionApp: $isUpdateVersionApp, isNotification: $isNotification, countBadgesTotal: $countBadgesTotal, countBadgesNews: $countBadgesNews, countBadgesMedia: $countBadgesMedia, countBadgesNotificatios: $countBadgesNotificatios, isButtonTop: $isButtonTop, oneNews: $oneNews, oneMedia: $oneMedia, oneNotification: $oneNotification, typeError: $typeError, errorMessage: $errorMessage, isError: $isError, isGoBack: $isGoBack, isLoadPagination: $isLoadPagination, isLoadErrorButton: $isLoadErrorButton, isDisabledVideo: $isDisabledVideo)';
   }
 
   @override
@@ -5370,6 +5434,8 @@ class _$PreloadDataCompletedNewsStateImpl
             (identical(other.errorMessage, errorMessage) ||
                 other.errorMessage == errorMessage) &&
             (identical(other.isError, isError) || other.isError == isError) &&
+            (identical(other.isGoBack, isGoBack) ||
+                other.isGoBack == isGoBack) &&
             (identical(other.isLoadPagination, isLoadPagination) ||
                 other.isLoadPagination == isLoadPagination) &&
             (identical(other.isLoadErrorButton, isLoadErrorButton) ||
@@ -5401,6 +5467,7 @@ class _$PreloadDataCompletedNewsStateImpl
         typeError,
         errorMessage,
         isError,
+        isGoBack,
         isLoadPagination,
         isLoadErrorButton,
         isDisabledVideo
@@ -5447,6 +5514,7 @@ class _$PreloadDataCompletedNewsStateImpl
             String? typeError,
             String? errorMessage,
             bool? isError,
+            bool? isGoBack,
             bool? isLoadPagination,
             bool? isLoadErrorButton,
             bool? isDisabledVideo)
@@ -5473,6 +5541,7 @@ class _$PreloadDataCompletedNewsStateImpl
         typeError,
         errorMessage,
         isError,
+        isGoBack,
         isLoadPagination,
         isLoadErrorButton,
         isDisabledVideo);
@@ -5509,6 +5578,7 @@ class _$PreloadDataCompletedNewsStateImpl
             String? typeError,
             String? errorMessage,
             bool? isError,
+            bool? isGoBack,
             bool? isLoadPagination,
             bool? isLoadErrorButton,
             bool? isDisabledVideo)?
@@ -5535,6 +5605,7 @@ class _$PreloadDataCompletedNewsStateImpl
         typeError,
         errorMessage,
         isError,
+        isGoBack,
         isLoadPagination,
         isLoadErrorButton,
         isDisabledVideo);
@@ -5571,6 +5642,7 @@ class _$PreloadDataCompletedNewsStateImpl
             String? typeError,
             String? errorMessage,
             bool? isError,
+            bool? isGoBack,
             bool? isLoadPagination,
             bool? isLoadErrorButton,
             bool? isDisabledVideo)?
@@ -5599,6 +5671,7 @@ class _$PreloadDataCompletedNewsStateImpl
           typeError,
           errorMessage,
           isError,
+          isGoBack,
           isLoadPagination,
           isLoadErrorButton,
           isDisabledVideo);
@@ -5675,6 +5748,7 @@ abstract class PreloadDataCompletedNewsState implements NewsState {
       final String? typeError,
       final String? errorMessage,
       final bool? isError,
+      final bool? isGoBack,
       final bool? isLoadPagination,
       final bool? isLoadErrorButton,
       final bool? isDisabledVideo}) = _$PreloadDataCompletedNewsStateImpl;
@@ -5699,6 +5773,7 @@ abstract class PreloadDataCompletedNewsState implements NewsState {
   String? get typeError;
   String? get errorMessage;
   bool? get isError;
+  bool? get isGoBack;
   bool? get isLoadPagination;
   bool? get isLoadErrorButton;
   bool? get isDisabledVideo;

@@ -93,6 +93,9 @@ class NewsBetterVideoPlayerState extends State<NewsBetterVideoPlayer> {
             log("Video paused", name: "VideoState");
           }
         }
+        if (visiblePercentage == 0) {
+          _controller.clearCache();
+        }
       },
       child: _controller.isVideoInitialized() ?? false
           ? Stack(

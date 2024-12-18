@@ -82,6 +82,7 @@ class NewsBloc extends Bloc<NewsEvent, NewsState> {
       if (initState.isError ?? false) {
         emit(initState.copyWith(
           isLoadErrorButton: true,
+          isGoBack: event.isGoBack,
         ));
       } else {
         emit(NewsState.load(
@@ -115,6 +116,7 @@ class NewsBloc extends Bloc<NewsEvent, NewsState> {
           countBadgesNotificatios: countBadges.notice,
           isNotification: false,
           isLoadPagination: false,
+          isGoBack: event.isGoBack,
         ),
       );
     });
@@ -159,6 +161,7 @@ class NewsBloc extends Bloc<NewsEvent, NewsState> {
           countBadgesMedia: countBadges.media,
           countBadgesNotificatios: countBadges.notice,
           isNotification: false,
+          isGoBack: false,
         ),
       );
     });
@@ -203,6 +206,7 @@ class NewsBloc extends Bloc<NewsEvent, NewsState> {
           countBadgesMedia: countBadges.media,
           countBadgesNotificatios: countBadges.notice,
           isNotification: false,
+          isGoBack: false,
         ),
       );
     });
@@ -217,10 +221,12 @@ class NewsBloc extends Bloc<NewsEvent, NewsState> {
         emit(initState.copyWith(
           isLoadErrorButton: true,
           isError: initState.isError ?? false,
+          isGoBack: false,
         ));
       } else {
         emit(initState.copyWith(
           isLoadPagination: true,
+          isGoBack: false,
         ));
       }
 
@@ -251,6 +257,7 @@ class NewsBloc extends Bloc<NewsEvent, NewsState> {
           offsetNews: news.errorMessage.isEmpty ? offsetNews : initState.offsetNews,
           isNotification: false,
           isLoadPagination: false,
+          isGoBack: false,
         ));
       }
     });
@@ -277,6 +284,7 @@ class NewsBloc extends Bloc<NewsEvent, NewsState> {
           media: media,
           offsetMedia: offsetMedia,
           isNotification: false,
+          isGoBack: false,
         ));
       }
     });
@@ -304,6 +312,7 @@ class NewsBloc extends Bloc<NewsEvent, NewsState> {
           notificatios: notificatios,
           offsetNotificatios: offsetNotificatios,
           isNotification: false,
+          isGoBack: false,
         ));
       }
     });
@@ -392,6 +401,7 @@ class NewsBloc extends Bloc<NewsEvent, NewsState> {
           countBadgesNews: countBadges?.news ?? 0,
           countBadgesMedia: countBadges?.media ?? 0,
           countBadgesNotificatios: countBadges?.notice ?? 0,
+          isGoBack: false,
         ),
       );
     }
@@ -488,6 +498,7 @@ class NewsBloc extends Bloc<NewsEvent, NewsState> {
           countBadgesMedia: countBadges?.media ?? 0,
           countBadgesNotificatios: countBadges?.notice ?? 0,
           listNewsPath: [],
+          isGoBack: false,
         ),
       );
     }
@@ -584,6 +595,7 @@ class NewsBloc extends Bloc<NewsEvent, NewsState> {
           countBadgesNews: countBadges?.news ?? 0,
           countBadgesMedia: countBadges?.media ?? 0,
           countBadgesNotificatios: countBadges?.notice ?? 0,
+          isGoBack: false,
         ),
       );
     }
@@ -613,6 +625,7 @@ class NewsBloc extends Bloc<NewsEvent, NewsState> {
               news: news,
               offsetNews: 1,
               listNewsPath: listNewsPath,
+              isGoBack: true,
             ),
           );
         } else if (listNewsPath.last == '1') {
@@ -622,6 +635,7 @@ class NewsBloc extends Bloc<NewsEvent, NewsState> {
               media: media,
               offsetMedia: 1,
               listNewsPath: listNewsPath,
+              isGoBack: true,
             ),
           );
         } else if (listNewsPath.last == '2') {
@@ -632,6 +646,7 @@ class NewsBloc extends Bloc<NewsEvent, NewsState> {
               offsetNotificatios: 1,
               listNewsPath: listNewsPath,
               isNotification: false,
+              isGoBack: true,
             ),
           );
         }
@@ -754,6 +769,7 @@ class NewsBloc extends Bloc<NewsEvent, NewsState> {
           countBadgesMedia: countBadges?.media ?? 0,
           countBadgesNotificatios: countBadges?.notice ?? 0,
           isNotification: initState.isNotification,
+          isGoBack: false,
         ),
       );
     });
@@ -772,6 +788,7 @@ class NewsBloc extends Bloc<NewsEvent, NewsState> {
           countBadgesNews: countBadges.news,
           countBadgesMedia: countBadges.media,
           countBadgesNotificatios: countBadges.notice,
+          isGoBack: false,
         ),
       );
     });
@@ -784,6 +801,7 @@ class NewsBloc extends Bloc<NewsEvent, NewsState> {
     state.mapOrNull(preloadDataCompleted: (initState) {
       emit(initState.copyWith(
         isButtonTop: event.isButtonTop,
+        isGoBack: false,
       ));
     });
   }
@@ -795,6 +813,7 @@ class NewsBloc extends Bloc<NewsEvent, NewsState> {
     state.mapOrNull(preloadDataCompleted: (initState) {
       emit(initState.copyWith(
         isDisabledVideo: event.isDisabledVideo,
+        isGoBack: false,
       ));
     });
   }

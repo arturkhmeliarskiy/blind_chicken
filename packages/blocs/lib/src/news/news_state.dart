@@ -35,6 +35,7 @@ class NewsState with _$NewsState {
     String? typeError,
     String? errorMessage,
     bool? isError,
+    bool? isGoBack,
     bool? isLoadPagination,
     bool? isLoadErrorButton,
     bool? isDisabledVideo,

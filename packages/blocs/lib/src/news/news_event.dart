@@ -3,7 +3,7 @@ part of 'news_bloc.dart';
 @freezed
 class NewsEvent with _$NewsEvent {
   const factory NewsEvent.init() = InitNewsEvent;
-  const factory NewsEvent.getNews() = GetNewsEvent;
+  const factory NewsEvent.getNews({required bool isGoBack}) = GetNewsEvent;
   const factory NewsEvent.getNewsDescriptionInfo({
     required String id,
     bool? isNotification,

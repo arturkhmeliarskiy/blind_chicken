@@ -125,14 +125,14 @@ packages:
       url: "https://pub.dev"
     source: hosted
     version: "9.2.0"
-  better_player_plus:
+  better_player:
     dependency: transitive
     description:
-      name: better_player_plus
-      sha256: "69092845e38b2b9bc023f3d5108b01aaeef0c33fa9b5cd2c6a853c09f89e647f"
+      name: better_player
+      sha256: fc8883218ab7a2fd7e916956c1f59b5c26c3cab1e4dfd6f051901f5e4da39619
       url: "https://pub.dev"
     source: hosted
-    version: "1.0.7"
+    version: "0.0.84"
   blind_chicken:
     dependency: transitive
     description:
@@ -593,11 +593,6 @@ packages:
       url: "https://pub.dev"
     source: hosted
     version: "2.0.3"
-  flutter_localizations:
-    dependency: transitive
-    description: flutter
-    source: sdk
-    version: "0.0.0"
   flutter_plugin_android_lifecycle:
     dependency: transitive
     description:
@@ -636,18 +631,18 @@ packages:
     dependency: transitive
     description:
       name: flutter_widget_from_html
-      sha256: b931148824bcfc24c7be6f2daeabf549e237c9e617e93cd63256d924884ce423
+      sha256: f3967a5b42896662efdd420b5adaf8a7d3692b0f44462a07c80e3b4c173b1a02
       url: "https://pub.dev"
     source: hosted
-    version: "0.15.0"
+    version: "0.15.3"
   flutter_widget_from_html_core:
     dependency: transitive
     description:
       name: flutter_widget_from_html_core
-      sha256: cc1d9be3d187ce668ee02091cd5442dfb050cdaf98e0ab9a4d12ad008f966979
+      sha256: b1048fd119a14762e2361bd057da608148a895477846d6149109b2151d2f7abf
       url: "https://pub.dev"
     source: hosted
-    version: "0.14.12"
+    version: "0.15.2"
   freezed:
     dependency: "direct dev"
     description:
@@ -692,10 +687,10 @@ packages:
     dependency: transitive
     description:
       name: fwfh_just_audio
-      sha256: "209cf9644599e37b0edb6961c4f30ce80d156f5a53a50355f75fb4a22f9fdb0a"
+      sha256: "38dc2c55803bd3cef33042c473e0c40b891ad4548078424641a32032f6a1245f"
       url: "https://pub.dev"
     source: hosted
-    version: "0.14.3"
+    version: "0.15.2"
   fwfh_svg:
     dependency: transitive
     description:
