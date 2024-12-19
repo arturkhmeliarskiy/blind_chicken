@@ -86,6 +86,7 @@ class _NewsMediaSliderState extends State<NewsMediaSlider> {
             itemCount: widget.images.length + widget.videos.length,
             controller: _scrollController,
             onPageChanged: (value) {
+              _indexItem = value;
               if (widget.videos.isNotEmpty && widget.videos.length > value) {
                 setState(() {
                   _aspectRatio = _videosAspectRatio[value] ?? 0;

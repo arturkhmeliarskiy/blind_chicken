@@ -78,6 +78,7 @@ class _NewsSliderState extends State<NewsSlider> {
             itemCount: widget.media.length,
             controller: _scrollController,
             onPageChanged: (value) {
+              _indexItem = value;
               getImageAspectRatio(widget.media[value]).then((item) {
                 setState(() {
                   _aspectRatio = item;
