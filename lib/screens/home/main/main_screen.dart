@@ -72,7 +72,6 @@ class _MainScreenState extends State<MainScreen> {
         context.read<NewsBloc>().add(const NewsEvent.checkingReadNews());
       },
     );
-
     _scrollController.addListener(_loadMoreData);
     super.initState();
   }

@@ -14,10 +14,12 @@ class NewsInfoScreen extends StatefulWidget {
     super.key,
     required this.indexPage,
     this.idNews,
+    this.typeNews,
   });
 
   final int indexPage;
   final String? idNews;
+  final String? typeNews;
 
   @override
   State<NewsInfoScreen> createState() => _NewsInfoScreenState();
@@ -29,6 +31,7 @@ class _NewsInfoScreenState extends State<NewsInfoScreen> with TickerProviderStat
   bool _isShowDialogNewsInfoError = false;
   late final TabController _tabController;
   bool _isSwipe = true;
+  String _iDNews = '';
   double _heightAppBar = 105;
 
   @override
@@ -42,7 +45,7 @@ class _NewsInfoScreenState extends State<NewsInfoScreen> with TickerProviderStat
       if (idNews != null) {
         context.read<NewsBloc>().add(NewsEvent.updateReadNews(
               id: idNews,
-              typeNews: 'news',
+              typeNews: widget.typeNews ?? '',
             ));
       }
     }
@@ -53,12 +56,13 @@ class _NewsInfoScreenState extends State<NewsInfoScreen> with TickerProviderStat
   @override
   void didUpdateWidget(covariant NewsInfoScreen oldWidget) {
     final idNews = widget.idNews;
-    if (idNews != null) {
-      context.read<NewsBloc>().add(NewsEvent.getNews(isGoBack: false));
+    if (idNews != null && idNews != _iDNews) {
+      _iDNews = idNews;
       context.read<NewsBloc>().add(NewsEvent.updateReadNews(
             id: idNews,
-            typeNews: 'news',
+            typeNews: widget.typeNews ?? '',
           ));
+      _tabController.animateTo(widget.indexPage);
     }
 
     AppMetrica.reportEvent('Страница новостей');

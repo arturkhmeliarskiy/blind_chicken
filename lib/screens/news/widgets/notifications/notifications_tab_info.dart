@@ -28,8 +28,9 @@ class _NotificationsTabInfoState extends State<NotificationsTabInfo> {
   bool _isButtonTop = false;
 
   @override
-  void initState() {
+  void didChangeDependencies() {
     context.read<NewsBloc>().add(const NewsEvent.getNotifications());
+
     final idNews = widget.idNews;
     if (idNews != null) {
       context.read<NewsBloc>().add(NewsEvent.updateReadNews(
@@ -38,7 +39,7 @@ class _NotificationsTabInfoState extends State<NotificationsTabInfo> {
           ));
     }
     _scrollController.addListener(_loadMoreData);
-    super.initState();
+    super.didChangeDependencies();
   }
 
   void _loadMoreData() async {

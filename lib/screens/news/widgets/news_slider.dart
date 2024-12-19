@@ -129,65 +129,70 @@ class _NewsSliderState extends State<NewsSlider> {
                 Row(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
-                    InkWell(
-                      onTap: () {
-                        setState(() {
-                          if (_indexItem != 0) {
-                            _indexItem--;
-                            _scrollController.animateTo(
-                              width * _indexItem,
-                              curve: Curves.linear,
-                              duration: const Duration(
-                                milliseconds: 500,
-                              ),
-                            );
-                          }
-                        });
-                      },
-                      child: Container(
-                        height: 38.5,
-                        width: 38.5,
-                        decoration: BoxDecoration(
-                          borderRadius: BorderRadius.circular(20),
-                          color: BlindChickenColors.backgroundColor,
+                    if (_indexItem != 0)
+                      InkWell(
+                        onTap: () {
+                          setState(() {
+                            if (_indexItem != 0) {
+                              _indexItem--;
+                              _scrollController.previousPage(
+                                curve: Curves.linear,
+                                duration: const Duration(
+                                  milliseconds: 500,
+                                ),
+                              );
+                            }
+                          });
+                        },
+                        child: Container(
+                          height: 38.5,
+                          width: 38.5,
+                          decoration: BoxDecoration(
+                            borderRadius: BorderRadius.circular(20),
+                            color: BlindChickenColors.backgroundColor.withOpacity(0.8),
+                          ),
+                          padding: const EdgeInsets.all(10.0),
+                          child: SvgPicture.asset(
+                            'assets/icons/chevron-left.svg',
+                            height: 24,
+                            width: 24,
+                          ),
                         ),
-                        padding: const EdgeInsets.all(10.0),
-                        child: SvgPicture.asset(
-                          'assets/icons/chevron-left.svg',
-                          height: 24,
-                          width: 24,
+                      )
+                    else
+                      SizedBox(),
+                    if (_indexItem != widget.media.length - 1)
+                      InkWell(
+                        onTap: () {
+                          setState(() {
+                            if ((_indexItem + 1) < widget.media.length) {
+                              _indexItem++;
+                              _scrollController.nextPage(
+                                curve: Curves.linear,
+                                duration: const Duration(
+                                  milliseconds: 500,
+                                ),
+                              );
+                            }
+                          });
+                        },
+                        child: Container(
+                          height: 38.5,
+                          width: 38.5,
+                          decoration: BoxDecoration(
+                            borderRadius: BorderRadius.circular(20),
+                            color: BlindChickenColors.backgroundColor.withOpacity(0.8),
+                          ),
+                          padding: const EdgeInsets.all(10.0),
+                          child: SvgPicture.asset(
+                            'assets/icons/chevron-right.svg',
+                            height: 24,
+                            width: 24,
+                          ),
                         ),
-                      ),
-                    ),
-                    InkWell(
-                      onTap: () {
-                        setState(() {
-                          if ((_indexItem + 1) < widget.media.length) {
-                            _indexItem++;
-                            _scrollController.nextPage(
-                              curve: Curves.linear,
-                              duration: const Duration(
-                                milliseconds: 500,
-                              ),
-                            );
-                          }
-                        });
-                      },
-                      child: Container(
-                        height: 38.5,
-                        width: 38.5,
-                        decoration: BoxDecoration(
-                          borderRadius: BorderRadius.circular(20),
-                          color: BlindChickenColors.backgroundColor,
-                        ),
-                        padding: const EdgeInsets.all(10.0),
-                        child: SvgPicture.asset(
-                          'assets/icons/chevron-right.svg',
-                          height: 24,
-                          width: 24,
-                        ),
-                      ),
-                    ),
+                      )
+                    else
+                      SizedBox()
                   ],
                 )
               ],

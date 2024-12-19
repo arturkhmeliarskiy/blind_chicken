@@ -1,3 +1,4 @@
+import 'dart:async';
 import 'dart:io';
 
 import 'package:appmetrica_plugin/appmetrica_plugin.dart';
@@ -93,6 +94,15 @@ class _NotificationInfoNotificationDescriptionScreenState
                 }
               });
             }
+            Timer(Duration(seconds: 1), () {
+              context.read<NewsBloc>().add(
+                    NewsEvent.getNotificationDescriptionInfo(
+                      id: widget.idNews,
+                      isNotification: widget.isNotification,
+                      messageId: widget.messageId,
+                    ),
+                  );
+            });
           },
           error: (value) {
             if (!_isShowDialogNotificatioInfoError) {
@@ -163,6 +173,7 @@ class _NotificationInfoNotificationDescriptionScreenState
                                     NewsInfoRoute(
                                       indexPage: 2,
                                       idNews: widget.idNews,
+                                      typeNews: 'notice',
                                     ),
                                   );
                                   setState(() {
@@ -178,6 +189,7 @@ class _NotificationInfoNotificationDescriptionScreenState
                                       NewsInfoRoute(
                                         indexPage: 2,
                                         idNews: widget.idNews,
+                                        typeNews: 'notice',
                                       ),
                                     );
                                   }
@@ -207,6 +219,7 @@ class _NotificationInfoNotificationDescriptionScreenState
                                                       NewsInfoRoute(
                                                         indexPage: 2,
                                                         idNews: widget.idNews,
+                                                        typeNews: 'notice',
                                                       ),
                                                     );
                                                   },

@@ -1,3 +1,4 @@
+import 'dart:async';
 import 'dart:io';
 
 import 'package:appmetrica_plugin/appmetrica_plugin.dart';
@@ -92,6 +93,17 @@ class _MediaNotificationDescriptionScreenState extends State<MediaNotificationDe
                 }
               });
             }
+            Timer(Duration(seconds: 1), () {
+              if ((initState.oneNews?.data.createAt ?? '').isEmpty) {
+                context.read<NewsBloc>().add(
+                      NewsEvent.getMediaDescriptionInfo(
+                        id: widget.idNews,
+                        isNotification: widget.isNotification,
+                        messageId: widget.messageId,
+                      ),
+                    );
+              }
+            });
           },
           error: (value) {
             if (!_isShowDialogNotificatioInfoError) {
@@ -159,10 +171,12 @@ class _MediaNotificationDescriptionScreenState extends State<MediaNotificationDe
                               onHorizontalDragUpdate: (details) {},
                               onHorizontalDragEnd: (DragEndDetails details) {
                                 if (details.velocity.pixelsPerSecond.dx > 0) {
+                                  context.read<NewsBloc>().add(NewsEvent.getMedia());
                                   context.navigateTo(
                                     NewsInfoRoute(
                                       indexPage: 1,
                                       idNews: widget.idNews,
+                                      typeNews: 'media',
                                     ),
                                   );
                                   setState(() {
@@ -174,10 +188,12 @@ class _MediaNotificationDescriptionScreenState extends State<MediaNotificationDe
                                 canPop: false,
                                 onPopInvoked: (value) {
                                   if (_isSwipe && !value) {
+                                    context.read<NewsBloc>().add(NewsEvent.getMedia());
                                     context.navigateTo(
                                       NewsInfoRoute(
                                         indexPage: 1,
                                         idNews: widget.idNews,
+                                        typeNews: 'media',
                                       ),
                                     );
                                   }
@@ -203,10 +219,14 @@ class _MediaNotificationDescriptionScreenState extends State<MediaNotificationDe
                                                 ),
                                                 child: InkWell(
                                                   onTap: () {
+                                                    context
+                                                        .read<NewsBloc>()
+                                                        .add(NewsEvent.getMedia());
                                                     context.navigateTo(
                                                       NewsInfoRoute(
                                                         indexPage: 1,
                                                         idNews: widget.idNews,
+                                                        typeNews: 'media',
                                                       ),
                                                     );
                                                   },

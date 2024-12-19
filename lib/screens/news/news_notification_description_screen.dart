@@ -1,9 +1,11 @@
+import 'dart:async';
 import 'dart:io';
 
 import 'package:appmetrica_plugin/appmetrica_plugin.dart';
 import 'package:auto_route/auto_route.dart';
 import 'package:blind_chicken/screens/app/router/app_router.dart';
 import 'package:blind_chicken/screens/news/widgets/handler_links_news.dart';
+import 'package:blind_chicken/screens/news/widgets/news_media_slider.dart';
 import 'package:blind_chicken/screens/news/widgets/news_slider.dart';
 import 'package:blind_chicken/screens/news/widgets/news_video_player.dart';
 import 'package:blind_chicken/screens/news/widgets/news_youtube_video_player.dart';
@@ -105,6 +107,17 @@ class _NewsNotificationDescriptionScreenState extends State<NewsNotificationDesc
                 }
               });
             }
+            Timer(Duration(seconds: 1), () {
+              if ((initState.oneNews?.data.createAt ?? '').isEmpty) {
+                context.read<NewsBloc>().add(
+                      NewsEvent.getNewsDescriptionInfo(
+                        id: widget.idNews,
+                        isNotification: widget.isNotification,
+                        messageId: widget.messageId,
+                      ),
+                    );
+              }
+            });
           },
           error: (value) {
             if (!_isShowDialogNotificatioInfoError) {
@@ -192,6 +205,7 @@ class _NewsNotificationDescriptionScreenState extends State<NewsNotificationDesc
                                         NewsInfoRoute(
                                           indexPage: 0,
                                           idNews: widget.idNews,
+                                          typeNews: 'news',
                                         ),
                                       );
                                       setState(() {
@@ -207,6 +221,7 @@ class _NewsNotificationDescriptionScreenState extends State<NewsNotificationDesc
                                           NewsInfoRoute(
                                             indexPage: 0,
                                             idNews: widget.idNews,
+                                            typeNews: 'news',
                                           ),
                                         );
                                       }
@@ -232,10 +247,13 @@ class _NewsNotificationDescriptionScreenState extends State<NewsNotificationDesc
                                                     ),
                                                     child: InkWell(
                                                       onTap: () {
+                                                        context.read<NewsBloc>().add(
+                                                            NewsEvent.getNews(isGoBack: false));
                                                         context.navigateTo(
                                                           NewsInfoRoute(
                                                             indexPage: 0,
                                                             idNews: widget.idNews,
+                                                            typeNews: 'news',
                                                           ),
                                                         );
                                                       },
@@ -272,6 +290,35 @@ class _NewsNotificationDescriptionScreenState extends State<NewsNotificationDesc
                                                       color: BlindChickenColors.textInput,
                                                     ),
                                           ),
+                                          if ((initState.oneNews?.data.typeMedia ?? '') == 'media')
+                                            Column(
+                                              children: [
+                                                const SizedBox(
+                                                  height: 12,
+                                                ),
+                                                NewsMediaSlider(
+                                                  images: initState.oneNews?.data.images ?? [],
+                                                  videos: initState.oneNews?.data.videos ?? [],
+                                                  goBotton: () {
+                                                    context.back();
+                                                  },
+                                                  onTap: (index) {
+                                                    context.navigateTo(
+                                                      NewsPreviewMediaInfoRoute(
+                                                        selectedIndex: index,
+                                                        images:
+                                                            initState.oneNews?.data.images ?? [],
+                                                        videos:
+                                                            initState.oneNews?.data.videos ?? [],
+                                                        goBotton: () {
+                                                          context.back();
+                                                        },
+                                                      ),
+                                                    );
+                                                  },
+                                                ),
+                                              ],
+                                            ),
                                           if ((initState.oneNews?.data.typeMedia ?? '') ==
                                                   'images' &&
                                               (initState.oneNews?.data.images.length ?? 0) == 1)
