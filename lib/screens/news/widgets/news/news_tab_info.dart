@@ -99,7 +99,8 @@ class _NewsTabInfoState extends State<NewsTabInfo> {
                                               initState.offsetNews) {
                                         context.read<NewsBloc>().add(NewsEvent.paginationNews());
                                       } else {
-                                        if (visibilityInfo.visibleFraction > 0.0) {
+                                        if (visibilityInfo.visibleFraction > 0.0 &&
+                                            initState.news.list[index].isViewed) {
                                           context.read<NewsBloc>().add(
                                                 NewsEvent.updateReadNews(
                                                   id: initState.news.list[index].id,
