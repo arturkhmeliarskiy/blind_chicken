@@ -41,7 +41,7 @@ class _CatalogSliderImagesCardItemState extends State<CatalogSliderImagesCardIte
     setState(() {
       log(_pageController.position.pixels.toString());
 
-      if (_pageController.position.pixels < -60 && _isSwipe) {
+      if (_pageController.position.pixels < -120 && _isSwipe) {
         widget.goSwipeBack();
         _isSwipe = false;
       }
