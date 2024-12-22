@@ -93,8 +93,8 @@ class _MediaNotificationDescriptionScreenState extends State<MediaNotificationDe
                 }
               });
             }
-            Timer(Duration(seconds: 1), () {
-              if ((initState.oneNews?.data.createAt ?? '').isEmpty) {
+            if ((initState.oneMedia?.data.createAt ?? '').isEmpty) {
+              Timer(Duration(seconds: 1), () {
                 context.read<NewsBloc>().add(
                       NewsEvent.getMediaDescriptionInfo(
                         id: widget.idNews,
@@ -102,8 +102,8 @@ class _MediaNotificationDescriptionScreenState extends State<MediaNotificationDe
                         messageId: widget.messageId,
                       ),
                     );
-              }
-            });
+              });
+            }
           },
           error: (value) {
             if (!_isShowDialogNotificatioInfoError) {

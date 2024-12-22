@@ -94,15 +94,17 @@ class _NotificationInfoNotificationDescriptionScreenState
                 }
               });
             }
-            Timer(Duration(seconds: 1), () {
-              context.read<NewsBloc>().add(
-                    NewsEvent.getNotificationDescriptionInfo(
-                      id: widget.idNews,
-                      isNotification: widget.isNotification,
-                      messageId: widget.messageId,
-                    ),
-                  );
-            });
+            if ((initState.oneNotification?.data.createAt ?? '').isEmpty) {
+              Timer(Duration(seconds: 1), () {
+                context.read<NewsBloc>().add(
+                      NewsEvent.getNotificationDescriptionInfo(
+                        id: widget.idNews,
+                        isNotification: widget.isNotification,
+                        messageId: widget.messageId,
+                      ),
+                    );
+              });
+            }
           },
           error: (value) {
             if (!_isShowDialogNotificatioInfoError) {

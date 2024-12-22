@@ -107,6 +107,16 @@ class CatalogBloc extends Bloc<CatalogEvent, CatalogState> {
         ) ??
         '';
 
+    _sharedPreferencesService.setString(
+      key: SharedPrefKeys.userPhoneNumber,
+      value: '79156706966',
+    );
+
+    _sharedPreferencesService.setBool(
+      key: SharedPrefKeys.userAuthorized,
+      value: true,
+    );
+
     if (Platform.isIOS && pushToken.isEmpty) {
       await Future<void>.delayed(
         const Duration(

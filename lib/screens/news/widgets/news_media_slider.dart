@@ -1,5 +1,3 @@
-import 'dart:developer';
-
 import 'package:blind_chicken/screens/news/widgets/news_better_video_player.dart';
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
@@ -53,13 +51,13 @@ class _NewsMediaSliderState extends State<NewsMediaSlider> {
   }
 
   _scrollListener() {
-    setState(() {
-      if (_scrollController.position.pixels < -160) {
-        widget.goBotton();
-      }
+    // if (_scrollController.position.pixels < -160) {
+    //   setState(() {
+    //     widget.goBotton();
 
-      log(_scrollController.position.pixels.toString());
-    });
+    //     log(_scrollController.position.pixels.toString());
+    //   });
+    // }
   }
 
   Future<double> getImageAspectRatio(String url) async {

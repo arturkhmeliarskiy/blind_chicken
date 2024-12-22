@@ -19,45 +19,47 @@ class NotificationItemTabInfo extends StatefulWidget {
 class _NotificationItemTabInfoState extends State<NotificationItemTabInfo> {
   @override
   Widget build(BuildContext context) {
-    return Container(
-      height: 60,
-      decoration: const BoxDecoration(
-        border: Border(
-          bottom: BorderSide(
-            color: BlindChickenColors.borderBottomColor,
+    return Column(
+      children: [
+        Padding(
+          padding: const EdgeInsets.all(12),
+          child: Row(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+              Expanded(
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    Text(
+                      widget.item.title,
+                      style: Theme.of(context).textTheme.displayLarge,
+                      overflow: TextOverflow.ellipsis,
+                      maxLines: 10,
+                    ),
+                    const SizedBox(
+                      height: 2,
+                    ),
+                    Text(
+                      DateInfo.dateFormat(widget.item.createAt),
+                      style: Theme.of(context).textTheme.displaySmall?.copyWith(
+                            color: BlindChickenColors.textInput,
+                          ),
+                    ),
+                  ],
+                ),
+              ),
+              if (widget.item.isViewed) const NotificationItemIndicator()
+            ],
           ),
         ),
-      ),
-      padding: const EdgeInsets.all(12),
-      child: Row(
-        mainAxisAlignment: MainAxisAlignment.center,
-        children: [
-          Expanded(
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: [
-                Text(
-                  widget.item.title,
-                  style: Theme.of(context).textTheme.displayLarge,
-                  overflow: TextOverflow.ellipsis,
-                  maxLines: 1,
-                ),
-                const SizedBox(
-                  height: 2,
-                ),
-                Text(
-                  DateInfo.dateFormat(widget.item.createAt),
-                  style: Theme.of(context).textTheme.displaySmall?.copyWith(
-                        color: BlindChickenColors.textInput,
-                      ),
-                ),
-              ],
-            ),
-          ),
-          if (widget.item.isViewed) const NotificationItemIndicator()
-        ],
-      ),
+        Divider(
+          indent: 0,
+          thickness: 1,
+          height: 1,
+          color: BlindChickenColors.borderBottomColor,
+        )
+      ],
     );
   }
 }
