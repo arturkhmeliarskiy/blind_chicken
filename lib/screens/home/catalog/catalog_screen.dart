@@ -564,546 +564,566 @@ class _CatalogScreenState extends State<CatalogScreen> {
           child: Stack(
             children: [
               Stack(
-                alignment: Alignment.bottomLeft,
                 children: [
-                  Scaffold(
-                    backgroundColor: BlindChickenColors.backgroundColor,
-                    body: SafeArea(
-                      child: NotificationListener<ScrollNotification>(
-                        onNotification: (scrollNotification) {
-                          if (scrollNotification is ScrollStartNotification) {
-                            log('ScrollStartNotification');
-                            _isSwipe = false;
-                          } else if (scrollNotification is ScrollUpdateNotification) {
-                            log('ScrollUpdateNotification');
-                            _isSwipe = false;
-                          } else if (scrollNotification is ScrollEndNotification) {
-                            log('ScrollEndNotification');
-                            _isSwipe = true;
-                          }
-                          return true;
-                        },
-                        child: ListView(
-                          controller: _scrollController,
-                          physics: _isScroll
-                              ? const BouncingScrollPhysics()
-                              : NeverScrollableScrollPhysics(),
-                          children: [
-                            const AppBarBlindChicken(),
-                            BlocBuilder<CatalogBloc, CatalogState>(builder: (context, state) {
-                              return state.maybeMap(
-                                preloadDataCompleted: (initState) {
-                                  if (initState.offset == 1) {
-                                    _paginationPosition = 0;
-                                  }
-                                  return GestureDetector(
-                                    onHorizontalDragUpdate: (details) {},
-                                    onHorizontalDragEnd: (DragEndDetails details) {
-                                      if (details.velocity.pixelsPerSecond.dx > 1000 && _isSwipe) {
-                                        context.read<CatalogBloc>().add(
-                                              const CatalogEvent.goBackCatalogInfo(),
-                                            );
-                                        if (initState.listCatalogPath.isEmpty ||
-                                            initState.listCatalogPath.length == 1) {
-                                          if (widget.lastPath.isNotEmpty) {
-                                            if (widget.lastPath == 'news') {
-                                              context.navigateTo(
-                                                NewsRoute(children: [
-                                                  NewsInfoRoute(
-                                                    indexPage: 0,
-                                                  ),
-                                                ]),
-                                              );
-                                              AppMetrica.reportEvent('Список новостей');
-                                            } else if (widget.lastPath == 'news_info_description') {
-                                              final newsInfo = widget.newsInfo;
-                                              if (newsInfo != null) {
-                                                context.navigateTo(
-                                                  NewsInfoDescriptionRoute(
-                                                    info: newsInfo,
-                                                  ),
-                                                );
-                                                AppMetrica.reportEvent('Страница новостей');
-                                              }
-                                            } else if (widget.lastPath ==
-                                                'media_info_description') {
-                                              final newsMediaInfo = widget.newsMediaInfo;
-                                              if (newsMediaInfo != null) {
-                                                context.navigateTo(
-                                                  MediaInfoDescriptionRoute(
-                                                    info: newsMediaInfo,
-                                                  ),
-                                                );
-                                              }
-                                            } else if (widget.lastPath ==
-                                                'notfication_info_description') {
-                                              final newsNotificationInfo =
-                                                  widget.newsNotificationInfo;
-                                              if (newsNotificationInfo != null) {
-                                                context.navigateTo(
-                                                  NotificationInfoDescriptionRoute(
-                                                    info: newsNotificationInfo,
-                                                  ),
-                                                );
-                                              }
-                                            } else if (widget.lastPath ==
-                                                'media_notiifcation_description') {
-                                              context.navigateTo(
-                                                MediaNotificationDescriptionRoute(
-                                                  idNews: widget.idNews ?? '',
-                                                  isNotification: true,
-                                                  messageId: widget.messageId,
-                                                ),
-                                              );
-                                            } else if (widget.lastPath ==
-                                                'news_notification_description') {
-                                              context.navigateTo(
-                                                NewsNotificationDescriptionRoute(
-                                                  idNews: widget.idNews ?? '',
-                                                  isNotification: true,
-                                                  messageId: widget.messageId,
-                                                ),
-                                              );
-                                            } else if (widget.lastPath ==
-                                                'notfication_info_notfication_description') {
-                                              context.navigateTo(
-                                                NotificationInfoNotificationDescriptionRoute(
-                                                  idNews: widget.idNews ?? '',
-                                                  isNotification: true,
-                                                  messageId: widget.messageId,
-                                                ),
-                                              );
-                                            }
-                                          } else {
-                                            WidgetsBinding.instance.addPostFrameCallback((_) {
-                                              context.back();
-                                            });
-                                          }
-                                        }
-                                        setState(() {
-                                          _isSwipe = false;
-                                        });
-                                        log((details.velocity.pixelsPerSecond.dx).toString());
+                  Stack(
+                    alignment: Alignment.bottomLeft,
+                    children: [
+                      Scaffold(
+                        backgroundColor: BlindChickenColors.backgroundColor,
+                        body: SafeArea(
+                          child: NotificationListener<ScrollNotification>(
+                            onNotification: (scrollNotification) {
+                              if (scrollNotification is ScrollStartNotification) {
+                                log('ScrollStartNotification');
+                                _isSwipe = false;
+                              } else if (scrollNotification is ScrollUpdateNotification) {
+                                log('ScrollUpdateNotification');
+                                _isSwipe = false;
+                              } else if (scrollNotification is ScrollEndNotification) {
+                                log('ScrollEndNotification');
+                                _isSwipe = true;
+                              }
+                              return true;
+                            },
+                            child: ListView(
+                              controller: _scrollController,
+                              physics: _isScroll
+                                  ? const BouncingScrollPhysics()
+                                  : NeverScrollableScrollPhysics(),
+                              children: [
+                                const AppBarBlindChicken(),
+                                BlocBuilder<CatalogBloc, CatalogState>(builder: (context, state) {
+                                  return state.maybeMap(
+                                    preloadDataCompleted: (initState) {
+                                      if (initState.offset == 1) {
+                                        _paginationPosition = 0;
                                       }
-                                    },
-                                    child: PopScope(
-                                      canPop: false,
-                                      onPopInvoked: (value) {
-                                        final onBack = widget.onBack;
-                                        if (onBack != null) {
-                                          onBack();
-                                        }
-                                        if (_isSwipe && !value) {
-                                          context
-                                              .read<CatalogBloc>()
-                                              .add(const CatalogEvent.goBackCatalogInfo());
-                                          if (initState.listCatalogPath.isEmpty ||
-                                              initState.listCatalogPath.length == 1) {
-                                            if (widget.lastPath.isNotEmpty) {
-                                              if (widget.lastPath == 'news') {
-                                                context.navigateTo(
-                                                  NewsRoute(children: [
-                                                    NewsInfoRoute(
-                                                      indexPage: 0,
-                                                    ),
-                                                  ]),
-                                                );
-                                                AppMetrica.reportEvent('Список новостей');
-                                              } else if (widget.lastPath ==
-                                                  'news_info_description') {
-                                                final newsInfo = widget.newsInfo;
-                                                if (newsInfo != null) {
+                                      return PopScope(
+                                        canPop: false,
+                                        onPopInvoked: (value) {
+                                          final onBack = widget.onBack;
+                                          if (onBack != null) {
+                                            onBack();
+                                          }
+                                          if (_isSwipe && !value) {
+                                            context
+                                                .read<CatalogBloc>()
+                                                .add(const CatalogEvent.goBackCatalogInfo());
+                                            if (initState.listCatalogPath.isEmpty ||
+                                                initState.listCatalogPath.length == 1) {
+                                              if (widget.lastPath.isNotEmpty) {
+                                                if (widget.lastPath == 'news') {
                                                   context.navigateTo(
-                                                    NewsInfoDescriptionRoute(
-                                                      info: newsInfo,
+                                                    NewsRoute(children: [
+                                                      NewsInfoRoute(
+                                                        indexPage: 0,
+                                                      ),
+                                                    ]),
+                                                  );
+                                                  AppMetrica.reportEvent('Список новостей');
+                                                } else if (widget.lastPath ==
+                                                    'news_info_description') {
+                                                  final newsInfo = widget.newsInfo;
+                                                  if (newsInfo != null) {
+                                                    context.navigateTo(
+                                                      NewsInfoDescriptionRoute(
+                                                        info: newsInfo,
+                                                      ),
+                                                    );
+                                                    AppMetrica.reportEvent('Страница новостей');
+                                                  }
+                                                } else if (widget.lastPath ==
+                                                    'media_info_description') {
+                                                  final newsMediaInfo = widget.newsMediaInfo;
+                                                  if (newsMediaInfo != null) {
+                                                    context.navigateTo(
+                                                      MediaInfoDescriptionRoute(
+                                                        info: newsMediaInfo,
+                                                      ),
+                                                    );
+                                                  }
+                                                } else if (widget.lastPath ==
+                                                    'notfication_info_description') {
+                                                  final newsNotificationInfo =
+                                                      widget.newsNotificationInfo;
+                                                  if (newsNotificationInfo != null) {
+                                                    context.navigateTo(
+                                                      NotificationInfoDescriptionRoute(
+                                                        info: newsNotificationInfo,
+                                                      ),
+                                                    );
+                                                  }
+                                                } else if (widget.lastPath ==
+                                                    'media_notiifcation_description') {
+                                                  context.navigateTo(
+                                                    MediaNotificationDescriptionRoute(
+                                                      idNews: widget.idNews ?? '',
+                                                      isNotification: true,
+                                                      messageId: widget.messageId,
                                                     ),
                                                   );
-                                                  AppMetrica.reportEvent('Страница новостей');
-                                                }
-                                              } else if (widget.lastPath ==
-                                                  'media_info_description') {
-                                                final newsMediaInfo = widget.newsMediaInfo;
-                                                if (newsMediaInfo != null) {
+                                                } else if (widget.lastPath ==
+                                                    'news_notification_description') {
                                                   context.navigateTo(
-                                                    MediaInfoDescriptionRoute(
-                                                      info: newsMediaInfo,
+                                                    NewsNotificationDescriptionRoute(
+                                                      idNews: widget.idNews ?? '',
+                                                      isNotification: true,
+                                                      messageId: widget.messageId,
+                                                    ),
+                                                  );
+                                                } else if (widget.lastPath ==
+                                                    'notfication_info_notfication_description') {
+                                                  context.navigateTo(
+                                                    NotificationInfoNotificationDescriptionRoute(
+                                                      idNews: widget.idNews ?? '',
+                                                      isNotification: true,
+                                                      messageId: widget.messageId,
                                                     ),
                                                   );
                                                 }
-                                              } else if (widget.lastPath ==
-                                                  'notfication_info_description') {
-                                                final newsNotificationInfo =
-                                                    widget.newsNotificationInfo;
-                                                if (newsNotificationInfo != null) {
-                                                  context.navigateTo(
-                                                    NotificationInfoDescriptionRoute(
-                                                      info: newsNotificationInfo,
-                                                    ),
-                                                  );
-                                                }
-                                              } else if (widget.lastPath ==
-                                                  'media_notiifcation_description') {
-                                                context.navigateTo(
-                                                  MediaNotificationDescriptionRoute(
-                                                    idNews: widget.idNews ?? '',
-                                                    isNotification: true,
-                                                    messageId: widget.messageId,
-                                                  ),
-                                                );
-                                              } else if (widget.lastPath ==
-                                                  'news_notification_description') {
-                                                context.navigateTo(
-                                                  NewsNotificationDescriptionRoute(
-                                                    idNews: widget.idNews ?? '',
-                                                    isNotification: true,
-                                                    messageId: widget.messageId,
-                                                  ),
-                                                );
-                                              } else if (widget.lastPath ==
-                                                  'notfication_info_notfication_description') {
-                                                context.navigateTo(
-                                                  NotificationInfoNotificationDescriptionRoute(
-                                                    idNews: widget.idNews ?? '',
-                                                    isNotification: true,
-                                                    messageId: widget.messageId,
-                                                  ),
-                                                );
+                                              } else {
+                                                WidgetsBinding.instance.addPostFrameCallback((_) {
+                                                  context.back();
+                                                });
                                               }
-                                            } else {
-                                              WidgetsBinding.instance.addPostFrameCallback((_) {
-                                                context.back();
-                                              });
                                             }
                                           }
-                                        }
-                                      },
-                                      child: Column(
-                                        crossAxisAlignment: CrossAxisAlignment.start,
-                                        children: [
-                                          CatalogInformationPanel(
-                                            initState: initState,
-                                            isBack: widget.isBack,
-                                          ),
-                                          Wrap(
-                                            children: List.generate(
-                                              initState.products.length,
-                                              (index) {
-                                                final codeProduct =
-                                                    (initState.codeProduct?.isNotEmpty ?? false)
-                                                        ? int.parse(initState.codeProduct ?? '0')
-                                                        : '';
-                                                if (initState.products[index].title ==
-                                                    'proverka_zreniya') {
-                                                  return const CatalogCardProverkaZreniya();
-                                                } else {
-                                                  return Listener(
-                                                    onPointerDown: (details) {
-                                                      _touchCount++;
-                                                      if (_touchCount > 1 || _isZoom) {
-                                                        setState(() {
-                                                          _isScroll = false;
-                                                        });
-                                                      } else {
-                                                        setState(() {
-                                                          _isScroll = true;
-                                                        });
-                                                      }
-                                                    },
-                                                    onPointerUp: (details) {
-                                                      _touchCount--;
-                                                      if (_touchCount > 1 || _isZoom) {
-                                                        setState(() {
-                                                          _isScroll = false;
-                                                        });
-                                                      } else {
-                                                        setState(() {
-                                                          _isScroll = true;
-                                                        });
-                                                      }
-                                                    },
-                                                    onPointerCancel: (details) {
-                                                      _touchCount--;
-                                                      if (_touchCount > 1 || _isZoom) {
-                                                        setState(() {
-                                                          _isScroll = false;
-                                                        });
-                                                      } else {
-                                                        setState(() {
-                                                          _isScroll = true;
-                                                        });
-                                                      }
-                                                    },
-                                                    child: CatalogCardItem(
-                                                      isLike: initState.favouritesProductsId
-                                                          .contains(initState.products[index].id),
-                                                      onAddFavouriteProduct: () {
-                                                        context.read<CatalogBloc>().add(
-                                                              CatalogEvent.addFavouriteProduct(
-                                                                index: initState.products[index].id,
-                                                                product: initState.products[index],
-                                                              ),
-                                                            );
-                                                      },
-                                                      onDeleteFavouriteProduct: () {
-                                                        context.read<CatalogBloc>().add(
-                                                              CatalogEvent.deleteFavouriteProduct(
-                                                                index: initState.products[index].id,
-                                                              ),
-                                                            );
-                                                      },
-                                                      onSelect: () {
-                                                        context.read<CatalogBloc>().add(
-                                                              CatalogEvent.getInfoProduct(
-                                                                code: initState.products[index].id
-                                                                    .toString(),
-                                                                titleScreen:
-                                                                    'Карточка тоавара в каталоге',
-                                                                typeAddProductToShoppingCart:
-                                                                    'Карточка товара',
-                                                                identifierAddProductToShoppingCart:
-                                                                    '1',
-                                                              ),
-                                                            );
-                                                        context.navigateTo(
-                                                          CatalogCardInfoRoute(
-                                                            item: initState.products[index],
-                                                            isLike: initState.favouritesProductsId
-                                                                .contains(
-                                                                    initState.products[index].id),
-                                                            listItems: initState.products,
-                                                            favouritesProducts:
-                                                                initState.favouritesProducts,
-                                                            isChildRoute: false,
-                                                          ),
-                                                        );
-                                                      },
-                                                      yourPrice: initState.products[index].yourPrice
-                                                          .toString(),
-                                                      imageUrl: initState.products[index].images[0],
-                                                      brend: initState.products[index].brend,
-                                                      category: initState.products[index].category,
-                                                      price: initState.products[index].price
-                                                          .toString(),
-                                                      isYourPriceDisplayed: initState
-                                                          .products[index].isYourPriceDisplayed,
-                                                      maximumCashback:
-                                                          initState.products[index].maximumCashback,
-                                                      discount: initState.products[index].discount,
-                                                      maximumPersonalDiscount: initState
-                                                          .products[index].maximumPersonalDiscount,
-                                                      isAuth: initState.isAuth,
-                                                      userDiscount: initState.userDiscount,
-                                                      pb: initState.products[index].pb,
-                                                      isShop: initState.products[index].isShop,
-                                                      onAddProductToSoppingCart: () {
-                                                        context.read<CatalogBloc>().add(
-                                                              CatalogEvent.getInfoProductSize(
-                                                                code: initState.products[index].id
-                                                                    .toString(),
-                                                                isShop: initState
-                                                                    .products[index].isShop,
-                                                                titleScreen: 'Каталог',
-                                                              ),
-                                                            );
-                                                      },
-                                                      listSize: initState.listSize,
-                                                      isLoad: codeProduct ==
-                                                              initState.products[index].id &&
-                                                          initState.isLoadGetSizeProduct,
-                                                      sizeProduct: initState.products[index].sz,
-                                                      promo: initState.products[index].promo,
-                                                      promoValue:
-                                                          initState.products[index].promoValue,
-                                                      images: initState.products[index].images,
-                                                      video: initState.products[index].video,
-                                                      goSwipeBack: () {
-                                                        if (index.isEven) {
-                                                          context.read<CatalogBloc>().add(
-                                                                const CatalogEvent
-                                                                    .goBackCatalogInfo(),
-                                                              );
-                                                          if (initState.listCatalogPath.isEmpty ||
-                                                              initState.listCatalogPath.length ==
-                                                                  1) {
-                                                            if (widget.lastPath.isNotEmpty) {
-                                                              if (widget.lastPath == 'news') {
-                                                                context.navigateTo(
-                                                                  NewsRoute(children: [
-                                                                    NewsInfoRoute(
-                                                                      indexPage: 0,
-                                                                    ),
-                                                                  ]),
-                                                                );
-                                                                AppMetrica.reportEvent(
-                                                                    'Список новостей');
-                                                              } else if (widget.lastPath ==
-                                                                  'news_info_description') {
-                                                                final newsInfo = widget.newsInfo;
-                                                                if (newsInfo != null) {
-                                                                  context.navigateTo(
-                                                                    NewsInfoDescriptionRoute(
-                                                                      info: newsInfo,
-                                                                    ),
-                                                                  );
-                                                                  AppMetrica.reportEvent(
-                                                                      'Страница новостей');
-                                                                }
-                                                              } else if (widget.lastPath ==
-                                                                  'media_info_description') {
-                                                                final newsMediaInfo =
-                                                                    widget.newsMediaInfo;
-                                                                if (newsMediaInfo != null) {
-                                                                  context.navigateTo(
-                                                                    MediaInfoDescriptionRoute(
-                                                                      info: newsMediaInfo,
-                                                                    ),
-                                                                  );
-                                                                }
-                                                              } else if (widget.lastPath ==
-                                                                  'notfication_info_description') {
-                                                                final newsNotificationInfo =
-                                                                    widget.newsNotificationInfo;
-                                                                if (newsNotificationInfo != null) {
-                                                                  context.navigateTo(
-                                                                    NotificationInfoDescriptionRoute(
-                                                                      info: newsNotificationInfo,
-                                                                    ),
-                                                                  );
-                                                                }
-                                                              } else if (widget.lastPath ==
-                                                                  'media_notiifcation_description') {
-                                                                context.navigateTo(
-                                                                  MediaNotificationDescriptionRoute(
-                                                                    idNews: widget.idNews ?? '',
-                                                                    isNotification: true,
-                                                                    messageId: widget.messageId,
-                                                                  ),
-                                                                );
-                                                              } else if (widget.lastPath ==
-                                                                  'news_notification_description') {
-                                                                context.navigateTo(
-                                                                  NewsNotificationDescriptionRoute(
-                                                                    idNews: widget.idNews ?? '',
-                                                                    isNotification: true,
-                                                                    messageId: widget.messageId,
-                                                                  ),
-                                                                );
-                                                              } else if (widget.lastPath ==
-                                                                  'notfication_info_notfication_description') {
-                                                                context.navigateTo(
-                                                                  NotificationInfoNotificationDescriptionRoute(
-                                                                    idNews: widget.idNews ?? '',
-                                                                    isNotification: true,
-                                                                    messageId: widget.messageId,
-                                                                  ),
-                                                                );
-                                                              }
-                                                            } else {
-                                                              WidgetsBinding.instance
-                                                                  .addPostFrameCallback((_) {
-                                                                context.back();
-                                                              });
-                                                            }
-                                                          }
+                                        },
+                                        child: Column(
+                                          crossAxisAlignment: CrossAxisAlignment.start,
+                                          children: [
+                                            CatalogInformationPanel(
+                                              initState: initState,
+                                              isBack: widget.isBack,
+                                            ),
+                                            Wrap(
+                                              children: List.generate(
+                                                initState.products.length,
+                                                (index) {
+                                                  final codeProduct =
+                                                      (initState.codeProduct?.isNotEmpty ?? false)
+                                                          ? int.parse(initState.codeProduct ?? '0')
+                                                          : '';
+                                                  if (initState.products[index].title ==
+                                                      'proverka_zreniya') {
+                                                    return const CatalogCardProverkaZreniya();
+                                                  } else {
+                                                    return Listener(
+                                                      onPointerDown: (details) {
+                                                        _touchCount++;
+                                                        if (_touchCount > 1 || _isZoom) {
                                                           setState(() {
-                                                            _isSwipe = false;
+                                                            _isScroll = false;
+                                                          });
+                                                        } else {
+                                                          setState(() {
+                                                            _isScroll = true;
                                                           });
                                                         }
                                                       },
-                                                      onScaleStart: () {
-                                                        setState(() {
-                                                          _isZoom = true;
-                                                          _isScroll = false;
-                                                        });
-                                                        context.read<BottomNavigationBloc>().add(
-                                                              BottomNavigationEvent.switchBlocked(
-                                                                  isBlocked: true),
-                                                            );
+                                                      onPointerUp: (details) {
+                                                        _touchCount--;
+                                                        if (_touchCount > 1 || _isZoom) {
+                                                          setState(() {
+                                                            _isScroll = false;
+                                                          });
+                                                        } else {
+                                                          setState(() {
+                                                            _isScroll = true;
+                                                          });
+                                                        }
                                                       },
-                                                      onScaleStop: () {
-                                                        setState(() {
-                                                          _isZoom = false;
-                                                          _isScroll = true;
-                                                        });
-                                                        context.read<BottomNavigationBloc>().add(
-                                                              BottomNavigationEvent.switchBlocked(
-                                                                  isBlocked: false),
-                                                            );
+                                                      onPointerCancel: (details) {
+                                                        _touchCount--;
+                                                        if (_touchCount > 1 || _isZoom) {
+                                                          setState(() {
+                                                            _isScroll = false;
+                                                          });
+                                                        } else {
+                                                          setState(() {
+                                                            _isScroll = true;
+                                                          });
+                                                        }
                                                       },
-                                                    ),
-                                                  );
-                                                }
-                                              },
+                                                      child: CatalogCardItem(
+                                                        isLike: initState.favouritesProductsId
+                                                            .contains(initState.products[index].id),
+                                                        onAddFavouriteProduct: () {
+                                                          context.read<CatalogBloc>().add(
+                                                                CatalogEvent.addFavouriteProduct(
+                                                                  index:
+                                                                      initState.products[index].id,
+                                                                  product:
+                                                                      initState.products[index],
+                                                                ),
+                                                              );
+                                                        },
+                                                        onDeleteFavouriteProduct: () {
+                                                          context.read<CatalogBloc>().add(
+                                                                CatalogEvent.deleteFavouriteProduct(
+                                                                  index:
+                                                                      initState.products[index].id,
+                                                                ),
+                                                              );
+                                                        },
+                                                        onSelect: () {
+                                                          context.read<CatalogBloc>().add(
+                                                                CatalogEvent.getInfoProduct(
+                                                                  code: initState.products[index].id
+                                                                      .toString(),
+                                                                  titleScreen:
+                                                                      'Карточка тоавара в каталоге',
+                                                                  typeAddProductToShoppingCart:
+                                                                      'Карточка товара',
+                                                                  identifierAddProductToShoppingCart:
+                                                                      '1',
+                                                                ),
+                                                              );
+                                                          context.navigateTo(
+                                                            CatalogCardInfoRoute(
+                                                              item: initState.products[index],
+                                                              isLike: initState.favouritesProductsId
+                                                                  .contains(
+                                                                      initState.products[index].id),
+                                                              listItems: initState.products,
+                                                              favouritesProducts:
+                                                                  initState.favouritesProducts,
+                                                              isChildRoute: false,
+                                                            ),
+                                                          );
+                                                        },
+                                                        yourPrice: initState
+                                                            .products[index].yourPrice
+                                                            .toString(),
+                                                        imageUrl:
+                                                            initState.products[index].images[0],
+                                                        brend: initState.products[index].brend,
+                                                        category:
+                                                            initState.products[index].category,
+                                                        price: initState.products[index].price
+                                                            .toString(),
+                                                        isYourPriceDisplayed: initState
+                                                            .products[index].isYourPriceDisplayed,
+                                                        maximumCashback: initState
+                                                            .products[index].maximumCashback,
+                                                        discount:
+                                                            initState.products[index].discount,
+                                                        maximumPersonalDiscount: initState
+                                                            .products[index]
+                                                            .maximumPersonalDiscount,
+                                                        isAuth: initState.isAuth,
+                                                        userDiscount: initState.userDiscount,
+                                                        pb: initState.products[index].pb,
+                                                        isShop: initState.products[index].isShop,
+                                                        onAddProductToSoppingCart: () {
+                                                          context.read<CatalogBloc>().add(
+                                                                CatalogEvent.getInfoProductSize(
+                                                                  code: initState.products[index].id
+                                                                      .toString(),
+                                                                  isShop: initState
+                                                                      .products[index].isShop,
+                                                                  titleScreen: 'Каталог',
+                                                                ),
+                                                              );
+                                                        },
+                                                        listSize: initState.listSize,
+                                                        isLoad: codeProduct ==
+                                                                initState.products[index].id &&
+                                                            initState.isLoadGetSizeProduct,
+                                                        sizeProduct: initState.products[index].sz,
+                                                        promo: initState.products[index].promo,
+                                                        promoValue:
+                                                            initState.products[index].promoValue,
+                                                        images: initState.products[index].images,
+                                                        video: initState.products[index].video,
+                                                        goSwipeBack: () {
+                                                          if (index.isEven) {
+                                                            context.read<CatalogBloc>().add(
+                                                                  const CatalogEvent
+                                                                      .goBackCatalogInfo(),
+                                                                );
+                                                            if (initState.listCatalogPath.isEmpty ||
+                                                                initState.listCatalogPath.length ==
+                                                                    1) {
+                                                              if (widget.lastPath.isNotEmpty) {
+                                                                if (widget.lastPath == 'news') {
+                                                                  context.navigateTo(
+                                                                    NewsRoute(children: [
+                                                                      NewsInfoRoute(
+                                                                        indexPage: 0,
+                                                                      ),
+                                                                    ]),
+                                                                  );
+                                                                  AppMetrica.reportEvent(
+                                                                      'Список новостей');
+                                                                } else if (widget.lastPath ==
+                                                                    'news_info_description') {
+                                                                  final newsInfo = widget.newsInfo;
+                                                                  if (newsInfo != null) {
+                                                                    context.navigateTo(
+                                                                      NewsInfoDescriptionRoute(
+                                                                        info: newsInfo,
+                                                                      ),
+                                                                    );
+                                                                    AppMetrica.reportEvent(
+                                                                        'Страница новостей');
+                                                                  }
+                                                                } else if (widget.lastPath ==
+                                                                    'media_info_description') {
+                                                                  final newsMediaInfo =
+                                                                      widget.newsMediaInfo;
+                                                                  if (newsMediaInfo != null) {
+                                                                    context.navigateTo(
+                                                                      MediaInfoDescriptionRoute(
+                                                                        info: newsMediaInfo,
+                                                                      ),
+                                                                    );
+                                                                  }
+                                                                } else if (widget.lastPath ==
+                                                                    'notfication_info_description') {
+                                                                  final newsNotificationInfo =
+                                                                      widget.newsNotificationInfo;
+                                                                  if (newsNotificationInfo !=
+                                                                      null) {
+                                                                    context.navigateTo(
+                                                                      NotificationInfoDescriptionRoute(
+                                                                        info: newsNotificationInfo,
+                                                                      ),
+                                                                    );
+                                                                  }
+                                                                } else if (widget.lastPath ==
+                                                                    'media_notiifcation_description') {
+                                                                  context.navigateTo(
+                                                                    MediaNotificationDescriptionRoute(
+                                                                      idNews: widget.idNews ?? '',
+                                                                      isNotification: true,
+                                                                      messageId: widget.messageId,
+                                                                    ),
+                                                                  );
+                                                                } else if (widget.lastPath ==
+                                                                    'news_notification_description') {
+                                                                  context.navigateTo(
+                                                                    NewsNotificationDescriptionRoute(
+                                                                      idNews: widget.idNews ?? '',
+                                                                      isNotification: true,
+                                                                      messageId: widget.messageId,
+                                                                    ),
+                                                                  );
+                                                                } else if (widget.lastPath ==
+                                                                    'notfication_info_notfication_description') {
+                                                                  context.navigateTo(
+                                                                    NotificationInfoNotificationDescriptionRoute(
+                                                                      idNews: widget.idNews ?? '',
+                                                                      isNotification: true,
+                                                                      messageId: widget.messageId,
+                                                                    ),
+                                                                  );
+                                                                }
+                                                              } else {
+                                                                WidgetsBinding.instance
+                                                                    .addPostFrameCallback((_) {
+                                                                  context.back();
+                                                                });
+                                                              }
+                                                            }
+                                                            setState(() {
+                                                              _isSwipe = false;
+                                                            });
+                                                          }
+                                                        },
+                                                        onScaleStart: () {
+                                                          setState(() {
+                                                            _isZoom = true;
+                                                            _isScroll = false;
+                                                          });
+                                                          context.read<BottomNavigationBloc>().add(
+                                                                BottomNavigationEvent.switchBlocked(
+                                                                    isBlocked: true),
+                                                              );
+                                                        },
+                                                        onScaleStop: () {
+                                                          setState(() {
+                                                            _isZoom = false;
+                                                            _isScroll = true;
+                                                          });
+                                                          context.read<BottomNavigationBloc>().add(
+                                                                BottomNavigationEvent.switchBlocked(
+                                                                    isBlocked: false),
+                                                              );
+                                                        },
+                                                      ),
+                                                    );
+                                                  }
+                                                },
+                                              ),
                                             ),
-                                          ),
-                                        ],
-                                      ),
-                                    ),
+                                          ],
+                                        ),
+                                      );
+                                    },
+                                    orElse: () => const SizedBox(),
                                   );
-                                },
-                                orElse: () => const SizedBox(),
-                              );
-                            }),
-                          ],
+                                }),
+                              ],
+                            ),
+                          ),
                         ),
                       ),
-                    ),
-                  ),
-                  BlocBuilder<CatalogBloc, CatalogState>(
-                    builder: (context, state) {
-                      return state.maybeMap(
-                        preloadDataCompleted: (initState) {
-                          if (initState.isButtonTop) {
-                            return GestureDetector(
-                              onTap: () {
-                                _scrollController.jumpTo(0.0);
-                              },
-                              child: Container(
-                                height: 45,
-                                width: 45,
-                                margin: const EdgeInsets.only(left: 15, bottom: 15),
-                                padding: const EdgeInsets.all(10),
-                                decoration: BoxDecoration(
-                                  color: BlindChickenColors.activeBorderTextField,
-                                  borderRadius: BorderRadius.circular(25),
-                                ),
-                                child: SvgPicture.asset(
-                                  'assets/icons/chevron-top.svg',
-                                ),
-                              ),
-                            );
-                          } else {
-                            return const SizedBox();
-                          }
+                      BlocBuilder<CatalogBloc, CatalogState>(
+                        builder: (context, state) {
+                          return state.maybeMap(
+                            preloadDataCompleted: (initState) {
+                              if (initState.isButtonTop) {
+                                return GestureDetector(
+                                  onTap: () {
+                                    _scrollController.jumpTo(0.0);
+                                  },
+                                  child: Container(
+                                    height: 45,
+                                    width: 45,
+                                    margin: const EdgeInsets.only(left: 15, bottom: 15),
+                                    padding: const EdgeInsets.all(10),
+                                    decoration: BoxDecoration(
+                                      color: BlindChickenColors.activeBorderTextField,
+                                      borderRadius: BorderRadius.circular(25),
+                                    ),
+                                    child: SvgPicture.asset(
+                                      'assets/icons/chevron-top.svg',
+                                    ),
+                                  ),
+                                );
+                              } else {
+                                return const SizedBox();
+                              }
+                            },
+                            orElse: () => const SizedBox(),
+                          );
                         },
-                        orElse: () => const SizedBox(),
-                      );
-                    },
-                  )
+                      )
+                    ],
+                  ),
+                  BlocBuilder<CatalogBloc, CatalogState>(builder: (context, state) {
+                    return state.maybeMap(
+                      load: (value) {
+                        return Center(
+                          child: CircularProgressIndicator(
+                            color: Colors.black,
+                            backgroundColor: Colors.grey.shade400,
+                          ),
+                        );
+                      },
+                      preloadDataCompleted: (initState) {
+                        return initState.products.isEmpty
+                            ? Center(
+                                child: Padding(
+                                  padding: const EdgeInsets.only(top: 50),
+                                  child: Text(
+                                    'Товары не найдены',
+                                    style: Theme.of(context).textTheme.headlineLarge,
+                                  ),
+                                ),
+                              )
+                            : const SizedBox();
+                      },
+                      orElse: () => const SizedBox(),
+                    );
+                  }),
                 ],
               ),
               BlocBuilder<CatalogBloc, CatalogState>(builder: (context, state) {
                 return state.maybeMap(
-                  load: (value) {
-                    return Center(
-                      child: CircularProgressIndicator(
-                        color: Colors.black,
-                        backgroundColor: Colors.grey.shade400,
+                  preloadDataCompleted: (initState) {
+                    return GestureDetector(
+                      onHorizontalDragUpdate: (details) {},
+                      onHorizontalDragEnd: (DragEndDetails details) {
+                        if (details.velocity.pixelsPerSecond.dx > 1000 && _isSwipe) {
+                          context.read<CatalogBloc>().add(
+                                const CatalogEvent.goBackCatalogInfo(),
+                              );
+                          if (initState.listCatalogPath.isEmpty ||
+                              initState.listCatalogPath.length == 1) {
+                            if (widget.lastPath.isNotEmpty) {
+                              if (widget.lastPath == 'news') {
+                                context.navigateTo(
+                                  NewsRoute(children: [
+                                    NewsInfoRoute(
+                                      indexPage: 0,
+                                    ),
+                                  ]),
+                                );
+                                AppMetrica.reportEvent('Список новостей');
+                              } else if (widget.lastPath == 'news_info_description') {
+                                final newsInfo = widget.newsInfo;
+                                if (newsInfo != null) {
+                                  context.navigateTo(
+                                    NewsInfoDescriptionRoute(
+                                      info: newsInfo,
+                                    ),
+                                  );
+                                  AppMetrica.reportEvent('Страница новостей');
+                                }
+                              } else if (widget.lastPath == 'media_info_description') {
+                                final newsMediaInfo = widget.newsMediaInfo;
+                                if (newsMediaInfo != null) {
+                                  context.navigateTo(
+                                    MediaInfoDescriptionRoute(
+                                      info: newsMediaInfo,
+                                    ),
+                                  );
+                                }
+                              } else if (widget.lastPath == 'notfication_info_description') {
+                                final newsNotificationInfo = widget.newsNotificationInfo;
+                                if (newsNotificationInfo != null) {
+                                  context.navigateTo(
+                                    NotificationInfoDescriptionRoute(
+                                      info: newsNotificationInfo,
+                                    ),
+                                  );
+                                }
+                              } else if (widget.lastPath == 'media_notiifcation_description') {
+                                context.navigateTo(
+                                  MediaNotificationDescriptionRoute(
+                                    idNews: widget.idNews ?? '',
+                                    isNotification: true,
+                                    messageId: widget.messageId,
+                                  ),
+                                );
+                              } else if (widget.lastPath == 'news_notification_description') {
+                                context.navigateTo(
+                                  NewsNotificationDescriptionRoute(
+                                    idNews: widget.idNews ?? '',
+                                    isNotification: true,
+                                    messageId: widget.messageId,
+                                  ),
+                                );
+                              } else if (widget.lastPath ==
+                                  'notfication_info_notfication_description') {
+                                context.navigateTo(
+                                  NotificationInfoNotificationDescriptionRoute(
+                                    idNews: widget.idNews ?? '',
+                                    isNotification: true,
+                                    messageId: widget.messageId,
+                                  ),
+                                );
+                              }
+                            } else {
+                              WidgetsBinding.instance.addPostFrameCallback((_) {
+                                context.back();
+                              });
+                            }
+                          }
+                          setState(() {
+                            _isSwipe = false;
+                          });
+                          log((details.velocity.pixelsPerSecond.dx).toString());
+                        }
+                      },
+                      child: Container(
+                        height: MediaQuery.of(context).size.height,
+                        width: 50,
+                        color: Colors.transparent,
                       ),
                     );
-                  },
-                  preloadDataCompleted: (initState) {
-                    return initState.products.isEmpty
-                        ? Center(
-                            child: Padding(
-                              padding: const EdgeInsets.only(top: 50),
-                              child: Text(
-                                'Товары не найдены',
-                                style: Theme.of(context).textTheme.headlineLarge,
-                              ),
-                            ),
-                          )
-                        : const SizedBox();
                   },
                   orElse: () => const SizedBox(),
                 );

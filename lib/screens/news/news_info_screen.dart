@@ -360,6 +360,7 @@ class _NewsInfoScreenState extends State<NewsInfoScreen> with TickerProviderStat
                   Expanded(
                     child: TabBarView(
                       controller: _tabController,
+                      physics: const NeverScrollableScrollPhysics(),
                       children: <Widget>[
                         NewsTabInfo(
                           goBack: () {

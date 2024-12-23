@@ -402,7 +402,7 @@ class _NewsItemTabInfoState extends State<NewsItemTabInfo> with AutomaticKeepAli
                     )
                   else
                     const SizedBox(
-                      height: 12,
+                      height: 16,
                     )
                 ],
               ),
