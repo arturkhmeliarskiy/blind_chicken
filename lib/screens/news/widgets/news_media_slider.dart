@@ -118,7 +118,10 @@ class _NewsMediaSliderState extends State<NewsMediaSlider> {
                     widget.onTap(index);
                   },
                   child: ClipRRect(
-                    borderRadius: BorderRadius.circular(widget.borderRadius),
+                    borderRadius: BorderRadius.only(
+                      bottomLeft: Radius.circular(15),
+                      bottomRight: Radius.circular(15),
+                    ),
                     child: CachedNetworkImage(
                       imageUrl: widget.images[index - 1],
                       width: MediaQuery.of(context).orientation == Orientation.portrait

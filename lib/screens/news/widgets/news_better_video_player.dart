@@ -3,6 +3,8 @@ import 'dart:developer';
 import 'package:better_player/better_player.dart';
 import 'package:blind_chicken/screens/news/widgets/better_video_player.dart';
 import 'package:flutter/material.dart';
+import 'package:shimmer/shimmer.dart';
+import 'package:ui_kit/ui_kit.dart';
 import 'package:visibility_detector/visibility_detector.dart';
 
 class NewsBetterVideoPlayer extends StatefulWidget {
@@ -49,12 +51,21 @@ class NewsBetterVideoPlayerState extends State<NewsBetterVideoPlayer> {
       betterPlayerDataSource: BetterPlayerDataSource(
         BetterPlayerDataSourceType.network,
         widget.url,
-        placeholder: Center(
-          child: Container(
-            width: 40.0,
-            height: 40.0,
-            margin: EdgeInsets.all(10),
-            child: CircularProgressIndicator(),
+        placeholder: AspectRatio(
+          aspectRatio: 1,
+          child: Shimmer.fromColors(
+            baseColor: BlindChickenColors.borderSwitchCard,
+            highlightColor: BlindChickenColors.backgroundColorItemFilter,
+            period: Duration(seconds: 2),
+            child: Container(
+              decoration: BoxDecoration(
+                color: BlindChickenColors.borderSwitchCard,
+                borderRadius: BorderRadius.only(
+                  bottomLeft: Radius.circular(15),
+                  bottomRight: Radius.circular(15),
+                ),
+              ),
+            ),
           ),
         ),
       ),
@@ -100,8 +111,14 @@ class NewsBetterVideoPlayerState extends State<NewsBetterVideoPlayer> {
       child: _controller.isVideoInitialized() ?? false
           ? Stack(
               children: [
-                BetterVideoPlayer(
-                  controller: _controller,
+                ClipRRect(
+                  borderRadius: BorderRadius.only(
+                    bottomLeft: Radius.circular(15),
+                    bottomRight: Radius.circular(15),
+                  ),
+                  child: BetterVideoPlayer(
+                    controller: _controller,
+                  ),
                 ),
                 GestureDetector(
                   onTap: () {
@@ -117,12 +134,21 @@ class NewsBetterVideoPlayerState extends State<NewsBetterVideoPlayer> {
                 )
               ],
             )
-          : Center(
-              child: Container(
-                width: 40.0,
-                height: 40.0,
-                margin: EdgeInsets.all(10),
-                child: CircularProgressIndicator(),
+          : AspectRatio(
+              aspectRatio: 1,
+              child: Shimmer.fromColors(
+                baseColor: BlindChickenColors.borderSwitchCard,
+                highlightColor: BlindChickenColors.backgroundColorItemFilter,
+                period: Duration(seconds: 2),
+                child: Container(
+                  decoration: BoxDecoration(
+                    color: BlindChickenColors.borderSwitchCard,
+                    borderRadius: BorderRadius.only(
+                      bottomLeft: Radius.circular(15),
+                      bottomRight: Radius.circular(15),
+                    ),
+                  ),
+                ),
               ),
             ),
     );

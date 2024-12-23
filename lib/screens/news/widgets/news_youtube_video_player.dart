@@ -53,21 +53,29 @@ class NewsYouTubeVideoPlayerState extends State<NewsYouTubeVideoPlayer> {
   Widget build(BuildContext context) {
     return InkWell(
       onTap: widget.isTapVideoFullScreen ? widget.onEnterFullScreen : null,
-      child: YoutubePlayerBuilder(
-        player: YoutubePlayer(
-          controller: _controller,
+      child: ClipRRect(
+        borderRadius: !widget.isTapVideoFullScreen
+            ? BorderRadius.only(
+                bottomLeft: Radius.circular(15),
+                bottomRight: Radius.circular(15),
+              )
+            : BorderRadius.zero,
+        child: YoutubePlayerBuilder(
+          player: YoutubePlayer(
+            controller: _controller,
+          ),
+          onEnterFullScreen: widget.onEnterFullScreen,
+          onExitFullScreen: widget.onExitFullScreen,
+          builder: (context, player) {
+            return Column(
+              children: [
+                // some widgets
+                player,
+                //some other widgets
+              ],
+            );
+          },
         ),
-        onEnterFullScreen: widget.onEnterFullScreen,
-        onExitFullScreen: widget.onExitFullScreen,
-        builder: (context, player) {
-          return Column(
-            children: [
-              // some widgets
-              player,
-              //some other widgets
-            ],
-          );
-        },
       ),
     );
   }

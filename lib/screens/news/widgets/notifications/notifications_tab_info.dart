@@ -91,24 +91,41 @@ class _NotificationsTabInfoState extends State<NotificationsTabInfo> {
                       _paginationPosition = 0;
                     }
                     if (initState.notificatios.list.isNotEmpty) {
-                      return ListView.builder(
-                        physics: const BouncingScrollPhysics(),
-                        controller: _scrollController,
-                        itemCount: initState.notificatios.list.length,
-                        itemBuilder: (context, index) {
-                          return GestureDetector(
-                            onTap: () {
-                              context.navigateTo(
-                                NotificationInfoDescriptionRoute(
-                                  info: initState.notificatios.list[index],
-                                ),
-                              );
-                            },
-                            child: NotificationItemTabInfo(
-                              item: initState.notificatios.list[index],
-                            ),
-                          );
-                        },
+                      return Container(
+                        decoration: BoxDecoration(
+                          color: BlindChickenColors.borderBottomColor,
+                          image: DecorationImage(
+                            image: AssetImage('assets/images/news_background.png'),
+                            fit: BoxFit.cover,
+                          ),
+                        ),
+                        child: ListView.builder(
+                          physics: const BouncingScrollPhysics(),
+                          controller: _scrollController,
+                          itemCount: initState.notificatios.list.length,
+                          itemBuilder: (context, index) {
+                            return GestureDetector(
+                              onTap: () {
+                                context.navigateTo(
+                                  NotificationInfoDescriptionRoute(
+                                    info: initState.notificatios.list[index],
+                                  ),
+                                );
+                              },
+                              child: Column(
+                                children: [
+                                  NotificationItemTabInfo(
+                                    item: initState.notificatios.list[index],
+                                  ),
+                                  if (initState.notificatios.list.length - 1 == index)
+                                    SizedBox(
+                                      height: 10,
+                                    ),
+                                ],
+                              ),
+                            );
+                          },
+                        ),
                       );
                     } else {
                       return LayoutBuilder(builder: (context, constraint) {

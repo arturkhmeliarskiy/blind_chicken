@@ -14,6 +14,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_widget_from_html/flutter_widget_from_html.dart';
 import 'package:models/models.dart';
 import 'package:shared/shared.dart';
+import 'package:shimmer/shimmer.dart';
 import 'package:ui_kit/ui_kit.dart';
 import 'package:visibility_detector/visibility_detector.dart';
 
@@ -59,11 +60,22 @@ class _NewsItemTabInfoState extends State<NewsItemTabInfo> with AutomaticKeepAli
       betterPlayerDataSource: BetterPlayerDataSource(
         BetterPlayerDataSourceType.network,
         widget.item.video,
-        placeholder: CachedNetworkImage(
-          imageUrl: widget.item.videoImage,
-          height: MediaQuery.of(context).size.height,
-          fit: BoxFit.cover,
-          errorWidget: (context, url, error) => const Icon(Icons.error),
+        placeholder: AspectRatio(
+          aspectRatio: 1,
+          child: Shimmer.fromColors(
+            baseColor: BlindChickenColors.borderSwitchCard,
+            highlightColor: BlindChickenColors.backgroundColorItemFilter,
+            period: Duration(seconds: 2),
+            child: Container(
+              decoration: BoxDecoration(
+                color: BlindChickenColors.borderSwitchCard,
+                borderRadius: BorderRadius.only(
+                  bottomLeft: Radius.circular(15),
+                  bottomRight: Radius.circular(15),
+                ),
+              ),
+            ),
+          ),
         ),
       ),
     );
@@ -110,13 +122,19 @@ class _NewsItemTabInfoState extends State<NewsItemTabInfo> with AutomaticKeepAli
             },
             child: Container(
               margin: const EdgeInsets.only(top: 20, left: 10, right: 10),
-              padding: const EdgeInsets.only(left: 16, right: 16),
               width: width,
               decoration: BoxDecoration(
                 borderRadius: BorderRadius.circular(15),
                 color: widget.item.isViewed
                     ? BlindChickenColors.backgroundColorItemFilter
                     : BlindChickenColors.backgroundColor,
+                boxShadow: [
+                  BoxShadow(
+                    color: BlindChickenColors.textInput.withOpacity(0.2),
+                    blurRadius: 4,
+                    offset: const Offset(3, 3), // Shadow position
+                  ),
+                ],
               ),
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
@@ -124,43 +142,52 @@ class _NewsItemTabInfoState extends State<NewsItemTabInfo> with AutomaticKeepAli
                   const SizedBox(
                     height: 12,
                   ),
-                  Row(
-                    children: [
-                      Expanded(
-                        child: Text(
-                          widget.item.title,
-                          style: Theme.of(context).textTheme.headlineMedium?.copyWith(
-                                fontWeight: FontWeight.w700,
-                              ),
+                  Padding(
+                    padding: const EdgeInsets.symmetric(horizontal: 16),
+                    child: Row(
+                      children: [
+                        Expanded(
+                          child: Text(
+                            widget.item.title,
+                            style: Theme.of(context).textTheme.headlineMedium?.copyWith(
+                                  fontWeight: FontWeight.w700,
+                                ),
+                          ),
                         ),
-                      ),
-                      if (widget.item.isViewed)
-                        const SizedBox(
-                          height: 15,
-                          width: 25,
-                        ),
-                    ],
+                        if (widget.item.isViewed)
+                          const SizedBox(
+                            height: 15,
+                            width: 25,
+                          ),
+                      ],
+                    ),
                   ),
-                  Text(
-                    DateInfo.dateFormat(widget.item.createAt),
-                    style: Theme.of(context).textTheme.displaySmall?.copyWith(
-                          color: BlindChickenColors.textInput,
-                        ),
+                  Padding(
+                    padding: const EdgeInsets.symmetric(horizontal: 16),
+                    child: Text(
+                      DateInfo.dateFormat(widget.item.createAt),
+                      style: Theme.of(context).textTheme.displaySmall?.copyWith(
+                            color: BlindChickenColors.textInput,
+                          ),
+                    ),
                   ),
                   const SizedBox(
                     height: 8,
                   ),
-                  HtmlWidget(
-                    widget.item.announcement,
-                    textStyle: Theme.of(context).textTheme.displayMedium,
-                    onTapUrl: (url) async {
-                      return HandlerLinksNews.handlerLinks(
-                        context: context,
-                        url: url,
-                        titleScreen: 'news',
-                        titleAppMetrica: 'Переход по ссылке из cтраницы новостей',
-                      );
-                    },
+                  Padding(
+                    padding: const EdgeInsets.symmetric(horizontal: 16),
+                    child: HtmlWidget(
+                      widget.item.announcement,
+                      textStyle: Theme.of(context).textTheme.displayMedium,
+                      onTapUrl: (url) async {
+                        return HandlerLinksNews.handlerLinks(
+                          context: context,
+                          url: url,
+                          titleScreen: 'news',
+                          titleAppMetrica: 'Переход по ссылке из cтраницы новостей',
+                        );
+                      },
+                    ),
                   ),
                   if (widget.item.typeMedia == 'media')
                     Column(
@@ -207,14 +234,20 @@ class _NewsItemTabInfoState extends State<NewsItemTabInfo> with AutomaticKeepAli
                               ),
                             );
                           },
-                          child: CachedNetworkImage(
-                            imageUrl: widget.item.images.first,
-                            repeat: ImageRepeat.repeat,
-                            width: MediaQuery.of(context).orientation == Orientation.portrait
-                                ? width
-                                : width / 2,
-                            fit: BoxFit.cover,
-                            errorWidget: (context, url, error) => const Icon(Icons.error),
+                          child: ClipRRect(
+                            borderRadius: BorderRadius.only(
+                              bottomLeft: Radius.circular(15),
+                              bottomRight: Radius.circular(15),
+                            ),
+                            child: CachedNetworkImage(
+                              imageUrl: widget.item.images.first,
+                              repeat: ImageRepeat.repeat,
+                              width: MediaQuery.of(context).orientation == Orientation.portrait
+                                  ? width
+                                  : width / 2,
+                              fit: BoxFit.cover,
+                              errorWidget: (context, url, error) => const Icon(Icons.error),
+                            ),
                           ),
                         ),
                       ],
@@ -288,44 +321,71 @@ class _NewsItemTabInfoState extends State<NewsItemTabInfo> with AutomaticKeepAli
                           builder: (context, constraints) {
                             final videoController = _controller;
                             if (videoController != null) {
-                              return Stack(
-                                children: [
-                                  BetterVideoPlayer(
-                                    controller: videoController,
-                                  ),
-                                  InkWell(
-                                    onTap: () {
-                                      videoController.pause();
-                                      showDialog(
-                                        context: context,
-                                        barrierColor: BlindChickenColors.activeBorderTextField,
-                                        builder: (context) {
-                                          return Scaffold(
-                                            backgroundColor:
-                                                BlindChickenColors.activeBorderTextField,
-                                            body: NewsVideoPlayer(
-                                              url: widget.item.video,
-                                              image: widget.item.videoImage,
-                                              isFullScreenVideo: true,
-                                              onEnterFullScreen: (aspectRatio) {},
-                                              aspectRatio: videoController.getAspectRatio() ?? 0,
-                                              onExitFullScreen: () {
-                                                Navigator.of(context).pop();
+                              return videoController.isVideoInitialized() ?? false
+                                  ? Stack(
+                                      children: [
+                                        ClipRRect(
+                                          borderRadius: BorderRadius.only(
+                                            bottomLeft: Radius.circular(15),
+                                            bottomRight: Radius.circular(15),
+                                          ),
+                                          child: BetterVideoPlayer(
+                                            controller: videoController,
+                                          ),
+                                        ),
+                                        InkWell(
+                                          onTap: () {
+                                            videoController.pause();
+                                            showDialog(
+                                              context: context,
+                                              barrierColor:
+                                                  BlindChickenColors.activeBorderTextField,
+                                              builder: (context) {
+                                                return Scaffold(
+                                                  backgroundColor:
+                                                      BlindChickenColors.activeBorderTextField,
+                                                  body: NewsVideoPlayer(
+                                                    url: widget.item.video,
+                                                    image: widget.item.videoImage,
+                                                    isFullScreenVideo: true,
+                                                    onEnterFullScreen: (aspectRatio) {},
+                                                    aspectRatio:
+                                                        videoController.getAspectRatio() ?? 0,
+                                                    onExitFullScreen: () {
+                                                      Navigator.of(context).pop();
+                                                    },
+                                                  ),
+                                                );
                                               },
+                                            );
+                                          },
+                                          child: AspectRatio(
+                                            aspectRatio: videoController.getAspectRatio() ?? 0,
+                                            child: Container(
+                                              color: Colors.transparent,
                                             ),
-                                          );
-                                        },
-                                      );
-                                    },
-                                    child: AspectRatio(
-                                      aspectRatio: videoController.getAspectRatio() ?? 0,
-                                      child: Container(
-                                        color: Colors.transparent,
+                                          ),
+                                        )
+                                      ],
+                                    )
+                                  : AspectRatio(
+                                      aspectRatio: 1,
+                                      child: Shimmer.fromColors(
+                                        baseColor: BlindChickenColors.borderSwitchCard,
+                                        highlightColor:
+                                            BlindChickenColors.backgroundColorItemFilter,
+                                        period: Duration(seconds: 2),
+                                        child: Container(
+                                          decoration: BoxDecoration(
+                                            color: BlindChickenColors.borderSwitchCard,
+                                            borderRadius: BorderRadius.only(
+                                              bottomLeft: Radius.circular(15),
+                                              bottomRight: Radius.circular(15),
+                                            ),
+                                          ),
+                                        ),
                                       ),
-                                    ),
-                                  )
-                                ],
-                              );
+                                    );
                             } else {
                               return CachedNetworkImage(
                                 imageUrl: widget.item.videoImage,
@@ -401,9 +461,7 @@ class _NewsItemTabInfoState extends State<NewsItemTabInfo> with AutomaticKeepAli
                       },
                     )
                   else
-                    const SizedBox(
-                      height: 16,
-                    )
+                    const SizedBox()
                 ],
               ),
             ),
