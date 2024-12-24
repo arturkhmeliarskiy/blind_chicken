@@ -4,8 +4,6 @@ import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_svg/flutter_svg.dart';
-import 'package:get_it/get_it.dart';
-import 'package:shared/shared.dart';
 import 'package:ui_kit/ui_kit.dart';
 import 'package:video_player/video_player.dart';
 import 'package:visibility_detector/visibility_detector.dart';
@@ -55,7 +53,7 @@ class NewsVideoPlayerState extends State<NewsVideoPlayer> {
   void initState() {
     super.initState();
     _isFullScreenVideo = widget.isFullScreenVideo;
-    final updateData = GetIt.I.get<UpdateDataService>();
+    // final updateData = GetIt.I.get<UpdateDataService>();
 
     _controller = VideoPlayerController.networkUrl(
       Uri.parse(widget.url),
@@ -72,7 +70,7 @@ class NewsVideoPlayerState extends State<NewsVideoPlayer> {
         }
         _controller.setLooping(true);
       });
-    updateData.videoController = _controller;
+    // updateData.videoController = _controller;
     _controller.setLooping(true);
   }
 
@@ -81,8 +79,8 @@ class NewsVideoPlayerState extends State<NewsVideoPlayer> {
     if (!widget.isFullScreenVideo) {
       _controller.play();
     }
-    final updateData = GetIt.I.get<UpdateDataService>();
-    updateData.videoController = _controller;
+    // final updateData = GetIt.I.get<UpdateDataService>();
+    // updateData.videoController = _controller;
     super.didUpdateWidget(oldWidget);
   }
 

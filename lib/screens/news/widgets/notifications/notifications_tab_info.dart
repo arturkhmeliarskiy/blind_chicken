@@ -72,128 +72,120 @@ class _NotificationsTabInfoState extends State<NotificationsTabInfo> {
 
   @override
   Widget build(BuildContext context) {
-    return GestureDetector(
-      onVerticalDragUpdate: (details) {},
-      onHorizontalDragEnd: (DragEndDetails details) {
-        if (details.velocity.pixelsPerSecond.dx > 0) {
-          widget.goBack();
-        }
-      },
-      child: Stack(
-        children: [
-          Stack(
-            alignment: Alignment.bottomLeft,
-            children: [
-              BlocBuilder<NewsBloc, NewsState>(builder: (context, state) {
-                return state.maybeMap(
-                  preloadDataCompleted: (initState) {
-                    if (initState.offsetNotificatios == 1) {
-                      _paginationPosition = 0;
-                    }
-                    if (initState.notificatios.list.isNotEmpty) {
-                      return Container(
-                        decoration: BoxDecoration(
-                          color: BlindChickenColors.borderBottomColor,
-                          image: DecorationImage(
-                            image: AssetImage('assets/images/news_background.png'),
-                            fit: BoxFit.cover,
-                          ),
+    return Stack(
+      children: [
+        Stack(
+          alignment: Alignment.bottomLeft,
+          children: [
+            BlocBuilder<NewsBloc, NewsState>(builder: (context, state) {
+              return state.maybeMap(
+                preloadDataCompleted: (initState) {
+                  if (initState.offsetNotificatios == 1) {
+                    _paginationPosition = 0;
+                  }
+                  if (initState.notificatios.list.isNotEmpty) {
+                    return Container(
+                      decoration: BoxDecoration(
+                        color: BlindChickenColors.borderBottomColor,
+                        image: DecorationImage(
+                          image: AssetImage('assets/images/news_background.png'),
+                          fit: BoxFit.cover,
                         ),
-                        child: ListView.builder(
-                          physics: const BouncingScrollPhysics(),
-                          controller: _scrollController,
-                          itemCount: initState.notificatios.list.length,
-                          itemBuilder: (context, index) {
-                            return GestureDetector(
-                              onTap: () {
-                                context.navigateTo(
-                                  NotificationInfoDescriptionRoute(
-                                    info: initState.notificatios.list[index],
+                      ),
+                      child: ListView.builder(
+                        physics: const BouncingScrollPhysics(),
+                        controller: _scrollController,
+                        itemCount: initState.notificatios.list.length,
+                        itemBuilder: (context, index) {
+                          return GestureDetector(
+                            onTap: () {
+                              context.navigateTo(
+                                NotificationInfoDescriptionRoute(
+                                  info: initState.notificatios.list[index],
+                                ),
+                              );
+                            },
+                            child: Column(
+                              children: [
+                                NotificationItemTabInfo(
+                                  item: initState.notificatios.list[index],
+                                ),
+                                if (initState.notificatios.list.length - 1 == index)
+                                  SizedBox(
+                                    height: 10,
                                   ),
-                                );
-                              },
-                              child: Column(
-                                children: [
-                                  NotificationItemTabInfo(
-                                    item: initState.notificatios.list[index],
-                                  ),
-                                  if (initState.notificatios.list.length - 1 == index)
-                                    SizedBox(
-                                      height: 10,
-                                    ),
-                                ],
-                              ),
-                            );
-                          },
-                        ),
-                      );
-                    } else {
-                      return LayoutBuilder(builder: (context, constraint) {
-                        return Container(
-                          height: constraint.maxHeight,
-                          width: constraint.maxWidth,
-                          alignment: Alignment.center,
-                          color: Colors.transparent,
-                          child: Text(
-                            'Нет уведомлений',
-                            style: Theme.of(context).textTheme.headlineLarge,
-                          ),
-                        );
-                      });
-                    }
-                  },
-                  orElse: () => const SizedBox(),
-                );
-              }),
-              BlocBuilder<NewsBloc, NewsState>(builder: (context, state) {
-                return state.maybeMap(
-                  preloadDataCompleted: (value) {
-                    if (_isButtonTop) {
-                      return GestureDetector(
-                        onTap: () {
-                          _scrollController.jumpTo(0.0);
-                          setState(() {
-                            _isButtonTop = false;
-                          });
+                              ],
+                            ),
+                          );
                         },
-                        child: Container(
-                          height: 45,
-                          width: 45,
-                          margin: const EdgeInsets.only(left: 15, bottom: 15),
-                          padding: const EdgeInsets.all(10),
-                          decoration: BoxDecoration(
-                            color: BlindChickenColors.activeBorderTextField,
-                            borderRadius: BorderRadius.circular(25),
-                          ),
-                          child: SvgPicture.asset(
-                            'assets/icons/chevron-top.svg',
-                          ),
+                      ),
+                    );
+                  } else {
+                    return LayoutBuilder(builder: (context, constraint) {
+                      return Container(
+                        height: constraint.maxHeight,
+                        width: constraint.maxWidth,
+                        alignment: Alignment.center,
+                        color: Colors.transparent,
+                        child: Text(
+                          'Нет уведомлений',
+                          style: Theme.of(context).textTheme.headlineLarge,
                         ),
                       );
-                    } else {
-                      return const SizedBox();
-                    }
-                  },
-                  orElse: () => const SizedBox(),
-                );
-              })
-            ],
-          ),
-          BlocBuilder<NewsBloc, NewsState>(builder: (context, state) {
-            return state.maybeMap(
-              load: (value) {
-                return Center(
-                  child: CircularProgressIndicator(
-                    color: Colors.black,
-                    backgroundColor: Colors.grey.shade400,
-                  ),
-                );
-              },
-              orElse: () => const SizedBox(),
-            );
-          }),
-        ],
-      ),
+                    });
+                  }
+                },
+                orElse: () => const SizedBox(),
+              );
+            }),
+            BlocBuilder<NewsBloc, NewsState>(builder: (context, state) {
+              return state.maybeMap(
+                preloadDataCompleted: (value) {
+                  if (_isButtonTop) {
+                    return GestureDetector(
+                      onTap: () {
+                        _scrollController.jumpTo(0.0);
+                        setState(() {
+                          _isButtonTop = false;
+                        });
+                      },
+                      child: Container(
+                        height: 45,
+                        width: 45,
+                        margin: const EdgeInsets.only(left: 15, bottom: 15),
+                        padding: const EdgeInsets.all(10),
+                        decoration: BoxDecoration(
+                          color: BlindChickenColors.activeBorderTextField,
+                          borderRadius: BorderRadius.circular(25),
+                        ),
+                        child: SvgPicture.asset(
+                          'assets/icons/chevron-top.svg',
+                        ),
+                      ),
+                    );
+                  } else {
+                    return const SizedBox();
+                  }
+                },
+                orElse: () => const SizedBox(),
+              );
+            })
+          ],
+        ),
+        BlocBuilder<NewsBloc, NewsState>(builder: (context, state) {
+          return state.maybeMap(
+            load: (value) {
+              return Center(
+                child: CircularProgressIndicator(
+                  color: Colors.black,
+                  backgroundColor: Colors.grey.shade400,
+                ),
+              );
+            },
+            orElse: () => const SizedBox(),
+          );
+        }),
+      ],
     );
   }
 }

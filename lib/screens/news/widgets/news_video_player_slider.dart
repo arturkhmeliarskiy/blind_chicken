@@ -3,7 +3,9 @@ import 'dart:developer';
 import 'package:flutter/material.dart';
 import 'package:get_it/get_it.dart';
 import 'package:shared/shared.dart';
-import 'package:video_player/video_player.dart';
+import 'package:cached_video_player_plus/cached_video_player_plus.dart';
+import 'package:shimmer/shimmer.dart';
+import 'package:ui_kit/ui_kit.dart';
 import 'package:visibility_detector/visibility_detector.dart';
 
 class NewsVideoPlayerSlider extends StatefulWidget {
@@ -25,13 +27,13 @@ class NewsVideoPlayerSlider extends StatefulWidget {
 }
 
 class _NewsVideoPlayerSliderState extends State<NewsVideoPlayerSlider> {
-  late VideoPlayerController _controller;
+  late CachedVideoPlayerPlusController _controller;
 
   @override
   void didChangeDependencies() {
     final updateData = GetIt.I.get<UpdateDataService>();
 
-    _controller = VideoPlayerController.networkUrl(
+    _controller = CachedVideoPlayerPlusController.networkUrl(
       Uri.parse(widget.url),
     )..initialize().then((_) {
         setState(() {
@@ -42,15 +44,9 @@ class _NewsVideoPlayerSliderState extends State<NewsVideoPlayerSlider> {
         widget.onAspectRatio(_controller.value.aspectRatio);
         _controller.setLooping(true);
       });
-    updateData.videoController = _controller;
     _controller.setLooping(true);
+    updateData.videoController = _controller;
     super.didChangeDependencies();
-  }
-
-  @override
-  void dispose() {
-    _controller.dispose();
-    super.dispose();
   }
 
   @override
@@ -78,10 +74,16 @@ class _NewsVideoPlayerSliderState extends State<NewsVideoPlayerSlider> {
       child: _controller.value.isInitialized
           ? Stack(
               children: [
-                AspectRatio(
-                  aspectRatio: _controller.value.aspectRatio,
-                  child: VideoPlayer(
-                    _controller,
+                ClipRRect(
+                  borderRadius: BorderRadius.only(
+                    bottomLeft: Radius.circular(15),
+                    bottomRight: Radius.circular(15),
+                  ),
+                  child: AspectRatio(
+                    aspectRatio: _controller.value.aspectRatio,
+                    child: CachedVideoPlayerPlus(
+                      _controller,
+                    ),
                   ),
                 ),
                 GestureDetector(
@@ -98,14 +100,29 @@ class _NewsVideoPlayerSliderState extends State<NewsVideoPlayerSlider> {
                 )
               ],
             )
-          : Center(
-              child: Container(
-                width: 40.0,
-                height: 40.0,
-                margin: EdgeInsets.all(10),
-                child: CircularProgressIndicator(),
+          : AspectRatio(
+              aspectRatio: 1,
+              child: Shimmer.fromColors(
+                baseColor: BlindChickenColors.borderSwitchCard,
+                highlightColor: BlindChickenColors.backgroundColorItemFilter,
+                period: Duration(seconds: 2),
+                child: Container(
+                  decoration: BoxDecoration(
+                    color: BlindChickenColors.borderSwitchCard,
+                    borderRadius: BorderRadius.only(
+                      bottomLeft: Radius.circular(15),
+                      bottomRight: Radius.circular(15),
+                    ),
+                  ),
+                ),
               ),
             ),
     );
+  }
+
+  @override
+  void dispose() {
+    _controller.dispose();
+    super.dispose();
   }
 }

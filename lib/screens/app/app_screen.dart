@@ -219,6 +219,10 @@ class _DashboardPageState extends State<DashboardPage> {
                   children: List.generate(listItems.length, (index) {
                     return GestureDetector(
                       onTap: () async {
+                        final updateData = GetIt.I.get<UpdateDataService>();
+                        if (updateData.videoController.dataSource.isNotEmpty) {
+                          updateData.videoController.dispose();
+                        }
                         if (listItems[index].route == 'phone') {
                           await LaunchService.makePhoneCall(listItems[index].title);
                           context.navigateNamedTo('/dashboard/home/${listItems[index].route}');

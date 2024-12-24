@@ -77,106 +77,102 @@ class _NewsInfoScreenState extends State<NewsInfoScreen> with TickerProviderStat
 
   @override
   Widget build(BuildContext context) {
+    String? swipeDirection;
     return BlocListener<NewsBloc, NewsState>(
-        listener: (context, state) {
-          state.maybeMap(
-            preloadDataCompleted: (initState) {
-              if (initState.isError ?? false) {
-                final typeError = initState.typeError ?? '';
-                if (!_isShowDialogNewsInfoError &&
-                    typeError != 'описание news' &&
-                    typeError != 'описание media' &&
-                    typeError != 'описание notice') {
-                  _isShowDialogNewsInfoError = true;
-                  _blindChickenNewsInfoShowDialogError.openShowDualog(
-                    context: context,
-                    errorMessage: initState.errorMessage ?? '',
-                    widget: BlocBuilder<NewsBloc, NewsState>(
-                      builder: (context, state) {
-                        return state.maybeMap(
-                          preloadDataCompleted: (value) {
-                            if (value.isLoadErrorButton ?? false) {
-                              return const SizedBox(
-                                height: 15,
-                                width: 15,
-                                child: Center(
-                                  child: CircularProgressIndicator(
-                                    strokeWidth: 3,
+      listener: (context, state) {
+        state.maybeMap(
+          preloadDataCompleted: (initState) {
+            if (initState.isError ?? false) {
+              final typeError = initState.typeError ?? '';
+              if (!_isShowDialogNewsInfoError &&
+                  typeError != 'описание news' &&
+                  typeError != 'описание media' &&
+                  typeError != 'описание notice') {
+                _isShowDialogNewsInfoError = true;
+                _blindChickenNewsInfoShowDialogError.openShowDualog(
+                  context: context,
+                  errorMessage: initState.errorMessage ?? '',
+                  widget: BlocBuilder<NewsBloc, NewsState>(
+                    builder: (context, state) {
+                      return state.maybeMap(
+                        preloadDataCompleted: (value) {
+                          if (value.isLoadErrorButton ?? false) {
+                            return const SizedBox(
+                              height: 15,
+                              width: 15,
+                              child: Center(
+                                child: CircularProgressIndicator(
+                                  strokeWidth: 3,
+                                  color: BlindChickenColors.backgroundColor,
+                                ),
+                              ),
+                            );
+                          } else {
+                            return Text(
+                              'Повторить',
+                              style: Theme.of(context).textTheme.displayMedium?.copyWith(
                                     color: BlindChickenColors.backgroundColor,
                                   ),
-                                ),
-                              );
-                            } else {
-                              return Text(
-                                'Повторить',
-                                style: Theme.of(context).textTheme.displayMedium?.copyWith(
-                                      color: BlindChickenColors.backgroundColor,
-                                    ),
-                                textAlign: TextAlign.center,
-                              );
-                            }
-                          },
-                          orElse: () => const SizedBox(),
-                        );
-                      },
-                    ),
-                    onRepeatRequest: () {
-                      switch (typeError) {
-                        case 'новости':
-                          context.read<NewsBloc>().add(NewsEvent.getNews(isGoBack: false));
-                          break;
-                        case 'медиа':
-                          context.read<NewsBloc>().add(const NewsEvent.getMedia());
-                          break;
-                        case 'уведомления':
-                          context.read<NewsBloc>().add(const NewsEvent.getNotifications());
-                          break;
-                        case 'пагинация новости':
-                          context.read<NewsBloc>().add(NewsEvent.paginationNews());
-                          break;
-                      }
-                    },
-                  );
-                }
-              } else {
-                if (_isShowDialogNewsInfoError) {
-                  _isShowDialogNewsInfoError = false;
-                  _blindChickenNewsInfoShowDialogError.closeShowDialog();
-                }
-                if (!initState.isNotification) {
-                  if (initState.listNewsPath.isEmpty) {
-                    context.back();
-                    setState(() {
-                      _isSwipe = false;
-                    });
-                  } else {
-                    if (initState.isGoBack ?? false) {
-                      _tabController.animateTo(
-                        int.parse(
-                          initState.listNewsPath.last,
-                        ),
+                              textAlign: TextAlign.center,
+                            );
+                          }
+                        },
+                        orElse: () => const SizedBox(),
                       );
-                      setState(() {
-                        _tabController.index = int.parse(
-                          initState.listNewsPath.last,
-                        );
-                      });
+                    },
+                  ),
+                  onRepeatRequest: () {
+                    switch (typeError) {
+                      case 'новости':
+                        context.read<NewsBloc>().add(NewsEvent.getNews(isGoBack: false));
+                        break;
+                      case 'медиа':
+                        context.read<NewsBloc>().add(const NewsEvent.getMedia());
+                        break;
+                      case 'уведомления':
+                        context.read<NewsBloc>().add(const NewsEvent.getNotifications());
+                        break;
+                      case 'пагинация новости':
+                        context.read<NewsBloc>().add(NewsEvent.paginationNews());
+                        break;
                     }
+                  },
+                );
+              }
+            } else {
+              if (_isShowDialogNewsInfoError) {
+                _isShowDialogNewsInfoError = false;
+                _blindChickenNewsInfoShowDialogError.closeShowDialog();
+              }
+              if (!initState.isNotification) {
+                if (initState.listNewsPath.isEmpty) {
+                  context.back();
+                  setState(() {
+                    _isSwipe = false;
+                  });
+                } else {
+                  if (initState.isGoBack ?? false) {
+                    _tabController.animateTo(
+                      int.parse(
+                        initState.listNewsPath.last,
+                      ),
+                    );
+                    setState(() {
+                      _tabController.index = int.parse(
+                        initState.listNewsPath.last,
+                      );
+                    });
                   }
                 }
               }
-            },
-            orElse: () {},
-          );
-        },
-        child: GestureDetector(
-          onVerticalDragUpdate: (details) {},
-          onHorizontalDragEnd: (DragEndDetails details) {
-            if (details.velocity.pixelsPerSecond.dx > 0) {
-              context.read<NewsBloc>().add(const NewsEvent.goBackNewsInfo());
             }
           },
-          child: PopScope(
+          orElse: () {},
+        );
+      },
+      child: Stack(
+        children: [
+          PopScope(
             canPop: false,
             onPopInvoked: (value) {
               if (_isSwipe && !value) {
@@ -386,7 +382,28 @@ class _NewsInfoScreenState extends State<NewsInfoScreen> with TickerProviderStat
               ),
             ),
           ),
-        ));
+          GestureDetector(
+            onPanUpdate: (details) {
+              swipeDirection = details.delta.dx < 0 ? 'left' : 'right';
+            },
+            onPanEnd: (details) {
+              if (swipeDirection == null) {
+                return;
+              }
+              if (swipeDirection == 'left') {}
+              if (swipeDirection == 'right') {
+                context.read<NewsBloc>().add(const NewsEvent.goBackNewsInfo());
+              }
+            },
+            child: Container(
+              height: MediaQuery.of(context).size.height,
+              width: 50,
+              color: Colors.transparent,
+            ),
+          )
+        ],
+      ),
+    );
   }
 }
 

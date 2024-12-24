@@ -39,7 +39,7 @@ class NewsBetterVideoPlayerState extends State<NewsBetterVideoPlayer> {
     _controller = BetterPlayerController(
       BetterPlayerConfiguration(
         controlsConfiguration: BetterPlayerControlsConfiguration(
-          playerTheme: BetterPlayerTheme.custom,
+          playerTheme: BetterPlayerTheme.cupertino,
           enableAudioTracks: false,
           customControlsBuilder: (videoController, onPlayerVisibilityChanged) => SizedBox(),
         ),
@@ -47,6 +47,7 @@ class NewsBetterVideoPlayerState extends State<NewsBetterVideoPlayer> {
         autoPlay: true,
         rotation: 1,
         aspectRatio: _aspectRatio,
+        useRootNavigator: true,
       ),
       betterPlayerDataSource: BetterPlayerDataSource(
         BetterPlayerDataSourceType.network,
@@ -70,6 +71,7 @@ class NewsBetterVideoPlayerState extends State<NewsBetterVideoPlayer> {
         ),
       ),
     );
+
     _controller.setVolume(0.0);
     _controller.addEventsListener((BetterPlayerEvent event) {
       if (event.betterPlayerEventType == BetterPlayerEventType.initialized) {
@@ -112,10 +114,7 @@ class NewsBetterVideoPlayerState extends State<NewsBetterVideoPlayer> {
           ? Stack(
               children: [
                 ClipRRect(
-                  borderRadius: BorderRadius.only(
-                    bottomLeft: Radius.circular(15),
-                    bottomRight: Radius.circular(15),
-                  ),
+                  borderRadius: BorderRadius.circular(15),
                   child: BetterVideoPlayer(
                     controller: _controller,
                   ),
@@ -128,7 +127,13 @@ class NewsBetterVideoPlayerState extends State<NewsBetterVideoPlayer> {
                   child: AspectRatio(
                     aspectRatio: _controller.getAspectRatio() ?? 0,
                     child: Container(
-                      color: Colors.transparent,
+                      decoration: BoxDecoration(
+                        color: Colors.transparent,
+                        borderRadius: BorderRadius.only(
+                          bottomLeft: Radius.circular(15),
+                          bottomRight: Radius.circular(15),
+                        ),
+                      ),
                     ),
                   ),
                 )
