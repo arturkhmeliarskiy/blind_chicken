@@ -16,6 +16,7 @@ import 'package:blocs/blocs.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_svg/flutter_svg.dart';
+import 'package:flutter_swipe_detector/flutter_swipe_detector.dart';
 import 'package:get_it/get_it.dart';
 import 'package:models/models.dart';
 import 'package:share_plus/share_plus.dart';
@@ -391,18 +392,14 @@ class _CatalogCardInfoScreenState extends State<CatalogCardInfoScreen> {
             orElse: () {},
           );
         },
-        child: GestureDetector(
-          onVerticalDragUpdate: (details) {},
-          onHorizontalDragEnd: (DragEndDetails details) {
-            if (details.velocity.pixelsPerSecond.dx > 0) {
-              context.read<CatalogBloc>().add(
-                    const CatalogEvent.goBackProductInfo(),
-                  );
-              setState(() {
-                _isSwipe = false;
-              });
-              log((details.velocity.pixelsPerSecond.dx).toString());
-            }
+        child: SwipeDetector(
+          onSwipeRight: (offset) {
+            context.read<CatalogBloc>().add(
+                  const CatalogEvent.goBackProductInfo(),
+                );
+            setState(() {
+              _isSwipe = false;
+            });
           },
           child: Stack(
             alignment: Alignment.bottomCenter,
@@ -512,363 +509,352 @@ class _CatalogCardInfoScreenState extends State<CatalogCardInfoScreen> {
                                     }
                                   }
                                 },
-                                child: Column(
+                                child: Stack(
                                   children: [
-                                    CatalogSliderImages(
-                                      listImages: initState.detailsProduct?.photo.mini ?? [],
-                                      isLike: initState.favouritesProductsId
-                                          .contains(initState.detailsProduct?.code ?? 0),
-                                      goBotton: () {
-                                        context
-                                            .read<CatalogBloc>()
-                                            .add(const CatalogEvent.goBackProductInfo());
-                                      },
-                                      isZoom: false,
-                                      addLike: () {
-                                        DetailProductDataModel? detailsProduct =
-                                            initState.detailsProduct;
-                                        if (detailsProduct != null) {
-                                          context.read<CatalogBloc>().add(
-                                                CatalogEvent.addFavouriteProduct(
-                                                  product: detailsProduct.product,
-                                                  index: detailsProduct.code,
-                                                ),
-                                              );
-                                        }
-                                      },
-                                      deleteLike: () {
-                                        DetailProductDataModel? detailsProduct =
-                                            initState.detailsProduct;
-                                        if (detailsProduct != null) {
-                                          context.read<CatalogBloc>().add(
-                                                CatalogEvent.deleteFavouriteProduct(
-                                                  index: detailsProduct.code,
-                                                ),
-                                              );
-                                        }
-                                      },
-                                      onTap: (index) {
-                                        log(index.toString());
-                                        context.navigateTo(
-                                          CatalogPreviewImagesRoute(
-                                            selectIndex: index,
-                                            listImages: initState.detailsProduct?.photo.full ?? [],
-                                            goBotton: () {},
-                                            goBottonInfoProduct: () {
-                                              context.back();
-                                              if (_isChildRoute) {
-                                                context.navigateTo(
-                                                  CatalogCardInfoRoute(
-                                                    isChildRoute: true,
-                                                    item: item,
-                                                    isLike: widget.isLike,
-                                                    listItems: widget.listItems,
-                                                    favouritesProducts: widget.favouritesProducts,
-                                                  ),
-                                                );
-                                              }
-                                            },
-                                            video: initState.detailsProduct?.video ??
-                                                DetailProductVideoDataModel(
-                                                  i: '',
-                                                  v: '',
-                                                ),
-                                          ),
-                                        );
-                                      },
-                                      goSwipeBack: () {
-                                        context
-                                            .read<CatalogBloc>()
-                                            .add(const CatalogEvent.goBackProductInfo());
-                                      },
-                                      video: initState.detailsProduct?.video ??
-                                          DetailProductVideoDataModel(
-                                            i: '',
-                                            v: '',
-                                          ),
-                                    ),
-                                    const SizedBox(
-                                      height: 35,
-                                    ),
-                                    Padding(
-                                      padding: const EdgeInsets.symmetric(
-                                        horizontal: 14,
-                                      ),
-                                      child: Column(
-                                        crossAxisAlignment: CrossAxisAlignment.start,
-                                        children: [
-                                          Row(
-                                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                                            children: [
-                                              Expanded(
-                                                child: Column(
-                                                  crossAxisAlignment: CrossAxisAlignment.start,
-                                                  children: [
-                                                    Text(
-                                                      initState.detailsProduct?.brand.n ?? '',
-                                                      style: Theme.of(context)
-                                                          .textTheme
-                                                          .titleSmall
-                                                          ?.copyWith(
-                                                        fontWeight: FontWeight.w700,
-                                                        shadows: [
-                                                          Shadow(
-                                                            color: BlindChickenColors
-                                                                .activeBorderTextField
-                                                                .withOpacity(
-                                                              0.2,
-                                                            ),
-                                                            offset: const Offset(0, 1),
-                                                            blurRadius: 1,
-                                                          ),
-                                                        ],
-                                                      ),
+                                    Column(
+                                      children: [
+                                        CatalogSliderImages(
+                                          listImages: initState.detailsProduct?.photo.mini ?? [],
+                                          isLike: initState.favouritesProductsId
+                                              .contains(initState.detailsProduct?.code ?? 0),
+                                          goBotton: () {
+                                            context
+                                                .read<CatalogBloc>()
+                                                .add(const CatalogEvent.goBackProductInfo());
+                                          },
+                                          isZoom: false,
+                                          addLike: () {
+                                            DetailProductDataModel? detailsProduct =
+                                                initState.detailsProduct;
+                                            if (detailsProduct != null) {
+                                              context.read<CatalogBloc>().add(
+                                                    CatalogEvent.addFavouriteProduct(
+                                                      product: detailsProduct.product,
+                                                      index: detailsProduct.code,
                                                     ),
-                                                    const SizedBox(
-                                                      height: 9,
-                                                    ),
-                                                    Text(
-                                                      initState.detailsProduct?.name ?? '',
-                                                      style:
-                                                          Theme.of(context).textTheme.displayMedium,
-                                                      overflow: TextOverflow.ellipsis,
-                                                      maxLines: 1,
-                                                    ),
-                                                  ],
-                                                ),
-                                              ),
-                                              GestureDetector(
-                                                onTap: () {
-                                                  Share.share(
-                                                    'https://slepayakurica.ru/product/${initState.detailsProduct?.code ?? 0}/',
-                                                    subject: 'Слепая курица',
                                                   );
+                                            }
+                                          },
+                                          deleteLike: () {
+                                            DetailProductDataModel? detailsProduct =
+                                                initState.detailsProduct;
+                                            if (detailsProduct != null) {
+                                              context.read<CatalogBloc>().add(
+                                                    CatalogEvent.deleteFavouriteProduct(
+                                                      index: detailsProduct.code,
+                                                    ),
+                                                  );
+                                            }
+                                          },
+                                          onTap: (index) {
+                                            log(index.toString());
+                                            context.navigateTo(
+                                              CatalogPreviewImagesRoute(
+                                                selectIndex: index,
+                                                listImages:
+                                                    initState.detailsProduct?.photo.full ?? [],
+                                                goBotton: () {},
+                                                goBottonInfoProduct: () {
+                                                  context.back();
+                                                  if (_isChildRoute) {
+                                                    context.navigateTo(
+                                                      CatalogCardInfoRoute(
+                                                        isChildRoute: true,
+                                                        item: item,
+                                                        isLike: widget.isLike,
+                                                        listItems: widget.listItems,
+                                                        favouritesProducts:
+                                                            widget.favouritesProducts,
+                                                      ),
+                                                    );
+                                                  }
                                                 },
-                                                child: Container(
-                                                  height: 40,
-                                                  width: 40,
-                                                  color: Colors.transparent,
-                                                  child: const Icon(
-                                                    Icons.share_outlined,
-                                                  ),
-                                                ),
-                                              )
-                                            ],
+                                                video: initState.detailsProduct?.video ??
+                                                    DetailProductVideoDataModel(
+                                                      i: '',
+                                                      v: '',
+                                                    ),
+                                              ),
+                                            );
+                                          },
+                                          goSwipeBack: () {
+                                            context
+                                                .read<CatalogBloc>()
+                                                .add(const CatalogEvent.goBackProductInfo());
+                                          },
+                                          video: initState.detailsProduct?.video ??
+                                              DetailProductVideoDataModel(
+                                                i: '',
+                                                v: '',
+                                              ),
+                                        ),
+                                        const SizedBox(
+                                          height: 35,
+                                        ),
+                                        Padding(
+                                          padding: const EdgeInsets.symmetric(
+                                            horizontal: 14,
                                           ),
-                                          const SizedBox(
-                                            height: 28,
-                                          ),
-                                          Row(
+                                          child: Column(
+                                            crossAxisAlignment: CrossAxisAlignment.start,
                                             children: [
-                                              if (!(initState.detailsProduct?.product
-                                                          .isYourPriceDisplayed ??
-                                                      false) ||
-                                                  (initState.detailsProduct?.product.promoValue ??
-                                                          0) >
-                                                      0)
-                                                Row(
-                                                  children: [
-                                                    SvgPicture.asset(
-                                                      'assets/icons/lightning.svg',
-                                                      height: 14,
-                                                      width: 14,
-                                                    ),
-                                                    const SizedBox(
-                                                      width: 7,
-                                                    ),
-                                                    if ((initState.detailsProduct?.product
-                                                                .promoValue ??
-                                                            0) >
-                                                        0)
-                                                      Padding(
-                                                        padding: const EdgeInsets.only(right: 7),
-                                                        child: RichText(
-                                                          text: TextSpan(
-                                                            text: (initState.detailsProduct?.price
-                                                                        .yourPrice ??
-                                                                    0)
-                                                                .toString()
-                                                                .spaceSeparateNumbers(),
-                                                            style: Theme.of(context)
-                                                                .textTheme
-                                                                .displayMedium
-                                                                ?.copyWith(
-                                                                  fontWeight: FontWeight.w700,
+                                              Row(
+                                                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                                                children: [
+                                                  Expanded(
+                                                    child: Column(
+                                                      crossAxisAlignment: CrossAxisAlignment.start,
+                                                      children: [
+                                                        Text(
+                                                          initState.detailsProduct?.brand.n ?? '',
+                                                          style: Theme.of(context)
+                                                              .textTheme
+                                                              .titleSmall
+                                                              ?.copyWith(
+                                                            fontWeight: FontWeight.w700,
+                                                            shadows: [
+                                                              Shadow(
+                                                                color: BlindChickenColors
+                                                                    .activeBorderTextField
+                                                                    .withOpacity(
+                                                                  0.2,
                                                                 ),
-                                                            children: const <TextSpan>[
-                                                              TextSpan(
-                                                                text: ' ₽',
-                                                                style: TextStyle(
-                                                                  fontFamily: 'Roboto',
-                                                                  fontSize: 13,
-                                                                ),
+                                                                offset: const Offset(0, 1),
+                                                                blurRadius: 1,
                                                               ),
                                                             ],
                                                           ),
                                                         ),
-                                                      ),
-                                                  ],
-                                                ),
-                                              RichText(
-                                                text: TextSpan(
-                                                  text: (initState.detailsProduct?.price.p ?? 0)
-                                                      .toString()
-                                                      .spaceSeparateNumbers(),
-                                                  style: Theme.of(context)
-                                                      .textTheme
-                                                      .displayMedium
-                                                      ?.copyWith(
-                                                        fontWeight: initState
-                                                                    .detailsProduct
-                                                                    ?.product
-                                                                    .isYourPriceDisplayed ??
-                                                                false
-                                                            ? FontWeight.w400
-                                                            : FontWeight.w700,
-                                                        decoration: (initState.detailsProduct
-                                                                        ?.product.promoValue ??
-                                                                    0) >
-                                                                0
-                                                            ? TextDecoration.lineThrough
-                                                            : TextDecoration.none,
-                                                      ),
-                                                  children: const <TextSpan>[
-                                                    TextSpan(
-                                                      text: ' ₽',
-                                                      style: TextStyle(
-                                                        fontFamily: 'Roboto',
-                                                        fontSize: 13,
+                                                        const SizedBox(
+                                                          height: 9,
+                                                        ),
+                                                        Text(
+                                                          initState.detailsProduct?.name ?? '',
+                                                          style: Theme.of(context)
+                                                              .textTheme
+                                                              .displayMedium,
+                                                          overflow: TextOverflow.ellipsis,
+                                                          maxLines: 1,
+                                                        ),
+                                                      ],
+                                                    ),
+                                                  ),
+                                                  GestureDetector(
+                                                    onTap: () {
+                                                      Share.share(
+                                                        'https://slepayakurica.ru/product/${initState.detailsProduct?.code ?? 0}/',
+                                                        subject: 'Слепая курица',
+                                                      );
+                                                    },
+                                                    child: Container(
+                                                      height: 40,
+                                                      width: 40,
+                                                      color: Colors.transparent,
+                                                      child: const Icon(
+                                                        Icons.share_outlined,
                                                       ),
                                                     ),
-                                                  ],
-                                                ),
+                                                  )
+                                                ],
                                               ),
-                                              if (int.parse(
-                                                      initState.detailsProduct?.price.pb ?? '0') >
-                                                  int.parse(
-                                                      initState.detailsProduct?.price.p ?? '0'))
-                                                Row(
-                                                  children: [
-                                                    const SizedBox(
-                                                      width: 7,
+                                              const SizedBox(
+                                                height: 28,
+                                              ),
+                                              Row(
+                                                children: [
+                                                  if (!(initState.detailsProduct?.product
+                                                              .isYourPriceDisplayed ??
+                                                          false) ||
+                                                      (initState.detailsProduct?.product
+                                                                  .promoValue ??
+                                                              0) >
+                                                          0)
+                                                    Row(
+                                                      children: [
+                                                        SvgPicture.asset(
+                                                          'assets/icons/lightning.svg',
+                                                          height: 14,
+                                                          width: 14,
+                                                        ),
+                                                        const SizedBox(
+                                                          width: 7,
+                                                        ),
+                                                        if ((initState.detailsProduct?.product
+                                                                    .promoValue ??
+                                                                0) >
+                                                            0)
+                                                          Padding(
+                                                            padding:
+                                                                const EdgeInsets.only(right: 7),
+                                                            child: RichText(
+                                                              text: TextSpan(
+                                                                text: (initState.detailsProduct
+                                                                            ?.price.yourPrice ??
+                                                                        0)
+                                                                    .toString()
+                                                                    .spaceSeparateNumbers(),
+                                                                style: Theme.of(context)
+                                                                    .textTheme
+                                                                    .displayMedium
+                                                                    ?.copyWith(
+                                                                      fontWeight: FontWeight.w700,
+                                                                    ),
+                                                                children: const <TextSpan>[
+                                                                  TextSpan(
+                                                                    text: ' ₽',
+                                                                    style: TextStyle(
+                                                                      fontFamily: 'Roboto',
+                                                                      fontSize: 13,
+                                                                    ),
+                                                                  ),
+                                                                ],
+                                                              ),
+                                                            ),
+                                                          ),
+                                                      ],
                                                     ),
-                                                    Text(
-                                                      (initState.detailsProduct?.price.pb ?? '0')
+                                                  RichText(
+                                                    text: TextSpan(
+                                                      text: (initState.detailsProduct?.price.p ?? 0)
+                                                          .toString()
                                                           .spaceSeparateNumbers(),
                                                       style: Theme.of(context)
                                                           .textTheme
-                                                          .headlineLarge
+                                                          .displayMedium
                                                           ?.copyWith(
+                                                            fontWeight: initState
+                                                                        .detailsProduct
+                                                                        ?.product
+                                                                        .isYourPriceDisplayed ??
+                                                                    false
+                                                                ? FontWeight.w400
+                                                                : FontWeight.w700,
+                                                            decoration: (initState.detailsProduct
+                                                                            ?.product.promoValue ??
+                                                                        0) >
+                                                                    0
+                                                                ? TextDecoration.lineThrough
+                                                                : TextDecoration.none,
+                                                          ),
+                                                      children: const <TextSpan>[
+                                                        TextSpan(
+                                                          text: ' ₽',
+                                                          style: TextStyle(
+                                                            fontFamily: 'Roboto',
+                                                            fontSize: 13,
+                                                          ),
+                                                        ),
+                                                      ],
+                                                    ),
+                                                  ),
+                                                  if (int.parse(
+                                                          initState.detailsProduct?.price.pb ??
+                                                              '0') >
+                                                      int.parse(
+                                                          initState.detailsProduct?.price.p ?? '0'))
+                                                    Row(
+                                                      children: [
+                                                        const SizedBox(
+                                                          width: 7,
+                                                        ),
+                                                        Text(
+                                                          (initState.detailsProduct?.price.pb ??
+                                                                  '0')
+                                                              .spaceSeparateNumbers(),
+                                                          style: Theme.of(context)
+                                                              .textTheme
+                                                              .headlineLarge
+                                                              ?.copyWith(
+                                                                decoration:
+                                                                    TextDecoration.lineThrough,
+                                                              ),
+                                                        ),
+                                                        const Text(
+                                                          ' ₽',
+                                                          style: TextStyle(
+                                                            fontFamily: 'Roboto',
+                                                            fontSize: 13,
                                                             decoration: TextDecoration.lineThrough,
                                                           ),
+                                                        )
+                                                      ],
                                                     ),
-                                                    const Text(
-                                                      ' ₽',
-                                                      style: TextStyle(
-                                                        fontFamily: 'Roboto',
-                                                        fontSize: 13,
-                                                        decoration: TextDecoration.lineThrough,
-                                                      ),
-                                                    )
-                                                  ],
-                                                ),
-                                              const SizedBox(
-                                                width: 7,
-                                              ),
-                                              if ((initState.detailsProduct?.product
-                                                          .isYourPriceDisplayed ??
-                                                      false) &&
-                                                  initState.detailsProduct?.product.promoValue == 0)
-                                                Row(
-                                                  children: [
-                                                    SvgPicture.asset(
-                                                      'assets/icons/lightning.svg',
-                                                      height: 14,
-                                                      width: 14,
-                                                    ),
-                                                    const SizedBox(
-                                                      width: 7,
-                                                    ),
-                                                    RichText(
-                                                      text: TextSpan(
-                                                        text: 'Ваша цена ',
-                                                        style: Theme.of(context)
-                                                            .textTheme
-                                                            .displayMedium
-                                                            ?.copyWith(
-                                                              fontWeight: FontWeight.w700,
-                                                            ),
-                                                        children: <TextSpan>[
-                                                          TextSpan(
-                                                            text: (initState.detailsProduct?.price
-                                                                        .yourPrice ??
-                                                                    0)
-                                                                .toString()
-                                                                .spaceSeparateNumbers(),
+                                                  const SizedBox(
+                                                    width: 7,
+                                                  ),
+                                                  if ((initState.detailsProduct?.product
+                                                              .isYourPriceDisplayed ??
+                                                          false) &&
+                                                      initState
+                                                              .detailsProduct?.product.promoValue ==
+                                                          0)
+                                                    Row(
+                                                      children: [
+                                                        SvgPicture.asset(
+                                                          'assets/icons/lightning.svg',
+                                                          height: 14,
+                                                          width: 14,
+                                                        ),
+                                                        const SizedBox(
+                                                          width: 7,
+                                                        ),
+                                                        RichText(
+                                                          text: TextSpan(
+                                                            text: 'Ваша цена ',
                                                             style: Theme.of(context)
                                                                 .textTheme
                                                                 .displayMedium
                                                                 ?.copyWith(
                                                                   fontWeight: FontWeight.w700,
                                                                 ),
+                                                            children: <TextSpan>[
+                                                              TextSpan(
+                                                                text: (initState.detailsProduct
+                                                                            ?.price.yourPrice ??
+                                                                        0)
+                                                                    .toString()
+                                                                    .spaceSeparateNumbers(),
+                                                                style: Theme.of(context)
+                                                                    .textTheme
+                                                                    .displayMedium
+                                                                    ?.copyWith(
+                                                                      fontWeight: FontWeight.w700,
+                                                                    ),
+                                                              ),
+                                                              TextSpan(
+                                                                text: ' ₽',
+                                                                style: Theme.of(context)
+                                                                    .textTheme
+                                                                    .displayMedium
+                                                                    ?.copyWith(
+                                                                      fontWeight: FontWeight.w700,
+                                                                    ),
+                                                              ),
+                                                            ],
                                                           ),
-                                                          TextSpan(
-                                                            text: ' ₽',
-                                                            style: Theme.of(context)
-                                                                .textTheme
-                                                                .displayMedium
-                                                                ?.copyWith(
-                                                                  fontWeight: FontWeight.w700,
-                                                                ),
-                                                          ),
-                                                        ],
-                                                      ),
+                                                        ),
+                                                      ],
                                                     ),
-                                                  ],
-                                                ),
-                                            ],
-                                          ),
-                                          if ((initState.detailsProduct?.product.promoValue ?? 0) >
-                                              0)
-                                            Tooltip(
-                                              decoration: BoxDecoration(
-                                                color: BlindChickenColors.activeBorderTextField
-                                                    .withOpacity(0.8),
-                                                borderRadius: const BorderRadius.all(
-                                                  Radius.circular(4),
-                                                ),
+                                                ],
                                               ),
-                                              margin: const EdgeInsets.only(left: 10, right: 10),
-                                              richMessage: WidgetSpan(
-                                                alignment: PlaceholderAlignment.baseline,
-                                                baseline: TextBaseline.alphabetic,
-                                                child: Text(
-                                                  initState.detailsProduct?.product.promo ?? '',
-                                                  style: Theme.of(context)
-                                                      .textTheme
-                                                      .displayMedium
-                                                      ?.copyWith(
-                                                        color: BlindChickenColors.backgroundColor,
-                                                      ),
-                                                ),
-                                              ),
-                                              child: Container(
-                                                padding: const EdgeInsets.only(
-                                                  top: 1,
-                                                  left: 4,
-                                                  right: 4,
-                                                  bottom: 1,
-                                                ),
-                                                margin: const EdgeInsets.only(top: 7, bottom: 7),
-                                                decoration: BoxDecoration(
-                                                  borderRadius: BorderRadius.circular(4),
-                                                  color: BlindChickenColors.activeBorderTextField,
-                                                ),
-                                                child: Row(
-                                                  mainAxisSize: MainAxisSize.min,
-                                                  children: [
-                                                    Text(
-                                                      '-${initState.detailsProduct?.product.promoValue ?? 0}% по акции',
+                                              if ((initState.detailsProduct?.product.promoValue ??
+                                                      0) >
+                                                  0)
+                                                Tooltip(
+                                                  decoration: BoxDecoration(
+                                                    color: BlindChickenColors.activeBorderTextField
+                                                        .withOpacity(0.8),
+                                                    borderRadius: const BorderRadius.all(
+                                                      Radius.circular(4),
+                                                    ),
+                                                  ),
+                                                  margin:
+                                                      const EdgeInsets.only(left: 10, right: 10),
+                                                  richMessage: WidgetSpan(
+                                                    alignment: PlaceholderAlignment.baseline,
+                                                    baseline: TextBaseline.alphabetic,
+                                                    child: Text(
+                                                      initState.detailsProduct?.product.promo ?? '',
                                                       style: Theme.of(context)
                                                           .textTheme
                                                           .displayMedium
@@ -877,566 +863,464 @@ class _CatalogCardInfoScreenState extends State<CatalogCardInfoScreen> {
                                                                 BlindChickenColors.backgroundColor,
                                                           ),
                                                     ),
-                                                    const SizedBox(
-                                                      width: 5,
-                                                    ),
-                                                    SvgPicture.asset(
-                                                      'assets/icons/info.svg',
-                                                      color: BlindChickenColors.backgroundColor,
-                                                      height: 16,
-                                                      width: 16,
-                                                    ),
-                                                  ],
-                                                ),
-                                              ),
-                                            ),
-                                          if (price >= 1000 && price <= 150000)
-                                            GestureDetector(
-                                              onTap: () {
-                                                showDialog(
-                                                  context: context,
-                                                  builder: (context) {
-                                                    return BlindChickenPayInstallmentsSberbank(
-                                                      onBack: () {
-                                                        context.maybePop();
-                                                      },
-                                                    );
-                                                  },
-                                                );
-                                              },
-                                              child: Container(
-                                                height: 26,
-                                                margin: EdgeInsets.only(
-                                                  top: 7,
-                                                  bottom: 7,
-                                                ),
-                                                decoration: BoxDecoration(
-                                                  borderRadius: BorderRadius.circular(4),
-                                                  color:
-                                                      BlindChickenColors.backgroundColorItemFilter,
-                                                ),
-                                                child: Row(
-                                                  mainAxisSize: MainAxisSize.min,
-                                                  children: [
-                                                    SizedBox(
-                                                      width: 7,
-                                                    ),
-                                                    SvgPicture.asset(
-                                                      'assets/icons/pchsbch.svg',
-                                                      height: 14,
-                                                      width: 14,
-                                                    ),
-                                                    SizedBox(
-                                                      width: 7,
-                                                    ),
-                                                    Text(
-                                                      'Доступна оплата частями',
-                                                      style: Theme.of(context).textTheme.bodyMedium,
-                                                    ),
-                                                    SizedBox(
-                                                      width: 7,
-                                                    ),
-                                                    SvgPicture.asset(
-                                                      'assets/icons/info.svg',
-                                                      height: 14,
-                                                      width: 14,
-                                                    ),
-                                                    SizedBox(
-                                                      width: 7,
-                                                    ),
-                                                  ],
-                                                ),
-                                              ),
-                                            ),
-                                          const SizedBox(
-                                            height: 7,
-                                          ),
-                                          CatalogCashbackInfo(
-                                            userBuyForNextDiscount:
-                                                initState.detailsProduct?.userBuyForNextDiscount ??
-                                                    0,
-                                            userNextDiscount:
-                                                initState.detailsProduct?.userNextDiscount ?? 0,
-                                            cashback: initState.detailsProduct?.price.cashback ?? 0,
-                                            bonusYear:
-                                                initState.detailsProduct?.price.bonusYear ?? 0,
-                                            discountVal:
-                                                initState.detailsProduct?.price.discountVal ?? 0,
-                                            bonusLoyal:
-                                                initState.detailsProduct?.price.bonusLoyal ?? 0,
-                                            bonusGift:
-                                                initState.detailsProduct?.price.bonusGift ?? 0,
-                                            userDiscount:
-                                                initState.detailsProduct?.userDiscount ?? 0,
-                                            p: int.parse(initState.detailsProduct?.price.p ?? '0'),
-                                            pc: int.parse(
-                                                initState.detailsProduct?.price.pc ?? '0'),
-                                            isAuth: initState.isAuth,
-                                            userBuyForNextDiscountVal: initState
-                                                    .detailsProduct?.userBuyForNextDiscountVal ??
-                                                0,
-                                            pb: int.parse(
-                                                initState.detailsProduct?.price.pb ?? '0'),
-                                            successfullyLogin: () {
-                                              Navigator.of(context, rootNavigator: true).pop();
-                                              context.read<CatalogBloc>().add(
-                                                    CatalogEvent.getInfoProduct(
-                                                      code: (initState.detailsProduct?.code ?? 0)
-                                                          .toString(),
-                                                      isUpdate: true,
-                                                      titleScreen: 'Описание товара в каталоге',
-                                                      typeAddProductToShoppingCart: 'Кнопка',
-                                                      identifierAddProductToShoppingCart: '4',
-                                                    ),
-                                                  );
-                                            },
-                                            onBack: (buildContext) {
-                                              buildContext.back();
-                                            },
-                                          ),
-                                          const SizedBox(
-                                            height: 28,
-                                          ),
-                                          if (sky.isNotEmpty)
-                                            Column(
-                                              crossAxisAlignment: CrossAxisAlignment.start,
-                                              children: [
-                                                Text(
-                                                  'Размер',
-                                                  style: Theme.of(context)
-                                                      .textTheme
-                                                      .displayMedium
-                                                      ?.copyWith(
-                                                        fontWeight: FontWeight.w700,
-                                                      ),
-                                                ),
-                                                const SizedBox(
-                                                  height: 7,
-                                                ),
-                                                InkWell(
-                                                  onTap: () {
-                                                    context.navigateTo(
-                                                      CatalogSizeProductRoute(
-                                                        onChange: (value) {
-                                                          if (value.id.contains('-') &&
-                                                              value.id.length > 10) {
-                                                            context.read<CatalogBloc>().add(
-                                                                  CatalogEvent.changeSizeProduct(
-                                                                    selectSizeProduct: value,
-                                                                  ),
-                                                                );
-                                                            context.read<CatalogBloc>().add(
-                                                                  CatalogEvent
-                                                                      .checkProductToSoppingCart(
-                                                                          size: value),
-                                                                );
-                                                            context.back();
-                                                          } else {
-                                                            context.back();
-                                                            context.read<CatalogBloc>().add(
-                                                                  CatalogEvent.getInfoProduct(
-                                                                    code: value.id.toString(),
-                                                                    size: value,
-                                                                    titleScreen:
-                                                                        'Описание товара в каталоге',
-                                                                    typeAddProductToShoppingCart:
-                                                                        'Кнопка',
-                                                                    identifierAddProductToShoppingCart:
-                                                                        '4',
-                                                                  ),
-                                                                );
-                                                          }
-                                                        },
-                                                        listSizeProduct: sky,
-                                                        selectItem: initState.selectSizeProduct ??
-                                                            sky.first,
-                                                      ),
-                                                    );
-                                                  },
+                                                  ),
                                                   child: Container(
-                                                    height: 37,
+                                                    padding: const EdgeInsets.only(
+                                                      top: 1,
+                                                      left: 4,
+                                                      right: 4,
+                                                      bottom: 1,
+                                                    ),
+                                                    margin:
+                                                        const EdgeInsets.only(top: 7, bottom: 7),
                                                     decoration: BoxDecoration(
-                                                        border: Border.all(
-                                                          color: BlindChickenColors.borderTextField,
-                                                        ),
-                                                        borderRadius: BorderRadius.circular(
-                                                          4,
-                                                        )),
+                                                      borderRadius: BorderRadius.circular(4),
+                                                      color:
+                                                          BlindChickenColors.activeBorderTextField,
+                                                    ),
                                                     child: Row(
-                                                      mainAxisAlignment:
-                                                          MainAxisAlignment.spaceBetween,
+                                                      mainAxisSize: MainAxisSize.min,
                                                       children: [
-                                                        Padding(
-                                                          padding: const EdgeInsets.only(
-                                                            left: 10.5,
-                                                          ),
-                                                          child: Text(
-                                                            initState.selectSizeProduct?.value ??
-                                                                sky.first.value,
-                                                            style: Theme.of(context)
-                                                                .textTheme
-                                                                .displayMedium,
-                                                          ),
+                                                        Text(
+                                                          '-${initState.detailsProduct?.product.promoValue ?? 0}% по акции',
+                                                          style: Theme.of(context)
+                                                              .textTheme
+                                                              .displayMedium
+                                                              ?.copyWith(
+                                                                color: BlindChickenColors
+                                                                    .backgroundColor,
+                                                              ),
                                                         ),
-                                                        Padding(
-                                                          padding: const EdgeInsets.only(
-                                                            right: 8,
-                                                          ),
-                                                          child: SvgPicture.asset(
-                                                            'assets/icons/chevron-bottom.svg',
-                                                            height: 17.5,
-                                                            width: 17.5,
-                                                          ),
+                                                        const SizedBox(
+                                                          width: 5,
+                                                        ),
+                                                        SvgPicture.asset(
+                                                          'assets/icons/info.svg',
+                                                          color: BlindChickenColors.backgroundColor,
+                                                          height: 16,
+                                                          width: 16,
                                                         ),
                                                       ],
                                                     ),
                                                   ),
                                                 ),
-                                                const SizedBox(
-                                                  height: 10,
-                                                ),
-                                              ],
-                                            ),
-                                          BlindChickenButtonShoppingCartProduct(
-                                            title: (initState.isShoppingCart ?? false)
-                                                ? 'Перейти в корзину'
-                                                : 'Добавить в корзину',
-                                            onChenge: () {
-                                              if (initState.isShoppingCart ?? false) {
-                                                Timer(const Duration(milliseconds: 150), () {
-                                                  context
-                                                      .read<ShoppingCartBloc>()
-                                                      .add(const ShoppingCartEvent.preloadData());
-                                                });
-                                                context.navigateTo(
-                                                  const ShoppingCartAutoRouterRoute(
-                                                    children: [
-                                                      ShoppingCartRoute(),
-                                                    ],
-                                                  ),
-                                                );
-                                              } else {
-                                                context.read<CatalogBloc>().add(
-                                                      CatalogEvent.addProductToSoppingCart(
-                                                        code: initState.detailsProduct?.code ?? 0,
-                                                        size: initState.selectSizeProduct ??
-                                                            (sky.isNotEmpty ? sky.first : null),
-                                                        titleScreen: 'Карточка товара в каталоге',
-                                                        typeAddProductToShoppingCart: 'Кнопка',
-                                                        identifierAddProductToShoppingCart: '1',
-                                                      ),
+                                              if (price >= 1000 && price <= 150000)
+                                                GestureDetector(
+                                                  onTap: () {
+                                                    showDialog(
+                                                      context: context,
+                                                      builder: (context) {
+                                                        return BlindChickenPayInstallmentsSberbank(
+                                                          onBack: () {
+                                                            context.maybePop();
+                                                          },
+                                                        );
+                                                      },
                                                     );
-
-                                                context.read<ShoppingCartBloc>().add(
-                                                      ShoppingCartEvent
-                                                          .addOtherProductToSoppingCart(
-                                                        item: BasketInfoItemDataModel(
-                                                          titleScreen: 'Карточка товара в каталоге',
-                                                          typeAddProductToShoppingCart: 'Кнопка',
-                                                          searchQuery: '',
-                                                          identifierAddProductToShoppingCart: '1',
+                                                  },
+                                                  child: Container(
+                                                    height: 26,
+                                                    margin: EdgeInsets.only(
+                                                      top: 7,
+                                                      bottom: 7,
+                                                    ),
+                                                    decoration: BoxDecoration(
+                                                      borderRadius: BorderRadius.circular(4),
+                                                      color: BlindChickenColors
+                                                          .backgroundColorItemFilter,
+                                                    ),
+                                                    child: Row(
+                                                      mainAxisSize: MainAxisSize.min,
+                                                      children: [
+                                                        SizedBox(
+                                                          width: 7,
+                                                        ),
+                                                        SvgPicture.asset(
+                                                          'assets/icons/pchsbch.svg',
+                                                          height: 14,
+                                                          width: 14,
+                                                        ),
+                                                        SizedBox(
+                                                          width: 7,
+                                                        ),
+                                                        Text(
+                                                          'Доступна оплата частями',
+                                                          style: Theme.of(context)
+                                                              .textTheme
+                                                              .bodyMedium,
+                                                        ),
+                                                        SizedBox(
+                                                          width: 7,
+                                                        ),
+                                                        SvgPicture.asset(
+                                                          'assets/icons/info.svg',
+                                                          height: 14,
+                                                          width: 14,
+                                                        ),
+                                                        SizedBox(
+                                                          width: 7,
+                                                        ),
+                                                      ],
+                                                    ),
+                                                  ),
+                                                ),
+                                              const SizedBox(
+                                                height: 7,
+                                              ),
+                                              CatalogCashbackInfo(
+                                                userBuyForNextDiscount: initState
+                                                        .detailsProduct?.userBuyForNextDiscount ??
+                                                    0,
+                                                userNextDiscount:
+                                                    initState.detailsProduct?.userNextDiscount ?? 0,
+                                                cashback:
+                                                    initState.detailsProduct?.price.cashback ?? 0,
+                                                bonusYear:
+                                                    initState.detailsProduct?.price.bonusYear ?? 0,
+                                                discountVal:
+                                                    initState.detailsProduct?.price.discountVal ??
+                                                        0,
+                                                bonusLoyal:
+                                                    initState.detailsProduct?.price.bonusLoyal ?? 0,
+                                                bonusGift:
+                                                    initState.detailsProduct?.price.bonusGift ?? 0,
+                                                userDiscount:
+                                                    initState.detailsProduct?.userDiscount ?? 0,
+                                                p: int.parse(
+                                                    initState.detailsProduct?.price.p ?? '0'),
+                                                pc: int.parse(
+                                                    initState.detailsProduct?.price.pc ?? '0'),
+                                                isAuth: initState.isAuth,
+                                                userBuyForNextDiscountVal: initState.detailsProduct
+                                                        ?.userBuyForNextDiscountVal ??
+                                                    0,
+                                                pb: int.parse(
+                                                    initState.detailsProduct?.price.pb ?? '0'),
+                                                successfullyLogin: () {
+                                                  Navigator.of(context, rootNavigator: true).pop();
+                                                  context.read<CatalogBloc>().add(
+                                                        CatalogEvent.getInfoProduct(
                                                           code:
                                                               (initState.detailsProduct?.code ?? 0)
                                                                   .toString(),
-                                                          sku: (initState.selectSizeProduct?.id
-                                                                      .isNotEmpty ??
-                                                                  false)
-                                                              ? (initState.selectSizeProduct?.id ??
-                                                                  '')
-                                                              : sky.isNotEmpty
-                                                                  ? sky.first.id
-                                                                  : '',
-                                                          count: 1,
-                                                          sectionCategoriesPath: [
-                                                            initState.catalogInfo?.h1 ?? ''
-                                                          ],
-                                                          productCategoriesPath:
-                                                              initState.catalogInfo?.breadcrumbs
-                                                                      .map(
-                                                                        (item) => item.name,
-                                                                      )
-                                                                      .toList() ??
-                                                                  [],
+                                                          isUpdate: true,
+                                                          titleScreen: 'Описание товара в каталоге',
+                                                          typeAddProductToShoppingCart: 'Кнопка',
+                                                          identifierAddProductToShoppingCart: '4',
                                                         ),
-                                                      ),
-                                                    );
-                                              }
-                                            },
-                                          ),
-                                          const SizedBox(
-                                            height: 32,
-                                          ),
-                                          Text(
-                                            'Получение',
-                                            style:
-                                                Theme.of(context).textTheme.displayMedium?.copyWith(
-                                                      fontWeight: FontWeight.w700,
+                                                      );
+                                                },
+                                                onBack: (buildContext) {
+                                                  buildContext.back();
+                                                },
+                                              ),
+                                              const SizedBox(
+                                                height: 28,
+                                              ),
+                                              if (sky.isNotEmpty)
+                                                Column(
+                                                  crossAxisAlignment: CrossAxisAlignment.start,
+                                                  children: [
+                                                    Text(
+                                                      'Размер',
+                                                      style: Theme.of(context)
+                                                          .textTheme
+                                                          .displayMedium
+                                                          ?.copyWith(
+                                                            fontWeight: FontWeight.w700,
+                                                          ),
                                                     ),
-                                          ),
-                                          const SizedBox(
-                                            height: 7,
-                                          ),
-                                          CatalogBoutiquesInfo(
-                                            listBoutiques: initState.detailsProduct?.stock ?? [],
-                                          ),
-                                          const SizedBox(
-                                            height: 3.5,
-                                          ),
-                                          Text(
-                                            'Бесплатная доставка по России от 10 000 ₽',
-                                            style: Theme.of(context).textTheme.displayMedium,
-                                          ),
-                                          const SizedBox(
-                                            height: 28,
-                                          ),
-                                          if (initState.detailsProduct?.option.isNotEmpty ?? false)
-                                            Column(
-                                              crossAxisAlignment: CrossAxisAlignment.start,
-                                              children: [
-                                                Text(
-                                                  'Варианты',
-                                                  style: Theme.of(context)
-                                                      .textTheme
-                                                      .displayMedium
-                                                      ?.copyWith(
-                                                        fontWeight: FontWeight.w700,
-                                                      ),
-                                                ),
-                                                const SizedBox(
-                                                  height: 10,
-                                                ),
-                                                CatalogVariantSliderImages(
-                                                  listOptionProduct:
-                                                      initState.detailsProduct?.option ?? [],
-                                                  onTap: (product) {
-                                                    // в боевой Api раскомментировать
-                                                    context.read<CatalogBloc>().add(
-                                                          CatalogEvent.getInfoProduct(
-                                                            code: product.id.toString(),
-                                                            titleScreen:
-                                                                'Описание товара в каталоге (Варианты)',
-                                                            typeAddProductToShoppingCart: 'Кнопка',
-                                                            identifierAddProductToShoppingCart: '4',
+                                                    const SizedBox(
+                                                      height: 7,
+                                                    ),
+                                                    InkWell(
+                                                      onTap: () {
+                                                        context.navigateTo(
+                                                          CatalogSizeProductRoute(
+                                                            onChange: (value) {
+                                                              if (value.id.contains('-') &&
+                                                                  value.id.length > 10) {
+                                                                context.read<CatalogBloc>().add(
+                                                                      CatalogEvent
+                                                                          .changeSizeProduct(
+                                                                        selectSizeProduct: value,
+                                                                      ),
+                                                                    );
+                                                                context.read<CatalogBloc>().add(
+                                                                      CatalogEvent
+                                                                          .checkProductToSoppingCart(
+                                                                              size: value),
+                                                                    );
+                                                                context.back();
+                                                              } else {
+                                                                context.back();
+                                                                context.read<CatalogBloc>().add(
+                                                                      CatalogEvent.getInfoProduct(
+                                                                        code: value.id.toString(),
+                                                                        size: value,
+                                                                        titleScreen:
+                                                                            'Описание товара в каталоге',
+                                                                        typeAddProductToShoppingCart:
+                                                                            'Кнопка',
+                                                                        identifierAddProductToShoppingCart:
+                                                                            '4',
+                                                                      ),
+                                                                    );
+                                                              }
+                                                            },
+                                                            listSizeProduct: sky,
+                                                            selectItem:
+                                                                initState.selectSizeProduct ??
+                                                                    sky.first,
                                                           ),
                                                         );
-                                                  },
+                                                      },
+                                                      child: Container(
+                                                        height: 37,
+                                                        decoration: BoxDecoration(
+                                                            border: Border.all(
+                                                              color: BlindChickenColors
+                                                                  .borderTextField,
+                                                            ),
+                                                            borderRadius: BorderRadius.circular(
+                                                              4,
+                                                            )),
+                                                        child: Row(
+                                                          mainAxisAlignment:
+                                                              MainAxisAlignment.spaceBetween,
+                                                          children: [
+                                                            Padding(
+                                                              padding: const EdgeInsets.only(
+                                                                left: 10.5,
+                                                              ),
+                                                              child: Text(
+                                                                initState
+                                                                        .selectSizeProduct?.value ??
+                                                                    sky.first.value,
+                                                                style: Theme.of(context)
+                                                                    .textTheme
+                                                                    .displayMedium,
+                                                              ),
+                                                            ),
+                                                            Padding(
+                                                              padding: const EdgeInsets.only(
+                                                                right: 8,
+                                                              ),
+                                                              child: SvgPicture.asset(
+                                                                'assets/icons/chevron-bottom.svg',
+                                                                height: 17.5,
+                                                                width: 17.5,
+                                                              ),
+                                                            ),
+                                                          ],
+                                                        ),
+                                                      ),
+                                                    ),
+                                                    const SizedBox(
+                                                      height: 10,
+                                                    ),
+                                                  ],
                                                 ),
-                                                const SizedBox(
-                                                  height: 40,
-                                                ),
-                                              ],
-                                            ),
-                                          Text(
-                                            'О товаре',
-                                            style:
-                                                Theme.of(context).textTheme.displayMedium?.copyWith(
+                                              BlindChickenButtonShoppingCartProduct(
+                                                title: (initState.isShoppingCart ?? false)
+                                                    ? 'Перейти в корзину'
+                                                    : 'Добавить в корзину',
+                                                onChenge: () {
+                                                  if (initState.isShoppingCart ?? false) {
+                                                    Timer(const Duration(milliseconds: 150), () {
+                                                      context.read<ShoppingCartBloc>().add(
+                                                          const ShoppingCartEvent.preloadData());
+                                                    });
+                                                    context.navigateTo(
+                                                      const ShoppingCartAutoRouterRoute(
+                                                        children: [
+                                                          ShoppingCartRoute(),
+                                                        ],
+                                                      ),
+                                                    );
+                                                  } else {
+                                                    context.read<CatalogBloc>().add(
+                                                          CatalogEvent.addProductToSoppingCart(
+                                                            code:
+                                                                initState.detailsProduct?.code ?? 0,
+                                                            size: initState.selectSizeProduct ??
+                                                                (sky.isNotEmpty ? sky.first : null),
+                                                            titleScreen:
+                                                                'Карточка товара в каталоге',
+                                                            typeAddProductToShoppingCart: 'Кнопка',
+                                                            identifierAddProductToShoppingCart: '1',
+                                                          ),
+                                                        );
+
+                                                    context.read<ShoppingCartBloc>().add(
+                                                          ShoppingCartEvent
+                                                              .addOtherProductToSoppingCart(
+                                                            item: BasketInfoItemDataModel(
+                                                              titleScreen:
+                                                                  'Карточка товара в каталоге',
+                                                              typeAddProductToShoppingCart:
+                                                                  'Кнопка',
+                                                              searchQuery: '',
+                                                              identifierAddProductToShoppingCart:
+                                                                  '1',
+                                                              code:
+                                                                  (initState.detailsProduct?.code ??
+                                                                          0)
+                                                                      .toString(),
+                                                              sku: (initState.selectSizeProduct?.id
+                                                                          .isNotEmpty ??
+                                                                      false)
+                                                                  ? (initState
+                                                                          .selectSizeProduct?.id ??
+                                                                      '')
+                                                                  : sky.isNotEmpty
+                                                                      ? sky.first.id
+                                                                      : '',
+                                                              count: 1,
+                                                              sectionCategoriesPath: [
+                                                                initState.catalogInfo?.h1 ?? ''
+                                                              ],
+                                                              productCategoriesPath:
+                                                                  initState.catalogInfo?.breadcrumbs
+                                                                          .map(
+                                                                            (item) => item.name,
+                                                                          )
+                                                                          .toList() ??
+                                                                      [],
+                                                            ),
+                                                          ),
+                                                        );
+                                                  }
+                                                },
+                                              ),
+                                              const SizedBox(
+                                                height: 32,
+                                              ),
+                                              Text(
+                                                'Получение',
+                                                style: Theme.of(context)
+                                                    .textTheme
+                                                    .displayMedium
+                                                    ?.copyWith(
                                                       fontWeight: FontWeight.w700,
                                                     ),
-                                          ),
-                                          if (initState.detailsProduct?.text.isNotEmpty ?? false)
-                                            Column(
-                                              children: [
-                                                const SizedBox(
-                                                  height: 7,
+                                              ),
+                                              const SizedBox(
+                                                height: 7,
+                                              ),
+                                              CatalogBoutiquesInfo(
+                                                listBoutiques:
+                                                    initState.detailsProduct?.stock ?? [],
+                                              ),
+                                              const SizedBox(
+                                                height: 3.5,
+                                              ),
+                                              Text(
+                                                'Бесплатная доставка по России от 10 000 ₽',
+                                                style: Theme.of(context).textTheme.displayMedium,
+                                              ),
+                                              const SizedBox(
+                                                height: 28,
+                                              ),
+                                              if (initState.detailsProduct?.option.isNotEmpty ??
+                                                  false)
+                                                Column(
+                                                  crossAxisAlignment: CrossAxisAlignment.start,
+                                                  children: [
+                                                    Text(
+                                                      'Варианты',
+                                                      style: Theme.of(context)
+                                                          .textTheme
+                                                          .displayMedium
+                                                          ?.copyWith(
+                                                            fontWeight: FontWeight.w700,
+                                                          ),
+                                                    ),
+                                                    const SizedBox(
+                                                      height: 10,
+                                                    ),
+                                                    CatalogVariantSliderImages(
+                                                      listOptionProduct:
+                                                          initState.detailsProduct?.option ?? [],
+                                                      onTap: (product) {
+                                                        // в боевой Api раскомментировать
+                                                        context.read<CatalogBloc>().add(
+                                                              CatalogEvent.getInfoProduct(
+                                                                code: product.id.toString(),
+                                                                titleScreen:
+                                                                    'Описание товара в каталоге (Варианты)',
+                                                                typeAddProductToShoppingCart:
+                                                                    'Кнопка',
+                                                                identifierAddProductToShoppingCart:
+                                                                    '4',
+                                                              ),
+                                                            );
+                                                      },
+                                                    ),
+                                                    const SizedBox(
+                                                      height: 40,
+                                                    ),
+                                                  ],
                                                 ),
-                                                CatalogDescriptionProductInfo(
-                                                  text: initState.detailsProduct?.text ?? '',
-                                                )
-                                              ],
-                                            ),
-                                          const SizedBox(
-                                            height: 7,
-                                          ),
-                                          CatalogDescriptionInfo(
-                                            char: initState.detailsProduct?.char ?? [],
-                                          ),
-                                          BlocBuilder<CatalogBloc, CatalogState>(
-                                            builder: (context, state) {
-                                              return state.maybeMap(
-                                                  preloadDataCompleted: (initState) {
-                                                    if (initState.listProdcutsComplect.isNotEmpty) {
-                                                      return Column(
-                                                        crossAxisAlignment:
-                                                            CrossAxisAlignment.start,
-                                                        children: [
-                                                          const SizedBox(
-                                                            height: 35,
-                                                          ),
-                                                          Text(
-                                                            'Носят вместе',
-                                                            style: Theme.of(context)
-                                                                .textTheme
-                                                                .displayMedium
-                                                                ?.copyWith(
-                                                                  fontWeight: FontWeight.w700,
-                                                                ),
-                                                          ),
-                                                          const SizedBox(
-                                                            height: 10.5,
-                                                          ),
-                                                          CatalogSliderProducts(
-                                                            onSelectProduct: (value) {
-                                                              context.read<CatalogBloc>().add(
-                                                                    CatalogEvent.getInfoProduct(
-                                                                      code: value.id.toString(),
-                                                                      titleScreen:
-                                                                          'Описание товара в каталоге (Носят вместе)',
-                                                                      typeAddProductToShoppingCart:
-                                                                          'Карточка товара',
-                                                                      identifierAddProductToShoppingCart:
-                                                                          '1',
+                                              Text(
+                                                'О товаре',
+                                                style: Theme.of(context)
+                                                    .textTheme
+                                                    .displayMedium
+                                                    ?.copyWith(
+                                                      fontWeight: FontWeight.w700,
+                                                    ),
+                                              ),
+                                              if (initState.detailsProduct?.text.isNotEmpty ??
+                                                  false)
+                                                Column(
+                                                  children: [
+                                                    const SizedBox(
+                                                      height: 7,
+                                                    ),
+                                                    CatalogDescriptionProductInfo(
+                                                      text: initState.detailsProduct?.text ?? '',
+                                                    )
+                                                  ],
+                                                ),
+                                              const SizedBox(
+                                                height: 7,
+                                              ),
+                                              CatalogDescriptionInfo(
+                                                char: initState.detailsProduct?.char ?? [],
+                                              ),
+                                              BlocBuilder<CatalogBloc, CatalogState>(
+                                                builder: (context, state) {
+                                                  return state.maybeMap(
+                                                      preloadDataCompleted: (initState) {
+                                                        if (initState
+                                                            .listProdcutsComplect.isNotEmpty) {
+                                                          return Column(
+                                                            crossAxisAlignment:
+                                                                CrossAxisAlignment.start,
+                                                            children: [
+                                                              const SizedBox(
+                                                                height: 35,
+                                                              ),
+                                                              Text(
+                                                                'Носят вместе',
+                                                                style: Theme.of(context)
+                                                                    .textTheme
+                                                                    .displayMedium
+                                                                    ?.copyWith(
+                                                                      fontWeight: FontWeight.w700,
                                                                     ),
-                                                                  );
-                                                            },
-                                                            listProducts:
-                                                                initState.listProdcutsComplect,
-                                                            favouritesProductsId:
-                                                                initState.favouritesProductsId,
-                                                            addLike: (index) {
-                                                              context.read<CatalogBloc>().add(
-                                                                    CatalogEvent
-                                                                        .addFavouriteProduct(
-                                                                      product: initState
-                                                                              .listProdcutsComplect[
-                                                                          index],
-                                                                      index: initState
-                                                                          .listProdcutsComplect[
-                                                                              index]
-                                                                          .id,
-                                                                    ),
-                                                                  );
-                                                            },
-                                                            deleteLike: (index) {
-                                                              context.read<CatalogBloc>().add(
-                                                                    CatalogEvent
-                                                                        .deleteFavouriteProduct(
-                                                                      index: initState
-                                                                          .listProdcutsComplect[
-                                                                              index]
-                                                                          .id,
-                                                                    ),
-                                                                  );
-                                                            },
-                                                            isAuth: initState.isAuth,
-                                                          )
-                                                        ],
-                                                      );
-                                                    } else {
-                                                      return const SizedBox();
-                                                    }
-                                                  },
-                                                  orElse: () => const SizedBox());
-                                            },
-                                          ),
-                                          BlocBuilder<CatalogBloc, CatalogState>(
-                                            builder: (context, state) {
-                                              return state.maybeMap(
-                                                  preloadDataCompleted: (initState) {
-                                                    if (initState.listProdcutsStyle.isNotEmpty) {
-                                                      return Column(
-                                                        crossAxisAlignment:
-                                                            CrossAxisAlignment.start,
-                                                        children: [
-                                                          const SizedBox(
-                                                            height: 35,
-                                                          ),
-                                                          Text(
-                                                            'Рекомендации стилистов',
-                                                            style: Theme.of(context)
-                                                                .textTheme
-                                                                .displayMedium
-                                                                ?.copyWith(
-                                                                  fontWeight: FontWeight.w700,
-                                                                ),
-                                                          ),
-                                                          const SizedBox(
-                                                            height: 10.5,
-                                                          ),
-                                                          CatalogSliderProducts(
-                                                            onSelectProduct: (value) {
-                                                              context.read<CatalogBloc>().add(
-                                                                    CatalogEvent.getInfoProduct(
-                                                                      code: value.id.toString(),
-                                                                      titleScreen:
-                                                                          'Описание товара в каталоге (Рекомендации стилистов)',
-                                                                      typeAddProductToShoppingCart:
-                                                                          'Карточка товара',
-                                                                      identifierAddProductToShoppingCart:
-                                                                          '1',
-                                                                    ),
-                                                                  );
-                                                            },
-                                                            listProducts:
-                                                                initState.listProdcutsStyle,
-                                                            favouritesProductsId:
-                                                                initState.favouritesProductsId,
-                                                            addLike: (index) {
-                                                              context.read<CatalogBloc>().add(
-                                                                    CatalogEvent
-                                                                        .addFavouriteProduct(
-                                                                      product: initState
-                                                                          .listProdcutsStyle[index],
-                                                                      index: initState
-                                                                          .listProdcutsStyle[index]
-                                                                          .id,
-                                                                    ),
-                                                                  );
-                                                            },
-                                                            deleteLike: (index) {
-                                                              context.read<CatalogBloc>().add(
-                                                                    CatalogEvent
-                                                                        .deleteFavouriteProduct(
-                                                                      index: initState
-                                                                          .listProdcutsStyle[index]
-                                                                          .id,
-                                                                    ),
-                                                                  );
-                                                            },
-                                                            isAuth: initState.isAuth,
-                                                          )
-                                                        ],
-                                                      );
-                                                    } else {
-                                                      return const SizedBox();
-                                                    }
-                                                  },
-                                                  orElse: () => const SizedBox());
-                                            },
-                                          ),
-                                          BlocBuilder<CatalogBloc, CatalogState>(
-                                            builder: (context, state) {
-                                              return state.maybeMap(
-                                                  preloadDataCompleted: (initState) {
-                                                    if (initState.listProdcutsAlso.isNotEmpty) {
-                                                      return Column(
-                                                        crossAxisAlignment:
-                                                            CrossAxisAlignment.start,
-                                                        children: [
-                                                          const SizedBox(
-                                                            height: 35,
-                                                          ),
-                                                          Text(
-                                                            'Смотрите также',
-                                                            style: Theme.of(context)
-                                                                .textTheme
-                                                                .displayMedium
-                                                                ?.copyWith(
-                                                                  fontWeight: FontWeight.w700,
-                                                                ),
-                                                          ),
-                                                          const SizedBox(
-                                                            height: 10.5,
-                                                          ),
-                                                          LayoutBuilder(
-                                                            builder: (context, constraints) {
-                                                              log(constraints.toString());
-                                                              return CatalogSliderProducts(
+                                                              ),
+                                                              const SizedBox(
+                                                                height: 10.5,
+                                                              ),
+                                                              CatalogSliderProducts(
                                                                 onSelectProduct: (value) {
                                                                   context.read<CatalogBloc>().add(
                                                                         CatalogEvent.getInfoProduct(
                                                                           code: value.id.toString(),
                                                                           titleScreen:
-                                                                              'Описание товара в каталоге (Смотрите также)',
+                                                                              'Описание товара в каталоге (Носят вместе)',
                                                                           typeAddProductToShoppingCart:
                                                                               'Карточка товара',
                                                                           identifierAddProductToShoppingCart:
@@ -1445,7 +1329,7 @@ class _CatalogCardInfoScreenState extends State<CatalogCardInfoScreen> {
                                                                       );
                                                                 },
                                                                 listProducts:
-                                                                    initState.listProdcutsAlso,
+                                                                    initState.listProdcutsComplect,
                                                                 favouritesProductsId:
                                                                     initState.favouritesProductsId,
                                                                 addLike: (index) {
@@ -1453,10 +1337,10 @@ class _CatalogCardInfoScreenState extends State<CatalogCardInfoScreen> {
                                                                         CatalogEvent
                                                                             .addFavouriteProduct(
                                                                           product: initState
-                                                                                  .listProdcutsAlso[
+                                                                                  .listProdcutsComplect[
                                                                               index],
                                                                           index: initState
-                                                                              .listProdcutsAlso[
+                                                                              .listProdcutsComplect[
                                                                                   index]
                                                                               .id,
                                                                         ),
@@ -1467,160 +1351,358 @@ class _CatalogCardInfoScreenState extends State<CatalogCardInfoScreen> {
                                                                         CatalogEvent
                                                                             .deleteFavouriteProduct(
                                                                           index: initState
-                                                                              .listProdcutsAlso[
+                                                                              .listProdcutsComplect[
                                                                                   index]
                                                                               .id,
                                                                         ),
                                                                       );
                                                                 },
                                                                 isAuth: initState.isAuth,
-                                                              );
-                                                            },
-                                                          ),
-                                                        ],
-                                                      );
-                                                    } else {
-                                                      return const SizedBox();
-                                                    }
-                                                  },
-                                                  orElse: () => const SizedBox());
-                                            },
-                                          ),
-                                          BlocBuilder<CatalogBloc, CatalogState>(
-                                            builder: (context, state) {
-                                              return state.maybeMap(
-                                                preloadDataCompleted: (initState) {
-                                                  if (initState
-                                                          .detailsProduct?.sections.isNotEmpty ??
-                                                      false) {
-                                                    return Column(
-                                                      crossAxisAlignment: CrossAxisAlignment.start,
-                                                      children: [
-                                                        const SizedBox(
-                                                          height: 35,
-                                                        ),
-                                                        Text(
-                                                          'С этим товаром смотрят',
-                                                          style: Theme.of(context)
-                                                              .textTheme
-                                                              .displayMedium
-                                                              ?.copyWith(
-                                                                fontWeight: FontWeight.w700,
-                                                              ),
-                                                        ),
-                                                        const SizedBox(
-                                                          height: 10.5,
-                                                        ),
-                                                        CatalogCategoryInfo(
-                                                          sections: initState.detailsProduct
-                                                                  ?.sections.first.list ??
-                                                              [],
-                                                          onTap: (path) {
-                                                            Timer(const Duration(milliseconds: 10),
-                                                                () {
-                                                              context.pushRoute(
-                                                                CatalogRoute(
-                                                                  title: '',
-                                                                  url: path,
-                                                                ),
-                                                              );
-                                                            });
-                                                            context.read<CatalogBloc>().add(
-                                                                  CatalogEvent.getInfoProducts(
-                                                                    path: path,
-                                                                  ),
-                                                                );
-                                                          },
-                                                        ),
-                                                      ],
-                                                    );
-                                                  } else {
-                                                    return const SizedBox();
-                                                  }
+                                                              )
+                                                            ],
+                                                          );
+                                                        } else {
+                                                          return const SizedBox();
+                                                        }
+                                                      },
+                                                      orElse: () => const SizedBox());
                                                 },
-                                                orElse: () => const SizedBox(),
-                                              );
-                                            },
-                                          ),
-                                          BlocBuilder<CatalogBloc, CatalogState>(
-                                            builder: (context, state) {
-                                              return state.maybeMap(
-                                                preloadDataCompleted: (initState) {
-                                                  if (initState.listProdcutsBrand.isNotEmpty) {
-                                                    return Column(
-                                                      crossAxisAlignment: CrossAxisAlignment.start,
-                                                      children: [
-                                                        const SizedBox(
-                                                          height: 35,
-                                                        ),
-                                                        Text(
-                                                          'Товары бренда',
-                                                          style: Theme.of(context)
-                                                              .textTheme
-                                                              .displayMedium
-                                                              ?.copyWith(
-                                                                fontWeight: FontWeight.w700,
+                                              ),
+                                              BlocBuilder<CatalogBloc, CatalogState>(
+                                                builder: (context, state) {
+                                                  return state.maybeMap(
+                                                      preloadDataCompleted: (initState) {
+                                                        if (initState
+                                                            .listProdcutsStyle.isNotEmpty) {
+                                                          return Column(
+                                                            crossAxisAlignment:
+                                                                CrossAxisAlignment.start,
+                                                            children: [
+                                                              const SizedBox(
+                                                                height: 35,
                                                               ),
-                                                        ),
-                                                        const SizedBox(
-                                                          height: 10.5,
-                                                        ),
-                                                        CatalogSliderProducts(
-                                                          onSelectProduct: (value) {
-                                                            context.read<CatalogBloc>().add(
-                                                                  CatalogEvent.getInfoProduct(
-                                                                    code: value.id.toString(),
-                                                                    titleScreen:
-                                                                        'Описание товара в каталоге (Товары бренда)',
-                                                                    typeAddProductToShoppingCart:
-                                                                        'Карточка товара',
-                                                                    identifierAddProductToShoppingCart:
-                                                                        '1',
-                                                                  ),
-                                                                );
-                                                          },
-                                                          listProducts: initState.listProdcutsBrand,
-                                                          favouritesProductsId:
-                                                              initState.favouritesProductsId,
-                                                          addLike: (index) {
-                                                            context.read<CatalogBloc>().add(
-                                                                  CatalogEvent.addFavouriteProduct(
-                                                                    product: initState
-                                                                        .listProdcutsBrand[index],
-                                                                    index: initState
-                                                                        .listProdcutsBrand[index]
-                                                                        .id,
-                                                                  ),
-                                                                );
-                                                          },
-                                                          deleteLike: (index) {
-                                                            context.read<CatalogBloc>().add(
-                                                                  CatalogEvent
-                                                                      .deleteFavouriteProduct(
-                                                                    index: initState
-                                                                        .listProdcutsBrand[index]
-                                                                        .id,
-                                                                  ),
-                                                                );
-                                                          },
-                                                          isAuth: initState.isAuth,
-                                                        ),
-                                                      ],
-                                                    );
-                                                  } else {
-                                                    return const SizedBox();
-                                                  }
+                                                              Text(
+                                                                'Рекомендации стилистов',
+                                                                style: Theme.of(context)
+                                                                    .textTheme
+                                                                    .displayMedium
+                                                                    ?.copyWith(
+                                                                      fontWeight: FontWeight.w700,
+                                                                    ),
+                                                              ),
+                                                              const SizedBox(
+                                                                height: 10.5,
+                                                              ),
+                                                              CatalogSliderProducts(
+                                                                onSelectProduct: (value) {
+                                                                  context.read<CatalogBloc>().add(
+                                                                        CatalogEvent.getInfoProduct(
+                                                                          code: value.id.toString(),
+                                                                          titleScreen:
+                                                                              'Описание товара в каталоге (Рекомендации стилистов)',
+                                                                          typeAddProductToShoppingCart:
+                                                                              'Карточка товара',
+                                                                          identifierAddProductToShoppingCart:
+                                                                              '1',
+                                                                        ),
+                                                                      );
+                                                                },
+                                                                listProducts:
+                                                                    initState.listProdcutsStyle,
+                                                                favouritesProductsId:
+                                                                    initState.favouritesProductsId,
+                                                                addLike: (index) {
+                                                                  context.read<CatalogBloc>().add(
+                                                                        CatalogEvent
+                                                                            .addFavouriteProduct(
+                                                                          product: initState
+                                                                                  .listProdcutsStyle[
+                                                                              index],
+                                                                          index: initState
+                                                                              .listProdcutsStyle[
+                                                                                  index]
+                                                                              .id,
+                                                                        ),
+                                                                      );
+                                                                },
+                                                                deleteLike: (index) {
+                                                                  context.read<CatalogBloc>().add(
+                                                                        CatalogEvent
+                                                                            .deleteFavouriteProduct(
+                                                                          index: initState
+                                                                              .listProdcutsStyle[
+                                                                                  index]
+                                                                              .id,
+                                                                        ),
+                                                                      );
+                                                                },
+                                                                isAuth: initState.isAuth,
+                                                              )
+                                                            ],
+                                                          );
+                                                        } else {
+                                                          return const SizedBox();
+                                                        }
+                                                      },
+                                                      orElse: () => const SizedBox());
                                                 },
-                                                orElse: () => const SizedBox(),
-                                              );
-                                            },
+                                              ),
+                                              BlocBuilder<CatalogBloc, CatalogState>(
+                                                builder: (context, state) {
+                                                  return state.maybeMap(
+                                                      preloadDataCompleted: (initState) {
+                                                        if (initState.listProdcutsAlso.isNotEmpty) {
+                                                          return Column(
+                                                            crossAxisAlignment:
+                                                                CrossAxisAlignment.start,
+                                                            children: [
+                                                              const SizedBox(
+                                                                height: 35,
+                                                              ),
+                                                              Text(
+                                                                'Смотрите также',
+                                                                style: Theme.of(context)
+                                                                    .textTheme
+                                                                    .displayMedium
+                                                                    ?.copyWith(
+                                                                      fontWeight: FontWeight.w700,
+                                                                    ),
+                                                              ),
+                                                              const SizedBox(
+                                                                height: 10.5,
+                                                              ),
+                                                              LayoutBuilder(
+                                                                builder: (context, constraints) {
+                                                                  log(constraints.toString());
+                                                                  return CatalogSliderProducts(
+                                                                    onSelectProduct: (value) {
+                                                                      context
+                                                                          .read<CatalogBloc>()
+                                                                          .add(
+                                                                            CatalogEvent
+                                                                                .getInfoProduct(
+                                                                              code: value.id
+                                                                                  .toString(),
+                                                                              titleScreen:
+                                                                                  'Описание товара в каталоге (Смотрите также)',
+                                                                              typeAddProductToShoppingCart:
+                                                                                  'Карточка товара',
+                                                                              identifierAddProductToShoppingCart:
+                                                                                  '1',
+                                                                            ),
+                                                                          );
+                                                                    },
+                                                                    listProducts:
+                                                                        initState.listProdcutsAlso,
+                                                                    favouritesProductsId: initState
+                                                                        .favouritesProductsId,
+                                                                    addLike: (index) {
+                                                                      context
+                                                                          .read<CatalogBloc>()
+                                                                          .add(
+                                                                            CatalogEvent
+                                                                                .addFavouriteProduct(
+                                                                              product: initState
+                                                                                      .listProdcutsAlso[
+                                                                                  index],
+                                                                              index: initState
+                                                                                  .listProdcutsAlso[
+                                                                                      index]
+                                                                                  .id,
+                                                                            ),
+                                                                          );
+                                                                    },
+                                                                    deleteLike: (index) {
+                                                                      context
+                                                                          .read<CatalogBloc>()
+                                                                          .add(
+                                                                            CatalogEvent
+                                                                                .deleteFavouriteProduct(
+                                                                              index: initState
+                                                                                  .listProdcutsAlso[
+                                                                                      index]
+                                                                                  .id,
+                                                                            ),
+                                                                          );
+                                                                    },
+                                                                    isAuth: initState.isAuth,
+                                                                  );
+                                                                },
+                                                              ),
+                                                            ],
+                                                          );
+                                                        } else {
+                                                          return const SizedBox();
+                                                        }
+                                                      },
+                                                      orElse: () => const SizedBox());
+                                                },
+                                              ),
+                                              BlocBuilder<CatalogBloc, CatalogState>(
+                                                builder: (context, state) {
+                                                  return state.maybeMap(
+                                                    preloadDataCompleted: (initState) {
+                                                      if (initState.detailsProduct?.sections
+                                                              .isNotEmpty ??
+                                                          false) {
+                                                        return Column(
+                                                          crossAxisAlignment:
+                                                              CrossAxisAlignment.start,
+                                                          children: [
+                                                            const SizedBox(
+                                                              height: 35,
+                                                            ),
+                                                            Text(
+                                                              'С этим товаром смотрят',
+                                                              style: Theme.of(context)
+                                                                  .textTheme
+                                                                  .displayMedium
+                                                                  ?.copyWith(
+                                                                    fontWeight: FontWeight.w700,
+                                                                  ),
+                                                            ),
+                                                            const SizedBox(
+                                                              height: 10.5,
+                                                            ),
+                                                            CatalogCategoryInfo(
+                                                              sections: initState.detailsProduct
+                                                                      ?.sections.first.list ??
+                                                                  [],
+                                                              onTap: (path) {
+                                                                Timer(
+                                                                    const Duration(
+                                                                        milliseconds: 10), () {
+                                                                  context.pushRoute(
+                                                                    CatalogRoute(
+                                                                      title: '',
+                                                                      url: path,
+                                                                    ),
+                                                                  );
+                                                                });
+                                                                context.read<CatalogBloc>().add(
+                                                                      CatalogEvent.getInfoProducts(
+                                                                        path: path,
+                                                                      ),
+                                                                    );
+                                                              },
+                                                            ),
+                                                          ],
+                                                        );
+                                                      } else {
+                                                        return const SizedBox();
+                                                      }
+                                                    },
+                                                    orElse: () => const SizedBox(),
+                                                  );
+                                                },
+                                              ),
+                                              BlocBuilder<CatalogBloc, CatalogState>(
+                                                builder: (context, state) {
+                                                  return state.maybeMap(
+                                                    preloadDataCompleted: (initState) {
+                                                      if (initState.listProdcutsBrand.isNotEmpty) {
+                                                        return Column(
+                                                          crossAxisAlignment:
+                                                              CrossAxisAlignment.start,
+                                                          children: [
+                                                            const SizedBox(
+                                                              height: 35,
+                                                            ),
+                                                            Text(
+                                                              'Товары бренда',
+                                                              style: Theme.of(context)
+                                                                  .textTheme
+                                                                  .displayMedium
+                                                                  ?.copyWith(
+                                                                    fontWeight: FontWeight.w700,
+                                                                  ),
+                                                            ),
+                                                            const SizedBox(
+                                                              height: 10.5,
+                                                            ),
+                                                            CatalogSliderProducts(
+                                                              onSelectProduct: (value) {
+                                                                context.read<CatalogBloc>().add(
+                                                                      CatalogEvent.getInfoProduct(
+                                                                        code: value.id.toString(),
+                                                                        titleScreen:
+                                                                            'Описание товара в каталоге (Товары бренда)',
+                                                                        typeAddProductToShoppingCart:
+                                                                            'Карточка товара',
+                                                                        identifierAddProductToShoppingCart:
+                                                                            '1',
+                                                                      ),
+                                                                    );
+                                                              },
+                                                              listProducts:
+                                                                  initState.listProdcutsBrand,
+                                                              favouritesProductsId:
+                                                                  initState.favouritesProductsId,
+                                                              addLike: (index) {
+                                                                context.read<CatalogBloc>().add(
+                                                                      CatalogEvent
+                                                                          .addFavouriteProduct(
+                                                                        product: initState
+                                                                                .listProdcutsBrand[
+                                                                            index],
+                                                                        index: initState
+                                                                            .listProdcutsBrand[
+                                                                                index]
+                                                                            .id,
+                                                                      ),
+                                                                    );
+                                                              },
+                                                              deleteLike: (index) {
+                                                                context.read<CatalogBloc>().add(
+                                                                      CatalogEvent
+                                                                          .deleteFavouriteProduct(
+                                                                        index: initState
+                                                                            .listProdcutsBrand[
+                                                                                index]
+                                                                            .id,
+                                                                      ),
+                                                                    );
+                                                              },
+                                                              isAuth: initState.isAuth,
+                                                            ),
+                                                          ],
+                                                        );
+                                                      } else {
+                                                        return const SizedBox();
+                                                      }
+                                                    },
+                                                    orElse: () => const SizedBox(),
+                                                  );
+                                                },
+                                              ),
+                                              const SizedBox(
+                                                height: 80,
+                                              ),
+                                            ],
                                           ),
-                                          const SizedBox(
-                                            height: 80,
-                                          ),
-                                        ],
-                                      ),
-                                    )
+                                        )
+                                      ],
+                                    ),
+                                    // GestureDetector(
+                                    //   onVerticalDragUpdate: (details) {},
+                                    //   onHorizontalDragEnd: (DragEndDetails details) {
+                                    //     if (details.velocity.pixelsPerSecond.dx > 0) {
+                                    //       context.read<CatalogBloc>().add(
+                                    //             const CatalogEvent.goBackProductInfo(),
+                                    //           );
+                                    //       setState(() {
+                                    //         _isSwipe = false;
+                                    //       });
+                                    //       log((details.velocity.pixelsPerSecond.dx).toString());
+                                    //     }
+                                    //   },
+                                    //   child: Container(
+                                    //     height: MediaQuery.of(context).size.height,
+                                    //     width: 50,
+                                    //     margin: EdgeInsets.only(top: 50),
+                                    //     color: Colors.transparent,
+                                    //   ),
+                                    // )
                                   ],
                                 ),
                               );

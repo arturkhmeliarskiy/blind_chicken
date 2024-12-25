@@ -67,6 +67,7 @@ class _NewsSliderState extends State<NewsSlider> {
   @override
   Widget build(BuildContext context) {
     final width = MediaQuery.of(context).size.width;
+
     return AspectRatio(
       aspectRatio: _aspectRatio,
       child: Stack(

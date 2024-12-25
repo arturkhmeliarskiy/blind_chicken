@@ -3,7 +3,7 @@ import 'package:flutter/services.dart';
 import 'package:shared/shared.dart';
 import 'package:get_it/get_it.dart';
 import 'package:ui_kit/ui_kit.dart';
-import 'package:cached_video_player_plus/cached_video_player_plus.dart';
+import 'package:video_player/video_player.dart';
 
 class NewsVideoItemGallery extends StatefulWidget {
   const NewsVideoItemGallery({
@@ -22,7 +22,7 @@ class NewsVideoItemGallery extends StatefulWidget {
 }
 
 class _NewsVideoItemGalleryState extends State<NewsVideoItemGallery> {
-  late CachedVideoPlayerPlusController _controller;
+  late VideoPlayerController _controller;
   bool _isFullScreenVideo = true;
   bool _isRotateScreen = false;
   bool _isPlay = false;
@@ -31,7 +31,7 @@ class _NewsVideoItemGalleryState extends State<NewsVideoItemGallery> {
   void initState() {
     super.initState();
     final updateData = GetIt.I.get<UpdateDataService>();
-    _controller = CachedVideoPlayerPlusController.networkUrl(
+    _controller = VideoPlayerController.networkUrl(
       Uri.parse(widget.video),
     )..initialize().then((_) {
         setState(() {
@@ -72,7 +72,7 @@ class _NewsVideoItemGalleryState extends State<NewsVideoItemGallery> {
                 children: [
                   AspectRatio(
                     aspectRatio: _controller.value.aspectRatio,
-                    child: CachedVideoPlayerPlus(
+                    child: VideoPlayer(
                       _controller,
                     ),
                   ),

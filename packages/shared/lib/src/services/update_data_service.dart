@@ -1,5 +1,5 @@
 import 'package:models/models.dart';
-import 'package:cached_video_player_plus/cached_video_player_plus.dart';
+import 'package:video_player/video_player.dart';
 
 class UpdateDataService {
   int? _selectedIndexGender;
@@ -19,14 +19,14 @@ class UpdateDataService {
   String? _lastScreen;
   List<String>? _pathHistory;
   List<PaymentItemDataModel>? _payments;
-  CachedVideoPlayerPlusController? _videoController;
+  VideoPlayerController? _videoController;
   List<BoutiqueDataModel>? _boutiques;
 
-  CachedVideoPlayerPlusController get videoController {
-    return _videoController ?? CachedVideoPlayerPlusController.networkUrl(Uri());
+  VideoPlayerController get videoController {
+    return _videoController ?? VideoPlayerController.networkUrl(Uri());
   }
 
-  set videoController(CachedVideoPlayerPlusController value) {
+  set videoController(VideoPlayerController value) {
     _videoController = value;
   }
 
