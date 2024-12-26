@@ -60,15 +60,17 @@ import AppMetricaPush
               // For iOS 10 display notification (sent via APNS)
         let center = UNUserNotificationCenter.current()
         let authOptions: UNAuthorizationOptions = [.alert, .badge, .sound]
-        center.requestAuthorization(
-                options: authOptions,
-                completionHandler: {_, _ in })
+        center.requestAuthorization(options: authOptions) { [weak self] granted, _ in
+            print("Permission granted: \(granted)")
+            guard granted else { return }
+            center.delegate = self
+            self?.getNotificationSettings()
+        }        
     } else {
         let settings: UIUserNotificationSettings =
         UIUserNotificationSettings(types: [.alert, .badge, .sound], categories: nil)
         application.registerUserNotificationSettings(settings)
     }
-    
     AppMetricaPush.handleApplicationDidFinishLaunching(options: launchOptions)
 
     self.registerForPushNotificationsWithApplication(application)
@@ -111,7 +113,6 @@ import AppMetricaPush
   } 
 
   override func userNotificationCenter(_ center: UNUserNotificationCenter, didReceive response: UNNotificationResponse, withCompletionHandler completionHandler: @escaping () -> Void) {
-
     let userInfo = response.notification.request.content.userInfo
 
             // Track received remote notification.
@@ -233,5 +234,15 @@ import AppMetricaPush
         // } else { 
         //     print("Push is not related to AppMetrica")
         // }
+    }
+
+    func getNotificationSettings() {
+      UNUserNotificationCenter.current().getNotificationSettings { settings in
+        print("Notification settings: \(settings)")
+          guard settings.authorizationStatus == .authorized else { return }
+          DispatchQueue.main.async {
+            UIApplication.shared.registerForRemoteNotifications()
+          }
+      }
     }
 }
