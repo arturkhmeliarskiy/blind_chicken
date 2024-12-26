@@ -91,8 +91,11 @@ import AppMetricaPush
                                                     options:UNNotificationCategoryOptions.customDismissAction)
               // Only for push notifications of this category dismiss action will be tracked.
               center.setNotificationCategories(Set([category]))
-              center.requestAuthorization(options:[.badge, .alert, .sound]) { (granted, error) in
-                  // Enable or disable features based on authorization.
+              center.requestAuthorization(options: [.sound, .alert, .badge]) { [weak self] granted, _ in
+                  print("Permission granted: \(granted)")
+                  guard granted else { return }
+                  center.delegate = self
+                  self?.getNotificationSettings()
               }
           } else {
               // iOS 8 and iOS 9
