@@ -85,6 +85,19 @@ class _NotificationsTabInfoState extends State<NotificationsTabInfo> {
   }
 
   @override
+  void didUpdateWidget(covariant NotificationsTabInfo oldWidget) {
+    final idNews = widget.idNews;
+    if (idNews != null && oldWidget.idNews != idNews) {
+      context.read<NewsBloc>().add(const NewsEvent.getNotifications());
+      context.read<NewsBloc>().add(NewsEvent.updateReadNews(
+            id: idNews,
+            typeNews: 'notice',
+          ));
+    }
+    super.didUpdateWidget(oldWidget);
+  }
+
+  @override
   void dispose() {
     _scrollController.dispose();
     super.dispose();

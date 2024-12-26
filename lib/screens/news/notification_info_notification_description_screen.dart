@@ -162,371 +162,412 @@ class _NotificationInfoNotificationDescriptionScreenState
               children: [
                 Scaffold(
                   body: SafeArea(
-                    child: ListView(children: [
-                      const AppBarBlindChicken(),
-                      BlocBuilder<NewsBloc, NewsState>(builder: (context, state) {
-                        return state.maybeMap(
-                          preloadDataCompleted: (initState) {
-                            final createAt = initState.oneNews?.data.createAt ?? '';
-                            return GestureDetector(
-                              onHorizontalDragEnd: (DragEndDetails details) {
-                                if (details.velocity.pixelsPerSecond.dx > 0) {
-                                  context.navigateTo(
-                                    NewsInfoRoute(
-                                      indexPage: 2,
-                                      idNews: widget.idNews,
-                                      typeNews: 'notice',
-                                    ),
-                                  );
-                                  setState(() {
-                                    _isSwipe = false;
-                                  });
-                                }
-                              },
-                              child: PopScope(
-                                canPop: false,
-                                onPopInvoked: (value) {
-                                  if (_isSwipe && !value) {
-                                    context.navigateTo(
-                                      NewsInfoRoute(
-                                        indexPage: 2,
-                                        idNews: widget.idNews,
-                                        typeNews: 'notice',
+                    child: Container(
+                      decoration: BoxDecoration(
+                        color: BlindChickenColors.borderBottomColor,
+                        image: DecorationImage(
+                          image: AssetImage('assets/images/news_background.png'),
+                          fit: BoxFit.cover,
+                        ),
+                      ),
+                      child: ListView(children: [
+                        const AppBarBlindChicken(),
+                        BlocBuilder<NewsBloc, NewsState>(builder: (context, state) {
+                          return state.maybeMap(
+                            preloadDataCompleted: (initState) {
+                              final createAt = initState.oneNews?.data.createAt ?? '';
+                              return Container(
+                                margin: const EdgeInsets.all(10),
+                                width: width,
+                                decoration: BoxDecoration(
+                                  borderRadius: BorderRadius.circular(15),
+                                  color: BlindChickenColors.backgroundColor,
+                                ),
+                                child: GestureDetector(
+                                  onHorizontalDragEnd: (DragEndDetails details) {
+                                    if (details.velocity.pixelsPerSecond.dx > 0) {
+                                      context.navigateTo(
+                                        NewsInfoRoute(
+                                          indexPage: 2,
+                                          idNews: widget.idNews,
+                                          typeNews: 'notice',
+                                        ),
+                                      );
+                                      setState(() {
+                                        _isSwipe = false;
+                                      });
+                                    }
+                                  },
+                                  child: PopScope(
+                                    canPop: false,
+                                    onPopInvoked: (value) {
+                                      if (_isSwipe && !value) {
+                                        context.navigateTo(
+                                          NewsInfoRoute(
+                                            indexPage: 2,
+                                            idNews: widget.idNews,
+                                            typeNews: 'notice',
+                                          ),
+                                        );
+                                      }
+                                    },
+                                    child: Padding(
+                                      padding: const EdgeInsets.only(
+                                        left: 16,
+                                        right: 16,
                                       ),
-                                    );
-                                  }
-                                },
-                                child: Padding(
-                                  padding: const EdgeInsets.only(
-                                    left: 16,
-                                    right: 16,
-                                  ),
-                                  child: Column(
-                                    crossAxisAlignment: CrossAxisAlignment.start,
-                                    children: [
-                                      const SizedBox(
-                                        height: 12,
-                                      ),
-                                      RichText(
-                                        text: TextSpan(
-                                          children: [
-                                            WidgetSpan(
-                                              child: Padding(
-                                                padding: const EdgeInsets.only(
-                                                  right: 8,
-                                                ),
-                                                child: InkWell(
-                                                  onTap: () {
-                                                    context.navigateTo(
-                                                      NewsInfoRoute(
-                                                        indexPage: 2,
-                                                        idNews: widget.idNews,
-                                                        typeNews: 'notice',
+                                      child: Column(
+                                        crossAxisAlignment: CrossAxisAlignment.start,
+                                        children: [
+                                          const SizedBox(
+                                            height: 12,
+                                          ),
+                                          RichText(
+                                            text: TextSpan(
+                                              children: [
+                                                WidgetSpan(
+                                                  child: Padding(
+                                                    padding: const EdgeInsets.only(
+                                                      right: 8,
+                                                    ),
+                                                    child: InkWell(
+                                                      onTap: () {
+                                                        context.navigateTo(
+                                                          NewsInfoRoute(
+                                                            indexPage: 2,
+                                                            idNews: widget.idNews,
+                                                            typeNews: 'notice',
+                                                          ),
+                                                        );
+                                                      },
+                                                      child: SvgPicture.asset(
+                                                        'assets/icons/arrow-left.svg',
+                                                        height: 24,
+                                                        width: 24,
                                                       ),
-                                                    );
-                                                  },
-                                                  child: SvgPicture.asset(
-                                                    'assets/icons/arrow-left.svg',
-                                                    height: 24,
-                                                    width: 24,
+                                                    ),
                                                   ),
                                                 ),
-                                              ),
-                                            ),
-                                            TextSpan(
-                                              text: initState.oneNotification?.data.title ?? '',
-                                              style:
-                                                  Theme.of(context).textTheme.titleSmall?.copyWith(
+                                                TextSpan(
+                                                  text: initState.oneNotification?.data.title ?? '',
+                                                  style: Theme.of(context)
+                                                      .textTheme
+                                                      .titleSmall
+                                                      ?.copyWith(
                                                         fontWeight: FontWeight.w700,
                                                         height: 1.2,
                                                       ),
-                                            ),
-                                          ],
-                                        ),
-                                      ),
-                                      const SizedBox(
-                                        height: 6,
-                                      ),
-                                      Text(
-                                        createAt.isNotEmpty ? DateInfo.dateFormat(createAt) : '',
-                                        style: Theme.of(context).textTheme.displaySmall?.copyWith(
-                                              color: BlindChickenColors.textInput,
-                                            ),
-                                      ),
-                                      if ((initState.oneNotification?.data.typeMedia ?? '') ==
-                                              'images' &&
-                                          (initState.oneNotification?.data.images.length ?? 0) == 1)
-                                        Column(
-                                          children: [
-                                            const SizedBox(
-                                              height: 12,
-                                            ),
-                                            InkWell(
-                                              onTap: () {
-                                                context.navigateTo(
-                                                  NewsPreviewMediaRoute(
-                                                    media: initState.oneNotification?.data.images ??
-                                                        [],
-                                                    goBotton: () {
-                                                      context.back();
-                                                    },
-                                                    selectIndex: 0,
-                                                  ),
-                                                );
-                                              },
-                                              child: CachedNetworkImage(
-                                                imageUrl:
-                                                    initState.oneNotification?.data.images.first ??
-                                                        '',
-                                                width: MediaQuery.of(context).orientation ==
-                                                        Orientation.portrait
-                                                    ? width
-                                                    : width / 2,
-                                                height: 250,
-                                                fit: BoxFit.cover,
-                                                errorWidget: (context, url, error) =>
-                                                    const Icon(Icons.error),
-                                              ),
-                                            ),
-                                          ],
-                                        ),
-                                      if ((initState.oneNotification?.data.typeMedia ?? '') ==
-                                              'images' &&
-                                          (initState.oneNotification?.data.images.length ?? 0) > 1)
-                                        Column(
-                                          children: [
-                                            const SizedBox(
-                                              height: 12,
-                                            ),
-                                            NewsSlider(
-                                              media: initState.oneNotification?.data.images ?? [],
-                                              goBotton: () {
-                                                context.back();
-                                              },
-                                              onTap: (index) {
-                                                context.pushRoute(
-                                                  NewsPreviewMediaRoute(
-                                                    selectIndex: index,
-                                                    media: initState.oneNotification?.data.images ??
-                                                        [],
-                                                    goBotton: () {
-                                                      context.back();
-                                                    },
-                                                  ),
-                                                );
-                                              },
-                                            ),
-                                          ],
-                                        ),
-                                      if ((initState.oneNotification?.data.typeMedia ?? '') ==
-                                              'video' &&
-                                          (initState.oneNotification?.data.typeVideo ?? '') ==
-                                              'youtube')
-                                        Column(
-                                          children: [
-                                            const SizedBox(
-                                              height: 12,
-                                            ),
-                                            NewsYouTubeVideoPlayer(
-                                              url: initState.oneNotification?.data.video ?? '',
-                                              onEnterFullScreen: () {
-                                                setState(() {
-                                                  _isFullScreenVideo = true;
-                                                });
-                                              },
-                                              onExitFullScreen: () {},
-                                            ),
-                                          ],
-                                        ),
-                                      if ((initState.oneNotification?.data.typeMedia ?? '') ==
-                                              'video' &&
-                                          (initState.oneNotification?.data.typeVideo ?? '') ==
-                                              'original')
-                                        Column(
-                                          children: [
-                                            const SizedBox(
-                                              height: 12,
-                                            ),
-                                            NewsVideoPlayer(
-                                              url: initState.oneNotification?.data.video ?? '',
-                                              image:
-                                                  initState.oneNotification?.data.videoImage ?? '',
-                                              isFullScreenVideo: _isFullScreenVideo,
-                                              videoImageHeight: initState
-                                                      .oneNotification?.data.videoImageHeight ??
-                                                  0,
-                                              videoImageWeight: initState
-                                                      .oneNotification?.data.videoImageWeight ??
-                                                  0,
-                                              onEnterFullScreen: (aspectRatio) {
-                                                setState(() {
-                                                  _isFullScreenVideo = true;
-                                                  _aspectRatio = aspectRatio;
-                                                });
-                                              },
-                                              onExitFullScreen: () {},
-                                            ),
-                                          ],
-                                        ),
-                                      const SizedBox(
-                                        height: 8,
-                                      ),
-                                      HtmlWidget(
-                                        initState.oneNotification?.data.description ?? '',
-                                        textStyle: Theme.of(context).textTheme.displayMedium,
-                                        onTapUrl: (url) async {
-                                          return HandlerLinksNews.handlerLinks(
-                                            context: context,
-                                            url: url,
-                                            titleScreen: 'notfication_info_notfication_description',
-                                            idNews: widget.idNews,
-                                            messageId: widget.messageId,
-                                            titleAppMetrica:
-                                                'Переход по ссылке из cтраницы push-уведомления описания уведомления',
-                                            newsNotificationInfo: initState.oneNotification?.data,
-                                          );
-                                        },
-                                      ),
-                                      const SizedBox(
-                                        height: 10,
-                                      ),
-                                      if (initState.oneNotification?.data.path.isNotEmpty ?? false)
-                                        GestureDetector(
-                                          onTap: () {
-                                            if ((initState.oneNotification?.data.typePath ?? '') ==
-                                                'catalog') {
-                                              context.read<CatalogBloc>().add(
-                                                    CatalogEvent.getInfoProducts(
-                                                      path: initState.oneNotification?.data.path ??
-                                                          '',
-                                                      isCleanHistory: true,
-                                                    ),
-                                                  );
-                                              context.navigateTo(DashboardRoute(children: [
-                                                HomeAutoRouterRoute(
-                                                  children: [
-                                                    CatalogRoute(
-                                                      title: '',
-                                                      url: initState.oneNotification?.data.path ??
-                                                          '',
-                                                      lastPath:
-                                                          'notfication_info_notfication_description',
-                                                      newsNotificationInfo:
-                                                          initState.oneNotification?.data,
-                                                    ),
-                                                  ],
                                                 ),
-                                              ]));
-                                            } else if ((initState.oneNotification?.data.typePath ??
-                                                    '') ==
-                                                'product') {
-                                              context.read<CatalogBloc>().add(
-                                                    CatalogEvent.getInfoProduct(
-                                                      code: initState.oneNotification?.data.code ??
-                                                          '',
-                                                      titleScreen: 'Уведомление',
-                                                      typeAddProductToShoppingCart: 'Кнопка',
-                                                      identifierAddProductToShoppingCart: '4',
-                                                    ),
-                                                  );
-                                              context.navigateTo(
-                                                DashboardRoute(
-                                                  children: [
-                                                    HomeAutoRouterRoute(
-                                                      children: [
-                                                        CatalogCardInfoRoute(
-                                                          isLike: false,
-                                                          listItems: const [],
-                                                          favouritesProducts: const [],
-                                                          isChildRoute: false,
-                                                          lastPath:
-                                                              'notfication_info_notfication_description',
-                                                          newsNotificationInfo:
-                                                              initState.oneNotification?.data,
-                                                        ),
-                                                      ],
-                                                    ),
-                                                  ],
-                                                ),
-                                              );
-                                            } else if ((initState.oneNotification?.data.typePath ??
-                                                    '') ==
-                                                'boutique') {
-                                              context.read<BoutiquesBloc>().add(
-                                                    BoutiquesEvent.getInfoBoutique(
-                                                      uid: initState
-                                                              .oneNotification?.data.uidStore ??
-                                                          '',
-                                                    ),
-                                                  );
-                                              context.navigateTo(
-                                                DashboardRoute(
-                                                  children: [
-                                                    HomeAutoRouterRoute(
-                                                      children: [
-                                                        BoutiquesDescriptionRoute(
-                                                          lastPath:
-                                                              'notfication_info_notfication_description',
-                                                          newsNotificationInfo:
-                                                              initState.oneNotification?.data,
-                                                        ),
-                                                      ],
-                                                    ),
-                                                  ],
-                                                ),
-                                              );
-                                            } else if ((initState.oneNotification?.data.typePath ??
-                                                    '') ==
-                                                'gift_card') {
-                                              context.navigateTo(
-                                                DashboardRoute(
-                                                  children: [
-                                                    HomeAutoRouterRoute(
-                                                      children: [
-                                                        GiftCardRoute(
-                                                          lastPath:
-                                                              'notfication_info_notfication_description',
-                                                          newsNotificationInfo:
-                                                              initState.oneNotification?.data,
-                                                        ),
-                                                      ],
-                                                    ),
-                                                  ],
-                                                ),
-                                              );
-                                            }
-                                          },
-                                          child: Container(
-                                            height: 50,
-                                            decoration: BoxDecoration(
-                                              borderRadius: BorderRadius.circular(5),
-                                              color: BlindChickenColors.borderBottomColor,
-                                            ),
-                                            alignment: Alignment.center,
-                                            child: Text(
-                                              (initState.oneNotification?.data.titleButton ?? ''),
-                                              style: Theme.of(context)
-                                                  .textTheme
-                                                  .displayMedium
-                                                  ?.copyWith(
-                                                    color: BlindChickenColors.activeBorderTextField,
-                                                  ),
+                                              ],
                                             ),
                                           ),
-                                        ),
-                                      const SizedBox(
-                                        height: 40,
+                                          const SizedBox(
+                                            height: 6,
+                                          ),
+                                          Text(
+                                            createAt.isNotEmpty
+                                                ? DateInfo.dateFormat(createAt)
+                                                : '',
+                                            style:
+                                                Theme.of(context).textTheme.displaySmall?.copyWith(
+                                                      color: BlindChickenColors.textInput,
+                                                    ),
+                                          ),
+                                          if ((initState.oneNotification?.data.typeMedia ?? '') ==
+                                                  'images' &&
+                                              (initState.oneNotification?.data.images.length ??
+                                                      0) ==
+                                                  1)
+                                            Column(
+                                              children: [
+                                                const SizedBox(
+                                                  height: 12,
+                                                ),
+                                                InkWell(
+                                                  onTap: () {
+                                                    context.navigateTo(
+                                                      NewsPreviewMediaRoute(
+                                                        media: initState
+                                                                .oneNotification?.data.images ??
+                                                            [],
+                                                        goBotton: () {
+                                                          context.back();
+                                                        },
+                                                        selectIndex: 0,
+                                                      ),
+                                                    );
+                                                  },
+                                                  child: CachedNetworkImage(
+                                                    imageUrl: initState
+                                                            .oneNotification?.data.images.first ??
+                                                        '',
+                                                    width: MediaQuery.of(context).orientation ==
+                                                            Orientation.portrait
+                                                        ? width
+                                                        : width / 2,
+                                                    height: 250,
+                                                    fit: BoxFit.cover,
+                                                    errorWidget: (context, url, error) =>
+                                                        const Icon(Icons.error),
+                                                  ),
+                                                ),
+                                              ],
+                                            ),
+                                          if ((initState.oneNotification?.data.typeMedia ?? '') ==
+                                                  'images' &&
+                                              (initState.oneNotification?.data.images.length ?? 0) >
+                                                  1)
+                                            Column(
+                                              children: [
+                                                const SizedBox(
+                                                  height: 12,
+                                                ),
+                                                NewsSlider(
+                                                  media:
+                                                      initState.oneNotification?.data.images ?? [],
+                                                  goBotton: () {
+                                                    context.back();
+                                                  },
+                                                  onTap: (index) {
+                                                    context.pushRoute(
+                                                      NewsPreviewMediaRoute(
+                                                        selectIndex: index,
+                                                        media: initState
+                                                                .oneNotification?.data.images ??
+                                                            [],
+                                                        goBotton: () {
+                                                          context.back();
+                                                        },
+                                                      ),
+                                                    );
+                                                  },
+                                                ),
+                                              ],
+                                            ),
+                                          if ((initState.oneNotification?.data.typeMedia ?? '') ==
+                                                  'video' &&
+                                              (initState.oneNotification?.data.typeVideo ?? '') ==
+                                                  'youtube')
+                                            Column(
+                                              children: [
+                                                const SizedBox(
+                                                  height: 12,
+                                                ),
+                                                NewsYouTubeVideoPlayer(
+                                                  url: initState.oneNotification?.data.video ?? '',
+                                                  onEnterFullScreen: () {
+                                                    setState(() {
+                                                      _isFullScreenVideo = true;
+                                                    });
+                                                  },
+                                                  onExitFullScreen: () {},
+                                                ),
+                                              ],
+                                            ),
+                                          if ((initState.oneNotification?.data.typeMedia ?? '') ==
+                                                  'video' &&
+                                              (initState.oneNotification?.data.typeVideo ?? '') ==
+                                                  'original')
+                                            Column(
+                                              children: [
+                                                const SizedBox(
+                                                  height: 12,
+                                                ),
+                                                NewsVideoPlayer(
+                                                  url: initState.oneNotification?.data.video ?? '',
+                                                  image:
+                                                      initState.oneNotification?.data.videoImage ??
+                                                          '',
+                                                  isFullScreenVideo: _isFullScreenVideo,
+                                                  videoImageHeight: initState
+                                                          .oneNotification?.data.videoImageHeight ??
+                                                      0,
+                                                  videoImageWeight: initState
+                                                          .oneNotification?.data.videoImageWeight ??
+                                                      0,
+                                                  onEnterFullScreen: (aspectRatio) {
+                                                    setState(() {
+                                                      _isFullScreenVideo = true;
+                                                      _aspectRatio = aspectRatio;
+                                                    });
+                                                  },
+                                                  onExitFullScreen: () {},
+                                                ),
+                                              ],
+                                            ),
+                                          const SizedBox(
+                                            height: 8,
+                                          ),
+                                          HtmlWidget(
+                                            initState.oneNotification?.data.description ?? '',
+                                            textStyle: Theme.of(context).textTheme.displayMedium,
+                                            onTapUrl: (url) async {
+                                              return HandlerLinksNews.handlerLinks(
+                                                context: context,
+                                                url: url,
+                                                titleScreen:
+                                                    'notfication_info_notfication_description',
+                                                idNews: widget.idNews,
+                                                messageId: widget.messageId,
+                                                titleAppMetrica:
+                                                    'Переход по ссылке из cтраницы push-уведомления описания уведомления',
+                                                newsNotificationInfo:
+                                                    initState.oneNotification?.data,
+                                              );
+                                            },
+                                          ),
+                                          const SizedBox(
+                                            height: 10,
+                                          ),
+                                          if (initState.oneNotification?.data.path.isNotEmpty ??
+                                              false)
+                                            GestureDetector(
+                                              onTap: () {
+                                                if ((initState.oneNotification?.data.typePath ??
+                                                        '') ==
+                                                    'catalog') {
+                                                  context.read<CatalogBloc>().add(
+                                                        CatalogEvent.getInfoProducts(
+                                                          path: initState
+                                                                  .oneNotification?.data.path ??
+                                                              '',
+                                                          isCleanHistory: true,
+                                                        ),
+                                                      );
+                                                  context.navigateTo(DashboardRoute(children: [
+                                                    HomeAutoRouterRoute(
+                                                      children: [
+                                                        CatalogRoute(
+                                                          title: '',
+                                                          url: initState
+                                                                  .oneNotification?.data.path ??
+                                                              '',
+                                                          lastPath:
+                                                              'notfication_info_notfication_description',
+                                                          newsNotificationInfo:
+                                                              initState.oneNotification?.data,
+                                                        ),
+                                                      ],
+                                                    ),
+                                                  ]));
+                                                } else if ((initState
+                                                            .oneNotification?.data.typePath ??
+                                                        '') ==
+                                                    'product') {
+                                                  context.read<CatalogBloc>().add(
+                                                        CatalogEvent.getInfoProduct(
+                                                          code: initState
+                                                                  .oneNotification?.data.code ??
+                                                              '',
+                                                          titleScreen: 'Уведомление',
+                                                          typeAddProductToShoppingCart: 'Кнопка',
+                                                          identifierAddProductToShoppingCart: '4',
+                                                        ),
+                                                      );
+                                                  context.navigateTo(
+                                                    DashboardRoute(
+                                                      children: [
+                                                        HomeAutoRouterRoute(
+                                                          children: [
+                                                            CatalogCardInfoRoute(
+                                                              isLike: false,
+                                                              listItems: const [],
+                                                              favouritesProducts: const [],
+                                                              isChildRoute: false,
+                                                              lastPath:
+                                                                  'notfication_info_notfication_description',
+                                                              newsNotificationInfo:
+                                                                  initState.oneNotification?.data,
+                                                            ),
+                                                          ],
+                                                        ),
+                                                      ],
+                                                    ),
+                                                  );
+                                                } else if ((initState
+                                                            .oneNotification?.data.typePath ??
+                                                        '') ==
+                                                    'boutique') {
+                                                  context.read<BoutiquesBloc>().add(
+                                                        BoutiquesEvent.getInfoBoutique(
+                                                          uid: initState
+                                                                  .oneNotification?.data.uidStore ??
+                                                              '',
+                                                        ),
+                                                      );
+                                                  context.navigateTo(
+                                                    DashboardRoute(
+                                                      children: [
+                                                        HomeAutoRouterRoute(
+                                                          children: [
+                                                            BoutiquesDescriptionRoute(
+                                                              lastPath:
+                                                                  'notfication_info_notfication_description',
+                                                              newsNotificationInfo:
+                                                                  initState.oneNotification?.data,
+                                                            ),
+                                                          ],
+                                                        ),
+                                                      ],
+                                                    ),
+                                                  );
+                                                } else if ((initState
+                                                            .oneNotification?.data.typePath ??
+                                                        '') ==
+                                                    'gift_card') {
+                                                  context.navigateTo(
+                                                    DashboardRoute(
+                                                      children: [
+                                                        HomeAutoRouterRoute(
+                                                          children: [
+                                                            GiftCardRoute(
+                                                              lastPath:
+                                                                  'notfication_info_notfication_description',
+                                                              newsNotificationInfo:
+                                                                  initState.oneNotification?.data,
+                                                            ),
+                                                          ],
+                                                        ),
+                                                      ],
+                                                    ),
+                                                  );
+                                                }
+                                              },
+                                              child: Container(
+                                                height: 50,
+                                                decoration: BoxDecoration(
+                                                  borderRadius: BorderRadius.circular(5),
+                                                  color: BlindChickenColors.borderBottomColor,
+                                                ),
+                                                alignment: Alignment.center,
+                                                child: Text(
+                                                  (initState.oneNotification?.data.titleButton ??
+                                                      ''),
+                                                  style: Theme.of(context)
+                                                      .textTheme
+                                                      .displayMedium
+                                                      ?.copyWith(
+                                                        color: BlindChickenColors
+                                                            .activeBorderTextField,
+                                                      ),
+                                                ),
+                                              ),
+                                            ),
+                                          const SizedBox(
+                                            height: 40,
+                                          ),
+                                        ],
                                       ),
-                                    ],
+                                    ),
                                   ),
                                 ),
-                              ),
-                            );
-                          },
-                          orElse: () => const SizedBox(),
-                        );
-                      }),
-                    ]),
+                              );
+                            },
+                            orElse: () => const SizedBox(),
+                          );
+                        }),
+                      ]),
+                    ),
                   ),
                 ),
                 BlocBuilder<NewsBloc, NewsState>(

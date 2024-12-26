@@ -29,7 +29,7 @@ class _NewsInfoScreenState extends State<NewsInfoScreen> with TickerProviderStat
   final BlindChickenShowDialogError _blindChickenNewsInfoShowDialogError =
       BlindChickenShowDialogError();
   bool _isShowDialogNewsInfoError = false;
-  late final TabController _tabController;
+  TabController? _tabController;
   bool _isSwipe = true;
   String _iDNews = '';
   double _heightAppBar = 105;
@@ -38,7 +38,7 @@ class _NewsInfoScreenState extends State<NewsInfoScreen> with TickerProviderStat
   void didChangeDependencies() {
     _tabController = TabController(length: 3, vsync: this);
     if (widget.indexPage != 0) {
-      _tabController.animateTo(widget.indexPage);
+      _tabController?.animateTo(widget.indexPage);
     } else {
       context.read<NewsBloc>().add(NewsEvent.getNews(isGoBack: false));
       final idNews = widget.idNews;
@@ -62,7 +62,7 @@ class _NewsInfoScreenState extends State<NewsInfoScreen> with TickerProviderStat
             id: idNews,
             typeNews: widget.typeNews ?? '',
           ));
-      _tabController.animateTo(widget.indexPage);
+      _tabController?.animateTo(widget.indexPage);
     }
 
     AppMetrica.reportEvent('Страница новостей');
@@ -71,7 +71,7 @@ class _NewsInfoScreenState extends State<NewsInfoScreen> with TickerProviderStat
 
   @override
   void dispose() {
-    _tabController.dispose();
+    _tabController?.dispose();
     super.dispose();
   }
 
@@ -152,13 +152,13 @@ class _NewsInfoScreenState extends State<NewsInfoScreen> with TickerProviderStat
                   });
                 } else {
                   if (initState.isGoBack ?? false) {
-                    _tabController.animateTo(
+                    _tabController?.animateTo(
                       int.parse(
                         initState.listNewsPath.last,
                       ),
                     );
                     setState(() {
-                      _tabController.index = int.parse(
+                      _tabController?.index = int.parse(
                         initState.listNewsPath.last,
                       );
                     });
@@ -268,7 +268,7 @@ class _NewsInfoScreenState extends State<NewsInfoScreen> with TickerProviderStat
                                                     .textTheme
                                                     .displayMedium
                                                     ?.copyWith(
-                                                      fontWeight: _tabController.index == 0
+                                                      fontWeight: _tabController?.index == 0
                                                           ? FontWeight.w700
                                                           : null,
                                                     ),
@@ -301,11 +301,11 @@ class _NewsInfoScreenState extends State<NewsInfoScreen> with TickerProviderStat
                                                     .textTheme
                                                     .displayMedium
                                                     ?.copyWith(
-                                                      fontWeight: _tabController.index == 1
+                                                      fontWeight: _tabController?.index == 1
                                                           ? FontWeight.w700
                                                           : null,
                                                       fontSize:
-                                                          _tabController.index == 1 ? 13.8 : null,
+                                                          _tabController?.index == 1 ? 13.8 : null,
                                                     ),
                                               ),
                                               BlocBuilder<NewsBloc, NewsState>(
@@ -336,7 +336,7 @@ class _NewsInfoScreenState extends State<NewsInfoScreen> with TickerProviderStat
                                                     .textTheme
                                                     .displayMedium
                                                     ?.copyWith(
-                                                      fontWeight: _tabController.index == 2
+                                                      fontWeight: _tabController?.index == 2
                                                           ? FontWeight.w700
                                                           : null,
                                                     ),
@@ -464,11 +464,10 @@ Widget _countBadges(int count, BuildContext context) {
             SizedBox(
               width: 5,
             ),
-            Column(
-              crossAxisAlignment: CrossAxisAlignment.center,
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: [
-                Container(
+            SizedBox(
+              height: 16,
+              child: Center(
+                child: Container(
                   decoration: BoxDecoration(
                     borderRadius: BorderRadius.circular(9),
                     color: Colors.black,
@@ -488,7 +487,7 @@ Widget _countBadges(int count, BuildContext context) {
                     textAlign: TextAlign.center,
                   ),
                 ),
-              ],
+              ),
             ),
           ],
         )
