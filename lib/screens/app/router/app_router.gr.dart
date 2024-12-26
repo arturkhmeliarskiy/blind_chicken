@@ -2726,6 +2726,64 @@ class NewsRoute extends PageRouteInfo<void> {
 }
 
 /// generated route for
+/// [NewsVideoPlayerScreen]
+class NewsVideoPlayerRoute extends PageRouteInfo<NewsVideoPlayerRouteArgs> {
+  NewsVideoPlayerRoute({
+    Key? key,
+    required VoidCallback goBack,
+    required double aspectRatio,
+    required NewsInfoItemDataModel item,
+    List<PageRouteInfo>? children,
+  }) : super(
+          NewsVideoPlayerRoute.name,
+          args: NewsVideoPlayerRouteArgs(
+            key: key,
+            goBack: goBack,
+            aspectRatio: aspectRatio,
+            item: item,
+          ),
+          initialChildren: children,
+        );
+
+  static const String name = 'NewsVideoPlayerRoute';
+
+  static PageInfo page = PageInfo(
+    name,
+    builder: (data) {
+      final args = data.argsAs<NewsVideoPlayerRouteArgs>();
+      return NewsVideoPlayerScreen(
+        key: args.key,
+        goBack: args.goBack,
+        aspectRatio: args.aspectRatio,
+        item: args.item,
+      );
+    },
+  );
+}
+
+class NewsVideoPlayerRouteArgs {
+  const NewsVideoPlayerRouteArgs({
+    this.key,
+    required this.goBack,
+    required this.aspectRatio,
+    required this.item,
+  });
+
+  final Key? key;
+
+  final VoidCallback goBack;
+
+  final double aspectRatio;
+
+  final NewsInfoItemDataModel item;
+
+  @override
+  String toString() {
+    return 'NewsVideoPlayerRouteArgs{key: $key, goBack: $goBack, aspectRatio: $aspectRatio, item: $item}';
+  }
+}
+
+/// generated route for
 /// [NoInternetScreen]
 class NoInternetRoute extends PageRouteInfo<void> {
   const NoInternetRoute({List<PageRouteInfo>? children})

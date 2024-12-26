@@ -5,7 +5,6 @@ import 'package:blind_chicken/screens/app/router/app_router.dart';
 import 'package:blind_chicken/screens/news/widgets/handler_links_news.dart';
 import 'package:blind_chicken/screens/news/widgets/news_media_slider.dart';
 import 'package:blind_chicken/screens/news/widgets/news_slider.dart';
-import 'package:blind_chicken/screens/news/widgets/news_video_player.dart';
 import 'package:blind_chicken/screens/news/widgets/news_youtube_video_player.dart';
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
@@ -105,8 +104,8 @@ class _NewsItemTabInfoState extends State<NewsItemTabInfo> with AutomaticKeepAli
               boxShadow: [
                 BoxShadow(
                   color: BlindChickenColors.textInput.withOpacity(0.2),
-                  blurRadius: 4,
-                  offset: const Offset(3, 3), // Shadow position
+                  blurRadius: 8,
+                  offset: const Offset(5, 5), // Shadow position
                 ),
               ],
             ),
@@ -322,25 +321,15 @@ class _NewsItemTabInfoState extends State<NewsItemTabInfo> with AutomaticKeepAli
                               InkWell(
                                 onTap: () {
                                   _controller?.pause();
-                                  showDialog(
-                                    context: context,
-                                    barrierColor: BlindChickenColors.activeBorderTextField,
-                                    builder: (context) {
-                                      return Scaffold(
-                                        backgroundColor: BlindChickenColors.activeBorderTextField,
-                                        body: NewsVideoPlayer(
-                                          url: widget.item.video,
-                                          image: widget.item.videoImage,
-                                          isFullScreenVideo: true,
-                                          onEnterFullScreen: (aspectRatio) {},
-                                          aspectRatio: valueContorller.value.aspectRatio,
-                                          onExitFullScreen: () {
-                                            Navigator.of(context).pop();
-                                            init();
-                                          },
-                                        ),
-                                      );
-                                    },
+                                  context.navigateTo(
+                                    NewsVideoPlayerRoute(
+                                      goBack: () {
+                                        context.back();
+                                        _controller?.play();
+                                      },
+                                      aspectRatio: valueContorller.value.aspectRatio,
+                                      item: widget.item,
+                                    ),
                                   );
                                 },
                                 child: AspectRatio(

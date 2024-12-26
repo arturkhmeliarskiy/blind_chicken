@@ -135,6 +135,12 @@ class _AppState extends State<App> {
           create: (context) => GetIt.I.get<GiftCardBloc>(),
         ),
         BlocProvider(
+          create: (context) => GetIt.I.get<NewsAppBarBloc>()
+            ..add(
+              const NewsAppBarEvent.init(),
+            ),
+        ),
+        BlocProvider(
           create: (context) => GetIt.I.get<NewsBloc>()
             ..add(
               const NewsEvent.init(),

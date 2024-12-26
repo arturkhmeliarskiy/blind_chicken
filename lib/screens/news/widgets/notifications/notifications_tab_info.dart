@@ -11,9 +11,13 @@ class NotificationsTabInfo extends StatefulWidget {
   const NotificationsTabInfo({
     super.key,
     required this.goBack,
+    required this.onHideHeader,
+    required this.onShowHeader,
     this.idNews,
   });
 
+  final VoidCallback onHideHeader;
+  final VoidCallback onShowHeader;
   final VoidCallback goBack;
   final String? idNews;
 
@@ -52,6 +56,22 @@ class _NotificationsTabInfoState extends State<NotificationsTabInfo> {
       setState(() {
         _isButtonTop = false;
       });
+    }
+    if (_historyPosition < _scrollController.position.pixels) {
+      widget.onHideHeader();
+    }
+
+    if (_historyPosition > _scrollController.position.pixels &&
+        _scrollController.position.pixels > 0) {
+      widget.onShowHeader();
+    }
+
+    if (_scrollController.position.pixels < 50) {
+      widget.onShowHeader();
+    }
+
+    if (_scrollController.position.pixels > _scrollController.position.maxScrollExtent) {
+      widget.onHideHeader();
     }
     if (_scrollController.position.pixels > (_scrollController.position.maxScrollExtent - 200) &&
         (_scrollController.position.maxScrollExtent - 200) > _paginationPosition &&

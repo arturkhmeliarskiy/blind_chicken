@@ -17,9 +17,13 @@ class NewsTabInfo extends StatefulWidget {
   const NewsTabInfo({
     super.key,
     required this.goBack,
+    required this.onHideHeader,
+    required this.onShowHeader,
   });
 
   final VoidCallback goBack;
+  final VoidCallback onHideHeader;
+  final VoidCallback onShowHeader;
 
   @override
   State<NewsTabInfo> createState() => _NewsTabInfoState();
@@ -43,6 +47,23 @@ class _NewsTabInfoState extends State<NewsTabInfo> {
                 _scrollController.position.pixels > 0,
           ),
         );
+
+    if (_historyPosition < _scrollController.position.pixels) {
+      widget.onHideHeader();
+    }
+
+    if (_historyPosition > _scrollController.position.pixels &&
+        _scrollController.position.pixels > 0) {
+      widget.onShowHeader();
+    }
+
+    if (_scrollController.position.pixels < 50) {
+      widget.onShowHeader();
+    }
+
+    if (_scrollController.position.pixels > _scrollController.position.maxScrollExtent) {
+      widget.onHideHeader();
+    }
 
     _historyPosition = _scrollController.position.pixels;
   }

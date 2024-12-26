@@ -31,3 +31,4 @@ export 'expandable_page_view.dart';
 export 'news_photo_and_video_view_gallery/index.dart';
 export 'blind_chicken_top_banner.dart';
 export 'blind_chicken_top_banner_info.dart';
+export 'blind_chicken_expanded_section.dart';

@@ -45,6 +45,7 @@ import 'package:blind_chicken/screens/news/news_screen.dart';
 import 'package:blind_chicken/screens/news/widgets/news_preview_media_info_screen.dart';
 import 'package:blind_chicken/screens/news/widgets/news_preview_media_screen.dart';
 import 'package:blind_chicken/screens/news/widgets/news_preview_youtube_player_screen.dart';
+import 'package:blind_chicken/screens/news/widgets/news_video_player_screen.dart';
 import 'package:blind_chicken/screens/news/widgets/notifications/notification_info_description_screen.dart';
 import 'package:blind_chicken/screens/no_internet/no_internet_screen.dart';
 import 'package:blind_chicken/screens/payment_verification/payment_verification_screen.dart';
@@ -271,6 +272,10 @@ class AppRouter extends RootStackRouter {
         ),
         AutoRoute(
           page: NewsPreviewYouTubeVideoPlayerRoute.page,
+          path: '/news_preview_youtube_video_player',
+        ),
+        AutoRoute(
+          page: NewsVideoPlayerRoute.page,
           path: '/news_preview_youtube_video_player',
         ),
         AutoRoute(
