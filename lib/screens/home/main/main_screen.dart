@@ -8,9 +8,8 @@ import 'package:blind_chicken/screens/app/router/app_router.dart';
 import 'package:blind_chicken/screens/home/main/widgets/main_category_item.dart';
 import 'package:blocs/blocs.dart';
 import 'package:dynamic_height_grid_view/dynamic_height_grid_view.dart';
-import 'package:firebase_messaging/firebase_messaging.dart';
+// import 'package:firebase_messaging/firebase_messaging.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/services.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:get_it/get_it.dart';
@@ -50,7 +49,7 @@ class _MainScreenState extends State<MainScreen> {
   @override
   void initState() {
     _init();
-
+    _checkPushToken();
     context.read<CatalogBloc>().add(const CatalogEvent.preloadData());
     context.read<ShoppingCartBloc>().add(const ShoppingCartEvent.init());
     context.read<BrandBloc>().add(const BrandEvent.getBrands(
@@ -169,7 +168,7 @@ class _MainScreenState extends State<MainScreen> {
       final tokens = await AppMetricaPush.getTokens();
       pushTokenNow = tokens['apns'] ?? '';
     } else {
-      pushTokenNow = await FirebaseMessaging.instance.getToken() ?? '';
+      // pushTokenNow = await FirebaseMessaging.instance.getToken() ?? '';
     }
 
     if (!pushTokenNow.contains(pushToken ?? '')) {

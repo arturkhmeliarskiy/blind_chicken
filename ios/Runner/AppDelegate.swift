@@ -58,19 +58,17 @@ import AppMetricaPush
 
     if #available(iOS 10.0, *) {
               // For iOS 10 display notification (sent via APNS)
-        let center = UNUserNotificationCenter.current()
+        UNUserNotificationCenter.current().delegate = self
         let authOptions: UNAuthorizationOptions = [.alert, .badge, .sound]
-        center.requestAuthorization(options: authOptions) { [weak self] granted, _ in
-            print("Permission granted: \(granted)")
-            guard granted else { return }
-            center.delegate = self
-            self?.getNotificationSettings()
-        }        
+        UNUserNotificationCenter.current().requestAuthorization(
+                options: authOptions,
+                completionHandler: {_, _ in })
     } else {
         let settings: UIUserNotificationSettings =
         UIUserNotificationSettings(types: [.alert, .badge, .sound], categories: nil)
         application.registerUserNotificationSettings(settings)
     }
+    
     AppMetricaPush.handleApplicationDidFinishLaunching(options: launchOptions)
 
     self.registerForPushNotificationsWithApplication(application)
@@ -91,11 +89,8 @@ import AppMetricaPush
                                                     options:UNNotificationCategoryOptions.customDismissAction)
               // Only for push notifications of this category dismiss action will be tracked.
               center.setNotificationCategories(Set([category]))
-              center.requestAuthorization(options: [.sound, .alert, .badge]) { [weak self] granted, _ in
-                  print("Permission granted: \(granted)")
-                  guard granted else { return }
-                  center.delegate = self
-                  self?.getNotificationSettings()
+              center.requestAuthorization(options:[.badge, .alert, .sound]) { (granted, error) in
+                  // Enable or disable features based on authorization.
               }
           } else {
               // iOS 8 and iOS 9
@@ -237,15 +232,5 @@ import AppMetricaPush
         // } else { 
         //     print("Push is not related to AppMetrica")
         // }
-    }
-
-    func getNotificationSettings() {
-      UNUserNotificationCenter.current().getNotificationSettings { settings in
-        print("Notification settings: \(settings)")
-          guard settings.authorizationStatus == .authorized else { return }
-          DispatchQueue.main.async {
-            UIApplication.shared.registerForRemoteNotifications()
-          }
-      }
     }
 }

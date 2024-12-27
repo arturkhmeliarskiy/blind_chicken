@@ -27,7 +27,7 @@ dependencies:
   ui_kit:
     path: ../ui_kit
   package_info_plus: ^8.0.2
-  firebase_messaging: ^15.1.6
+  # firebase_messaging: ^15.1.0
   appmetrica_plugin: ^3.1.0
   appmetrica_push_plugin: ^2.0.0
   decimal: ^3.0.2

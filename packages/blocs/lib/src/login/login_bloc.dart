@@ -4,8 +4,7 @@ import 'dart:io';
 
 import 'package:appmetrica_plugin/appmetrica_plugin.dart';
 import 'package:appmetrica_push_plugin/appmetrica_push_plugin.dart';
-import 'package:firebase_messaging/firebase_messaging.dart';
-import 'package:flutter/services.dart';
+// import 'package:firebase_messaging/firebase_messaging.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:models/models.dart';
@@ -156,7 +155,7 @@ class LoginBloc extends Bloc<LoginEvent, LoginState> {
         final tokens = await AppMetricaPush.getTokens();
         pushToken = tokens['apns'] ?? '';
       } else {
-        pushToken = await FirebaseMessaging.instance.getToken() ?? '';
+        // pushToken = await FirebaseMessaging.instance.getToken() ?? '';
       }
 
       if (Platform.isAndroid) {

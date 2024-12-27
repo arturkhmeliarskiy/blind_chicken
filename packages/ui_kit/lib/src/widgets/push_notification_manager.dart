@@ -2,7 +2,7 @@ import 'dart:developer';
 import 'dart:io';
 
 import 'package:firebase_core/firebase_core.dart';
-import 'package:firebase_messaging/firebase_messaging.dart';
+// import 'package:firebase_messaging/firebase_messaging.dart';
 import 'package:flutter/material.dart';
 import 'package:get_it/get_it.dart';
 import 'package:models/models.dart';
@@ -24,29 +24,29 @@ class PushNotificationManager extends StatefulWidget {
 
 class _PushNotificationManagerState extends State<PushNotificationManager> {
   Future<void> setNotifications() async {
-    FirebaseMessaging.onMessageOpenedApp.listen(openMessage);
+    // FirebaseMessaging.onMessageOpenedApp.listen(openMessage);
   }
 
-  Future<void> openMessage(RemoteMessage message) async {
-    if (message.data != null) {
-      final filterService = GetIt.I.get<FilterService>();
-      final info = filterService.converterNotificationInfo(
-        value: message.data['section'],
-      );
-      widget.openScreen(PushNotificationMessageDataModel(
-        uid: message.data['uid'],
-        section: info.url,
-        idMessage: message.data['id_message'],
-        type: message.data['type'],
-        sort: message.data['sort'],
-        filterNotifcation: info,
-        codeProduct: message.data['code_product'],
-        idNews: message.data['id_news'],
-      ));
-    }
-    log('${message.data['tag']}');
-    log('Open message');
-  }
+  // Future<void> openMessage(RemoteMessage message) async {
+  //   if (message.data != null) {
+  //     final filterService = GetIt.I.get<FilterService>();
+  //     final info = filterService.converterNotificationInfo(
+  //       value: message.data['section'],
+  //     );
+  //     widget.openScreen(PushNotificationMessageDataModel(
+  //       uid: message.data['uid'],
+  //       section: info.url,
+  //       idMessage: message.data['id_message'],
+  //       type: message.data['type'],
+  //       sort: message.data['sort'],
+  //       filterNotifcation: info,
+  //       codeProduct: message.data['code_product'],
+  //       idNews: message.data['id_news'],
+  //     ));
+  //   }
+  //   log('${message.data['tag']}');
+  //   log('Open message');
+  // }
 
   @override
   void initState() {

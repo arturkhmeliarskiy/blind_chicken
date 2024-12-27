@@ -5,7 +5,7 @@ import 'dart:developer';
 import 'package:appmetrica_plugin/appmetrica_plugin.dart';
 import 'package:appmetrica_push_plugin/appmetrica_push_plugin.dart';
 import 'package:decimal/decimal.dart';
-import 'package:firebase_messaging/firebase_messaging.dart';
+// import 'package:firebase_messaging/firebase_messaging.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
@@ -131,7 +131,7 @@ class CatalogBloc extends Bloc<CatalogEvent, CatalogState> {
         ),
       );
 
-      pushToken = await FirebaseMessaging.instance.getToken() ?? '';
+      // pushToken = await FirebaseMessaging.instance.getToken() ?? '';
 
       _sharedPreferencesService.setString(
         key: SharedPrefKeys.pushToken,
@@ -354,21 +354,21 @@ class CatalogBloc extends Bloc<CatalogEvent, CatalogState> {
     }
 
     if (Platform.isAndroid) {
-      final message = await FirebaseMessaging.instance.getInitialMessage();
-      if (message?.data.isNotEmpty ?? false) {
-        final filterNotifcation =
-            _filterService.converterNotificationInfo(value: message?.data['section'] ?? '');
-        notitcationMessage = PushNotificationMessageDataModel(
-          uid: message?.data['uid'] ?? '',
-          section: filterNotifcation.url,
-          idMessage: message?.data['id_message'] ?? '',
-          type: message?.data['type'] ?? '',
-          sort: message?.data['sort'] ?? '',
-          filterNotifcation: filterNotifcation,
-          codeProduct: message?.data['code_product'] ?? '',
-          idNews: message?.data['id_news'] ?? '',
-        );
-      }
+      // final message = await FirebaseMessaging.instance.getInitialMessage();
+      // if (message?.data.isNotEmpty ?? false) {
+      //   final filterNotifcation =
+      //       _filterService.converterNotificationInfo(value: message?.data['section'] ?? '');
+      //   notitcationMessage = PushNotificationMessageDataModel(
+      //     uid: message?.data['uid'] ?? '',
+      //     section: filterNotifcation.url,
+      //     idMessage: message?.data['id_message'] ?? '',
+      //     type: message?.data['type'] ?? '',
+      //     sort: message?.data['sort'] ?? '',
+      //     filterNotifcation: filterNotifcation,
+      //     codeProduct: message?.data['code_product'] ?? '',
+      //     idNews: message?.data['id_news'] ?? '',
+      //   );
+      // }
     }
 
     if (menu.errorMessage.isNotEmpty ||
