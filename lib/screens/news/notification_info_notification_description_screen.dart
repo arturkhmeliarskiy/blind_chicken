@@ -193,6 +193,7 @@ class _NotificationInfoNotificationDescriptionScreenState
                                           typeNews: 'notice',
                                         ),
                                       );
+                                      context.read<NewsBloc>().add(NewsEvent.checkingReadNews());
                                       setState(() {
                                         _isSwipe = false;
                                       });
@@ -209,6 +210,7 @@ class _NotificationInfoNotificationDescriptionScreenState
                                             typeNews: 'notice',
                                           ),
                                         );
+                                        context.read<NewsBloc>().add(NewsEvent.checkingReadNews());
                                       }
                                     },
                                     child: Padding(

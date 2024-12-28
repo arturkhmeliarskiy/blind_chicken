@@ -13,11 +13,15 @@ class NotificationsTabInfo extends StatefulWidget {
     required this.goBack,
     required this.onHideHeader,
     required this.onShowHeader,
+    required this.heightAppBar,
+    required this.isShowHeader,
     this.idNews,
   });
 
   final VoidCallback onHideHeader;
   final VoidCallback onShowHeader;
+  final double heightAppBar;
+  final bool isShowHeader;
   final VoidCallback goBack;
   final String? idNews;
 
@@ -26,13 +30,14 @@ class NotificationsTabInfo extends StatefulWidget {
 }
 
 class _NotificationsTabInfoState extends State<NotificationsTabInfo> {
-  final ScrollController _scrollController = ScrollController();
+  ScrollController _scrollController = ScrollController();
   double _historyPosition = 0.0;
   double _paginationPosition = 0.0;
   bool _isButtonTop = false;
 
   @override
   void didChangeDependencies() {
+    _scrollController = ScrollController(initialScrollOffset: !widget.isShowHeader ? 90 : 0);
     context.read<NewsBloc>().add(const NewsEvent.getNotifications());
 
     final idNews = widget.idNews;
@@ -130,25 +135,32 @@ class _NotificationsTabInfoState extends State<NotificationsTabInfo> {
                         controller: _scrollController,
                         itemCount: initState.notificatios.list.length,
                         itemBuilder: (context, index) {
-                          return GestureDetector(
-                            onTap: () {
-                              context.navigateTo(
-                                NotificationInfoDescriptionRoute(
-                                  info: initState.notificatios.list[index],
+                          return Column(
+                            children: [
+                              SizedBox(
+                                height: index == 0 ? widget.heightAppBar : 0,
+                              ),
+                              GestureDetector(
+                                onTap: () {
+                                  context.navigateTo(
+                                    NotificationInfoDescriptionRoute(
+                                      info: initState.notificatios.list[index],
+                                    ),
+                                  );
+                                },
+                                child: Column(
+                                  children: [
+                                    NotificationItemTabInfo(
+                                      item: initState.notificatios.list[index],
+                                    ),
+                                    if (initState.notificatios.list.length - 1 == index)
+                                      SizedBox(
+                                        height: 10,
+                                      ),
+                                  ],
                                 ),
-                              );
-                            },
-                            child: Column(
-                              children: [
-                                NotificationItemTabInfo(
-                                  item: initState.notificatios.list[index],
-                                ),
-                                if (initState.notificatios.list.length - 1 == index)
-                                  SizedBox(
-                                    height: 10,
-                                  ),
-                              ],
-                            ),
+                              ),
+                            ],
                           );
                         },
                       ),

@@ -77,7 +77,7 @@ class _NewsItemTabInfoState extends State<NewsItemTabInfo> with AutomaticKeepAli
             double visiblePercentage = visibilityInfo.visibleFraction * 100;
             log("Video visibility: $visiblePercentage%", name: "Visibility");
 
-            if (visiblePercentage > 40) {
+            if (visiblePercentage > 35) {
               final valueContorller = _controller;
               if (valueContorller != null) {
                 // Check if the video is already playing, if not, play it

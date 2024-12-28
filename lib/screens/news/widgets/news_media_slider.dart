@@ -15,7 +15,7 @@ class NewsMediaSlider extends StatefulWidget {
     required this.onTap,
     this.isSwitch = true,
     this.isBuilder = false,
-    this.borderRadius = 4,
+    this.borderRadius = 15,
   });
 
   final List<String> images;
@@ -103,6 +103,7 @@ class _NewsMediaSliderState extends State<NewsMediaSlider> {
                 return NewsVideoPlayerSlider(
                   url: widget.videos[index],
                   aspectRatio: _aspectRatio,
+                  borderRadius: widget.borderRadius,
                   onTap: () {
                     widget.onTap(index);
                   },
@@ -120,8 +121,8 @@ class _NewsMediaSliderState extends State<NewsMediaSlider> {
                   },
                   child: ClipRRect(
                     borderRadius: BorderRadius.only(
-                      bottomLeft: Radius.circular(15),
-                      bottomRight: Radius.circular(15),
+                      bottomLeft: Radius.circular(widget.borderRadius),
+                      bottomRight: Radius.circular(widget.borderRadius),
                     ),
                     child: CachedNetworkImage(
                       imageUrl: widget.images[index - 1],

@@ -140,6 +140,7 @@ class _NewsInfoDescriptionScreenState extends State<NewsInfoDescriptionScreen> {
                                 indexPage: 0,
                               ),
                             );
+                            context.read<NewsBloc>().add(NewsEvent.checkingReadNews());
                             AppMetrica.reportEvent('Список новостей');
                             setState(() {
                               _isSwipe = false;
@@ -155,6 +156,7 @@ class _NewsInfoDescriptionScreenState extends State<NewsInfoDescriptionScreen> {
                                   indexPage: 0,
                                 ),
                               );
+                              context.read<NewsBloc>().add(NewsEvent.checkingReadNews());
                               AppMetrica.reportEvent('Список новостей');
                             }
                           },
@@ -184,6 +186,9 @@ class _NewsInfoDescriptionScreenState extends State<NewsInfoDescriptionScreen> {
                                                   indexPage: 0,
                                                 ),
                                               );
+                                              context
+                                                  .read<NewsBloc>()
+                                                  .add(NewsEvent.checkingReadNews());
                                               AppMetrica.reportEvent('Список новостей');
                                             },
                                             child: SvgPicture.asset(
@@ -222,6 +227,7 @@ class _NewsInfoDescriptionScreenState extends State<NewsInfoDescriptionScreen> {
                                       NewsMediaSlider(
                                         images: widget.info.images,
                                         videos: widget.info.videos,
+                                        borderRadius: 0,
                                         goBotton: () {
                                           context.back();
                                         },
@@ -281,6 +287,7 @@ class _NewsInfoDescriptionScreenState extends State<NewsInfoDescriptionScreen> {
                                       ),
                                       NewsSlider(
                                         media: widget.info.images,
+                                        borderRadius: 0,
                                         goBotton: () {
                                           context.back();
                                         },

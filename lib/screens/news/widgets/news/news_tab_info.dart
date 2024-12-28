@@ -19,23 +19,28 @@ class NewsTabInfo extends StatefulWidget {
     required this.goBack,
     required this.onHideHeader,
     required this.onShowHeader,
+    required this.heightAppBar,
+    required this.isShowHeader,
   });
 
   final VoidCallback goBack;
   final VoidCallback onHideHeader;
   final VoidCallback onShowHeader;
+  final double heightAppBar;
+  final bool isShowHeader;
 
   @override
   State<NewsTabInfo> createState() => _NewsTabInfoState();
 }
 
 class _NewsTabInfoState extends State<NewsTabInfo> {
-  final ScrollController _scrollController = ScrollController();
+  ScrollController _scrollController = ScrollController();
   double _historyPosition = 0.0;
   bool _isLoading = false;
 
   @override
   void initState() {
+    _scrollController = ScrollController(initialScrollOffset: !widget.isShowHeader ? 90 : 0);
     _scrollController.addListener(_loadMoreData);
     super.initState();
   }
@@ -104,11 +109,14 @@ class _NewsTabInfoState extends State<NewsTabInfo> {
                         itemBuilder: (context, index) {
                           return Column(
                             children: [
+                              SizedBox(
+                                height: index == 0 ? widget.heightAppBar : 0,
+                              ),
                               VisibilityDetector(
                                 key: Key(index.toString()),
                                 onVisibilityChanged: (visibilityInfo) {
                                   if (!(initState.isError ?? false)) {
-                                    if (initState.news.list.length - 5 < index &&
+                                    if (initState.news.list.length - 6 < index &&
                                         (initState.news.list.length - 3) ~/ 10 !=
                                             initState.offsetNews) {
                                       context.read<NewsBloc>().add(NewsEvent.paginationNews());

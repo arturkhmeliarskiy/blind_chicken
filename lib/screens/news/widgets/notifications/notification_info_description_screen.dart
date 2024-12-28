@@ -136,6 +136,7 @@ class _NotificationInfoDescriptionScreenState extends State<NotificationInfoDesc
                                 indexPage: 2,
                               ),
                             );
+                            context.read<NewsBloc>().add(NewsEvent.checkingReadNews());
                             AppMetrica.reportEvent('Список новостей');
                             setState(() {
                               _isSwipe = false;
@@ -151,6 +152,7 @@ class _NotificationInfoDescriptionScreenState extends State<NotificationInfoDesc
                                   indexPage: 2,
                                 ),
                               );
+                              context.read<NewsBloc>().add(NewsEvent.checkingReadNews());
                               AppMetrica.reportEvent('Список новостей');
                             }
                           },
@@ -180,6 +182,9 @@ class _NotificationInfoDescriptionScreenState extends State<NotificationInfoDesc
                                                   indexPage: 2,
                                                 ),
                                               );
+                                              context
+                                                  .read<NewsBloc>()
+                                                  .add(NewsEvent.checkingReadNews());
                                               AppMetrica.reportEvent('Список новостей');
                                             },
                                             child: SvgPicture.asset(

@@ -14,12 +14,14 @@ class NewsVideoPlayerSlider extends StatefulWidget {
     required this.url,
     this.aspectRatio = 1,
     required this.onAspectRatio,
+    this.borderRadius = 15,
     required this.onTap,
   });
 
   final String url;
   final double aspectRatio;
   final ValueChanged<double> onAspectRatio;
+  final double borderRadius;
   final VoidCallback onTap;
 
   @override
@@ -61,7 +63,7 @@ class _NewsVideoPlayerSliderState extends State<NewsVideoPlayerSlider> {
           double visiblePercentage = visibilityInfo.visibleFraction * 100;
           log("Video visibility: $visiblePercentage%", name: "Visibility");
 
-          if (visiblePercentage > 40) {
+          if (visiblePercentage > 35) {
             final valueContorller = _controller;
             if (valueContorller != null) {
               // Check if the video is already playing, if not, play it
@@ -90,8 +92,8 @@ class _NewsVideoPlayerSliderState extends State<NewsVideoPlayerSlider> {
                   children: [
                     ClipRRect(
                       borderRadius: BorderRadius.only(
-                        bottomLeft: Radius.circular(15),
-                        bottomRight: Radius.circular(15),
+                        bottomLeft: Radius.circular(widget.borderRadius),
+                        bottomRight: Radius.circular(widget.borderRadius),
                       ),
                       child: AspectRatio(
                         aspectRatio: valueContorller.value.aspectRatio,
