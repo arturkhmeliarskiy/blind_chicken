@@ -132,13 +132,22 @@ class _NotificationsTabInfoState extends State<NotificationsTabInfo> {
                       ),
                       child: ListView.builder(
                         physics: const BouncingScrollPhysics(),
-                        controller: _scrollController,
+                        controller: initState.notificatios.list.length < 10
+                            ? ScrollController(
+                                initialScrollOffset: 0,
+                              )
+                            : _scrollController,
                         itemCount: initState.notificatios.list.length,
                         itemBuilder: (context, index) {
                           return Column(
                             children: [
                               SizedBox(
-                                height: index == 0 ? widget.heightAppBar : 0,
+                                height: index == 0
+                                    ? initState.notificatios.list.length < 10 &&
+                                            !widget.isShowHeader
+                                        ? 50
+                                        : widget.heightAppBar
+                                    : 0,
                               ),
                               GestureDetector(
                                 onTap: () {

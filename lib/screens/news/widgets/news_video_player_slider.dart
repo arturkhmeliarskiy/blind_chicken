@@ -127,8 +127,8 @@ class _NewsVideoPlayerSliderState extends State<NewsVideoPlayerSlider> {
                       decoration: BoxDecoration(
                         color: BlindChickenColors.borderSwitchCard,
                         borderRadius: BorderRadius.only(
-                          bottomLeft: Radius.circular(15),
-                          bottomRight: Radius.circular(15),
+                          bottomLeft: Radius.circular(widget.borderRadius),
+                          bottomRight: Radius.circular(widget.borderRadius),
                         ),
                       ),
                     ),
@@ -146,8 +146,8 @@ class _NewsVideoPlayerSliderState extends State<NewsVideoPlayerSlider> {
                     decoration: BoxDecoration(
                       color: BlindChickenColors.borderSwitchCard,
                       borderRadius: BorderRadius.only(
-                        bottomLeft: Radius.circular(15),
-                        bottomRight: Radius.circular(15),
+                        bottomLeft: Radius.circular(widget.borderRadius),
+                        bottomRight: Radius.circular(widget.borderRadius),
                       ),
                     ),
                   ),

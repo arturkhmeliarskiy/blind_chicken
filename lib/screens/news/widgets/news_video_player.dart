@@ -4,6 +4,7 @@ import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_svg/flutter_svg.dart';
+import 'package:shimmer/shimmer.dart';
 import 'package:ui_kit/ui_kit.dart';
 import 'package:video_player/video_player.dart';
 import 'package:visibility_detector/visibility_detector.dart';
@@ -309,28 +310,64 @@ class NewsVideoPlayerState extends State<NewsVideoPlayer> {
                                     ],
                                   ),
                                 )
-                              : SizedBox(
-                                  height: _isFullScreenVideo ? height : null,
-                                  child: Stack(
-                                    alignment: Alignment.center,
-                                    children: [
-                                      CachedNetworkImage(
-                                        imageUrl: widget.image,
-                                        width: width,
-                                        height: _isFullScreenVideo ? height : null,
-                                        fit: BoxFit.cover,
-                                        errorWidget: (context, url, error) =>
-                                            const Icon(Icons.error),
+                              : _isFullScreenVideo
+                                  ? SizedBox(
+                                      height: height,
+                                      child: Stack(
+                                        alignment: Alignment.center,
+                                        children: [
+                                          CachedNetworkImage(
+                                            imageUrl: widget.image,
+                                            width: width,
+                                            height: height,
+                                            fit: BoxFit.cover,
+                                            errorWidget: (context, url, error) =>
+                                                const Icon(Icons.error),
+                                          ),
+                                          Center(
+                                            child: CircularProgressIndicator(
+                                              color: Colors.black,
+                                              backgroundColor: Colors.grey.shade400,
+                                            ),
+                                          ),
+                                        ],
                                       ),
-                                      Center(
-                                        child: CircularProgressIndicator(
-                                          color: Colors.black,
-                                          backgroundColor: Colors.grey.shade400,
+                                    )
+                                  : widget.image.isNotEmpty
+                                      ? SizedBox(
+                                          height: null,
+                                          child: Stack(
+                                            alignment: Alignment.center,
+                                            children: [
+                                              CachedNetworkImage(
+                                                imageUrl: widget.image,
+                                                width: width,
+                                                height: null,
+                                                fit: BoxFit.cover,
+                                                errorWidget: (context, url, error) =>
+                                                    const Icon(Icons.error),
+                                              ),
+                                              Center(
+                                                child: CircularProgressIndicator(
+                                                  color: Colors.black,
+                                                  backgroundColor: Colors.grey.shade400,
+                                                ),
+                                              ),
+                                            ],
+                                          ),
+                                        )
+                                      : AspectRatio(
+                                          aspectRatio: 1,
+                                          child: Shimmer.fromColors(
+                                            baseColor: BlindChickenColors.borderSwitchCard,
+                                            highlightColor:
+                                                BlindChickenColors.backgroundColorItemFilter,
+                                            period: Duration(seconds: 2),
+                                            child: Container(
+                                              color: BlindChickenColors.borderSwitchCard,
+                                            ),
+                                          ),
                                         ),
-                                      ),
-                                    ],
-                                  ),
-                                ),
                     ),
                     if (_isFullScreenVideo)
                       Align(
@@ -417,36 +454,80 @@ class NewsVideoPlayerState extends State<NewsVideoPlayer> {
                             ),
                           ),
                         )
-                      : SizedBox(
-                          height: _isFullScreenVideo ? height : null,
-                          child: Stack(
-                            alignment: Alignment.center,
-                            children: [
-                              CachedNetworkImage(
-                                imageUrl: widget.image,
-                                width: width,
-                                height: _isFullScreenVideo ? height : null,
-                                fit: BoxFit.cover,
-                                errorWidget: (context, url, error) => const Icon(Icons.error),
-                              ),
-                              if (widget.isPlayIcon)
-                                Container(
-                                  height: 60,
-                                  width: 60,
-                                  decoration: BoxDecoration(
-                                    borderRadius: BorderRadius.circular(30),
-                                    color:
-                                        BlindChickenColors.activeBorderTextField.withOpacity(0.2),
+                      : _isFullScreenVideo
+                          ? SizedBox(
+                              height: height,
+                              child: Stack(
+                                alignment: Alignment.center,
+                                children: [
+                                  CachedNetworkImage(
+                                    imageUrl: widget.image,
+                                    width: width,
+                                    height: height,
+                                    fit: BoxFit.cover,
+                                    errorWidget: (context, url, error) => const Icon(Icons.error),
                                   ),
-                                  child: const Icon(
-                                    Icons.play_arrow,
-                                    color: BlindChickenColors.backgroundColor,
-                                    size: 40,
+                                  if (widget.isPlayIcon)
+                                    Container(
+                                      height: 60,
+                                      width: 60,
+                                      decoration: BoxDecoration(
+                                        borderRadius: BorderRadius.circular(30),
+                                        color: BlindChickenColors.activeBorderTextField
+                                            .withOpacity(0.2),
+                                      ),
+                                      child: const Icon(
+                                        Icons.play_arrow,
+                                        color: BlindChickenColors.backgroundColor,
+                                        size: 40,
+                                      ),
+                                    )
+                                ],
+                              ),
+                            )
+                          : widget.image.isNotEmpty
+                              ? SizedBox(
+                                  height: null,
+                                  child: Stack(
+                                    alignment: Alignment.center,
+                                    children: [
+                                      CachedNetworkImage(
+                                        imageUrl: widget.image,
+                                        width: width,
+                                        height: null,
+                                        fit: BoxFit.cover,
+                                        errorWidget: (context, url, error) =>
+                                            const Icon(Icons.error),
+                                      ),
+                                      if (widget.isPlayIcon)
+                                        Container(
+                                          height: 60,
+                                          width: 60,
+                                          decoration: BoxDecoration(
+                                            borderRadius: BorderRadius.circular(30),
+                                            color: BlindChickenColors.activeBorderTextField
+                                                .withOpacity(0.2),
+                                          ),
+                                          child: const Icon(
+                                            Icons.play_arrow,
+                                            color: BlindChickenColors.backgroundColor,
+                                            size: 40,
+                                          ),
+                                        )
+                                    ],
                                   ),
                                 )
-                            ],
-                          ),
-                        ),
+                              : AspectRatio(
+                                  aspectRatio: 1,
+                                  child: Shimmer.fromColors(
+                                    baseColor: BlindChickenColors.borderSwitchCard,
+                                    highlightColor: BlindChickenColors.backgroundColorItemFilter,
+                                    period: Duration(seconds: 2),
+                                    child: Container(
+                                      color: BlindChickenColors.borderSwitchCard,
+                                    ),
+                                  ),
+                                ),
                 )
         ],
       ),

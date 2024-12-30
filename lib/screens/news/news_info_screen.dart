@@ -190,23 +190,25 @@ class _NewsInfoScreenState extends State<NewsInfoScreen> with TickerProviderStat
                             controller: _tabController,
                             physics: const NeverScrollableScrollPhysics(),
                             children: <Widget>[
-                              NewsTabInfo(
-                                heightAppBar: _heightAppBar,
-                                isShowHeader: initState.isShowHeader,
-                                goBack: () {
-                                  context.read<NewsBloc>().add(const NewsEvent.goBackNewsInfo());
-                                },
-                                onHideHeader: () {
-                                  context.read<NewsAppBarBloc>().add(
-                                        const NewsAppBarEvent.showHeader(isShowHeader: false),
-                                      );
-                                },
-                                onShowHeader: () {
-                                  context.read<NewsAppBarBloc>().add(
-                                        const NewsAppBarEvent.showHeader(isShowHeader: true),
-                                      );
-                                },
-                              ),
+                              Builder(builder: (context) {
+                                return NewsTabInfo(
+                                  heightAppBar: _heightAppBar,
+                                  isShowHeader: initState.isShowHeader,
+                                  goBack: () {
+                                    context.read<NewsBloc>().add(const NewsEvent.goBackNewsInfo());
+                                  },
+                                  onHideHeader: () {
+                                    context.read<NewsAppBarBloc>().add(
+                                          const NewsAppBarEvent.showHeader(isShowHeader: false),
+                                        );
+                                  },
+                                  onShowHeader: () {
+                                    context.read<NewsAppBarBloc>().add(
+                                          const NewsAppBarEvent.showHeader(isShowHeader: true),
+                                        );
+                                  },
+                                );
+                              }),
                               MediaTabInfo(
                                 goBack: () {
                                   context.read<NewsBloc>().add(const NewsEvent.goBackNewsInfo());
