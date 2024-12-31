@@ -28,7 +28,6 @@ class _MediaTabInfoState extends State<MediaTabInfo> {
 
   @override
   void initState() {
-    context.read<NewsBloc>().add(const NewsEvent.getMedia());
     final idNews = widget.idNews;
     if (idNews != null) {
       context.read<NewsBloc>().add(NewsEvent.updateReadNews(

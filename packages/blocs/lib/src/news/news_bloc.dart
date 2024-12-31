@@ -93,7 +93,8 @@ class NewsBloc extends Bloc<NewsEvent, NewsState> {
         ));
       }
 
-      List<String> listNewsPath = initState.listNewsPath.toList();
+      List<String> listNewsPath =
+          event.isCleanListNewsPath ?? false ? [] : initState.listNewsPath.toList();
       NewsInfoDataModel news = await _newsRepository.getNews(page: 1);
       if (news.errorMessage.isEmpty) {
         listNewsPath.add('0');

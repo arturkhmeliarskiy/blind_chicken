@@ -35,6 +35,7 @@ class NewsTabInfo extends StatefulWidget {
 
 class _NewsTabInfoState extends State<NewsTabInfo> {
   ScrollController _scrollController = ScrollController();
+  DateTime lastTime = DateTime.now();
   double _historyPosition = 0.0;
   bool _isLoading = false;
 
@@ -53,24 +54,32 @@ class _NewsTabInfoState extends State<NewsTabInfo> {
           ),
         );
 
-    if (_historyPosition < _scrollController.position.pixels) {
-      widget.onHideHeader();
+    if (_historyPosition + 50 < _scrollController.position.pixels) {
+      await onHideHeader();
     }
 
-    if (_historyPosition > _scrollController.position.pixels &&
+    if (_historyPosition - 50 > _scrollController.position.pixels &&
         _scrollController.position.pixels > 0) {
-      widget.onShowHeader();
-    }
-
-    if (_scrollController.position.pixels < 50) {
-      widget.onShowHeader();
-    }
-
-    if (_scrollController.position.pixels > _scrollController.position.maxScrollExtent) {
-      widget.onHideHeader();
+      await onShowHeader();
     }
 
     _historyPosition = _scrollController.position.pixels;
+  }
+
+  onHideHeader() async {
+    await Future<void>.delayed(const Duration(milliseconds: 450));
+    final timeDifferenceHideHeader = DateTime.now().difference(lastTime).inMilliseconds;
+    if (timeDifferenceHideHeader > 449) {
+      widget.onHideHeader();
+    }
+  }
+
+  onShowHeader() async {
+    await Future<void>.delayed(const Duration(milliseconds: 450));
+    final timeDifferenceShowHeader = DateTime.now().difference(lastTime).inMilliseconds;
+    if (timeDifferenceShowHeader > 449) {
+      widget.onShowHeader();
+    }
   }
 
   @override

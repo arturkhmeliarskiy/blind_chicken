@@ -193,6 +193,11 @@ class _NotificationInfoNotificationDescriptionScreenState
                                           typeNews: 'notice',
                                         ),
                                       );
+                                      if (initState.notificatios.list.isEmpty) {
+                                        context
+                                            .read<NewsBloc>()
+                                            .add(const NewsEvent.getNotifications());
+                                      }
                                       context.read<NewsBloc>().add(NewsEvent.checkingReadNews());
                                       setState(() {
                                         _isSwipe = false;
@@ -210,6 +215,11 @@ class _NotificationInfoNotificationDescriptionScreenState
                                             typeNews: 'notice',
                                           ),
                                         );
+                                        if (initState.notificatios.list.isEmpty) {
+                                          context
+                                              .read<NewsBloc>()
+                                              .add(const NewsEvent.getNotifications());
+                                        }
                                         context.read<NewsBloc>().add(NewsEvent.checkingReadNews());
                                       }
                                     },
@@ -234,6 +244,10 @@ class _NotificationInfoNotificationDescriptionScreenState
                                                     ),
                                                     child: InkWell(
                                                       onTap: () {
+                                                        if (initState.notificatios.list.isEmpty) {
+                                                          context.read<NewsBloc>().add(
+                                                              const NewsEvent.getNotifications());
+                                                        }
                                                         context.navigateTo(
                                                           NewsInfoRoute(
                                                             indexPage: 2,

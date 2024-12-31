@@ -208,6 +208,11 @@ class _NewsNotificationDescriptionScreenState extends State<NewsNotificationDesc
                                           typeNews: 'news',
                                         ),
                                       );
+                                      if (initState.news.list.isEmpty) {
+                                        context
+                                            .read<NewsBloc>()
+                                            .add(NewsEvent.getNews(isGoBack: false));
+                                      }
                                       context.read<NewsBloc>().add(NewsEvent.checkingReadNews());
                                       setState(() {
                                         _isSwipe = false;
@@ -225,6 +230,11 @@ class _NewsNotificationDescriptionScreenState extends State<NewsNotificationDesc
                                             typeNews: 'news',
                                           ),
                                         );
+                                        if (initState.news.list.isEmpty) {
+                                          context
+                                              .read<NewsBloc>()
+                                              .add(NewsEvent.getNews(isGoBack: false));
+                                        }
                                         context.read<NewsBloc>().add(NewsEvent.checkingReadNews());
                                       }
                                     },
@@ -249,8 +259,10 @@ class _NewsNotificationDescriptionScreenState extends State<NewsNotificationDesc
                                                     ),
                                                     child: InkWell(
                                                       onTap: () {
-                                                        context.read<NewsBloc>().add(
-                                                            NewsEvent.getNews(isGoBack: false));
+                                                        if (initState.news.list.isEmpty) {
+                                                          context.read<NewsBloc>().add(
+                                                              NewsEvent.getNews(isGoBack: false));
+                                                        }
                                                         context.navigateTo(
                                                           NewsInfoRoute(
                                                             indexPage: 0,

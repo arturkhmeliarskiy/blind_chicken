@@ -36,8 +36,10 @@ class _NewsSliderState extends State<NewsSlider> {
   void initState() {
     _scrollController.addListener(_scrollListener);
     getImageAspectRatio(widget.media.first).then((value) {
-      setState(() {
-        _aspectRatio = value;
+      WidgetsBinding.instance.addPostFrameCallback((_) {
+        setState(() {
+          _aspectRatio = value;
+        });
       });
     });
     super.initState();

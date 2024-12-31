@@ -19,7 +19,7 @@ mixin _$NewsEvent {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() init,
-    required TResult Function(bool isGoBack) getNews,
+    required TResult Function(bool isGoBack, bool? isCleanListNewsPath) getNews,
     required TResult Function(
             String id, bool? isNotification, String? messageId)
         getNewsDescriptionInfo,
@@ -44,7 +44,7 @@ mixin _$NewsEvent {
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? init,
-    TResult? Function(bool isGoBack)? getNews,
+    TResult? Function(bool isGoBack, bool? isCleanListNewsPath)? getNews,
     TResult? Function(String id, bool? isNotification, String? messageId)?
         getNewsDescriptionInfo,
     TResult? Function()? getMedia,
@@ -66,7 +66,7 @@ mixin _$NewsEvent {
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? init,
-    TResult Function(bool isGoBack)? getNews,
+    TResult Function(bool isGoBack, bool? isCleanListNewsPath)? getNews,
     TResult Function(String id, bool? isNotification, String? messageId)?
         getNewsDescriptionInfo,
     TResult Function()? getMedia,
@@ -221,7 +221,7 @@ class _$InitNewsEventImpl implements InitNewsEvent {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() init,
-    required TResult Function(bool isGoBack) getNews,
+    required TResult Function(bool isGoBack, bool? isCleanListNewsPath) getNews,
     required TResult Function(
             String id, bool? isNotification, String? messageId)
         getNewsDescriptionInfo,
@@ -249,7 +249,7 @@ class _$InitNewsEventImpl implements InitNewsEvent {
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? init,
-    TResult? Function(bool isGoBack)? getNews,
+    TResult? Function(bool isGoBack, bool? isCleanListNewsPath)? getNews,
     TResult? Function(String id, bool? isNotification, String? messageId)?
         getNewsDescriptionInfo,
     TResult? Function()? getMedia,
@@ -274,7 +274,7 @@ class _$InitNewsEventImpl implements InitNewsEvent {
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? init,
-    TResult Function(bool isGoBack)? getNews,
+    TResult Function(bool isGoBack, bool? isCleanListNewsPath)? getNews,
     TResult Function(String id, bool? isNotification, String? messageId)?
         getNewsDescriptionInfo,
     TResult Function()? getMedia,
@@ -393,7 +393,7 @@ abstract class _$$GetNewsEventImplCopyWith<$Res> {
           _$GetNewsEventImpl value, $Res Function(_$GetNewsEventImpl) then) =
       __$$GetNewsEventImplCopyWithImpl<$Res>;
   @useResult
-  $Res call({bool isGoBack});
+  $Res call({bool isGoBack, bool? isCleanListNewsPath});
 }
 
 /// @nodoc
@@ -410,12 +410,17 @@ class __$$GetNewsEventImplCopyWithImpl<$Res>
   @override
   $Res call({
     Object? isGoBack = null,
+    Object? isCleanListNewsPath = freezed,
   }) {
     return _then(_$GetNewsEventImpl(
       isGoBack: null == isGoBack
           ? _value.isGoBack
           : isGoBack // ignore: cast_nullable_to_non_nullable
               as bool,
+      isCleanListNewsPath: freezed == isCleanListNewsPath
+          ? _value.isCleanListNewsPath
+          : isCleanListNewsPath // ignore: cast_nullable_to_non_nullable
+              as bool?,
     ));
   }
 }
@@ -423,14 +428,16 @@ class __$$GetNewsEventImplCopyWithImpl<$Res>
 /// @nodoc
 
 class _$GetNewsEventImpl implements GetNewsEvent {
-  const _$GetNewsEventImpl({required this.isGoBack});
+  const _$GetNewsEventImpl({required this.isGoBack, this.isCleanListNewsPath});
 
   @override
   final bool isGoBack;
+  @override
+  final bool? isCleanListNewsPath;
 
   @override
   String toString() {
-    return 'NewsEvent.getNews(isGoBack: $isGoBack)';
+    return 'NewsEvent.getNews(isGoBack: $isGoBack, isCleanListNewsPath: $isCleanListNewsPath)';
   }
 
   @override
@@ -439,11 +446,13 @@ class _$GetNewsEventImpl implements GetNewsEvent {
         (other.runtimeType == runtimeType &&
             other is _$GetNewsEventImpl &&
             (identical(other.isGoBack, isGoBack) ||
-                other.isGoBack == isGoBack));
+                other.isGoBack == isGoBack) &&
+            (identical(other.isCleanListNewsPath, isCleanListNewsPath) ||
+                other.isCleanListNewsPath == isCleanListNewsPath));
   }
 
   @override
-  int get hashCode => Object.hash(runtimeType, isGoBack);
+  int get hashCode => Object.hash(runtimeType, isGoBack, isCleanListNewsPath);
 
   /// Create a copy of NewsEvent
   /// with the given fields replaced by the non-null parameter values.
@@ -457,7 +466,7 @@ class _$GetNewsEventImpl implements GetNewsEvent {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() init,
-    required TResult Function(bool isGoBack) getNews,
+    required TResult Function(bool isGoBack, bool? isCleanListNewsPath) getNews,
     required TResult Function(
             String id, bool? isNotification, String? messageId)
         getNewsDescriptionInfo,
@@ -478,14 +487,14 @@ class _$GetNewsEventImpl implements GetNewsEvent {
     required TResult Function(bool isButtonTop) checkButtonTop,
     required TResult Function(bool isDisabledVideo) checkiDisabledVideo,
   }) {
-    return getNews(isGoBack);
+    return getNews(isGoBack, isCleanListNewsPath);
   }
 
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? init,
-    TResult? Function(bool isGoBack)? getNews,
+    TResult? Function(bool isGoBack, bool? isCleanListNewsPath)? getNews,
     TResult? Function(String id, bool? isNotification, String? messageId)?
         getNewsDescriptionInfo,
     TResult? Function()? getMedia,
@@ -503,14 +512,14 @@ class _$GetNewsEventImpl implements GetNewsEvent {
     TResult? Function(bool isButtonTop)? checkButtonTop,
     TResult? Function(bool isDisabledVideo)? checkiDisabledVideo,
   }) {
-    return getNews?.call(isGoBack);
+    return getNews?.call(isGoBack, isCleanListNewsPath);
   }
 
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? init,
-    TResult Function(bool isGoBack)? getNews,
+    TResult Function(bool isGoBack, bool? isCleanListNewsPath)? getNews,
     TResult Function(String id, bool? isNotification, String? messageId)?
         getNewsDescriptionInfo,
     TResult Function()? getMedia,
@@ -530,7 +539,7 @@ class _$GetNewsEventImpl implements GetNewsEvent {
     required TResult orElse(),
   }) {
     if (getNews != null) {
-      return getNews(isGoBack);
+      return getNews(isGoBack, isCleanListNewsPath);
     }
     return orElse();
   }
@@ -620,10 +629,12 @@ class _$GetNewsEventImpl implements GetNewsEvent {
 }
 
 abstract class GetNewsEvent implements NewsEvent {
-  const factory GetNewsEvent({required final bool isGoBack}) =
-      _$GetNewsEventImpl;
+  const factory GetNewsEvent(
+      {required final bool isGoBack,
+      final bool? isCleanListNewsPath}) = _$GetNewsEventImpl;
 
   bool get isGoBack;
+  bool? get isCleanListNewsPath;
 
   /// Create a copy of NewsEvent
   /// with the given fields replaced by the non-null parameter values.
@@ -725,7 +736,7 @@ class _$GetNewsDescriptionInfoNewsEventImpl
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() init,
-    required TResult Function(bool isGoBack) getNews,
+    required TResult Function(bool isGoBack, bool? isCleanListNewsPath) getNews,
     required TResult Function(
             String id, bool? isNotification, String? messageId)
         getNewsDescriptionInfo,
@@ -753,7 +764,7 @@ class _$GetNewsDescriptionInfoNewsEventImpl
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? init,
-    TResult? Function(bool isGoBack)? getNews,
+    TResult? Function(bool isGoBack, bool? isCleanListNewsPath)? getNews,
     TResult? Function(String id, bool? isNotification, String? messageId)?
         getNewsDescriptionInfo,
     TResult? Function()? getMedia,
@@ -778,7 +789,7 @@ class _$GetNewsDescriptionInfoNewsEventImpl
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? init,
-    TResult Function(bool isGoBack)? getNews,
+    TResult Function(bool isGoBack, bool? isCleanListNewsPath)? getNews,
     TResult Function(String id, bool? isNotification, String? messageId)?
         getNewsDescriptionInfo,
     TResult Function()? getMedia,
@@ -947,7 +958,7 @@ class _$GetMediaEventImpl implements GetMediaEvent {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() init,
-    required TResult Function(bool isGoBack) getNews,
+    required TResult Function(bool isGoBack, bool? isCleanListNewsPath) getNews,
     required TResult Function(
             String id, bool? isNotification, String? messageId)
         getNewsDescriptionInfo,
@@ -975,7 +986,7 @@ class _$GetMediaEventImpl implements GetMediaEvent {
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? init,
-    TResult? Function(bool isGoBack)? getNews,
+    TResult? Function(bool isGoBack, bool? isCleanListNewsPath)? getNews,
     TResult? Function(String id, bool? isNotification, String? messageId)?
         getNewsDescriptionInfo,
     TResult? Function()? getMedia,
@@ -1000,7 +1011,7 @@ class _$GetMediaEventImpl implements GetMediaEvent {
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? init,
-    TResult Function(bool isGoBack)? getNews,
+    TResult Function(bool isGoBack, bool? isCleanListNewsPath)? getNews,
     TResult Function(String id, bool? isNotification, String? messageId)?
         getNewsDescriptionInfo,
     TResult Function()? getMedia,
@@ -1207,7 +1218,7 @@ class _$GetMediaDescriptionInfoNewsEventImpl
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() init,
-    required TResult Function(bool isGoBack) getNews,
+    required TResult Function(bool isGoBack, bool? isCleanListNewsPath) getNews,
     required TResult Function(
             String id, bool? isNotification, String? messageId)
         getNewsDescriptionInfo,
@@ -1235,7 +1246,7 @@ class _$GetMediaDescriptionInfoNewsEventImpl
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? init,
-    TResult? Function(bool isGoBack)? getNews,
+    TResult? Function(bool isGoBack, bool? isCleanListNewsPath)? getNews,
     TResult? Function(String id, bool? isNotification, String? messageId)?
         getNewsDescriptionInfo,
     TResult? Function()? getMedia,
@@ -1260,7 +1271,7 @@ class _$GetMediaDescriptionInfoNewsEventImpl
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? init,
-    TResult Function(bool isGoBack)? getNews,
+    TResult Function(bool isGoBack, bool? isCleanListNewsPath)? getNews,
     TResult Function(String id, bool? isNotification, String? messageId)?
         getNewsDescriptionInfo,
     TResult Function()? getMedia,
@@ -1431,7 +1442,7 @@ class _$GetNotificationsEventImpl implements GetNotificationsEvent {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() init,
-    required TResult Function(bool isGoBack) getNews,
+    required TResult Function(bool isGoBack, bool? isCleanListNewsPath) getNews,
     required TResult Function(
             String id, bool? isNotification, String? messageId)
         getNewsDescriptionInfo,
@@ -1459,7 +1470,7 @@ class _$GetNotificationsEventImpl implements GetNotificationsEvent {
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? init,
-    TResult? Function(bool isGoBack)? getNews,
+    TResult? Function(bool isGoBack, bool? isCleanListNewsPath)? getNews,
     TResult? Function(String id, bool? isNotification, String? messageId)?
         getNewsDescriptionInfo,
     TResult? Function()? getMedia,
@@ -1484,7 +1495,7 @@ class _$GetNotificationsEventImpl implements GetNotificationsEvent {
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? init,
-    TResult Function(bool isGoBack)? getNews,
+    TResult Function(bool isGoBack, bool? isCleanListNewsPath)? getNews,
     TResult Function(String id, bool? isNotification, String? messageId)?
         getNewsDescriptionInfo,
     TResult Function()? getMedia,
@@ -1692,7 +1703,7 @@ class _$GetNotificationDescriptionInfoNewsEventImpl
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() init,
-    required TResult Function(bool isGoBack) getNews,
+    required TResult Function(bool isGoBack, bool? isCleanListNewsPath) getNews,
     required TResult Function(
             String id, bool? isNotification, String? messageId)
         getNewsDescriptionInfo,
@@ -1720,7 +1731,7 @@ class _$GetNotificationDescriptionInfoNewsEventImpl
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? init,
-    TResult? Function(bool isGoBack)? getNews,
+    TResult? Function(bool isGoBack, bool? isCleanListNewsPath)? getNews,
     TResult? Function(String id, bool? isNotification, String? messageId)?
         getNewsDescriptionInfo,
     TResult? Function()? getMedia,
@@ -1745,7 +1756,7 @@ class _$GetNotificationDescriptionInfoNewsEventImpl
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? init,
-    TResult Function(bool isGoBack)? getNews,
+    TResult Function(bool isGoBack, bool? isCleanListNewsPath)? getNews,
     TResult Function(String id, bool? isNotification, String? messageId)?
         getNewsDescriptionInfo,
     TResult Function()? getMedia,
@@ -1917,7 +1928,7 @@ class _$PaginationNewsNewsEventImpl implements PaginationNewsNewsEvent {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() init,
-    required TResult Function(bool isGoBack) getNews,
+    required TResult Function(bool isGoBack, bool? isCleanListNewsPath) getNews,
     required TResult Function(
             String id, bool? isNotification, String? messageId)
         getNewsDescriptionInfo,
@@ -1945,7 +1956,7 @@ class _$PaginationNewsNewsEventImpl implements PaginationNewsNewsEvent {
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? init,
-    TResult? Function(bool isGoBack)? getNews,
+    TResult? Function(bool isGoBack, bool? isCleanListNewsPath)? getNews,
     TResult? Function(String id, bool? isNotification, String? messageId)?
         getNewsDescriptionInfo,
     TResult? Function()? getMedia,
@@ -1970,7 +1981,7 @@ class _$PaginationNewsNewsEventImpl implements PaginationNewsNewsEvent {
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? init,
-    TResult Function(bool isGoBack)? getNews,
+    TResult Function(bool isGoBack, bool? isCleanListNewsPath)? getNews,
     TResult Function(String id, bool? isNotification, String? messageId)?
         getNewsDescriptionInfo,
     TResult Function()? getMedia,
@@ -2128,7 +2139,7 @@ class _$PaginationMediasNewsEventImpl implements PaginationMediasNewsEvent {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() init,
-    required TResult Function(bool isGoBack) getNews,
+    required TResult Function(bool isGoBack, bool? isCleanListNewsPath) getNews,
     required TResult Function(
             String id, bool? isNotification, String? messageId)
         getNewsDescriptionInfo,
@@ -2156,7 +2167,7 @@ class _$PaginationMediasNewsEventImpl implements PaginationMediasNewsEvent {
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? init,
-    TResult? Function(bool isGoBack)? getNews,
+    TResult? Function(bool isGoBack, bool? isCleanListNewsPath)? getNews,
     TResult? Function(String id, bool? isNotification, String? messageId)?
         getNewsDescriptionInfo,
     TResult? Function()? getMedia,
@@ -2181,7 +2192,7 @@ class _$PaginationMediasNewsEventImpl implements PaginationMediasNewsEvent {
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? init,
-    TResult Function(bool isGoBack)? getNews,
+    TResult Function(bool isGoBack, bool? isCleanListNewsPath)? getNews,
     TResult Function(String id, bool? isNotification, String? messageId)?
         getNewsDescriptionInfo,
     TResult Function()? getMedia,
@@ -2341,7 +2352,7 @@ class _$PaginationNotificationsNewsEventImpl
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() init,
-    required TResult Function(bool isGoBack) getNews,
+    required TResult Function(bool isGoBack, bool? isCleanListNewsPath) getNews,
     required TResult Function(
             String id, bool? isNotification, String? messageId)
         getNewsDescriptionInfo,
@@ -2369,7 +2380,7 @@ class _$PaginationNotificationsNewsEventImpl
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? init,
-    TResult? Function(bool isGoBack)? getNews,
+    TResult? Function(bool isGoBack, bool? isCleanListNewsPath)? getNews,
     TResult? Function(String id, bool? isNotification, String? messageId)?
         getNewsDescriptionInfo,
     TResult? Function()? getMedia,
@@ -2394,7 +2405,7 @@ class _$PaginationNotificationsNewsEventImpl
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? init,
-    TResult Function(bool isGoBack)? getNews,
+    TResult Function(bool isGoBack, bool? isCleanListNewsPath)? getNews,
     TResult Function(String id, bool? isNotification, String? messageId)?
         getNewsDescriptionInfo,
     TResult Function()? getMedia,
@@ -2553,7 +2564,7 @@ class _$GoBackNewsInfoNewsEventImpl implements GoBackNewsInfoNewsEvent {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() init,
-    required TResult Function(bool isGoBack) getNews,
+    required TResult Function(bool isGoBack, bool? isCleanListNewsPath) getNews,
     required TResult Function(
             String id, bool? isNotification, String? messageId)
         getNewsDescriptionInfo,
@@ -2581,7 +2592,7 @@ class _$GoBackNewsInfoNewsEventImpl implements GoBackNewsInfoNewsEvent {
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? init,
-    TResult? Function(bool isGoBack)? getNews,
+    TResult? Function(bool isGoBack, bool? isCleanListNewsPath)? getNews,
     TResult? Function(String id, bool? isNotification, String? messageId)?
         getNewsDescriptionInfo,
     TResult? Function()? getMedia,
@@ -2606,7 +2617,7 @@ class _$GoBackNewsInfoNewsEventImpl implements GoBackNewsInfoNewsEvent {
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? init,
-    TResult Function(bool isGoBack)? getNews,
+    TResult Function(bool isGoBack, bool? isCleanListNewsPath)? getNews,
     TResult Function(String id, bool? isNotification, String? messageId)?
         getNewsDescriptionInfo,
     TResult Function()? getMedia,
@@ -2798,7 +2809,7 @@ class _$UpdateReadNewsEventImpl implements UpdateReadNewsEvent {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() init,
-    required TResult Function(bool isGoBack) getNews,
+    required TResult Function(bool isGoBack, bool? isCleanListNewsPath) getNews,
     required TResult Function(
             String id, bool? isNotification, String? messageId)
         getNewsDescriptionInfo,
@@ -2826,7 +2837,7 @@ class _$UpdateReadNewsEventImpl implements UpdateReadNewsEvent {
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? init,
-    TResult? Function(bool isGoBack)? getNews,
+    TResult? Function(bool isGoBack, bool? isCleanListNewsPath)? getNews,
     TResult? Function(String id, bool? isNotification, String? messageId)?
         getNewsDescriptionInfo,
     TResult? Function()? getMedia,
@@ -2851,7 +2862,7 @@ class _$UpdateReadNewsEventImpl implements UpdateReadNewsEvent {
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? init,
-    TResult Function(bool isGoBack)? getNews,
+    TResult Function(bool isGoBack, bool? isCleanListNewsPath)? getNews,
     TResult Function(String id, bool? isNotification, String? messageId)?
         getNewsDescriptionInfo,
     TResult Function()? getMedia,
@@ -3019,7 +3030,7 @@ class _$CheckingReadNewsEventImpl implements CheckingReadNewsEvent {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() init,
-    required TResult Function(bool isGoBack) getNews,
+    required TResult Function(bool isGoBack, bool? isCleanListNewsPath) getNews,
     required TResult Function(
             String id, bool? isNotification, String? messageId)
         getNewsDescriptionInfo,
@@ -3047,7 +3058,7 @@ class _$CheckingReadNewsEventImpl implements CheckingReadNewsEvent {
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? init,
-    TResult? Function(bool isGoBack)? getNews,
+    TResult? Function(bool isGoBack, bool? isCleanListNewsPath)? getNews,
     TResult? Function(String id, bool? isNotification, String? messageId)?
         getNewsDescriptionInfo,
     TResult? Function()? getMedia,
@@ -3072,7 +3083,7 @@ class _$CheckingReadNewsEventImpl implements CheckingReadNewsEvent {
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? init,
-    TResult Function(bool isGoBack)? getNews,
+    TResult Function(bool isGoBack, bool? isCleanListNewsPath)? getNews,
     TResult Function(String id, bool? isNotification, String? messageId)?
         getNewsDescriptionInfo,
     TResult Function()? getMedia,
@@ -3258,7 +3269,7 @@ class _$CheckButtonTopNewsEventImpl implements CheckButtonTopNewsEvent {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() init,
-    required TResult Function(bool isGoBack) getNews,
+    required TResult Function(bool isGoBack, bool? isCleanListNewsPath) getNews,
     required TResult Function(
             String id, bool? isNotification, String? messageId)
         getNewsDescriptionInfo,
@@ -3286,7 +3297,7 @@ class _$CheckButtonTopNewsEventImpl implements CheckButtonTopNewsEvent {
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? init,
-    TResult? Function(bool isGoBack)? getNews,
+    TResult? Function(bool isGoBack, bool? isCleanListNewsPath)? getNews,
     TResult? Function(String id, bool? isNotification, String? messageId)?
         getNewsDescriptionInfo,
     TResult? Function()? getMedia,
@@ -3311,7 +3322,7 @@ class _$CheckButtonTopNewsEventImpl implements CheckButtonTopNewsEvent {
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? init,
-    TResult Function(bool isGoBack)? getNews,
+    TResult Function(bool isGoBack, bool? isCleanListNewsPath)? getNews,
     TResult Function(String id, bool? isNotification, String? messageId)?
         getNewsDescriptionInfo,
     TResult Function()? getMedia,
@@ -3506,7 +3517,7 @@ class _$CheckDisabledVideoNewsEventImpl implements CheckDisabledVideoNewsEvent {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() init,
-    required TResult Function(bool isGoBack) getNews,
+    required TResult Function(bool isGoBack, bool? isCleanListNewsPath) getNews,
     required TResult Function(
             String id, bool? isNotification, String? messageId)
         getNewsDescriptionInfo,
@@ -3534,7 +3545,7 @@ class _$CheckDisabledVideoNewsEventImpl implements CheckDisabledVideoNewsEvent {
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? init,
-    TResult? Function(bool isGoBack)? getNews,
+    TResult? Function(bool isGoBack, bool? isCleanListNewsPath)? getNews,
     TResult? Function(String id, bool? isNotification, String? messageId)?
         getNewsDescriptionInfo,
     TResult? Function()? getMedia,
@@ -3559,7 +3570,7 @@ class _$CheckDisabledVideoNewsEventImpl implements CheckDisabledVideoNewsEvent {
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? init,
-    TResult Function(bool isGoBack)? getNews,
+    TResult Function(bool isGoBack, bool? isCleanListNewsPath)? getNews,
     TResult Function(String id, bool? isNotification, String? messageId)?
         getNewsDescriptionInfo,
     TResult Function()? getMedia,

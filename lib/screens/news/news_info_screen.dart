@@ -36,11 +36,13 @@ class _NewsInfoScreenState extends State<NewsInfoScreen> with TickerProviderStat
 
   @override
   void didChangeDependencies() {
+    context.read<NewsAppBarBloc>().add(
+          const NewsAppBarEvent.showHeader(isShowHeader: true),
+        );
     _tabController = TabController(length: 3, vsync: this);
     if (widget.indexPage != 0) {
       _tabController?.animateTo(widget.indexPage);
     } else {
-      context.read<NewsBloc>().add(NewsEvent.getNews(isGoBack: false));
       final idNews = widget.idNews;
       if (idNews != null) {
         context.read<NewsBloc>().add(NewsEvent.updateReadNews(
@@ -157,11 +159,10 @@ class _NewsInfoScreenState extends State<NewsInfoScreen> with TickerProviderStat
                         initState.listNewsPath.last,
                       ),
                     );
-                    setState(() {
-                      _tabController?.index = int.parse(
-                        initState.listNewsPath.last,
-                      );
-                    });
+
+                    _tabController?.index = int.parse(
+                      initState.listNewsPath.last,
+                    );
                   }
                 }
               }
@@ -304,9 +305,15 @@ class _NewsInfoScreenState extends State<NewsInfoScreen> with TickerProviderStat
                                             AppMetrica.reportEvent(
                                                 'Переход на страницу новостей из верхней панели навигации');
                                           } else if (index == 1) {
+                                            context
+                                                .read<NewsBloc>()
+                                                .add(const NewsEvent.getMedia());
                                             AppMetrica.reportEvent(
                                                 'Переход на страницу медиа из верхней панели навигации');
                                           } else if (index == 2) {
+                                            context
+                                                .read<NewsBloc>()
+                                                .add(const NewsEvent.getNotifications());
                                             AppMetrica.reportEvent(
                                                 'Переход на страницу уведомлений из верхней панели навигации');
                                           }

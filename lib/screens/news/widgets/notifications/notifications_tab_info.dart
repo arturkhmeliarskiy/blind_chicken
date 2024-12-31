@@ -31,6 +31,7 @@ class NotificationsTabInfo extends StatefulWidget {
 
 class _NotificationsTabInfoState extends State<NotificationsTabInfo> {
   ScrollController _scrollController = ScrollController();
+  DateTime lastTime = DateTime.now();
   double _historyPosition = 0.0;
   double _paginationPosition = 0.0;
   bool _isButtonTop = false;
@@ -38,7 +39,6 @@ class _NotificationsTabInfoState extends State<NotificationsTabInfo> {
   @override
   void didChangeDependencies() {
     _scrollController = ScrollController(initialScrollOffset: !widget.isShowHeader ? 90 : 0);
-    context.read<NewsBloc>().add(const NewsEvent.getNotifications());
 
     final idNews = widget.idNews;
     if (idNews != null) {
@@ -62,22 +62,16 @@ class _NotificationsTabInfoState extends State<NotificationsTabInfo> {
         _isButtonTop = false;
       });
     }
-    if (_historyPosition < _scrollController.position.pixels) {
-      widget.onHideHeader();
+
+    if (_historyPosition + 50 < _scrollController.position.pixels) {
+      await onHideHeader();
     }
 
-    if (_historyPosition > _scrollController.position.pixels &&
+    if (_historyPosition - 50 > _scrollController.position.pixels &&
         _scrollController.position.pixels > 0) {
-      widget.onShowHeader();
+      await onShowHeader();
     }
 
-    if (_scrollController.position.pixels < 50) {
-      widget.onShowHeader();
-    }
-
-    if (_scrollController.position.pixels > _scrollController.position.maxScrollExtent) {
-      widget.onHideHeader();
-    }
     if (_scrollController.position.pixels > (_scrollController.position.maxScrollExtent - 200) &&
         (_scrollController.position.maxScrollExtent - 200) > _paginationPosition &&
         _scrollController.position.pixels != _scrollController.position.maxScrollExtent) {
@@ -87,6 +81,22 @@ class _NotificationsTabInfoState extends State<NotificationsTabInfo> {
       context.read<NewsBloc>().add(const NewsEvent.paginationNotifications());
     }
     _historyPosition = _scrollController.position.pixels;
+  }
+
+  onHideHeader() async {
+    await Future<void>.delayed(const Duration(milliseconds: 450));
+    final timeDifferenceHideHeader = DateTime.now().difference(lastTime).inMilliseconds;
+    if (timeDifferenceHideHeader > 449) {
+      widget.onHideHeader();
+    }
+  }
+
+  onShowHeader() async {
+    await Future<void>.delayed(const Duration(milliseconds: 450));
+    final timeDifferenceShowHeader = DateTime.now().difference(lastTime).inMilliseconds;
+    if (timeDifferenceShowHeader > 449) {
+      widget.onShowHeader();
+    }
   }
 
   @override
