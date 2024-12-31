@@ -72,6 +72,10 @@ class _NotificationsTabInfoState extends State<NotificationsTabInfo> {
       await onShowHeader();
     }
 
+    if (_scrollController.position.pixels < 0) {
+      await onShowHeader();
+    }
+
     if (_scrollController.position.pixels > (_scrollController.position.maxScrollExtent - 200) &&
         (_scrollController.position.maxScrollExtent - 200) > _paginationPosition &&
         _scrollController.position.pixels != _scrollController.position.maxScrollExtent) {

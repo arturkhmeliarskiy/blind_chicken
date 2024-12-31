@@ -63,6 +63,10 @@ class _NewsTabInfoState extends State<NewsTabInfo> {
       await onShowHeader();
     }
 
+    if (_scrollController.position.pixels < 0) {
+      await onShowHeader();
+    }
+
     _historyPosition = _scrollController.position.pixels;
   }
 
