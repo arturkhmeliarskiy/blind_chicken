@@ -448,24 +448,36 @@ class _NewsInfoScreenState extends State<NewsInfoScreen> with TickerProviderStat
               },
             ),
           ),
-          GestureDetector(
-            onPanUpdate: (details) {
-              swipeDirection = details.delta.dx < 0 ? 'left' : 'right';
+          BlocBuilder<NewsBloc, NewsState>(
+            builder: (context, state) {
+              return state.maybeMap(
+                preloadDataCompleted: (initState) {
+                  return GestureDetector(
+                    onPanUpdate: (details) {
+                      swipeDirection = details.delta.dx < 0 ? 'left' : 'right';
+                    },
+                    onPanEnd: (details) {
+                      if (swipeDirection == null) {
+                        return;
+                      }
+                      if (swipeDirection == 'left') {}
+                      if (swipeDirection == 'right') {
+                        context.read<NewsBloc>().add(const NewsEvent.goBackNewsInfo());
+                      }
+                    },
+                    child: SafeArea(
+                      child: Container(
+                        height:
+                            MediaQuery.of(context).size.height - (initState.isButtonTop ? 220 : 0),
+                        width: 50,
+                        color: Colors.transparent,
+                      ),
+                    ),
+                  );
+                },
+                orElse: () => const SizedBox(),
+              );
             },
-            onPanEnd: (details) {
-              if (swipeDirection == null) {
-                return;
-              }
-              if (swipeDirection == 'left') {}
-              if (swipeDirection == 'right') {
-                context.read<NewsBloc>().add(const NewsEvent.goBackNewsInfo());
-              }
-            },
-            child: Container(
-              height: MediaQuery.of(context).size.height,
-              width: 50,
-              color: Colors.transparent,
-            ),
           )
         ],
       ),

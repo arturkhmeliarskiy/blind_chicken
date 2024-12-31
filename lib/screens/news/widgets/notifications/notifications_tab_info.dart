@@ -34,7 +34,6 @@ class _NotificationsTabInfoState extends State<NotificationsTabInfo> {
   DateTime lastTime = DateTime.now();
   double _historyPosition = 0.0;
   double _paginationPosition = 0.0;
-  bool _isButtonTop = false;
 
   @override
   void didChangeDependencies() {
@@ -52,16 +51,12 @@ class _NotificationsTabInfoState extends State<NotificationsTabInfo> {
   }
 
   void _loadMoreData() async {
-    if (_historyPosition > _scrollController.position.pixels &&
-        _scrollController.position.pixels > 0) {
-      setState(() {
-        _isButtonTop = true;
-      });
-    } else {
-      setState(() {
-        _isButtonTop = false;
-      });
-    }
+    context.read<NewsBloc>().add(
+          NewsEvent.checkButtonTop(
+            isButtonTop: _historyPosition > _scrollController.position.pixels &&
+                _scrollController.position.pixels > 0,
+          ),
+        );
 
     if (_historyPosition + 50 < _scrollController.position.pixels) {
       await onHideHeader();
@@ -208,14 +203,12 @@ class _NotificationsTabInfoState extends State<NotificationsTabInfo> {
             }),
             BlocBuilder<NewsBloc, NewsState>(builder: (context, state) {
               return state.maybeMap(
-                preloadDataCompleted: (value) {
-                  if (_isButtonTop) {
+                preloadDataCompleted: (initState) {
+                  if (initState.isButtonTop) {
                     return GestureDetector(
-                      onTap: () {
+                      onTap: () async {
+                        await onShowHeader();
                         _scrollController.jumpTo(0.0);
-                        setState(() {
-                          _isButtonTop = false;
-                        });
                       },
                       child: Container(
                         height: 45,

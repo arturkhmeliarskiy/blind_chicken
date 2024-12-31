@@ -117,6 +117,7 @@ class NewsBloc extends Bloc<NewsEvent, NewsState> {
           countBadgesNotificatios: countBadges.notice,
           isNotification: false,
           isLoadPagination: false,
+          isButtonTop: false,
           isGoBack: event.isGoBack,
         ),
       );
@@ -207,6 +208,7 @@ class NewsBloc extends Bloc<NewsEvent, NewsState> {
           countBadgesMedia: countBadges.media,
           countBadgesNotificatios: countBadges.notice,
           isNotification: false,
+          isButtonTop: false,
           isGoBack: false,
         ),
       );

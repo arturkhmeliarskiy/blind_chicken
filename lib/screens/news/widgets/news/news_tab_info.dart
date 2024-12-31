@@ -291,7 +291,8 @@ class _NewsTabInfoState extends State<NewsTabInfo> {
                 preloadDataCompleted: (initState) {
                   if (initState.isButtonTop) {
                     return GestureDetector(
-                      onTap: () {
+                      onTap: () async {
+                        await onShowHeader();
                         _scrollController.jumpTo(0.0);
                       },
                       child: Container(
