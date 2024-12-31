@@ -98,7 +98,7 @@ class _NewsItemTabInfoState extends State<NewsItemTabInfo> with AutomaticKeepAli
             }
           },
           child: Container(
-            margin: const EdgeInsets.only(top: 10, left: 10, right: 10),
+            margin: const EdgeInsets.only(top: 20, left: 10, right: 10),
             width: width,
             decoration: BoxDecoration(
               boxShadow: [
