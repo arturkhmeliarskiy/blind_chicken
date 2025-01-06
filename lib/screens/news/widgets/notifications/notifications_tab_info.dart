@@ -83,17 +83,17 @@ class _NotificationsTabInfoState extends State<NotificationsTabInfo> {
   }
 
   onHideHeader() async {
-    await Future<void>.delayed(const Duration(milliseconds: 450));
+    await Future<void>.delayed(const Duration(milliseconds: 150));
     final timeDifferenceHideHeader = DateTime.now().difference(lastTime).inMilliseconds;
-    if (timeDifferenceHideHeader > 449) {
+    if (timeDifferenceHideHeader > 149) {
       widget.onHideHeader();
     }
   }
 
   onShowHeader() async {
-    await Future<void>.delayed(const Duration(milliseconds: 450));
+    await Future<void>.delayed(const Duration(milliseconds: 150));
     final timeDifferenceShowHeader = DateTime.now().difference(lastTime).inMilliseconds;
-    if (timeDifferenceShowHeader > 449) {
+    if (timeDifferenceShowHeader > 149) {
       widget.onShowHeader();
     }
   }
