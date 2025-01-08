@@ -28,7 +28,7 @@ class BlindChickenDiscountScaleStatic extends StatelessWidget {
             listDiscount.length,
             (index) {
               return Container(
-                width: index != listDiscount.length - 1
+                width: index != listDiscount.length
                     ? MediaQuery.of(context).size.width * 0.20
                     : listDiscount[index].length * 16,
                 height: 20,

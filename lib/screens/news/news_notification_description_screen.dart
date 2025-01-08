@@ -316,6 +316,7 @@ class _NewsNotificationDescriptionScreenState extends State<NewsNotificationDesc
                                                   goBotton: () {
                                                     context.back();
                                                   },
+                                                  borderRadius: 0,
                                                   onTap: (index) {
                                                     context.navigateTo(
                                                       NewsPreviewMediaInfoRoute(
@@ -380,6 +381,7 @@ class _NewsNotificationDescriptionScreenState extends State<NewsNotificationDesc
                                                   goBotton: () {
                                                     context.back();
                                                   },
+                                                  borderRadius: 0,
                                                   onTap: (index) {
                                                     context.pushRoute(
                                                       NewsPreviewMediaRoute(

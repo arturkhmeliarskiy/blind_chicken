@@ -1216,7 +1216,7 @@ class _CatalogCardInfoScreenState extends State<CatalogCardInfoScreen> {
                                                 height: 3.5,
                                               ),
                                               Text(
-                                                'Бесплатная доставка по России от 10 000 ₽',
+                                                'Бесплатная доставка по России от 20 000 ₽',
                                                 style: Theme.of(context).textTheme.displayMedium,
                                               ),
                                               const SizedBox(

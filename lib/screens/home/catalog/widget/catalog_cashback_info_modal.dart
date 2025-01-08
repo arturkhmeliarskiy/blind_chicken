@@ -175,7 +175,7 @@ class _CatalogCashbackInfoModalState extends State<CatalogCashbackInfoModal> {
                           ),
                         ),
                         Text(
-                          'Начисляются при покупке от 10 000 ₽',
+                          'Начисляются при покупке от 20 000 ₽',
                           style: Theme.of(context).textTheme.labelLarge,
                         )
                       ],
@@ -384,9 +384,9 @@ class _CatalogCashbackInfoModalState extends State<CatalogCashbackInfoModal> {
                             ],
                             listPrice: const [
                               'Покупки от',
-                              '10 000',
-                              '100 000',
-                              '300 000',
+                              '20 000',
+                              '200 000',
+                              '500 000',
                             ],
                             typeValue: '%',
                             firstSymbol: '',

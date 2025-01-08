@@ -767,9 +767,9 @@ class _AccountScreenState extends State<AccountScreen> {
                                                               ],
                                                               listPrice: const [
                                                                 'Покупки от',
-                                                                '10 000',
-                                                                '100 000',
-                                                                '300 000',
+                                                                '20 000',
+                                                                '200 000',
+                                                                '500 000',
                                                               ],
                                                               typeValue: '%',
                                                               firstSymbol: '',

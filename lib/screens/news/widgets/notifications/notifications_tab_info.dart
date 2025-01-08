@@ -58,18 +58,18 @@ class _NotificationsTabInfoState extends State<NotificationsTabInfo> {
           ),
         );
 
-    if (_historyPosition + 50 < _scrollController.position.pixels) {
-      await onHideHeader();
-    }
+    // if (_historyPosition + 50 < _scrollController.position.pixels) {
+    //   await onHideHeader();
+    // }
 
-    if (_historyPosition - 50 > _scrollController.position.pixels &&
-        _scrollController.position.pixels > 0) {
-      await onShowHeader();
-    }
+    // if (_historyPosition - 50 > _scrollController.position.pixels &&
+    //     _scrollController.position.pixels > 0) {
+    //   await onShowHeader();
+    // }
 
-    if (_scrollController.position.pixels < 0) {
-      await onShowHeader();
-    }
+    // if (_scrollController.position.pixels < 0) {
+    //   await onShowHeader();
+    // }
 
     if (_scrollController.position.pixels > (_scrollController.position.maxScrollExtent - 200) &&
         (_scrollController.position.maxScrollExtent - 200) > _paginationPosition &&
@@ -83,17 +83,17 @@ class _NotificationsTabInfoState extends State<NotificationsTabInfo> {
   }
 
   onHideHeader() async {
-    await Future<void>.delayed(const Duration(milliseconds: 150));
+    await Future<void>.delayed(const Duration(milliseconds: 250));
     final timeDifferenceHideHeader = DateTime.now().difference(lastTime).inMilliseconds;
-    if (timeDifferenceHideHeader > 149) {
+    if (timeDifferenceHideHeader > 249) {
       widget.onHideHeader();
     }
   }
 
   onShowHeader() async {
-    await Future<void>.delayed(const Duration(milliseconds: 150));
+    await Future<void>.delayed(const Duration(milliseconds: 250));
     final timeDifferenceShowHeader = DateTime.now().difference(lastTime).inMilliseconds;
-    if (timeDifferenceShowHeader > 149) {
+    if (timeDifferenceShowHeader > 249) {
       widget.onShowHeader();
     }
   }
@@ -207,7 +207,7 @@ class _NotificationsTabInfoState extends State<NotificationsTabInfo> {
                   if (initState.isButtonTop) {
                     return GestureDetector(
                       onTap: () async {
-                        await onShowHeader();
+                        // await onShowHeader();
                         _scrollController.jumpTo(0.0);
                       },
                       child: Container(
