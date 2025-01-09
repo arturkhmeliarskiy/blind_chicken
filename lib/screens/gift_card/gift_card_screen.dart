@@ -50,7 +50,7 @@ class _GiftCardScreenState extends State<GiftCardScreen> {
   GiftCardModel _selectedColor = BlindChickenGiftCardColors.listColors.first;
 
   @override
-  void didChangeDependencies() {
+  void initState() {
     if (widget.isNotification) {
       AppMetrica.reportEvent('Подарочная карта из push-уведомления');
       Timer(const Duration(milliseconds: 500), () {
@@ -67,7 +67,7 @@ class _GiftCardScreenState extends State<GiftCardScreen> {
             searchQuery: widget.searchQuery ?? '',
           ));
     }
-    super.didChangeDependencies();
+    super.initState();
   }
 
   @override
