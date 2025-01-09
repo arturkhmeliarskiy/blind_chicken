@@ -505,7 +505,7 @@ class _GiftCardScreenState extends State<GiftCardScreen> {
                                                           Theme.of(context).textTheme.displayMedium,
                                                       children: <TextSpan>[
                                                         TextSpan(
-                                                          text: '10 000',
+                                                          text: '20 000',
                                                           style: Theme.of(context)
                                                               .textTheme
                                                               .displayMedium,

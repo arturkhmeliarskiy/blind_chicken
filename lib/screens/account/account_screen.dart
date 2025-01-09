@@ -1166,7 +1166,7 @@ class _AccountScreenState extends State<AccountScreen> {
                 },
                 child: Container(
                   height: MediaQuery.of(context).size.height,
-                  width: 50,
+                  width: 35,
                   color: Colors.transparent,
                 ),
               ),

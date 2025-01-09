@@ -2,7 +2,6 @@ import 'dart:async';
 import 'dart:io';
 
 import 'package:auto_route/auto_route.dart';
-import 'package:blind_chicken/screens/app/router/app_router.dart';
 import 'package:blind_chicken/screens/gift_card/widgets/map/gift_map_boutiques_info.dart';
 import 'package:blind_chicken/screens/gift_card/widgets/map/gift_map_point_info.dart';
 import 'package:flutter/material.dart';
