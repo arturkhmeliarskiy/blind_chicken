@@ -160,6 +160,7 @@ class _NewsInfoScreenState extends State<NewsInfoScreen> with TickerProviderStat
                     _tabController?.index = int.parse(
                       initState.listNewsPath.last,
                     );
+                    setState(() {});
                   }
                 }
               }
@@ -195,8 +196,9 @@ class _NewsInfoScreenState extends State<NewsInfoScreen> with TickerProviderStat
                                   forceElevated: value,
                                   pinned: true,
                                   floating: true,
-                                  toolbarHeight:
-                                      initState.info.data.title.isNotEmpty ? 93 : kToolbarHeight,
+                                  toolbarHeight: initState.info.data.title.isNotEmpty
+                                      ? kToolbarHeight * 1.65
+                                      : kToolbarHeight,
                                   title: AppBarBlindChicken(),
                                   titleSpacing: 0,
                                   foregroundColor: BlindChickenColors.backgroundColor,
