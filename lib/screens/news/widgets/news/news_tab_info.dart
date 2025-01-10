@@ -18,12 +18,10 @@ class NewsTabInfo extends StatefulWidget {
     super.key,
     required this.goBack,
     required this.onJump,
-    required this.heightAppBar,
   });
 
   final VoidCallback goBack;
   final VoidCallback onJump;
-  final double heightAppBar;
 
   @override
   State<NewsTabInfo> createState() => _NewsTabInfoState();
@@ -81,7 +79,7 @@ class _NewsTabInfoState extends State<NewsTabInfo> {
                             return Column(
                               children: [
                                 SizedBox(
-                                  height: index == 0 ? widget.heightAppBar : 0,
+                                  height: index == 0 ? kToolbarHeight * 2 - 6 : 0,
                                 ),
                                 VisibilityDetector(
                                   key: Key(index.toString()),

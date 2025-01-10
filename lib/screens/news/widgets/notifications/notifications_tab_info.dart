@@ -12,12 +12,10 @@ class NotificationsTabInfo extends StatefulWidget {
     super.key,
     required this.goBack,
     required this.onJump,
-    required this.heightAppBar,
     this.idNews,
   });
 
   final VoidCallback onJump;
-  final double heightAppBar;
   final VoidCallback goBack;
   final String? idNews;
 
@@ -118,8 +116,8 @@ class _NotificationsTabInfoState extends State<NotificationsTabInfo> {
                                 SizedBox(
                                   height: index == 0
                                       ? initState.notificatios.list.length < 10
-                                          ? 50
-                                          : widget.heightAppBar / 2
+                                          ? kToolbarHeight - 3
+                                          : kToolbarHeight - 6 / 2
                                       : 0,
                                 ),
                                 GestureDetector(

@@ -33,7 +33,6 @@ class _NewsInfoScreenState extends State<NewsInfoScreen> with TickerProviderStat
   TabController? _tabController;
   bool _isSwipe = true;
   String _iDNews = '';
-  final double _heightAppBar = 105;
 
   @override
   void didChangeDependencies() {
@@ -211,6 +210,7 @@ class _NewsInfoScreenState extends State<NewsInfoScreen> with TickerProviderStat
                                     dividerColor: BlindChickenColors.borderBottomColor,
                                     controller: _tabController,
                                     onTap: (index) {
+                                      setState(() {});
                                       if (index == 0) {
                                         context
                                             .read<NewsBloc>()
@@ -343,7 +343,6 @@ class _NewsInfoScreenState extends State<NewsInfoScreen> with TickerProviderStat
                             physics: const NeverScrollableScrollPhysics(),
                             children: <Widget>[
                               NewsTabInfo(
-                                heightAppBar: _heightAppBar,
                                 goBack: () {
                                   context.read<NewsBloc>().add(const NewsEvent.goBackNewsInfo());
                                 },
@@ -358,7 +357,6 @@ class _NewsInfoScreenState extends State<NewsInfoScreen> with TickerProviderStat
                                 idNews: widget.idNews,
                               ),
                               NotificationsTabInfo(
-                                heightAppBar: _heightAppBar,
                                 goBack: () {
                                   context.read<NewsBloc>().add(const NewsEvent.goBackNewsInfo());
                                 },
