@@ -100,6 +100,14 @@ class _NotificationsTabInfoState extends State<NotificationsTabInfo> {
                               context
                                   .read<NewsBloc>()
                                   .add(const NewsEvent.paginationNotifications());
+
+                              if (_historyPosition != scrollNotification.metrics.pixels) {
+                                context.read<NewsBloc>().add(
+                                      NewsEvent.checkButtonTop(
+                                        isButtonTop: false,
+                                      ),
+                                    );
+                              }
                             }
                           }
 
@@ -110,15 +118,12 @@ class _NotificationsTabInfoState extends State<NotificationsTabInfo> {
                         child: ListView.builder(
                           physics: const BouncingScrollPhysics(),
                           itemCount: initState.notificatios.list.length,
+                          padding: EdgeInsets.zero,
                           itemBuilder: (context, index) {
                             return Column(
                               children: [
                                 SizedBox(
-                                  height: index == 0
-                                      ? initState.notificatios.list.length < 10
-                                          ? kToolbarHeight - 3
-                                          : kToolbarHeight - 6 / 2
-                                      : 0,
+                                  height: index == 0 ? 130 - 14 : 0,
                                 ),
                                 GestureDetector(
                                   onTap: () {

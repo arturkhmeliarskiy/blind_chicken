@@ -32,6 +32,25 @@ class _NewsTabInfoState extends State<NewsTabInfo> {
   bool _isLoading = false;
   double _historyPosition = 0.0;
 
+  void _loadMoreData(double position) {
+    if (_historyPosition > position) {
+      context.read<NewsBloc>().add(
+            NewsEvent.checkButtonTop(
+              isButtonTop: _historyPosition >= position && position > 0,
+            ),
+          );
+    } else {
+      if (_historyPosition != position) {
+        context.read<NewsBloc>().add(
+              NewsEvent.checkButtonTop(
+                isButtonTop: false,
+              ),
+            );
+      }
+    }
+    _historyPosition = position;
+  }
+
   @override
   Widget build(BuildContext context) {
     return Stack(
@@ -57,20 +76,9 @@ class _NewsTabInfoState extends State<NewsTabInfo> {
                       ),
                       child: NotificationListener<ScrollNotification>(
                         onNotification: (scrollNotification) {
-                          final currentScroll = scrollNotification.metrics.pixels;
+                          _loadMoreData(scrollNotification.metrics.pixels);
 
-                          if (_historyPosition > currentScroll) {
-                            context.read<NewsBloc>().add(
-                                  NewsEvent.checkButtonTop(
-                                    isButtonTop:
-                                        _historyPosition >= currentScroll && currentScroll > 0,
-                                  ),
-                                );
-                          }
-
-                          _historyPosition = currentScroll;
-
-                          return false;
+                          return true;
                         },
                         child: ListView.builder(
                           itemCount: initState.news.list.length,
@@ -79,7 +87,7 @@ class _NewsTabInfoState extends State<NewsTabInfo> {
                             return Column(
                               children: [
                                 SizedBox(
-                                  height: index == 0 ? kToolbarHeight * 2 - 6 : 0,
+                                  height: index == 0 ? 130 - 22 : 0,
                                 ),
                                 VisibilityDetector(
                                   key: Key(index.toString()),
