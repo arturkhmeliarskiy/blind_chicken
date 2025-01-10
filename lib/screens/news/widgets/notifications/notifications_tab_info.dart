@@ -11,17 +11,13 @@ class NotificationsTabInfo extends StatefulWidget {
   const NotificationsTabInfo({
     super.key,
     required this.goBack,
-    required this.onHideHeader,
-    required this.onShowHeader,
+    required this.onJump,
     required this.heightAppBar,
-    required this.isShowHeader,
     this.idNews,
   });
 
-  final VoidCallback onHideHeader;
-  final VoidCallback onShowHeader;
+  final VoidCallback onJump;
   final double heightAppBar;
-  final bool isShowHeader;
   final VoidCallback goBack;
   final String? idNews;
 
@@ -30,15 +26,12 @@ class NotificationsTabInfo extends StatefulWidget {
 }
 
 class _NotificationsTabInfoState extends State<NotificationsTabInfo> {
-  ScrollController _scrollController = ScrollController();
   DateTime lastTime = DateTime.now();
   double _historyPosition = 0.0;
   double _paginationPosition = 0.0;
 
   @override
   void didChangeDependencies() {
-    _scrollController = ScrollController(initialScrollOffset: !widget.isShowHeader ? 90 : 0);
-
     final idNews = widget.idNews;
     if (idNews != null) {
       context.read<NewsBloc>().add(NewsEvent.updateReadNews(
@@ -46,56 +39,8 @@ class _NotificationsTabInfoState extends State<NotificationsTabInfo> {
             typeNews: 'notice',
           ));
     }
-    _scrollController.addListener(_loadMoreData);
+
     super.didChangeDependencies();
-  }
-
-  void _loadMoreData() async {
-    context.read<NewsBloc>().add(
-          NewsEvent.checkButtonTop(
-            isButtonTop: _historyPosition > _scrollController.position.pixels &&
-                _scrollController.position.pixels > 0,
-          ),
-        );
-
-    // if (_historyPosition + 50 < _scrollController.position.pixels) {
-    //   await onHideHeader();
-    // }
-
-    // if (_historyPosition - 50 > _scrollController.position.pixels &&
-    //     _scrollController.position.pixels > 0) {
-    //   await onShowHeader();
-    // }
-
-    // if (_scrollController.position.pixels < 0) {
-    //   await onShowHeader();
-    // }
-
-    if (_scrollController.position.pixels > (_scrollController.position.maxScrollExtent - 200) &&
-        (_scrollController.position.maxScrollExtent - 200) > _paginationPosition &&
-        _scrollController.position.pixels != _scrollController.position.maxScrollExtent) {
-      setState(() {
-        _paginationPosition = _scrollController.position.maxScrollExtent - 200;
-      });
-      context.read<NewsBloc>().add(const NewsEvent.paginationNotifications());
-    }
-    _historyPosition = _scrollController.position.pixels;
-  }
-
-  onHideHeader() async {
-    await Future<void>.delayed(const Duration(milliseconds: 250));
-    final timeDifferenceHideHeader = DateTime.now().difference(lastTime).inMilliseconds;
-    if (timeDifferenceHideHeader > 249) {
-      widget.onHideHeader();
-    }
-  }
-
-  onShowHeader() async {
-    await Future<void>.delayed(const Duration(milliseconds: 250));
-    final timeDifferenceShowHeader = DateTime.now().difference(lastTime).inMilliseconds;
-    if (timeDifferenceShowHeader > 249) {
-      widget.onShowHeader();
-    }
   }
 
   @override
@@ -109,12 +54,6 @@ class _NotificationsTabInfoState extends State<NotificationsTabInfo> {
           ));
     }
     super.didUpdateWidget(oldWidget);
-  }
-
-  @override
-  void dispose() {
-    _scrollController.dispose();
-    super.dispose();
   }
 
   @override
@@ -139,48 +78,74 @@ class _NotificationsTabInfoState extends State<NotificationsTabInfo> {
                           fit: BoxFit.cover,
                         ),
                       ),
-                      child: ListView.builder(
-                        physics: const BouncingScrollPhysics(),
-                        controller: initState.notificatios.list.length < 10
-                            ? ScrollController(
-                                initialScrollOffset: 0,
-                              )
-                            : _scrollController,
-                        itemCount: initState.notificatios.list.length,
-                        itemBuilder: (context, index) {
-                          return Column(
-                            children: [
-                              SizedBox(
-                                height: index == 0
-                                    ? initState.notificatios.list.length < 10 &&
-                                            !widget.isShowHeader
-                                        ? 50
-                                        : widget.heightAppBar
-                                    : 0,
-                              ),
-                              GestureDetector(
-                                onTap: () {
-                                  context.navigateTo(
-                                    NotificationInfoDescriptionRoute(
-                                      info: initState.notificatios.list[index],
-                                    ),
-                                  );
-                                },
-                                child: Column(
-                                  children: [
-                                    NotificationItemTabInfo(
-                                      item: initState.notificatios.list[index],
-                                    ),
-                                    if (initState.notificatios.list.length - 1 == index)
-                                      SizedBox(
-                                        height: 10,
-                                      ),
-                                  ],
-                                ),
-                              ),
-                            ],
-                          );
+                      child: NotificationListener<ScrollNotification>(
+                        onNotification: (scrollNotification) {
+                          final currentScroll = scrollNotification.metrics.pixels;
+
+                          if (_historyPosition > currentScroll) {
+                            context.read<NewsBloc>().add(
+                                  NewsEvent.checkButtonTop(
+                                    isButtonTop:
+                                        _historyPosition >= currentScroll && currentScroll > 0,
+                                  ),
+                                );
+                          } else {
+                            if (scrollNotification.metrics.pixels >
+                                    (scrollNotification.metrics.maxScrollExtent - 200) &&
+                                (scrollNotification.metrics.maxScrollExtent - 200) >
+                                    _paginationPosition &&
+                                scrollNotification.metrics.pixels !=
+                                    scrollNotification.metrics.maxScrollExtent) {
+                              _paginationPosition =
+                                  scrollNotification.metrics.maxScrollExtent - 200;
+
+                              context
+                                  .read<NewsBloc>()
+                                  .add(const NewsEvent.paginationNotifications());
+                            }
+                          }
+
+                          _historyPosition = currentScroll;
+
+                          return false;
                         },
+                        child: ListView.builder(
+                          physics: const BouncingScrollPhysics(),
+                          itemCount: initState.notificatios.list.length,
+                          itemBuilder: (context, index) {
+                            return Column(
+                              children: [
+                                SizedBox(
+                                  height: index == 0
+                                      ? initState.notificatios.list.length < 10
+                                          ? 50
+                                          : widget.heightAppBar / 2
+                                      : 0,
+                                ),
+                                GestureDetector(
+                                  onTap: () {
+                                    context.navigateTo(
+                                      NotificationInfoDescriptionRoute(
+                                        info: initState.notificatios.list[index],
+                                      ),
+                                    );
+                                  },
+                                  child: Column(
+                                    children: [
+                                      NotificationItemTabInfo(
+                                        item: initState.notificatios.list[index],
+                                      ),
+                                      if (initState.notificatios.list.length - 1 == index)
+                                        SizedBox(
+                                          height: 10,
+                                        ),
+                                    ],
+                                  ),
+                                ),
+                              ],
+                            );
+                          },
+                        ),
                       ),
                     );
                   } else {
@@ -206,9 +171,8 @@ class _NotificationsTabInfoState extends State<NotificationsTabInfo> {
                 preloadDataCompleted: (initState) {
                   if (initState.isButtonTop) {
                     return GestureDetector(
-                      onTap: () async {
-                        // await onShowHeader();
-                        _scrollController.jumpTo(0.0);
+                      onTap: () {
+                        widget.onJump();
                       },
                       child: Container(
                         height: 45,

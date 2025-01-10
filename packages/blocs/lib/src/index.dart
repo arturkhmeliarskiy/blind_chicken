@@ -14,4 +14,3 @@ export 'news/news_bloc.dart';
 export 'top_banner/top_banner_bloc.dart';
 export 'doctor_appointment/doctor_appointment_bloc.dart';
 export 'bottom_navigation/bottom_navigation_bloc.dart';
-export 'news_app_bar/news_app_bar_bloc.dart';

@@ -62,6 +62,7 @@ class _AppBarBlindChickenState extends State<AppBarBlindChicken> {
         if (widget.isTopBanner) const BlindChickenTopBanner(),
         AppBar(
           backgroundColor: BlindChickenColors.backgroundColor,
+          surfaceTintColor: BlindChickenColors.backgroundColor,
           elevation: 0,
           leadingWidth: 0,
           automaticallyImplyLeading: false,

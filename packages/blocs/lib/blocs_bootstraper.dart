@@ -134,8 +134,5 @@ Future<void> initBloc(GetIt getIt) async {
     )
     ..registerFactory(
       () => BottomNavigationBloc(),
-    )
-    ..registerFactory(
-      () => NewsAppBarBloc(),
     );
 }
