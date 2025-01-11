@@ -68,86 +68,89 @@ class _NotificationsTabInfoState extends State<NotificationsTabInfo> {
                     _paginationPosition = 0;
                   }
                   if (initState.notificatios.list.isNotEmpty) {
-                    return Container(
-                      decoration: BoxDecoration(
-                        color: BlindChickenColors.borderBottomColor,
-                        image: DecorationImage(
-                          image: AssetImage('assets/images/news_background.png'),
-                          fit: BoxFit.cover,
+                    return SafeArea(
+                      bottom: false,
+                      child: Container(
+                        decoration: BoxDecoration(
+                          color: BlindChickenColors.borderBottomColor,
+                          image: DecorationImage(
+                            image: AssetImage('assets/images/news_background.png'),
+                            fit: BoxFit.cover,
+                          ),
                         ),
-                      ),
-                      child: NotificationListener<ScrollNotification>(
-                        onNotification: (scrollNotification) {
-                          final currentScroll = scrollNotification.metrics.pixels;
+                        child: NotificationListener<ScrollNotification>(
+                          onNotification: (scrollNotification) {
+                            final currentScroll = scrollNotification.metrics.pixels;
 
-                          if (_historyPosition > currentScroll) {
-                            context.read<NewsBloc>().add(
-                                  NewsEvent.checkButtonTop(
-                                    isButtonTop:
-                                        _historyPosition >= currentScroll && currentScroll > 0,
-                                  ),
-                                );
-                          } else {
-                            if (scrollNotification.metrics.pixels >
-                                    (scrollNotification.metrics.maxScrollExtent - 200) &&
-                                (scrollNotification.metrics.maxScrollExtent - 200) >
-                                    _paginationPosition &&
-                                scrollNotification.metrics.pixels !=
-                                    scrollNotification.metrics.maxScrollExtent) {
-                              _paginationPosition =
-                                  scrollNotification.metrics.maxScrollExtent - 200;
+                            if (_historyPosition > currentScroll) {
+                              context.read<NewsBloc>().add(
+                                    NewsEvent.checkButtonTop(
+                                      isButtonTop:
+                                          _historyPosition >= currentScroll && currentScroll > 0,
+                                    ),
+                                  );
+                            } else {
+                              if (scrollNotification.metrics.pixels >
+                                      (scrollNotification.metrics.maxScrollExtent - 200) &&
+                                  (scrollNotification.metrics.maxScrollExtent - 200) >
+                                      _paginationPosition &&
+                                  scrollNotification.metrics.pixels !=
+                                      scrollNotification.metrics.maxScrollExtent) {
+                                _paginationPosition =
+                                    scrollNotification.metrics.maxScrollExtent - 200;
 
-                              context
-                                  .read<NewsBloc>()
-                                  .add(const NewsEvent.paginationNotifications());
+                                context
+                                    .read<NewsBloc>()
+                                    .add(const NewsEvent.paginationNotifications());
 
-                              if (_historyPosition != scrollNotification.metrics.pixels) {
-                                context.read<NewsBloc>().add(
-                                      NewsEvent.checkButtonTop(
-                                        isButtonTop: false,
-                                      ),
-                                    );
+                                if (_historyPosition != scrollNotification.metrics.pixels) {
+                                  context.read<NewsBloc>().add(
+                                        NewsEvent.checkButtonTop(
+                                          isButtonTop: false,
+                                        ),
+                                      );
+                                }
                               }
                             }
-                          }
 
-                          _historyPosition = currentScroll;
+                            _historyPosition = currentScroll;
 
-                          return false;
-                        },
-                        child: ListView.builder(
-                          physics: const BouncingScrollPhysics(),
-                          itemCount: initState.notificatios.list.length,
-                          padding: EdgeInsets.zero,
-                          itemBuilder: (context, index) {
-                            return Column(
-                              children: [
-                                SizedBox(
-                                  height: index == 0 ? 130 - 14 : 0,
-                                ),
-                                GestureDetector(
-                                  onTap: () {
-                                    context.navigateTo(
-                                      NotificationInfoDescriptionRoute(
-                                        info: initState.notificatios.list[index],
-                                      ),
-                                    );
-                                  },
-                                  child: Column(
-                                    children: [
-                                      NotificationItemTabInfo(
-                                        item: initState.notificatios.list[index],
-                                      ),
-                                      if (initState.notificatios.list.length - 1 == index)
-                                        SizedBox(
-                                          height: 10,
-                                        ),
-                                    ],
-                                  ),
-                                ),
-                              ],
-                            );
+                            return false;
                           },
+                          child: ListView.builder(
+                            physics: const BouncingScrollPhysics(),
+                            itemCount: initState.notificatios.list.length,
+                            padding: EdgeInsets.zero,
+                            itemBuilder: (context, index) {
+                              return Column(
+                                children: [
+                                  SizedBox(
+                                    height: index == 0 ? 56 : 0,
+                                  ),
+                                  GestureDetector(
+                                    onTap: () {
+                                      context.navigateTo(
+                                        NotificationInfoDescriptionRoute(
+                                          info: initState.notificatios.list[index],
+                                        ),
+                                      );
+                                    },
+                                    child: Column(
+                                      children: [
+                                        NotificationItemTabInfo(
+                                          item: initState.notificatios.list[index],
+                                        ),
+                                        if (initState.notificatios.list.length - 1 == index)
+                                          SizedBox(
+                                            height: 10,
+                                          ),
+                                      ],
+                                    ),
+                                  ),
+                                ],
+                              );
+                            },
+                          ),
                         ),
                       ),
                     );

@@ -66,172 +66,176 @@ class _NewsTabInfoState extends State<NewsTabInfo> {
                   }
 
                   if (initState.news.list.isNotEmpty) {
-                    return Container(
-                      decoration: BoxDecoration(
-                        color: BlindChickenColors.borderBottomColor,
-                        image: DecorationImage(
-                          image: AssetImage('assets/images/news_background.png'),
-                          fit: BoxFit.cover,
+                    return SafeArea(
+                      bottom: false,
+                      child: Container(
+                        decoration: BoxDecoration(
+                          color: BlindChickenColors.borderBottomColor,
+                          image: DecorationImage(
+                            image: AssetImage('assets/images/news_background.png'),
+                            fit: BoxFit.cover,
+                          ),
                         ),
-                      ),
-                      child: NotificationListener<ScrollNotification>(
-                        onNotification: (scrollNotification) {
-                          _loadMoreData(scrollNotification.metrics.pixels);
+                        child: NotificationListener<ScrollNotification>(
+                          onNotification: (scrollNotification) {
+                            _loadMoreData(scrollNotification.metrics.pixels);
 
-                          return true;
-                        },
-                        child: ListView.builder(
-                          itemCount: initState.news.list.length,
-                          padding: EdgeInsets.zero,
-                          itemBuilder: (context, index) {
-                            return Column(
-                              children: [
-                                SizedBox(
-                                  height: index == 0 ? 130 - 22 : 0,
-                                ),
-                                VisibilityDetector(
-                                  key: Key(index.toString()),
-                                  onVisibilityChanged: (visibilityInfo) {
-                                    if (!(initState.isError ?? false)) {
-                                      if (initState.news.list.length - 6 < index &&
-                                          (initState.news.list.length - 3) ~/ 10 !=
-                                              initState.offsetNews) {
-                                        context.read<NewsBloc>().add(NewsEvent.paginationNews());
-                                      } else {
-                                        if (visibilityInfo.visibleFraction > 0.0 &&
-                                            initState.news.list[index].isViewed) {
-                                          context.read<NewsBloc>().add(
-                                                NewsEvent.updateReadNews(
-                                                  id: initState.news.list[index].id,
-                                                  typeNews: 'news',
-                                                ),
-                                              );
-                                          log(index.toString());
+                            return true;
+                          },
+                          child: ListView.builder(
+                            itemCount: initState.news.list.length,
+                            padding: EdgeInsets.zero,
+                            itemBuilder: (context, index) {
+                              return Column(
+                                children: [
+                                  SizedBox(
+                                    height: index == 0 ? 46 : 0,
+                                  ),
+                                  VisibilityDetector(
+                                    key: Key(index.toString()),
+                                    onVisibilityChanged: (visibilityInfo) {
+                                      if (!(initState.isError ?? false)) {
+                                        if (initState.news.list.length - 6 < index &&
+                                            (initState.news.list.length - 3) ~/ 10 !=
+                                                initState.offsetNews) {
+                                          context.read<NewsBloc>().add(NewsEvent.paginationNews());
+                                        } else {
+                                          if (visibilityInfo.visibleFraction > 0.0 &&
+                                              initState.news.list[index].isViewed) {
+                                            context.read<NewsBloc>().add(
+                                                  NewsEvent.updateReadNews(
+                                                    id: initState.news.list[index].id,
+                                                    typeNews: 'news',
+                                                  ),
+                                                );
+                                            log(index.toString());
+                                          }
+                                        }
+
+                                        final updateData = GetIt.I.get<UpdateDataService>();
+                                        if (initState.news.list[index].typeMedia != 'video' &&
+                                            initState.news.list[index].typeVideo != 'original' &&
+                                            updateData.videoController.value.isInitialized &&
+                                            updateData.videoController.value.duration !=
+                                                Duration.zero) {
+                                          // context.read<NewsBloc>().add(
+                                          //       NewsEvent.checkiDisabledVideo(
+                                          //         isDisabledVideo: true,
+                                          //       ),
+                                          //     );
+                                        } else {
+                                          // context.read<NewsBloc>().add(
+                                          //       NewsEvent.checkiDisabledVideo(
+                                          //         isDisabledVideo: false,
+                                          //       ),
+                                          //     );
                                         }
                                       }
-
-                                      final updateData = GetIt.I.get<UpdateDataService>();
-                                      if (initState.news.list[index].typeMedia != 'video' &&
-                                          initState.news.list[index].typeVideo != 'original' &&
-                                          updateData.videoController.value.isInitialized &&
-                                          updateData.videoController.value.duration !=
-                                              Duration.zero) {
-                                        // context.read<NewsBloc>().add(
-                                        //       NewsEvent.checkiDisabledVideo(
-                                        //         isDisabledVideo: true,
-                                        //       ),
-                                        //     );
-                                      } else {
-                                        // context.read<NewsBloc>().add(
-                                        //       NewsEvent.checkiDisabledVideo(
-                                        //         isDisabledVideo: false,
-                                        //       ),
-                                        //     );
-                                      }
-                                    }
-                                  },
-                                  child: NewsItemTabInfo(
-                                    item: initState.news.list[index],
-                                    onTap: () {
-                                      context.navigateTo(
-                                        NewsInfoDescriptionRoute(
-                                          info: initState.news.list[index],
-                                        ),
-                                      );
                                     },
-                                    onGoTap: () {
-                                      if (initState.news.list[index].typePath == 'catalog') {
-                                        AppMetrica.reportEvent(
-                                            'Переход в каталог из списка новостей по кнопке');
-                                        context.read<CatalogBloc>().add(
-                                              CatalogEvent.getInfoProducts(
-                                                path: initState.news.list[index].path,
-                                                isCleanHistory: true,
-                                              ),
-                                            );
+                                    child: NewsItemTabInfo(
+                                      item: initState.news.list[index],
+                                      onTap: () {
+                                        context.navigateTo(
+                                          NewsInfoDescriptionRoute(
+                                            info: initState.news.list[index],
+                                          ),
+                                        );
+                                      },
+                                      onGoTap: () {
+                                        if (initState.news.list[index].typePath == 'catalog') {
+                                          AppMetrica.reportEvent(
+                                              'Переход в каталог из списка новостей по кнопке');
+                                          context.read<CatalogBloc>().add(
+                                                CatalogEvent.getInfoProducts(
+                                                  path: initState.news.list[index].path,
+                                                  isCleanHistory: true,
+                                                ),
+                                              );
 
-                                        context.navigateTo(
-                                          HomeAutoRouterRoute(
-                                            children: [
-                                              CatalogRoute(
-                                                title: '',
-                                                url: initState.news.list[index].path,
-                                                lastPath: 'news',
-                                              ),
-                                            ],
-                                          ),
-                                        );
-                                      } else if (initState.news.list[index].typePath == 'product') {
-                                        AppMetrica.reportEvent(
-                                            'Переход в описание товара из списка новостей по кнопке');
-                                        context.read<CatalogBloc>().add(
-                                              CatalogEvent.getInfoProduct(
-                                                code: initState.news.list[index].code,
-                                                titleScreen: 'Список новостей',
-                                                typeAddProductToShoppingCart: 'Кнопка',
-                                                identifierAddProductToShoppingCart: '4',
-                                              ),
-                                            );
-                                        context.navigateTo(
-                                          HomeAutoRouterRoute(
-                                            children: [
-                                              CatalogCardInfoRoute(
-                                                isLike: false,
-                                                listItems: const [],
-                                                favouritesProducts: const [],
-                                                isChildRoute: false,
-                                                lastPath: 'news',
-                                              ),
-                                            ],
-                                          ),
-                                        );
-                                      } else if (initState.news.list[index].typePath ==
-                                          'boutique') {
-                                        AppMetrica.reportEvent(
-                                            'Переход в описание бутика из списка новостей по кнопке');
-                                        context.read<BoutiquesBloc>().add(
-                                              BoutiquesEvent.getInfoBoutique(
-                                                uid: initState.news.list[index].uidStore,
-                                              ),
-                                            );
-                                        context.navigateTo(
-                                          HomeAutoRouterRoute(
-                                            children: [
-                                              BoutiquesDescriptionRoute(
-                                                lastPath: 'news',
-                                              ),
-                                            ],
-                                          ),
-                                        );
-                                      } else if (initState.news.list[index].typePath ==
-                                          'gift_card') {
-                                        AppMetrica.reportEvent(
-                                            'Переход на страницу подарочной карты из списка новостей по кнопке');
-                                        context.navigateTo(
-                                          HomeAutoRouterRoute(
-                                            children: [
-                                              GiftCardRoute(
-                                                lastPath: 'news',
-                                              ),
-                                            ],
-                                          ),
-                                        );
-                                      }
-                                    },
-                                  ),
-                                ),
-                                if (_isLoading && index == initState.news.list.length - 1)
-                                  Container(
-                                    height: 40,
-                                    width: 40,
-                                    padding: EdgeInsets.all(8),
-                                    child: CircularProgressIndicator(
-                                      strokeWidth: 3,
+                                          context.navigateTo(
+                                            HomeAutoRouterRoute(
+                                              children: [
+                                                CatalogRoute(
+                                                  title: '',
+                                                  url: initState.news.list[index].path,
+                                                  lastPath: 'news',
+                                                ),
+                                              ],
+                                            ),
+                                          );
+                                        } else if (initState.news.list[index].typePath ==
+                                            'product') {
+                                          AppMetrica.reportEvent(
+                                              'Переход в описание товара из списка новостей по кнопке');
+                                          context.read<CatalogBloc>().add(
+                                                CatalogEvent.getInfoProduct(
+                                                  code: initState.news.list[index].code,
+                                                  titleScreen: 'Список новостей',
+                                                  typeAddProductToShoppingCart: 'Кнопка',
+                                                  identifierAddProductToShoppingCart: '4',
+                                                ),
+                                              );
+                                          context.navigateTo(
+                                            HomeAutoRouterRoute(
+                                              children: [
+                                                CatalogCardInfoRoute(
+                                                  isLike: false,
+                                                  listItems: const [],
+                                                  favouritesProducts: const [],
+                                                  isChildRoute: false,
+                                                  lastPath: 'news',
+                                                ),
+                                              ],
+                                            ),
+                                          );
+                                        } else if (initState.news.list[index].typePath ==
+                                            'boutique') {
+                                          AppMetrica.reportEvent(
+                                              'Переход в описание бутика из списка новостей по кнопке');
+                                          context.read<BoutiquesBloc>().add(
+                                                BoutiquesEvent.getInfoBoutique(
+                                                  uid: initState.news.list[index].uidStore,
+                                                ),
+                                              );
+                                          context.navigateTo(
+                                            HomeAutoRouterRoute(
+                                              children: [
+                                                BoutiquesDescriptionRoute(
+                                                  lastPath: 'news',
+                                                ),
+                                              ],
+                                            ),
+                                          );
+                                        } else if (initState.news.list[index].typePath ==
+                                            'gift_card') {
+                                          AppMetrica.reportEvent(
+                                              'Переход на страницу подарочной карты из списка новостей по кнопке');
+                                          context.navigateTo(
+                                            HomeAutoRouterRoute(
+                                              children: [
+                                                GiftCardRoute(
+                                                  lastPath: 'news',
+                                                ),
+                                              ],
+                                            ),
+                                          );
+                                        }
+                                      },
                                     ),
                                   ),
-                              ],
-                            );
-                          },
+                                  if (_isLoading && index == initState.news.list.length - 1)
+                                    Container(
+                                      height: 40,
+                                      width: 40,
+                                      padding: EdgeInsets.all(8),
+                                      child: CircularProgressIndicator(
+                                        strokeWidth: 3,
+                                      ),
+                                    ),
+                                ],
+                              );
+                            },
+                          ),
                         ),
                       ),
                     );

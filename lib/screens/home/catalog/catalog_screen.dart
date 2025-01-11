@@ -69,7 +69,6 @@ class _CatalogScreenState extends State<CatalogScreen> {
   double _paginationPosition = 0.0;
   int _currentPage = 1;
   double _boundaryOffset = 0.5;
-  bool isButtonTop = false;
   bool _isSwipe = true;
   bool _isScroll = true;
   bool _isZoom = false;
@@ -1119,7 +1118,8 @@ class _CatalogScreenState extends State<CatalogScreen> {
                         }
                       },
                       child: Container(
-                        height: MediaQuery.of(context).size.height,
+                        height:
+                            MediaQuery.of(context).size.height - (initState.isButtonTop ? 180 : 0),
                         width: 50,
                         color: Colors.transparent,
                       ),
