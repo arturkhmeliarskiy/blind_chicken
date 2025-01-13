@@ -9,15 +9,15 @@ import 'package:blind_chicken/screens/news/widgets/news_media_slider.dart';
 import 'package:blind_chicken/screens/news/widgets/news_slider.dart';
 import 'package:blind_chicken/screens/news/widgets/news_video_player.dart';
 import 'package:blind_chicken/screens/news/widgets/news_youtube_video_player.dart';
-import 'package:blocs/blocs.dart';
+import 'package:blind_chicken/old_repos/blocs/blocs.dart';
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:flutter_widget_from_html/flutter_widget_from_html.dart';
 import 'package:get_it/get_it.dart';
-import 'package:shared/shared.dart';
-import 'package:ui_kit/ui_kit.dart';
+import 'package:blind_chicken/old_repos/shared/shared.dart';
+import 'package:blind_chicken/old_repos/ui_kit/ui_kit.dart';
 import 'package:url_launcher/url_launcher.dart';
 
 @RoutePage()

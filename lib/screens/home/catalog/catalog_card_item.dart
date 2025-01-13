@@ -2,9 +2,9 @@ import 'package:auto_route/auto_route.dart';
 import 'package:blind_chicken/screens/home/catalog/widget/catalog_slider_images_card_item.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
-import 'package:models/models.dart';
-import 'package:shared/shared.dart';
-import 'package:ui_kit/ui_kit.dart';
+import 'package:blind_chicken/old_repos/models/models.dart';
+import 'package:blind_chicken/old_repos/shared/shared.dart';
+import 'package:blind_chicken/old_repos/ui_kit/ui_kit.dart';
 
 class CatalogCardItem extends StatefulWidget {
   const CatalogCardItem({

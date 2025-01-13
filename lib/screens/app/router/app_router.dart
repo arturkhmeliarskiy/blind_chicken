@@ -75,7 +75,7 @@ import 'package:blind_chicken/screens/web_view/blind_chicken_webview_screen.dart
 import 'package:blind_chicken/screens/web_view/sberbank_payment_webview_screen.dart';
 import 'package:blind_chicken/screens/yandex_map/yandex_map_screen.dart';
 import 'package:flutter/material.dart';
-import 'package:models/models.dart';
+import 'package:blind_chicken/old_repos/models/models.dart';
 import 'package:youtube_player_flutter/youtube_player_flutter.dart';
 import '../../contacts/contacts_screen.dart';
 

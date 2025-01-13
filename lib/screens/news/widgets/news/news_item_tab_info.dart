@@ -1,4 +1,4 @@
-import 'dart:developer';
+import 'package:blind_chicken/utils/logging.dart';
 
 import 'package:auto_route/auto_route.dart';
 import 'package:blind_chicken/screens/app/router/app_router.dart';
@@ -10,10 +10,10 @@ import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_widget_from_html/flutter_widget_from_html.dart';
 import 'package:get_it/get_it.dart';
-import 'package:models/models.dart';
-import 'package:shared/shared.dart';
+import 'package:blind_chicken/old_repos/models/models.dart';
+import 'package:blind_chicken/old_repos/shared/shared.dart';
 import 'package:shimmer/shimmer.dart';
-import 'package:ui_kit/ui_kit.dart';
+import 'package:blind_chicken/old_repos/ui_kit/ui_kit.dart';
 import 'package:video_player/video_player.dart';
 import 'package:visibility_detector/visibility_detector.dart';
 
@@ -75,7 +75,7 @@ class _NewsItemTabInfoState extends State<NewsItemTabInfo> with AutomaticKeepAli
           key: Key('video_${widget.item.video}'),
           onVisibilityChanged: (visibilityInfo) {
             double visiblePercentage = visibilityInfo.visibleFraction * 100;
-            log("Video visibility: $visiblePercentage%", name: "Visibility");
+            logging("Video visibility: $visiblePercentage%", name: "Visibility", stackTrace: StackTrace.current);
 
             if (visiblePercentage > 35) {
               final valueContorller = _controller;
@@ -83,7 +83,7 @@ class _NewsItemTabInfoState extends State<NewsItemTabInfo> with AutomaticKeepAli
                 // Check if the video is already playing, if not, play it
                 if (!(_controller?.value.isPlaying ?? false)) {
                   _controller?.play();
-                  log("Video started playing", name: "VideoState");
+                  logging("Video started playing", name: "VideoState", stackTrace: StackTrace.current);
                 }
               }
             } else {
@@ -92,7 +92,7 @@ class _NewsItemTabInfoState extends State<NewsItemTabInfo> with AutomaticKeepAli
                 // Pause the video if it's not the active video or is less than 50% visible
                 if (_controller?.value.isInitialized ?? false) {
                   _controller?.pause();
-                  log("Video paused", name: "VideoState");
+                  logging("Video paused", name: "VideoState", stackTrace: StackTrace.current);
                 }
               }
             }
@@ -181,7 +181,7 @@ class _NewsItemTabInfoState extends State<NewsItemTabInfo> with AutomaticKeepAli
                           child: PopScope(
                             canPop: false,
                             onPopInvokedWithResult: (didPop, result) {
-                              log(result.toString());
+                              logging(result.toString(), stackTrace: StackTrace.current);
                             },
                             child: HtmlWidget(
                               widget.item.announcement,

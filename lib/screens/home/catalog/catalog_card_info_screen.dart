@@ -1,5 +1,5 @@
 import 'dart:async';
-import 'dart:developer';
+import 'package:blind_chicken/utils/logging.dart';
 
 import 'package:appmetrica_plugin/appmetrica_plugin.dart';
 import 'package:auto_route/auto_route.dart';
@@ -12,16 +12,16 @@ import 'package:blind_chicken/screens/home/catalog/widget/catalog_description_pr
 import 'package:blind_chicken/screens/home/catalog/widget/catalog_slider_images.dart';
 import 'package:blind_chicken/screens/home/catalog/widget/catalog_slider_products.dart';
 import 'package:blind_chicken/screens/home/catalog/widget/catalog_variant_slider_images.dart';
-import 'package:blocs/blocs.dart';
+import 'package:blind_chicken/old_repos/blocs/blocs.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:flutter_swipe_detector/flutter_swipe_detector.dart';
 import 'package:get_it/get_it.dart';
-import 'package:models/models.dart';
+import 'package:blind_chicken/old_repos/models/models.dart';
 import 'package:share_plus/share_plus.dart';
-import 'package:shared/shared.dart';
-import 'package:ui_kit/ui_kit.dart';
+import 'package:blind_chicken/old_repos/shared/shared.dart';
+import 'package:blind_chicken/old_repos/ui_kit/ui_kit.dart';
 
 @RoutePage()
 class CatalogCardInfoScreen extends StatefulWidget {
@@ -547,7 +547,7 @@ class _CatalogCardInfoScreenState extends State<CatalogCardInfoScreen> {
                                             }
                                           },
                                           onTap: (index) {
-                                            log(index.toString());
+                                            logging(index.toString(), stackTrace: StackTrace.current);
                                             context.navigateTo(
                                               CatalogPreviewImagesRoute(
                                                 selectIndex: index,
@@ -1473,7 +1473,7 @@ class _CatalogCardInfoScreenState extends State<CatalogCardInfoScreen> {
                                                               ),
                                                               LayoutBuilder(
                                                                 builder: (context, constraints) {
-                                                                  log(constraints.toString());
+                                                                  logging(constraints.toString(), stackTrace: StackTrace.current);
                                                                   return CatalogSliderProducts(
                                                                     onSelectProduct: (value) {
                                                                       context
@@ -1693,7 +1693,7 @@ class _CatalogCardInfoScreenState extends State<CatalogCardInfoScreen> {
                                     //       setState(() {
                                     //         _isSwipe = false;
                                     //       });
-                                    //       log((details.velocity.pixelsPerSecond.dx).toString());
+                                    //       logging((details.velocity.pixelsPerSecond.dx).toString(), stackTrace: StackTrace.current);
                                     //     }
                                     //   },
                                     //   child: Container(

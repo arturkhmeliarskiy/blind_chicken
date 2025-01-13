@@ -1,7 +1,7 @@
 import 'package:auto_route/auto_route.dart';
 import 'package:blind_chicken/screens/app/router/app_router.dart';
 import 'package:blind_chicken/screens/home/catalog/catalog_card_item.dart';
-import 'package:blocs/blocs.dart';
+import 'package:blind_chicken/old_repos/blocs/blocs.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 

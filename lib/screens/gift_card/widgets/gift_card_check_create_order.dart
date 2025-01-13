@@ -1,5 +1,5 @@
 import 'package:auto_route/auto_route.dart';
-import 'package:blocs/blocs.dart';
+import 'package:blind_chicken/old_repos/blocs/blocs.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 

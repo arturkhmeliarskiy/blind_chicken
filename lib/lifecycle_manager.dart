@@ -1,5 +1,4 @@
-import 'dart:developer';
-
+import 'package:blind_chicken/utils/logging.dart';
 import 'package:flutter/material.dart';
 
 class LifeCycleManager extends StatefulWidget {
@@ -15,8 +14,8 @@ class LifeCycleManager extends StatefulWidget {
     this.paused,
     this.detached,
     this.resumed,
-    Key? key,
-  }) : super(key: key);
+    super.key,
+  });
 
   @override
   _LifeCycleManagerState createState() => _LifeCycleManagerState();
@@ -44,19 +43,19 @@ class _LifeCycleManagerState extends State<LifeCycleManager>
     switch (state) {
       case AppLifecycleState.inactive:
         widget.inactive?.call();
-        log('appLifeCycleState inactive');
+        logging('appLifeCycleState inactive', stackTrace: StackTrace.current);
         break;
       case AppLifecycleState.resumed:
         widget.resumed?.call();
-        log('appLifeCycleState resumed');
+        logging('appLifeCycleState resumed', stackTrace: StackTrace.current);
         break;
       case AppLifecycleState.paused:
         widget.paused?.call();
-        log('appLifeCycleState paused');
+        logging('appLifeCycleState paused', stackTrace: StackTrace.current);
         break;
       case AppLifecycleState.detached:
         widget.detached?.call();
-        log('appLifeCycleState detached');
+        logging('appLifeCycleState detached', stackTrace: StackTrace.current);
         break;
       case AppLifecycleState.hidden:
       // TODO: Handle this case.

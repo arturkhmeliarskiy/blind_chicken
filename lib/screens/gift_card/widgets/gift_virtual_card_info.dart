@@ -1,8 +1,8 @@
 import 'package:blind_chicken/screens/gift_card/widgets/gift_virtual_card_parametrs.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-import 'package:models/models.dart';
-import 'package:ui_kit/ui_kit.dart';
+import 'package:blind_chicken/old_repos/models/models.dart';
+import 'package:blind_chicken/old_repos/ui_kit/ui_kit.dart';
 
 class GiftVirtualCardInfo extends StatefulWidget {
   const GiftVirtualCardInfo({

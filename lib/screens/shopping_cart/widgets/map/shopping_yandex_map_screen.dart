@@ -10,9 +10,9 @@ import 'package:flutter_svg/flutter_svg.dart';
 // ignore: depend_on_referenced_packages
 import 'package:geolocator/geolocator.dart';
 import 'package:get_it/get_it.dart';
-import 'package:models/models.dart';
-import 'package:shared/shared.dart';
-import 'package:ui_kit/ui_kit.dart';
+import 'package:blind_chicken/old_repos/models/models.dart';
+import 'package:blind_chicken/old_repos/shared/shared.dart';
+import 'package:blind_chicken/old_repos/ui_kit/ui_kit.dart';
 import 'package:yandex_mapkit/yandex_mapkit.dart';
 
 @RoutePage()

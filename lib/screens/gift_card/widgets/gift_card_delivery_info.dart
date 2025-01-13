@@ -1,6 +1,6 @@
 import 'package:blind_chicken/screens/location/add_location_delivery_info.dart';
 import 'package:flutter/material.dart';
-import 'package:models/models.dart';
+import 'package:blind_chicken/old_repos/models/models.dart';
 
 class GiftCardDeliveryInfo extends StatefulWidget {
   const GiftCardDeliveryInfo({

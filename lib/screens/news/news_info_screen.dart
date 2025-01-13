@@ -3,10 +3,10 @@ import 'package:auto_route/auto_route.dart';
 import 'package:blind_chicken/screens/news/widgets/media/media_tab_info.dart';
 import 'package:blind_chicken/screens/news/widgets/news/news_tab_info.dart';
 import 'package:blind_chicken/screens/news/widgets/notifications/notifications_tab_info.dart';
-import 'package:blocs/blocs.dart';
+import 'package:blind_chicken/old_repos/blocs/blocs.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:ui_kit/ui_kit.dart';
+import 'package:blind_chicken/old_repos/ui_kit/ui_kit.dart';
 
 @RoutePage()
 class NewsInfoScreen extends StatefulWidget {

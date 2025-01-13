@@ -1,20 +1,20 @@
 import 'dart:async';
 import 'dart:convert';
-import 'dart:developer';
 import 'dart:io';
 
 import 'package:app_links/app_links.dart';
 import 'package:appmetrica_plugin/appmetrica_plugin.dart';
 import 'package:appmetrica_push_plugin/appmetrica_push_plugin.dart';
 import 'package:blind_chicken/lifecycle_manager.dart';
+import 'package:blind_chicken/old_repos/blocs/blocs.dart';
+import 'package:blind_chicken/old_repos/shared/shared.dart';
+import 'package:blind_chicken/old_repos/ui_kit/ui_kit.dart';
 import 'package:blind_chicken/screens/app/router/app_router.dart';
-import 'package:blocs/blocs.dart';
+import 'package:blind_chicken/utils/logging.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:get_it/get_it.dart';
-import 'package:shared/shared.dart';
-import 'package:ui_kit/ui_kit.dart';
 
 class App extends StatefulWidget {
   const App({super.key});
@@ -43,7 +43,7 @@ class _AppState extends State<App> {
     _appLinks = AppLinks();
 
     _appLinks.uriLinkStream.listen((uri) async {
-      log('getInitialAppLink: $uri');
+      logging('getInitialAppLink: $uri', stackTrace: StackTrace.current);
       final productCode = uri.path.replaceAll('/product/', '').replaceAll('/', '');
 
       await Future<void>.delayed(
@@ -241,7 +241,7 @@ class _AppState extends State<App> {
               // Check initial link if app was in cold state (terminated)
               final uri = await _appLinks.getLatestLink();
               if (uri != null) {
-                log('getInitialAppLink: $uri');
+                logging('getInitialAppLink: $uri', stackTrace: StackTrace.current);
                 final productCode = uri.path.replaceAll('/product/', '').replaceAll('/', '');
 
                 await Future<void>.delayed(
@@ -397,7 +397,7 @@ class _AppState extends State<App> {
                   updateData.idMessageNotification = iDMessage;
                 }
 
-                log(iDMessage.toString());
+                logging(iDMessage.toString(), stackTrace: StackTrace.current);
               }
             }
           },

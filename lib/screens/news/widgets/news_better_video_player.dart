@@ -1,10 +1,10 @@
-import 'dart:developer';
+import 'package:blind_chicken/utils/logging.dart';
 
 import 'package:better_player/better_player.dart';
 import 'package:blind_chicken/screens/news/widgets/better_video_player.dart';
 import 'package:flutter/material.dart';
 import 'package:shimmer/shimmer.dart';
-import 'package:ui_kit/ui_kit.dart';
+import 'package:blind_chicken/old_repos/ui_kit/ui_kit.dart';
 import 'package:visibility_detector/visibility_detector.dart';
 
 class NewsBetterVideoPlayer extends StatefulWidget {
@@ -91,19 +91,19 @@ class NewsBetterVideoPlayerState extends State<NewsBetterVideoPlayer> {
       key: Key('video_${widget.url}'),
       onVisibilityChanged: (visibilityInfo) {
         double visiblePercentage = visibilityInfo.visibleFraction * 100;
-        log("Video visibility: $visiblePercentage%", name: "Visibility");
+        logging("Video visibility: $visiblePercentage%", name: "Visibility", stackTrace: StackTrace.current);
 
         if (visiblePercentage > 20) {
           // Check if the video is already playing, if not, play it
           if (!(_controller.videoPlayerController?.value.isPlaying ?? false)) {
             _controller.play();
-            log("Video started playing", name: "VideoState");
+            logging("Video started playing", name: "VideoState", stackTrace: StackTrace.current);
           }
         } else {
           // Pause the video if it's not the active video or is less than 50% visible
           if (_controller.videoPlayerController?.value.initialized ?? false) {
             _controller.pause();
-            log("Video paused", name: "VideoState");
+            logging("Video paused", name: "VideoState", stackTrace: StackTrace.current);
           }
         }
         if (visiblePercentage == 0) {

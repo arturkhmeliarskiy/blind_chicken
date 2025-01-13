@@ -1,16 +1,17 @@
 import 'dart:async';
-import 'dart:developer';
 import 'dart:io';
+
 import 'package:appmetrica_plugin/appmetrica_plugin.dart';
 import 'package:appmetrica_push_plugin/appmetrica_push_plugin.dart';
 import 'package:blind_chicken/app.dart';
 import 'package:blind_chicken/bootstraper.dart';
+import 'package:blind_chicken/old_repos/repositories/src/error_analyzer/error_analyzer_repository.dart';
+import 'package:blind_chicken/utils/logging.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:get_it/get_it.dart';
-import 'package:repositories/repositories.dart';
 
 AppMetricaConfig get _config => const AppMetricaConfig(
       '0f36d6f0-0774-4cf2-ad27-20b0289ddcf1',
@@ -34,9 +35,9 @@ Future<void> main() async {
         exception: details.exceptionAsString(),
         stack: details.stack.toString(),
       );
-      log('Stack ${details.stack.toString()}');
-      log('Error ${details.exception.toString()}');
-      log('Relevant ${details.exceptionAsString()}');
+      logging('Stack ${details.stack.toString()}', stackTrace: StackTrace.current);
+      logging('Error ${details.exception.toString()}', stackTrace: StackTrace.current);
+      logging('Relevant ${details.exceptionAsString()}', stackTrace: StackTrace.current);
     };
 
     PlatformDispatcher.instance.onError = (error, stack) {
@@ -44,7 +45,7 @@ Future<void> main() async {
         exception: error.toString(),
         stack: stack.toString(),
       );
-      log('Dispatcher $error $stack');
+      logging('Dispatcher $error $stack', stackTrace: StackTrace.current);
       return true;
     };
 
@@ -65,7 +66,7 @@ Future<void> initializeDefault() async {
       storageBucket: 'blind-chicken-17561.appspot.com',
     ),
   );
-  log('Initialized default app $app');
+  logging('Initialized default app $app', stackTrace: StackTrace.current);
 }
 
 Future<void> sendError({
