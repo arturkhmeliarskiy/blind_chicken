@@ -102,14 +102,6 @@ class BlindChickenTopBannerInfo extends StatelessWidget {
                   );
                 }
               } else if (bannerDataModel.data.type == 'product') {
-                context.read<CatalogBloc>().add(
-                      CatalogEvent.getInfoProduct(
-                        code: bannerDataModel.data.code,
-                        titleScreen: 'Баннер в шапке',
-                        typeAddProductToShoppingCart: 'Кнопка',
-                        identifierAddProductToShoppingCart: '4',
-                      ),
-                    );
                 if (context.router.navigationHistory.urlState.path == "/news_info_description") {
                   NewsInfoDescriptionRouteArgs newsInfoArgs =
                       context.router.navigationHistory.urlState.segments.first.args;
@@ -118,13 +110,15 @@ class BlindChickenTopBannerInfo extends StatelessWidget {
                       children: [
                         HomeAutoRouterRoute(
                           children: [
-                            CatalogCardInfoRoute(
+                            CardInfoRoute(
                               isLike: false,
                               listItems: const [],
                               favouritesProducts: const [],
                               isChildRoute: false,
                               lastPath: 'news_info_description',
                               newsInfo: newsInfoArgs.info,
+                              titleScreen: 'Баннер в шапке',
+                              codeProduct: bannerDataModel.data.code,
                             ),
                           ],
                         ),
@@ -140,13 +134,15 @@ class BlindChickenTopBannerInfo extends StatelessWidget {
                       children: [
                         HomeAutoRouterRoute(
                           children: [
-                            CatalogCardInfoRoute(
+                            CardInfoRoute(
                               isLike: false,
                               listItems: const [],
                               favouritesProducts: const [],
                               isChildRoute: false,
                               lastPath: 'media_info_description',
                               newsMediaInfo: mdiaInfoArgs.info,
+                              titleScreen: 'Баннер в шапке',
+                              codeProduct: bannerDataModel.data.code,
                             ),
                           ],
                         ),
@@ -162,13 +158,15 @@ class BlindChickenTopBannerInfo extends StatelessWidget {
                       children: [
                         HomeAutoRouterRoute(
                           children: [
-                            CatalogCardInfoRoute(
+                            CardInfoRoute(
                               isLike: false,
                               listItems: const [],
                               favouritesProducts: const [],
                               isChildRoute: false,
                               lastPath: 'notfication_info_description',
                               newsNotificationInfo: notficationInfoArgs.info,
+                              titleScreen: 'Баннер в шапке',
+                              codeProduct: bannerDataModel.data.code,
                             ),
                           ],
                         ),
@@ -179,11 +177,13 @@ class BlindChickenTopBannerInfo extends StatelessWidget {
                   context.navigateTo(
                     HomeAutoRouterRoute(
                       children: [
-                        CatalogCardInfoRoute(
+                        CardInfoRoute(
                           isLike: false,
                           listItems: const [],
                           favouritesProducts: const [],
                           isChildRoute: false,
+                          titleScreen: 'Баннер в шапке',
+                          codeProduct: bannerDataModel.data.code,
                         ),
                       ],
                     ),
