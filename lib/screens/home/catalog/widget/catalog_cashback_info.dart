@@ -110,7 +110,7 @@ class _CatalogCashbackInfoState extends State<CatalogCashbackInfo> {
                   ],
                 ),
               ),
-              if (widget.pc < 10000)
+              if (widget.pc < 20000)
                 SizedBox(
                   height: 18,
                   child: Row(
