@@ -27,8 +27,12 @@ mixin _$OrdersResponse {
   String? get countOrders => throw _privateConstructorUsedError;
   List<OrderItemResponse>? get orders => throw _privateConstructorUsedError;
 
+  /// Serializes this OrdersResponse to a JSON map.
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
-  @JsonKey(ignore: true)
+
+  /// Create a copy of OrdersResponse
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   $OrdersResponseCopyWith<OrdersResponse> get copyWith =>
       throw _privateConstructorUsedError;
 }
@@ -56,6 +60,8 @@ class _$OrdersResponseCopyWithImpl<$Res, $Val extends OrdersResponse>
   // ignore: unused_field
   final $Res Function($Val) _then;
 
+  /// Create a copy of OrdersResponse
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -108,6 +114,8 @@ class __$$OrdersResponseImplCopyWithImpl<$Res>
       _$OrdersResponseImpl _value, $Res Function(_$OrdersResponseImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of OrdersResponse
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -187,12 +195,14 @@ class _$OrdersResponseImpl extends _OrdersResponse {
             const DeepCollectionEquality().equals(other._orders, _orders));
   }
 
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   int get hashCode => Object.hash(runtimeType, r, errorMessage, countOrders,
       const DeepCollectionEquality().hash(_orders));
 
-  @JsonKey(ignore: true)
+  /// Create a copy of OrdersResponse
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$OrdersResponseImplCopyWith<_$OrdersResponseImpl> get copyWith =>
@@ -228,8 +238,11 @@ abstract class _OrdersResponse extends OrdersResponse {
   String? get countOrders;
   @override
   List<OrderItemResponse>? get orders;
+
+  /// Create a copy of OrdersResponse
+  /// with the given fields replaced by the non-null parameter values.
   @override
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$OrdersResponseImplCopyWith<_$OrdersResponseImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }

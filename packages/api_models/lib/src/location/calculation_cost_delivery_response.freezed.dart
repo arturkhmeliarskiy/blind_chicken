@@ -26,8 +26,12 @@ mixin _$CalculationCostDeliveryRsponse {
   String? get errorMessage => throw _privateConstructorUsedError;
   int? get price => throw _privateConstructorUsedError;
 
+  /// Serializes this CalculationCostDeliveryRsponse to a JSON map.
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
-  @JsonKey(ignore: true)
+
+  /// Create a copy of CalculationCostDeliveryRsponse
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   $CalculationCostDeliveryRsponseCopyWith<CalculationCostDeliveryRsponse>
       get copyWith => throw _privateConstructorUsedError;
 }
@@ -54,6 +58,8 @@ class _$CalculationCostDeliveryRsponseCopyWithImpl<$Res,
   // ignore: unused_field
   final $Res Function($Val) _then;
 
+  /// Create a copy of CalculationCostDeliveryRsponse
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -105,6 +111,8 @@ class __$$CalculationCostDeliveryRsponseImplCopyWithImpl<$Res>
       $Res Function(_$CalculationCostDeliveryRsponseImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of CalculationCostDeliveryRsponse
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -172,11 +180,13 @@ class _$CalculationCostDeliveryRsponseImpl
             (identical(other.price, price) || other.price == price));
   }
 
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   int get hashCode => Object.hash(runtimeType, r, e, errorMessage, price);
 
-  @JsonKey(ignore: true)
+  /// Create a copy of CalculationCostDeliveryRsponse
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$CalculationCostDeliveryRsponseImplCopyWith<
@@ -212,8 +222,11 @@ abstract class _CalculationCostDeliveryRsponse
   String? get errorMessage;
   @override
   int? get price;
+
+  /// Create a copy of CalculationCostDeliveryRsponse
+  /// with the given fields replaced by the non-null parameter values.
   @override
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$CalculationCostDeliveryRsponseImplCopyWith<
           _$CalculationCostDeliveryRsponseImpl>
       get copyWith => throw _privateConstructorUsedError;

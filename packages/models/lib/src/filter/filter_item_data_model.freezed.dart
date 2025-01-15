@@ -20,7 +20,9 @@ mixin _$FilterItemDataModel {
   String get value => throw _privateConstructorUsedError;
   String get typeFilter => throw _privateConstructorUsedError;
 
-  @JsonKey(ignore: true)
+  /// Create a copy of FilterItemDataModel
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   $FilterItemDataModelCopyWith<FilterItemDataModel> get copyWith =>
       throw _privateConstructorUsedError;
 }
@@ -44,6 +46,8 @@ class _$FilterItemDataModelCopyWithImpl<$Res, $Val extends FilterItemDataModel>
   // ignore: unused_field
   final $Res Function($Val) _then;
 
+  /// Create a copy of FilterItemDataModel
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -87,6 +91,8 @@ class __$$FilterItemDataModelImplCopyWithImpl<$Res>
       $Res Function(_$FilterItemDataModelImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of FilterItemDataModel
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -144,7 +150,9 @@ class _$FilterItemDataModelImpl extends _FilterItemDataModel {
   @override
   int get hashCode => Object.hash(runtimeType, id, value, typeFilter);
 
-  @JsonKey(ignore: true)
+  /// Create a copy of FilterItemDataModel
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$FilterItemDataModelImplCopyWith<_$FilterItemDataModelImpl> get copyWith =>
@@ -165,8 +173,11 @@ abstract class _FilterItemDataModel extends FilterItemDataModel {
   String get value;
   @override
   String get typeFilter;
+
+  /// Create a copy of FilterItemDataModel
+  /// with the given fields replaced by the non-null parameter values.
   @override
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$FilterItemDataModelImplCopyWith<_$FilterItemDataModelImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }

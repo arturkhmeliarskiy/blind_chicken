@@ -21,7 +21,9 @@ mixin _$StoreVersionAppDataModel {
   StoreVersionAppInfoDataModel get version =>
       throw _privateConstructorUsedError;
 
-  @JsonKey(ignore: true)
+  /// Create a copy of StoreVersionAppDataModel
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   $StoreVersionAppDataModelCopyWith<StoreVersionAppDataModel> get copyWith =>
       throw _privateConstructorUsedError;
 }
@@ -48,6 +50,8 @@ class _$StoreVersionAppDataModelCopyWithImpl<$Res,
   // ignore: unused_field
   final $Res Function($Val) _then;
 
+  /// Create a copy of StoreVersionAppDataModel
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -71,6 +75,8 @@ class _$StoreVersionAppDataModelCopyWithImpl<$Res,
     ) as $Val);
   }
 
+  /// Create a copy of StoreVersionAppDataModel
+  /// with the given fields replaced by the non-null parameter values.
   @override
   @pragma('vm:prefer-inline')
   $StoreVersionAppInfoDataModelCopyWith<$Res> get version {
@@ -105,6 +111,8 @@ class __$$StoreVersionAppDataModelImplCopyWithImpl<$Res>
       $Res Function(_$StoreVersionAppDataModelImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of StoreVersionAppDataModel
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -161,7 +169,9 @@ class _$StoreVersionAppDataModelImpl extends _StoreVersionAppDataModel {
   @override
   int get hashCode => Object.hash(runtimeType, r, e, version);
 
-  @JsonKey(ignore: true)
+  /// Create a copy of StoreVersionAppDataModel
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$StoreVersionAppDataModelImplCopyWith<_$StoreVersionAppDataModelImpl>
@@ -183,8 +193,11 @@ abstract class _StoreVersionAppDataModel extends StoreVersionAppDataModel {
   String get e;
   @override
   StoreVersionAppInfoDataModel get version;
+
+  /// Create a copy of StoreVersionAppDataModel
+  /// with the given fields replaced by the non-null parameter values.
   @override
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$StoreVersionAppDataModelImplCopyWith<_$StoreVersionAppDataModelImpl>
       get copyWith => throw _privateConstructorUsedError;
 }

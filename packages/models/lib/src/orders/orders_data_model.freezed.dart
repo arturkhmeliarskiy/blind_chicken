@@ -21,7 +21,9 @@ mixin _$OrdersDataModel {
   String get countOrders => throw _privateConstructorUsedError;
   List<OrderItemDataModel> get orders => throw _privateConstructorUsedError;
 
-  @JsonKey(ignore: true)
+  /// Create a copy of OrdersDataModel
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   $OrdersDataModelCopyWith<OrdersDataModel> get copyWith =>
       throw _privateConstructorUsedError;
 }
@@ -49,6 +51,8 @@ class _$OrdersDataModelCopyWithImpl<$Res, $Val extends OrdersDataModel>
   // ignore: unused_field
   final $Res Function($Val) _then;
 
+  /// Create a copy of OrdersDataModel
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -101,6 +105,8 @@ class __$$OrdersDataModelImplCopyWithImpl<$Res>
       _$OrdersDataModelImpl _value, $Res Function(_$OrdersDataModelImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of OrdersDataModel
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -177,7 +183,9 @@ class _$OrdersDataModelImpl extends _OrdersDataModel {
   int get hashCode => Object.hash(runtimeType, r, errorMessage, countOrders,
       const DeepCollectionEquality().hash(_orders));
 
-  @JsonKey(ignore: true)
+  /// Create a copy of OrdersDataModel
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$OrdersDataModelImplCopyWith<_$OrdersDataModelImpl> get copyWith =>
@@ -201,8 +209,11 @@ abstract class _OrdersDataModel extends OrdersDataModel {
   String get countOrders;
   @override
   List<OrderItemDataModel> get orders;
+
+  /// Create a copy of OrdersDataModel
+  /// with the given fields replaced by the non-null parameter values.
   @override
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$OrdersDataModelImplCopyWith<_$OrdersDataModelImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }

@@ -28,8 +28,12 @@ mixin _$AuthResponse {
   int? get seconds => throw _privateConstructorUsedError;
   String? get send => throw _privateConstructorUsedError;
 
+  /// Serializes this AuthResponse to a JSON map.
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
-  @JsonKey(ignore: true)
+
+  /// Create a copy of AuthResponse
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   $AuthResponseCopyWith<AuthResponse> get copyWith =>
       throw _privateConstructorUsedError;
 }
@@ -60,6 +64,8 @@ class _$AuthResponseCopyWithImpl<$Res, $Val extends AuthResponse>
   // ignore: unused_field
   final $Res Function($Val) _then;
 
+  /// Create a copy of AuthResponse
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -93,6 +99,8 @@ class _$AuthResponseCopyWithImpl<$Res, $Val extends AuthResponse>
     ) as $Val);
   }
 
+  /// Create a copy of AuthResponse
+  /// with the given fields replaced by the non-null parameter values.
   @override
   @pragma('vm:prefer-inline')
   $CapthaResponseCopyWith<$Res>? get captcha {
@@ -133,6 +141,8 @@ class __$$AuthResponseImplCopyWithImpl<$Res>
       _$AuthResponseImpl _value, $Res Function(_$AuthResponseImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of AuthResponse
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -212,12 +222,14 @@ class _$AuthResponseImpl extends _AuthResponse {
             (identical(other.send, send) || other.send == send));
   }
 
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   int get hashCode =>
       Object.hash(runtimeType, r, captcha, errorMessage, seconds, send);
 
-  @JsonKey(ignore: true)
+  /// Create a copy of AuthResponse
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$AuthResponseImplCopyWith<_$AuthResponseImpl> get copyWith =>
@@ -255,8 +267,11 @@ abstract class _AuthResponse extends AuthResponse {
   int? get seconds;
   @override
   String? get send;
+
+  /// Create a copy of AuthResponse
+  /// with the given fields replaced by the non-null parameter values.
   @override
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$AuthResponseImplCopyWith<_$AuthResponseImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }

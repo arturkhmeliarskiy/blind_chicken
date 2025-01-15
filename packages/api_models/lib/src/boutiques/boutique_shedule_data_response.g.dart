@@ -9,8 +9,8 @@ part of 'boutique_shedule_data_response.dart';
 _$BoutiqueSheduleResponseImpl _$$BoutiqueSheduleResponseImplFromJson(
         Map<String, dynamic> json) =>
     _$BoutiqueSheduleResponseImpl(
-      s: json['s'] as int?,
-      e: json['e'] as int?,
+      s: (json['s'] as num?)?.toInt(),
+      e: (json['e'] as num?)?.toInt(),
     );
 
 Map<String, dynamic> _$$BoutiqueSheduleResponseImplToJson(

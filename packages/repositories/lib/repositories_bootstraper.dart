@@ -76,5 +76,10 @@ Future<void> initRepositories(GetIt getIt) async {
       () => ErrorAnalyzerRepository(
         getIt.get<ErrorAnalyzerService>(),
       ),
+    )
+    ..registerFactory(
+      () => ContentRepository(
+        getIt.get<ContentService>(),
+      ),
     );
 }

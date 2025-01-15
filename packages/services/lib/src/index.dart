@@ -11,3 +11,4 @@ export 'news/news_service.dart';
 export 'store_version_app/store_version_app_service.dart';
 export 'gift_card/gift_card_service.dart';
 export 'error_analyzer/error_analyzer_service.dart';
+export 'content_service/content_service.dart';

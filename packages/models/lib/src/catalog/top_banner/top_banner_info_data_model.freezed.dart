@@ -25,7 +25,9 @@ mixin _$TopBannerInfoDataModel {
   String get uid => throw _privateConstructorUsedError;
   String get idNews => throw _privateConstructorUsedError;
 
-  @JsonKey(ignore: true)
+  /// Create a copy of TopBannerInfoDataModel
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   $TopBannerInfoDataModelCopyWith<TopBannerInfoDataModel> get copyWith =>
       throw _privateConstructorUsedError;
 }
@@ -58,6 +60,8 @@ class _$TopBannerInfoDataModelCopyWithImpl<$Res,
   // ignore: unused_field
   final $Res Function($Val) _then;
 
+  /// Create a copy of TopBannerInfoDataModel
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -137,6 +141,8 @@ class __$$TopBannerInfoDataModelImplCopyWithImpl<$Res>
       $Res Function(_$TopBannerInfoDataModelImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of TopBannerInfoDataModel
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -243,7 +249,9 @@ class _$TopBannerInfoDataModelImpl extends _TopBannerInfoDataModel {
   int get hashCode => Object.hash(runtimeType, title, colorText,
       colorBackground, code, type, section, uid, idNews);
 
-  @JsonKey(ignore: true)
+  /// Create a copy of TopBannerInfoDataModel
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$TopBannerInfoDataModelImplCopyWith<_$TopBannerInfoDataModelImpl>
@@ -279,8 +287,11 @@ abstract class _TopBannerInfoDataModel extends TopBannerInfoDataModel {
   String get uid;
   @override
   String get idNews;
+
+  /// Create a copy of TopBannerInfoDataModel
+  /// with the given fields replaced by the non-null parameter values.
   @override
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$TopBannerInfoDataModelImplCopyWith<_$TopBannerInfoDataModelImpl>
       get copyWith => throw _privateConstructorUsedError;
 }

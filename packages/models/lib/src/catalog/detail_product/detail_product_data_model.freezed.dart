@@ -46,7 +46,9 @@ mixin _$DetailProductDataModel {
   String get errorMessage => throw _privateConstructorUsedError;
   DetailProductVideoDataModel get video => throw _privateConstructorUsedError;
 
-  @JsonKey(ignore: true)
+  /// Create a copy of DetailProductDataModel
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   $DetailProductDataModelCopyWith<DetailProductDataModel> get copyWith =>
       throw _privateConstructorUsedError;
 }
@@ -105,6 +107,8 @@ class _$DetailProductDataModelCopyWithImpl<$Res,
   // ignore: unused_field
   final $Res Function($Val) _then;
 
+  /// Create a copy of DetailProductDataModel
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -243,6 +247,8 @@ class _$DetailProductDataModelCopyWithImpl<$Res,
     ) as $Val);
   }
 
+  /// Create a copy of DetailProductDataModel
+  /// with the given fields replaced by the non-null parameter values.
   @override
   @pragma('vm:prefer-inline')
   $PhotoDataModelCopyWith<$Res> get photo {
@@ -251,6 +257,8 @@ class _$DetailProductDataModelCopyWithImpl<$Res,
     });
   }
 
+  /// Create a copy of DetailProductDataModel
+  /// with the given fields replaced by the non-null parameter values.
   @override
   @pragma('vm:prefer-inline')
   $BrandProductDataModelCopyWith<$Res> get brand {
@@ -259,6 +267,8 @@ class _$DetailProductDataModelCopyWithImpl<$Res,
     });
   }
 
+  /// Create a copy of DetailProductDataModel
+  /// with the given fields replaced by the non-null parameter values.
   @override
   @pragma('vm:prefer-inline')
   $CategoryProductDataModelCopyWith<$Res> get category {
@@ -267,6 +277,8 @@ class _$DetailProductDataModelCopyWithImpl<$Res,
     });
   }
 
+  /// Create a copy of DetailProductDataModel
+  /// with the given fields replaced by the non-null parameter values.
   @override
   @pragma('vm:prefer-inline')
   $PlaceProductDataModelCopyWith<$Res> get place {
@@ -275,6 +287,8 @@ class _$DetailProductDataModelCopyWithImpl<$Res,
     });
   }
 
+  /// Create a copy of DetailProductDataModel
+  /// with the given fields replaced by the non-null parameter values.
   @override
   @pragma('vm:prefer-inline')
   $PriceProductDataModelCopyWith<$Res> get price {
@@ -283,6 +297,8 @@ class _$DetailProductDataModelCopyWithImpl<$Res,
     });
   }
 
+  /// Create a copy of DetailProductDataModel
+  /// with the given fields replaced by the non-null parameter values.
   @override
   @pragma('vm:prefer-inline')
   $ProductDataModelCopyWith<$Res> get product {
@@ -291,6 +307,8 @@ class _$DetailProductDataModelCopyWithImpl<$Res,
     });
   }
 
+  /// Create a copy of DetailProductDataModel
+  /// with the given fields replaced by the non-null parameter values.
   @override
   @pragma('vm:prefer-inline')
   $DetailProductVideoDataModelCopyWith<$Res> get video {
@@ -363,6 +381,8 @@ class __$$DetailProductDataModelImplCopyWithImpl<$Res>
       $Res Function(_$DetailProductDataModelImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of DetailProductDataModel
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -716,7 +736,9 @@ class _$DetailProductDataModelImpl extends _DetailProductDataModel {
         video
       ]);
 
-  @JsonKey(ignore: true)
+  /// Create a copy of DetailProductDataModel
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$DetailProductDataModelImplCopyWith<_$DetailProductDataModelImpl>
@@ -807,8 +829,11 @@ abstract class _DetailProductDataModel extends DetailProductDataModel {
   String get errorMessage;
   @override
   DetailProductVideoDataModel get video;
+
+  /// Create a copy of DetailProductDataModel
+  /// with the given fields replaced by the non-null parameter values.
   @override
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$DetailProductDataModelImplCopyWith<_$DetailProductDataModelImpl>
       get copyWith => throw _privateConstructorUsedError;
 }

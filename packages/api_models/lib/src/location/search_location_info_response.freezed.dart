@@ -37,8 +37,12 @@ mixin _$SearchLocationInfoResponse {
   List<SearchLocationInfoResponse>? get parents =>
       throw _privateConstructorUsedError;
 
+  /// Serializes this SearchLocationInfoResponse to a JSON map.
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
-  @JsonKey(ignore: true)
+
+  /// Create a copy of SearchLocationInfoResponse
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   $SearchLocationInfoResponseCopyWith<SearchLocationInfoResponse>
       get copyWith => throw _privateConstructorUsedError;
 }
@@ -78,6 +82,8 @@ class _$SearchLocationInfoResponseCopyWithImpl<$Res,
   // ignore: unused_field
   final $Res Function($Val) _then;
 
+  /// Create a copy of SearchLocationInfoResponse
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -193,6 +199,8 @@ class __$$SearchLocationInfoResponseImplCopyWithImpl<$Res>
       $Res Function(_$SearchLocationInfoResponseImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of SearchLocationInfoResponse
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -362,7 +370,7 @@ class _$SearchLocationInfoResponseImpl extends _SearchLocationInfoResponse {
             const DeepCollectionEquality().equals(other._parents, _parents));
   }
 
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   int get hashCode => Object.hash(
       runtimeType,
@@ -381,7 +389,9 @@ class _$SearchLocationInfoResponseImpl extends _SearchLocationInfoResponse {
       cadnum,
       const DeepCollectionEquality().hash(_parents));
 
-  @JsonKey(ignore: true)
+  /// Create a copy of SearchLocationInfoResponse
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$SearchLocationInfoResponseImplCopyWith<_$SearchLocationInfoResponseImpl>
@@ -446,8 +456,11 @@ abstract class _SearchLocationInfoResponse extends SearchLocationInfoResponse {
   String? get cadnum;
   @override
   List<SearchLocationInfoResponse>? get parents;
+
+  /// Create a copy of SearchLocationInfoResponse
+  /// with the given fields replaced by the non-null parameter values.
   @override
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$SearchLocationInfoResponseImplCopyWith<_$SearchLocationInfoResponseImpl>
       get copyWith => throw _privateConstructorUsedError;
 }

@@ -26,8 +26,12 @@ mixin _$AdditionalProductsDescriptionResponse {
   List<CatalogProductResponse>? get products =>
       throw _privateConstructorUsedError;
 
+  /// Serializes this AdditionalProductsDescriptionResponse to a JSON map.
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
-  @JsonKey(ignore: true)
+
+  /// Create a copy of AdditionalProductsDescriptionResponse
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   $AdditionalProductsDescriptionResponseCopyWith<
           AdditionalProductsDescriptionResponse>
       get copyWith => throw _privateConstructorUsedError;
@@ -58,6 +62,8 @@ class _$AdditionalProductsDescriptionResponseCopyWithImpl<$Res,
   // ignore: unused_field
   final $Res Function($Val) _then;
 
+  /// Create a copy of AdditionalProductsDescriptionResponse
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -107,6 +113,8 @@ class __$$AdditionalProductsDescriptionResponseImplCopyWithImpl<$Res>
       $Res Function(_$AdditionalProductsDescriptionResponseImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of AdditionalProductsDescriptionResponse
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -176,12 +184,14 @@ class _$AdditionalProductsDescriptionResponseImpl
             const DeepCollectionEquality().equals(other._products, _products));
   }
 
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   int get hashCode => Object.hash(runtimeType, name, errorMessage,
       const DeepCollectionEquality().hash(_products));
 
-  @JsonKey(ignore: true)
+  /// Create a copy of AdditionalProductsDescriptionResponse
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$AdditionalProductsDescriptionResponseImplCopyWith<
@@ -216,8 +226,11 @@ abstract class _AdditionalProductsDescriptionResponse
   String? get errorMessage;
   @override
   List<CatalogProductResponse>? get products;
+
+  /// Create a copy of AdditionalProductsDescriptionResponse
+  /// with the given fields replaced by the non-null parameter values.
   @override
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$AdditionalProductsDescriptionResponseImplCopyWith<
           _$AdditionalProductsDescriptionResponseImpl>
       get copyWith => throw _privateConstructorUsedError;

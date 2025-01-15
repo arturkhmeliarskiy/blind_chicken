@@ -20,7 +20,9 @@ mixin _$UserInfoDataModel {
   String get errorMessage => throw _privateConstructorUsedError;
   UserDataModel get user => throw _privateConstructorUsedError;
 
-  @JsonKey(ignore: true)
+  /// Create a copy of UserInfoDataModel
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   $UserInfoDataModelCopyWith<UserInfoDataModel> get copyWith =>
       throw _privateConstructorUsedError;
 }
@@ -46,6 +48,8 @@ class _$UserInfoDataModelCopyWithImpl<$Res, $Val extends UserInfoDataModel>
   // ignore: unused_field
   final $Res Function($Val) _then;
 
+  /// Create a copy of UserInfoDataModel
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -69,6 +73,8 @@ class _$UserInfoDataModelCopyWithImpl<$Res, $Val extends UserInfoDataModel>
     ) as $Val);
   }
 
+  /// Create a copy of UserInfoDataModel
+  /// with the given fields replaced by the non-null parameter values.
   @override
   @pragma('vm:prefer-inline')
   $UserDataModelCopyWith<$Res> get user {
@@ -100,6 +106,8 @@ class __$$UserInfoDataModelImplCopyWithImpl<$Res>
       $Res Function(_$UserInfoDataModelImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of UserInfoDataModel
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -157,7 +165,9 @@ class _$UserInfoDataModelImpl extends _UserInfoDataModel {
   @override
   int get hashCode => Object.hash(runtimeType, r, errorMessage, user);
 
-  @JsonKey(ignore: true)
+  /// Create a copy of UserInfoDataModel
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$UserInfoDataModelImplCopyWith<_$UserInfoDataModelImpl> get copyWith =>
@@ -178,8 +188,11 @@ abstract class _UserInfoDataModel extends UserInfoDataModel {
   String get errorMessage;
   @override
   UserDataModel get user;
+
+  /// Create a copy of UserInfoDataModel
+  /// with the given fields replaced by the non-null parameter values.
   @override
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$UserInfoDataModelImplCopyWith<_$UserInfoDataModelImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }

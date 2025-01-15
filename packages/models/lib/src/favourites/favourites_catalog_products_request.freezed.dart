@@ -20,7 +20,9 @@ mixin _$FavouritesCatalogProductsRequest {
   List<FilterCatalogDataModel>? get filters =>
       throw _privateConstructorUsedError;
 
-  @JsonKey(ignore: true)
+  /// Create a copy of FavouritesCatalogProductsRequest
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   $FavouritesCatalogProductsRequestCopyWith<FavouritesCatalogProductsRequest>
       get copyWith => throw _privateConstructorUsedError;
 }
@@ -47,6 +49,8 @@ class _$FavouritesCatalogProductsRequestCopyWithImpl<$Res,
   // ignore: unused_field
   final $Res Function($Val) _then;
 
+  /// Create a copy of FavouritesCatalogProductsRequest
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -88,6 +92,8 @@ class __$$FavouritesCatalogProductsRequestImplCopyWithImpl<$Res>
       $Res Function(_$FavouritesCatalogProductsRequestImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of FavouritesCatalogProductsRequest
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -159,7 +165,9 @@ class _$FavouritesCatalogProductsRequestImpl
       const DeepCollectionEquality().hash(_favourites),
       const DeepCollectionEquality().hash(_filters));
 
-  @JsonKey(ignore: true)
+  /// Create a copy of FavouritesCatalogProductsRequest
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$FavouritesCatalogProductsRequestImplCopyWith<
@@ -180,8 +188,11 @@ abstract class _FavouritesCatalogProductsRequest
   List<String>? get favourites;
   @override
   List<FilterCatalogDataModel>? get filters;
+
+  /// Create a copy of FavouritesCatalogProductsRequest
+  /// with the given fields replaced by the non-null parameter values.
   @override
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$FavouritesCatalogProductsRequestImplCopyWith<
           _$FavouritesCatalogProductsRequestImpl>
       get copyWith => throw _privateConstructorUsedError;

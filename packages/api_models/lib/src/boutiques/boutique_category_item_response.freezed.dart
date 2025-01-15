@@ -24,8 +24,12 @@ mixin _$BoutiqueCategoryItemResponse {
   String? get title => throw _privateConstructorUsedError;
   List<dynamic>? get listInfo => throw _privateConstructorUsedError;
 
+  /// Serializes this BoutiqueCategoryItemResponse to a JSON map.
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
-  @JsonKey(ignore: true)
+
+  /// Create a copy of BoutiqueCategoryItemResponse
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   $BoutiqueCategoryItemResponseCopyWith<BoutiqueCategoryItemResponse>
       get copyWith => throw _privateConstructorUsedError;
 }
@@ -52,6 +56,8 @@ class _$BoutiqueCategoryItemResponseCopyWithImpl<$Res,
   // ignore: unused_field
   final $Res Function($Val) _then;
 
+  /// Create a copy of BoutiqueCategoryItemResponse
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -93,6 +99,8 @@ class __$$BoutiqueCategoryItemResponseImplCopyWithImpl<$Res>
       $Res Function(_$BoutiqueCategoryItemResponseImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of BoutiqueCategoryItemResponse
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -150,12 +158,14 @@ class _$BoutiqueCategoryItemResponseImpl extends _BoutiqueCategoryItemResponse {
             const DeepCollectionEquality().equals(other._listInfo, _listInfo));
   }
 
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   int get hashCode => Object.hash(
       runtimeType, title, const DeepCollectionEquality().hash(_listInfo));
 
-  @JsonKey(ignore: true)
+  /// Create a copy of BoutiqueCategoryItemResponse
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$BoutiqueCategoryItemResponseImplCopyWith<
@@ -185,8 +195,11 @@ abstract class _BoutiqueCategoryItemResponse
   String? get title;
   @override
   List<dynamic>? get listInfo;
+
+  /// Create a copy of BoutiqueCategoryItemResponse
+  /// with the given fields replaced by the non-null parameter values.
   @override
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$BoutiqueCategoryItemResponseImplCopyWith<
           _$BoutiqueCategoryItemResponseImpl>
       get copyWith => throw _privateConstructorUsedError;

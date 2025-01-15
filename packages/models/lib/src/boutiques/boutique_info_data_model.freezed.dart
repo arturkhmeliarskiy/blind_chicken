@@ -21,7 +21,9 @@ mixin _$BoutiqueInfoDataModel {
   String get errorMessage => throw _privateConstructorUsedError;
   BoutiqueDataInfoDataModel get data => throw _privateConstructorUsedError;
 
-  @JsonKey(ignore: true)
+  /// Create a copy of BoutiqueInfoDataModel
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   $BoutiqueInfoDataModelCopyWith<BoutiqueInfoDataModel> get copyWith =>
       throw _privateConstructorUsedError;
 }
@@ -52,6 +54,8 @@ class _$BoutiqueInfoDataModelCopyWithImpl<$Res,
   // ignore: unused_field
   final $Res Function($Val) _then;
 
+  /// Create a copy of BoutiqueInfoDataModel
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -80,6 +84,8 @@ class _$BoutiqueInfoDataModelCopyWithImpl<$Res,
     ) as $Val);
   }
 
+  /// Create a copy of BoutiqueInfoDataModel
+  /// with the given fields replaced by the non-null parameter values.
   @override
   @pragma('vm:prefer-inline')
   $BoutiqueDataInfoDataModelCopyWith<$Res> get data {
@@ -117,6 +123,8 @@ class __$$BoutiqueInfoDataModelImplCopyWithImpl<$Res>
       $Res Function(_$BoutiqueInfoDataModelImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of BoutiqueInfoDataModel
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -185,7 +193,9 @@ class _$BoutiqueInfoDataModelImpl extends _BoutiqueInfoDataModel {
   @override
   int get hashCode => Object.hash(runtimeType, r, e, errorMessage, data);
 
-  @JsonKey(ignore: true)
+  /// Create a copy of BoutiqueInfoDataModel
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$BoutiqueInfoDataModelImplCopyWith<_$BoutiqueInfoDataModelImpl>
@@ -210,8 +220,11 @@ abstract class _BoutiqueInfoDataModel extends BoutiqueInfoDataModel {
   String get errorMessage;
   @override
   BoutiqueDataInfoDataModel get data;
+
+  /// Create a copy of BoutiqueInfoDataModel
+  /// with the given fields replaced by the non-null parameter values.
   @override
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$BoutiqueInfoDataModelImplCopyWith<_$BoutiqueInfoDataModelImpl>
       get copyWith => throw _privateConstructorUsedError;
 }

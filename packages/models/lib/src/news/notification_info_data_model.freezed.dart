@@ -23,7 +23,9 @@ mixin _$NotificationInfoDataModel {
       throw _privateConstructorUsedError;
   bool get isViewed => throw _privateConstructorUsedError;
 
-  @JsonKey(ignore: true)
+  /// Create a copy of NotificationInfoDataModel
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   $NotificationInfoDataModelCopyWith<NotificationInfoDataModel> get copyWith =>
       throw _privateConstructorUsedError;
 }
@@ -53,6 +55,8 @@ class _$NotificationInfoDataModelCopyWithImpl<$Res,
   // ignore: unused_field
   final $Res Function($Val) _then;
 
+  /// Create a copy of NotificationInfoDataModel
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -114,6 +118,8 @@ class __$$NotificationInfoDataModelImplCopyWithImpl<$Res>
       $Res Function(_$NotificationInfoDataModelImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of NotificationInfoDataModel
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -200,7 +206,9 @@ class _$NotificationInfoDataModelImpl extends _NotificationInfoDataModel {
   int get hashCode => Object.hash(runtimeType, r, e, errorMessage,
       const DeepCollectionEquality().hash(_list), isViewed);
 
-  @JsonKey(ignore: true)
+  /// Create a copy of NotificationInfoDataModel
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$NotificationInfoDataModelImplCopyWith<_$NotificationInfoDataModelImpl>
@@ -227,8 +235,11 @@ abstract class _NotificationInfoDataModel extends NotificationInfoDataModel {
   List<NotificationInfoItemDataModel> get list;
   @override
   bool get isViewed;
+
+  /// Create a copy of NotificationInfoDataModel
+  /// with the given fields replaced by the non-null parameter values.
   @override
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$NotificationInfoDataModelImplCopyWith<_$NotificationInfoDataModelImpl>
       get copyWith => throw _privateConstructorUsedError;
 }

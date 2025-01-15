@@ -23,8 +23,12 @@ mixin _$StockProductResponse {
   String? get id => throw _privateConstructorUsedError;
   List<String>? get list => throw _privateConstructorUsedError;
 
+  /// Serializes this StockProductResponse to a JSON map.
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
-  @JsonKey(ignore: true)
+
+  /// Create a copy of StockProductResponse
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   $StockProductResponseCopyWith<StockProductResponse> get copyWith =>
       throw _privateConstructorUsedError;
 }
@@ -49,6 +53,8 @@ class _$StockProductResponseCopyWithImpl<$Res,
   // ignore: unused_field
   final $Res Function($Val) _then;
 
+  /// Create a copy of StockProductResponse
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -87,6 +93,8 @@ class __$$StockProductResponseImplCopyWithImpl<$Res>
       $Res Function(_$StockProductResponseImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of StockProductResponse
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -142,12 +150,14 @@ class _$StockProductResponseImpl extends _StockProductResponse {
             const DeepCollectionEquality().equals(other._list, _list));
   }
 
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   int get hashCode =>
       Object.hash(runtimeType, id, const DeepCollectionEquality().hash(_list));
 
-  @JsonKey(ignore: true)
+  /// Create a copy of StockProductResponse
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$StockProductResponseImplCopyWith<_$StockProductResponseImpl>
@@ -175,8 +185,11 @@ abstract class _StockProductResponse extends StockProductResponse {
   String? get id;
   @override
   List<String>? get list;
+
+  /// Create a copy of StockProductResponse
+  /// with the given fields replaced by the non-null parameter values.
   @override
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$StockProductResponseImplCopyWith<_$StockProductResponseImpl>
       get copyWith => throw _privateConstructorUsedError;
 }

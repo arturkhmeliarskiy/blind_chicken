@@ -19,7 +19,9 @@ mixin _$PushNotificationDataModel {
   String get r => throw _privateConstructorUsedError;
   String get e => throw _privateConstructorUsedError;
 
-  @JsonKey(ignore: true)
+  /// Create a copy of PushNotificationDataModel
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   $PushNotificationDataModelCopyWith<PushNotificationDataModel> get copyWith =>
       throw _privateConstructorUsedError;
 }
@@ -44,6 +46,8 @@ class _$PushNotificationDataModelCopyWithImpl<$Res,
   // ignore: unused_field
   final $Res Function($Val) _then;
 
+  /// Create a copy of PushNotificationDataModel
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -85,6 +89,8 @@ class __$$PushNotificationDataModelImplCopyWithImpl<$Res>
       $Res Function(_$PushNotificationDataModelImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of PushNotificationDataModel
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -132,7 +138,9 @@ class _$PushNotificationDataModelImpl extends _PushNotificationDataModel {
   @override
   int get hashCode => Object.hash(runtimeType, r, e);
 
-  @JsonKey(ignore: true)
+  /// Create a copy of PushNotificationDataModel
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$PushNotificationDataModelImplCopyWith<_$PushNotificationDataModelImpl>
@@ -150,8 +158,11 @@ abstract class _PushNotificationDataModel extends PushNotificationDataModel {
   String get r;
   @override
   String get e;
+
+  /// Create a copy of PushNotificationDataModel
+  /// with the given fields replaced by the non-null parameter values.
   @override
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$PushNotificationDataModelImplCopyWith<_$PushNotificationDataModelImpl>
       get copyWith => throw _privateConstructorUsedError;
 }

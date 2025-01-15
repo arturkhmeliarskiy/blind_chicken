@@ -26,8 +26,12 @@ mixin _$CatalogCountProductUrlResponse {
   int? get count => throw _privateConstructorUsedError;
   String? get errorMessage => throw _privateConstructorUsedError;
 
+  /// Serializes this CatalogCountProductUrlResponse to a JSON map.
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
-  @JsonKey(ignore: true)
+
+  /// Create a copy of CatalogCountProductUrlResponse
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   $CatalogCountProductUrlResponseCopyWith<CatalogCountProductUrlResponse>
       get copyWith => throw _privateConstructorUsedError;
 }
@@ -54,6 +58,8 @@ class _$CatalogCountProductUrlResponseCopyWithImpl<$Res,
   // ignore: unused_field
   final $Res Function($Val) _then;
 
+  /// Create a copy of CatalogCountProductUrlResponse
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -105,6 +111,8 @@ class __$$CatalogCountProductUrlResponseImplCopyWithImpl<$Res>
       $Res Function(_$CatalogCountProductUrlResponseImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of CatalogCountProductUrlResponse
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -172,11 +180,13 @@ class _$CatalogCountProductUrlResponseImpl
                 other.errorMessage == errorMessage));
   }
 
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   int get hashCode => Object.hash(runtimeType, r, e, count, errorMessage);
 
-  @JsonKey(ignore: true)
+  /// Create a copy of CatalogCountProductUrlResponse
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$CatalogCountProductUrlResponseImplCopyWith<
@@ -212,8 +222,11 @@ abstract class _CatalogCountProductUrlResponse
   int? get count;
   @override
   String? get errorMessage;
+
+  /// Create a copy of CatalogCountProductUrlResponse
+  /// with the given fields replaced by the non-null parameter values.
   @override
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$CatalogCountProductUrlResponseImplCopyWith<
           _$CatalogCountProductUrlResponseImpl>
       get copyWith => throw _privateConstructorUsedError;

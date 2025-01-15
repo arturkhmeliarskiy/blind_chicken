@@ -20,7 +20,9 @@ mixin _$BasketSertDeliveryRequest {
   String get p => throw _privateConstructorUsedError;
   String get v => throw _privateConstructorUsedError;
 
-  @JsonKey(ignore: true)
+  /// Create a copy of BasketSertDeliveryRequest
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   $BasketSertDeliveryRequestCopyWith<BasketSertDeliveryRequest> get copyWith =>
       throw _privateConstructorUsedError;
 }
@@ -45,6 +47,8 @@ class _$BasketSertDeliveryRequestCopyWithImpl<$Res,
   // ignore: unused_field
   final $Res Function($Val) _then;
 
+  /// Create a copy of BasketSertDeliveryRequest
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -91,6 +95,8 @@ class __$$BasketSertDeliveryRequestImplCopyWithImpl<$Res>
       $Res Function(_$BasketSertDeliveryRequestImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of BasketSertDeliveryRequest
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -147,7 +153,9 @@ class _$BasketSertDeliveryRequestImpl extends _BasketSertDeliveryRequest {
   @override
   int get hashCode => Object.hash(runtimeType, n, p, v);
 
-  @JsonKey(ignore: true)
+  /// Create a copy of BasketSertDeliveryRequest
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$BasketSertDeliveryRequestImplCopyWith<_$BasketSertDeliveryRequestImpl>
@@ -168,8 +176,11 @@ abstract class _BasketSertDeliveryRequest extends BasketSertDeliveryRequest {
   String get p;
   @override
   String get v;
+
+  /// Create a copy of BasketSertDeliveryRequest
+  /// with the given fields replaced by the non-null parameter values.
   @override
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$BasketSertDeliveryRequestImplCopyWith<_$BasketSertDeliveryRequestImpl>
       get copyWith => throw _privateConstructorUsedError;
 }

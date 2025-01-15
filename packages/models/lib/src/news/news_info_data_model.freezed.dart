@@ -22,7 +22,9 @@ mixin _$NewsInfoDataModel {
   List<NewsInfoItemDataModel> get list => throw _privateConstructorUsedError;
   bool get isViewed => throw _privateConstructorUsedError;
 
-  @JsonKey(ignore: true)
+  /// Create a copy of NewsInfoDataModel
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   $NewsInfoDataModelCopyWith<NewsInfoDataModel> get copyWith =>
       throw _privateConstructorUsedError;
 }
@@ -51,6 +53,8 @@ class _$NewsInfoDataModelCopyWithImpl<$Res, $Val extends NewsInfoDataModel>
   // ignore: unused_field
   final $Res Function($Val) _then;
 
+  /// Create a copy of NewsInfoDataModel
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -109,6 +113,8 @@ class __$$NewsInfoDataModelImplCopyWithImpl<$Res>
       $Res Function(_$NewsInfoDataModelImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of NewsInfoDataModel
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -195,7 +201,9 @@ class _$NewsInfoDataModelImpl extends _NewsInfoDataModel {
   int get hashCode => Object.hash(runtimeType, r, e, errorMessage,
       const DeepCollectionEquality().hash(_list), isViewed);
 
-  @JsonKey(ignore: true)
+  /// Create a copy of NewsInfoDataModel
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$NewsInfoDataModelImplCopyWith<_$NewsInfoDataModelImpl> get copyWith =>
@@ -222,8 +230,11 @@ abstract class _NewsInfoDataModel extends NewsInfoDataModel {
   List<NewsInfoItemDataModel> get list;
   @override
   bool get isViewed;
+
+  /// Create a copy of NewsInfoDataModel
+  /// with the given fields replaced by the non-null parameter values.
   @override
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$NewsInfoDataModelImplCopyWith<_$NewsInfoDataModelImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }

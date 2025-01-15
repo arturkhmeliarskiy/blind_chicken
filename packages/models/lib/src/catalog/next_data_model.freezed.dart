@@ -20,7 +20,9 @@ mixin _$NextDataModel {
   String get sunglasses => throw _privateConstructorUsedError;
   String get skiMasks => throw _privateConstructorUsedError;
 
-  @JsonKey(ignore: true)
+  /// Create a copy of NextDataModel
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   $NextDataModelCopyWith<NextDataModel> get copyWith =>
       throw _privateConstructorUsedError;
 }
@@ -44,6 +46,8 @@ class _$NextDataModelCopyWithImpl<$Res, $Val extends NextDataModel>
   // ignore: unused_field
   final $Res Function($Val) _then;
 
+  /// Create a copy of NextDataModel
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -87,6 +91,8 @@ class __$$NextDataModelImplCopyWithImpl<$Res>
       _$NextDataModelImpl _value, $Res Function(_$NextDataModelImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of NextDataModel
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -145,7 +151,9 @@ class _$NextDataModelImpl extends _NextDataModel {
   @override
   int get hashCode => Object.hash(runtimeType, frames, sunglasses, skiMasks);
 
-  @JsonKey(ignore: true)
+  /// Create a copy of NextDataModel
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$NextDataModelImplCopyWith<_$NextDataModelImpl> get copyWith =>
@@ -165,8 +173,11 @@ abstract class _NextDataModel extends NextDataModel {
   String get sunglasses;
   @override
   String get skiMasks;
+
+  /// Create a copy of NextDataModel
+  /// with the given fields replaced by the non-null parameter values.
   @override
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$NextDataModelImplCopyWith<_$NextDataModelImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }

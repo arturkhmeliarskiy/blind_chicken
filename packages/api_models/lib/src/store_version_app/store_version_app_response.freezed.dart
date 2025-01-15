@@ -26,8 +26,12 @@ mixin _$StoreVersionAppResponse {
   StoreVersionAppDataResponse? get version =>
       throw _privateConstructorUsedError;
 
+  /// Serializes this StoreVersionAppResponse to a JSON map.
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
-  @JsonKey(ignore: true)
+
+  /// Create a copy of StoreVersionAppResponse
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   $StoreVersionAppResponseCopyWith<StoreVersionAppResponse> get copyWith =>
       throw _privateConstructorUsedError;
 }
@@ -54,6 +58,8 @@ class _$StoreVersionAppResponseCopyWithImpl<$Res,
   // ignore: unused_field
   final $Res Function($Val) _then;
 
+  /// Create a copy of StoreVersionAppResponse
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -77,6 +83,8 @@ class _$StoreVersionAppResponseCopyWithImpl<$Res,
     ) as $Val);
   }
 
+  /// Create a copy of StoreVersionAppResponse
+  /// with the given fields replaced by the non-null parameter values.
   @override
   @pragma('vm:prefer-inline')
   $StoreVersionAppDataResponseCopyWith<$Res>? get version {
@@ -115,6 +123,8 @@ class __$$StoreVersionAppResponseImplCopyWithImpl<$Res>
       $Res Function(_$StoreVersionAppResponseImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of StoreVersionAppResponse
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -169,11 +179,13 @@ class _$StoreVersionAppResponseImpl extends _StoreVersionAppResponse {
             (identical(other.version, version) || other.version == version));
   }
 
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   int get hashCode => Object.hash(runtimeType, r, e, version);
 
-  @JsonKey(ignore: true)
+  /// Create a copy of StoreVersionAppResponse
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$StoreVersionAppResponseImplCopyWith<_$StoreVersionAppResponseImpl>
@@ -205,8 +217,11 @@ abstract class _StoreVersionAppResponse extends StoreVersionAppResponse {
   String? get e;
   @override
   StoreVersionAppDataResponse? get version;
+
+  /// Create a copy of StoreVersionAppResponse
+  /// with the given fields replaced by the non-null parameter values.
   @override
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$StoreVersionAppResponseImplCopyWith<_$StoreVersionAppResponseImpl>
       get copyWith => throw _privateConstructorUsedError;
 }

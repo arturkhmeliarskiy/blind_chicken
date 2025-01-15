@@ -12,7 +12,7 @@ _$CalculationCostDeliveryRsponseImpl
           r: json['r'] as String?,
           e: json['e'] as String?,
           errorMessage: json['errorMessage'] as String?,
-          price: json['price'] as int?,
+          price: (json['price'] as num?)?.toInt(),
         );
 
 Map<String, dynamic> _$$CalculationCostDeliveryRsponseImplToJson(

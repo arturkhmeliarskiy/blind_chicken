@@ -92,4 +92,5 @@ dependencies {
     implementation("io.appmetrica.analytics:analytics:7.0.0")
     implementation("io.appmetrica.analytics:push:4.0.0")
     implementation("androidx.legacy:legacy-support-v4:1.0.0")
+    implementation 'com.google.android.gms:play-services-vision-image-label:18.0.5'
 }

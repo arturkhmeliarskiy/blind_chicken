@@ -54,6 +54,8 @@ Future<void> initBloc(GetIt getIt) async {
         getIt.get<StoreVersionAppRepository>(),
         getIt.get<PushNotificationRepository>(),
         getIt.get<AppMetricaEcommerceService>(),
+        getIt.get<ContentRepository>(),
+        getIt.get<CacheInfoService>(),
         getIt.get<FilterService>(),
       ),
     )

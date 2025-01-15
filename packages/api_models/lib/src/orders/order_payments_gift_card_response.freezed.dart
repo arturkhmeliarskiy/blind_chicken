@@ -25,8 +25,12 @@ mixin _$OrderPaymentsGiftCardResponse {
   String? get number => throw _privateConstructorUsedError;
   String? get sum => throw _privateConstructorUsedError;
 
+  /// Serializes this OrderPaymentsGiftCardResponse to a JSON map.
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
-  @JsonKey(ignore: true)
+
+  /// Create a copy of OrderPaymentsGiftCardResponse
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   $OrderPaymentsGiftCardResponseCopyWith<OrderPaymentsGiftCardResponse>
       get copyWith => throw _privateConstructorUsedError;
 }
@@ -53,6 +57,8 @@ class _$OrderPaymentsGiftCardResponseCopyWithImpl<$Res,
   // ignore: unused_field
   final $Res Function($Val) _then;
 
+  /// Create a copy of OrderPaymentsGiftCardResponse
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -94,6 +100,8 @@ class __$$OrderPaymentsGiftCardResponseImplCopyWithImpl<$Res>
       $Res Function(_$OrderPaymentsGiftCardResponseImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of OrderPaymentsGiftCardResponse
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -145,11 +153,13 @@ class _$OrderPaymentsGiftCardResponseImpl
             (identical(other.sum, sum) || other.sum == sum));
   }
 
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   int get hashCode => Object.hash(runtimeType, number, sum);
 
-  @JsonKey(ignore: true)
+  /// Create a copy of OrderPaymentsGiftCardResponse
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$OrderPaymentsGiftCardResponseImplCopyWith<
@@ -180,8 +190,11 @@ abstract class _OrderPaymentsGiftCardResponse
   String? get number;
   @override
   String? get sum;
+
+  /// Create a copy of OrderPaymentsGiftCardResponse
+  /// with the given fields replaced by the non-null parameter values.
   @override
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$OrderPaymentsGiftCardResponseImplCopyWith<
           _$OrderPaymentsGiftCardResponseImpl>
       get copyWith => throw _privateConstructorUsedError;

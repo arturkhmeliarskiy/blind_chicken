@@ -27,8 +27,12 @@ mixin _$NewsInfoResponse {
   @JsonKey(name: 'is_viewed')
   bool? get isViewed => throw _privateConstructorUsedError;
 
+  /// Serializes this NewsInfoResponse to a JSON map.
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
-  @JsonKey(ignore: true)
+
+  /// Create a copy of NewsInfoResponse
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   $NewsInfoResponseCopyWith<NewsInfoResponse> get copyWith =>
       throw _privateConstructorUsedError;
 }
@@ -57,6 +61,8 @@ class _$NewsInfoResponseCopyWithImpl<$Res, $Val extends NewsInfoResponse>
   // ignore: unused_field
   final $Res Function($Val) _then;
 
+  /// Create a copy of NewsInfoResponse
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -115,6 +121,8 @@ class __$$NewsInfoResponseImplCopyWithImpl<$Res>
       $Res Function(_$NewsInfoResponseImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of NewsInfoResponse
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -203,12 +211,14 @@ class _$NewsInfoResponseImpl extends _NewsInfoResponse {
                 other.isViewed == isViewed));
   }
 
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   int get hashCode => Object.hash(runtimeType, r, e, errorMessage,
       const DeepCollectionEquality().hash(_list), isViewed);
 
-  @JsonKey(ignore: true)
+  /// Create a copy of NewsInfoResponse
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$NewsInfoResponseImplCopyWith<_$NewsInfoResponseImpl> get copyWith =>
@@ -247,8 +257,11 @@ abstract class _NewsInfoResponse extends NewsInfoResponse {
   @override
   @JsonKey(name: 'is_viewed')
   bool? get isViewed;
+
+  /// Create a copy of NewsInfoResponse
+  /// with the given fields replaced by the non-null parameter values.
   @override
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$NewsInfoResponseImplCopyWith<_$NewsInfoResponseImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }

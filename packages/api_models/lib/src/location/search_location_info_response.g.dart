@@ -11,7 +11,7 @@ _$SearchLocationInfoResponseImpl _$$SearchLocationInfoResponseImplFromJson(
     _$SearchLocationInfoResponseImpl(
       id: json['id'] as String?,
       name: json['name'] as String?,
-      zip: json['zip'] as int?,
+      zip: (json['zip'] as num?)?.toInt(),
       type: json['type'] as String?,
       typeShort: json['typeShort'] as String?,
       okato: json['okato'] as String?,

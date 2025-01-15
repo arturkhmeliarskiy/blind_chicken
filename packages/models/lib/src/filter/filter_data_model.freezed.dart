@@ -18,7 +18,9 @@ final _privateConstructorUsedError = UnsupportedError(
 mixin _$FilterDataModel {
   List<FilterInfoDataModel> get filter => throw _privateConstructorUsedError;
 
-  @JsonKey(ignore: true)
+  /// Create a copy of FilterDataModel
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   $FilterDataModelCopyWith<FilterDataModel> get copyWith =>
       throw _privateConstructorUsedError;
 }
@@ -42,6 +44,8 @@ class _$FilterDataModelCopyWithImpl<$Res, $Val extends FilterDataModel>
   // ignore: unused_field
   final $Res Function($Val) _then;
 
+  /// Create a copy of FilterDataModel
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -75,6 +79,8 @@ class __$$FilterDataModelImplCopyWithImpl<$Res>
       _$FilterDataModelImpl _value, $Res Function(_$FilterDataModelImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of FilterDataModel
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -121,7 +127,9 @@ class _$FilterDataModelImpl extends _FilterDataModel {
   int get hashCode =>
       Object.hash(runtimeType, const DeepCollectionEquality().hash(_filter));
 
-  @JsonKey(ignore: true)
+  /// Create a copy of FilterDataModel
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$FilterDataModelImplCopyWith<_$FilterDataModelImpl> get copyWith =>
@@ -136,8 +144,11 @@ abstract class _FilterDataModel extends FilterDataModel {
 
   @override
   List<FilterInfoDataModel> get filter;
+
+  /// Create a copy of FilterDataModel
+  /// with the given fields replaced by the non-null parameter values.
   @override
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$FilterDataModelImplCopyWith<_$FilterDataModelImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }

@@ -36,7 +36,9 @@ mixin _$NotificationInfoItemDataModel {
   double get videoImageWeight => throw _privateConstructorUsedError;
   bool get isViewed => throw _privateConstructorUsedError;
 
-  @JsonKey(ignore: true)
+  /// Create a copy of NotificationInfoItemDataModel
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   $NotificationInfoItemDataModelCopyWith<NotificationInfoItemDataModel>
       get copyWith => throw _privateConstructorUsedError;
 }
@@ -82,6 +84,8 @@ class _$NotificationInfoItemDataModelCopyWithImpl<$Res,
   // ignore: unused_field
   final $Res Function($Val) _then;
 
+  /// Create a copy of NotificationInfoItemDataModel
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -227,6 +231,8 @@ class __$$NotificationInfoItemDataModelImplCopyWithImpl<$Res>
       $Res Function(_$NotificationInfoItemDataModelImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of NotificationInfoItemDataModel
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -470,7 +476,9 @@ class _$NotificationInfoItemDataModelImpl
         isViewed
       ]);
 
-  @JsonKey(ignore: true)
+  /// Create a copy of NotificationInfoItemDataModel
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$NotificationInfoItemDataModelImplCopyWith<
@@ -541,8 +549,11 @@ abstract class _NotificationInfoItemDataModel
   double get videoImageWeight;
   @override
   bool get isViewed;
+
+  /// Create a copy of NotificationInfoItemDataModel
+  /// with the given fields replaced by the non-null parameter values.
   @override
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$NotificationInfoItemDataModelImplCopyWith<
           _$NotificationInfoItemDataModelImpl>
       get copyWith => throw _privateConstructorUsedError;

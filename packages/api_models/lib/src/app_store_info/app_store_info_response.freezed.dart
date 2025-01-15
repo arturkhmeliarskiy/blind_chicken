@@ -23,8 +23,12 @@ mixin _$AppStoreInfoResponse {
   String? get appStroreVersion => throw _privateConstructorUsedError;
   String? get errorMessage => throw _privateConstructorUsedError;
 
+  /// Serializes this AppStoreInfoResponse to a JSON map.
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
-  @JsonKey(ignore: true)
+
+  /// Create a copy of AppStoreInfoResponse
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   $AppStoreInfoResponseCopyWith<AppStoreInfoResponse> get copyWith =>
       throw _privateConstructorUsedError;
 }
@@ -49,6 +53,8 @@ class _$AppStoreInfoResponseCopyWithImpl<$Res,
   // ignore: unused_field
   final $Res Function($Val) _then;
 
+  /// Create a copy of AppStoreInfoResponse
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -87,6 +93,8 @@ class __$$AppStoreInfoResponseImplCopyWithImpl<$Res>
       $Res Function(_$AppStoreInfoResponseImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of AppStoreInfoResponse
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -136,11 +144,13 @@ class _$AppStoreInfoResponseImpl extends _AppStoreInfoResponse {
                 other.errorMessage == errorMessage));
   }
 
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   int get hashCode => Object.hash(runtimeType, appStroreVersion, errorMessage);
 
-  @JsonKey(ignore: true)
+  /// Create a copy of AppStoreInfoResponse
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$AppStoreInfoResponseImplCopyWith<_$AppStoreInfoResponseImpl>
@@ -169,8 +179,11 @@ abstract class _AppStoreInfoResponse extends AppStoreInfoResponse {
   String? get appStroreVersion;
   @override
   String? get errorMessage;
+
+  /// Create a copy of AppStoreInfoResponse
+  /// with the given fields replaced by the non-null parameter values.
   @override
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$AppStoreInfoResponseImplCopyWith<_$AppStoreInfoResponseImpl>
       get copyWith => throw _privateConstructorUsedError;
 }

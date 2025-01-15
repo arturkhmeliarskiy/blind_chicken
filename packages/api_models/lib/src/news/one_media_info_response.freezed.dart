@@ -27,8 +27,12 @@ mixin _$OneMediaInfoResponse {
   @JsonKey(name: 'is_viewed')
   bool? get isViewed => throw _privateConstructorUsedError;
 
+  /// Serializes this OneMediaInfoResponse to a JSON map.
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
-  @JsonKey(ignore: true)
+
+  /// Create a copy of OneMediaInfoResponse
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   $OneMediaInfoResponseCopyWith<OneMediaInfoResponse> get copyWith =>
       throw _privateConstructorUsedError;
 }
@@ -60,6 +64,8 @@ class _$OneMediaInfoResponseCopyWithImpl<$Res,
   // ignore: unused_field
   final $Res Function($Val) _then;
 
+  /// Create a copy of OneMediaInfoResponse
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -93,6 +99,8 @@ class _$OneMediaInfoResponseCopyWithImpl<$Res,
     ) as $Val);
   }
 
+  /// Create a copy of OneMediaInfoResponse
+  /// with the given fields replaced by the non-null parameter values.
   @override
   @pragma('vm:prefer-inline')
   $MediaInfoItemResponseCopyWith<$Res>? get data {
@@ -133,6 +141,8 @@ class __$$OneMediaInfoResponseImplCopyWithImpl<$Res>
       $Res Function(_$OneMediaInfoResponseImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of OneMediaInfoResponse
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -212,12 +222,14 @@ class _$OneMediaInfoResponseImpl extends _OneMediaInfoResponse {
                 other.isViewed == isViewed));
   }
 
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   int get hashCode =>
       Object.hash(runtimeType, r, e, errorMessage, data, isViewed);
 
-  @JsonKey(ignore: true)
+  /// Create a copy of OneMediaInfoResponse
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$OneMediaInfoResponseImplCopyWith<_$OneMediaInfoResponseImpl>
@@ -257,8 +269,11 @@ abstract class _OneMediaInfoResponse extends OneMediaInfoResponse {
   @override
   @JsonKey(name: 'is_viewed')
   bool? get isViewed;
+
+  /// Create a copy of OneMediaInfoResponse
+  /// with the given fields replaced by the non-null parameter values.
   @override
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$OneMediaInfoResponseImplCopyWith<_$OneMediaInfoResponseImpl>
       get copyWith => throw _privateConstructorUsedError;
 }

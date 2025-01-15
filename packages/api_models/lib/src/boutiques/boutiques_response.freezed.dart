@@ -23,8 +23,12 @@ mixin _$BoutiquesResponse {
   List<BoutiquesDataResponse>? get data => throw _privateConstructorUsedError;
   String? get errorMessage => throw _privateConstructorUsedError;
 
+  /// Serializes this BoutiquesResponse to a JSON map.
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
-  @JsonKey(ignore: true)
+
+  /// Create a copy of BoutiquesResponse
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   $BoutiquesResponseCopyWith<BoutiquesResponse> get copyWith =>
       throw _privateConstructorUsedError;
 }
@@ -48,6 +52,8 @@ class _$BoutiquesResponseCopyWithImpl<$Res, $Val extends BoutiquesResponse>
   // ignore: unused_field
   final $Res Function($Val) _then;
 
+  /// Create a copy of BoutiquesResponse
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -86,6 +92,8 @@ class __$$BoutiquesResponseImplCopyWithImpl<$Res>
       $Res Function(_$BoutiquesResponseImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of BoutiquesResponse
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -144,12 +152,14 @@ class _$BoutiquesResponseImpl extends _BoutiquesResponse {
                 other.errorMessage == errorMessage));
   }
 
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   int get hashCode => Object.hash(
       runtimeType, const DeepCollectionEquality().hash(_data), errorMessage);
 
-  @JsonKey(ignore: true)
+  /// Create a copy of BoutiquesResponse
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$BoutiquesResponseImplCopyWith<_$BoutiquesResponseImpl> get copyWith =>
@@ -177,8 +187,11 @@ abstract class _BoutiquesResponse extends BoutiquesResponse {
   List<BoutiquesDataResponse>? get data;
   @override
   String? get errorMessage;
+
+  /// Create a copy of BoutiquesResponse
+  /// with the given fields replaced by the non-null parameter values.
   @override
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$BoutiquesResponseImplCopyWith<_$BoutiquesResponseImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }

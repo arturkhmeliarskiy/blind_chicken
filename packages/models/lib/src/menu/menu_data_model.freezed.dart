@@ -19,7 +19,9 @@ mixin _$MenuDataModel {
   List<MenuItemDataModel> get items => throw _privateConstructorUsedError;
   String get errorMessage => throw _privateConstructorUsedError;
 
-  @JsonKey(ignore: true)
+  /// Create a copy of MenuDataModel
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   $MenuDataModelCopyWith<MenuDataModel> get copyWith =>
       throw _privateConstructorUsedError;
 }
@@ -43,6 +45,8 @@ class _$MenuDataModelCopyWithImpl<$Res, $Val extends MenuDataModel>
   // ignore: unused_field
   final $Res Function($Val) _then;
 
+  /// Create a copy of MenuDataModel
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -81,6 +85,8 @@ class __$$MenuDataModelImplCopyWithImpl<$Res>
       _$MenuDataModelImpl _value, $Res Function(_$MenuDataModelImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of MenuDataModel
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -139,7 +145,9 @@ class _$MenuDataModelImpl extends _MenuDataModel {
   int get hashCode => Object.hash(
       runtimeType, const DeepCollectionEquality().hash(_items), errorMessage);
 
-  @JsonKey(ignore: true)
+  /// Create a copy of MenuDataModel
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$MenuDataModelImplCopyWith<_$MenuDataModelImpl> get copyWith =>
@@ -156,8 +164,11 @@ abstract class _MenuDataModel extends MenuDataModel {
   List<MenuItemDataModel> get items;
   @override
   String get errorMessage;
+
+  /// Create a copy of MenuDataModel
+  /// with the given fields replaced by the non-null parameter values.
   @override
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$MenuDataModelImplCopyWith<_$MenuDataModelImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }

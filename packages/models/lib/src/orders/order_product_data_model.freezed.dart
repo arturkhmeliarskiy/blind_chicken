@@ -25,7 +25,9 @@ mixin _$OrderProductDataModel {
   String get name => throw _privateConstructorUsedError;
   String get sku => throw _privateConstructorUsedError;
 
-  @JsonKey(ignore: true)
+  /// Create a copy of OrderProductDataModel
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   $OrderProductDataModelCopyWith<OrderProductDataModel> get copyWith =>
       throw _privateConstructorUsedError;
 }
@@ -58,6 +60,8 @@ class _$OrderProductDataModelCopyWithImpl<$Res,
   // ignore: unused_field
   final $Res Function($Val) _then;
 
+  /// Create a copy of OrderProductDataModel
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -136,6 +140,8 @@ class __$$OrderProductDataModelImplCopyWithImpl<$Res>
       $Res Function(_$OrderProductDataModelImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of OrderProductDataModel
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -241,7 +247,9 @@ class _$OrderProductDataModelImpl extends _OrderProductDataModel {
   int get hashCode => Object.hash(
       runtimeType, code, img, price, count, promocodeInfo, brand, name, sku);
 
-  @JsonKey(ignore: true)
+  /// Create a copy of OrderProductDataModel
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$OrderProductDataModelImplCopyWith<_$OrderProductDataModelImpl>
@@ -277,8 +285,11 @@ abstract class _OrderProductDataModel extends OrderProductDataModel {
   String get name;
   @override
   String get sku;
+
+  /// Create a copy of OrderProductDataModel
+  /// with the given fields replaced by the non-null parameter values.
   @override
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$OrderProductDataModelImplCopyWith<_$OrderProductDataModelImpl>
       get copyWith => throw _privateConstructorUsedError;
 }

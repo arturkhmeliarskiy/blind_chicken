@@ -26,8 +26,12 @@ mixin _$StoreVersionAppDataResponse {
   @JsonKey(name: 'Android')
   String? get android => throw _privateConstructorUsedError;
 
+  /// Serializes this StoreVersionAppDataResponse to a JSON map.
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
-  @JsonKey(ignore: true)
+
+  /// Create a copy of StoreVersionAppDataResponse
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   $StoreVersionAppDataResponseCopyWith<StoreVersionAppDataResponse>
       get copyWith => throw _privateConstructorUsedError;
 }
@@ -56,6 +60,8 @@ class _$StoreVersionAppDataResponseCopyWithImpl<$Res,
   // ignore: unused_field
   final $Res Function($Val) _then;
 
+  /// Create a copy of StoreVersionAppDataResponse
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -99,6 +105,8 @@ class __$$StoreVersionAppDataResponseImplCopyWithImpl<$Res>
       $Res Function(_$StoreVersionAppDataResponseImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of StoreVersionAppDataResponse
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -150,11 +158,13 @@ class _$StoreVersionAppDataResponseImpl extends _StoreVersionAppDataResponse {
             (identical(other.android, android) || other.android == android));
   }
 
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   int get hashCode => Object.hash(runtimeType, ios, android);
 
-  @JsonKey(ignore: true)
+  /// Create a copy of StoreVersionAppDataResponse
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$StoreVersionAppDataResponseImplCopyWith<_$StoreVersionAppDataResponseImpl>
@@ -186,8 +196,11 @@ abstract class _StoreVersionAppDataResponse
   @override
   @JsonKey(name: 'Android')
   String? get android;
+
+  /// Create a copy of StoreVersionAppDataResponse
+  /// with the given fields replaced by the non-null parameter values.
   @override
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$StoreVersionAppDataResponseImplCopyWith<_$StoreVersionAppDataResponseImpl>
       get copyWith => throw _privateConstructorUsedError;
 }

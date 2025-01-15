@@ -24,8 +24,12 @@ mixin _$DetailProductVideoResponse {
   String? get v => throw _privateConstructorUsedError;
   String? get i => throw _privateConstructorUsedError;
 
+  /// Serializes this DetailProductVideoResponse to a JSON map.
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
-  @JsonKey(ignore: true)
+
+  /// Create a copy of DetailProductVideoResponse
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   $DetailProductVideoResponseCopyWith<DetailProductVideoResponse>
       get copyWith => throw _privateConstructorUsedError;
 }
@@ -51,6 +55,8 @@ class _$DetailProductVideoResponseCopyWithImpl<$Res,
   // ignore: unused_field
   final $Res Function($Val) _then;
 
+  /// Create a copy of DetailProductVideoResponse
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -92,6 +98,8 @@ class __$$DetailProductVideoResponseImplCopyWithImpl<$Res>
       $Res Function(_$DetailProductVideoResponseImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of DetailProductVideoResponse
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -139,11 +147,13 @@ class _$DetailProductVideoResponseImpl extends _DetailProductVideoResponse {
             (identical(other.i, i) || other.i == i));
   }
 
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   int get hashCode => Object.hash(runtimeType, v, i);
 
-  @JsonKey(ignore: true)
+  /// Create a copy of DetailProductVideoResponse
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$DetailProductVideoResponseImplCopyWith<_$DetailProductVideoResponseImpl>
@@ -170,8 +180,11 @@ abstract class _DetailProductVideoResponse extends DetailProductVideoResponse {
   String? get v;
   @override
   String? get i;
+
+  /// Create a copy of DetailProductVideoResponse
+  /// with the given fields replaced by the non-null parameter values.
   @override
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$DetailProductVideoResponseImplCopyWith<_$DetailProductVideoResponseImpl>
       get copyWith => throw _privateConstructorUsedError;
 }

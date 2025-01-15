@@ -21,7 +21,9 @@ mixin _$SearchContextDataModel {
   String get streetId => throw _privateConstructorUsedError;
   String get query => throw _privateConstructorUsedError;
 
-  @JsonKey(ignore: true)
+  /// Create a copy of SearchContextDataModel
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   $SearchContextDataModelCopyWith<SearchContextDataModel> get copyWith =>
       throw _privateConstructorUsedError;
 }
@@ -46,6 +48,8 @@ class _$SearchContextDataModelCopyWithImpl<$Res,
   // ignore: unused_field
   final $Res Function($Val) _then;
 
+  /// Create a copy of SearchContextDataModel
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -97,6 +101,8 @@ class __$$SearchContextDataModelImplCopyWithImpl<$Res>
       $Res Function(_$SearchContextDataModelImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of SearchContextDataModel
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -167,7 +173,9 @@ class _$SearchContextDataModelImpl extends _SearchContextDataModel {
   int get hashCode =>
       Object.hash(runtimeType, contentType, cityId, streetId, query);
 
-  @JsonKey(ignore: true)
+  /// Create a copy of SearchContextDataModel
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$SearchContextDataModelImplCopyWith<_$SearchContextDataModelImpl>
@@ -191,8 +199,11 @@ abstract class _SearchContextDataModel extends SearchContextDataModel {
   String get streetId;
   @override
   String get query;
+
+  /// Create a copy of SearchContextDataModel
+  /// with the given fields replaced by the non-null parameter values.
   @override
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$SearchContextDataModelImplCopyWith<_$SearchContextDataModelImpl>
       get copyWith => throw _privateConstructorUsedError;
 }

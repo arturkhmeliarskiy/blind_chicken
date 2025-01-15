@@ -24,8 +24,12 @@ mixin _$SectionItemProductResponse {
   String? get n => throw _privateConstructorUsedError;
   String? get u => throw _privateConstructorUsedError;
 
+  /// Serializes this SectionItemProductResponse to a JSON map.
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
-  @JsonKey(ignore: true)
+
+  /// Create a copy of SectionItemProductResponse
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   $SectionItemProductResponseCopyWith<SectionItemProductResponse>
       get copyWith => throw _privateConstructorUsedError;
 }
@@ -51,6 +55,8 @@ class _$SectionItemProductResponseCopyWithImpl<$Res,
   // ignore: unused_field
   final $Res Function($Val) _then;
 
+  /// Create a copy of SectionItemProductResponse
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -92,6 +98,8 @@ class __$$SectionItemProductResponseImplCopyWithImpl<$Res>
       $Res Function(_$SectionItemProductResponseImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of SectionItemProductResponse
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -139,11 +147,13 @@ class _$SectionItemProductResponseImpl extends _SectionItemProductResponse {
             (identical(other.u, u) || other.u == u));
   }
 
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   int get hashCode => Object.hash(runtimeType, n, u);
 
-  @JsonKey(ignore: true)
+  /// Create a copy of SectionItemProductResponse
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$SectionItemProductResponseImplCopyWith<_$SectionItemProductResponseImpl>
@@ -170,8 +180,11 @@ abstract class _SectionItemProductResponse extends SectionItemProductResponse {
   String? get n;
   @override
   String? get u;
+
+  /// Create a copy of SectionItemProductResponse
+  /// with the given fields replaced by the non-null parameter values.
   @override
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$SectionItemProductResponseImplCopyWith<_$SectionItemProductResponseImpl>
       get copyWith => throw _privateConstructorUsedError;
 }

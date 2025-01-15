@@ -30,6 +30,8 @@ class CatalogBloc extends Bloc<CatalogEvent, CatalogState> {
   final StoreVersionAppRepository _storeVersionAppRepository;
   final PushNotificationRepository _pushNotificationRepository;
   final AppMetricaEcommerceService _appMetricaEcommerceService;
+  final ContentRepository _contentRepository;
+  final CacheInfoService _cacheInfoService;
   final FilterService _filterService;
 
   CatalogBloc(
@@ -43,6 +45,8 @@ class CatalogBloc extends Bloc<CatalogEvent, CatalogState> {
     this._storeVersionAppRepository,
     this._pushNotificationRepository,
     this._appMetricaEcommerceService,
+    this._contentRepository,
+    this._cacheInfoService,
     this._filterService,
   ) : super(const CatalogState.init()) {
     on<CatalogEvent>((event, emit) => event.map<Future<void>>(
@@ -102,10 +106,68 @@ class CatalogBloc extends Bloc<CatalogEvent, CatalogState> {
     Emitter<CatalogState> emit,
   ) async {
     String platformDevice = '';
+    // bool isHomeScreenUpdate = false;
     String pushToken = _sharedPreferencesService.getString(
           key: SharedPrefKeys.pushToken,
         ) ??
         '';
+
+    // final dateLastChangesCachedInformation = _sharedPreferencesService.getString(
+    //       key: SharedPrefKeys.dateLastChangesCachedInformation,
+    //     ) ??
+    //     '';
+
+    // final checkContent = await _contentRepository.checkContentInfo(
+    //   dateTime: dateLastChangesCachedInformation,
+    // );
+
+    // _sharedPreferencesService.setString(
+    //   key: SharedPrefKeys.dateLastChangesCachedInformation,
+    //   value: checkContent.dateTime,
+    // );
+
+    // _sharedPreferencesService.setString(
+    //   key: SharedPrefKeys.cacheChangeScreens,
+    //   value: checkContent.screens.toString(),
+    // );
+
+    // final cacheChangeScreens = _sharedPreferencesService.getString(
+    //       key: SharedPrefKeys.cacheChangeScreens,
+    //     ) ??
+    //     '';
+
+    // final screensCacheChange = jsonDecode(cacheChangeScreens) as List<String>;
+
+    // for (int i = 0; i < screensCacheChange.length; i++) {
+    //   if (screensCacheChange[i] == 'home') {
+    //     isHomeScreenUpdate = true;
+    //   }
+    // }
+
+    // if (isHomeScreenUpdate) {
+    //   final checkContent = await _contentRepository.getContentInfo(
+    //     screen: 'home',
+    //   );
+    //   _cacheInfoService.addCacheInfo(
+    //     CacheInfoDataModel(
+    //       screen: 'home',
+    //       dateTime: checkContent.dateTime,
+    //       content: checkContent.content,
+    //       images: checkContent.images,
+    //       info: List<CacheInfoItemDataModel>.from(
+    //         checkContent.info.map(
+    //           (item) => CacheInfoItemDataModel(
+    //             id: item.id,
+    //             title: item.title,
+    //             mobileImage: item.mobileImage,
+    //             tabletImage: item.tabletImage,
+    //             url: item.url,
+    //           ),
+    //         ),
+    //       ),
+    //     ),
+    //   );
+    // }
 
     if (Platform.isIOS && pushToken.isEmpty) {
       await Future<void>.delayed(

@@ -19,7 +19,9 @@ mixin _$DetailProductVideoDataModel {
   String get v => throw _privateConstructorUsedError;
   String get i => throw _privateConstructorUsedError;
 
-  @JsonKey(ignore: true)
+  /// Create a copy of DetailProductVideoDataModel
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   $DetailProductVideoDataModelCopyWith<DetailProductVideoDataModel>
       get copyWith => throw _privateConstructorUsedError;
 }
@@ -46,6 +48,8 @@ class _$DetailProductVideoDataModelCopyWithImpl<$Res,
   // ignore: unused_field
   final $Res Function($Val) _then;
 
+  /// Create a copy of DetailProductVideoDataModel
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -87,6 +91,8 @@ class __$$DetailProductVideoDataModelImplCopyWithImpl<$Res>
       $Res Function(_$DetailProductVideoDataModelImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of DetailProductVideoDataModel
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -134,7 +140,9 @@ class _$DetailProductVideoDataModelImpl extends _DetailProductVideoDataModel {
   @override
   int get hashCode => Object.hash(runtimeType, v, i);
 
-  @JsonKey(ignore: true)
+  /// Create a copy of DetailProductVideoDataModel
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$DetailProductVideoDataModelImplCopyWith<_$DetailProductVideoDataModelImpl>
@@ -153,8 +161,11 @@ abstract class _DetailProductVideoDataModel
   String get v;
   @override
   String get i;
+
+  /// Create a copy of DetailProductVideoDataModel
+  /// with the given fields replaced by the non-null parameter values.
   @override
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$DetailProductVideoDataModelImplCopyWith<_$DetailProductVideoDataModelImpl>
       get copyWith => throw _privateConstructorUsedError;
 }

@@ -25,8 +25,12 @@ mixin _$FilterCatalogInfoResponse {
   String? get n => throw _privateConstructorUsedError;
   String? get typeFilter => throw _privateConstructorUsedError;
 
+  /// Serializes this FilterCatalogInfoResponse to a JSON map.
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
-  @JsonKey(ignore: true)
+
+  /// Create a copy of FilterCatalogInfoResponse
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   $FilterCatalogInfoResponseCopyWith<FilterCatalogInfoResponse> get copyWith =>
       throw _privateConstructorUsedError;
 }
@@ -51,6 +55,8 @@ class _$FilterCatalogInfoResponseCopyWithImpl<$Res,
   // ignore: unused_field
   final $Res Function($Val) _then;
 
+  /// Create a copy of FilterCatalogInfoResponse
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -97,6 +103,8 @@ class __$$FilterCatalogInfoResponseImplCopyWithImpl<$Res>
       $Res Function(_$FilterCatalogInfoResponseImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of FilterCatalogInfoResponse
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -163,12 +171,14 @@ class _$FilterCatalogInfoResponseImpl extends _FilterCatalogInfoResponse {
                 other.typeFilter == typeFilter));
   }
 
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   int get hashCode => Object.hash(
       runtimeType, const DeepCollectionEquality().hash(_v), n, typeFilter);
 
-  @JsonKey(ignore: true)
+  /// Create a copy of FilterCatalogInfoResponse
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$FilterCatalogInfoResponseImplCopyWith<_$FilterCatalogInfoResponseImpl>
@@ -199,8 +209,11 @@ abstract class _FilterCatalogInfoResponse extends FilterCatalogInfoResponse {
   String? get n;
   @override
   String? get typeFilter;
+
+  /// Create a copy of FilterCatalogInfoResponse
+  /// with the given fields replaced by the non-null parameter values.
   @override
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$FilterCatalogInfoResponseImplCopyWith<_$FilterCatalogInfoResponseImpl>
       get copyWith => throw _privateConstructorUsedError;
 }

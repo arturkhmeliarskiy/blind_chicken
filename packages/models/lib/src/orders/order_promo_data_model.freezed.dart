@@ -19,7 +19,9 @@ mixin _$OrderPromoDataModel {
   String get promocode => throw _privateConstructorUsedError;
   String get promocodeInfo => throw _privateConstructorUsedError;
 
-  @JsonKey(ignore: true)
+  /// Create a copy of OrderPromoDataModel
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   $OrderPromoDataModelCopyWith<OrderPromoDataModel> get copyWith =>
       throw _privateConstructorUsedError;
 }
@@ -43,6 +45,8 @@ class _$OrderPromoDataModelCopyWithImpl<$Res, $Val extends OrderPromoDataModel>
   // ignore: unused_field
   final $Res Function($Val) _then;
 
+  /// Create a copy of OrderPromoDataModel
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -81,6 +85,8 @@ class __$$OrderPromoDataModelImplCopyWithImpl<$Res>
       $Res Function(_$OrderPromoDataModelImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of OrderPromoDataModel
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -131,7 +137,9 @@ class _$OrderPromoDataModelImpl extends _OrderPromoDataModel {
   @override
   int get hashCode => Object.hash(runtimeType, promocode, promocodeInfo);
 
-  @JsonKey(ignore: true)
+  /// Create a copy of OrderPromoDataModel
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$OrderPromoDataModelImplCopyWith<_$OrderPromoDataModelImpl> get copyWith =>
@@ -149,8 +157,11 @@ abstract class _OrderPromoDataModel extends OrderPromoDataModel {
   String get promocode;
   @override
   String get promocodeInfo;
+
+  /// Create a copy of OrderPromoDataModel
+  /// with the given fields replaced by the non-null parameter values.
   @override
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$OrderPromoDataModelImplCopyWith<_$OrderPromoDataModelImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }

@@ -20,7 +20,9 @@ mixin _$DeliveryPickDataModel {
   String get name => throw _privateConstructorUsedError;
   String get shedule => throw _privateConstructorUsedError;
 
-  @JsonKey(ignore: true)
+  /// Create a copy of DeliveryPickDataModel
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   $DeliveryPickDataModelCopyWith<DeliveryPickDataModel> get copyWith =>
       throw _privateConstructorUsedError;
 }
@@ -45,6 +47,8 @@ class _$DeliveryPickDataModelCopyWithImpl<$Res,
   // ignore: unused_field
   final $Res Function($Val) _then;
 
+  /// Create a copy of DeliveryPickDataModel
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -90,6 +94,8 @@ class __$$DeliveryPickDataModelImplCopyWithImpl<$Res>
       $Res Function(_$DeliveryPickDataModelImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of DeliveryPickDataModel
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -146,7 +152,9 @@ class _$DeliveryPickDataModelImpl extends _DeliveryPickDataModel {
   @override
   int get hashCode => Object.hash(runtimeType, id, name, shedule);
 
-  @JsonKey(ignore: true)
+  /// Create a copy of DeliveryPickDataModel
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$DeliveryPickDataModelImplCopyWith<_$DeliveryPickDataModelImpl>
@@ -167,8 +175,11 @@ abstract class _DeliveryPickDataModel extends DeliveryPickDataModel {
   String get name;
   @override
   String get shedule;
+
+  /// Create a copy of DeliveryPickDataModel
+  /// with the given fields replaced by the non-null parameter values.
   @override
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$DeliveryPickDataModelImplCopyWith<_$DeliveryPickDataModelImpl>
       get copyWith => throw _privateConstructorUsedError;
 }

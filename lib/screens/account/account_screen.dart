@@ -791,7 +791,7 @@ class _AccountScreenState extends State<AccountScreen> {
                                                                       ? initState.user?.buyForNext
                                                                           .toString()
                                                                           .spaceSeparateNumbers()
-                                                                      : '10 000',
+                                                                      : '20 000',
                                                                   style: Theme.of(context)
                                                                       .textTheme
                                                                       .displaySmall,

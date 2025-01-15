@@ -24,8 +24,12 @@ mixin _$BrandsResponse {
   List<BrandResponse>? get brands => throw _privateConstructorUsedError;
   String? get errorMessage => throw _privateConstructorUsedError;
 
+  /// Serializes this BrandsResponse to a JSON map.
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
-  @JsonKey(ignore: true)
+
+  /// Create a copy of BrandsResponse
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   $BrandsResponseCopyWith<BrandsResponse> get copyWith =>
       throw _privateConstructorUsedError;
 }
@@ -52,6 +56,8 @@ class _$BrandsResponseCopyWithImpl<$Res, $Val extends BrandsResponse>
   // ignore: unused_field
   final $Res Function($Val) _then;
 
+  /// Create a copy of BrandsResponse
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -93,6 +99,8 @@ class __$$BrandsResponseImplCopyWithImpl<$Res>
       _$BrandsResponseImpl _value, $Res Function(_$BrandsResponseImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of BrandsResponse
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -154,12 +162,14 @@ class _$BrandsResponseImpl extends _BrandsResponse {
                 other.errorMessage == errorMessage));
   }
 
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   int get hashCode => Object.hash(
       runtimeType, const DeepCollectionEquality().hash(_brands), errorMessage);
 
-  @JsonKey(ignore: true)
+  /// Create a copy of BrandsResponse
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$BrandsResponseImplCopyWith<_$BrandsResponseImpl> get copyWith =>
@@ -189,8 +199,11 @@ abstract class _BrandsResponse extends BrandsResponse {
   List<BrandResponse>? get brands;
   @override
   String? get errorMessage;
+
+  /// Create a copy of BrandsResponse
+  /// with the given fields replaced by the non-null parameter values.
   @override
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$BrandsResponseImplCopyWith<_$BrandsResponseImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }

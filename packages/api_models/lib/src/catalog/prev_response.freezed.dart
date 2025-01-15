@@ -23,8 +23,12 @@ mixin _$PrevResponse {
   @JsonKey(name: 'Оптика')
   String? get optics => throw _privateConstructorUsedError;
 
+  /// Serializes this PrevResponse to a JSON map.
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
-  @JsonKey(ignore: true)
+
+  /// Create a copy of PrevResponse
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   $PrevResponseCopyWith<PrevResponse> get copyWith =>
       throw _privateConstructorUsedError;
 }
@@ -48,6 +52,8 @@ class _$PrevResponseCopyWithImpl<$Res, $Val extends PrevResponse>
   // ignore: unused_field
   final $Res Function($Val) _then;
 
+  /// Create a copy of PrevResponse
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -81,6 +87,8 @@ class __$$PrevResponseImplCopyWithImpl<$Res>
       _$PrevResponseImpl _value, $Res Function(_$PrevResponseImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of PrevResponse
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -120,11 +128,13 @@ class _$PrevResponseImpl extends _PrevResponse {
             (identical(other.optics, optics) || other.optics == optics));
   }
 
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   int get hashCode => Object.hash(runtimeType, optics);
 
-  @JsonKey(ignore: true)
+  /// Create a copy of PrevResponse
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$PrevResponseImplCopyWith<_$PrevResponseImpl> get copyWith =>
@@ -149,8 +159,11 @@ abstract class _PrevResponse extends PrevResponse {
   @override
   @JsonKey(name: 'Оптика')
   String? get optics;
+
+  /// Create a copy of PrevResponse
+  /// with the given fields replaced by the non-null parameter values.
   @override
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$PrevResponseImplCopyWith<_$PrevResponseImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }

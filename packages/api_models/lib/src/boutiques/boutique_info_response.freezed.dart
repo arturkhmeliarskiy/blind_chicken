@@ -25,8 +25,12 @@ mixin _$BoutiqueInfoResponse {
   String? get errorMessage => throw _privateConstructorUsedError;
   BoutiqueInfoDataResponse? get data => throw _privateConstructorUsedError;
 
+  /// Serializes this BoutiqueInfoResponse to a JSON map.
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
-  @JsonKey(ignore: true)
+
+  /// Create a copy of BoutiqueInfoResponse
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   $BoutiqueInfoResponseCopyWith<BoutiqueInfoResponse> get copyWith =>
       throw _privateConstructorUsedError;
 }
@@ -57,6 +61,8 @@ class _$BoutiqueInfoResponseCopyWithImpl<$Res,
   // ignore: unused_field
   final $Res Function($Val) _then;
 
+  /// Create a copy of BoutiqueInfoResponse
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -85,6 +91,8 @@ class _$BoutiqueInfoResponseCopyWithImpl<$Res,
     ) as $Val);
   }
 
+  /// Create a copy of BoutiqueInfoResponse
+  /// with the given fields replaced by the non-null parameter values.
   @override
   @pragma('vm:prefer-inline')
   $BoutiqueInfoDataResponseCopyWith<$Res>? get data {
@@ -124,6 +132,8 @@ class __$$BoutiqueInfoResponseImplCopyWithImpl<$Res>
       $Res Function(_$BoutiqueInfoResponseImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of BoutiqueInfoResponse
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -188,11 +198,13 @@ class _$BoutiqueInfoResponseImpl extends _BoutiqueInfoResponse {
             (identical(other.data, data) || other.data == data));
   }
 
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   int get hashCode => Object.hash(runtimeType, r, e, errorMessage, data);
 
-  @JsonKey(ignore: true)
+  /// Create a copy of BoutiqueInfoResponse
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$BoutiqueInfoResponseImplCopyWith<_$BoutiqueInfoResponseImpl>
@@ -227,8 +239,11 @@ abstract class _BoutiqueInfoResponse extends BoutiqueInfoResponse {
   String? get errorMessage;
   @override
   BoutiqueInfoDataResponse? get data;
+
+  /// Create a copy of BoutiqueInfoResponse
+  /// with the given fields replaced by the non-null parameter values.
   @override
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$BoutiqueInfoResponseImplCopyWith<_$BoutiqueInfoResponseImpl>
       get copyWith => throw _privateConstructorUsedError;
 }

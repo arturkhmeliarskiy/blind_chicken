@@ -11,7 +11,7 @@ _$CatalogCountProductUrlResponseImpl
         _$CatalogCountProductUrlResponseImpl(
           r: json['r'] as String?,
           e: json['e'] as String?,
-          count: json['count'] as int?,
+          count: (json['count'] as num?)?.toInt(),
           errorMessage: json['errorMessage'] as String?,
         );
 

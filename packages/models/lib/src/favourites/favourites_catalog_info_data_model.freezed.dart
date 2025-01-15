@@ -26,7 +26,9 @@ mixin _$FavouritesCatalogInfoDataModel {
   String get e => throw _privateConstructorUsedError;
   String get errorMessage => throw _privateConstructorUsedError;
 
-  @JsonKey(ignore: true)
+  /// Create a copy of FavouritesCatalogInfoDataModel
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   $FavouritesCatalogInfoDataModelCopyWith<FavouritesCatalogInfoDataModel>
       get copyWith => throw _privateConstructorUsedError;
 }
@@ -62,6 +64,8 @@ class _$FavouritesCatalogInfoDataModelCopyWithImpl<$Res,
   // ignore: unused_field
   final $Res Function($Val) _then;
 
+  /// Create a copy of FavouritesCatalogInfoDataModel
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -147,6 +151,8 @@ class __$$FavouritesCatalogInfoDataModelImplCopyWithImpl<$Res>
       $Res Function(_$FavouritesCatalogInfoDataModelImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of FavouritesCatalogInfoDataModel
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -287,7 +293,9 @@ class _$FavouritesCatalogInfoDataModelImpl
       e,
       errorMessage);
 
-  @JsonKey(ignore: true)
+  /// Create a copy of FavouritesCatalogInfoDataModel
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$FavouritesCatalogInfoDataModelImplCopyWith<
@@ -329,8 +337,11 @@ abstract class _FavouritesCatalogInfoDataModel
   String get e;
   @override
   String get errorMessage;
+
+  /// Create a copy of FavouritesCatalogInfoDataModel
+  /// with the given fields replaced by the non-null parameter values.
   @override
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$FavouritesCatalogInfoDataModelImplCopyWith<
           _$FavouritesCatalogInfoDataModelImpl>
       get copyWith => throw _privateConstructorUsedError;

@@ -22,7 +22,9 @@ mixin _$OneNewsInfoDataModel {
   NewsInfoItemDataModel get data => throw _privateConstructorUsedError;
   bool get isViewed => throw _privateConstructorUsedError;
 
-  @JsonKey(ignore: true)
+  /// Create a copy of OneNewsInfoDataModel
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   $OneNewsInfoDataModelCopyWith<OneNewsInfoDataModel> get copyWith =>
       throw _privateConstructorUsedError;
 }
@@ -54,6 +56,8 @@ class _$OneNewsInfoDataModelCopyWithImpl<$Res,
   // ignore: unused_field
   final $Res Function($Val) _then;
 
+  /// Create a copy of OneNewsInfoDataModel
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -87,6 +91,8 @@ class _$OneNewsInfoDataModelCopyWithImpl<$Res,
     ) as $Val);
   }
 
+  /// Create a copy of OneNewsInfoDataModel
+  /// with the given fields replaced by the non-null parameter values.
   @override
   @pragma('vm:prefer-inline')
   $NewsInfoItemDataModelCopyWith<$Res> get data {
@@ -123,6 +129,8 @@ class __$$OneNewsInfoDataModelImplCopyWithImpl<$Res>
       $Res Function(_$OneNewsInfoDataModelImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of OneNewsInfoDataModel
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -202,7 +210,9 @@ class _$OneNewsInfoDataModelImpl extends _OneNewsInfoDataModel {
   int get hashCode =>
       Object.hash(runtimeType, r, e, errorMessage, data, isViewed);
 
-  @JsonKey(ignore: true)
+  /// Create a copy of OneNewsInfoDataModel
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$OneNewsInfoDataModelImplCopyWith<_$OneNewsInfoDataModelImpl>
@@ -230,8 +240,11 @@ abstract class _OneNewsInfoDataModel extends OneNewsInfoDataModel {
   NewsInfoItemDataModel get data;
   @override
   bool get isViewed;
+
+  /// Create a copy of OneNewsInfoDataModel
+  /// with the given fields replaced by the non-null parameter values.
   @override
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$OneNewsInfoDataModelImplCopyWith<_$OneNewsInfoDataModelImpl>
       get copyWith => throw _privateConstructorUsedError;
 }

@@ -19,7 +19,9 @@ mixin _$BrandDataModel {
   String get title => throw _privateConstructorUsedError;
   List<BrandItemDataModel> get value => throw _privateConstructorUsedError;
 
-  @JsonKey(ignore: true)
+  /// Create a copy of BrandDataModel
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   $BrandDataModelCopyWith<BrandDataModel> get copyWith =>
       throw _privateConstructorUsedError;
 }
@@ -43,6 +45,8 @@ class _$BrandDataModelCopyWithImpl<$Res, $Val extends BrandDataModel>
   // ignore: unused_field
   final $Res Function($Val) _then;
 
+  /// Create a copy of BrandDataModel
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -81,6 +85,8 @@ class __$$BrandDataModelImplCopyWithImpl<$Res>
       _$BrandDataModelImpl _value, $Res Function(_$BrandDataModelImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of BrandDataModel
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -136,7 +142,9 @@ class _$BrandDataModelImpl extends _BrandDataModel {
   int get hashCode => Object.hash(
       runtimeType, title, const DeepCollectionEquality().hash(_value));
 
-  @JsonKey(ignore: true)
+  /// Create a copy of BrandDataModel
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$BrandDataModelImplCopyWith<_$BrandDataModelImpl> get copyWith =>
@@ -154,8 +162,11 @@ abstract class _BrandDataModel extends BrandDataModel {
   String get title;
   @override
   List<BrandItemDataModel> get value;
+
+  /// Create a copy of BrandDataModel
+  /// with the given fields replaced by the non-null parameter values.
   @override
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$BrandDataModelImplCopyWith<_$BrandDataModelImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }

@@ -19,4 +19,6 @@ class SharedPrefKeys {
   static const String isPromotionsForPurchases = 'is_promotions_purchases';
   static const String dateReceiptNewNews = 'date_receipt_new_news';
   static const String boutiqueInfo = 'boutique_info';
+  static const String dateLastChangesCachedInformation = 'date_last_changes_cached_information';
+  static const String cacheChangeScreens = 'cache_change_screens';
 }

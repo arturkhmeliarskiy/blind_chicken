@@ -14,3 +14,4 @@ export 'filter_service.dart';
 export 'image_service.dart';
 export 'badge_service.dart';
 export 'news_notifications/index.dart';
+export 'cache_info/index.dart';

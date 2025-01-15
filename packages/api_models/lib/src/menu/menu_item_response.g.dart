@@ -13,10 +13,10 @@ _$MenuItemResponseImpl _$$MenuItemResponseImplFromJson(
       id: json['id'] as String?,
       url: json['url'] as String?,
       name: json['name'] as String?,
-      title: json['title'] as int?,
-      sub: json['sub'] as int?,
-      brand: json['brand'] as int?,
-      bold: json['bold'] as int?,
+      title: (json['title'] as num?)?.toInt(),
+      sub: (json['sub'] as num?)?.toInt(),
+      brand: (json['brand'] as num?)?.toInt(),
+      bold: (json['bold'] as num?)?.toInt(),
     );
 
 Map<String, dynamic> _$$MenuItemResponseImplToJson(

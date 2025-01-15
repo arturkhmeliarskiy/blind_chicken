@@ -26,8 +26,12 @@ mixin _$SearchContextResponse {
   String? get streetId => throw _privateConstructorUsedError;
   String? get query => throw _privateConstructorUsedError;
 
+  /// Serializes this SearchContextResponse to a JSON map.
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
-  @JsonKey(ignore: true)
+
+  /// Create a copy of SearchContextResponse
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   $SearchContextResponseCopyWith<SearchContextResponse> get copyWith =>
       throw _privateConstructorUsedError;
 }
@@ -53,6 +57,8 @@ class _$SearchContextResponseCopyWithImpl<$Res,
   // ignore: unused_field
   final $Res Function($Val) _then;
 
+  /// Create a copy of SearchContextResponse
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -104,6 +110,8 @@ class __$$SearchContextResponseImplCopyWithImpl<$Res>
       $Res Function(_$SearchContextResponseImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of SearchContextResponse
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -170,12 +178,14 @@ class _$SearchContextResponseImpl extends _SearchContextResponse {
             (identical(other.query, query) || other.query == query));
   }
 
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   int get hashCode =>
       Object.hash(runtimeType, contentType, cityId, streetId, query);
 
-  @JsonKey(ignore: true)
+  /// Create a copy of SearchContextResponse
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$SearchContextResponseImplCopyWith<_$SearchContextResponseImpl>
@@ -209,8 +219,11 @@ abstract class _SearchContextResponse extends SearchContextResponse {
   String? get streetId;
   @override
   String? get query;
+
+  /// Create a copy of SearchContextResponse
+  /// with the given fields replaced by the non-null parameter values.
   @override
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$SearchContextResponseImplCopyWith<_$SearchContextResponseImpl>
       get copyWith => throw _privateConstructorUsedError;
 }

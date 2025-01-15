@@ -23,8 +23,12 @@ mixin _$SkuProductResponse {
   String? get id => throw _privateConstructorUsedError;
   String? get value => throw _privateConstructorUsedError;
 
+  /// Serializes this SkuProductResponse to a JSON map.
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
-  @JsonKey(ignore: true)
+
+  /// Create a copy of SkuProductResponse
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   $SkuProductResponseCopyWith<SkuProductResponse> get copyWith =>
       throw _privateConstructorUsedError;
 }
@@ -48,6 +52,8 @@ class _$SkuProductResponseCopyWithImpl<$Res, $Val extends SkuProductResponse>
   // ignore: unused_field
   final $Res Function($Val) _then;
 
+  /// Create a copy of SkuProductResponse
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -86,6 +92,8 @@ class __$$SkuProductResponseImplCopyWithImpl<$Res>
       $Res Function(_$SkuProductResponseImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of SkuProductResponse
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -132,11 +140,13 @@ class _$SkuProductResponseImpl extends _SkuProductResponse {
             (identical(other.value, value) || other.value == value));
   }
 
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   int get hashCode => Object.hash(runtimeType, id, value);
 
-  @JsonKey(ignore: true)
+  /// Create a copy of SkuProductResponse
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$SkuProductResponseImplCopyWith<_$SkuProductResponseImpl> get copyWith =>
@@ -163,8 +173,11 @@ abstract class _SkuProductResponse extends SkuProductResponse {
   String? get id;
   @override
   String? get value;
+
+  /// Create a copy of SkuProductResponse
+  /// with the given fields replaced by the non-null parameter values.
   @override
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$SkuProductResponseImplCopyWith<_$SkuProductResponseImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }

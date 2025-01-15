@@ -33,7 +33,9 @@ mixin _$BoutiqueDataInfoDataModel {
   String get name => throw _privateConstructorUsedError;
   String get iconPath => throw _privateConstructorUsedError;
 
-  @JsonKey(ignore: true)
+  /// Create a copy of BoutiqueDataInfoDataModel
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   $BoutiqueDataInfoDataModelCopyWith<BoutiqueDataInfoDataModel> get copyWith =>
       throw _privateConstructorUsedError;
 }
@@ -72,6 +74,8 @@ class _$BoutiqueDataInfoDataModelCopyWithImpl<$Res,
   // ignore: unused_field
   final $Res Function($Val) _then;
 
+  /// Create a copy of BoutiqueDataInfoDataModel
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -187,6 +191,8 @@ class __$$BoutiqueDataInfoDataModelImplCopyWithImpl<$Res>
       $Res Function(_$BoutiqueDataInfoDataModelImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of BoutiqueDataInfoDataModel
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -388,7 +394,9 @@ class _$BoutiqueDataInfoDataModelImpl extends _BoutiqueDataInfoDataModel {
       name,
       iconPath);
 
-  @JsonKey(ignore: true)
+  /// Create a copy of BoutiqueDataInfoDataModel
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$BoutiqueDataInfoDataModelImplCopyWith<_$BoutiqueDataInfoDataModelImpl>
@@ -442,8 +450,11 @@ abstract class _BoutiqueDataInfoDataModel extends BoutiqueDataInfoDataModel {
   String get name;
   @override
   String get iconPath;
+
+  /// Create a copy of BoutiqueDataInfoDataModel
+  /// with the given fields replaced by the non-null parameter values.
   @override
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$BoutiqueDataInfoDataModelImplCopyWith<_$BoutiqueDataInfoDataModelImpl>
       get copyWith => throw _privateConstructorUsedError;
 }

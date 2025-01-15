@@ -28,7 +28,9 @@ mixin _$OrderDataModel {
   String get adress => throw _privateConstructorUsedError;
   String get workingHours => throw _privateConstructorUsedError;
 
-  @JsonKey(ignore: true)
+  /// Create a copy of OrderDataModel
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   $OrderDataModelCopyWith<OrderDataModel> get copyWith =>
       throw _privateConstructorUsedError;
 }
@@ -62,6 +64,8 @@ class _$OrderDataModelCopyWithImpl<$Res, $Val extends OrderDataModel>
   // ignore: unused_field
   final $Res Function($Val) _then;
 
+  /// Create a copy of OrderDataModel
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -150,6 +154,8 @@ class __$$OrderDataModelImplCopyWithImpl<$Res>
       _$OrderDataModelImpl _value, $Res Function(_$OrderDataModelImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of OrderDataModel
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -295,7 +301,9 @@ class _$OrderDataModelImpl extends _OrderDataModel {
       adress,
       workingHours);
 
-  @JsonKey(ignore: true)
+  /// Create a copy of OrderDataModel
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$OrderDataModelImplCopyWith<_$OrderDataModelImpl> get copyWith =>
@@ -337,8 +345,11 @@ abstract class _OrderDataModel extends OrderDataModel {
   String get adress;
   @override
   String get workingHours;
+
+  /// Create a copy of OrderDataModel
+  /// with the given fields replaced by the non-null parameter values.
   @override
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$OrderDataModelImplCopyWith<_$OrderDataModelImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }

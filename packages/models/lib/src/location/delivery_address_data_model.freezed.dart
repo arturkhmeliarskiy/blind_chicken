@@ -21,7 +21,9 @@ mixin _$DeliveryAddressDataModel {
   String get zip => throw _privateConstructorUsedError;
   String get cityId => throw _privateConstructorUsedError;
 
-  @JsonKey(ignore: true)
+  /// Create a copy of DeliveryAddressDataModel
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   $DeliveryAddressDataModelCopyWith<DeliveryAddressDataModel> get copyWith =>
       throw _privateConstructorUsedError;
 }
@@ -46,6 +48,8 @@ class _$DeliveryAddressDataModelCopyWithImpl<$Res,
   // ignore: unused_field
   final $Res Function($Val) _then;
 
+  /// Create a copy of DeliveryAddressDataModel
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -97,6 +101,8 @@ class __$$DeliveryAddressDataModelImplCopyWithImpl<$Res>
       $Res Function(_$DeliveryAddressDataModelImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of DeliveryAddressDataModel
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -164,7 +170,9 @@ class _$DeliveryAddressDataModelImpl extends _DeliveryAddressDataModel {
   @override
   int get hashCode => Object.hash(runtimeType, id, addr, zip, cityId);
 
-  @JsonKey(ignore: true)
+  /// Create a copy of DeliveryAddressDataModel
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$DeliveryAddressDataModelImplCopyWith<_$DeliveryAddressDataModelImpl>
@@ -188,8 +196,11 @@ abstract class _DeliveryAddressDataModel extends DeliveryAddressDataModel {
   String get zip;
   @override
   String get cityId;
+
+  /// Create a copy of DeliveryAddressDataModel
+  /// with the given fields replaced by the non-null parameter values.
   @override
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$DeliveryAddressDataModelImplCopyWith<_$DeliveryAddressDataModelImpl>
       get copyWith => throw _privateConstructorUsedError;
 }

@@ -24,7 +24,9 @@ mixin _$DeliveryDataModel {
   List<DeliveryAddressDataModel> get address =>
       throw _privateConstructorUsedError;
 
-  @JsonKey(ignore: true)
+  /// Create a copy of DeliveryDataModel
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   $DeliveryDataModelCopyWith<DeliveryDataModel> get copyWith =>
       throw _privateConstructorUsedError;
 }
@@ -56,6 +58,8 @@ class _$DeliveryDataModelCopyWithImpl<$Res, $Val extends DeliveryDataModel>
   // ignore: unused_field
   final $Res Function($Val) _then;
 
+  /// Create a copy of DeliveryDataModel
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -94,6 +98,8 @@ class _$DeliveryDataModelCopyWithImpl<$Res, $Val extends DeliveryDataModel>
     ) as $Val);
   }
 
+  /// Create a copy of DeliveryDataModel
+  /// with the given fields replaced by the non-null parameter values.
   @override
   @pragma('vm:prefer-inline')
   $DeliveryPickDataModelCopyWith<$Res> get pick {
@@ -131,6 +137,8 @@ class __$$DeliveryDataModelImplCopyWithImpl<$Res>
       $Res Function(_$DeliveryDataModelImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of DeliveryDataModel
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -225,7 +233,9 @@ class _$DeliveryDataModelImpl extends _DeliveryDataModel {
   int get hashCode => Object.hash(runtimeType, r, e, errorMessage, deliveryId,
       pick, const DeepCollectionEquality().hash(_address));
 
-  @JsonKey(ignore: true)
+  /// Create a copy of DeliveryDataModel
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$DeliveryDataModelImplCopyWith<_$DeliveryDataModelImpl> get copyWith =>
@@ -256,8 +266,11 @@ abstract class _DeliveryDataModel extends DeliveryDataModel {
   DeliveryPickDataModel get pick;
   @override
   List<DeliveryAddressDataModel> get address;
+
+  /// Create a copy of DeliveryDataModel
+  /// with the given fields replaced by the non-null parameter values.
   @override
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$DeliveryDataModelImplCopyWith<_$DeliveryDataModelImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }
