@@ -9,6 +9,7 @@ import 'package:decimal/decimal.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
+// import 'package:get_it/get_it.dart';
 import 'package:models/models.dart';
 import 'package:repositories/repositories.dart';
 import 'package:package_info_plus/package_info_plus.dart';
@@ -145,28 +146,31 @@ class CatalogBloc extends Bloc<CatalogEvent, CatalogState> {
     // }
 
     // if (isHomeScreenUpdate) {
-    //   final checkContent = await _contentRepository.getContentInfo(
+    // final contentInfo = await _contentRepository.getContentInfo(
+    //   screen: 'home',
+    // );
+
+    // contentInfo;
+
+    // _cacheInfoService.addCacheInfo(
+    //   CacheInfoDataModel(
     //     screen: 'home',
-    //   );
-    //   _cacheInfoService.addCacheInfo(
-    //     CacheInfoDataModel(
-    //       screen: 'home',
-    //       dateTime: checkContent.dateTime,
-    //       content: checkContent.content,
-    //       images: checkContent.images,
-    //       info: List<CacheInfoItemDataModel>.from(
-    //         checkContent.info.map(
-    //           (item) => CacheInfoItemDataModel(
-    //             id: item.id,
-    //             title: item.title,
-    //             mobileImage: item.mobileImage,
-    //             tabletImage: item.tabletImage,
-    //             url: item.url,
-    //           ),
+    //     dateTime: contentInfo.dateTime,
+    //     content: contentInfo.content,
+    //     images: contentInfo.images,
+    //     info: List<CacheInfoItemDataModel>.from(
+    //       contentInfo.info.map(
+    //         (item) => CacheInfoItemDataModel(
+    //           id: item.id,
+    //           title: item.title,
+    //           mobileImage: item.mobileImage,
+    //           tabletImage: item.tabletImage,
+    //           url: item.url,
     //         ),
     //       ),
     //     ),
-    //   );
+    //   ),
+    // );
     // }
 
     if (Platform.isIOS && pushToken.isEmpty) {

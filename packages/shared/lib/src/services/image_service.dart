@@ -1,5 +1,6 @@
 import 'dart:async';
 
+import 'package:http/http.dart' as http;
 import 'package:flutter/material.dart';
 
 class ImageService {
@@ -13,5 +14,11 @@ class ImageService {
       c.complete(i);
     }));
     return c.future;
+  }
+
+  Future<String> converNetworkImageToUint8List(String url) async {
+    final response = await http.get(Uri.parse(url));
+
+    return response.bodyBytes.toString();
   }
 }
