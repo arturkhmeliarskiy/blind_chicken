@@ -4,6 +4,7 @@ import 'package:blind_chicken/screens/%D1%81ashback_and_discounts/blind_chicken_
 import 'package:blind_chicken/screens/account/account_screen.dart';
 import 'package:blind_chicken/screens/account/electronic_order_forms_screen.dart';
 import 'package:blind_chicken/screens/account/my_orders_screen.dart';
+import 'package:blind_chicken/screens/account/order_card_info_screen.dart';
 import 'package:blind_chicken/screens/account/order_pdf_blank_view.dart';
 import 'package:blind_chicken/screens/account/tailoring_order_forms_screen.dart';
 import 'package:blind_chicken/screens/app/app_screen.dart';
@@ -13,6 +14,7 @@ import 'package:blind_chicken/screens/boutiques/widgets/boutique_preview_media_s
 import 'package:blind_chicken/screens/boutiques/widgets/map/boutique_yandex_map.dart';
 import 'package:blind_chicken/screens/brands/brands_screen.dart';
 import 'package:blind_chicken/screens/chat/chat_messanger_screen.dart';
+import 'package:blind_chicken/screens/favourites/favourites_card_info_screen.dart';
 import 'package:blind_chicken/screens/favourites/favourites_filter_screen.dart';
 import 'package:blind_chicken/screens/favourites/favourites_filter_select_value/favourites_filter_select_value_screen.dart';
 import 'package:blind_chicken/screens/favourites/favourites_filter_select_value_search/favourites_filter_select_value_search_screen.dart';
@@ -21,9 +23,12 @@ import 'package:blind_chicken/screens/gift_card/gift_card_screen.dart';
 import 'package:blind_chicken/screens/gift_card/widgets/gift_card_delivery_info_screen.dart';
 import 'package:blind_chicken/screens/gift_card/widgets/gift_virtual_card_colors_screen.dart';
 import 'package:blind_chicken/screens/gift_card/widgets/map/gift_yandex_map_screen.dart';
+import 'package:blind_chicken/screens/home/catalog/catalog_card_info_screen.dart';
 import 'package:blind_chicken/screens/home/catalog/catalog_filter_select_value/catalog_filter_select_value_screen.dart';
 import 'package:blind_chicken/screens/home/catalog/catalog_filter_select_value_search/catalog_filter_select_value_search_screen.dart';
 import 'package:blind_chicken/screens/home/catalog/catalog_search_auto_router_screen.dart';
+import 'package:blind_chicken/screens/home/catalog/catalog_search_card_info_screen.dart';
+import 'package:blind_chicken/screens/home/catalog/catalog_search_card_info_screen_result.dart';
 import 'package:blind_chicken/screens/home/catalog/catalog_search_filter_screen.dart';
 import 'package:blind_chicken/screens/home/catalog/catalog_search_screen_result.dart';
 import 'package:blind_chicken/screens/home/catalog/widget/catalog_size_product_screen.dart';
@@ -42,6 +47,7 @@ import 'package:blind_chicken/screens/news/news_screen.dart';
 import 'package:blind_chicken/screens/news/widgets/news_preview_media_info_screen.dart';
 import 'package:blind_chicken/screens/news/widgets/news_preview_media_screen.dart';
 import 'package:blind_chicken/screens/news/widgets/news_preview_youtube_player_screen.dart';
+import 'package:blind_chicken/screens/news/widgets/news_video_player_screen.dart';
 import 'package:blind_chicken/screens/news/widgets/notifications/notification_info_description_screen.dart';
 import 'package:blind_chicken/screens/no_internet/no_internet_screen.dart';
 import 'package:blind_chicken/screens/payment_verification/payment_verification_screen.dart';
@@ -69,7 +75,7 @@ import 'package:blind_chicken/screens/web_view/blind_chicken_webview_screen.dart
 import 'package:blind_chicken/screens/web_view/sberbank_payment_webview_screen.dart';
 import 'package:blind_chicken/screens/yandex_map/yandex_map_screen.dart';
 import 'package:flutter/material.dart';
-import 'package:models/models.dart';
+import 'package:blind_chicken/old_repos/models/models.dart';
 import 'package:youtube_player_flutter/youtube_player_flutter.dart';
 import '../../contacts/contacts_screen.dart';
 
@@ -95,7 +101,7 @@ class AppRouter extends RootStackRouter {
             ),
             AutoRoute(
               keepHistory: false,
-              page: CardInfoRoute.page,
+              page: CatalogCardInfoRoute.page,
               path: 'catalog_card_info',
             ),
             AutoRoute(
@@ -265,6 +271,10 @@ class AppRouter extends RootStackRouter {
         ),
         AutoRoute(
           page: NewsPreviewYouTubeVideoPlayerRoute.page,
+          path: '/news_preview_youtube_video_player',
+        ),
+        AutoRoute(
+          page: NewsVideoPlayerRoute.page,
           path: '/news_preview_youtube_video_player',
         ),
         AutoRoute(

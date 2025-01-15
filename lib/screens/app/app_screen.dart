@@ -1,22 +1,22 @@
 import 'dart:async';
-import 'dart:developer';
 import 'dart:io';
+
 import 'package:appmetrica_plugin/appmetrica_plugin.dart';
 import 'package:appmetrica_push_plugin/appmetrica_push_plugin.dart';
 import 'package:auto_route/auto_route.dart';
+import 'package:blind_chicken/old_repos/blocs/blocs.dart';
+import 'package:blind_chicken/old_repos/models/models.dart';
+import 'package:blind_chicken/old_repos/shared/shared.dart';
+import 'package:blind_chicken/old_repos/ui_kit/ui_kit.dart';
 import 'package:blind_chicken/screens/app/router/app_router.dart';
 import 'package:blind_chicken/screens/login/login_phone_screen.dart';
-import 'package:blocs/blocs.dart';
+import 'package:blind_chicken/utils/logging.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/services.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:get_it/get_it.dart';
 import 'package:in_app_update/in_app_update.dart';
 import 'package:internet_connection_checker_plus/internet_connection_checker_plus.dart';
-import 'package:models/models.dart';
-import 'package:shared/shared.dart';
-import 'package:ui_kit/ui_kit.dart';
 
 @RoutePage()
 class DashboardPage extends StatefulWidget {
@@ -61,7 +61,7 @@ class _DashboardPageState extends State<DashboardPage> {
     try {
       final result = await InternetAddress.lookup('example.com');
       if (result.isNotEmpty && result[0].rawAddress.isNotEmpty) {
-        log('connected');
+        logging('connected', stackTrace: StackTrace.current);
         if (_isOpenShowDialog) {
           thereAreInternetConnections();
           closeShowDialog();
@@ -69,7 +69,7 @@ class _DashboardPageState extends State<DashboardPage> {
         }
       }
     } on SocketException catch (_) {
-      log('not connected');
+      logging('not connected', stackTrace: StackTrace.current);
       if (!_isOpenShowDialog) {
         noInternetConnection();
         _isOpenShowDialog = true;
@@ -142,7 +142,7 @@ class _DashboardPageState extends State<DashboardPage> {
         ),
       );
       final result = await AppMetricaPush.getTokens();
-      log("push token: ${result['apns'] ?? ''}");
+      logging("push token: ${result['apns'] ?? ''}", stackTrace: StackTrace.current);
     }
   }
 
@@ -219,6 +219,10 @@ class _DashboardPageState extends State<DashboardPage> {
                   children: List.generate(listItems.length, (index) {
                     return GestureDetector(
                       onTap: () async {
+                        final updateData = GetIt.I.get<UpdateDataService>();
+                        if (updateData.videoController.dataSource.isNotEmpty) {
+                          updateData.videoController.dispose();
+                        }
                         if (listItems[index].route == 'phone') {
                           await LaunchService.makePhoneCall(listItems[index].title);
                           context.navigateNamedTo('/dashboard/home/${listItems[index].route}');
@@ -475,7 +479,11 @@ class _DashboardPageState extends State<DashboardPage> {
                         );
                         AppMetrica.reportEvent('Избранное');
                       } else if (index == 4) {
-                        context.read<NewsBloc>().add(const NewsEvent.getNews());
+                        context.read<NewsBloc>().add(NewsEvent.getNews(
+                              isGoBack: true,
+                              isCleanListNewsPath: true,
+                            ));
+
                         context.navigateTo(
                           NewsRoute(children: [
                             NewsInfoRoute(

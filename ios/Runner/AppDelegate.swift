@@ -111,7 +111,6 @@ import AppMetricaPush
   } 
 
   override func userNotificationCenter(_ center: UNUserNotificationCenter, didReceive response: UNNotificationResponse, withCompletionHandler completionHandler: @escaping () -> Void) {
-
     let userInfo = response.notification.request.content.userInfo
 
             // Track received remote notification.

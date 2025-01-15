@@ -1,4 +1,4 @@
-import 'dart:developer';
+import 'package:blind_chicken/utils/logging.dart';
 
 import 'package:auto_route/auto_route.dart';
 import 'package:blind_chicken/screens/boutiques/widgets/boutique_slider_item.dart';
@@ -6,10 +6,10 @@ import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_svg/svg.dart';
-import 'package:models/models.dart';
+import 'package:blind_chicken/old_repos/models/models.dart';
 import 'package:photo_view/photo_view.dart';
-import 'package:shared/shared.dart';
-import 'package:ui_kit/ui_kit.dart';
+import 'package:blind_chicken/old_repos/shared/shared.dart';
+import 'package:blind_chicken/old_repos/ui_kit/ui_kit.dart';
 
 @RoutePage()
 class BoutiquePreviewMediaScreen extends StatefulWidget {
@@ -62,7 +62,7 @@ class _BoutiquePreviewMediaScreenState extends State<BoutiquePreviewMediaScreen>
         _isSwipe = false;
       }
 
-      log(_pageController.position.pixels.toString());
+      logging(_pageController.position.pixels.toString(), stackTrace: StackTrace.current);
     });
   }
 

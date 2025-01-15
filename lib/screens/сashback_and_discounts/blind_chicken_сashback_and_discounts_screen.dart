@@ -1,6 +1,6 @@
 import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
-import 'package:ui_kit/ui_kit.dart';
+import 'package:blind_chicken/old_repos/ui_kit/ui_kit.dart';
 
 import 'widgets/blind_chicken_cashback_and_discounts_title.dart';
 import 'widgets/blind_chicken_discount_scale_static.dart';
@@ -118,7 +118,7 @@ class BlindChickenCashbackAndDiscountsScreen extends StatelessWidget {
                           style: Theme.of(context).textTheme.displayMedium,
                           children: <TextSpan>[
                             TextSpan(
-                              text: '10 000',
+                              text: '20 000',
                               style: Theme.of(context).textTheme.displayMedium,
                             ),
                             TextSpan(
@@ -152,7 +152,7 @@ class BlindChickenCashbackAndDiscountsScreen extends StatelessWidget {
                       ),
                       Text(
                         'При сумме покупок с 1 января по 31 декабря текущего года '
-                        'более 300 000 ₽ на бонусный счет начисляется '
+                        'более 500 000 ₽ на бонусный счет начисляется '
                         'дополнительный кэшбэк.',
                         style: Theme.of(context).textTheme.displayMedium,
                       ),
@@ -166,9 +166,9 @@ class BlindChickenCashbackAndDiscountsScreen extends StatelessWidget {
                           '100000',
                         ],
                         listPrice: [
-                          '300 000',
                           '500 000',
-                          '1000 000',
+                          '800 000',
+                          '1 500 000',
                         ],
                         typeValue: '₽',
                         firstSymbol: '+',
@@ -177,7 +177,7 @@ class BlindChickenCashbackAndDiscountsScreen extends StatelessWidget {
                         height: 10,
                       ),
                       Text(
-                        'Кэшбэк начисляется в рамках каждого 1 000 000 ₽ из суммы '
+                        'Кэшбэк начисляется в рамках каждого 1 500 000 ₽ из суммы '
                         'покупок за текущий год. '
                         'Годовые бонусы можно использовать в течение 365 дней после зачисления.',
                         style: Theme.of(context).textTheme.displayMedium,
@@ -215,9 +215,9 @@ class BlindChickenCashbackAndDiscountsScreen extends StatelessWidget {
                         ],
                         listPrice: [
                           'Покупки от',
-                          '10 000',
-                          '100 000',
-                          '300 000',
+                          '20 000',
+                          '200 000',
+                          '500 000',
                         ],
                         typeValue: '%',
                         firstSymbol: '',
@@ -240,7 +240,7 @@ class BlindChickenCashbackAndDiscountsScreen extends StatelessWidget {
                         height: 7.0,
                       ),
                       Text(
-                        'Доставка заказов суммой более 10 000 ₽ - бесплатно по всей России! ',
+                        'Доставка заказов суммой более 20 000 ₽ - бесплатно по всей России! ',
                         style: Theme.of(context).textTheme.displayMedium,
                       ),
                       Text(

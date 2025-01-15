@@ -1,0 +1,17 @@
+import 'package:freezed_annotation/freezed_annotation.dart';
+import 'package:blind_chicken/old_repos/models/src/basket/basket_full_info_item_data_model.dart';
+
+part 'basket_full_info_data_model.freezed.dart';
+
+@freezed
+class BasketFullInfoDataModel with _$BasketFullInfoDataModel {
+  const BasketFullInfoDataModel._();
+  factory BasketFullInfoDataModel({
+    required String r,
+    required String e,
+    required String errorMessage,
+    required String promoDescription,
+    required String info,
+    required List<BasketFullInfoItemDataModel> basket,
+  }) = _BasketFullInfoDataModel;
+}

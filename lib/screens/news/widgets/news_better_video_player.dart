@@ -1,8 +1,10 @@
-import 'dart:developer';
+import 'package:blind_chicken/utils/logging.dart';
 
 import 'package:better_player/better_player.dart';
 import 'package:blind_chicken/screens/news/widgets/better_video_player.dart';
 import 'package:flutter/material.dart';
+import 'package:shimmer/shimmer.dart';
+import 'package:blind_chicken/old_repos/ui_kit/ui_kit.dart';
 import 'package:visibility_detector/visibility_detector.dart';
 
 class NewsBetterVideoPlayer extends StatefulWidget {
@@ -25,6 +27,7 @@ class NewsBetterVideoPlayer extends StatefulWidget {
 
 class NewsBetterVideoPlayerState extends State<NewsBetterVideoPlayer> {
   late BetterPlayerController _controller;
+  double _aspectRatio = 1;
 
   @override
   void didChangeDependencies() {
@@ -36,31 +39,44 @@ class NewsBetterVideoPlayerState extends State<NewsBetterVideoPlayer> {
     _controller = BetterPlayerController(
       BetterPlayerConfiguration(
         controlsConfiguration: BetterPlayerControlsConfiguration(
-          playerTheme: BetterPlayerTheme.custom,
+          playerTheme: BetterPlayerTheme.cupertino,
           enableAudioTracks: false,
           customControlsBuilder: (videoController, onPlayerVisibilityChanged) => SizedBox(),
         ),
         looping: true,
         autoPlay: true,
         rotation: 1,
+        aspectRatio: _aspectRatio,
+        useRootNavigator: true,
       ),
       betterPlayerDataSource: BetterPlayerDataSource(
         BetterPlayerDataSourceType.network,
         widget.url,
-        placeholder: Center(
-          child: Container(
-            width: 40.0,
-            height: 40.0,
-            margin: EdgeInsets.all(10),
-            child: CircularProgressIndicator(),
+        placeholder: AspectRatio(
+          aspectRatio: 1,
+          child: Shimmer.fromColors(
+            baseColor: BlindChickenColors.borderSwitchCard,
+            highlightColor: BlindChickenColors.backgroundColorItemFilter,
+            period: Duration(seconds: 2),
+            child: Container(
+              decoration: BoxDecoration(
+                color: BlindChickenColors.borderSwitchCard,
+                borderRadius: BorderRadius.only(
+                  bottomLeft: Radius.circular(15),
+                  bottomRight: Radius.circular(15),
+                ),
+              ),
+            ),
           ),
         ),
       ),
     );
+
     _controller.setVolume(0.0);
     _controller.addEventsListener((BetterPlayerEvent event) {
       if (event.betterPlayerEventType == BetterPlayerEventType.initialized) {
         widget.onAspectRatio(_controller.videoPlayerController?.value.aspectRatio ?? 0);
+        _aspectRatio = _controller.videoPlayerController?.value.aspectRatio ?? 0;
         _controller
             .setOverriddenAspectRatio(_controller.videoPlayerController?.value.aspectRatio ?? 0);
 
@@ -75,27 +91,33 @@ class NewsBetterVideoPlayerState extends State<NewsBetterVideoPlayer> {
       key: Key('video_${widget.url}'),
       onVisibilityChanged: (visibilityInfo) {
         double visiblePercentage = visibilityInfo.visibleFraction * 100;
-        log("Video visibility: $visiblePercentage%", name: "Visibility");
+        logging("Video visibility: $visiblePercentage%", name: "Visibility", stackTrace: StackTrace.current);
 
         if (visiblePercentage > 20) {
           // Check if the video is already playing, if not, play it
           if (!(_controller.videoPlayerController?.value.isPlaying ?? false)) {
             _controller.play();
-            log("Video started playing", name: "VideoState");
+            logging("Video started playing", name: "VideoState", stackTrace: StackTrace.current);
           }
         } else {
           // Pause the video if it's not the active video or is less than 50% visible
           if (_controller.videoPlayerController?.value.initialized ?? false) {
             _controller.pause();
-            log("Video paused", name: "VideoState");
+            logging("Video paused", name: "VideoState", stackTrace: StackTrace.current);
           }
+        }
+        if (visiblePercentage == 0) {
+          _controller.clearCache();
         }
       },
       child: _controller.isVideoInitialized() ?? false
           ? Stack(
               children: [
-                BetterVideoPlayer(
-                  controller: _controller,
+                ClipRRect(
+                  borderRadius: BorderRadius.circular(15),
+                  child: BetterVideoPlayer(
+                    controller: _controller,
+                  ),
                 ),
                 GestureDetector(
                   onTap: () {
@@ -105,18 +127,33 @@ class NewsBetterVideoPlayerState extends State<NewsBetterVideoPlayer> {
                   child: AspectRatio(
                     aspectRatio: _controller.getAspectRatio() ?? 0,
                     child: Container(
-                      color: Colors.transparent,
+                      decoration: BoxDecoration(
+                        color: Colors.transparent,
+                        borderRadius: BorderRadius.only(
+                          bottomLeft: Radius.circular(15),
+                          bottomRight: Radius.circular(15),
+                        ),
+                      ),
                     ),
                   ),
                 )
               ],
             )
-          : Center(
-              child: Container(
-                width: 40.0,
-                height: 40.0,
-                margin: EdgeInsets.all(10),
-                child: CircularProgressIndicator(),
+          : AspectRatio(
+              aspectRatio: 1,
+              child: Shimmer.fromColors(
+                baseColor: BlindChickenColors.borderSwitchCard,
+                highlightColor: BlindChickenColors.backgroundColorItemFilter,
+                period: Duration(seconds: 2),
+                child: Container(
+                  decoration: BoxDecoration(
+                    color: BlindChickenColors.borderSwitchCard,
+                    borderRadius: BorderRadius.only(
+                      bottomLeft: Radius.circular(15),
+                      bottomRight: Radius.circular(15),
+                    ),
+                  ),
+                ),
               ),
             ),
     );

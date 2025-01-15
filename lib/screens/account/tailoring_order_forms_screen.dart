@@ -1,12 +1,12 @@
-import 'dart:developer';
+import 'package:blind_chicken/utils/logging.dart';
 
 import 'package:auto_route/auto_route.dart';
 import 'package:blind_chicken/screens/app/router/app_router.dart';
-import 'package:blocs/blocs.dart';
+import 'package:blind_chicken/old_repos/blocs/blocs.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_svg/svg.dart';
-import 'package:ui_kit/ui_kit.dart';
+import 'package:blind_chicken/old_repos/ui_kit/ui_kit.dart';
 
 @RoutePage()
 class TailoringOrderFormsScreen extends StatefulWidget {
@@ -146,7 +146,7 @@ class _TailoringOrderFormsScreenState extends State<TailoringOrderFormsScreen> {
             setState(() {
               _isSwipe = false;
             });
-            log((details.velocity.pixelsPerSecond.dx).toString());
+            logging((details.velocity.pixelsPerSecond.dx).toString(), stackTrace: StackTrace.current);
           }
         },
         child: Stack(

@@ -1,3 +1,4 @@
+import 'dart:async';
 import 'dart:io';
 
 import 'package:appmetrica_plugin/appmetrica_plugin.dart';
@@ -7,15 +8,15 @@ import 'package:blind_chicken/screens/news/widgets/handler_links_news.dart';
 import 'package:blind_chicken/screens/news/widgets/news_slider.dart';
 import 'package:blind_chicken/screens/news/widgets/news_video_player.dart';
 import 'package:blind_chicken/screens/news/widgets/news_youtube_video_player.dart';
-import 'package:blocs/blocs.dart';
+import 'package:blind_chicken/old_repos/blocs/blocs.dart';
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:flutter_widget_from_html/flutter_widget_from_html.dart';
 import 'package:get_it/get_it.dart';
-import 'package:shared/shared.dart';
-import 'package:ui_kit/ui_kit.dart';
+import 'package:blind_chicken/old_repos/shared/shared.dart';
+import 'package:blind_chicken/old_repos/ui_kit/ui_kit.dart';
 import 'package:url_launcher/url_launcher.dart';
 
 @RoutePage()
@@ -92,6 +93,17 @@ class _MediaNotificationDescriptionScreenState extends State<MediaNotificationDe
                 }
               });
             }
+            if ((initState.oneMedia?.data.createAt ?? '').isEmpty) {
+              Timer(Duration(seconds: 1), () {
+                context.read<NewsBloc>().add(
+                      NewsEvent.getMediaDescriptionInfo(
+                        id: widget.idNews,
+                        isNotification: widget.isNotification,
+                        messageId: widget.messageId,
+                      ),
+                    );
+              });
+            }
           },
           error: (value) {
             if (!_isShowDialogNotificatioInfoError) {
@@ -159,10 +171,12 @@ class _MediaNotificationDescriptionScreenState extends State<MediaNotificationDe
                               onHorizontalDragUpdate: (details) {},
                               onHorizontalDragEnd: (DragEndDetails details) {
                                 if (details.velocity.pixelsPerSecond.dx > 0) {
+                                  context.read<NewsBloc>().add(NewsEvent.getMedia());
                                   context.navigateTo(
                                     NewsInfoRoute(
                                       indexPage: 1,
                                       idNews: widget.idNews,
+                                      typeNews: 'media',
                                     ),
                                   );
                                   setState(() {
@@ -174,10 +188,12 @@ class _MediaNotificationDescriptionScreenState extends State<MediaNotificationDe
                                 canPop: false,
                                 onPopInvoked: (value) {
                                   if (_isSwipe && !value) {
+                                    context.read<NewsBloc>().add(NewsEvent.getMedia());
                                     context.navigateTo(
                                       NewsInfoRoute(
                                         indexPage: 1,
                                         idNews: widget.idNews,
+                                        typeNews: 'media',
                                       ),
                                     );
                                   }
@@ -203,10 +219,14 @@ class _MediaNotificationDescriptionScreenState extends State<MediaNotificationDe
                                                 ),
                                                 child: InkWell(
                                                   onTap: () {
+                                                    context
+                                                        .read<NewsBloc>()
+                                                        .add(NewsEvent.getMedia());
                                                     context.navigateTo(
                                                       NewsInfoRoute(
                                                         indexPage: 1,
                                                         idNews: widget.idNews,
+                                                        typeNews: 'media',
                                                       ),
                                                     );
                                                   },

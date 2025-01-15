@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:ui_kit/ui_kit.dart';
+import 'package:blind_chicken/old_repos/ui_kit/ui_kit.dart';
 import 'package:video_player/video_player.dart';
 
 class NewsVideoPlayerItemInfo extends StatefulWidget {

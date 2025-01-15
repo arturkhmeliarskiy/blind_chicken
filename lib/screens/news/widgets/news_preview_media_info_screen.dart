@@ -1,11 +1,11 @@
-import 'dart:developer';
+import 'package:blind_chicken/utils/logging.dart';
 
 import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:photo_view/photo_view.dart';
-import 'package:ui_kit/ui_kit.dart';
+import 'package:blind_chicken/old_repos/ui_kit/ui_kit.dart';
 
 @RoutePage()
 class NewsPreviewMediaInfoScreen extends StatefulWidget {
@@ -54,7 +54,7 @@ class _NewsPreviewMediaScreenState extends State<NewsPreviewMediaInfoScreen> {
         _isSwipe = false;
       }
 
-      log(_pageController.position.pixels.toString());
+      logging(_pageController.position.pixels.toString(), stackTrace: StackTrace.current);
     });
   }
 

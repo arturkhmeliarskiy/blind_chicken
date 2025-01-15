@@ -1,8 +1,7 @@
-import 'package:blind_chicken/screens/news/widgets/notifications/notification_item_indicator.dart';
 import 'package:flutter/material.dart';
-import 'package:models/models.dart';
-import 'package:shared/shared.dart';
-import 'package:ui_kit/ui_kit.dart';
+import 'package:blind_chicken/old_repos/models/models.dart';
+import 'package:blind_chicken/old_repos/shared/shared.dart';
+import 'package:blind_chicken/old_repos/ui_kit/ui_kit.dart';
 
 class NotificationItemTabInfo extends StatefulWidget {
   const NotificationItemTabInfo({
@@ -20,42 +19,78 @@ class _NotificationItemTabInfoState extends State<NotificationItemTabInfo> {
   @override
   Widget build(BuildContext context) {
     return Container(
-      height: 60,
-      decoration: const BoxDecoration(
-        border: Border(
-          bottom: BorderSide(
-            color: BlindChickenColors.borderBottomColor,
-          ),
-        ),
+      margin: const EdgeInsets.only(
+        top: 10,
+        left: 10,
+        right: 10,
       ),
-      padding: const EdgeInsets.all(12),
-      child: Row(
-        mainAxisAlignment: MainAxisAlignment.center,
+      decoration: BoxDecoration(
+        borderRadius: BorderRadius.circular(15),
+        color: widget.item.isViewed
+            ? BlindChickenColors.backgroundColorItemFilter
+            : BlindChickenColors.backgroundColor,
+        boxShadow: [
+          BoxShadow(
+            color: BlindChickenColors.textInput.withOpacity(0.1),
+            blurRadius: 4,
+            offset: const Offset(3, 3), // Shadow position
+          ),
+        ],
+      ),
+      child: Column(
         children: [
-          Expanded(
-            child: Column(
+          Padding(
+            padding: const EdgeInsets.all(12),
+            child: Row(
+              mainAxisAlignment: MainAxisAlignment.start,
               crossAxisAlignment: CrossAxisAlignment.start,
-              mainAxisAlignment: MainAxisAlignment.center,
               children: [
-                Text(
-                  widget.item.title,
-                  style: Theme.of(context).textTheme.displayLarge,
-                  overflow: TextOverflow.ellipsis,
-                  maxLines: 1,
-                ),
-                const SizedBox(
-                  height: 2,
-                ),
-                Text(
-                  DateInfo.dateFormat(widget.item.createAt),
-                  style: Theme.of(context).textTheme.displaySmall?.copyWith(
-                        color: BlindChickenColors.textInput,
+                Expanded(
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: [
+                      Text(
+                        widget.item.title,
+                        style: Theme.of(context).textTheme.displayLarge,
+                        overflow: TextOverflow.ellipsis,
+                        maxLines: 10,
                       ),
+                      const SizedBox(
+                        height: 2,
+                      ),
+                      Row(
+                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                        children: [
+                          Text(
+                            DateInfo.dateFormat(widget.item.createAt),
+                            style: Theme.of(context).textTheme.displaySmall?.copyWith(
+                                  color: BlindChickenColors.textInput,
+                                ),
+                          ),
+                          if (widget.item.isViewed)
+                            Text(
+                              'Не прочитано',
+                              style: Theme.of(context).textTheme.displaySmall?.copyWith(
+                                    color: BlindChickenColors.textInput,
+                                  ),
+                            )
+                          else
+                            SizedBox()
+                        ],
+                      ),
+                    ],
+                  ),
                 ),
               ],
             ),
           ),
-          if (widget.item.isViewed) const NotificationItemIndicator()
+          Divider(
+            indent: 0,
+            thickness: 1,
+            height: 1,
+            color: BlindChickenColors.borderBottomColor,
+          )
         ],
       ),
     );

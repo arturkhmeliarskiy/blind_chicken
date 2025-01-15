@@ -1,11 +1,11 @@
-import 'dart:developer';
+import 'package:blind_chicken/utils/logging.dart';
 
 import 'package:blind_chicken/screens/home/catalog/widget/catalog_slider_item_image.dart';
 import 'package:blind_chicken/screens/home/catalog/widget/catalog_slider_item_video.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
-import 'package:models/models.dart';
-import 'package:ui_kit/ui_kit.dart';
+import 'package:blind_chicken/old_repos/models/models.dart';
+import 'package:blind_chicken/old_repos/ui_kit/ui_kit.dart';
 
 class CatalogSliderImages extends StatefulWidget {
   const CatalogSliderImages({
@@ -55,7 +55,7 @@ class _CatalogSliderImagesState extends State<CatalogSliderImages> {
 
   _scrollListener() {
     setState(() {
-      log(_scrollController.position.pixels.toString());
+      logging(_scrollController.position.pixels.toString(), stackTrace: StackTrace.current);
 
       if (_scrollController.position.pixels < -70 && _isSwipe) {
         widget.goSwipeBack();

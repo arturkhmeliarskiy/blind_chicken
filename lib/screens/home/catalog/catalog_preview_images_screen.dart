@@ -1,11 +1,11 @@
-import 'dart:developer';
+import 'package:blind_chicken/utils/logging.dart';
 
 import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
-import 'package:models/models.dart';
+import 'package:blind_chicken/old_repos/models/models.dart';
 import 'package:photo_view/photo_view.dart';
-import 'package:ui_kit/ui_kit.dart';
+import 'package:blind_chicken/old_repos/ui_kit/ui_kit.dart';
 
 @RoutePage()
 class CatalogPreviewImagesScreen extends StatefulWidget {
@@ -51,7 +51,7 @@ class _CatalogPreviewImagesScreenState extends State<CatalogPreviewImagesScreen>
 
   _scrollListener() {
     setState(() {
-      log(_pageController.position.pixels.toString());
+      logging(_pageController.position.pixels.toString(), stackTrace: StackTrace.current);
       if (_pageController.position.pixels < -80 && _isSwipe) {
         widget.goBottonInfoProduct();
         _isSwipe = false;

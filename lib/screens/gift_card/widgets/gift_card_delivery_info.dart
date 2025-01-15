@@ -1,6 +1,6 @@
 import 'package:blind_chicken/screens/location/add_location_delivery_info.dart';
 import 'package:flutter/material.dart';
-import 'package:models/models.dart';
+import 'package:blind_chicken/old_repos/models/models.dart';
 
 class GiftCardDeliveryInfo extends StatefulWidget {
   const GiftCardDeliveryInfo({
@@ -102,56 +102,4 @@ class _GiftCardDeliveryInfoState extends State<GiftCardDeliveryInfo> {
       ),
     );
   }
-}
-
-BasketAddressDataModel _address(
-  BasketAddressDataModel city,
-  BasketAddressDataModel street,
-  BasketAddressDataModel house,
-  String flat,
-) {
-  String _address = '';
-  String _city = '';
-  String _street = '';
-  String _house = '';
-  String _flat = '';
-  String zip = '';
-
-  if (city.address.isNotEmpty && street.address.isNotEmpty) {
-    _city = '${city.address}, ';
-  } else {
-    _city = '${city.address} ';
-  }
-  if (street.address.isNotEmpty && house.address.isNotEmpty) {
-    _street = '${street.address}, ';
-  } else {
-    _street = '${street.address} ';
-  }
-  if (house.address.isNotEmpty && flat.isNotEmpty) {
-    _house = '${house.address}, ';
-  } else {
-    _house = '${house.address} ';
-  }
-  if (flat.isNotEmpty) {
-    _flat = flat;
-  }
-
-  if (city.address.isNotEmpty) {
-    zip = city.zip.toString();
-  }
-
-  if (street.address.isNotEmpty) {
-    zip = street.zip.toString();
-  }
-
-  if (house.address.isNotEmpty) {
-    zip = house.zip.toString();
-  }
-
-  _address = _city + _street + _house + _flat;
-  return BasketAddressDataModel(
-    address: _address,
-    zip: zip,
-    cityId: city.cityId,
-  );
 }

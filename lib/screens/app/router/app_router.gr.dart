@@ -592,6 +592,118 @@ class CardInfoRouteArgs {
 }
 
 /// generated route for
+/// [CatalogCardInfoScreen]
+class CatalogCardInfoRoute extends PageRouteInfo<CatalogCardInfoRouteArgs> {
+  CatalogCardInfoRoute({
+    Key? key,
+    ProductDataModel? item,
+    String? code = '',
+    required bool isLike,
+    required List<ProductDataModel> listItems,
+    required List<ProductDataModel> favouritesProducts,
+    required bool isChildRoute,
+    String lastPath = '',
+    NewsInfoItemDataModel? newsInfo,
+    MediaInfoItemDataModel? newsMediaInfo,
+    NotificationInfoItemDataModel? newsNotificationInfo,
+    String? messageId,
+    String? idNews,
+    List<PageRouteInfo>? children,
+  }) : super(
+          CatalogCardInfoRoute.name,
+          args: CatalogCardInfoRouteArgs(
+            key: key,
+            item: item,
+            code: code,
+            isLike: isLike,
+            listItems: listItems,
+            favouritesProducts: favouritesProducts,
+            isChildRoute: isChildRoute,
+            lastPath: lastPath,
+            newsInfo: newsInfo,
+            newsMediaInfo: newsMediaInfo,
+            newsNotificationInfo: newsNotificationInfo,
+            messageId: messageId,
+            idNews: idNews,
+          ),
+          initialChildren: children,
+        );
+
+  static const String name = 'CatalogCardInfoRoute';
+
+  static PageInfo page = PageInfo(
+    name,
+    builder: (data) {
+      final args = data.argsAs<CatalogCardInfoRouteArgs>();
+      return CatalogCardInfoScreen(
+        key: args.key,
+        item: args.item,
+        code: args.code,
+        isLike: args.isLike,
+        listItems: args.listItems,
+        favouritesProducts: args.favouritesProducts,
+        isChildRoute: args.isChildRoute,
+        lastPath: args.lastPath,
+        newsInfo: args.newsInfo,
+        newsMediaInfo: args.newsMediaInfo,
+        newsNotificationInfo: args.newsNotificationInfo,
+        messageId: args.messageId,
+        idNews: args.idNews,
+      );
+    },
+  );
+}
+
+class CatalogCardInfoRouteArgs {
+  const CatalogCardInfoRouteArgs({
+    this.key,
+    this.item,
+    this.code = '',
+    required this.isLike,
+    required this.listItems,
+    required this.favouritesProducts,
+    required this.isChildRoute,
+    this.lastPath = '',
+    this.newsInfo,
+    this.newsMediaInfo,
+    this.newsNotificationInfo,
+    this.messageId,
+    this.idNews,
+  });
+
+  final Key? key;
+
+  final ProductDataModel? item;
+
+  final String? code;
+
+  final bool isLike;
+
+  final List<ProductDataModel> listItems;
+
+  final List<ProductDataModel> favouritesProducts;
+
+  final bool isChildRoute;
+
+  final String lastPath;
+
+  final NewsInfoItemDataModel? newsInfo;
+
+  final MediaInfoItemDataModel? newsMediaInfo;
+
+  final NotificationInfoItemDataModel? newsNotificationInfo;
+
+  final String? messageId;
+
+  final String? idNews;
+
+  @override
+  String toString() {
+    return 'CatalogCardInfoRouteArgs{key: $key, item: $item, code: $code, isLike: $isLike, listItems: $listItems, favouritesProducts: $favouritesProducts, isChildRoute: $isChildRoute, lastPath: $lastPath, newsInfo: $newsInfo, newsMediaInfo: $newsMediaInfo, newsNotificationInfo: $newsNotificationInfo, messageId: $messageId, idNews: $idNews}';
+  }
+}
+
+/// generated route for
 /// [CatalogFilterSelectValueScreen]
 class CatalogFilterSelectValueRoute
     extends PageRouteInfo<CatalogFilterSelectValueRouteArgs> {
@@ -978,6 +1090,148 @@ class CatalogSearchAutoRouterRoute extends PageRouteInfo<void> {
 }
 
 /// generated route for
+/// [CatalogSearchCardInfoResultScreen]
+class CatalogSearchCardInfoResultRoute
+    extends PageRouteInfo<CatalogSearchCardInfoResultRouteArgs> {
+  CatalogSearchCardInfoResultRoute({
+    Key? key,
+    required ProductDataModel item,
+    required bool isLike,
+    required List<ProductDataModel> listItems,
+    required List<ProductDataModel> favouritesProducts,
+    required bool isChildRoute,
+    List<PageRouteInfo>? children,
+  }) : super(
+          CatalogSearchCardInfoResultRoute.name,
+          args: CatalogSearchCardInfoResultRouteArgs(
+            key: key,
+            item: item,
+            isLike: isLike,
+            listItems: listItems,
+            favouritesProducts: favouritesProducts,
+            isChildRoute: isChildRoute,
+          ),
+          initialChildren: children,
+        );
+
+  static const String name = 'CatalogSearchCardInfoResultRoute';
+
+  static PageInfo page = PageInfo(
+    name,
+    builder: (data) {
+      final args = data.argsAs<CatalogSearchCardInfoResultRouteArgs>();
+      return CatalogSearchCardInfoResultScreen(
+        key: args.key,
+        item: args.item,
+        isLike: args.isLike,
+        listItems: args.listItems,
+        favouritesProducts: args.favouritesProducts,
+        isChildRoute: args.isChildRoute,
+      );
+    },
+  );
+}
+
+class CatalogSearchCardInfoResultRouteArgs {
+  const CatalogSearchCardInfoResultRouteArgs({
+    this.key,
+    required this.item,
+    required this.isLike,
+    required this.listItems,
+    required this.favouritesProducts,
+    required this.isChildRoute,
+  });
+
+  final Key? key;
+
+  final ProductDataModel item;
+
+  final bool isLike;
+
+  final List<ProductDataModel> listItems;
+
+  final List<ProductDataModel> favouritesProducts;
+
+  final bool isChildRoute;
+
+  @override
+  String toString() {
+    return 'CatalogSearchCardInfoResultRouteArgs{key: $key, item: $item, isLike: $isLike, listItems: $listItems, favouritesProducts: $favouritesProducts, isChildRoute: $isChildRoute}';
+  }
+}
+
+/// generated route for
+/// [CatalogSearchCardInfoScreen]
+class CatalogSearchCardInfoRoute
+    extends PageRouteInfo<CatalogSearchCardInfoRouteArgs> {
+  CatalogSearchCardInfoRoute({
+    Key? key,
+    required ProductDataModel item,
+    required bool isLike,
+    required List<ProductDataModel> listItems,
+    required List<ProductDataModel> favouritesProducts,
+    required bool isChildRoute,
+    List<PageRouteInfo>? children,
+  }) : super(
+          CatalogSearchCardInfoRoute.name,
+          args: CatalogSearchCardInfoRouteArgs(
+            key: key,
+            item: item,
+            isLike: isLike,
+            listItems: listItems,
+            favouritesProducts: favouritesProducts,
+            isChildRoute: isChildRoute,
+          ),
+          initialChildren: children,
+        );
+
+  static const String name = 'CatalogSearchCardInfoRoute';
+
+  static PageInfo page = PageInfo(
+    name,
+    builder: (data) {
+      final args = data.argsAs<CatalogSearchCardInfoRouteArgs>();
+      return CatalogSearchCardInfoScreen(
+        key: args.key,
+        item: args.item,
+        isLike: args.isLike,
+        listItems: args.listItems,
+        favouritesProducts: args.favouritesProducts,
+        isChildRoute: args.isChildRoute,
+      );
+    },
+  );
+}
+
+class CatalogSearchCardInfoRouteArgs {
+  const CatalogSearchCardInfoRouteArgs({
+    this.key,
+    required this.item,
+    required this.isLike,
+    required this.listItems,
+    required this.favouritesProducts,
+    required this.isChildRoute,
+  });
+
+  final Key? key;
+
+  final ProductDataModel item;
+
+  final bool isLike;
+
+  final List<ProductDataModel> listItems;
+
+  final List<ProductDataModel> favouritesProducts;
+
+  final bool isChildRoute;
+
+  @override
+  String toString() {
+    return 'CatalogSearchCardInfoRouteArgs{key: $key, item: $item, isLike: $isLike, listItems: $listItems, favouritesProducts: $favouritesProducts, isChildRoute: $isChildRoute}';
+  }
+}
+
+/// generated route for
 /// [CatalogSearchFiltersScreen]
 class CatalogSearchFiltersRoute extends PageRouteInfo<void> {
   const CatalogSearchFiltersRoute({List<PageRouteInfo>? children})
@@ -1224,6 +1478,77 @@ class ElectronicOrderFormsRoute extends PageRouteInfo<void> {
       return const ElectronicOrderFormsScreen();
     },
   );
+}
+
+/// generated route for
+/// [FavouritesCardInfoScreen]
+class FavouritesCardInfoRoute
+    extends PageRouteInfo<FavouritesCardInfoRouteArgs> {
+  FavouritesCardInfoRoute({
+    Key? key,
+    required ProductDataModel item,
+    required bool isLike,
+    required List<ProductDataModel> listItems,
+    required List<ProductDataModel> favouritesProducts,
+    required bool isChildRoute,
+    List<PageRouteInfo>? children,
+  }) : super(
+          FavouritesCardInfoRoute.name,
+          args: FavouritesCardInfoRouteArgs(
+            key: key,
+            item: item,
+            isLike: isLike,
+            listItems: listItems,
+            favouritesProducts: favouritesProducts,
+            isChildRoute: isChildRoute,
+          ),
+          initialChildren: children,
+        );
+
+  static const String name = 'FavouritesCardInfoRoute';
+
+  static PageInfo page = PageInfo(
+    name,
+    builder: (data) {
+      final args = data.argsAs<FavouritesCardInfoRouteArgs>();
+      return FavouritesCardInfoScreen(
+        key: args.key,
+        item: args.item,
+        isLike: args.isLike,
+        listItems: args.listItems,
+        favouritesProducts: args.favouritesProducts,
+        isChildRoute: args.isChildRoute,
+      );
+    },
+  );
+}
+
+class FavouritesCardInfoRouteArgs {
+  const FavouritesCardInfoRouteArgs({
+    this.key,
+    required this.item,
+    required this.isLike,
+    required this.listItems,
+    required this.favouritesProducts,
+    required this.isChildRoute,
+  });
+
+  final Key? key;
+
+  final ProductDataModel item;
+
+  final bool isLike;
+
+  final List<ProductDataModel> listItems;
+
+  final List<ProductDataModel> favouritesProducts;
+
+  final bool isChildRoute;
+
+  @override
+  String toString() {
+    return 'FavouritesCardInfoRouteArgs{key: $key, item: $item, isLike: $isLike, listItems: $listItems, favouritesProducts: $favouritesProducts, isChildRoute: $isChildRoute}';
+  }
 }
 
 /// generated route for
@@ -2218,6 +2543,7 @@ class NewsInfoRoute extends PageRouteInfo<NewsInfoRouteArgs> {
     Key? key,
     required int indexPage,
     String? idNews,
+    String? typeNews,
     List<PageRouteInfo>? children,
   }) : super(
           NewsInfoRoute.name,
@@ -2225,6 +2551,7 @@ class NewsInfoRoute extends PageRouteInfo<NewsInfoRouteArgs> {
             key: key,
             indexPage: indexPage,
             idNews: idNews,
+            typeNews: typeNews,
           ),
           initialChildren: children,
         );
@@ -2239,6 +2566,7 @@ class NewsInfoRoute extends PageRouteInfo<NewsInfoRouteArgs> {
         key: args.key,
         indexPage: args.indexPage,
         idNews: args.idNews,
+        typeNews: args.typeNews,
       );
     },
   );
@@ -2249,6 +2577,7 @@ class NewsInfoRouteArgs {
     this.key,
     required this.indexPage,
     this.idNews,
+    this.typeNews,
   });
 
   final Key? key;
@@ -2257,9 +2586,11 @@ class NewsInfoRouteArgs {
 
   final String? idNews;
 
+  final String? typeNews;
+
   @override
   String toString() {
-    return 'NewsInfoRouteArgs{key: $key, indexPage: $indexPage, idNews: $idNews}';
+    return 'NewsInfoRouteArgs{key: $key, indexPage: $indexPage, idNews: $idNews, typeNews: $typeNews}';
   }
 }
 
@@ -2325,7 +2656,8 @@ class NewsNotificationDescriptionRouteArgs {
 
 /// generated route for
 /// [NewsPreviewMediaInfoScreen]
-class NewsPreviewMediaInfoRoute extends PageRouteInfo<NewsPreviewMediaInfoRouteArgs> {
+class NewsPreviewMediaInfoRoute
+    extends PageRouteInfo<NewsPreviewMediaInfoRouteArgs> {
   NewsPreviewMediaInfoRoute({
     Key? key,
     required List<String> images,
@@ -2518,6 +2850,64 @@ class NewsRoute extends PageRouteInfo<void> {
 }
 
 /// generated route for
+/// [NewsVideoPlayerScreen]
+class NewsVideoPlayerRoute extends PageRouteInfo<NewsVideoPlayerRouteArgs> {
+  NewsVideoPlayerRoute({
+    Key? key,
+    required VoidCallback goBack,
+    required double aspectRatio,
+    required NewsInfoItemDataModel item,
+    List<PageRouteInfo>? children,
+  }) : super(
+          NewsVideoPlayerRoute.name,
+          args: NewsVideoPlayerRouteArgs(
+            key: key,
+            goBack: goBack,
+            aspectRatio: aspectRatio,
+            item: item,
+          ),
+          initialChildren: children,
+        );
+
+  static const String name = 'NewsVideoPlayerRoute';
+
+  static PageInfo page = PageInfo(
+    name,
+    builder: (data) {
+      final args = data.argsAs<NewsVideoPlayerRouteArgs>();
+      return NewsVideoPlayerScreen(
+        key: args.key,
+        goBack: args.goBack,
+        aspectRatio: args.aspectRatio,
+        item: args.item,
+      );
+    },
+  );
+}
+
+class NewsVideoPlayerRouteArgs {
+  const NewsVideoPlayerRouteArgs({
+    this.key,
+    required this.goBack,
+    required this.aspectRatio,
+    required this.item,
+  });
+
+  final Key? key;
+
+  final VoidCallback goBack;
+
+  final double aspectRatio;
+
+  final NewsInfoItemDataModel item;
+
+  @override
+  String toString() {
+    return 'NewsVideoPlayerRouteArgs{key: $key, goBack: $goBack, aspectRatio: $aspectRatio, item: $item}';
+  }
+}
+
+/// generated route for
 /// [NoInternetScreen]
 class NoInternetRoute extends PageRouteInfo<void> {
   const NoInternetRoute({List<PageRouteInfo>? children})
@@ -2642,6 +3032,76 @@ class NotificationInfoNotificationDescriptionRouteArgs {
   @override
   String toString() {
     return 'NotificationInfoNotificationDescriptionRouteArgs{key: $key, idNews: $idNews, messageId: $messageId, isNotification: $isNotification}';
+  }
+}
+
+/// generated route for
+/// [OrderCardInfoScreen]
+class OrderCardInfoRoute extends PageRouteInfo<OrderCardInfoRouteArgs> {
+  OrderCardInfoRoute({
+    Key? key,
+    required ProductDataModel item,
+    required bool isLike,
+    required List<ProductDataModel> listItems,
+    required List<ProductDataModel> favouritesProducts,
+    required bool isChildRoute,
+    List<PageRouteInfo>? children,
+  }) : super(
+          OrderCardInfoRoute.name,
+          args: OrderCardInfoRouteArgs(
+            key: key,
+            item: item,
+            isLike: isLike,
+            listItems: listItems,
+            favouritesProducts: favouritesProducts,
+            isChildRoute: isChildRoute,
+          ),
+          initialChildren: children,
+        );
+
+  static const String name = 'OrderCardInfoRoute';
+
+  static PageInfo page = PageInfo(
+    name,
+    builder: (data) {
+      final args = data.argsAs<OrderCardInfoRouteArgs>();
+      return OrderCardInfoScreen(
+        key: args.key,
+        item: args.item,
+        isLike: args.isLike,
+        listItems: args.listItems,
+        favouritesProducts: args.favouritesProducts,
+        isChildRoute: args.isChildRoute,
+      );
+    },
+  );
+}
+
+class OrderCardInfoRouteArgs {
+  const OrderCardInfoRouteArgs({
+    this.key,
+    required this.item,
+    required this.isLike,
+    required this.listItems,
+    required this.favouritesProducts,
+    required this.isChildRoute,
+  });
+
+  final Key? key;
+
+  final ProductDataModel item;
+
+  final bool isLike;
+
+  final List<ProductDataModel> listItems;
+
+  final List<ProductDataModel> favouritesProducts;
+
+  final bool isChildRoute;
+
+  @override
+  String toString() {
+    return 'OrderCardInfoRouteArgs{key: $key, item: $item, isLike: $isLike, listItems: $listItems, favouritesProducts: $favouritesProducts, isChildRoute: $isChildRoute}';
   }
 }
 

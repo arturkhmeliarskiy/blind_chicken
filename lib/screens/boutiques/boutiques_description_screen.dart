@@ -1,19 +1,19 @@
 import 'dart:async';
-import 'dart:developer';
+import 'package:blind_chicken/utils/logging.dart';
 import 'dart:io';
 
 import 'package:appmetrica_plugin/appmetrica_plugin.dart';
 import 'package:auto_route/auto_route.dart';
 import 'package:blind_chicken/screens/app/router/app_router.dart';
 import 'package:blind_chicken/screens/boutiques/widgets/boutique_slider.dart';
-import 'package:blocs/blocs.dart';
+import 'package:blind_chicken/old_repos/blocs/blocs.dart';
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:get_it/get_it.dart';
-import 'package:models/models.dart';
-import 'package:shared/shared.dart';
-import 'package:ui_kit/ui_kit.dart';
+import 'package:blind_chicken/old_repos/models/models.dart';
+import 'package:blind_chicken/old_repos/shared/shared.dart';
+import 'package:blind_chicken/old_repos/ui_kit/ui_kit.dart';
 import 'package:url_launcher/url_launcher.dart';
 
 @RoutePage()
@@ -231,7 +231,7 @@ class _BoutiquesDescriptionScreenState extends State<BoutiquesDescriptionScreen>
             }
           }
 
-          log((details.velocity.pixelsPerSecond.dx).toString());
+          logging((details.velocity.pixelsPerSecond.dx).toString(), stackTrace: StackTrace.current);
         },
         child: PopScope(
           canPop: false,

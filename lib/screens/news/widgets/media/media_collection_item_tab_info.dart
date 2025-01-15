@@ -1,6 +1,6 @@
 import 'package:blind_chicken/screens/news/widgets/media/media_item_tab_info.dart';
 import 'package:flutter/material.dart';
-import 'package:models/models.dart';
+import 'package:blind_chicken/old_repos/models/models.dart';
 
 class MediaCollectionItemTabInfo extends StatelessWidget {
   const MediaCollectionItemTabInfo({

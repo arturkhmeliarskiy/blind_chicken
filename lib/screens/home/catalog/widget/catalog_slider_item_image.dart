@@ -1,10 +1,10 @@
-import 'dart:developer';
+import 'package:blind_chicken/utils/logging.dart';
 
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:photo_view/photo_view.dart';
 import 'package:photo_view/photo_view.dart' as photo_view;
-import 'package:ui_kit/ui_kit.dart';
+import 'package:blind_chicken/old_repos/ui_kit/ui_kit.dart';
 
 class CatalogSliderItemImage extends StatefulWidget {
   const CatalogSliderItemImage({
@@ -46,7 +46,7 @@ class _CatalogSliderItemImageState extends State<CatalogSliderItemImage> {
                   color: BlindChickenColors.backgroundColorItemFilter,
                 ),
                 scaleStateChangedCallback: (value) {
-                  log(value.toString());
+                  logging(value.toString(), stackTrace: StackTrace.current);
                 },
               )
           : null,

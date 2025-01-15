@@ -4,10 +4,10 @@ import 'package:blind_chicken/screens/gift_card/widgets/gift_plastic_card_switch
 import 'package:blind_chicken/screens/location/add_location_delivery_info.dart';
 import 'package:blind_chicken/screens/login/login_phone_screen.dart';
 import 'package:blind_chicken/screens/shopping_cart/widgets/shopping_cart_edit_delivery_info.dart';
-import 'package:blocs/blocs.dart';
+import 'package:blind_chicken/old_repos/blocs/blocs.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:models/models.dart';
+import 'package:blind_chicken/old_repos/models/models.dart';
 
 class ShoppingCartDeliveryUserInfo extends StatefulWidget {
   const ShoppingCartDeliveryUserInfo({
