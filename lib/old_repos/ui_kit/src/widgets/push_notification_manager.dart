@@ -1,7 +1,7 @@
 import 'dart:io';
 
 import 'package:blind_chicken/old_repos/models/models.dart';
-import 'package:blind_chicken/utils/logging.dart';
+import 'package:blind_chicken/core/utils/logging.dart';
 import 'package:firebase_core/firebase_core.dart';
 
 // import 'package:firebase_messaging/firebase_messaging.dart';

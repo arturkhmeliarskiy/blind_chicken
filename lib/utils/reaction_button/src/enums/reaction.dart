@@ -1,4 +1,0 @@
-enum ReactionType {
-  button,
-  container,
-}

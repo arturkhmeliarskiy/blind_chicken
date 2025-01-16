@@ -1,4 +1,4 @@
-import 'package:blind_chicken/utils/logging.dart';
+import 'package:blind_chicken/core/utils/logging.dart';
 
 import 'package:flutter/material.dart';
 
