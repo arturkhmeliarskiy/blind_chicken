@@ -10,7 +10,7 @@ import 'package:blind_chicken/old_repos/blocs/blocs.dart';
 import 'package:blind_chicken/old_repos/shared/shared.dart';
 import 'package:blind_chicken/old_repos/ui_kit/ui_kit.dart';
 import 'package:blind_chicken/screens/app/router/app_router.dart';
-import 'package:blind_chicken/utils/logging.dart';
+import 'package:blind_chicken/core/utils/logging.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';

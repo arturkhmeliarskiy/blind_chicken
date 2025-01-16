@@ -1,5 +1,5 @@
 import 'dart:async';
-import 'package:blind_chicken/utils/logging.dart';
+import 'package:blind_chicken/core/utils/logging.dart';
 
 import 'package:auto_route/auto_route.dart';
 import 'package:blind_chicken/screens/app/router/app_router.dart';

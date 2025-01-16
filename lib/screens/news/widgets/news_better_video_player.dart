@@ -1,4 +1,4 @@
-import 'package:blind_chicken/utils/logging.dart';
+import 'package:blind_chicken/core/utils/logging.dart';
 
 import 'package:better_player/better_player.dart';
 import 'package:blind_chicken/screens/news/widgets/better_video_player.dart';

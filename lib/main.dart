@@ -6,7 +6,7 @@ import 'package:appmetrica_push_plugin/appmetrica_push_plugin.dart';
 import 'package:blind_chicken/app.dart';
 import 'package:blind_chicken/bootstraper.dart';
 import 'package:blind_chicken/old_repos/repositories/src/error_analyzer/error_analyzer_repository.dart';
-import 'package:blind_chicken/utils/logging.dart';
+import 'package:blind_chicken/core/utils/logging.dart';
 import 'package:device_info_plus/device_info_plus.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/foundation.dart';
