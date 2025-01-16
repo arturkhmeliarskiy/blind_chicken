@@ -23,7 +23,9 @@ mixin _$CatalogSearchDataModel {
       throw _privateConstructorUsedError;
   String get errorMessage => throw _privateConstructorUsedError;
 
-  @JsonKey(ignore: true)
+  /// Create a copy of CatalogSearchDataModel
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   $CatalogSearchDataModelCopyWith<CatalogSearchDataModel> get copyWith =>
       throw _privateConstructorUsedError;
 }
@@ -53,6 +55,8 @@ class _$CatalogSearchDataModelCopyWithImpl<$Res,
   // ignore: unused_field
   final $Res Function($Val) _then;
 
+  /// Create a copy of CatalogSearchDataModel
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -114,6 +118,8 @@ class __$$CatalogSearchDataModelImplCopyWithImpl<$Res>
       $Res Function(_$CatalogSearchDataModelImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of CatalogSearchDataModel
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -213,7 +219,9 @@ class _$CatalogSearchDataModelImpl extends _CatalogSearchDataModel {
       const DeepCollectionEquality().hash(_sections),
       errorMessage);
 
-  @JsonKey(ignore: true)
+  /// Create a copy of CatalogSearchDataModel
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$CatalogSearchDataModelImplCopyWith<_$CatalogSearchDataModelImpl>
@@ -240,8 +248,11 @@ abstract class _CatalogSearchDataModel extends CatalogSearchDataModel {
   List<CatalogSectionDataModel> get sections;
   @override
   String get errorMessage;
+
+  /// Create a copy of CatalogSearchDataModel
+  /// with the given fields replaced by the non-null parameter values.
   @override
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$CatalogSearchDataModelImplCopyWith<_$CatalogSearchDataModelImpl>
       get copyWith => throw _privateConstructorUsedError;
 }

@@ -43,8 +43,12 @@ mixin _$OrderProductResponse {
   @JsonKey(name: 'promo_value')
   int? get promoValue => throw _privateConstructorUsedError;
 
+  /// Serializes this OrderProductResponse to a JSON map.
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
-  @JsonKey(ignore: true)
+
+  /// Create a copy of OrderProductResponse
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   $OrderProductResponseCopyWith<OrderProductResponse> get copyWith =>
       throw _privateConstructorUsedError;
 }
@@ -87,6 +91,8 @@ class _$OrderProductResponseCopyWithImpl<$Res,
   // ignore: unused_field
   final $Res Function($Val) _then;
 
+  /// Create a copy of OrderProductResponse
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -213,6 +219,8 @@ class __$$OrderProductResponseImplCopyWithImpl<$Res>
       $Res Function(_$OrderProductResponseImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of OrderProductResponse
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -423,7 +431,7 @@ class _$OrderProductResponseImpl extends _OrderProductResponse {
                 other.promoValue == promoValue));
   }
 
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   int get hashCode => Object.hash(
       runtimeType,
@@ -444,7 +452,9 @@ class _$OrderProductResponseImpl extends _OrderProductResponse {
       promo,
       promoValue);
 
-  @JsonKey(ignore: true)
+  /// Create a copy of OrderProductResponse
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$OrderProductResponseImplCopyWith<_$OrderProductResponseImpl>
@@ -524,8 +534,11 @@ abstract class _OrderProductResponse extends OrderProductResponse {
   @override
   @JsonKey(name: 'promo_value')
   int? get promoValue;
+
+  /// Create a copy of OrderProductResponse
+  /// with the given fields replaced by the non-null parameter values.
   @override
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$OrderProductResponseImplCopyWith<_$OrderProductResponseImpl>
       get copyWith => throw _privateConstructorUsedError;
 }

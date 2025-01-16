@@ -26,8 +26,12 @@ mixin _$SearchLocationResponse {
   List<SearchLocationInfoResponse>? get result =>
       throw _privateConstructorUsedError;
 
+  /// Serializes this SearchLocationResponse to a JSON map.
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
-  @JsonKey(ignore: true)
+
+  /// Create a copy of SearchLocationResponse
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   $SearchLocationResponseCopyWith<SearchLocationResponse> get copyWith =>
       throw _privateConstructorUsedError;
 }
@@ -56,6 +60,8 @@ class _$SearchLocationResponseCopyWithImpl<$Res,
   // ignore: unused_field
   final $Res Function($Val) _then;
 
+  /// Create a copy of SearchLocationResponse
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -74,6 +80,8 @@ class _$SearchLocationResponseCopyWithImpl<$Res,
     ) as $Val);
   }
 
+  /// Create a copy of SearchLocationResponse
+  /// with the given fields replaced by the non-null parameter values.
   @override
   @pragma('vm:prefer-inline')
   $SearchContextResponseCopyWith<$Res>? get searchContext {
@@ -114,6 +122,8 @@ class __$$SearchLocationResponseImplCopyWithImpl<$Res>
       $Res Function(_$SearchLocationResponseImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of SearchLocationResponse
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -171,12 +181,14 @@ class _$SearchLocationResponseImpl extends _SearchLocationResponse {
             const DeepCollectionEquality().equals(other._result, _result));
   }
 
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   int get hashCode => Object.hash(
       runtimeType, searchContext, const DeepCollectionEquality().hash(_result));
 
-  @JsonKey(ignore: true)
+  /// Create a copy of SearchLocationResponse
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$SearchLocationResponseImplCopyWith<_$SearchLocationResponseImpl>
@@ -205,8 +217,11 @@ abstract class _SearchLocationResponse extends SearchLocationResponse {
   SearchContextResponse? get searchContext;
   @override
   List<SearchLocationInfoResponse>? get result;
+
+  /// Create a copy of SearchLocationResponse
+  /// with the given fields replaced by the non-null parameter values.
   @override
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$SearchLocationResponseImplCopyWith<_$SearchLocationResponseImpl>
       get copyWith => throw _privateConstructorUsedError;
 }

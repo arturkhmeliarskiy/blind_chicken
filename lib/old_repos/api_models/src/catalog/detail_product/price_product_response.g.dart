@@ -11,15 +11,15 @@ _$PriceProductResponseImpl _$$PriceProductResponseImplFromJson(
     _$PriceProductResponseImpl(
       p: json['p'] as String?,
       pb: json['pb'] as String?,
-      pc: json['pc'] as int?,
-      pbc: json['pbc'] as int?,
-      cashback: json['cashback'] as int?,
-      bonusLoyal: json['bonus_loyal'] as int?,
-      bonusGift: json['bonus_gift'] as int?,
-      bonusYear: json['bonus_year'] as int?,
-      discountVal: json['discount_val'] as int?,
+      pc: (json['pc'] as num?)?.toInt(),
+      pbc: (json['pbc'] as num?)?.toInt(),
+      cashback: (json['cashback'] as num?)?.toInt(),
+      bonusLoyal: (json['bonus_loyal'] as num?)?.toInt(),
+      bonusGift: (json['bonus_gift'] as num?)?.toInt(),
+      bonusYear: (json['bonus_year'] as num?)?.toInt(),
+      discountVal: (json['discount_val'] as num?)?.toInt(),
       promo: json['promo'] as String?,
-      promoValue: json['promo_value'] as int?,
+      promoValue: (json['promo_value'] as num?)?.toInt(),
     );
 
 Map<String, dynamic> _$$PriceProductResponseImplToJson(

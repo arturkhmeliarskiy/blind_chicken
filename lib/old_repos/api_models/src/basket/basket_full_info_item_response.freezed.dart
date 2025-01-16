@@ -38,8 +38,12 @@ mixin _$BasketFullInfoItemResponse {
   @JsonKey(name: 'sku_name')
   String? get skuName => throw _privateConstructorUsedError;
 
+  /// Serializes this BasketFullInfoItemResponse to a JSON map.
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
-  @JsonKey(ignore: true)
+
+  /// Create a copy of BasketFullInfoItemResponse
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   $BasketFullInfoItemResponseCopyWith<BasketFullInfoItemResponse>
       get copyWith => throw _privateConstructorUsedError;
 }
@@ -80,6 +84,8 @@ class _$BasketFullInfoItemResponseCopyWithImpl<$Res,
   // ignore: unused_field
   final $Res Function($Val) _then;
 
+  /// Create a copy of BasketFullInfoItemResponse
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -143,6 +149,8 @@ class _$BasketFullInfoItemResponseCopyWithImpl<$Res,
     ) as $Val);
   }
 
+  /// Create a copy of BasketFullInfoItemResponse
+  /// with the given fields replaced by the non-null parameter values.
   @override
   @pragma('vm:prefer-inline')
   $BasketDataInfoResponseCopyWith<$Res>? get data {
@@ -194,6 +202,8 @@ class __$$BasketFullInfoItemResponseImplCopyWithImpl<$Res>
       $Res Function(_$BasketFullInfoItemResponseImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of BasketFullInfoItemResponse
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -357,7 +367,7 @@ class _$BasketFullInfoItemResponseImpl extends _BasketFullInfoItemResponse {
             (identical(other.skuName, skuName) || other.skuName == skuName));
   }
 
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   int get hashCode => Object.hash(
       runtimeType,
@@ -373,7 +383,9 @@ class _$BasketFullInfoItemResponseImpl extends _BasketFullInfoItemResponse {
       data,
       skuName);
 
-  @JsonKey(ignore: true)
+  /// Create a copy of BasketFullInfoItemResponse
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$BasketFullInfoItemResponseImplCopyWith<_$BasketFullInfoItemResponseImpl>
@@ -436,8 +448,11 @@ abstract class _BasketFullInfoItemResponse extends BasketFullInfoItemResponse {
   @override
   @JsonKey(name: 'sku_name')
   String? get skuName;
+
+  /// Create a copy of BasketFullInfoItemResponse
+  /// with the given fields replaced by the non-null parameter values.
   @override
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$BasketFullInfoItemResponseImplCopyWith<_$BasketFullInfoItemResponseImpl>
       get copyWith => throw _privateConstructorUsedError;
 }

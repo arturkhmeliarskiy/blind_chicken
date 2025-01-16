@@ -25,8 +25,12 @@ mixin _$ErrorAnalyzerResponse {
   @JsonKey(name: 'e')
   String? get errorMessage => throw _privateConstructorUsedError;
 
+  /// Serializes this ErrorAnalyzerResponse to a JSON map.
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
-  @JsonKey(ignore: true)
+
+  /// Create a copy of ErrorAnalyzerResponse
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   $ErrorAnalyzerResponseCopyWith<ErrorAnalyzerResponse> get copyWith =>
       throw _privateConstructorUsedError;
 }
@@ -51,6 +55,8 @@ class _$ErrorAnalyzerResponseCopyWithImpl<$Res,
   // ignore: unused_field
   final $Res Function($Val) _then;
 
+  /// Create a copy of ErrorAnalyzerResponse
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -91,6 +97,8 @@ class __$$ErrorAnalyzerResponseImplCopyWithImpl<$Res>
       $Res Function(_$ErrorAnalyzerResponseImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of ErrorAnalyzerResponse
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -140,11 +148,13 @@ class _$ErrorAnalyzerResponseImpl extends _ErrorAnalyzerResponse {
                 other.errorMessage == errorMessage));
   }
 
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   int get hashCode => Object.hash(runtimeType, r, errorMessage);
 
-  @JsonKey(ignore: true)
+  /// Create a copy of ErrorAnalyzerResponse
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$ErrorAnalyzerResponseImplCopyWith<_$ErrorAnalyzerResponseImpl>
@@ -173,8 +183,11 @@ abstract class _ErrorAnalyzerResponse extends ErrorAnalyzerResponse {
   @override
   @JsonKey(name: 'e')
   String? get errorMessage;
+
+  /// Create a copy of ErrorAnalyzerResponse
+  /// with the given fields replaced by the non-null parameter values.
   @override
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$ErrorAnalyzerResponseImplCopyWith<_$ErrorAnalyzerResponseImpl>
       get copyWith => throw _privateConstructorUsedError;
 }

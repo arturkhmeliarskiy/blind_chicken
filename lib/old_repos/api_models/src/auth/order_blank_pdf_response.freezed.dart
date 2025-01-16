@@ -26,8 +26,12 @@ mixin _$OrderBlankPdfResponse {
   String? get message => throw _privateConstructorUsedError;
   String? get pdf => throw _privateConstructorUsedError;
 
+  /// Serializes this OrderBlankPdfResponse to a JSON map.
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
-  @JsonKey(ignore: true)
+
+  /// Create a copy of OrderBlankPdfResponse
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   $OrderBlankPdfResponseCopyWith<OrderBlankPdfResponse> get copyWith =>
       throw _privateConstructorUsedError;
 }
@@ -52,6 +56,8 @@ class _$OrderBlankPdfResponseCopyWithImpl<$Res,
   // ignore: unused_field
   final $Res Function($Val) _then;
 
+  /// Create a copy of OrderBlankPdfResponse
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -97,6 +103,8 @@ class __$$OrderBlankPdfResponseImplCopyWithImpl<$Res>
       $Res Function(_$OrderBlankPdfResponseImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of OrderBlankPdfResponse
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -154,11 +162,13 @@ class _$OrderBlankPdfResponseImpl extends _OrderBlankPdfResponse {
             (identical(other.pdf, pdf) || other.pdf == pdf));
   }
 
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   int get hashCode => Object.hash(runtimeType, r, message, pdf);
 
-  @JsonKey(ignore: true)
+  /// Create a copy of OrderBlankPdfResponse
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$OrderBlankPdfResponseImplCopyWith<_$OrderBlankPdfResponseImpl>
@@ -190,8 +200,11 @@ abstract class _OrderBlankPdfResponse extends OrderBlankPdfResponse {
   String? get message;
   @override
   String? get pdf;
+
+  /// Create a copy of OrderBlankPdfResponse
+  /// with the given fields replaced by the non-null parameter values.
   @override
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$OrderBlankPdfResponseImplCopyWith<_$OrderBlankPdfResponseImpl>
       get copyWith => throw _privateConstructorUsedError;
 }

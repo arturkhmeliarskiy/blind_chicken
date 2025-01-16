@@ -1,6 +1,6 @@
+import 'package:blind_chicken/core_config/ui/resources/app_colors.dart';
 import 'package:flex_color_scheme/flex_color_scheme.dart';
 import 'package:flutter/material.dart';
-import 'package:pimmer_app/app/resources/app_colors.dart';
 
 import 'app_text_styles.dart';
 

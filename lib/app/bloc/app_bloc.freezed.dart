@@ -21,9 +21,7 @@ mixin _$AppEvent {
     required TResult Function() init,
     required TResult Function(AppLifecycleState state) appLifecycleStateChanged,
     required TResult Function() memoryUsagePressed,
-    required TResult Function() switchColorScheme,
     required TResult Function(Locale locale) switchLocale,
-    required TResult Function(AuthType type, Country? country) authPressed,
     required TResult Function(bool? visible) showDebugOverlay,
     required TResult Function(BlocAction? action) showErrorDialog,
   }) =>
@@ -33,9 +31,7 @@ mixin _$AppEvent {
     TResult? Function()? init,
     TResult? Function(AppLifecycleState state)? appLifecycleStateChanged,
     TResult? Function()? memoryUsagePressed,
-    TResult? Function()? switchColorScheme,
     TResult? Function(Locale locale)? switchLocale,
-    TResult? Function(AuthType type, Country? country)? authPressed,
     TResult? Function(bool? visible)? showDebugOverlay,
     TResult? Function(BlocAction? action)? showErrorDialog,
   }) =>
@@ -45,9 +41,7 @@ mixin _$AppEvent {
     TResult Function()? init,
     TResult Function(AppLifecycleState state)? appLifecycleStateChanged,
     TResult Function()? memoryUsagePressed,
-    TResult Function()? switchColorScheme,
     TResult Function(Locale locale)? switchLocale,
-    TResult Function(AuthType type, Country? country)? authPressed,
     TResult Function(bool? visible)? showDebugOverlay,
     TResult Function(BlocAction? action)? showErrorDialog,
     required TResult orElse(),
@@ -59,9 +53,7 @@ mixin _$AppEvent {
     required TResult Function(AppLifecycleStateChanged value)
         appLifecycleStateChanged,
     required TResult Function(MemoryUsagePressed value) memoryUsagePressed,
-    required TResult Function(SwitchColorScheme value) switchColorScheme,
     required TResult Function(SwitchLocale value) switchLocale,
-    required TResult Function(AuthPressed value) authPressed,
     required TResult Function(ShowDebugOverlay value) showDebugOverlay,
     required TResult Function(ShowErrorDialog value) showErrorDialog,
   }) =>
@@ -71,9 +63,7 @@ mixin _$AppEvent {
     TResult? Function(Init value)? init,
     TResult? Function(AppLifecycleStateChanged value)? appLifecycleStateChanged,
     TResult? Function(MemoryUsagePressed value)? memoryUsagePressed,
-    TResult? Function(SwitchColorScheme value)? switchColorScheme,
     TResult? Function(SwitchLocale value)? switchLocale,
-    TResult? Function(AuthPressed value)? authPressed,
     TResult? Function(ShowDebugOverlay value)? showDebugOverlay,
     TResult? Function(ShowErrorDialog value)? showErrorDialog,
   }) =>
@@ -83,9 +73,7 @@ mixin _$AppEvent {
     TResult Function(Init value)? init,
     TResult Function(AppLifecycleStateChanged value)? appLifecycleStateChanged,
     TResult Function(MemoryUsagePressed value)? memoryUsagePressed,
-    TResult Function(SwitchColorScheme value)? switchColorScheme,
     TResult Function(SwitchLocale value)? switchLocale,
-    TResult Function(AuthPressed value)? authPressed,
     TResult Function(ShowDebugOverlay value)? showDebugOverlay,
     TResult Function(ShowErrorDialog value)? showErrorDialog,
     required TResult orElse(),
@@ -156,9 +144,7 @@ class _$InitImpl implements Init {
     required TResult Function() init,
     required TResult Function(AppLifecycleState state) appLifecycleStateChanged,
     required TResult Function() memoryUsagePressed,
-    required TResult Function() switchColorScheme,
     required TResult Function(Locale locale) switchLocale,
-    required TResult Function(AuthType type, Country? country) authPressed,
     required TResult Function(bool? visible) showDebugOverlay,
     required TResult Function(BlocAction? action) showErrorDialog,
   }) {
@@ -171,9 +157,7 @@ class _$InitImpl implements Init {
     TResult? Function()? init,
     TResult? Function(AppLifecycleState state)? appLifecycleStateChanged,
     TResult? Function()? memoryUsagePressed,
-    TResult? Function()? switchColorScheme,
     TResult? Function(Locale locale)? switchLocale,
-    TResult? Function(AuthType type, Country? country)? authPressed,
     TResult? Function(bool? visible)? showDebugOverlay,
     TResult? Function(BlocAction? action)? showErrorDialog,
   }) {
@@ -186,9 +170,7 @@ class _$InitImpl implements Init {
     TResult Function()? init,
     TResult Function(AppLifecycleState state)? appLifecycleStateChanged,
     TResult Function()? memoryUsagePressed,
-    TResult Function()? switchColorScheme,
     TResult Function(Locale locale)? switchLocale,
-    TResult Function(AuthType type, Country? country)? authPressed,
     TResult Function(bool? visible)? showDebugOverlay,
     TResult Function(BlocAction? action)? showErrorDialog,
     required TResult orElse(),
@@ -206,9 +188,7 @@ class _$InitImpl implements Init {
     required TResult Function(AppLifecycleStateChanged value)
         appLifecycleStateChanged,
     required TResult Function(MemoryUsagePressed value) memoryUsagePressed,
-    required TResult Function(SwitchColorScheme value) switchColorScheme,
     required TResult Function(SwitchLocale value) switchLocale,
-    required TResult Function(AuthPressed value) authPressed,
     required TResult Function(ShowDebugOverlay value) showDebugOverlay,
     required TResult Function(ShowErrorDialog value) showErrorDialog,
   }) {
@@ -221,9 +201,7 @@ class _$InitImpl implements Init {
     TResult? Function(Init value)? init,
     TResult? Function(AppLifecycleStateChanged value)? appLifecycleStateChanged,
     TResult? Function(MemoryUsagePressed value)? memoryUsagePressed,
-    TResult? Function(SwitchColorScheme value)? switchColorScheme,
     TResult? Function(SwitchLocale value)? switchLocale,
-    TResult? Function(AuthPressed value)? authPressed,
     TResult? Function(ShowDebugOverlay value)? showDebugOverlay,
     TResult? Function(ShowErrorDialog value)? showErrorDialog,
   }) {
@@ -236,9 +214,7 @@ class _$InitImpl implements Init {
     TResult Function(Init value)? init,
     TResult Function(AppLifecycleStateChanged value)? appLifecycleStateChanged,
     TResult Function(MemoryUsagePressed value)? memoryUsagePressed,
-    TResult Function(SwitchColorScheme value)? switchColorScheme,
     TResult Function(SwitchLocale value)? switchLocale,
-    TResult Function(AuthPressed value)? authPressed,
     TResult Function(ShowDebugOverlay value)? showDebugOverlay,
     TResult Function(ShowErrorDialog value)? showErrorDialog,
     required TResult orElse(),
@@ -328,9 +304,7 @@ class _$AppLifecycleStateChangedImpl implements AppLifecycleStateChanged {
     required TResult Function() init,
     required TResult Function(AppLifecycleState state) appLifecycleStateChanged,
     required TResult Function() memoryUsagePressed,
-    required TResult Function() switchColorScheme,
     required TResult Function(Locale locale) switchLocale,
-    required TResult Function(AuthType type, Country? country) authPressed,
     required TResult Function(bool? visible) showDebugOverlay,
     required TResult Function(BlocAction? action) showErrorDialog,
   }) {
@@ -343,9 +317,7 @@ class _$AppLifecycleStateChangedImpl implements AppLifecycleStateChanged {
     TResult? Function()? init,
     TResult? Function(AppLifecycleState state)? appLifecycleStateChanged,
     TResult? Function()? memoryUsagePressed,
-    TResult? Function()? switchColorScheme,
     TResult? Function(Locale locale)? switchLocale,
-    TResult? Function(AuthType type, Country? country)? authPressed,
     TResult? Function(bool? visible)? showDebugOverlay,
     TResult? Function(BlocAction? action)? showErrorDialog,
   }) {
@@ -358,9 +330,7 @@ class _$AppLifecycleStateChangedImpl implements AppLifecycleStateChanged {
     TResult Function()? init,
     TResult Function(AppLifecycleState state)? appLifecycleStateChanged,
     TResult Function()? memoryUsagePressed,
-    TResult Function()? switchColorScheme,
     TResult Function(Locale locale)? switchLocale,
-    TResult Function(AuthType type, Country? country)? authPressed,
     TResult Function(bool? visible)? showDebugOverlay,
     TResult Function(BlocAction? action)? showErrorDialog,
     required TResult orElse(),
@@ -378,9 +348,7 @@ class _$AppLifecycleStateChangedImpl implements AppLifecycleStateChanged {
     required TResult Function(AppLifecycleStateChanged value)
         appLifecycleStateChanged,
     required TResult Function(MemoryUsagePressed value) memoryUsagePressed,
-    required TResult Function(SwitchColorScheme value) switchColorScheme,
     required TResult Function(SwitchLocale value) switchLocale,
-    required TResult Function(AuthPressed value) authPressed,
     required TResult Function(ShowDebugOverlay value) showDebugOverlay,
     required TResult Function(ShowErrorDialog value) showErrorDialog,
   }) {
@@ -393,9 +361,7 @@ class _$AppLifecycleStateChangedImpl implements AppLifecycleStateChanged {
     TResult? Function(Init value)? init,
     TResult? Function(AppLifecycleStateChanged value)? appLifecycleStateChanged,
     TResult? Function(MemoryUsagePressed value)? memoryUsagePressed,
-    TResult? Function(SwitchColorScheme value)? switchColorScheme,
     TResult? Function(SwitchLocale value)? switchLocale,
-    TResult? Function(AuthPressed value)? authPressed,
     TResult? Function(ShowDebugOverlay value)? showDebugOverlay,
     TResult? Function(ShowErrorDialog value)? showErrorDialog,
   }) {
@@ -408,9 +374,7 @@ class _$AppLifecycleStateChangedImpl implements AppLifecycleStateChanged {
     TResult Function(Init value)? init,
     TResult Function(AppLifecycleStateChanged value)? appLifecycleStateChanged,
     TResult Function(MemoryUsagePressed value)? memoryUsagePressed,
-    TResult Function(SwitchColorScheme value)? switchColorScheme,
     TResult Function(SwitchLocale value)? switchLocale,
-    TResult Function(AuthPressed value)? authPressed,
     TResult Function(ShowDebugOverlay value)? showDebugOverlay,
     TResult Function(ShowErrorDialog value)? showErrorDialog,
     required TResult orElse(),
@@ -479,9 +443,7 @@ class _$MemoryUsagePressedImpl implements MemoryUsagePressed {
     required TResult Function() init,
     required TResult Function(AppLifecycleState state) appLifecycleStateChanged,
     required TResult Function() memoryUsagePressed,
-    required TResult Function() switchColorScheme,
     required TResult Function(Locale locale) switchLocale,
-    required TResult Function(AuthType type, Country? country) authPressed,
     required TResult Function(bool? visible) showDebugOverlay,
     required TResult Function(BlocAction? action) showErrorDialog,
   }) {
@@ -494,9 +456,7 @@ class _$MemoryUsagePressedImpl implements MemoryUsagePressed {
     TResult? Function()? init,
     TResult? Function(AppLifecycleState state)? appLifecycleStateChanged,
     TResult? Function()? memoryUsagePressed,
-    TResult? Function()? switchColorScheme,
     TResult? Function(Locale locale)? switchLocale,
-    TResult? Function(AuthType type, Country? country)? authPressed,
     TResult? Function(bool? visible)? showDebugOverlay,
     TResult? Function(BlocAction? action)? showErrorDialog,
   }) {
@@ -509,9 +469,7 @@ class _$MemoryUsagePressedImpl implements MemoryUsagePressed {
     TResult Function()? init,
     TResult Function(AppLifecycleState state)? appLifecycleStateChanged,
     TResult Function()? memoryUsagePressed,
-    TResult Function()? switchColorScheme,
     TResult Function(Locale locale)? switchLocale,
-    TResult Function(AuthType type, Country? country)? authPressed,
     TResult Function(bool? visible)? showDebugOverlay,
     TResult Function(BlocAction? action)? showErrorDialog,
     required TResult orElse(),
@@ -529,9 +487,7 @@ class _$MemoryUsagePressedImpl implements MemoryUsagePressed {
     required TResult Function(AppLifecycleStateChanged value)
         appLifecycleStateChanged,
     required TResult Function(MemoryUsagePressed value) memoryUsagePressed,
-    required TResult Function(SwitchColorScheme value) switchColorScheme,
     required TResult Function(SwitchLocale value) switchLocale,
-    required TResult Function(AuthPressed value) authPressed,
     required TResult Function(ShowDebugOverlay value) showDebugOverlay,
     required TResult Function(ShowErrorDialog value) showErrorDialog,
   }) {
@@ -544,9 +500,7 @@ class _$MemoryUsagePressedImpl implements MemoryUsagePressed {
     TResult? Function(Init value)? init,
     TResult? Function(AppLifecycleStateChanged value)? appLifecycleStateChanged,
     TResult? Function(MemoryUsagePressed value)? memoryUsagePressed,
-    TResult? Function(SwitchColorScheme value)? switchColorScheme,
     TResult? Function(SwitchLocale value)? switchLocale,
-    TResult? Function(AuthPressed value)? authPressed,
     TResult? Function(ShowDebugOverlay value)? showDebugOverlay,
     TResult? Function(ShowErrorDialog value)? showErrorDialog,
   }) {
@@ -559,9 +513,7 @@ class _$MemoryUsagePressedImpl implements MemoryUsagePressed {
     TResult Function(Init value)? init,
     TResult Function(AppLifecycleStateChanged value)? appLifecycleStateChanged,
     TResult Function(MemoryUsagePressed value)? memoryUsagePressed,
-    TResult Function(SwitchColorScheme value)? switchColorScheme,
     TResult Function(SwitchLocale value)? switchLocale,
-    TResult Function(AuthPressed value)? authPressed,
     TResult Function(ShowDebugOverlay value)? showDebugOverlay,
     TResult Function(ShowErrorDialog value)? showErrorDialog,
     required TResult orElse(),
@@ -575,148 +527,6 @@ class _$MemoryUsagePressedImpl implements MemoryUsagePressed {
 
 abstract class MemoryUsagePressed implements AppEvent {
   const factory MemoryUsagePressed() = _$MemoryUsagePressedImpl;
-}
-
-/// @nodoc
-abstract class _$$SwitchColorSchemeImplCopyWith<$Res> {
-  factory _$$SwitchColorSchemeImplCopyWith(_$SwitchColorSchemeImpl value,
-          $Res Function(_$SwitchColorSchemeImpl) then) =
-      __$$SwitchColorSchemeImplCopyWithImpl<$Res>;
-}
-
-/// @nodoc
-class __$$SwitchColorSchemeImplCopyWithImpl<$Res>
-    extends _$AppEventCopyWithImpl<$Res, _$SwitchColorSchemeImpl>
-    implements _$$SwitchColorSchemeImplCopyWith<$Res> {
-  __$$SwitchColorSchemeImplCopyWithImpl(_$SwitchColorSchemeImpl _value,
-      $Res Function(_$SwitchColorSchemeImpl) _then)
-      : super(_value, _then);
-
-  /// Create a copy of AppEvent
-  /// with the given fields replaced by the non-null parameter values.
-}
-
-/// @nodoc
-
-class _$SwitchColorSchemeImpl implements SwitchColorScheme {
-  const _$SwitchColorSchemeImpl();
-
-  @override
-  String toString() {
-    return 'AppEvent.switchColorScheme()';
-  }
-
-  @override
-  bool operator ==(Object other) {
-    return identical(this, other) ||
-        (other.runtimeType == runtimeType && other is _$SwitchColorSchemeImpl);
-  }
-
-  @override
-  int get hashCode => runtimeType.hashCode;
-
-  @override
-  @optionalTypeArgs
-  TResult when<TResult extends Object?>({
-    required TResult Function() init,
-    required TResult Function(AppLifecycleState state) appLifecycleStateChanged,
-    required TResult Function() memoryUsagePressed,
-    required TResult Function() switchColorScheme,
-    required TResult Function(Locale locale) switchLocale,
-    required TResult Function(AuthType type, Country? country) authPressed,
-    required TResult Function(bool? visible) showDebugOverlay,
-    required TResult Function(BlocAction? action) showErrorDialog,
-  }) {
-    return switchColorScheme();
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function()? init,
-    TResult? Function(AppLifecycleState state)? appLifecycleStateChanged,
-    TResult? Function()? memoryUsagePressed,
-    TResult? Function()? switchColorScheme,
-    TResult? Function(Locale locale)? switchLocale,
-    TResult? Function(AuthType type, Country? country)? authPressed,
-    TResult? Function(bool? visible)? showDebugOverlay,
-    TResult? Function(BlocAction? action)? showErrorDialog,
-  }) {
-    return switchColorScheme?.call();
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult maybeWhen<TResult extends Object?>({
-    TResult Function()? init,
-    TResult Function(AppLifecycleState state)? appLifecycleStateChanged,
-    TResult Function()? memoryUsagePressed,
-    TResult Function()? switchColorScheme,
-    TResult Function(Locale locale)? switchLocale,
-    TResult Function(AuthType type, Country? country)? authPressed,
-    TResult Function(bool? visible)? showDebugOverlay,
-    TResult Function(BlocAction? action)? showErrorDialog,
-    required TResult orElse(),
-  }) {
-    if (switchColorScheme != null) {
-      return switchColorScheme();
-    }
-    return orElse();
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult map<TResult extends Object?>({
-    required TResult Function(Init value) init,
-    required TResult Function(AppLifecycleStateChanged value)
-        appLifecycleStateChanged,
-    required TResult Function(MemoryUsagePressed value) memoryUsagePressed,
-    required TResult Function(SwitchColorScheme value) switchColorScheme,
-    required TResult Function(SwitchLocale value) switchLocale,
-    required TResult Function(AuthPressed value) authPressed,
-    required TResult Function(ShowDebugOverlay value) showDebugOverlay,
-    required TResult Function(ShowErrorDialog value) showErrorDialog,
-  }) {
-    return switchColorScheme(this);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(Init value)? init,
-    TResult? Function(AppLifecycleStateChanged value)? appLifecycleStateChanged,
-    TResult? Function(MemoryUsagePressed value)? memoryUsagePressed,
-    TResult? Function(SwitchColorScheme value)? switchColorScheme,
-    TResult? Function(SwitchLocale value)? switchLocale,
-    TResult? Function(AuthPressed value)? authPressed,
-    TResult? Function(ShowDebugOverlay value)? showDebugOverlay,
-    TResult? Function(ShowErrorDialog value)? showErrorDialog,
-  }) {
-    return switchColorScheme?.call(this);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult maybeMap<TResult extends Object?>({
-    TResult Function(Init value)? init,
-    TResult Function(AppLifecycleStateChanged value)? appLifecycleStateChanged,
-    TResult Function(MemoryUsagePressed value)? memoryUsagePressed,
-    TResult Function(SwitchColorScheme value)? switchColorScheme,
-    TResult Function(SwitchLocale value)? switchLocale,
-    TResult Function(AuthPressed value)? authPressed,
-    TResult Function(ShowDebugOverlay value)? showDebugOverlay,
-    TResult Function(ShowErrorDialog value)? showErrorDialog,
-    required TResult orElse(),
-  }) {
-    if (switchColorScheme != null) {
-      return switchColorScheme(this);
-    }
-    return orElse();
-  }
-}
-
-abstract class SwitchColorScheme implements AppEvent {
-  const factory SwitchColorScheme() = _$SwitchColorSchemeImpl;
 }
 
 /// @nodoc
@@ -790,9 +600,7 @@ class _$SwitchLocaleImpl implements SwitchLocale {
     required TResult Function() init,
     required TResult Function(AppLifecycleState state) appLifecycleStateChanged,
     required TResult Function() memoryUsagePressed,
-    required TResult Function() switchColorScheme,
     required TResult Function(Locale locale) switchLocale,
-    required TResult Function(AuthType type, Country? country) authPressed,
     required TResult Function(bool? visible) showDebugOverlay,
     required TResult Function(BlocAction? action) showErrorDialog,
   }) {
@@ -805,9 +613,7 @@ class _$SwitchLocaleImpl implements SwitchLocale {
     TResult? Function()? init,
     TResult? Function(AppLifecycleState state)? appLifecycleStateChanged,
     TResult? Function()? memoryUsagePressed,
-    TResult? Function()? switchColorScheme,
     TResult? Function(Locale locale)? switchLocale,
-    TResult? Function(AuthType type, Country? country)? authPressed,
     TResult? Function(bool? visible)? showDebugOverlay,
     TResult? Function(BlocAction? action)? showErrorDialog,
   }) {
@@ -820,9 +626,7 @@ class _$SwitchLocaleImpl implements SwitchLocale {
     TResult Function()? init,
     TResult Function(AppLifecycleState state)? appLifecycleStateChanged,
     TResult Function()? memoryUsagePressed,
-    TResult Function()? switchColorScheme,
     TResult Function(Locale locale)? switchLocale,
-    TResult Function(AuthType type, Country? country)? authPressed,
     TResult Function(bool? visible)? showDebugOverlay,
     TResult Function(BlocAction? action)? showErrorDialog,
     required TResult orElse(),
@@ -840,9 +644,7 @@ class _$SwitchLocaleImpl implements SwitchLocale {
     required TResult Function(AppLifecycleStateChanged value)
         appLifecycleStateChanged,
     required TResult Function(MemoryUsagePressed value) memoryUsagePressed,
-    required TResult Function(SwitchColorScheme value) switchColorScheme,
     required TResult Function(SwitchLocale value) switchLocale,
-    required TResult Function(AuthPressed value) authPressed,
     required TResult Function(ShowDebugOverlay value) showDebugOverlay,
     required TResult Function(ShowErrorDialog value) showErrorDialog,
   }) {
@@ -855,9 +657,7 @@ class _$SwitchLocaleImpl implements SwitchLocale {
     TResult? Function(Init value)? init,
     TResult? Function(AppLifecycleStateChanged value)? appLifecycleStateChanged,
     TResult? Function(MemoryUsagePressed value)? memoryUsagePressed,
-    TResult? Function(SwitchColorScheme value)? switchColorScheme,
     TResult? Function(SwitchLocale value)? switchLocale,
-    TResult? Function(AuthPressed value)? authPressed,
     TResult? Function(ShowDebugOverlay value)? showDebugOverlay,
     TResult? Function(ShowErrorDialog value)? showErrorDialog,
   }) {
@@ -870,9 +670,7 @@ class _$SwitchLocaleImpl implements SwitchLocale {
     TResult Function(Init value)? init,
     TResult Function(AppLifecycleStateChanged value)? appLifecycleStateChanged,
     TResult Function(MemoryUsagePressed value)? memoryUsagePressed,
-    TResult Function(SwitchColorScheme value)? switchColorScheme,
     TResult Function(SwitchLocale value)? switchLocale,
-    TResult Function(AuthPressed value)? authPressed,
     TResult Function(ShowDebugOverlay value)? showDebugOverlay,
     TResult Function(ShowErrorDialog value)? showErrorDialog,
     required TResult orElse(),
@@ -893,194 +691,6 @@ abstract class SwitchLocale implements AppEvent {
   /// with the given fields replaced by the non-null parameter values.
   @JsonKey(includeFromJson: false, includeToJson: false)
   _$$SwitchLocaleImplCopyWith<_$SwitchLocaleImpl> get copyWith =>
-      throw _privateConstructorUsedError;
-}
-
-/// @nodoc
-abstract class _$$AuthPressedImplCopyWith<$Res> {
-  factory _$$AuthPressedImplCopyWith(
-          _$AuthPressedImpl value, $Res Function(_$AuthPressedImpl) then) =
-      __$$AuthPressedImplCopyWithImpl<$Res>;
-  @useResult
-  $Res call({AuthType type, Country? country});
-}
-
-/// @nodoc
-class __$$AuthPressedImplCopyWithImpl<$Res>
-    extends _$AppEventCopyWithImpl<$Res, _$AuthPressedImpl>
-    implements _$$AuthPressedImplCopyWith<$Res> {
-  __$$AuthPressedImplCopyWithImpl(
-      _$AuthPressedImpl _value, $Res Function(_$AuthPressedImpl) _then)
-      : super(_value, _then);
-
-  /// Create a copy of AppEvent
-  /// with the given fields replaced by the non-null parameter values.
-  @pragma('vm:prefer-inline')
-  @override
-  $Res call({
-    Object? type = null,
-    Object? country = freezed,
-  }) {
-    return _then(_$AuthPressedImpl(
-      type: null == type
-          ? _value.type
-          : type // ignore: cast_nullable_to_non_nullable
-              as AuthType,
-      country: freezed == country
-          ? _value.country
-          : country // ignore: cast_nullable_to_non_nullable
-              as Country?,
-    ));
-  }
-}
-
-/// @nodoc
-
-class _$AuthPressedImpl implements AuthPressed {
-  const _$AuthPressedImpl({required this.type, this.country});
-
-  @override
-  final AuthType type;
-  @override
-  final Country? country;
-
-  @override
-  String toString() {
-    return 'AppEvent.authPressed(type: $type, country: $country)';
-  }
-
-  @override
-  bool operator ==(Object other) {
-    return identical(this, other) ||
-        (other.runtimeType == runtimeType &&
-            other is _$AuthPressedImpl &&
-            (identical(other.type, type) || other.type == type) &&
-            (identical(other.country, country) || other.country == country));
-  }
-
-  @override
-  int get hashCode => Object.hash(runtimeType, type, country);
-
-  /// Create a copy of AppEvent
-  /// with the given fields replaced by the non-null parameter values.
-  @JsonKey(includeFromJson: false, includeToJson: false)
-  @override
-  @pragma('vm:prefer-inline')
-  _$$AuthPressedImplCopyWith<_$AuthPressedImpl> get copyWith =>
-      __$$AuthPressedImplCopyWithImpl<_$AuthPressedImpl>(this, _$identity);
-
-  @override
-  @optionalTypeArgs
-  TResult when<TResult extends Object?>({
-    required TResult Function() init,
-    required TResult Function(AppLifecycleState state) appLifecycleStateChanged,
-    required TResult Function() memoryUsagePressed,
-    required TResult Function() switchColorScheme,
-    required TResult Function(Locale locale) switchLocale,
-    required TResult Function(AuthType type, Country? country) authPressed,
-    required TResult Function(bool? visible) showDebugOverlay,
-    required TResult Function(BlocAction? action) showErrorDialog,
-  }) {
-    return authPressed(type, country);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function()? init,
-    TResult? Function(AppLifecycleState state)? appLifecycleStateChanged,
-    TResult? Function()? memoryUsagePressed,
-    TResult? Function()? switchColorScheme,
-    TResult? Function(Locale locale)? switchLocale,
-    TResult? Function(AuthType type, Country? country)? authPressed,
-    TResult? Function(bool? visible)? showDebugOverlay,
-    TResult? Function(BlocAction? action)? showErrorDialog,
-  }) {
-    return authPressed?.call(type, country);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult maybeWhen<TResult extends Object?>({
-    TResult Function()? init,
-    TResult Function(AppLifecycleState state)? appLifecycleStateChanged,
-    TResult Function()? memoryUsagePressed,
-    TResult Function()? switchColorScheme,
-    TResult Function(Locale locale)? switchLocale,
-    TResult Function(AuthType type, Country? country)? authPressed,
-    TResult Function(bool? visible)? showDebugOverlay,
-    TResult Function(BlocAction? action)? showErrorDialog,
-    required TResult orElse(),
-  }) {
-    if (authPressed != null) {
-      return authPressed(type, country);
-    }
-    return orElse();
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult map<TResult extends Object?>({
-    required TResult Function(Init value) init,
-    required TResult Function(AppLifecycleStateChanged value)
-        appLifecycleStateChanged,
-    required TResult Function(MemoryUsagePressed value) memoryUsagePressed,
-    required TResult Function(SwitchColorScheme value) switchColorScheme,
-    required TResult Function(SwitchLocale value) switchLocale,
-    required TResult Function(AuthPressed value) authPressed,
-    required TResult Function(ShowDebugOverlay value) showDebugOverlay,
-    required TResult Function(ShowErrorDialog value) showErrorDialog,
-  }) {
-    return authPressed(this);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(Init value)? init,
-    TResult? Function(AppLifecycleStateChanged value)? appLifecycleStateChanged,
-    TResult? Function(MemoryUsagePressed value)? memoryUsagePressed,
-    TResult? Function(SwitchColorScheme value)? switchColorScheme,
-    TResult? Function(SwitchLocale value)? switchLocale,
-    TResult? Function(AuthPressed value)? authPressed,
-    TResult? Function(ShowDebugOverlay value)? showDebugOverlay,
-    TResult? Function(ShowErrorDialog value)? showErrorDialog,
-  }) {
-    return authPressed?.call(this);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult maybeMap<TResult extends Object?>({
-    TResult Function(Init value)? init,
-    TResult Function(AppLifecycleStateChanged value)? appLifecycleStateChanged,
-    TResult Function(MemoryUsagePressed value)? memoryUsagePressed,
-    TResult Function(SwitchColorScheme value)? switchColorScheme,
-    TResult Function(SwitchLocale value)? switchLocale,
-    TResult Function(AuthPressed value)? authPressed,
-    TResult Function(ShowDebugOverlay value)? showDebugOverlay,
-    TResult Function(ShowErrorDialog value)? showErrorDialog,
-    required TResult orElse(),
-  }) {
-    if (authPressed != null) {
-      return authPressed(this);
-    }
-    return orElse();
-  }
-}
-
-abstract class AuthPressed implements AppEvent {
-  const factory AuthPressed(
-      {required final AuthType type,
-      final Country? country}) = _$AuthPressedImpl;
-
-  AuthType get type;
-  Country? get country;
-
-  /// Create a copy of AppEvent
-  /// with the given fields replaced by the non-null parameter values.
-  @JsonKey(includeFromJson: false, includeToJson: false)
-  _$$AuthPressedImplCopyWith<_$AuthPressedImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }
 
@@ -1156,9 +766,7 @@ class _$ShowDebugOverlayImpl implements ShowDebugOverlay {
     required TResult Function() init,
     required TResult Function(AppLifecycleState state) appLifecycleStateChanged,
     required TResult Function() memoryUsagePressed,
-    required TResult Function() switchColorScheme,
     required TResult Function(Locale locale) switchLocale,
-    required TResult Function(AuthType type, Country? country) authPressed,
     required TResult Function(bool? visible) showDebugOverlay,
     required TResult Function(BlocAction? action) showErrorDialog,
   }) {
@@ -1171,9 +779,7 @@ class _$ShowDebugOverlayImpl implements ShowDebugOverlay {
     TResult? Function()? init,
     TResult? Function(AppLifecycleState state)? appLifecycleStateChanged,
     TResult? Function()? memoryUsagePressed,
-    TResult? Function()? switchColorScheme,
     TResult? Function(Locale locale)? switchLocale,
-    TResult? Function(AuthType type, Country? country)? authPressed,
     TResult? Function(bool? visible)? showDebugOverlay,
     TResult? Function(BlocAction? action)? showErrorDialog,
   }) {
@@ -1186,9 +792,7 @@ class _$ShowDebugOverlayImpl implements ShowDebugOverlay {
     TResult Function()? init,
     TResult Function(AppLifecycleState state)? appLifecycleStateChanged,
     TResult Function()? memoryUsagePressed,
-    TResult Function()? switchColorScheme,
     TResult Function(Locale locale)? switchLocale,
-    TResult Function(AuthType type, Country? country)? authPressed,
     TResult Function(bool? visible)? showDebugOverlay,
     TResult Function(BlocAction? action)? showErrorDialog,
     required TResult orElse(),
@@ -1206,9 +810,7 @@ class _$ShowDebugOverlayImpl implements ShowDebugOverlay {
     required TResult Function(AppLifecycleStateChanged value)
         appLifecycleStateChanged,
     required TResult Function(MemoryUsagePressed value) memoryUsagePressed,
-    required TResult Function(SwitchColorScheme value) switchColorScheme,
     required TResult Function(SwitchLocale value) switchLocale,
-    required TResult Function(AuthPressed value) authPressed,
     required TResult Function(ShowDebugOverlay value) showDebugOverlay,
     required TResult Function(ShowErrorDialog value) showErrorDialog,
   }) {
@@ -1221,9 +823,7 @@ class _$ShowDebugOverlayImpl implements ShowDebugOverlay {
     TResult? Function(Init value)? init,
     TResult? Function(AppLifecycleStateChanged value)? appLifecycleStateChanged,
     TResult? Function(MemoryUsagePressed value)? memoryUsagePressed,
-    TResult? Function(SwitchColorScheme value)? switchColorScheme,
     TResult? Function(SwitchLocale value)? switchLocale,
-    TResult? Function(AuthPressed value)? authPressed,
     TResult? Function(ShowDebugOverlay value)? showDebugOverlay,
     TResult? Function(ShowErrorDialog value)? showErrorDialog,
   }) {
@@ -1236,9 +836,7 @@ class _$ShowDebugOverlayImpl implements ShowDebugOverlay {
     TResult Function(Init value)? init,
     TResult Function(AppLifecycleStateChanged value)? appLifecycleStateChanged,
     TResult Function(MemoryUsagePressed value)? memoryUsagePressed,
-    TResult Function(SwitchColorScheme value)? switchColorScheme,
     TResult Function(SwitchLocale value)? switchLocale,
-    TResult Function(AuthPressed value)? authPressed,
     TResult Function(ShowDebugOverlay value)? showDebugOverlay,
     TResult Function(ShowErrorDialog value)? showErrorDialog,
     required TResult orElse(),
@@ -1335,9 +933,7 @@ class _$ShowErrorDialogImpl implements ShowErrorDialog {
     required TResult Function() init,
     required TResult Function(AppLifecycleState state) appLifecycleStateChanged,
     required TResult Function() memoryUsagePressed,
-    required TResult Function() switchColorScheme,
     required TResult Function(Locale locale) switchLocale,
-    required TResult Function(AuthType type, Country? country) authPressed,
     required TResult Function(bool? visible) showDebugOverlay,
     required TResult Function(BlocAction? action) showErrorDialog,
   }) {
@@ -1350,9 +946,7 @@ class _$ShowErrorDialogImpl implements ShowErrorDialog {
     TResult? Function()? init,
     TResult? Function(AppLifecycleState state)? appLifecycleStateChanged,
     TResult? Function()? memoryUsagePressed,
-    TResult? Function()? switchColorScheme,
     TResult? Function(Locale locale)? switchLocale,
-    TResult? Function(AuthType type, Country? country)? authPressed,
     TResult? Function(bool? visible)? showDebugOverlay,
     TResult? Function(BlocAction? action)? showErrorDialog,
   }) {
@@ -1365,9 +959,7 @@ class _$ShowErrorDialogImpl implements ShowErrorDialog {
     TResult Function()? init,
     TResult Function(AppLifecycleState state)? appLifecycleStateChanged,
     TResult Function()? memoryUsagePressed,
-    TResult Function()? switchColorScheme,
     TResult Function(Locale locale)? switchLocale,
-    TResult Function(AuthType type, Country? country)? authPressed,
     TResult Function(bool? visible)? showDebugOverlay,
     TResult Function(BlocAction? action)? showErrorDialog,
     required TResult orElse(),
@@ -1385,9 +977,7 @@ class _$ShowErrorDialogImpl implements ShowErrorDialog {
     required TResult Function(AppLifecycleStateChanged value)
         appLifecycleStateChanged,
     required TResult Function(MemoryUsagePressed value) memoryUsagePressed,
-    required TResult Function(SwitchColorScheme value) switchColorScheme,
     required TResult Function(SwitchLocale value) switchLocale,
-    required TResult Function(AuthPressed value) authPressed,
     required TResult Function(ShowDebugOverlay value) showDebugOverlay,
     required TResult Function(ShowErrorDialog value) showErrorDialog,
   }) {
@@ -1400,9 +990,7 @@ class _$ShowErrorDialogImpl implements ShowErrorDialog {
     TResult? Function(Init value)? init,
     TResult? Function(AppLifecycleStateChanged value)? appLifecycleStateChanged,
     TResult? Function(MemoryUsagePressed value)? memoryUsagePressed,
-    TResult? Function(SwitchColorScheme value)? switchColorScheme,
     TResult? Function(SwitchLocale value)? switchLocale,
-    TResult? Function(AuthPressed value)? authPressed,
     TResult? Function(ShowDebugOverlay value)? showDebugOverlay,
     TResult? Function(ShowErrorDialog value)? showErrorDialog,
   }) {
@@ -1415,9 +1003,7 @@ class _$ShowErrorDialogImpl implements ShowErrorDialog {
     TResult Function(Init value)? init,
     TResult Function(AppLifecycleStateChanged value)? appLifecycleStateChanged,
     TResult Function(MemoryUsagePressed value)? memoryUsagePressed,
-    TResult Function(SwitchColorScheme value)? switchColorScheme,
     TResult Function(SwitchLocale value)? switchLocale,
-    TResult Function(AuthPressed value)? authPressed,
     TResult Function(ShowDebugOverlay value)? showDebugOverlay,
     TResult Function(ShowErrorDialog value)? showErrorDialog,
     required TResult orElse(),
@@ -1446,7 +1032,6 @@ abstract class ShowErrorDialog implements AppEvent {
 mixin _$AppState {
   BlocAction? get action => throw _privateConstructorUsedError;
   Locale? get locale => throw _privateConstructorUsedError;
-  ColorSchemeMode get colorSchemeMode => throw _privateConstructorUsedError;
   bool get visibleDebugOverlay => throw _privateConstructorUsedError;
 
   /// Create a copy of AppState
@@ -1461,11 +1046,7 @@ abstract class $AppStateCopyWith<$Res> {
   factory $AppStateCopyWith(AppState value, $Res Function(AppState) then) =
       _$AppStateCopyWithImpl<$Res, AppState>;
   @useResult
-  $Res call(
-      {BlocAction? action,
-      Locale? locale,
-      ColorSchemeMode colorSchemeMode,
-      bool visibleDebugOverlay});
+  $Res call({BlocAction? action, Locale? locale, bool visibleDebugOverlay});
 }
 
 /// @nodoc
@@ -1485,7 +1066,6 @@ class _$AppStateCopyWithImpl<$Res, $Val extends AppState>
   $Res call({
     Object? action = freezed,
     Object? locale = freezed,
-    Object? colorSchemeMode = null,
     Object? visibleDebugOverlay = null,
   }) {
     return _then(_value.copyWith(
@@ -1497,10 +1077,6 @@ class _$AppStateCopyWithImpl<$Res, $Val extends AppState>
           ? _value.locale
           : locale // ignore: cast_nullable_to_non_nullable
               as Locale?,
-      colorSchemeMode: null == colorSchemeMode
-          ? _value.colorSchemeMode
-          : colorSchemeMode // ignore: cast_nullable_to_non_nullable
-              as ColorSchemeMode,
       visibleDebugOverlay: null == visibleDebugOverlay
           ? _value.visibleDebugOverlay
           : visibleDebugOverlay // ignore: cast_nullable_to_non_nullable
@@ -1517,11 +1093,7 @@ abstract class _$$AppStateImplCopyWith<$Res>
       __$$AppStateImplCopyWithImpl<$Res>;
   @override
   @useResult
-  $Res call(
-      {BlocAction? action,
-      Locale? locale,
-      ColorSchemeMode colorSchemeMode,
-      bool visibleDebugOverlay});
+  $Res call({BlocAction? action, Locale? locale, bool visibleDebugOverlay});
 }
 
 /// @nodoc
@@ -1539,7 +1111,6 @@ class __$$AppStateImplCopyWithImpl<$Res>
   $Res call({
     Object? action = freezed,
     Object? locale = freezed,
-    Object? colorSchemeMode = null,
     Object? visibleDebugOverlay = null,
   }) {
     return _then(_$AppStateImpl(
@@ -1551,10 +1122,6 @@ class __$$AppStateImplCopyWithImpl<$Res>
           ? _value.locale
           : locale // ignore: cast_nullable_to_non_nullable
               as Locale?,
-      colorSchemeMode: null == colorSchemeMode
-          ? _value.colorSchemeMode
-          : colorSchemeMode // ignore: cast_nullable_to_non_nullable
-              as ColorSchemeMode,
       visibleDebugOverlay: null == visibleDebugOverlay
           ? _value.visibleDebugOverlay
           : visibleDebugOverlay // ignore: cast_nullable_to_non_nullable
@@ -1567,10 +1134,7 @@ class __$$AppStateImplCopyWithImpl<$Res>
 
 class _$AppStateImpl implements _AppState {
   _$AppStateImpl(
-      {this.action,
-      this.locale = null,
-      this.colorSchemeMode = ColorSchemeMode.dark,
-      this.visibleDebugOverlay = false});
+      {this.action, this.locale = null, this.visibleDebugOverlay = false});
 
   @override
   final BlocAction? action;
@@ -1579,14 +1143,11 @@ class _$AppStateImpl implements _AppState {
   final Locale? locale;
   @override
   @JsonKey()
-  final ColorSchemeMode colorSchemeMode;
-  @override
-  @JsonKey()
   final bool visibleDebugOverlay;
 
   @override
   String toString() {
-    return 'AppState(action: $action, locale: $locale, colorSchemeMode: $colorSchemeMode, visibleDebugOverlay: $visibleDebugOverlay)';
+    return 'AppState(action: $action, locale: $locale, visibleDebugOverlay: $visibleDebugOverlay)';
   }
 
   @override
@@ -1596,15 +1157,13 @@ class _$AppStateImpl implements _AppState {
             other is _$AppStateImpl &&
             (identical(other.action, action) || other.action == action) &&
             (identical(other.locale, locale) || other.locale == locale) &&
-            (identical(other.colorSchemeMode, colorSchemeMode) ||
-                other.colorSchemeMode == colorSchemeMode) &&
             (identical(other.visibleDebugOverlay, visibleDebugOverlay) ||
                 other.visibleDebugOverlay == visibleDebugOverlay));
   }
 
   @override
-  int get hashCode => Object.hash(
-      runtimeType, action, locale, colorSchemeMode, visibleDebugOverlay);
+  int get hashCode =>
+      Object.hash(runtimeType, action, locale, visibleDebugOverlay);
 
   /// Create a copy of AppState
   /// with the given fields replaced by the non-null parameter values.
@@ -1619,15 +1178,12 @@ abstract class _AppState implements AppState {
   factory _AppState(
       {final BlocAction? action,
       final Locale? locale,
-      final ColorSchemeMode colorSchemeMode,
       final bool visibleDebugOverlay}) = _$AppStateImpl;
 
   @override
   BlocAction? get action;
   @override
   Locale? get locale;
-  @override
-  ColorSchemeMode get colorSchemeMode;
   @override
   bool get visibleDebugOverlay;
 

@@ -25,8 +25,12 @@ mixin _$OrdersBlankResponse {
   String? get errorMessage => throw _privateConstructorUsedError;
   List<OrderBlankResponse>? get orders => throw _privateConstructorUsedError;
 
+  /// Serializes this OrdersBlankResponse to a JSON map.
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
-  @JsonKey(ignore: true)
+
+  /// Create a copy of OrdersBlankResponse
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   $OrdersBlankResponseCopyWith<OrdersBlankResponse> get copyWith =>
       throw _privateConstructorUsedError;
 }
@@ -54,6 +58,8 @@ class _$OrdersBlankResponseCopyWithImpl<$Res, $Val extends OrdersBlankResponse>
   // ignore: unused_field
   final $Res Function($Val) _then;
 
+  /// Create a copy of OrdersBlankResponse
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -106,6 +112,8 @@ class __$$OrdersBlankResponseImplCopyWithImpl<$Res>
       $Res Function(_$OrdersBlankResponseImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of OrdersBlankResponse
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -182,12 +190,14 @@ class _$OrdersBlankResponseImpl extends _OrdersBlankResponse {
             const DeepCollectionEquality().equals(other._orders, _orders));
   }
 
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   int get hashCode => Object.hash(runtimeType, r, e, errorMessage,
       const DeepCollectionEquality().hash(_orders));
 
-  @JsonKey(ignore: true)
+  /// Create a copy of OrdersBlankResponse
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$OrdersBlankResponseImplCopyWith<_$OrdersBlankResponseImpl> get copyWith =>
@@ -221,8 +231,11 @@ abstract class _OrdersBlankResponse extends OrdersBlankResponse {
   String? get errorMessage;
   @override
   List<OrderBlankResponse>? get orders;
+
+  /// Create a copy of OrdersBlankResponse
+  /// with the given fields replaced by the non-null parameter values.
   @override
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$OrdersBlankResponseImplCopyWith<_$OrdersBlankResponseImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }

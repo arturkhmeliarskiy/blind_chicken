@@ -23,8 +23,12 @@ mixin _$CharProductResponse {
   String? get name => throw _privateConstructorUsedError;
   String? get value => throw _privateConstructorUsedError;
 
+  /// Serializes this CharProductResponse to a JSON map.
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
-  @JsonKey(ignore: true)
+
+  /// Create a copy of CharProductResponse
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   $CharProductResponseCopyWith<CharProductResponse> get copyWith =>
       throw _privateConstructorUsedError;
 }
@@ -48,6 +52,8 @@ class _$CharProductResponseCopyWithImpl<$Res, $Val extends CharProductResponse>
   // ignore: unused_field
   final $Res Function($Val) _then;
 
+  /// Create a copy of CharProductResponse
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -86,6 +92,8 @@ class __$$CharProductResponseImplCopyWithImpl<$Res>
       $Res Function(_$CharProductResponseImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of CharProductResponse
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -132,11 +140,13 @@ class _$CharProductResponseImpl extends _CharProductResponse {
             (identical(other.value, value) || other.value == value));
   }
 
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   int get hashCode => Object.hash(runtimeType, name, value);
 
-  @JsonKey(ignore: true)
+  /// Create a copy of CharProductResponse
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$CharProductResponseImplCopyWith<_$CharProductResponseImpl> get copyWith =>
@@ -163,8 +173,11 @@ abstract class _CharProductResponse extends CharProductResponse {
   String? get name;
   @override
   String? get value;
+
+  /// Create a copy of CharProductResponse
+  /// with the given fields replaced by the non-null parameter values.
   @override
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$CharProductResponseImplCopyWith<_$CharProductResponseImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }

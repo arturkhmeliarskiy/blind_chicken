@@ -27,8 +27,12 @@ mixin _$BreadcrumbsResponse {
   @JsonKey(name: 'Очки')
   String? get glasses => throw _privateConstructorUsedError;
 
+  /// Serializes this BreadcrumbsResponse to a JSON map.
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
-  @JsonKey(ignore: true)
+
+  /// Create a copy of BreadcrumbsResponse
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   $BreadcrumbsResponseCopyWith<BreadcrumbsResponse> get copyWith =>
       throw _privateConstructorUsedError;
 }
@@ -55,6 +59,8 @@ class _$BreadcrumbsResponseCopyWithImpl<$Res, $Val extends BreadcrumbsResponse>
   // ignore: unused_field
   final $Res Function($Val) _then;
 
+  /// Create a copy of BreadcrumbsResponse
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -101,6 +107,8 @@ class __$$BreadcrumbsResponseImplCopyWithImpl<$Res>
       $Res Function(_$BreadcrumbsResponseImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of BreadcrumbsResponse
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -162,11 +170,13 @@ class _$BreadcrumbsResponseImpl extends _BreadcrumbsResponse {
             (identical(other.glasses, glasses) || other.glasses == glasses));
   }
 
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   int get hashCode => Object.hash(runtimeType, women, optics, glasses);
 
-  @JsonKey(ignore: true)
+  /// Create a copy of BreadcrumbsResponse
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$BreadcrumbsResponseImplCopyWith<_$BreadcrumbsResponseImpl> get copyWith =>
@@ -201,8 +211,11 @@ abstract class _BreadcrumbsResponse extends BreadcrumbsResponse {
   @override
   @JsonKey(name: 'Очки')
   String? get glasses;
+
+  /// Create a copy of BreadcrumbsResponse
+  /// with the given fields replaced by the non-null parameter values.
   @override
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$BreadcrumbsResponseImplCopyWith<_$BreadcrumbsResponseImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }

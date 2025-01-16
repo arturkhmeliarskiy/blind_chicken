@@ -23,8 +23,12 @@ mixin _$SchemLoyaltyResponse {
   int? get discount => throw _privateConstructorUsedError;
   int? get value => throw _privateConstructorUsedError;
 
+  /// Serializes this SchemLoyaltyResponse to a JSON map.
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
-  @JsonKey(ignore: true)
+
+  /// Create a copy of SchemLoyaltyResponse
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   $SchemLoyaltyResponseCopyWith<SchemLoyaltyResponse> get copyWith =>
       throw _privateConstructorUsedError;
 }
@@ -49,6 +53,8 @@ class _$SchemLoyaltyResponseCopyWithImpl<$Res,
   // ignore: unused_field
   final $Res Function($Val) _then;
 
+  /// Create a copy of SchemLoyaltyResponse
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -87,6 +93,8 @@ class __$$SchemLoyaltyResponseImplCopyWithImpl<$Res>
       $Res Function(_$SchemLoyaltyResponseImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of SchemLoyaltyResponse
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -134,11 +142,13 @@ class _$SchemLoyaltyResponseImpl extends _SchemLoyaltyResponse {
             (identical(other.value, value) || other.value == value));
   }
 
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   int get hashCode => Object.hash(runtimeType, discount, value);
 
-  @JsonKey(ignore: true)
+  /// Create a copy of SchemLoyaltyResponse
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$SchemLoyaltyResponseImplCopyWith<_$SchemLoyaltyResponseImpl>
@@ -166,8 +176,11 @@ abstract class _SchemLoyaltyResponse extends SchemLoyaltyResponse {
   int? get discount;
   @override
   int? get value;
+
+  /// Create a copy of SchemLoyaltyResponse
+  /// with the given fields replaced by the non-null parameter values.
   @override
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$SchemLoyaltyResponseImplCopyWith<_$SchemLoyaltyResponseImpl>
       get copyWith => throw _privateConstructorUsedError;
 }

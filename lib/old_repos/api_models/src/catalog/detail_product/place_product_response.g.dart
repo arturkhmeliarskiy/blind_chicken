@@ -9,8 +9,8 @@ part of 'place_product_response.dart';
 _$PlaceProductResponseImpl _$$PlaceProductResponseImplFromJson(
         Map<String, dynamic> json) =>
     _$PlaceProductResponseImpl(
-      b: json['b'] as int?,
-      s: json['s'] as int?,
+      b: (json['b'] as num?)?.toInt(),
+      s: (json['s'] as num?)?.toInt(),
     );
 
 Map<String, dynamic> _$$PlaceProductResponseImplToJson(

@@ -26,8 +26,12 @@ mixin _$OneNotificationInfoResponse {
   String? get errorMessage => throw _privateConstructorUsedError;
   NotificationInfoItemResponse? get data => throw _privateConstructorUsedError;
 
+  /// Serializes this OneNotificationInfoResponse to a JSON map.
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
-  @JsonKey(ignore: true)
+
+  /// Create a copy of OneNotificationInfoResponse
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   $OneNotificationInfoResponseCopyWith<OneNotificationInfoResponse>
       get copyWith => throw _privateConstructorUsedError;
 }
@@ -60,6 +64,8 @@ class _$OneNotificationInfoResponseCopyWithImpl<$Res,
   // ignore: unused_field
   final $Res Function($Val) _then;
 
+  /// Create a copy of OneNotificationInfoResponse
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -88,6 +94,8 @@ class _$OneNotificationInfoResponseCopyWithImpl<$Res,
     ) as $Val);
   }
 
+  /// Create a copy of OneNotificationInfoResponse
+  /// with the given fields replaced by the non-null parameter values.
   @override
   @pragma('vm:prefer-inline')
   $NotificationInfoItemResponseCopyWith<$Res>? get data {
@@ -130,6 +138,8 @@ class __$$OneNotificationInfoResponseImplCopyWithImpl<$Res>
       $Res Function(_$OneNotificationInfoResponseImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of OneNotificationInfoResponse
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -196,11 +206,13 @@ class _$OneNotificationInfoResponseImpl extends _OneNotificationInfoResponse {
             (identical(other.data, data) || other.data == data));
   }
 
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   int get hashCode => Object.hash(runtimeType, r, e, errorMessage, data);
 
-  @JsonKey(ignore: true)
+  /// Create a copy of OneNotificationInfoResponse
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$OneNotificationInfoResponseImplCopyWith<_$OneNotificationInfoResponseImpl>
@@ -236,8 +248,11 @@ abstract class _OneNotificationInfoResponse
   String? get errorMessage;
   @override
   NotificationInfoItemResponse? get data;
+
+  /// Create a copy of OneNotificationInfoResponse
+  /// with the given fields replaced by the non-null parameter values.
   @override
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$OneNotificationInfoResponseImplCopyWith<_$OneNotificationInfoResponseImpl>
       get copyWith => throw _privateConstructorUsedError;
 }

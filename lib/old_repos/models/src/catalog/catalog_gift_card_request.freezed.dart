@@ -23,7 +23,9 @@ mixin _$CatalogGiftCardRequest {
   String get city => throw _privateConstructorUsedError;
   String get sum => throw _privateConstructorUsedError;
 
-  @JsonKey(ignore: true)
+  /// Create a copy of CatalogGiftCardRequest
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   $CatalogGiftCardRequestCopyWith<CatalogGiftCardRequest> get copyWith =>
       throw _privateConstructorUsedError;
 }
@@ -56,6 +58,8 @@ class _$CatalogGiftCardRequestCopyWithImpl<$Res,
   // ignore: unused_field
   final $Res Function($Val) _then;
 
+  /// Create a copy of CatalogGiftCardRequest
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -94,6 +98,8 @@ class _$CatalogGiftCardRequestCopyWithImpl<$Res,
     ) as $Val);
   }
 
+  /// Create a copy of CatalogGiftCardRequest
+  /// with the given fields replaced by the non-null parameter values.
   @override
   @pragma('vm:prefer-inline')
   $BasketOrderDeliveryRequestCopyWith<$Res> get delivery {
@@ -134,6 +140,8 @@ class __$$CatalogGiftCardRequestImplCopyWithImpl<$Res>
       $Res Function(_$CatalogGiftCardRequestImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of CatalogGiftCardRequest
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -221,7 +229,9 @@ class _$CatalogGiftCardRequestImpl extends _CatalogGiftCardRequest {
   int get hashCode =>
       Object.hash(runtimeType, type, color, delivery, payment, city, sum);
 
-  @JsonKey(ignore: true)
+  /// Create a copy of CatalogGiftCardRequest
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$CatalogGiftCardRequestImplCopyWith<_$CatalogGiftCardRequestImpl>
@@ -251,8 +261,11 @@ abstract class _CatalogGiftCardRequest extends CatalogGiftCardRequest {
   String get city;
   @override
   String get sum;
+
+  /// Create a copy of CatalogGiftCardRequest
+  /// with the given fields replaced by the non-null parameter values.
   @override
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$CatalogGiftCardRequestImplCopyWith<_$CatalogGiftCardRequestImpl>
       get copyWith => throw _privateConstructorUsedError;
 }

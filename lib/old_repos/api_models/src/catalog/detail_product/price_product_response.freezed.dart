@@ -37,8 +37,12 @@ mixin _$PriceProductResponse {
   @JsonKey(name: 'promo_value')
   int? get promoValue => throw _privateConstructorUsedError;
 
+  /// Serializes this PriceProductResponse to a JSON map.
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
-  @JsonKey(ignore: true)
+
+  /// Create a copy of PriceProductResponse
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   $PriceProductResponseCopyWith<PriceProductResponse> get copyWith =>
       throw _privateConstructorUsedError;
 }
@@ -74,6 +78,8 @@ class _$PriceProductResponseCopyWithImpl<$Res,
   // ignore: unused_field
   final $Res Function($Val) _then;
 
+  /// Create a copy of PriceProductResponse
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -168,6 +174,8 @@ class __$$PriceProductResponseImplCopyWithImpl<$Res>
       $Res Function(_$PriceProductResponseImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of PriceProductResponse
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -309,12 +317,14 @@ class _$PriceProductResponseImpl extends _PriceProductResponse {
                 other.promoValue == promoValue));
   }
 
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   int get hashCode => Object.hash(runtimeType, p, pb, pc, pbc, cashback,
       bonusLoyal, bonusGift, bonusYear, discountVal, promo, promoValue);
 
-  @JsonKey(ignore: true)
+  /// Create a copy of PriceProductResponse
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$PriceProductResponseImplCopyWith<_$PriceProductResponseImpl>
@@ -376,8 +386,11 @@ abstract class _PriceProductResponse extends PriceProductResponse {
   @override
   @JsonKey(name: 'promo_value')
   int? get promoValue;
+
+  /// Create a copy of PriceProductResponse
+  /// with the given fields replaced by the non-null parameter values.
   @override
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$PriceProductResponseImplCopyWith<_$PriceProductResponseImpl>
       get copyWith => throw _privateConstructorUsedError;
 }

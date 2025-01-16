@@ -49,8 +49,12 @@ mixin _$NotificationInfoItemResponse {
   @JsonKey(name: 'is_viewed')
   bool? get isViewed => throw _privateConstructorUsedError;
 
+  /// Serializes this NotificationInfoItemResponse to a JSON map.
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
-  @JsonKey(ignore: true)
+
+  /// Create a copy of NotificationInfoItemResponse
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   $NotificationInfoItemResponseCopyWith<NotificationInfoItemResponse>
       get copyWith => throw _privateConstructorUsedError;
 }
@@ -94,6 +98,8 @@ class _$NotificationInfoItemResponseCopyWithImpl<$Res,
   // ignore: unused_field
   final $Res Function($Val) _then;
 
+  /// Create a copy of NotificationInfoItemResponse
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -227,6 +233,8 @@ class __$$NotificationInfoItemResponseImplCopyWithImpl<$Res>
       $Res Function(_$NotificationInfoItemResponseImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of NotificationInfoItemResponse
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -441,7 +449,7 @@ class _$NotificationInfoItemResponseImpl extends _NotificationInfoItemResponse {
                 other.isViewed == isViewed));
   }
 
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   int get hashCode => Object.hash(
       runtimeType,
@@ -463,7 +471,9 @@ class _$NotificationInfoItemResponseImpl extends _NotificationInfoItemResponse {
       uidStore,
       isViewed);
 
-  @JsonKey(ignore: true)
+  /// Create a copy of NotificationInfoItemResponse
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$NotificationInfoItemResponseImplCopyWith<
@@ -549,8 +559,11 @@ abstract class _NotificationInfoItemResponse
   @override
   @JsonKey(name: 'is_viewed')
   bool? get isViewed;
+
+  /// Create a copy of NotificationInfoItemResponse
+  /// with the given fields replaced by the non-null parameter values.
   @override
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$NotificationInfoItemResponseImplCopyWith<
           _$NotificationInfoItemResponseImpl>
       get copyWith => throw _privateConstructorUsedError;

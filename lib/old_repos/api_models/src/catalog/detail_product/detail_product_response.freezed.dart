@@ -57,8 +57,12 @@ mixin _$DetailProductResponse {
   String? get errorMessage => throw _privateConstructorUsedError;
   DetailProductVideoResponse? get video => throw _privateConstructorUsedError;
 
+  /// Serializes this DetailProductResponse to a JSON map.
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
-  @JsonKey(ignore: true)
+
+  /// Create a copy of DetailProductResponse
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   $DetailProductResponseCopyWith<DetailProductResponse> get copyWith =>
       throw _privateConstructorUsedError;
 }
@@ -120,6 +124,8 @@ class _$DetailProductResponseCopyWithImpl<$Res,
   // ignore: unused_field
   final $Res Function($Val) _then;
 
+  /// Create a copy of DetailProductResponse
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -248,6 +254,8 @@ class _$DetailProductResponseCopyWithImpl<$Res,
     ) as $Val);
   }
 
+  /// Create a copy of DetailProductResponse
+  /// with the given fields replaced by the non-null parameter values.
   @override
   @pragma('vm:prefer-inline')
   $PhotoProductResponseCopyWith<$Res>? get photo {
@@ -260,6 +268,8 @@ class _$DetailProductResponseCopyWithImpl<$Res,
     });
   }
 
+  /// Create a copy of DetailProductResponse
+  /// with the given fields replaced by the non-null parameter values.
   @override
   @pragma('vm:prefer-inline')
   $BrandProductResponseCopyWith<$Res>? get brand {
@@ -272,6 +282,8 @@ class _$DetailProductResponseCopyWithImpl<$Res,
     });
   }
 
+  /// Create a copy of DetailProductResponse
+  /// with the given fields replaced by the non-null parameter values.
   @override
   @pragma('vm:prefer-inline')
   $CategoryProductResponseCopyWith<$Res>? get category {
@@ -284,6 +296,8 @@ class _$DetailProductResponseCopyWithImpl<$Res,
     });
   }
 
+  /// Create a copy of DetailProductResponse
+  /// with the given fields replaced by the non-null parameter values.
   @override
   @pragma('vm:prefer-inline')
   $PlaceProductResponseCopyWith<$Res>? get place {
@@ -296,6 +310,8 @@ class _$DetailProductResponseCopyWithImpl<$Res,
     });
   }
 
+  /// Create a copy of DetailProductResponse
+  /// with the given fields replaced by the non-null parameter values.
   @override
   @pragma('vm:prefer-inline')
   $PriceProductResponseCopyWith<$Res>? get price {
@@ -308,6 +324,8 @@ class _$DetailProductResponseCopyWithImpl<$Res,
     });
   }
 
+  /// Create a copy of DetailProductResponse
+  /// with the given fields replaced by the non-null parameter values.
   @override
   @pragma('vm:prefer-inline')
   $DetailProductVideoResponseCopyWith<$Res>? get video {
@@ -385,6 +403,8 @@ class __$$DetailProductResponseImplCopyWithImpl<$Res>
       $Res Function(_$DetailProductResponseImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of DetailProductResponse
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -710,7 +730,7 @@ class _$DetailProductResponseImpl extends _DetailProductResponse {
             (identical(other.video, video) || other.video == video));
   }
 
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   int get hashCode => Object.hashAll([
         runtimeType,
@@ -740,7 +760,9 @@ class _$DetailProductResponseImpl extends _DetailProductResponse {
         video
       ]);
 
-  @JsonKey(ignore: true)
+  /// Create a copy of DetailProductResponse
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$DetailProductResponseImplCopyWith<_$DetailProductResponseImpl>
@@ -850,8 +872,11 @@ abstract class _DetailProductResponse extends DetailProductResponse {
   String? get errorMessage;
   @override
   DetailProductVideoResponse? get video;
+
+  /// Create a copy of DetailProductResponse
+  /// with the given fields replaced by the non-null parameter values.
   @override
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$DetailProductResponseImplCopyWith<_$DetailProductResponseImpl>
       get copyWith => throw _privateConstructorUsedError;
 }

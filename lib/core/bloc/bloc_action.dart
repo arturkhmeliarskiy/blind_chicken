@@ -1,5 +1,6 @@
+import 'package:blind_chicken/core_config/models/error_response.dart';
+import 'package:blind_chicken/core_config/ui/resources/app_colors.dart';
 import 'package:flutter/cupertino.dart';
-import '../resources/app_colors.dart';
 
 abstract class BlocAction {
   DateTime dateTime = DateTime.now();
@@ -74,12 +75,11 @@ class ShowSubscriptionModal extends BlocAction {}
 class ShowModerator extends BlocAction {}
 
 class ShowSomethingWrong extends BlocAction {
-  //final ErrorAccess? errorAccess;
-  //final ErrorResponse? errorResponse;
+  final ErrorResponse? errorResponse;
   final VoidCallback? pressedButton;
   final int? code;
 
-  ShowSomethingWrong({this.pressedButton,this.code});
+  ShowSomethingWrong({this.errorResponse, this.pressedButton, this.code});
 }
 
 class ScrollToBottom extends BlocAction {}

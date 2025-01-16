@@ -24,8 +24,12 @@ mixin _$DeliveryInfoRsponse {
   String? get e => throw _privateConstructorUsedError;
   String? get errorMessage => throw _privateConstructorUsedError;
 
+  /// Serializes this DeliveryInfoRsponse to a JSON map.
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
-  @JsonKey(ignore: true)
+
+  /// Create a copy of DeliveryInfoRsponse
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   $DeliveryInfoRsponseCopyWith<DeliveryInfoRsponse> get copyWith =>
       throw _privateConstructorUsedError;
 }
@@ -49,6 +53,8 @@ class _$DeliveryInfoRsponseCopyWithImpl<$Res, $Val extends DeliveryInfoRsponse>
   // ignore: unused_field
   final $Res Function($Val) _then;
 
+  /// Create a copy of DeliveryInfoRsponse
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -92,6 +98,8 @@ class __$$DeliveryInfoRsponseImplCopyWithImpl<$Res>
       $Res Function(_$DeliveryInfoRsponseImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of DeliveryInfoRsponse
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -147,11 +155,13 @@ class _$DeliveryInfoRsponseImpl extends _DeliveryInfoRsponse {
                 other.errorMessage == errorMessage));
   }
 
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   int get hashCode => Object.hash(runtimeType, r, e, errorMessage);
 
-  @JsonKey(ignore: true)
+  /// Create a copy of DeliveryInfoRsponse
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$DeliveryInfoRsponseImplCopyWith<_$DeliveryInfoRsponseImpl> get copyWith =>
@@ -182,8 +192,11 @@ abstract class _DeliveryInfoRsponse extends DeliveryInfoRsponse {
   String? get e;
   @override
   String? get errorMessage;
+
+  /// Create a copy of DeliveryInfoRsponse
+  /// with the given fields replaced by the non-null parameter values.
   @override
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$DeliveryInfoRsponseImplCopyWith<_$DeliveryInfoRsponseImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }

@@ -12,7 +12,7 @@ _$PaymentOrderResponseImpl _$$PaymentOrderResponseImplFromJson(
       r: json['r'] as String?,
       e: json['e'] as String?,
       errorMessage: json['errorMessage'] as String?,
-      id: json['id'] as int?,
+      id: (json['id'] as num?)?.toInt(),
     );
 
 Map<String, dynamic> _$$PaymentOrderResponseImplToJson(

@@ -24,8 +24,12 @@ mixin _$DeliveryPickRsponse {
   String? get name => throw _privateConstructorUsedError;
   String? get shedule => throw _privateConstructorUsedError;
 
+  /// Serializes this DeliveryPickRsponse to a JSON map.
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
-  @JsonKey(ignore: true)
+
+  /// Create a copy of DeliveryPickRsponse
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   $DeliveryPickRsponseCopyWith<DeliveryPickRsponse> get copyWith =>
       throw _privateConstructorUsedError;
 }
@@ -49,6 +53,8 @@ class _$DeliveryPickRsponseCopyWithImpl<$Res, $Val extends DeliveryPickRsponse>
   // ignore: unused_field
   final $Res Function($Val) _then;
 
+  /// Create a copy of DeliveryPickRsponse
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -92,6 +98,8 @@ class __$$DeliveryPickRsponseImplCopyWithImpl<$Res>
       $Res Function(_$DeliveryPickRsponseImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of DeliveryPickRsponse
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -146,11 +154,13 @@ class _$DeliveryPickRsponseImpl extends _DeliveryPickRsponse {
             (identical(other.shedule, shedule) || other.shedule == shedule));
   }
 
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   int get hashCode => Object.hash(runtimeType, id, name, shedule);
 
-  @JsonKey(ignore: true)
+  /// Create a copy of DeliveryPickRsponse
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$DeliveryPickRsponseImplCopyWith<_$DeliveryPickRsponseImpl> get copyWith =>
@@ -181,8 +191,11 @@ abstract class _DeliveryPickRsponse extends DeliveryPickRsponse {
   String? get name;
   @override
   String? get shedule;
+
+  /// Create a copy of DeliveryPickRsponse
+  /// with the given fields replaced by the non-null parameter values.
   @override
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$DeliveryPickRsponseImplCopyWith<_$DeliveryPickRsponseImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }

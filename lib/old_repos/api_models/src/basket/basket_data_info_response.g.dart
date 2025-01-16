@@ -10,11 +10,11 @@ _$BasketDataInfoResponseImpl _$$BasketDataInfoResponseImplFromJson(
         Map<String, dynamic> json) =>
     _$BasketDataInfoResponseImpl(
       foto: json['foto'] as String?,
-      price: json['price'] as int?,
-      basePrice: json['base_price'] as int?,
-      price1: json['price_1'] as int?,
-      basePrice1: json['base_price_1'] as int?,
-      promoDiscount1: json['promo_discount_1'] as int?,
+      price: (json['price'] as num?)?.toInt(),
+      basePrice: (json['base_price'] as num?)?.toInt(),
+      price1: (json['price_1'] as num?)?.toInt(),
+      basePrice1: (json['base_price_1'] as num?)?.toInt(),
+      promoDiscount1: (json['promo_discount_1'] as num?)?.toInt(),
       loyaltyDiscount1: (json['loyalty_discount_1'] as num?)?.toDouble(),
       brand: json['brand'] == null
           ? null
@@ -25,7 +25,7 @@ _$BasketDataInfoResponseImpl _$$BasketDataInfoResponseImplFromJson(
               json['category'] as Map<String, dynamic>),
       nameView: json['name_view'] as String?,
       promo: json['promo'] as String?,
-      promoValue: json['promo_value'] as int?,
+      promoValue: (json['promo_value'] as num?)?.toInt(),
     );
 
 Map<String, dynamic> _$$BasketDataInfoResponseImplToJson(

@@ -24,8 +24,12 @@ mixin _$BoutiqueCoordinatesResponse {
   double? get latitude => throw _privateConstructorUsedError;
   double? get longitude => throw _privateConstructorUsedError;
 
+  /// Serializes this BoutiqueCoordinatesResponse to a JSON map.
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
-  @JsonKey(ignore: true)
+
+  /// Create a copy of BoutiqueCoordinatesResponse
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   $BoutiqueCoordinatesResponseCopyWith<BoutiqueCoordinatesResponse>
       get copyWith => throw _privateConstructorUsedError;
 }
@@ -52,6 +56,8 @@ class _$BoutiqueCoordinatesResponseCopyWithImpl<$Res,
   // ignore: unused_field
   final $Res Function($Val) _then;
 
+  /// Create a copy of BoutiqueCoordinatesResponse
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -93,6 +99,8 @@ class __$$BoutiqueCoordinatesResponseImplCopyWithImpl<$Res>
       $Res Function(_$BoutiqueCoordinatesResponseImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of BoutiqueCoordinatesResponse
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -143,11 +151,13 @@ class _$BoutiqueCoordinatesResponseImpl extends _BoutiqueCoordinatesResponse {
                 other.longitude == longitude));
   }
 
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   int get hashCode => Object.hash(runtimeType, latitude, longitude);
 
-  @JsonKey(ignore: true)
+  /// Create a copy of BoutiqueCoordinatesResponse
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$BoutiqueCoordinatesResponseImplCopyWith<_$BoutiqueCoordinatesResponseImpl>
@@ -176,8 +186,11 @@ abstract class _BoutiqueCoordinatesResponse
   double? get latitude;
   @override
   double? get longitude;
+
+  /// Create a copy of BoutiqueCoordinatesResponse
+  /// with the given fields replaced by the non-null parameter values.
   @override
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$BoutiqueCoordinatesResponseImplCopyWith<_$BoutiqueCoordinatesResponseImpl>
       get copyWith => throw _privateConstructorUsedError;
 }

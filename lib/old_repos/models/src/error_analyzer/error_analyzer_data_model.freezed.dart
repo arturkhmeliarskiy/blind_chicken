@@ -19,7 +19,9 @@ mixin _$ErrorAnalyzerDataModel {
   String get r => throw _privateConstructorUsedError;
   String get errorMessage => throw _privateConstructorUsedError;
 
-  @JsonKey(ignore: true)
+  /// Create a copy of ErrorAnalyzerDataModel
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   $ErrorAnalyzerDataModelCopyWith<ErrorAnalyzerDataModel> get copyWith =>
       throw _privateConstructorUsedError;
 }
@@ -44,6 +46,8 @@ class _$ErrorAnalyzerDataModelCopyWithImpl<$Res,
   // ignore: unused_field
   final $Res Function($Val) _then;
 
+  /// Create a copy of ErrorAnalyzerDataModel
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -85,6 +89,8 @@ class __$$ErrorAnalyzerDataModelImplCopyWithImpl<$Res>
       $Res Function(_$ErrorAnalyzerDataModelImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of ErrorAnalyzerDataModel
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -133,7 +139,9 @@ class _$ErrorAnalyzerDataModelImpl extends _ErrorAnalyzerDataModel {
   @override
   int get hashCode => Object.hash(runtimeType, r, errorMessage);
 
-  @JsonKey(ignore: true)
+  /// Create a copy of ErrorAnalyzerDataModel
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$ErrorAnalyzerDataModelImplCopyWith<_$ErrorAnalyzerDataModelImpl>
@@ -151,8 +159,11 @@ abstract class _ErrorAnalyzerDataModel extends ErrorAnalyzerDataModel {
   String get r;
   @override
   String get errorMessage;
+
+  /// Create a copy of ErrorAnalyzerDataModel
+  /// with the given fields replaced by the non-null parameter values.
   @override
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$ErrorAnalyzerDataModelImplCopyWith<_$ErrorAnalyzerDataModelImpl>
       get copyWith => throw _privateConstructorUsedError;
 }

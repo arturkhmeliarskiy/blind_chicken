@@ -24,8 +24,12 @@ mixin _$BoutiqueSheduleResponse {
   int? get s => throw _privateConstructorUsedError;
   int? get e => throw _privateConstructorUsedError;
 
+  /// Serializes this BoutiqueSheduleResponse to a JSON map.
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
-  @JsonKey(ignore: true)
+
+  /// Create a copy of BoutiqueSheduleResponse
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   $BoutiqueSheduleResponseCopyWith<BoutiqueSheduleResponse> get copyWith =>
       throw _privateConstructorUsedError;
 }
@@ -50,6 +54,8 @@ class _$BoutiqueSheduleResponseCopyWithImpl<$Res,
   // ignore: unused_field
   final $Res Function($Val) _then;
 
+  /// Create a copy of BoutiqueSheduleResponse
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -91,6 +97,8 @@ class __$$BoutiqueSheduleResponseImplCopyWithImpl<$Res>
       $Res Function(_$BoutiqueSheduleResponseImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of BoutiqueSheduleResponse
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -137,11 +145,13 @@ class _$BoutiqueSheduleResponseImpl extends _BoutiqueSheduleResponse {
             (identical(other.e, e) || other.e == e));
   }
 
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   int get hashCode => Object.hash(runtimeType, s, e);
 
-  @JsonKey(ignore: true)
+  /// Create a copy of BoutiqueSheduleResponse
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$BoutiqueSheduleResponseImplCopyWith<_$BoutiqueSheduleResponseImpl>
@@ -168,8 +178,11 @@ abstract class _BoutiqueSheduleResponse extends BoutiqueSheduleResponse {
   int? get s;
   @override
   int? get e;
+
+  /// Create a copy of BoutiqueSheduleResponse
+  /// with the given fields replaced by the non-null parameter values.
   @override
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$BoutiqueSheduleResponseImplCopyWith<_$BoutiqueSheduleResponseImpl>
       get copyWith => throw _privateConstructorUsedError;
 }

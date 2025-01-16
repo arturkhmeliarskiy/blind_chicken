@@ -19,7 +19,9 @@ mixin _$StoreVersionAppInfoDataModel {
   String get ios => throw _privateConstructorUsedError;
   String get android => throw _privateConstructorUsedError;
 
-  @JsonKey(ignore: true)
+  /// Create a copy of StoreVersionAppInfoDataModel
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   $StoreVersionAppInfoDataModelCopyWith<StoreVersionAppInfoDataModel>
       get copyWith => throw _privateConstructorUsedError;
 }
@@ -46,6 +48,8 @@ class _$StoreVersionAppInfoDataModelCopyWithImpl<$Res,
   // ignore: unused_field
   final $Res Function($Val) _then;
 
+  /// Create a copy of StoreVersionAppInfoDataModel
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -87,6 +91,8 @@ class __$$StoreVersionAppInfoDataModelImplCopyWithImpl<$Res>
       $Res Function(_$StoreVersionAppInfoDataModelImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of StoreVersionAppInfoDataModel
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -134,7 +140,9 @@ class _$StoreVersionAppInfoDataModelImpl extends _StoreVersionAppInfoDataModel {
   @override
   int get hashCode => Object.hash(runtimeType, ios, android);
 
-  @JsonKey(ignore: true)
+  /// Create a copy of StoreVersionAppInfoDataModel
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$StoreVersionAppInfoDataModelImplCopyWith<
@@ -154,8 +162,11 @@ abstract class _StoreVersionAppInfoDataModel
   String get ios;
   @override
   String get android;
+
+  /// Create a copy of StoreVersionAppInfoDataModel
+  /// with the given fields replaced by the non-null parameter values.
   @override
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$StoreVersionAppInfoDataModelImplCopyWith<
           _$StoreVersionAppInfoDataModelImpl>
       get copyWith => throw _privateConstructorUsedError;

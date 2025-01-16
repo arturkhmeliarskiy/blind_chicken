@@ -23,7 +23,9 @@ mixin _$BasketFullInfoItemDataModel {
   ProductDataModel get product => throw _privateConstructorUsedError;
   String get skuName => throw _privateConstructorUsedError;
 
-  @JsonKey(ignore: true)
+  /// Create a copy of BasketFullInfoItemDataModel
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   $BasketFullInfoItemDataModelCopyWith<BasketFullInfoItemDataModel>
       get copyWith => throw _privateConstructorUsedError;
 }
@@ -59,6 +61,8 @@ class _$BasketFullInfoItemDataModelCopyWithImpl<$Res,
   // ignore: unused_field
   final $Res Function($Val) _then;
 
+  /// Create a copy of BasketFullInfoItemDataModel
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -97,6 +101,8 @@ class _$BasketFullInfoItemDataModelCopyWithImpl<$Res,
     ) as $Val);
   }
 
+  /// Create a copy of BasketFullInfoItemDataModel
+  /// with the given fields replaced by the non-null parameter values.
   @override
   @pragma('vm:prefer-inline')
   $BasketDataInfoDataModelCopyWith<$Res> get data {
@@ -105,6 +111,8 @@ class _$BasketFullInfoItemDataModelCopyWithImpl<$Res,
     });
   }
 
+  /// Create a copy of BasketFullInfoItemDataModel
+  /// with the given fields replaced by the non-null parameter values.
   @override
   @pragma('vm:prefer-inline')
   $ProductDataModelCopyWith<$Res> get product {
@@ -147,6 +155,8 @@ class __$$BasketFullInfoItemDataModelImplCopyWithImpl<$Res>
       $Res Function(_$BasketFullInfoItemDataModelImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of BasketFullInfoItemDataModel
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -233,7 +243,9 @@ class _$BasketFullInfoItemDataModelImpl extends _BasketFullInfoItemDataModel {
   int get hashCode =>
       Object.hash(runtimeType, code, sku, count, data, product, skuName);
 
-  @JsonKey(ignore: true)
+  /// Create a copy of BasketFullInfoItemDataModel
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$BasketFullInfoItemDataModelImplCopyWith<_$BasketFullInfoItemDataModelImpl>
@@ -264,8 +276,11 @@ abstract class _BasketFullInfoItemDataModel
   ProductDataModel get product;
   @override
   String get skuName;
+
+  /// Create a copy of BasketFullInfoItemDataModel
+  /// with the given fields replaced by the non-null parameter values.
   @override
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$BasketFullInfoItemDataModelImplCopyWith<_$BasketFullInfoItemDataModelImpl>
       get copyWith => throw _privateConstructorUsedError;
 }

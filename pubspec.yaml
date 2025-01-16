@@ -30,7 +30,7 @@ environment:
 dependencies:
   flutter:
     sdk: flutter
-
+  flutter_localization: ^0.2.3
 
   #https://pub.dev/packages/auto_route
   auto_route: ^9.3.0+1
@@ -120,6 +120,7 @@ dependencies:
   better_player: ^0.0.84
   #https://pub.dev/packages/shimmer
   shimmer: ^3.0.0
+  freezed: ^2.5.7
   freezed_annotation: ^2.4.4
   shared_preferences: ^2.3.5
   qr_flutter: ^4.1.0
@@ -129,6 +130,23 @@ dependencies:
   device_info_plus: ^10.1.2
   internet_connection_checker: ^3.0.1
   dartz: ^0.10.1
+  flex_color_scheme: ^8.0.2
+  flutter_secure_storage: ^4.2.1
+  image_picker: ^1.1.2
+  modal_bottom_sheet: ^3.0.0
+  flutter_json: ^0.0.4
+  multi_long_press_gesture_recognizer: ^0.0.2
+  split_view: ^3.2.1
+  flutter_local_notifications: ^18.0.1
+  linkify: ^5.0.0
+  auto_size_text: ^3.0.0
+  flutter_scale_tap: ^1.0.5
+  animated_toggle_switch: ^0.8.4
+  jiffy: ^6.3.2
+  fluttertoast: ^8.2.10
+  json_annotation: ^4.9.0
+  hive_generator: ^2.0.1
+  firebase_analytics: ^11.4.0
   
 dev_dependencies:
   flutter_test:
@@ -140,6 +158,10 @@ dev_dependencies:
   auto_route_generator: ^9.0.0
   #https://pub.dev/packages/build_runner
   build_runner: ^2.4.13
+  #https://pub.dev/packages/flutter_gen_runner
+  flutter_gen_runner: ^5.8.0
+  analyzer: ^6.2.0
+  json_serializable: ^6.9.0
 
 # For information on the generic Dart part of this file, see the
 # following page: https://dart.dev/tools/pub/pubspec
@@ -147,12 +169,7 @@ dev_dependencies:
 # The following section is specific to Flutter packages.
 flutter:
 
-  # The following line ensures that the Material Icons font is
-  # included with your application, so that you can use the icons in
-  # the material Icons class.
   uses-material-design: true
-
-  # To add assets to your application, add an assets section, like this:
   assets:
     - assets/
     - assets/icons/
@@ -160,6 +177,46 @@ flutter:
     - assets/images/optic.png
     - assets/images/optic_carrera.png
     - assets/images/department_store.png
+    - assets/images/
+    - assets/images_external/
+    - assets/
+    - assets/fonts/
+    - assets/map/
+    - assets/icons/
+    - assets/icons/map/
+    - assets/icons/goods/
+    - assets/icons/onboarding_first_step/
+    - assets/icons/onboarding_second_step/
+    - assets/icons/onboarding_third_step/
+    - assets/icons/onboarding_fourth_step/
+    - assets/icons/onboarding_fifth_step/
+    - assets/icons/tip_after_registration/
+    - assets/icons/help_screen/
+    - assets/icons/store_settings/
+    - assets/icons/order_popup/
+    - assets/icons/order_payment/
+    - assets/icons/order/
+    - assets/icons/integration/
+    - assets/icons/delivery/
+    - assets/icons/logo/
+    - assets/icons/integrations/
+    - assets/icons/other/
+    - assets/icons/tabbar/
+    - assets/images/flag/
+    - assets/pp/
+    - assets/images/delivery/
+    - assets/images/create_product/
+    - assets/images/new_user_hint_choses/
+    - assets/images/store_settings/
+    - assets/images/goods_empty/
+    - assets/images/orders_empty/
+    - assets/images/tariff_plan/
+    - assets/images/other/
+    - assets/json/
+    - assets/images/default_onboarding_images/
+    - assets/images/default_onboarding_images/en/
+    - assets/images/default_onboarding_images/ru/
+
 
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/assets-and-images/#resolution-aware
@@ -196,3 +253,10 @@ flutter:
   #
   # For details regarding fonts from package dependencies,
   # see https://flutter.dev/custom-fonts/#from-packages
+
+flutter_intl:
+  enabled: false
+  main_locale: ru #Дефолтный язык приложения, если локаль не была найдена
+  class_name: AppLocalization
+  arb_dir: lib/localization/l10n/
+  output_dir: lib/localization/l10n/generated

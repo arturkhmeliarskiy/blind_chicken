@@ -19,7 +19,9 @@ mixin _$PaymentsDataModel {
   List<PaymentItemDataModel> get payments => throw _privateConstructorUsedError;
   String? get errorMessage => throw _privateConstructorUsedError;
 
-  @JsonKey(ignore: true)
+  /// Create a copy of PaymentsDataModel
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   $PaymentsDataModelCopyWith<PaymentsDataModel> get copyWith =>
       throw _privateConstructorUsedError;
 }
@@ -43,6 +45,8 @@ class _$PaymentsDataModelCopyWithImpl<$Res, $Val extends PaymentsDataModel>
   // ignore: unused_field
   final $Res Function($Val) _then;
 
+  /// Create a copy of PaymentsDataModel
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -81,6 +85,8 @@ class __$$PaymentsDataModelImplCopyWithImpl<$Res>
       $Res Function(_$PaymentsDataModelImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of PaymentsDataModel
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -138,7 +144,9 @@ class _$PaymentsDataModelImpl extends _PaymentsDataModel {
   int get hashCode => Object.hash(runtimeType,
       const DeepCollectionEquality().hash(_payments), errorMessage);
 
-  @JsonKey(ignore: true)
+  /// Create a copy of PaymentsDataModel
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$PaymentsDataModelImplCopyWith<_$PaymentsDataModelImpl> get copyWith =>
@@ -156,8 +164,11 @@ abstract class _PaymentsDataModel extends PaymentsDataModel {
   List<PaymentItemDataModel> get payments;
   @override
   String? get errorMessage;
+
+  /// Create a copy of PaymentsDataModel
+  /// with the given fields replaced by the non-null parameter values.
   @override
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$PaymentsDataModelImplCopyWith<_$PaymentsDataModelImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }

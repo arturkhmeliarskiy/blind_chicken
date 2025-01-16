@@ -25,8 +25,12 @@ mixin _$OrderBlankResponse {
   String? get number => throw _privateConstructorUsedError;
   String? get date => throw _privateConstructorUsedError;
 
+  /// Serializes this OrderBlankResponse to a JSON map.
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
-  @JsonKey(ignore: true)
+
+  /// Create a copy of OrderBlankResponse
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   $OrderBlankResponseCopyWith<OrderBlankResponse> get copyWith =>
       throw _privateConstructorUsedError;
 }
@@ -50,6 +54,8 @@ class _$OrderBlankResponseCopyWithImpl<$Res, $Val extends OrderBlankResponse>
   // ignore: unused_field
   final $Res Function($Val) _then;
 
+  /// Create a copy of OrderBlankResponse
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -93,6 +99,8 @@ class __$$OrderBlankResponseImplCopyWithImpl<$Res>
       $Res Function(_$OrderBlankResponseImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of OrderBlankResponse
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -150,11 +158,13 @@ class _$OrderBlankResponseImpl extends _OrderBlankResponse {
             (identical(other.date, date) || other.date == date));
   }
 
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   int get hashCode => Object.hash(runtimeType, id, number, date);
 
-  @JsonKey(ignore: true)
+  /// Create a copy of OrderBlankResponse
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$OrderBlankResponseImplCopyWith<_$OrderBlankResponseImpl> get copyWith =>
@@ -186,8 +196,11 @@ abstract class _OrderBlankResponse extends OrderBlankResponse {
   String? get number;
   @override
   String? get date;
+
+  /// Create a copy of OrderBlankResponse
+  /// with the given fields replaced by the non-null parameter values.
   @override
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$OrderBlankResponseImplCopyWith<_$OrderBlankResponseImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }

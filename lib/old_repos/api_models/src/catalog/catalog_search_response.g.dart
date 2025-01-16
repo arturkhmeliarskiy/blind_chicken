@@ -9,8 +9,8 @@ part of 'catalog_search_response.dart';
 _$CatalogSearchResponseImpl _$$CatalogSearchResponseImplFromJson(
         Map<String, dynamic> json) =>
     _$CatalogSearchResponseImpl(
-      productsCount: json['products_count'] as int?,
-      sectionsCount: json['sections_count'] as int?,
+      productsCount: (json['products_count'] as num?)?.toInt(),
+      sectionsCount: (json['sections_count'] as num?)?.toInt(),
       products: (json['products'] as List<dynamic>?)
           ?.map(
               (e) => CatalogProductResponse.fromJson(e as Map<String, dynamic>))

@@ -9,7 +9,7 @@ part of 'filter_item_response.dart';
 _$FilterItemResponseImpl _$$FilterItemResponseImplFromJson(
         Map<String, dynamic> json) =>
     _$FilterItemResponseImpl(
-      id: json['id'] as int?,
+      id: (json['id'] as num?)?.toInt(),
       value: json['value'] as String?,
     );
 

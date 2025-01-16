@@ -19,7 +19,9 @@ mixin _$NewsNotificationInfoDataModel {
   String get id => throw _privateConstructorUsedError;
   String get typeNews => throw _privateConstructorUsedError;
 
-  @JsonKey(ignore: true)
+  /// Create a copy of NewsNotificationInfoDataModel
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   $NewsNotificationInfoDataModelCopyWith<NewsNotificationInfoDataModel>
       get copyWith => throw _privateConstructorUsedError;
 }
@@ -46,6 +48,8 @@ class _$NewsNotificationInfoDataModelCopyWithImpl<$Res,
   // ignore: unused_field
   final $Res Function($Val) _then;
 
+  /// Create a copy of NewsNotificationInfoDataModel
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -87,6 +91,8 @@ class __$$NewsNotificationInfoDataModelImplCopyWithImpl<$Res>
       $Res Function(_$NewsNotificationInfoDataModelImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of NewsNotificationInfoDataModel
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -137,7 +143,9 @@ class _$NewsNotificationInfoDataModelImpl
   @override
   int get hashCode => Object.hash(runtimeType, id, typeNews);
 
-  @JsonKey(ignore: true)
+  /// Create a copy of NewsNotificationInfoDataModel
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$NewsNotificationInfoDataModelImplCopyWith<
@@ -157,8 +165,11 @@ abstract class _NewsNotificationInfoDataModel
   String get id;
   @override
   String get typeNews;
+
+  /// Create a copy of NewsNotificationInfoDataModel
+  /// with the given fields replaced by the non-null parameter values.
   @override
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$NewsNotificationInfoDataModelImplCopyWith<
           _$NewsNotificationInfoDataModelImpl>
       get copyWith => throw _privateConstructorUsedError;

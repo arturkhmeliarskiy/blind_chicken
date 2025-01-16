@@ -19,7 +19,9 @@ mixin _$StockProductDataModel {
   String get id => throw _privateConstructorUsedError;
   List<String> get list => throw _privateConstructorUsedError;
 
-  @JsonKey(ignore: true)
+  /// Create a copy of StockProductDataModel
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   $StockProductDataModelCopyWith<StockProductDataModel> get copyWith =>
       throw _privateConstructorUsedError;
 }
@@ -44,6 +46,8 @@ class _$StockProductDataModelCopyWithImpl<$Res,
   // ignore: unused_field
   final $Res Function($Val) _then;
 
+  /// Create a copy of StockProductDataModel
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -84,6 +88,8 @@ class __$$StockProductDataModelImplCopyWithImpl<$Res>
       $Res Function(_$StockProductDataModelImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of StockProductDataModel
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -139,7 +145,9 @@ class _$StockProductDataModelImpl extends _StockProductDataModel {
   int get hashCode =>
       Object.hash(runtimeType, id, const DeepCollectionEquality().hash(_list));
 
-  @JsonKey(ignore: true)
+  /// Create a copy of StockProductDataModel
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$StockProductDataModelImplCopyWith<_$StockProductDataModelImpl>
@@ -157,8 +165,11 @@ abstract class _StockProductDataModel extends StockProductDataModel {
   String get id;
   @override
   List<String> get list;
+
+  /// Create a copy of StockProductDataModel
+  /// with the given fields replaced by the non-null parameter values.
   @override
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$StockProductDataModelImplCopyWith<_$StockProductDataModelImpl>
       get copyWith => throw _privateConstructorUsedError;
 }

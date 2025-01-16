@@ -19,7 +19,9 @@ mixin _$SectionItemProductDataModel {
   String get n => throw _privateConstructorUsedError;
   String get u => throw _privateConstructorUsedError;
 
-  @JsonKey(ignore: true)
+  /// Create a copy of SectionItemProductDataModel
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   $SectionItemProductDataModelCopyWith<SectionItemProductDataModel>
       get copyWith => throw _privateConstructorUsedError;
 }
@@ -46,6 +48,8 @@ class _$SectionItemProductDataModelCopyWithImpl<$Res,
   // ignore: unused_field
   final $Res Function($Val) _then;
 
+  /// Create a copy of SectionItemProductDataModel
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -87,6 +91,8 @@ class __$$SectionItemProductDataModelImplCopyWithImpl<$Res>
       $Res Function(_$SectionItemProductDataModelImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of SectionItemProductDataModel
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -134,7 +140,9 @@ class _$SectionItemProductDataModelImpl extends _SectionItemProductDataModel {
   @override
   int get hashCode => Object.hash(runtimeType, n, u);
 
-  @JsonKey(ignore: true)
+  /// Create a copy of SectionItemProductDataModel
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$SectionItemProductDataModelImplCopyWith<_$SectionItemProductDataModelImpl>
@@ -153,8 +161,11 @@ abstract class _SectionItemProductDataModel
   String get n;
   @override
   String get u;
+
+  /// Create a copy of SectionItemProductDataModel
+  /// with the given fields replaced by the non-null parameter values.
   @override
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$SectionItemProductDataModelImplCopyWith<_$SectionItemProductDataModelImpl>
       get copyWith => throw _privateConstructorUsedError;
 }

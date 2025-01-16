@@ -25,8 +25,12 @@ mixin _$CatalogSectionResponse {
   String? get u => throw _privateConstructorUsedError;
   String? get g => throw _privateConstructorUsedError;
 
+  /// Serializes this CatalogSectionResponse to a JSON map.
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
-  @JsonKey(ignore: true)
+
+  /// Create a copy of CatalogSectionResponse
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   $CatalogSectionResponseCopyWith<CatalogSectionResponse> get copyWith =>
       throw _privateConstructorUsedError;
 }
@@ -51,6 +55,8 @@ class _$CatalogSectionResponseCopyWithImpl<$Res,
   // ignore: unused_field
   final $Res Function($Val) _then;
 
+  /// Create a copy of CatalogSectionResponse
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -97,6 +103,8 @@ class __$$CatalogSectionResponseImplCopyWithImpl<$Res>
       $Res Function(_$CatalogSectionResponseImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of CatalogSectionResponse
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -151,11 +159,13 @@ class _$CatalogSectionResponseImpl extends _CatalogSectionResponse {
             (identical(other.g, g) || other.g == g));
   }
 
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   int get hashCode => Object.hash(runtimeType, n, u, g);
 
-  @JsonKey(ignore: true)
+  /// Create a copy of CatalogSectionResponse
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$CatalogSectionResponseImplCopyWith<_$CatalogSectionResponseImpl>
@@ -186,8 +196,11 @@ abstract class _CatalogSectionResponse extends CatalogSectionResponse {
   String? get u;
   @override
   String? get g;
+
+  /// Create a copy of CatalogSectionResponse
+  /// with the given fields replaced by the non-null parameter values.
   @override
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$CatalogSectionResponseImplCopyWith<_$CatalogSectionResponseImpl>
       get copyWith => throw _privateConstructorUsedError;
 }

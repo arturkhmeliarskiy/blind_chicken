@@ -54,7 +54,9 @@ mixin _$ProductDataModel {
   String? get count => throw _privateConstructorUsedError;
   Color? get color => throw _privateConstructorUsedError;
 
-  @JsonKey(ignore: true)
+  /// Create a copy of ProductDataModel
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   $ProductDataModelCopyWith<ProductDataModel> get copyWith =>
       throw _privateConstructorUsedError;
 }
@@ -110,6 +112,8 @@ class _$ProductDataModelCopyWithImpl<$Res, $Val extends ProductDataModel>
   // ignore: unused_field
   final $Res Function($Val) _then;
 
+  /// Create a copy of ProductDataModel
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -269,6 +273,8 @@ class _$ProductDataModelCopyWithImpl<$Res, $Val extends ProductDataModel>
     ) as $Val);
   }
 
+  /// Create a copy of ProductDataModel
+  /// with the given fields replaced by the non-null parameter values.
   @override
   @pragma('vm:prefer-inline')
   $DetailProductVideoDataModelCopyWith<$Res> get video {
@@ -330,6 +336,8 @@ class __$$ProductDataModelImplCopyWithImpl<$Res>
       $Res Function(_$ProductDataModelImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of ProductDataModel
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -740,7 +748,9 @@ class _$ProductDataModelImpl extends _ProductDataModel {
         color
       ]);
 
-  @JsonKey(ignore: true)
+  /// Create a copy of ProductDataModel
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$ProductDataModelImplCopyWith<_$ProductDataModelImpl> get copyWith =>
@@ -827,23 +837,30 @@ abstract class _ProductDataModel extends ProductDataModel {
   @override
   DetailProductVideoDataModel get video;
   @override
-  String? get titleScreen;
-  @override // экран добавления в корзину
-  String? get searchQuery;
-  @override // поисковой запрос
-  String? get typeAddProductToShoppingCart;
-  @override // с помощью чего добавляется в корзину
-  String? get identifierAddProductToShoppingCart;
-  @override // идентификатор отарвителя товара в корзину (1 кнопка, 2 выпадающий список)
-  List<String>? get sectionCategoriesPath;
-  @override // категории в к оторых находится товар "Акции", "Красная цена"
-  List<String>? get productCategoriesPath;
-  @override // категории тоарва "Продукты", "Молочные продукты", "Йогурты"
+  String? get titleScreen; // экран добавления в корзину
+  @override
+  String? get searchQuery; // поисковой запрос
+  @override
+  String?
+      get typeAddProductToShoppingCart; // с помощью чего добавляется в корзину
+  @override
+  String?
+      get identifierAddProductToShoppingCart; // идентификатор отарвителя товара в корзину (1 кнопка, 2 выпадающий список)
+  @override
+  List<String>?
+      get sectionCategoriesPath; // категории в к оторых находится товар "Акции", "Красная цена"
+  @override
+  List<String>?
+      get productCategoriesPath; // категории тоарва "Продукты", "Молочные продукты", "Йогурты"
+  @override
   String? get count;
   @override
   Color? get color;
+
+  /// Create a copy of ProductDataModel
+  /// with the given fields replaced by the non-null parameter values.
   @override
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$ProductDataModelImplCopyWith<_$ProductDataModelImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }

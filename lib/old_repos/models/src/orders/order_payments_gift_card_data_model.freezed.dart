@@ -19,7 +19,9 @@ mixin _$OrderPaymentsGiftCardDataModel {
   String get number => throw _privateConstructorUsedError;
   String get sum => throw _privateConstructorUsedError;
 
-  @JsonKey(ignore: true)
+  /// Create a copy of OrderPaymentsGiftCardDataModel
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   $OrderPaymentsGiftCardDataModelCopyWith<OrderPaymentsGiftCardDataModel>
       get copyWith => throw _privateConstructorUsedError;
 }
@@ -46,6 +48,8 @@ class _$OrderPaymentsGiftCardDataModelCopyWithImpl<$Res,
   // ignore: unused_field
   final $Res Function($Val) _then;
 
+  /// Create a copy of OrderPaymentsGiftCardDataModel
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -87,6 +91,8 @@ class __$$OrderPaymentsGiftCardDataModelImplCopyWithImpl<$Res>
       $Res Function(_$OrderPaymentsGiftCardDataModelImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of OrderPaymentsGiftCardDataModel
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -136,7 +142,9 @@ class _$OrderPaymentsGiftCardDataModelImpl
   @override
   int get hashCode => Object.hash(runtimeType, number, sum);
 
-  @JsonKey(ignore: true)
+  /// Create a copy of OrderPaymentsGiftCardDataModel
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$OrderPaymentsGiftCardDataModelImplCopyWith<
@@ -156,8 +164,11 @@ abstract class _OrderPaymentsGiftCardDataModel
   String get number;
   @override
   String get sum;
+
+  /// Create a copy of OrderPaymentsGiftCardDataModel
+  /// with the given fields replaced by the non-null parameter values.
   @override
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$OrderPaymentsGiftCardDataModelImplCopyWith<
           _$OrderPaymentsGiftCardDataModelImpl>
       get copyWith => throw _privateConstructorUsedError;

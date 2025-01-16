@@ -19,7 +19,9 @@ mixin _$BoutiqueCategoryItemDataModel {
   String get title => throw _privateConstructorUsedError;
   List<dynamic> get listInfo => throw _privateConstructorUsedError;
 
-  @JsonKey(ignore: true)
+  /// Create a copy of BoutiqueCategoryItemDataModel
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   $BoutiqueCategoryItemDataModelCopyWith<BoutiqueCategoryItemDataModel>
       get copyWith => throw _privateConstructorUsedError;
 }
@@ -46,6 +48,8 @@ class _$BoutiqueCategoryItemDataModelCopyWithImpl<$Res,
   // ignore: unused_field
   final $Res Function($Val) _then;
 
+  /// Create a copy of BoutiqueCategoryItemDataModel
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -87,6 +91,8 @@ class __$$BoutiqueCategoryItemDataModelImplCopyWithImpl<$Res>
       $Res Function(_$BoutiqueCategoryItemDataModelImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of BoutiqueCategoryItemDataModel
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -143,7 +149,9 @@ class _$BoutiqueCategoryItemDataModelImpl
   int get hashCode => Object.hash(
       runtimeType, title, const DeepCollectionEquality().hash(_listInfo));
 
-  @JsonKey(ignore: true)
+  /// Create a copy of BoutiqueCategoryItemDataModel
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$BoutiqueCategoryItemDataModelImplCopyWith<
@@ -164,8 +172,11 @@ abstract class _BoutiqueCategoryItemDataModel
   String get title;
   @override
   List<dynamic> get listInfo;
+
+  /// Create a copy of BoutiqueCategoryItemDataModel
+  /// with the given fields replaced by the non-null parameter values.
   @override
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$BoutiqueCategoryItemDataModelImplCopyWith<
           _$BoutiqueCategoryItemDataModelImpl>
       get copyWith => throw _privateConstructorUsedError;

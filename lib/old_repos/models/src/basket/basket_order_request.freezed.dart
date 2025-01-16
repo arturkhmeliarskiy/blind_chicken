@@ -25,7 +25,9 @@ mixin _$BasketOrderRequest {
   String get city => throw _privateConstructorUsedError;
   bool get isValidAddress => throw _privateConstructorUsedError;
 
-  @JsonKey(ignore: true)
+  /// Create a copy of BasketOrderRequest
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   $BasketOrderRequestCopyWith<BasketOrderRequest> get copyWith =>
       throw _privateConstructorUsedError;
 }
@@ -58,6 +60,8 @@ class _$BasketOrderRequestCopyWithImpl<$Res, $Val extends BasketOrderRequest>
   // ignore: unused_field
   final $Res Function($Val) _then;
 
+  /// Create a copy of BasketOrderRequest
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -101,6 +105,8 @@ class _$BasketOrderRequestCopyWithImpl<$Res, $Val extends BasketOrderRequest>
     ) as $Val);
   }
 
+  /// Create a copy of BasketOrderRequest
+  /// with the given fields replaced by the non-null parameter values.
   @override
   @pragma('vm:prefer-inline')
   $BasketOrderDeliveryRequestCopyWith<$Res> get delivery {
@@ -139,6 +145,8 @@ class __$$BasketOrderRequestImplCopyWithImpl<$Res>
       $Res Function(_$BasketOrderRequestImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of BasketOrderRequest
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -245,7 +253,9 @@ class _$BasketOrderRequestImpl extends _BasketOrderRequest {
   int get hashCode => Object.hash(runtimeType, promo, delivery, bonus, payment,
       const DeepCollectionEquality().hash(_sert), city, isValidAddress);
 
-  @JsonKey(ignore: true)
+  /// Create a copy of BasketOrderRequest
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$BasketOrderRequestImplCopyWith<_$BasketOrderRequestImpl> get copyWith =>
@@ -278,8 +288,11 @@ abstract class _BasketOrderRequest extends BasketOrderRequest {
   String get city;
   @override
   bool get isValidAddress;
+
+  /// Create a copy of BasketOrderRequest
+  /// with the given fields replaced by the non-null parameter values.
   @override
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$BasketOrderRequestImplCopyWith<_$BasketOrderRequestImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }

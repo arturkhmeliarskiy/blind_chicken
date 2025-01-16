@@ -27,8 +27,12 @@ mixin _$MediaInfoResponse {
   @JsonKey(name: 'is_viewed')
   bool? get isViewed => throw _privateConstructorUsedError;
 
+  /// Serializes this MediaInfoResponse to a JSON map.
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
-  @JsonKey(ignore: true)
+
+  /// Create a copy of MediaInfoResponse
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   $MediaInfoResponseCopyWith<MediaInfoResponse> get copyWith =>
       throw _privateConstructorUsedError;
 }
@@ -57,6 +61,8 @@ class _$MediaInfoResponseCopyWithImpl<$Res, $Val extends MediaInfoResponse>
   // ignore: unused_field
   final $Res Function($Val) _then;
 
+  /// Create a copy of MediaInfoResponse
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -115,6 +121,8 @@ class __$$MediaInfoResponseImplCopyWithImpl<$Res>
       $Res Function(_$MediaInfoResponseImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of MediaInfoResponse
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -203,12 +211,14 @@ class _$MediaInfoResponseImpl extends _MediaInfoResponse {
                 other.isViewed == isViewed));
   }
 
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   int get hashCode => Object.hash(runtimeType, r, e, errorMessage,
       const DeepCollectionEquality().hash(_list), isViewed);
 
-  @JsonKey(ignore: true)
+  /// Create a copy of MediaInfoResponse
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$MediaInfoResponseImplCopyWith<_$MediaInfoResponseImpl> get copyWith =>
@@ -247,8 +257,11 @@ abstract class _MediaInfoResponse extends MediaInfoResponse {
   @override
   @JsonKey(name: 'is_viewed')
   bool? get isViewed;
+
+  /// Create a copy of MediaInfoResponse
+  /// with the given fields replaced by the non-null parameter values.
   @override
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$MediaInfoResponseImplCopyWith<_$MediaInfoResponseImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }

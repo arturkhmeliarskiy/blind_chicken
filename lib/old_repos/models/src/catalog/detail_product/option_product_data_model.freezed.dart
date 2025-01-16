@@ -26,7 +26,9 @@ mixin _$OptionProductDataModel {
   String get g => throw _privateConstructorUsedError;
   String get ct => throw _privateConstructorUsedError;
 
-  @JsonKey(ignore: true)
+  /// Create a copy of OptionProductDataModel
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   $OptionProductDataModelCopyWith<OptionProductDataModel> get copyWith =>
       throw _privateConstructorUsedError;
 }
@@ -60,6 +62,8 @@ class _$OptionProductDataModelCopyWithImpl<$Res,
   // ignore: unused_field
   final $Res Function($Val) _then;
 
+  /// Create a copy of OptionProductDataModel
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -145,6 +149,8 @@ class __$$OptionProductDataModelImplCopyWithImpl<$Res>
       $Res Function(_$OptionProductDataModelImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of OptionProductDataModel
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -257,7 +263,9 @@ class _$OptionProductDataModelImpl extends _OptionProductDataModel {
   @override
   int get hashCode => Object.hash(runtimeType, c, n, f, b, ne, pr, u, g, ct);
 
-  @JsonKey(ignore: true)
+  /// Create a copy of OptionProductDataModel
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$OptionProductDataModelImplCopyWith<_$OptionProductDataModelImpl>
@@ -296,8 +304,11 @@ abstract class _OptionProductDataModel extends OptionProductDataModel {
   String get g;
   @override
   String get ct;
+
+  /// Create a copy of OptionProductDataModel
+  /// with the given fields replaced by the non-null parameter values.
   @override
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$OptionProductDataModelImplCopyWith<_$OptionProductDataModelImpl>
       get copyWith => throw _privateConstructorUsedError;
 }

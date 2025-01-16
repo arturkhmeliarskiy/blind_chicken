@@ -22,7 +22,9 @@ mixin _$OneMediaInfoDataModel {
   MediaInfoItemDataModel get data => throw _privateConstructorUsedError;
   bool get isViewed => throw _privateConstructorUsedError;
 
-  @JsonKey(ignore: true)
+  /// Create a copy of OneMediaInfoDataModel
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   $OneMediaInfoDataModelCopyWith<OneMediaInfoDataModel> get copyWith =>
       throw _privateConstructorUsedError;
 }
@@ -54,6 +56,8 @@ class _$OneMediaInfoDataModelCopyWithImpl<$Res,
   // ignore: unused_field
   final $Res Function($Val) _then;
 
+  /// Create a copy of OneMediaInfoDataModel
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -87,6 +91,8 @@ class _$OneMediaInfoDataModelCopyWithImpl<$Res,
     ) as $Val);
   }
 
+  /// Create a copy of OneMediaInfoDataModel
+  /// with the given fields replaced by the non-null parameter values.
   @override
   @pragma('vm:prefer-inline')
   $MediaInfoItemDataModelCopyWith<$Res> get data {
@@ -125,6 +131,8 @@ class __$$OneMediaInfoDataModelImplCopyWithImpl<$Res>
       $Res Function(_$OneMediaInfoDataModelImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of OneMediaInfoDataModel
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -204,7 +212,9 @@ class _$OneMediaInfoDataModelImpl extends _OneMediaInfoDataModel {
   int get hashCode =>
       Object.hash(runtimeType, r, e, errorMessage, data, isViewed);
 
-  @JsonKey(ignore: true)
+  /// Create a copy of OneMediaInfoDataModel
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$OneMediaInfoDataModelImplCopyWith<_$OneMediaInfoDataModelImpl>
@@ -231,8 +241,11 @@ abstract class _OneMediaInfoDataModel extends OneMediaInfoDataModel {
   MediaInfoItemDataModel get data;
   @override
   bool get isViewed;
+
+  /// Create a copy of OneMediaInfoDataModel
+  /// with the given fields replaced by the non-null parameter values.
   @override
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$OneMediaInfoDataModelImplCopyWith<_$OneMediaInfoDataModelImpl>
       get copyWith => throw _privateConstructorUsedError;
 }

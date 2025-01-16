@@ -19,7 +19,9 @@ mixin _$PlaceProductDataModel {
   int get b => throw _privateConstructorUsedError;
   int get s => throw _privateConstructorUsedError;
 
-  @JsonKey(ignore: true)
+  /// Create a copy of PlaceProductDataModel
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   $PlaceProductDataModelCopyWith<PlaceProductDataModel> get copyWith =>
       throw _privateConstructorUsedError;
 }
@@ -44,6 +46,8 @@ class _$PlaceProductDataModelCopyWithImpl<$Res,
   // ignore: unused_field
   final $Res Function($Val) _then;
 
+  /// Create a copy of PlaceProductDataModel
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -84,6 +88,8 @@ class __$$PlaceProductDataModelImplCopyWithImpl<$Res>
       $Res Function(_$PlaceProductDataModelImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of PlaceProductDataModel
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -130,7 +136,9 @@ class _$PlaceProductDataModelImpl extends _PlaceProductDataModel {
   @override
   int get hashCode => Object.hash(runtimeType, b, s);
 
-  @JsonKey(ignore: true)
+  /// Create a copy of PlaceProductDataModel
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$PlaceProductDataModelImplCopyWith<_$PlaceProductDataModelImpl>
@@ -147,8 +155,11 @@ abstract class _PlaceProductDataModel extends PlaceProductDataModel {
   int get b;
   @override
   int get s;
+
+  /// Create a copy of PlaceProductDataModel
+  /// with the given fields replaced by the non-null parameter values.
   @override
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$PlaceProductDataModelImplCopyWith<_$PlaceProductDataModelImpl>
       get copyWith => throw _privateConstructorUsedError;
 }

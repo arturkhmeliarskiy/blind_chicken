@@ -269,10 +269,10 @@ class AppRouter extends RootStackRouter {
           page: GiftVirualCardColorsRoute.page,
           path: '/gift_virual_card_colors',
         ),
-        AutoRoute(
-          page: NewsPreviewYouTubeVideoPlayerRoute.page,
-          path: '/news_preview_youtube_video_player',
-        ),
+        //AutoRoute(
+        //  page: NewsPreviewYouTubeVideoPlayerRoute.page,
+        //  path: '/news_preview_youtube_video_player',
+        //),
         AutoRoute(
           page: NewsVideoPlayerRoute.page,
           path: '/news_preview_youtube_video_player',
@@ -339,9 +339,9 @@ class AppRouter extends RootStackRouter {
         AutoRoute(
           page: FavouritesFilterSelectValueSearchRoute.page,
         ),
-        AutoRoute(
-          page: CatalogPreviewImagesRoute.page,
-        ),
+        //AutoRoute(
+        //  page: CatalogPreviewImagesRoute.page,
+        //),
         AutoRoute(
           page: BoutiquePreviewMediaRoute.page,
         ),

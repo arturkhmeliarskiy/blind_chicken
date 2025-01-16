@@ -20,7 +20,9 @@ mixin _$BasketCategoryDataModel {
   String get n => throw _privateConstructorUsedError;
   String get chN => throw _privateConstructorUsedError;
 
-  @JsonKey(ignore: true)
+  /// Create a copy of BasketCategoryDataModel
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   $BasketCategoryDataModelCopyWith<BasketCategoryDataModel> get copyWith =>
       throw _privateConstructorUsedError;
 }
@@ -45,6 +47,8 @@ class _$BasketCategoryDataModelCopyWithImpl<$Res,
   // ignore: unused_field
   final $Res Function($Val) _then;
 
+  /// Create a copy of BasketCategoryDataModel
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -91,6 +95,8 @@ class __$$BasketCategoryDataModelImplCopyWithImpl<$Res>
       $Res Function(_$BasketCategoryDataModelImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of BasketCategoryDataModel
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -147,7 +153,9 @@ class _$BasketCategoryDataModelImpl extends _BasketCategoryDataModel {
   @override
   int get hashCode => Object.hash(runtimeType, id, n, chN);
 
-  @JsonKey(ignore: true)
+  /// Create a copy of BasketCategoryDataModel
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$BasketCategoryDataModelImplCopyWith<_$BasketCategoryDataModelImpl>
@@ -168,8 +176,11 @@ abstract class _BasketCategoryDataModel extends BasketCategoryDataModel {
   String get n;
   @override
   String get chN;
+
+  /// Create a copy of BasketCategoryDataModel
+  /// with the given fields replaced by the non-null parameter values.
   @override
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$BasketCategoryDataModelImplCopyWith<_$BasketCategoryDataModelImpl>
       get copyWith => throw _privateConstructorUsedError;
 }

@@ -24,8 +24,12 @@ mixin _$BasketBrandResponse {
   String? get n => throw _privateConstructorUsedError;
   String? get u => throw _privateConstructorUsedError;
 
+  /// Serializes this BasketBrandResponse to a JSON map.
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
-  @JsonKey(ignore: true)
+
+  /// Create a copy of BasketBrandResponse
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   $BasketBrandResponseCopyWith<BasketBrandResponse> get copyWith =>
       throw _privateConstructorUsedError;
 }
@@ -49,6 +53,8 @@ class _$BasketBrandResponseCopyWithImpl<$Res, $Val extends BasketBrandResponse>
   // ignore: unused_field
   final $Res Function($Val) _then;
 
+  /// Create a copy of BasketBrandResponse
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -92,6 +98,8 @@ class __$$BasketBrandResponseImplCopyWithImpl<$Res>
       $Res Function(_$BasketBrandResponseImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of BasketBrandResponse
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -146,11 +154,13 @@ class _$BasketBrandResponseImpl extends _BasketBrandResponse {
             (identical(other.u, u) || other.u == u));
   }
 
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   int get hashCode => Object.hash(runtimeType, id, n, u);
 
-  @JsonKey(ignore: true)
+  /// Create a copy of BasketBrandResponse
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$BasketBrandResponseImplCopyWith<_$BasketBrandResponseImpl> get copyWith =>
@@ -181,8 +191,11 @@ abstract class _BasketBrandResponse extends BasketBrandResponse {
   String? get n;
   @override
   String? get u;
+
+  /// Create a copy of BasketBrandResponse
+  /// with the given fields replaced by the non-null parameter values.
   @override
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$BasketBrandResponseImplCopyWith<_$BasketBrandResponseImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }

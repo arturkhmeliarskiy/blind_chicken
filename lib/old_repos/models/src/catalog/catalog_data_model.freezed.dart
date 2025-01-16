@@ -33,7 +33,9 @@ mixin _$CatalogDataModel {
   String get errorMessage => throw _privateConstructorUsedError;
   int get discountFirstMobile => throw _privateConstructorUsedError;
 
-  @JsonKey(ignore: true)
+  /// Create a copy of CatalogDataModel
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   $CatalogDataModelCopyWith<CatalogDataModel> get copyWith =>
       throw _privateConstructorUsedError;
 }
@@ -74,6 +76,8 @@ class _$CatalogDataModelCopyWithImpl<$Res, $Val extends CatalogDataModel>
   // ignore: unused_field
   final $Res Function($Val) _then;
 
+  /// Create a copy of CatalogDataModel
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -157,6 +161,8 @@ class _$CatalogDataModelCopyWithImpl<$Res, $Val extends CatalogDataModel>
     ) as $Val);
   }
 
+  /// Create a copy of CatalogDataModel
+  /// with the given fields replaced by the non-null parameter values.
   @override
   @pragma('vm:prefer-inline')
   $SectionsDataModelCopyWith<$Res> get sections {
@@ -203,6 +209,8 @@ class __$$CatalogDataModelImplCopyWithImpl<$Res>
       $Res Function(_$CatalogDataModelImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of CatalogDataModel
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -433,7 +441,9 @@ class _$CatalogDataModelImpl extends _CatalogDataModel {
       errorMessage,
       discountFirstMobile);
 
-  @JsonKey(ignore: true)
+  /// Create a copy of CatalogDataModel
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$CatalogDataModelImplCopyWith<_$CatalogDataModelImpl> get copyWith =>
@@ -490,8 +500,11 @@ abstract class _CatalogDataModel extends CatalogDataModel {
   String get errorMessage;
   @override
   int get discountFirstMobile;
+
+  /// Create a copy of CatalogDataModel
+  /// with the given fields replaced by the non-null parameter values.
   @override
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$CatalogDataModelImplCopyWith<_$CatalogDataModelImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }

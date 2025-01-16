@@ -6,7 +6,7 @@ import 'package:blind_chicken/old_repos/models/models.dart';
 import 'package:blind_chicken/old_repos/repositories/repositories.dart';
 import 'package:blind_chicken/old_repos/shared/shared.dart';
 import 'package:blind_chicken/old_repos/ui_kit/ui_kit.dart';
-import 'package:blind_chicken/core/utils/logging.dart';
+import 'package:blind_chicken/core_config/utils/logging.dart';
 import 'package:decimal/decimal.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -14,7 +14,9 @@ import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:package_info_plus/package_info_plus.dart';
 
 part 'account_bloc.freezed.dart';
+
 part 'account_event.dart';
+
 part 'account_state.dart';
 
 class AccountBloc extends Bloc<AccountEvent, AccountState> {
@@ -29,53 +31,50 @@ class AccountBloc extends Bloc<AccountEvent, AccountState> {
   final FileService _fileService;
   final AppMetricaEcommerceService _appMetricaEcommerceService;
 
-  AccountBloc(
-    this._catalogRepository,
-    this._authRepository,
-    this._sharedPreferencesService,
-    this._ordersRepository,
-    this._basketRepository,
-    this._favouritesRepository,
-    this._pushNotificationRepository,
-    this._fileService,
-    this._updateDataService,
-    this._appMetricaEcommerceService,
-  ) : super(const AccountState.init()) {
+  AccountBloc(this._catalogRepository,
+      this._authRepository,
+      this._sharedPreferencesService,
+      this._ordersRepository,
+      this._basketRepository,
+      this._favouritesRepository,
+      this._pushNotificationRepository,
+      this._fileService,
+      this._updateDataService,
+      this._appMetricaEcommerceService,) : super(const AccountState.init()) {
     on<AccountEvent>(
-      (event, emit) => event.map<Future<void>>(
-        preloadData: (event) => _init(event, emit),
-        updateInfo: (event) => _updateInfo(event, emit),
-        paginationProduct: (event) => _paginationProduct(event, emit),
-        getOrders: (event) => _getOrders(event, emit),
-        getInfoOrder: (event) => _getInfoOrder(event, emit),
-        getInfoPayOrder: (event) => _getInfoPayOrder(event, emit),
-        logOut: (event) => _logOut(event, emit),
-        payOrder: (event) => _payOrder(event, emit),
-        getInfoProduct: (event) => _getInfoProduct(event, emit),
-        goBackProductInfo: (event) => _goBackProductInfo(event, emit),
-        addFavouriteProduct: (event) => _addFavouriteProduct(event, emit),
-        deleteFavouriteProduct: (event) => _deleteFavouriteProduct(event, emit),
-        removeAccount: (event) => _removeAccount(event, emit),
-        addProductToSoppingCart: (event) => _addProductToSoppingCart(event, emit),
-        virtualCardsCod: (event) => _virtualcardscod(event, emit),
-        checkProductToSoppingCart: (event) => _checkProductToSoppingCart(event, emit),
-        changeSizeProduct: (event) => _changeSizeProduct(event, emit),
-        getListOrdersBlank: (event) => _getListOrdersBlank(event, emit),
-        getOrderPdfBlank: (event) => _getOrderPdfBlank(event, emit),
-        saveDocument: (event) => _saveDocument(event, emit),
-        paginationListOrdersBlank: (event) => _paginationListOrdersBlank(event, emit),
-        getListTailoringBlank: (event) => _getListTailoringBlank(event, emit),
-        getTailoringPdfBlank: (event) => _getTailoringPdfBlank(event, emit),
-        paginationListTailoringBlank: (event) => _paginationListTailoringBlank(event, emit),
-        getInfoProductSize: (event) => _getInfoProductSize(event, emit),
-      ),
+          (event, emit) =>
+          event.map<Future<void>>(
+            preloadData: (event) => _init(event, emit),
+            updateInfo: (event) => _updateInfo(event, emit),
+            paginationProduct: (event) => _paginationProduct(event, emit),
+            getOrders: (event) => _getOrders(event, emit),
+            getInfoOrder: (event) => _getInfoOrder(event, emit),
+            getInfoPayOrder: (event) => _getInfoPayOrder(event, emit),
+            logOut: (event) => _logOut(event, emit),
+            payOrder: (event) => _payOrder(event, emit),
+            getInfoProduct: (event) => _getInfoProduct(event, emit),
+            goBackProductInfo: (event) => _goBackProductInfo(event, emit),
+            addFavouriteProduct: (event) => _addFavouriteProduct(event, emit),
+            deleteFavouriteProduct: (event) => _deleteFavouriteProduct(event, emit),
+            removeAccount: (event) => _removeAccount(event, emit),
+            addProductToSoppingCart: (event) => _addProductToSoppingCart(event, emit),
+            virtualCardsCod: (event) => _virtualcardscod(event, emit),
+            checkProductToSoppingCart: (event) => _checkProductToSoppingCart(event, emit),
+            changeSizeProduct: (event) => _changeSizeProduct(event, emit),
+            getListOrdersBlank: (event) => _getListOrdersBlank(event, emit),
+            getOrderPdfBlank: (event) => _getOrderPdfBlank(event, emit),
+            saveDocument: (event) => _saveDocument(event, emit),
+            paginationListOrdersBlank: (event) => _paginationListOrdersBlank(event, emit),
+            getListTailoringBlank: (event) => _getListTailoringBlank(event, emit),
+            getTailoringPdfBlank: (event) => _getTailoringPdfBlank(event, emit),
+            paginationListTailoringBlank: (event) => _paginationListTailoringBlank(event, emit),
+            getInfoProductSize: (event) => _getInfoProductSize(event, emit),
+          ),
     );
   }
 
-  Future<void> _init(
-    InitAccountEvent event,
-    Emitter<AccountState> emit,
-  ) async {
+  Future<void> _init(InitAccountEvent event,
+      Emitter<AccountState> emit,) async {
     if (state is ErrorAccountState) {
       emit(const AccountState.loadErrorButton());
     } else {
@@ -85,8 +84,8 @@ class AccountBloc extends Bloc<AccountEvent, AccountState> {
     List<int> favouritesProductsId = [];
     List<ProductDataModel> favouritesProducts = [];
     bool isAuth = _sharedPreferencesService.getBool(
-          key: SharedPrefKeys.userAuthorized,
-        ) ??
+      key: SharedPrefKeys.userAuthorized,
+    ) ??
         false;
     FavouritesDataModel? favouritesProductsInfo;
 
@@ -142,10 +141,8 @@ class AccountBloc extends Bloc<AccountEvent, AccountState> {
     }
   }
 
-  Future<void> _updateInfo(
-    UpdateInfoAccountEvent event,
-    Emitter<AccountState> emit,
-  ) async {
+  Future<void> _updateInfo(UpdateInfoAccountEvent event,
+      Emitter<AccountState> emit,) async {
     await state.mapOrNull(
       preloadDataCompleted: (initState) async {
         if ((event.name ?? '') != initState.name) {
@@ -172,10 +169,8 @@ class AccountBloc extends Bloc<AccountEvent, AccountState> {
     );
   }
 
-  Future<void> _paginationProduct(
-    PaginationOrdersAccountEvent event,
-    Emitter<AccountState> emit,
-  ) async {
+  Future<void> _paginationProduct(PaginationOrdersAccountEvent event,
+      Emitter<AccountState> emit,) async {
     await state.mapOrNull(preloadDataCompleted: (initState) async {
       List<OrderItemDataModel> orders = initState.orders.toList();
       final ordersInfo = await _ordersRepository.getListOrders(
@@ -191,10 +186,8 @@ class AccountBloc extends Bloc<AccountEvent, AccountState> {
     });
   }
 
-  Future<void> _getOrders(
-    GetOrdersAccountEvent event,
-    Emitter<AccountState> emit,
-  ) async {
+  Future<void> _getOrders(GetOrdersAccountEvent event,
+      Emitter<AccountState> emit,) async {
     await state.mapOrNull(preloadDataCompleted: (initState) async {
       if (initState.isError ?? false) {
         emit(initState.copyWith(
@@ -218,10 +211,8 @@ class AccountBloc extends Bloc<AccountEvent, AccountState> {
     });
   }
 
-  Future<void> _getInfoOrder(
-    GetInfoOrderAccountEvent event,
-    Emitter<AccountState> emit,
-  ) async {
+  Future<void> _getInfoOrder(GetInfoOrderAccountEvent event,
+      Emitter<AccountState> emit,) async {
     await state.mapOrNull(preloadDataCompleted: (initState) async {
       if (initState.isError ?? false) {
         emit(initState.copyWith(
@@ -242,17 +233,15 @@ class AccountBloc extends Bloc<AccountEvent, AccountState> {
     });
   }
 
-  Future<void> _getInfoPayOrder(
-    GetInfoPayOrderAccountEvent event,
-    Emitter<AccountState> emit,
-  ) async {
+  Future<void> _getInfoPayOrder(GetInfoPayOrderAccountEvent event,
+      Emitter<AccountState> emit,) async {
     emit(const AccountState.load());
 
     PackageInfo packageInfo = await PackageInfo.fromPlatform();
     final orderInfo = await _ordersRepository.getOrderInfo(id: event.id);
     bool isAuth = _sharedPreferencesService.getBool(
-          key: SharedPrefKeys.userAuthorized,
-        ) ??
+      key: SharedPrefKeys.userAuthorized,
+    ) ??
         false;
 
     if (orderInfo.products.isNotEmpty) {
@@ -312,10 +301,8 @@ class AccountBloc extends Bloc<AccountEvent, AccountState> {
     ));
   }
 
-  Future<void> _payOrder(
-    PayOrderAccountEvent event,
-    Emitter<AccountState> emit,
-  ) async {
+  Future<void> _payOrder(PayOrderAccountEvent event,
+      Emitter<AccountState> emit,) async {
     final orderInfo = await _basketRepository.payOrder(
       id: event.idForPay,
     );
@@ -329,23 +316,21 @@ class AccountBloc extends Bloc<AccountEvent, AccountState> {
     }
   }
 
-  Future<void> _logOut(
-    LogOutAccountEvent event,
-    Emitter<AccountState> emit,
-  ) async {
+  Future<void> _logOut(LogOutAccountEvent event,
+      Emitter<AccountState> emit,) async {
     final result = await _pushNotificationRepository.postNotificationInfo(event: '4');
     if (result.r == '1') {
       String deviceId = _sharedPreferencesService.getString(
-            key: SharedPrefKeys.deviceId,
-          ) ??
+        key: SharedPrefKeys.deviceId,
+      ) ??
           '';
       String dateReceiptNewNews = _sharedPreferencesService.getString(
-            key: SharedPrefKeys.dateReceiptNewNews,
-          ) ??
+        key: SharedPrefKeys.dateReceiptNewNews,
+      ) ??
           '';
       bool isPromotionsForPurchases = _sharedPreferencesService.getBool(
-            key: SharedPrefKeys.isPromotionsForPurchases,
-          ) ??
+        key: SharedPrefKeys.isPromotionsForPurchases,
+      ) ??
           false;
       String deviceid = deviceId;
       String datereceiptNewNews = dateReceiptNewNews;
@@ -376,21 +361,19 @@ class AccountBloc extends Bloc<AccountEvent, AccountState> {
     }
   }
 
-  Future<void> _removeAccount(
-    RemoveAccountEvent event,
-    Emitter<AccountState> emit,
-  ) async {
+  Future<void> _removeAccount(RemoveAccountEvent event,
+      Emitter<AccountState> emit,) async {
     bool isPromotionsForPurchases = _sharedPreferencesService.getBool(
-          key: SharedPrefKeys.isPromotionsForPurchases,
-        ) ??
+      key: SharedPrefKeys.isPromotionsForPurchases,
+    ) ??
         false;
     String deviceId = _sharedPreferencesService.getString(
-          key: SharedPrefKeys.deviceId,
-        ) ??
+      key: SharedPrefKeys.deviceId,
+    ) ??
         '';
     String dateReceiptNewNews = _sharedPreferencesService.getString(
-          key: SharedPrefKeys.dateReceiptNewNews,
-        ) ??
+      key: SharedPrefKeys.dateReceiptNewNews,
+    ) ??
         '';
     String deviceid = deviceId;
     String datereceiptNewNews = dateReceiptNewNews;
@@ -417,10 +400,8 @@ class AccountBloc extends Bloc<AccountEvent, AccountState> {
     emit(const AccountState.removeAccount());
   }
 
-  Future<void> _getInfoProduct(
-    GetInfoProductAccountEvent event,
-    Emitter<AccountState> emit,
-  ) async {
+  Future<void> _getInfoProduct(GetInfoProductAccountEvent event,
+      Emitter<AccountState> emit,) async {
     await state.mapOrNull(preloadDataCompleted: (initState) async {
       SkuProductDataModel? selectSizeProduct;
       AppMetrica.reportEvent(event.titleScreen);
@@ -429,8 +410,8 @@ class AccountBloc extends Bloc<AccountEvent, AccountState> {
       String errorMessage = '';
       bool isError = false;
       bool isAuth = _sharedPreferencesService.getBool(
-            key: SharedPrefKeys.userAuthorized,
-          ) ??
+        key: SharedPrefKeys.userAuthorized,
+      ) ??
           false;
       if (initState.isError ?? false) {
         emit(initState.copyWith(
@@ -448,25 +429,25 @@ class AccountBloc extends Bloc<AccountEvent, AccountState> {
       final basketInfo = await getBasketInfo(isLocal: !isAuth);
 
       final additionalProductsDescriptionStyle =
-          await _catalogRepository.getAdditionalProductsDescription(
+      await _catalogRepository.getAdditionalProductsDescription(
         code: event.code,
         block: 'style',
       );
 
       final additionalProductsDescriptionAlso =
-          await _catalogRepository.getAdditionalProductsDescription(
+      await _catalogRepository.getAdditionalProductsDescription(
         code: event.code,
         block: 'also',
       );
 
       final additionalProductsDescriptionBrand =
-          await _catalogRepository.getAdditionalProductsDescription(
+      await _catalogRepository.getAdditionalProductsDescription(
         code: event.code,
         block: 'brand',
       );
 
       final additionalProductsDescriptionComplect =
-          await _catalogRepository.getAdditionalProductsDescription(
+      await _catalogRepository.getAdditionalProductsDescription(
         code: event.code,
         block: 'complect',
       );
@@ -484,15 +465,15 @@ class AccountBloc extends Bloc<AccountEvent, AccountState> {
         soppingCart = basketInfo.basket
             .where(
               (element) =>
-                  int.parse(element.code) == detailsProduct.code &&
-                  element.sku == detailsProduct.sku.first.id,
-            )
+          int.parse(element.code) == detailsProduct.code &&
+              element.sku == detailsProduct.sku.first.id,
+        )
             .toList();
       } else {
         soppingCart = basketInfo.basket
             .where(
               (element) => int.parse(element.code) == detailsProduct.code,
-            )
+        )
             .toList();
         if (soppingCart.isNotEmpty) {
           if (!soppingCart.first.sku.contains('-')) {
@@ -513,27 +494,27 @@ class AccountBloc extends Bloc<AccountEvent, AccountState> {
         priceOriginal: int.parse(detailsProduct.price.pb),
         internalComponentsActualPrice: detailsProduct.sku.isNotEmpty
             ? [
-                AppMetricaECommerceAmount(
-                  amount: Decimal.fromInt(detailsProduct.price.yourPrice),
-                  currency: detailsProduct.sku.isNotEmpty ? detailsProduct.sku.first.value : '',
-                ),
-                AppMetricaECommerceAmount(
-                  amount: Decimal.fromInt(detailsProduct.price.yourPrice),
-                  currency: detailsProduct.sku.isNotEmpty ? detailsProduct.sku.first.id : '',
-                ),
-              ]
+          AppMetricaECommerceAmount(
+            amount: Decimal.fromInt(detailsProduct.price.yourPrice),
+            currency: detailsProduct.sku.isNotEmpty ? detailsProduct.sku.first.value : '',
+          ),
+          AppMetricaECommerceAmount(
+            amount: Decimal.fromInt(detailsProduct.price.yourPrice),
+            currency: detailsProduct.sku.isNotEmpty ? detailsProduct.sku.first.id : '',
+          ),
+        ]
             : [],
         internalComponentsOriginalPrice: detailsProduct.sku.isNotEmpty
             ? [
-                AppMetricaECommerceAmount(
-                  amount: Decimal.parse(detailsProduct.price.pb),
-                  currency: detailsProduct.sku.isNotEmpty ? detailsProduct.sku.first.value : '',
-                ),
-                AppMetricaECommerceAmount(
-                  amount: Decimal.parse(detailsProduct.price.pb),
-                  currency: detailsProduct.sku.isNotEmpty ? detailsProduct.sku.first.id : '',
-                ),
-              ]
+          AppMetricaECommerceAmount(
+            amount: Decimal.parse(detailsProduct.price.pb),
+            currency: detailsProduct.sku.isNotEmpty ? detailsProduct.sku.first.value : '',
+          ),
+          AppMetricaECommerceAmount(
+            amount: Decimal.parse(detailsProduct.price.pb),
+            currency: detailsProduct.sku.isNotEmpty ? detailsProduct.sku.first.id : '',
+          ),
+        ]
             : [],
       );
 
@@ -572,10 +553,8 @@ class AccountBloc extends Bloc<AccountEvent, AccountState> {
     });
   }
 
-  Future<void> _goBackProductInfo(
-    GoBackProductInfoCategotyAccountEvent event,
-    Emitter<AccountState> emit,
-  ) async {
+  Future<void> _goBackProductInfo(GoBackProductInfoCategotyAccountEvent event,
+      Emitter<AccountState> emit,) async {
     await state.mapOrNull(preloadDataCompleted: (initState) async {
       List<String> listProductsCode = initState.listProductsCode.toList();
 
@@ -595,25 +574,25 @@ class AccountBloc extends Bloc<AccountEvent, AccountState> {
         );
 
         final additionalProductsDescriptionStyle =
-            await _catalogRepository.getAdditionalProductsDescription(
+        await _catalogRepository.getAdditionalProductsDescription(
           code: listProductsCode.last,
           block: 'style',
         );
 
         final additionalProductsDescriptionAlso =
-            await _catalogRepository.getAdditionalProductsDescription(
+        await _catalogRepository.getAdditionalProductsDescription(
           code: listProductsCode.last,
           block: 'also',
         );
 
         final additionalProductsDescriptionBrand =
-            await _catalogRepository.getAdditionalProductsDescription(
+        await _catalogRepository.getAdditionalProductsDescription(
           code: listProductsCode.last,
           block: 'brand',
         );
 
         final additionalProductsDescriptionComplect =
-            await _catalogRepository.getAdditionalProductsDescription(
+        await _catalogRepository.getAdditionalProductsDescription(
           code: listProductsCode.last,
           block: 'complect',
         );
@@ -631,10 +610,8 @@ class AccountBloc extends Bloc<AccountEvent, AccountState> {
     });
   }
 
-  Future<void> _addFavouriteProduct(
-    AddFavouriteProductAccountEvent event,
-    Emitter<AccountState> emit,
-  ) async {
+  Future<void> _addFavouriteProduct(AddFavouriteProductAccountEvent event,
+      Emitter<AccountState> emit,) async {
     await state.mapOrNull(preloadDataCompleted: (initState) async {
       if (initState.isError ?? false) {
         emit(initState.copyWith(
@@ -645,8 +622,8 @@ class AccountBloc extends Bloc<AccountEvent, AccountState> {
       FavouritesInfoDataModel? favouritesProductsInfo;
       List<int> favouritesProductsId = [];
       bool isAuth = _sharedPreferencesService.getBool(
-            key: SharedPrefKeys.userAuthorized,
-          ) ??
+        key: SharedPrefKeys.userAuthorized,
+      ) ??
           false;
       if (isAuth) {
         favouritesProductsInfo = await _favouritesRepository.addFavouriteProdcut(
@@ -684,10 +661,8 @@ class AccountBloc extends Bloc<AccountEvent, AccountState> {
     });
   }
 
-  Future<void> _deleteFavouriteProduct(
-    DeleteFavouriteProductAccountEvent event,
-    Emitter<AccountState> emit,
-  ) async {
+  Future<void> _deleteFavouriteProduct(DeleteFavouriteProductAccountEvent event,
+      Emitter<AccountState> emit,) async {
     await state.mapOrNull(preloadDataCompleted: (initState) async {
       if (initState.isError ?? false) {
         emit(initState.copyWith(
@@ -698,12 +673,12 @@ class AccountBloc extends Bloc<AccountEvent, AccountState> {
       FavouritesInfoDataModel? favouritesProductsInfo;
       List<int> favouritesProductsId = [];
       bool isAuth = _sharedPreferencesService.getBool(
-            key: SharedPrefKeys.userAuthorized,
-          ) ??
+        key: SharedPrefKeys.userAuthorized,
+      ) ??
           false;
       if (isAuth) {
         favouritesProductsInfo =
-            await _favouritesRepository.deleteFavouriteProdcut(code: event.index.toString());
+        await _favouritesRepository.deleteFavouriteProdcut(code: event.index.toString());
         favouritesInfo = await updateFavouritesProducts(
           isLocal: false,
         );
@@ -736,10 +711,8 @@ class AccountBloc extends Bloc<AccountEvent, AccountState> {
     });
   }
 
-  Future<void> _addProductToSoppingCart(
-    AddProductToSoppingCartCAccountEvent event,
-    Emitter<AccountState> emit,
-  ) async {
+  Future<void> _addProductToSoppingCart(AddProductToSoppingCartCAccountEvent event,
+      Emitter<AccountState> emit,) async {
     state.mapOrNull(preloadDataCompleted: (initState) {
       _appMetricaEcommerceService.addOrRemoveProductToSoppingCart(
         titleScreen: 'Карточка товара в аккаунте (Мои заказы)',
@@ -782,14 +755,14 @@ class AccountBloc extends Bloc<AccountEvent, AccountState> {
         SkuProductDataModel selectSizeProduct = initState.selectSizeProduct ??
             (initState.detailsProduct?.sku.isNotEmpty ?? false
                 ? (initState.detailsProduct?.sku.first ??
-                    SkuProductDataModel(
-                      id: '',
-                      value: '',
-                    ))
+                SkuProductDataModel(
+                  id: '',
+                  value: '',
+                ))
                 : SkuProductDataModel(
-                    id: '',
-                    value: '',
-                  ));
+              id: '',
+              value: '',
+            ));
         if (selectSizeProduct.id == (event.size.id) && (event.size.id).contains('-')) {
           isShoppingCart = true;
         }
@@ -817,10 +790,8 @@ class AccountBloc extends Bloc<AccountEvent, AccountState> {
     });
   }
 
-  Future<void> _virtualcardscod(
-    VirtualCardsCodAccountEvent event,
-    Emitter<AccountState> emit,
-  ) async {
+  Future<void> _virtualcardscod(VirtualCardsCodAccountEvent event,
+      Emitter<AccountState> emit,) async {
     await state.mapOrNull(preloadDataCompleted: (initState) async {
       emit(initState.copyWith(
         isLoadVirtualCardsCod: true,
@@ -835,10 +806,8 @@ class AccountBloc extends Bloc<AccountEvent, AccountState> {
     });
   }
 
-  Future<void> _paginationListOrdersBlank(
-    PaginationListOrdersBlankAccountEvent event,
-    Emitter<AccountState> emit,
-  ) async {
+  Future<void> _paginationListOrdersBlank(PaginationListOrdersBlankAccountEvent event,
+      Emitter<AccountState> emit,) async {
     await state.mapOrNull(preloadDataCompleted: (initState) async {
       List<OrderBlankDataModel> orders = initState.listOrdersBlank.toList();
       final ordersBlank = await _authRepository.getListOrdersBlank(
@@ -855,10 +824,8 @@ class AccountBloc extends Bloc<AccountEvent, AccountState> {
     });
   }
 
-  Future<void> _paginationListTailoringBlank(
-    PaginationListTailoringBlankAccountEvent event,
-    Emitter<AccountState> emit,
-  ) async {
+  Future<void> _paginationListTailoringBlank(PaginationListTailoringBlankAccountEvent event,
+      Emitter<AccountState> emit,) async {
     await state.mapOrNull(preloadDataCompleted: (initState) async {
       List<OrderBlankDataModel> orders = initState.listOrdersBlank.toList();
       final ordersBlank = await _authRepository.getListTailoringBlank(
@@ -875,14 +842,12 @@ class AccountBloc extends Bloc<AccountEvent, AccountState> {
     });
   }
 
-  Future<void> _checkProductToSoppingCart(
-    CheckProductToSoppingCartAccountEvent event,
-    Emitter<AccountState> emit,
-  ) async {
+  Future<void> _checkProductToSoppingCart(CheckProductToSoppingCartAccountEvent event,
+      Emitter<AccountState> emit,) async {
     await state.mapOrNull(preloadDataCompleted: (initState) async {
       bool isAuth = _sharedPreferencesService.getBool(
-            key: SharedPrefKeys.userAuthorized,
-          ) ??
+        key: SharedPrefKeys.userAuthorized,
+      ) ??
           false;
       final basketInfo = await getBasketInfo(isLocal: !isAuth);
       List<BasketFullInfoItemDataModel> soppingCart = [];
@@ -890,15 +855,15 @@ class AccountBloc extends Bloc<AccountEvent, AccountState> {
         soppingCart = basketInfo.basket
             .where(
               (element) =>
-                  int.parse(element.code) == (initState.detailsProduct?.code ?? 0) &&
-                  (element.sku.isNotEmpty ? element.sku == event.size.id : true),
-            )
+          int.parse(element.code) == (initState.detailsProduct?.code ?? 0) &&
+              (element.sku.isNotEmpty ? element.sku == event.size.id : true),
+        )
             .toList();
       } else {
         soppingCart = basketInfo.basket
             .where(
               (element) => int.parse(element.code) == (initState.detailsProduct?.code ?? 0),
-            )
+        )
             .toList();
       }
       emit(initState.copyWith(
@@ -907,10 +872,8 @@ class AccountBloc extends Bloc<AccountEvent, AccountState> {
     });
   }
 
-  Future<void> _changeSizeProduct(
-    ChangeSizeProductAccountEvent event,
-    Emitter<AccountState> emit,
-  ) async {
+  Future<void> _changeSizeProduct(ChangeSizeProductAccountEvent event,
+      Emitter<AccountState> emit,) async {
     state.mapOrNull(preloadDataCompleted: (initState) {
       emit(initState.copyWith(
         selectSizeProduct: event.selectSizeProduct,
@@ -918,10 +881,8 @@ class AccountBloc extends Bloc<AccountEvent, AccountState> {
     });
   }
 
-  Future<void> _getListOrdersBlank(
-    GetListOrdersBlankAccountEvent event,
-    Emitter<AccountState> emit,
-  ) async {
+  Future<void> _getListOrdersBlank(GetListOrdersBlankAccountEvent event,
+      Emitter<AccountState> emit,) async {
     await state.mapOrNull(preloadDataCompleted: (initState) async {
       if (initState.isError ?? false) {
         emit(initState.copyWith(
@@ -942,10 +903,8 @@ class AccountBloc extends Bloc<AccountEvent, AccountState> {
     });
   }
 
-  Future<void> _getListTailoringBlank(
-    GetListTailoringBlankAccountEvent event,
-    Emitter<AccountState> emit,
-  ) async {
+  Future<void> _getListTailoringBlank(GetListTailoringBlankAccountEvent event,
+      Emitter<AccountState> emit,) async {
     await state.mapOrNull(preloadDataCompleted: (initState) async {
       if (initState.isError ?? false) {
         emit(initState.copyWith(
@@ -966,10 +925,8 @@ class AccountBloc extends Bloc<AccountEvent, AccountState> {
     });
   }
 
-  Future<void> _getOrderPdfBlank(
-    GetOrderPdfBlankAccountEvent event,
-    Emitter<AccountState> emit,
-  ) async {
+  Future<void> _getOrderPdfBlank(GetOrderPdfBlankAccountEvent event,
+      Emitter<AccountState> emit,) async {
     await state.mapOrNull(preloadDataCompleted: (initState) async {
       emit(initState.copyWith(
         isLoadOpenPdf: true,
@@ -1003,10 +960,8 @@ class AccountBloc extends Bloc<AccountEvent, AccountState> {
     });
   }
 
-  Future<void> _getTailoringPdfBlank(
-    GetTailoringPdfBlankAccountEvent event,
-    Emitter<AccountState> emit,
-  ) async {
+  Future<void> _getTailoringPdfBlank(GetTailoringPdfBlankAccountEvent event,
+      Emitter<AccountState> emit,) async {
     await state.mapOrNull(preloadDataCompleted: (initState) async {
       emit(initState.copyWith(
         isLoadOpenPdf: true,
@@ -1040,10 +995,8 @@ class AccountBloc extends Bloc<AccountEvent, AccountState> {
     });
   }
 
-  Future<void> _saveDocument(
-    SaveDocumentAccountEvent event,
-    Emitter<AccountState> emit,
-  ) async {
+  Future<void> _saveDocument(SaveDocumentAccountEvent event,
+      Emitter<AccountState> emit,) async {
     await state.mapOrNull(preloadDataCompleted: (initState) async {
       final result = await _fileService.saveFile(
         fileName: event.fileName,
@@ -1056,10 +1009,8 @@ class AccountBloc extends Bloc<AccountEvent, AccountState> {
     });
   }
 
-  Future<void> _getInfoProductSize(
-    GetInfoProductSizeAccountEvent event,
-    Emitter<AccountState> emit,
-  ) async {
+  Future<void> _getInfoProductSize(GetInfoProductSizeAccountEvent event,
+      Emitter<AccountState> emit,) async {
     await state.mapOrNull(preloadDataCompleted: (initState) async {
       if (initState.isError ?? false) {
         emit(initState.copyWith(
@@ -1107,7 +1058,7 @@ class AccountBloc extends Bloc<AccountEvent, AccountState> {
 
       emit(initState.copyWith(
         detailsProduct:
-            detailsProduct.errorMessage.isNotEmpty ? initState.detailsProduct : detailsProduct,
+        detailsProduct.errorMessage.isNotEmpty ? initState.detailsProduct : detailsProduct,
         listSize: detailsProduct.sku,
         isLoadGetSizeProduct: false,
         codeProduct: event.code,
@@ -1175,9 +1126,9 @@ class AccountBloc extends Bloc<AccountEvent, AccountState> {
             titleScreen: basketInfo.basket[i].product.titleScreen ?? '',
             searchQuery: basketInfo.basket[i].product.searchQuery ?? '',
             typeAddProductToShoppingCart:
-                basketInfo.basket[i].product.typeAddProductToShoppingCart ?? '',
+            basketInfo.basket[i].product.typeAddProductToShoppingCart ?? '',
             identifierAddProductToShoppingCart:
-                basketInfo.basket[i].product.identifierAddProductToShoppingCart ?? '',
+            basketInfo.basket[i].product.identifierAddProductToShoppingCart ?? '',
             sectionCategoriesPath: basketInfo.basket[i].product.sectionCategoriesPath ?? [],
             productCategoriesPath: basketInfo.basket[i].product.productCategoriesPath ?? [],
           ),

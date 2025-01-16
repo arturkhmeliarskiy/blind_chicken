@@ -19,7 +19,9 @@ mixin _$BoutiquesDataModel {
   List<BoutiqueDataModel> get data => throw _privateConstructorUsedError;
   String? get errorMessage => throw _privateConstructorUsedError;
 
-  @JsonKey(ignore: true)
+  /// Create a copy of BoutiquesDataModel
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   $BoutiquesDataModelCopyWith<BoutiquesDataModel> get copyWith =>
       throw _privateConstructorUsedError;
 }
@@ -43,6 +45,8 @@ class _$BoutiquesDataModelCopyWithImpl<$Res, $Val extends BoutiquesDataModel>
   // ignore: unused_field
   final $Res Function($Val) _then;
 
+  /// Create a copy of BoutiquesDataModel
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -81,6 +85,8 @@ class __$$BoutiquesDataModelImplCopyWithImpl<$Res>
       $Res Function(_$BoutiquesDataModelImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of BoutiquesDataModel
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -138,7 +144,9 @@ class _$BoutiquesDataModelImpl extends _BoutiquesDataModel {
   int get hashCode => Object.hash(
       runtimeType, const DeepCollectionEquality().hash(_data), errorMessage);
 
-  @JsonKey(ignore: true)
+  /// Create a copy of BoutiquesDataModel
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$BoutiquesDataModelImplCopyWith<_$BoutiquesDataModelImpl> get copyWith =>
@@ -156,8 +164,11 @@ abstract class _BoutiquesDataModel extends BoutiquesDataModel {
   List<BoutiqueDataModel> get data;
   @override
   String? get errorMessage;
+
+  /// Create a copy of BoutiquesDataModel
+  /// with the given fields replaced by the non-null parameter values.
   @override
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$BoutiquesDataModelImplCopyWith<_$BoutiquesDataModelImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }

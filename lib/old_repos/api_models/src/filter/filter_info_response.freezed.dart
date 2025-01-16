@@ -25,8 +25,12 @@ mixin _$FilterInfoResponse {
   bool? get isSearch => throw _privateConstructorUsedError;
   List<FilterItemResponse>? get items => throw _privateConstructorUsedError;
 
+  /// Serializes this FilterInfoResponse to a JSON map.
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
-  @JsonKey(ignore: true)
+
+  /// Create a copy of FilterInfoResponse
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   $FilterInfoResponseCopyWith<FilterInfoResponse> get copyWith =>
       throw _privateConstructorUsedError;
 }
@@ -54,6 +58,8 @@ class _$FilterInfoResponseCopyWithImpl<$Res, $Val extends FilterInfoResponse>
   // ignore: unused_field
   final $Res Function($Val) _then;
 
+  /// Create a copy of FilterInfoResponse
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -106,6 +112,8 @@ class __$$FilterInfoResponseImplCopyWithImpl<$Res>
       $Res Function(_$FilterInfoResponseImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of FilterInfoResponse
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -182,12 +190,14 @@ class _$FilterInfoResponseImpl extends _FilterInfoResponse {
             const DeepCollectionEquality().equals(other._items, _items));
   }
 
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   int get hashCode => Object.hash(runtimeType, id, title, isSearch,
       const DeepCollectionEquality().hash(_items));
 
-  @JsonKey(ignore: true)
+  /// Create a copy of FilterInfoResponse
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$FilterInfoResponseImplCopyWith<_$FilterInfoResponseImpl> get copyWith =>
@@ -221,8 +231,11 @@ abstract class _FilterInfoResponse extends FilterInfoResponse {
   bool? get isSearch;
   @override
   List<FilterItemResponse>? get items;
+
+  /// Create a copy of FilterInfoResponse
+  /// with the given fields replaced by the non-null parameter values.
   @override
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$FilterInfoResponseImplCopyWith<_$FilterInfoResponseImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }

@@ -13,7 +13,7 @@ _$AuthResponseImpl _$$AuthResponseImplFromJson(Map<String, dynamic> json) =>
           ? null
           : CapthaResponse.fromJson(json['captcha'] as Map<String, dynamic>),
       errorMessage: json['e'] as String?,
-      seconds: json['t'] as int?,
+      seconds: (json['t'] as num?)?.toInt(),
       send: json['send'] as String?,
     );
 

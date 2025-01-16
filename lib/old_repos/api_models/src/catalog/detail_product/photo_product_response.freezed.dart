@@ -24,8 +24,12 @@ mixin _$PhotoProductResponse {
   List<String>? get full => throw _privateConstructorUsedError;
   List<String>? get orig => throw _privateConstructorUsedError;
 
+  /// Serializes this PhotoProductResponse to a JSON map.
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
-  @JsonKey(ignore: true)
+
+  /// Create a copy of PhotoProductResponse
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   $PhotoProductResponseCopyWith<PhotoProductResponse> get copyWith =>
       throw _privateConstructorUsedError;
 }
@@ -50,6 +54,8 @@ class _$PhotoProductResponseCopyWithImpl<$Res,
   // ignore: unused_field
   final $Res Function($Val) _then;
 
+  /// Create a copy of PhotoProductResponse
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -93,6 +99,8 @@ class __$$PhotoProductResponseImplCopyWithImpl<$Res>
       $Res Function(_$PhotoProductResponseImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of PhotoProductResponse
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -177,7 +185,7 @@ class _$PhotoProductResponseImpl extends _PhotoProductResponse {
             const DeepCollectionEquality().equals(other._orig, _orig));
   }
 
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   int get hashCode => Object.hash(
       runtimeType,
@@ -185,7 +193,9 @@ class _$PhotoProductResponseImpl extends _PhotoProductResponse {
       const DeepCollectionEquality().hash(_full),
       const DeepCollectionEquality().hash(_orig));
 
-  @JsonKey(ignore: true)
+  /// Create a copy of PhotoProductResponse
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$PhotoProductResponseImplCopyWith<_$PhotoProductResponseImpl>
@@ -217,8 +227,11 @@ abstract class _PhotoProductResponse extends PhotoProductResponse {
   List<String>? get full;
   @override
   List<String>? get orig;
+
+  /// Create a copy of PhotoProductResponse
+  /// with the given fields replaced by the non-null parameter values.
   @override
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$PhotoProductResponseImplCopyWith<_$PhotoProductResponseImpl>
       get copyWith => throw _privateConstructorUsedError;
 }

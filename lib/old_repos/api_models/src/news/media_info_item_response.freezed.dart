@@ -26,7 +26,6 @@ mixin _$MediaInfoItemResponse {
   @JsonKey(name: 'create_at')
   String? get createAt => throw _privateConstructorUsedError;
   List<String>? get images => throw _privateConstructorUsedError;
-  List<String>? get videos => throw _privateConstructorUsedError;
   String? get video => throw _privateConstructorUsedError;
   @JsonKey(name: 'type_video')
   String? get typeVideo => throw _privateConstructorUsedError;
@@ -52,8 +51,12 @@ mixin _$MediaInfoItemResponse {
   @JsonKey(name: 'is_viewed')
   bool? get isViewed => throw _privateConstructorUsedError;
 
+  /// Serializes this MediaInfoItemResponse to a JSON map.
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
-  @JsonKey(ignore: true)
+
+  /// Create a copy of MediaInfoItemResponse
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   $MediaInfoItemResponseCopyWith<MediaInfoItemResponse> get copyWith =>
       throw _privateConstructorUsedError;
 }
@@ -69,7 +72,6 @@ abstract class $MediaInfoItemResponseCopyWith<$Res> {
       String? title,
       @JsonKey(name: 'create_at') String? createAt,
       List<String>? images,
-      List<String>? videos,
       String? video,
       @JsonKey(name: 'type_video') String? typeVideo,
       @JsonKey(name: 'video_image') String? videoImage,
@@ -97,6 +99,8 @@ class _$MediaInfoItemResponseCopyWithImpl<$Res,
   // ignore: unused_field
   final $Res Function($Val) _then;
 
+  /// Create a copy of MediaInfoItemResponse
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -104,7 +108,6 @@ class _$MediaInfoItemResponseCopyWithImpl<$Res,
     Object? title = freezed,
     Object? createAt = freezed,
     Object? images = freezed,
-    Object? videos = freezed,
     Object? video = freezed,
     Object? typeVideo = freezed,
     Object? videoImage = freezed,
@@ -136,10 +139,6 @@ class _$MediaInfoItemResponseCopyWithImpl<$Res,
       images: freezed == images
           ? _value.images
           : images // ignore: cast_nullable_to_non_nullable
-              as List<String>?,
-      videos: freezed == videos
-          ? _value.videos
-          : videos // ignore: cast_nullable_to_non_nullable
               as List<String>?,
       video: freezed == video
           ? _value.video
@@ -215,7 +214,6 @@ abstract class _$$MediaInfoItemResponseImplCopyWith<$Res>
       String? title,
       @JsonKey(name: 'create_at') String? createAt,
       List<String>? images,
-      List<String>? videos,
       String? video,
       @JsonKey(name: 'type_video') String? typeVideo,
       @JsonKey(name: 'video_image') String? videoImage,
@@ -241,6 +239,8 @@ class __$$MediaInfoItemResponseImplCopyWithImpl<$Res>
       $Res Function(_$MediaInfoItemResponseImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of MediaInfoItemResponse
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -248,7 +248,6 @@ class __$$MediaInfoItemResponseImplCopyWithImpl<$Res>
     Object? title = freezed,
     Object? createAt = freezed,
     Object? images = freezed,
-    Object? videos = freezed,
     Object? video = freezed,
     Object? typeVideo = freezed,
     Object? videoImage = freezed,
@@ -280,10 +279,6 @@ class __$$MediaInfoItemResponseImplCopyWithImpl<$Res>
       images: freezed == images
           ? _value._images
           : images // ignore: cast_nullable_to_non_nullable
-              as List<String>?,
-      videos: freezed == videos
-          ? _value._videos
-          : videos // ignore: cast_nullable_to_non_nullable
               as List<String>?,
       video: freezed == video
           ? _value.video
@@ -347,13 +342,12 @@ class __$$MediaInfoItemResponseImplCopyWithImpl<$Res>
 
 /// @nodoc
 @JsonSerializable()
-class _$MediaInfoItemResponseImpl extends _MediaInfoItemResponse {
-  _$MediaInfoItemResponseImpl(
+class _$MediaInfoItemResponseImpl implements _MediaInfoItemResponse {
+  const _$MediaInfoItemResponseImpl(
       {this.id,
       this.title,
       @JsonKey(name: 'create_at') this.createAt,
       final List<String>? images,
-      final List<String>? videos,
       this.video,
       @JsonKey(name: 'type_video') this.typeVideo,
       @JsonKey(name: 'video_image') this.videoImage,
@@ -368,9 +362,7 @@ class _$MediaInfoItemResponseImpl extends _MediaInfoItemResponse {
       @JsonKey(name: 'uid_store') this.uidStore,
       @JsonKey(name: 'number_views') this.numberViews,
       @JsonKey(name: 'is_viewed') this.isViewed})
-      : _images = images,
-        _videos = videos,
-        super._();
+      : _images = images;
 
   factory _$MediaInfoItemResponseImpl.fromJson(Map<String, dynamic> json) =>
       _$$MediaInfoItemResponseImplFromJson(json);
@@ -388,16 +380,6 @@ class _$MediaInfoItemResponseImpl extends _MediaInfoItemResponse {
     final value = _images;
     if (value == null) return null;
     if (_images is EqualUnmodifiableListView) return _images;
-    // ignore: implicit_dynamic_type
-    return EqualUnmodifiableListView(value);
-  }
-
-  final List<String>? _videos;
-  @override
-  List<String>? get videos {
-    final value = _videos;
-    if (value == null) return null;
-    if (_videos is EqualUnmodifiableListView) return _videos;
     // ignore: implicit_dynamic_type
     return EqualUnmodifiableListView(value);
   }
@@ -443,7 +425,7 @@ class _$MediaInfoItemResponseImpl extends _MediaInfoItemResponse {
 
   @override
   String toString() {
-    return 'MediaInfoItemResponse(id: $id, title: $title, createAt: $createAt, images: $images, videos: $videos, video: $video, typeVideo: $typeVideo, videoImage: $videoImage, typeMedia: $typeMedia, description: $description, titleButton: $titleButton, typePath: $typePath, path: $path, code: $code, sort: $sort, filterSelect: $filterSelect, uidStore: $uidStore, numberViews: $numberViews, isViewed: $isViewed)';
+    return 'MediaInfoItemResponse(id: $id, title: $title, createAt: $createAt, images: $images, video: $video, typeVideo: $typeVideo, videoImage: $videoImage, typeMedia: $typeMedia, description: $description, titleButton: $titleButton, typePath: $typePath, path: $path, code: $code, sort: $sort, filterSelect: $filterSelect, uidStore: $uidStore, numberViews: $numberViews, isViewed: $isViewed)';
   }
 
   @override
@@ -456,7 +438,6 @@ class _$MediaInfoItemResponseImpl extends _MediaInfoItemResponse {
             (identical(other.createAt, createAt) ||
                 other.createAt == createAt) &&
             const DeepCollectionEquality().equals(other._images, _images) &&
-            const DeepCollectionEquality().equals(other._videos, _videos) &&
             (identical(other.video, video) || other.video == video) &&
             (identical(other.typeVideo, typeVideo) ||
                 other.typeVideo == typeVideo) &&
@@ -483,32 +464,32 @@ class _$MediaInfoItemResponseImpl extends _MediaInfoItemResponse {
                 other.isViewed == isViewed));
   }
 
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
-  int get hashCode => Object.hashAll([
-        runtimeType,
-        id,
-        title,
-        createAt,
-        const DeepCollectionEquality().hash(_images),
-        const DeepCollectionEquality().hash(_videos),
-        video,
-        typeVideo,
-        videoImage,
-        typeMedia,
-        description,
-        titleButton,
-        typePath,
-        path,
-        code,
-        sort,
-        filterSelect,
-        uidStore,
-        numberViews,
-        isViewed
-      ]);
+  int get hashCode => Object.hash(
+      runtimeType,
+      id,
+      title,
+      createAt,
+      const DeepCollectionEquality().hash(_images),
+      video,
+      typeVideo,
+      videoImage,
+      typeMedia,
+      description,
+      titleButton,
+      typePath,
+      path,
+      code,
+      sort,
+      filterSelect,
+      uidStore,
+      numberViews,
+      isViewed);
 
-  @JsonKey(ignore: true)
+  /// Create a copy of MediaInfoItemResponse
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$MediaInfoItemResponseImplCopyWith<_$MediaInfoItemResponseImpl>
@@ -523,13 +504,12 @@ class _$MediaInfoItemResponseImpl extends _MediaInfoItemResponse {
   }
 }
 
-abstract class _MediaInfoItemResponse extends MediaInfoItemResponse {
-  factory _MediaInfoItemResponse(
+abstract class _MediaInfoItemResponse implements MediaInfoItemResponse {
+  const factory _MediaInfoItemResponse(
           {final String? id,
           final String? title,
           @JsonKey(name: 'create_at') final String? createAt,
           final List<String>? images,
-          final List<String>? videos,
           final String? video,
           @JsonKey(name: 'type_video') final String? typeVideo,
           @JsonKey(name: 'video_image') final String? videoImage,
@@ -545,7 +525,6 @@ abstract class _MediaInfoItemResponse extends MediaInfoItemResponse {
           @JsonKey(name: 'number_views') final int? numberViews,
           @JsonKey(name: 'is_viewed') final bool? isViewed}) =
       _$MediaInfoItemResponseImpl;
-  _MediaInfoItemResponse._() : super._();
 
   factory _MediaInfoItemResponse.fromJson(Map<String, dynamic> json) =
       _$MediaInfoItemResponseImpl.fromJson;
@@ -559,8 +538,6 @@ abstract class _MediaInfoItemResponse extends MediaInfoItemResponse {
   String? get createAt;
   @override
   List<String>? get images;
-  @override
-  List<String>? get videos;
   @override
   String? get video;
   @override
@@ -599,8 +576,11 @@ abstract class _MediaInfoItemResponse extends MediaInfoItemResponse {
   @override
   @JsonKey(name: 'is_viewed')
   bool? get isViewed;
+
+  /// Create a copy of MediaInfoItemResponse
+  /// with the given fields replaced by the non-null parameter values.
   @override
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$MediaInfoItemResponseImplCopyWith<_$MediaInfoItemResponseImpl>
       get copyWith => throw _privateConstructorUsedError;
 }

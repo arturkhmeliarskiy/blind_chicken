@@ -19,7 +19,9 @@ mixin _$CatalogSizeProductDataModel {
   String get id => throw _privateConstructorUsedError;
   String get name => throw _privateConstructorUsedError;
 
-  @JsonKey(ignore: true)
+  /// Create a copy of CatalogSizeProductDataModel
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   $CatalogSizeProductDataModelCopyWith<CatalogSizeProductDataModel>
       get copyWith => throw _privateConstructorUsedError;
 }
@@ -46,6 +48,8 @@ class _$CatalogSizeProductDataModelCopyWithImpl<$Res,
   // ignore: unused_field
   final $Res Function($Val) _then;
 
+  /// Create a copy of CatalogSizeProductDataModel
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -87,6 +91,8 @@ class __$$CatalogSizeProductDataModelImplCopyWithImpl<$Res>
       $Res Function(_$CatalogSizeProductDataModelImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of CatalogSizeProductDataModel
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -134,7 +140,9 @@ class _$CatalogSizeProductDataModelImpl extends _CatalogSizeProductDataModel {
   @override
   int get hashCode => Object.hash(runtimeType, id, name);
 
-  @JsonKey(ignore: true)
+  /// Create a copy of CatalogSizeProductDataModel
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$CatalogSizeProductDataModelImplCopyWith<_$CatalogSizeProductDataModelImpl>
@@ -153,8 +161,11 @@ abstract class _CatalogSizeProductDataModel
   String get id;
   @override
   String get name;
+
+  /// Create a copy of CatalogSizeProductDataModel
+  /// with the given fields replaced by the non-null parameter values.
   @override
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$CatalogSizeProductDataModelImplCopyWith<_$CatalogSizeProductDataModelImpl>
       get copyWith => throw _privateConstructorUsedError;
 }

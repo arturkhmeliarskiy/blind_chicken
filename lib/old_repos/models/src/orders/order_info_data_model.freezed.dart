@@ -35,7 +35,9 @@ mixin _$OrderInfoDataModel {
   List<ProductDataModel> get products => throw _privateConstructorUsedError;
   OrderGiftCardDataModel get giftCard => throw _privateConstructorUsedError;
 
-  @JsonKey(ignore: true)
+  /// Create a copy of OrderInfoDataModel
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   $OrderInfoDataModelCopyWith<OrderInfoDataModel> get copyWith =>
       throw _privateConstructorUsedError;
 }
@@ -80,6 +82,8 @@ class _$OrderInfoDataModelCopyWithImpl<$Res, $Val extends OrderInfoDataModel>
   // ignore: unused_field
   final $Res Function($Val) _then;
 
+  /// Create a copy of OrderInfoDataModel
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -173,6 +177,8 @@ class _$OrderInfoDataModelCopyWithImpl<$Res, $Val extends OrderInfoDataModel>
     ) as $Val);
   }
 
+  /// Create a copy of OrderInfoDataModel
+  /// with the given fields replaced by the non-null parameter values.
   @override
   @pragma('vm:prefer-inline')
   $OrderPromoDataModelCopyWith<$Res> get promo {
@@ -181,6 +187,8 @@ class _$OrderInfoDataModelCopyWithImpl<$Res, $Val extends OrderInfoDataModel>
     });
   }
 
+  /// Create a copy of OrderInfoDataModel
+  /// with the given fields replaced by the non-null parameter values.
   @override
   @pragma('vm:prefer-inline')
   $OrderDeliveryDataModelCopyWith<$Res> get delivery {
@@ -189,6 +197,8 @@ class _$OrderInfoDataModelCopyWithImpl<$Res, $Val extends OrderInfoDataModel>
     });
   }
 
+  /// Create a copy of OrderInfoDataModel
+  /// with the given fields replaced by the non-null parameter values.
   @override
   @pragma('vm:prefer-inline')
   $OrderGiftCardDataModelCopyWith<$Res> get giftCard {
@@ -241,6 +251,8 @@ class __$$OrderInfoDataModelImplCopyWithImpl<$Res>
       $Res Function(_$OrderInfoDataModelImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of OrderInfoDataModel
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -468,7 +480,9 @@ class _$OrderInfoDataModelImpl extends _OrderInfoDataModel {
       const DeepCollectionEquality().hash(_products),
       giftCard);
 
-  @JsonKey(ignore: true)
+  /// Create a copy of OrderInfoDataModel
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$OrderInfoDataModelImplCopyWith<_$OrderInfoDataModelImpl> get copyWith =>
@@ -532,8 +546,11 @@ abstract class _OrderInfoDataModel extends OrderInfoDataModel {
   List<ProductDataModel> get products;
   @override
   OrderGiftCardDataModel get giftCard;
+
+  /// Create a copy of OrderInfoDataModel
+  /// with the given fields replaced by the non-null parameter values.
   @override
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$OrderInfoDataModelImplCopyWith<_$OrderInfoDataModelImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }

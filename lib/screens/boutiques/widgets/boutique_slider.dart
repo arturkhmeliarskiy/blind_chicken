@@ -1,4 +1,4 @@
-import 'package:blind_chicken/core/utils/logging.dart';
+import 'package:blind_chicken/core_config/utils/logging.dart';
 
 import 'package:blind_chicken/screens/boutiques/widgets/boutique_slider_item.dart';
 import 'package:cached_network_image/cached_network_image.dart';

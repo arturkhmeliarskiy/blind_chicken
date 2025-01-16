@@ -22,7 +22,9 @@ mixin _$BasketOrderDeliveryRequest {
   String get adrId => throw _privateConstructorUsedError;
   String get zip => throw _privateConstructorUsedError;
 
-  @JsonKey(ignore: true)
+  /// Create a copy of BasketOrderDeliveryRequest
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   $BasketOrderDeliveryRequestCopyWith<BasketOrderDeliveryRequest>
       get copyWith => throw _privateConstructorUsedError;
 }
@@ -48,6 +50,8 @@ class _$BasketOrderDeliveryRequestCopyWithImpl<$Res,
   // ignore: unused_field
   final $Res Function($Val) _then;
 
+  /// Create a copy of BasketOrderDeliveryRequest
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -104,6 +108,8 @@ class __$$BasketOrderDeliveryRequestImplCopyWithImpl<$Res>
       $Res Function(_$BasketOrderDeliveryRequestImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of BasketOrderDeliveryRequest
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -180,7 +186,9 @@ class _$BasketOrderDeliveryRequestImpl extends _BasketOrderDeliveryRequest {
   @override
   int get hashCode => Object.hash(runtimeType, id, pck, adr, adrId, zip);
 
-  @JsonKey(ignore: true)
+  /// Create a copy of BasketOrderDeliveryRequest
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$BasketOrderDeliveryRequestImplCopyWith<_$BasketOrderDeliveryRequestImpl>
@@ -207,8 +215,11 @@ abstract class _BasketOrderDeliveryRequest extends BasketOrderDeliveryRequest {
   String get adrId;
   @override
   String get zip;
+
+  /// Create a copy of BasketOrderDeliveryRequest
+  /// with the given fields replaced by the non-null parameter values.
   @override
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$BasketOrderDeliveryRequestImplCopyWith<_$BasketOrderDeliveryRequestImpl>
       get copyWith => throw _privateConstructorUsedError;
 }

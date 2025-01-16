@@ -5,7 +5,6 @@ class AppState extends BaseBlocState with _$AppState {
   factory AppState({
     BlocAction? action,
     @Default(null) Locale? locale,
-    @Default(ColorSchemeMode.dark) ColorSchemeMode colorSchemeMode,
     @Default(false) bool visibleDebugOverlay,
   }) = _AppState;
 }

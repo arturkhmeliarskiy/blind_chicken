@@ -23,8 +23,12 @@ mixin _$MenuResponse {
   List<MenuItemResponse>? get items => throw _privateConstructorUsedError;
   String? get errorMessage => throw _privateConstructorUsedError;
 
+  /// Serializes this MenuResponse to a JSON map.
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
-  @JsonKey(ignore: true)
+
+  /// Create a copy of MenuResponse
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   $MenuResponseCopyWith<MenuResponse> get copyWith =>
       throw _privateConstructorUsedError;
 }
@@ -48,6 +52,8 @@ class _$MenuResponseCopyWithImpl<$Res, $Val extends MenuResponse>
   // ignore: unused_field
   final $Res Function($Val) _then;
 
+  /// Create a copy of MenuResponse
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -86,6 +92,8 @@ class __$$MenuResponseImplCopyWithImpl<$Res>
       _$MenuResponseImpl _value, $Res Function(_$MenuResponseImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of MenuResponse
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -143,12 +151,14 @@ class _$MenuResponseImpl extends _MenuResponse {
                 other.errorMessage == errorMessage));
   }
 
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   int get hashCode => Object.hash(
       runtimeType, const DeepCollectionEquality().hash(_items), errorMessage);
 
-  @JsonKey(ignore: true)
+  /// Create a copy of MenuResponse
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$MenuResponseImplCopyWith<_$MenuResponseImpl> get copyWith =>
@@ -175,8 +185,11 @@ abstract class _MenuResponse extends MenuResponse {
   List<MenuItemResponse>? get items;
   @override
   String? get errorMessage;
+
+  /// Create a copy of MenuResponse
+  /// with the given fields replaced by the non-null parameter values.
   @override
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$MenuResponseImplCopyWith<_$MenuResponseImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }

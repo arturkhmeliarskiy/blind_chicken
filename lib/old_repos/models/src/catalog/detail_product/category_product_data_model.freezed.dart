@@ -20,7 +20,9 @@ mixin _$CategoryProductDataModel {
   String get n => throw _privateConstructorUsedError;
   String get u => throw _privateConstructorUsedError;
 
-  @JsonKey(ignore: true)
+  /// Create a copy of CategoryProductDataModel
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   $CategoryProductDataModelCopyWith<CategoryProductDataModel> get copyWith =>
       throw _privateConstructorUsedError;
 }
@@ -45,6 +47,8 @@ class _$CategoryProductDataModelCopyWithImpl<$Res,
   // ignore: unused_field
   final $Res Function($Val) _then;
 
+  /// Create a copy of CategoryProductDataModel
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -91,6 +95,8 @@ class __$$CategoryProductDataModelImplCopyWithImpl<$Res>
       $Res Function(_$CategoryProductDataModelImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of CategoryProductDataModel
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -147,7 +153,9 @@ class _$CategoryProductDataModelImpl extends _CategoryProductDataModel {
   @override
   int get hashCode => Object.hash(runtimeType, id, n, u);
 
-  @JsonKey(ignore: true)
+  /// Create a copy of CategoryProductDataModel
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$CategoryProductDataModelImplCopyWith<_$CategoryProductDataModelImpl>
@@ -168,8 +176,11 @@ abstract class _CategoryProductDataModel extends CategoryProductDataModel {
   String get n;
   @override
   String get u;
+
+  /// Create a copy of CategoryProductDataModel
+  /// with the given fields replaced by the non-null parameter values.
   @override
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$CategoryProductDataModelImplCopyWith<_$CategoryProductDataModelImpl>
       get copyWith => throw _privateConstructorUsedError;
 }

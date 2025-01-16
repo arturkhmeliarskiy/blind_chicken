@@ -21,7 +21,9 @@ mixin _$OrdersBlankDataModel {
   List<OrderBlankDataModel> get orders => throw _privateConstructorUsedError;
   String get errorMessage => throw _privateConstructorUsedError;
 
-  @JsonKey(ignore: true)
+  /// Create a copy of OrdersBlankDataModel
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   $OrdersBlankDataModelCopyWith<OrdersBlankDataModel> get copyWith =>
       throw _privateConstructorUsedError;
 }
@@ -50,6 +52,8 @@ class _$OrdersBlankDataModelCopyWithImpl<$Res,
   // ignore: unused_field
   final $Res Function($Val) _then;
 
+  /// Create a copy of OrdersBlankDataModel
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -102,6 +106,8 @@ class __$$OrdersBlankDataModelImplCopyWithImpl<$Res>
       $Res Function(_$OrdersBlankDataModelImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of OrdersBlankDataModel
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -178,7 +184,9 @@ class _$OrdersBlankDataModelImpl extends _OrdersBlankDataModel {
   int get hashCode => Object.hash(runtimeType, r, message,
       const DeepCollectionEquality().hash(_orders), errorMessage);
 
-  @JsonKey(ignore: true)
+  /// Create a copy of OrdersBlankDataModel
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$OrdersBlankDataModelImplCopyWith<_$OrdersBlankDataModelImpl>
@@ -203,8 +211,11 @@ abstract class _OrdersBlankDataModel extends OrdersBlankDataModel {
   List<OrderBlankDataModel> get orders;
   @override
   String get errorMessage;
+
+  /// Create a copy of OrdersBlankDataModel
+  /// with the given fields replaced by the non-null parameter values.
   @override
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$OrdersBlankDataModelImplCopyWith<_$OrdersBlankDataModelImpl>
       get copyWith => throw _privateConstructorUsedError;
 }

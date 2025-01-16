@@ -25,8 +25,12 @@ mixin _$OrderDeliveryResponse {
   String? get method => throw _privateConstructorUsedError;
   String? get address => throw _privateConstructorUsedError;
 
+  /// Serializes this OrderDeliveryResponse to a JSON map.
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
-  @JsonKey(ignore: true)
+
+  /// Create a copy of OrderDeliveryResponse
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   $OrderDeliveryResponseCopyWith<OrderDeliveryResponse> get copyWith =>
       throw _privateConstructorUsedError;
 }
@@ -51,6 +55,8 @@ class _$OrderDeliveryResponseCopyWithImpl<$Res,
   // ignore: unused_field
   final $Res Function($Val) _then;
 
+  /// Create a copy of OrderDeliveryResponse
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -96,6 +102,8 @@ class __$$OrderDeliveryResponseImplCopyWithImpl<$Res>
       $Res Function(_$OrderDeliveryResponseImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of OrderDeliveryResponse
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -151,11 +159,13 @@ class _$OrderDeliveryResponseImpl extends _OrderDeliveryResponse {
             (identical(other.address, address) || other.address == address));
   }
 
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   int get hashCode => Object.hash(runtimeType, price, method, address);
 
-  @JsonKey(ignore: true)
+  /// Create a copy of OrderDeliveryResponse
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$OrderDeliveryResponseImplCopyWith<_$OrderDeliveryResponseImpl>
@@ -186,8 +196,11 @@ abstract class _OrderDeliveryResponse extends OrderDeliveryResponse {
   String? get method;
   @override
   String? get address;
+
+  /// Create a copy of OrderDeliveryResponse
+  /// with the given fields replaced by the non-null parameter values.
   @override
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$OrderDeliveryResponseImplCopyWith<_$OrderDeliveryResponseImpl>
       get copyWith => throw _privateConstructorUsedError;
 }

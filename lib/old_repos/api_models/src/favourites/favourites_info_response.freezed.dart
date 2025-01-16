@@ -25,8 +25,12 @@ mixin _$FavouritesInfoResponse {
   String? get e => throw _privateConstructorUsedError;
   String? get errorMessage => throw _privateConstructorUsedError;
 
+  /// Serializes this FavouritesInfoResponse to a JSON map.
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
-  @JsonKey(ignore: true)
+
+  /// Create a copy of FavouritesInfoResponse
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   $FavouritesInfoResponseCopyWith<FavouritesInfoResponse> get copyWith =>
       throw _privateConstructorUsedError;
 }
@@ -51,6 +55,8 @@ class _$FavouritesInfoResponseCopyWithImpl<$Res,
   // ignore: unused_field
   final $Res Function($Val) _then;
 
+  /// Create a copy of FavouritesInfoResponse
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -97,6 +103,8 @@ class __$$FavouritesInfoResponseImplCopyWithImpl<$Res>
       $Res Function(_$FavouritesInfoResponseImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of FavouritesInfoResponse
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -152,11 +160,13 @@ class _$FavouritesInfoResponseImpl extends _FavouritesInfoResponse {
                 other.errorMessage == errorMessage));
   }
 
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   int get hashCode => Object.hash(runtimeType, r, e, errorMessage);
 
-  @JsonKey(ignore: true)
+  /// Create a copy of FavouritesInfoResponse
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$FavouritesInfoResponseImplCopyWith<_$FavouritesInfoResponseImpl>
@@ -187,8 +197,11 @@ abstract class _FavouritesInfoResponse extends FavouritesInfoResponse {
   String? get e;
   @override
   String? get errorMessage;
+
+  /// Create a copy of FavouritesInfoResponse
+  /// with the given fields replaced by the non-null parameter values.
   @override
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$FavouritesInfoResponseImplCopyWith<_$FavouritesInfoResponseImpl>
       get copyWith => throw _privateConstructorUsedError;
 }

@@ -20,7 +20,9 @@ mixin _$OrderBlankPdfDataModel {
   String get message => throw _privateConstructorUsedError;
   String get pdf => throw _privateConstructorUsedError;
 
-  @JsonKey(ignore: true)
+  /// Create a copy of OrderBlankPdfDataModel
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   $OrderBlankPdfDataModelCopyWith<OrderBlankPdfDataModel> get copyWith =>
       throw _privateConstructorUsedError;
 }
@@ -45,6 +47,8 @@ class _$OrderBlankPdfDataModelCopyWithImpl<$Res,
   // ignore: unused_field
   final $Res Function($Val) _then;
 
+  /// Create a copy of OrderBlankPdfDataModel
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -91,6 +95,8 @@ class __$$OrderBlankPdfDataModelImplCopyWithImpl<$Res>
       $Res Function(_$OrderBlankPdfDataModelImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of OrderBlankPdfDataModel
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -147,7 +153,9 @@ class _$OrderBlankPdfDataModelImpl extends _OrderBlankPdfDataModel {
   @override
   int get hashCode => Object.hash(runtimeType, r, message, pdf);
 
-  @JsonKey(ignore: true)
+  /// Create a copy of OrderBlankPdfDataModel
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$OrderBlankPdfDataModelImplCopyWith<_$OrderBlankPdfDataModelImpl>
@@ -168,8 +176,11 @@ abstract class _OrderBlankPdfDataModel extends OrderBlankPdfDataModel {
   String get message;
   @override
   String get pdf;
+
+  /// Create a copy of OrderBlankPdfDataModel
+  /// with the given fields replaced by the non-null parameter values.
   @override
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$OrderBlankPdfDataModelImplCopyWith<_$OrderBlankPdfDataModelImpl>
       get copyWith => throw _privateConstructorUsedError;
 }

@@ -39,7 +39,9 @@ mixin _$NewsInfoItemDataModel {
   int get numberViews => throw _privateConstructorUsedError;
   bool get isViewed => throw _privateConstructorUsedError;
 
-  @JsonKey(ignore: true)
+  /// Create a copy of NewsInfoItemDataModel
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   $NewsInfoItemDataModelCopyWith<NewsInfoItemDataModel> get copyWith =>
       throw _privateConstructorUsedError;
 }
@@ -86,6 +88,8 @@ class _$NewsInfoItemDataModelCopyWithImpl<$Res,
   // ignore: unused_field
   final $Res Function($Val) _then;
 
+  /// Create a copy of NewsInfoItemDataModel
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -248,6 +252,8 @@ class __$$NewsInfoItemDataModelImplCopyWithImpl<$Res>
       $Res Function(_$NewsInfoItemDataModelImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of NewsInfoItemDataModel
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -529,7 +535,9 @@ class _$NewsInfoItemDataModelImpl extends _NewsInfoItemDataModel {
         isViewed
       ]);
 
-  @JsonKey(ignore: true)
+  /// Create a copy of NewsInfoItemDataModel
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$NewsInfoItemDataModelImplCopyWith<_$NewsInfoItemDataModelImpl>
@@ -607,8 +615,11 @@ abstract class _NewsInfoItemDataModel extends NewsInfoItemDataModel {
   int get numberViews;
   @override
   bool get isViewed;
+
+  /// Create a copy of NewsInfoItemDataModel
+  /// with the given fields replaced by the non-null parameter values.
   @override
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$NewsInfoItemDataModelImplCopyWith<_$NewsInfoItemDataModelImpl>
       get copyWith => throw _privateConstructorUsedError;
 }

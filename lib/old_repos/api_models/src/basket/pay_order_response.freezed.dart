@@ -24,8 +24,12 @@ mixin _$PayOrderResponse {
   String? get e => throw _privateConstructorUsedError;
   String? get url => throw _privateConstructorUsedError;
 
+  /// Serializes this PayOrderResponse to a JSON map.
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
-  @JsonKey(ignore: true)
+
+  /// Create a copy of PayOrderResponse
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   $PayOrderResponseCopyWith<PayOrderResponse> get copyWith =>
       throw _privateConstructorUsedError;
 }
@@ -49,6 +53,8 @@ class _$PayOrderResponseCopyWithImpl<$Res, $Val extends PayOrderResponse>
   // ignore: unused_field
   final $Res Function($Val) _then;
 
+  /// Create a copy of PayOrderResponse
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -92,6 +98,8 @@ class __$$PayOrderResponseImplCopyWithImpl<$Res>
       $Res Function(_$PayOrderResponseImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of PayOrderResponse
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -146,11 +154,13 @@ class _$PayOrderResponseImpl extends _PayOrderResponse {
             (identical(other.url, url) || other.url == url));
   }
 
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   int get hashCode => Object.hash(runtimeType, r, e, url);
 
-  @JsonKey(ignore: true)
+  /// Create a copy of PayOrderResponse
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$PayOrderResponseImplCopyWith<_$PayOrderResponseImpl> get copyWith =>
@@ -181,8 +191,11 @@ abstract class _PayOrderResponse extends PayOrderResponse {
   String? get e;
   @override
   String? get url;
+
+  /// Create a copy of PayOrderResponse
+  /// with the given fields replaced by the non-null parameter values.
   @override
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$PayOrderResponseImplCopyWith<_$PayOrderResponseImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }

@@ -23,8 +23,12 @@ mixin _$BrandResponse {
   String? get title => throw _privateConstructorUsedError;
   List<BrandItemResponse>? get value => throw _privateConstructorUsedError;
 
+  /// Serializes this BrandResponse to a JSON map.
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
-  @JsonKey(ignore: true)
+
+  /// Create a copy of BrandResponse
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   $BrandResponseCopyWith<BrandResponse> get copyWith =>
       throw _privateConstructorUsedError;
 }
@@ -48,6 +52,8 @@ class _$BrandResponseCopyWithImpl<$Res, $Val extends BrandResponse>
   // ignore: unused_field
   final $Res Function($Val) _then;
 
+  /// Create a copy of BrandResponse
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -86,6 +92,8 @@ class __$$BrandResponseImplCopyWithImpl<$Res>
       _$BrandResponseImpl _value, $Res Function(_$BrandResponseImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of BrandResponse
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -141,12 +149,14 @@ class _$BrandResponseImpl extends _BrandResponse {
             const DeepCollectionEquality().equals(other._value, _value));
   }
 
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   int get hashCode => Object.hash(
       runtimeType, title, const DeepCollectionEquality().hash(_value));
 
-  @JsonKey(ignore: true)
+  /// Create a copy of BrandResponse
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$BrandResponseImplCopyWith<_$BrandResponseImpl> get copyWith =>
@@ -173,8 +183,11 @@ abstract class _BrandResponse extends BrandResponse {
   String? get title;
   @override
   List<BrandItemResponse>? get value;
+
+  /// Create a copy of BrandResponse
+  /// with the given fields replaced by the non-null parameter values.
   @override
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$BrandResponseImplCopyWith<_$BrandResponseImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }

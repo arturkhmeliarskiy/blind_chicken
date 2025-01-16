@@ -27,7 +27,9 @@ mixin _$PriceProductDataModel {
   int get bonusYear => throw _privateConstructorUsedError;
   int get discountVal => throw _privateConstructorUsedError;
 
-  @JsonKey(ignore: true)
+  /// Create a copy of PriceProductDataModel
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   $PriceProductDataModelCopyWith<PriceProductDataModel> get copyWith =>
       throw _privateConstructorUsedError;
 }
@@ -62,6 +64,8 @@ class _$PriceProductDataModelCopyWithImpl<$Res,
   // ignore: unused_field
   final $Res Function($Val) _then;
 
+  /// Create a copy of PriceProductDataModel
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -152,6 +156,8 @@ class __$$PriceProductDataModelImplCopyWithImpl<$Res>
       $Res Function(_$PriceProductDataModelImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of PriceProductDataModel
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -280,7 +286,9 @@ class _$PriceProductDataModelImpl extends _PriceProductDataModel {
   int get hashCode => Object.hash(runtimeType, p, pc, pb, yourPrice, price,
       cashback, bonusLoyal, bonusGift, bonusYear, discountVal);
 
-  @JsonKey(ignore: true)
+  /// Create a copy of PriceProductDataModel
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$PriceProductDataModelImplCopyWith<_$PriceProductDataModelImpl>
@@ -322,8 +330,11 @@ abstract class _PriceProductDataModel extends PriceProductDataModel {
   int get bonusYear;
   @override
   int get discountVal;
+
+  /// Create a copy of PriceProductDataModel
+  /// with the given fields replaced by the non-null parameter values.
   @override
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$PriceProductDataModelImplCopyWith<_$PriceProductDataModelImpl>
       get copyWith => throw _privateConstructorUsedError;
 }

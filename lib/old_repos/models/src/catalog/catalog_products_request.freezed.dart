@@ -21,7 +21,9 @@ mixin _$CatalogProductsRequest {
   String? get url => throw _privateConstructorUsedError;
   String? get sort => throw _privateConstructorUsedError;
 
-  @JsonKey(ignore: true)
+  /// Create a copy of CatalogProductsRequest
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   $CatalogProductsRequestCopyWith<CatalogProductsRequest> get copyWith =>
       throw _privateConstructorUsedError;
 }
@@ -46,6 +48,8 @@ class _$CatalogProductsRequestCopyWithImpl<$Res,
   // ignore: unused_field
   final $Res Function($Val) _then;
 
+  /// Create a copy of CatalogProductsRequest
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -92,6 +96,8 @@ class __$$CatalogProductsRequestImplCopyWithImpl<$Res>
       $Res Function(_$CatalogProductsRequestImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of CatalogProductsRequest
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -158,7 +164,9 @@ class _$CatalogProductsRequestImpl extends _CatalogProductsRequest {
   int get hashCode => Object.hash(
       runtimeType, const DeepCollectionEquality().hash(_filters), url, sort);
 
-  @JsonKey(ignore: true)
+  /// Create a copy of CatalogProductsRequest
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$CatalogProductsRequestImplCopyWith<_$CatalogProductsRequestImpl>
@@ -179,8 +187,11 @@ abstract class _CatalogProductsRequest extends CatalogProductsRequest {
   String? get url;
   @override
   String? get sort;
+
+  /// Create a copy of CatalogProductsRequest
+  /// with the given fields replaced by the non-null parameter values.
   @override
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$CatalogProductsRequestImplCopyWith<_$CatalogProductsRequestImpl>
       get copyWith => throw _privateConstructorUsedError;
 }

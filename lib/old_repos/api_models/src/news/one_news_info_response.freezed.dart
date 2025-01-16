@@ -27,8 +27,12 @@ mixin _$OneNewsInfoResponse {
   @JsonKey(name: 'is_viewed')
   bool? get isViewed => throw _privateConstructorUsedError;
 
+  /// Serializes this OneNewsInfoResponse to a JSON map.
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
-  @JsonKey(ignore: true)
+
+  /// Create a copy of OneNewsInfoResponse
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   $OneNewsInfoResponseCopyWith<OneNewsInfoResponse> get copyWith =>
       throw _privateConstructorUsedError;
 }
@@ -59,6 +63,8 @@ class _$OneNewsInfoResponseCopyWithImpl<$Res, $Val extends OneNewsInfoResponse>
   // ignore: unused_field
   final $Res Function($Val) _then;
 
+  /// Create a copy of OneNewsInfoResponse
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -92,6 +98,8 @@ class _$OneNewsInfoResponseCopyWithImpl<$Res, $Val extends OneNewsInfoResponse>
     ) as $Val);
   }
 
+  /// Create a copy of OneNewsInfoResponse
+  /// with the given fields replaced by the non-null parameter values.
   @override
   @pragma('vm:prefer-inline')
   $NewsInfoItemResponseCopyWith<$Res>? get data {
@@ -132,6 +140,8 @@ class __$$OneNewsInfoResponseImplCopyWithImpl<$Res>
       $Res Function(_$OneNewsInfoResponseImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of OneNewsInfoResponse
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -211,12 +221,14 @@ class _$OneNewsInfoResponseImpl extends _OneNewsInfoResponse {
                 other.isViewed == isViewed));
   }
 
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   int get hashCode =>
       Object.hash(runtimeType, r, e, errorMessage, data, isViewed);
 
-  @JsonKey(ignore: true)
+  /// Create a copy of OneNewsInfoResponse
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$OneNewsInfoResponseImplCopyWith<_$OneNewsInfoResponseImpl> get copyWith =>
@@ -255,8 +267,11 @@ abstract class _OneNewsInfoResponse extends OneNewsInfoResponse {
   @override
   @JsonKey(name: 'is_viewed')
   bool? get isViewed;
+
+  /// Create a copy of OneNewsInfoResponse
+  /// with the given fields replaced by the non-null parameter values.
   @override
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$OneNewsInfoResponseImplCopyWith<_$OneNewsInfoResponseImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }

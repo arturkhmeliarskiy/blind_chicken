@@ -20,7 +20,9 @@ mixin _$NewsSliderImageItemDataModel {
   double get imageHeight => throw _privateConstructorUsedError;
   double get imageWeight => throw _privateConstructorUsedError;
 
-  @JsonKey(ignore: true)
+  /// Create a copy of NewsSliderImageItemDataModel
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   $NewsSliderImageItemDataModelCopyWith<NewsSliderImageItemDataModel>
       get copyWith => throw _privateConstructorUsedError;
 }
@@ -47,6 +49,8 @@ class _$NewsSliderImageItemDataModelCopyWithImpl<$Res,
   // ignore: unused_field
   final $Res Function($Val) _then;
 
+  /// Create a copy of NewsSliderImageItemDataModel
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -93,6 +97,8 @@ class __$$NewsSliderImageItemDataModelImplCopyWithImpl<$Res>
       $Res Function(_$NewsSliderImageItemDataModelImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of NewsSliderImageItemDataModel
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -155,7 +161,9 @@ class _$NewsSliderImageItemDataModelImpl extends _NewsSliderImageItemDataModel {
   int get hashCode =>
       Object.hash(runtimeType, imageUrl, imageHeight, imageWeight);
 
-  @JsonKey(ignore: true)
+  /// Create a copy of NewsSliderImageItemDataModel
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$NewsSliderImageItemDataModelImplCopyWith<
@@ -178,8 +186,11 @@ abstract class _NewsSliderImageItemDataModel
   double get imageHeight;
   @override
   double get imageWeight;
+
+  /// Create a copy of NewsSliderImageItemDataModel
+  /// with the given fields replaced by the non-null parameter values.
   @override
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$NewsSliderImageItemDataModelImplCopyWith<
           _$NewsSliderImageItemDataModelImpl>
       get copyWith => throw _privateConstructorUsedError;

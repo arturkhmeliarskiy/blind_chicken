@@ -22,7 +22,9 @@ mixin _$PaymentBonusDataModel {
   int get balance => throw _privateConstructorUsedError;
   String get errorMessage => throw _privateConstructorUsedError;
 
-  @JsonKey(ignore: true)
+  /// Create a copy of PaymentBonusDataModel
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   $PaymentBonusDataModelCopyWith<PaymentBonusDataModel> get copyWith =>
       throw _privateConstructorUsedError;
 }
@@ -48,6 +50,8 @@ class _$PaymentBonusDataModelCopyWithImpl<$Res,
   // ignore: unused_field
   final $Res Function($Val) _then;
 
+  /// Create a copy of PaymentBonusDataModel
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -104,6 +108,8 @@ class __$$PaymentBonusDataModelImplCopyWithImpl<$Res>
       $Res Function(_$PaymentBonusDataModelImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of PaymentBonusDataModel
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -182,7 +188,9 @@ class _$PaymentBonusDataModelImpl extends _PaymentBonusDataModel {
   int get hashCode =>
       Object.hash(runtimeType, r, e, info, balance, errorMessage);
 
-  @JsonKey(ignore: true)
+  /// Create a copy of PaymentBonusDataModel
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$PaymentBonusDataModelImplCopyWith<_$PaymentBonusDataModelImpl>
@@ -209,8 +217,11 @@ abstract class _PaymentBonusDataModel extends PaymentBonusDataModel {
   int get balance;
   @override
   String get errorMessage;
+
+  /// Create a copy of PaymentBonusDataModel
+  /// with the given fields replaced by the non-null parameter values.
   @override
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$PaymentBonusDataModelImplCopyWith<_$PaymentBonusDataModelImpl>
       get copyWith => throw _privateConstructorUsedError;
 }

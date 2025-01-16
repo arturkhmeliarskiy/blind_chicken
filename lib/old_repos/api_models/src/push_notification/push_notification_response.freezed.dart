@@ -24,8 +24,12 @@ mixin _$PushNotificationResponse {
   String? get r => throw _privateConstructorUsedError;
   String? get e => throw _privateConstructorUsedError;
 
+  /// Serializes this PushNotificationResponse to a JSON map.
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
-  @JsonKey(ignore: true)
+
+  /// Create a copy of PushNotificationResponse
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   $PushNotificationResponseCopyWith<PushNotificationResponse> get copyWith =>
       throw _privateConstructorUsedError;
 }
@@ -50,6 +54,8 @@ class _$PushNotificationResponseCopyWithImpl<$Res,
   // ignore: unused_field
   final $Res Function($Val) _then;
 
+  /// Create a copy of PushNotificationResponse
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -91,6 +97,8 @@ class __$$PushNotificationResponseImplCopyWithImpl<$Res>
       $Res Function(_$PushNotificationResponseImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of PushNotificationResponse
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -137,11 +145,13 @@ class _$PushNotificationResponseImpl extends _PushNotificationResponse {
             (identical(other.e, e) || other.e == e));
   }
 
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   int get hashCode => Object.hash(runtimeType, r, e);
 
-  @JsonKey(ignore: true)
+  /// Create a copy of PushNotificationResponse
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$PushNotificationResponseImplCopyWith<_$PushNotificationResponseImpl>
@@ -168,8 +178,11 @@ abstract class _PushNotificationResponse extends PushNotificationResponse {
   String? get r;
   @override
   String? get e;
+
+  /// Create a copy of PushNotificationResponse
+  /// with the given fields replaced by the non-null parameter values.
   @override
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$PushNotificationResponseImplCopyWith<_$PushNotificationResponseImpl>
       get copyWith => throw _privateConstructorUsedError;
 }

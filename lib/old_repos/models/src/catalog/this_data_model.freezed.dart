@@ -18,7 +18,9 @@ final _privateConstructorUsedError = UnsupportedError(
 mixin _$ThisDataModel {
   String get glasses => throw _privateConstructorUsedError;
 
-  @JsonKey(ignore: true)
+  /// Create a copy of ThisDataModel
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   $ThisDataModelCopyWith<ThisDataModel> get copyWith =>
       throw _privateConstructorUsedError;
 }
@@ -42,6 +44,8 @@ class _$ThisDataModelCopyWithImpl<$Res, $Val extends ThisDataModel>
   // ignore: unused_field
   final $Res Function($Val) _then;
 
+  /// Create a copy of ThisDataModel
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -75,6 +79,8 @@ class __$$ThisDataModelImplCopyWithImpl<$Res>
       _$ThisDataModelImpl _value, $Res Function(_$ThisDataModelImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of ThisDataModel
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -113,7 +119,9 @@ class _$ThisDataModelImpl extends _ThisDataModel {
   @override
   int get hashCode => Object.hash(runtimeType, glasses);
 
-  @JsonKey(ignore: true)
+  /// Create a copy of ThisDataModel
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$ThisDataModelImplCopyWith<_$ThisDataModelImpl> get copyWith =>
@@ -126,8 +134,11 @@ abstract class _ThisDataModel extends ThisDataModel {
 
   @override
   String get glasses;
+
+  /// Create a copy of ThisDataModel
+  /// with the given fields replaced by the non-null parameter values.
   @override
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$ThisDataModelImplCopyWith<_$ThisDataModelImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }

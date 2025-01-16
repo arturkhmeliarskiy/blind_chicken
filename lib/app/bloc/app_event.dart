@@ -8,11 +8,7 @@ class AppEvent with _$AppEvent {
 
   const factory AppEvent.memoryUsagePressed() = MemoryUsagePressed;
 
-  const factory AppEvent.switchColorScheme() = SwitchColorScheme;
-
   const factory AppEvent.switchLocale(Locale locale) = SwitchLocale;
-
-  const factory AppEvent.authPressed({required AuthType type, Country? country}) = AuthPressed;
 
   const factory AppEvent.showDebugOverlay({bool? visible}) = ShowDebugOverlay;
 

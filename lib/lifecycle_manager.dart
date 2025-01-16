@@ -1,4 +1,4 @@
-import 'package:blind_chicken/core/utils/logging.dart';
+import 'package:blind_chicken/core_config/utils/logging.dart';
 import 'package:flutter/material.dart';
 
 class LifeCycleManager extends StatefulWidget {
@@ -18,10 +18,10 @@ class LifeCycleManager extends StatefulWidget {
   });
 
   @override
-  _LifeCycleManagerState createState() => _LifeCycleManagerState();
+  LifeCycleManagerState createState() => LifeCycleManagerState();
 }
 
-class _LifeCycleManagerState extends State<LifeCycleManager>
+class LifeCycleManagerState extends State<LifeCycleManager>
     with
         // ignore: prefer_mixin
         WidgetsBindingObserver {

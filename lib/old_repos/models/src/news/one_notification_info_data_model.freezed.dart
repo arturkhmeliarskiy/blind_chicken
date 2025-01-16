@@ -21,7 +21,9 @@ mixin _$OneNotificationInfoDataModel {
   String get errorMessage => throw _privateConstructorUsedError;
   NotificationInfoItemDataModel get data => throw _privateConstructorUsedError;
 
-  @JsonKey(ignore: true)
+  /// Create a copy of OneNotificationInfoDataModel
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   $OneNotificationInfoDataModelCopyWith<OneNotificationInfoDataModel>
       get copyWith => throw _privateConstructorUsedError;
 }
@@ -54,6 +56,8 @@ class _$OneNotificationInfoDataModelCopyWithImpl<$Res,
   // ignore: unused_field
   final $Res Function($Val) _then;
 
+  /// Create a copy of OneNotificationInfoDataModel
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -82,6 +86,8 @@ class _$OneNotificationInfoDataModelCopyWithImpl<$Res,
     ) as $Val);
   }
 
+  /// Create a copy of OneNotificationInfoDataModel
+  /// with the given fields replaced by the non-null parameter values.
   @override
   @pragma('vm:prefer-inline')
   $NotificationInfoItemDataModelCopyWith<$Res> get data {
@@ -120,6 +126,8 @@ class __$$OneNotificationInfoDataModelImplCopyWithImpl<$Res>
       $Res Function(_$OneNotificationInfoDataModelImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of OneNotificationInfoDataModel
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -188,7 +196,9 @@ class _$OneNotificationInfoDataModelImpl extends _OneNotificationInfoDataModel {
   @override
   int get hashCode => Object.hash(runtimeType, r, e, errorMessage, data);
 
-  @JsonKey(ignore: true)
+  /// Create a copy of OneNotificationInfoDataModel
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$OneNotificationInfoDataModelImplCopyWith<
@@ -215,8 +225,11 @@ abstract class _OneNotificationInfoDataModel
   String get errorMessage;
   @override
   NotificationInfoItemDataModel get data;
+
+  /// Create a copy of OneNotificationInfoDataModel
+  /// with the given fields replaced by the non-null parameter values.
   @override
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$OneNotificationInfoDataModelImplCopyWith<
           _$OneNotificationInfoDataModelImpl>
       get copyWith => throw _privateConstructorUsedError;

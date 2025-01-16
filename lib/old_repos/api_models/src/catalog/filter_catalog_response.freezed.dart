@@ -32,8 +32,12 @@ mixin _$FilterCatalogResponse {
   FilterCatalogInfoResponse? get t9 => throw _privateConstructorUsedError;
   FilterCatalogInfoResponse? get t21 => throw _privateConstructorUsedError;
 
+  /// Serializes this FilterCatalogResponse to a JSON map.
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
-  @JsonKey(ignore: true)
+
+  /// Create a copy of FilterCatalogResponse
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   $FilterCatalogResponseCopyWith<FilterCatalogResponse> get copyWith =>
       throw _privateConstructorUsedError;
 }
@@ -79,6 +83,8 @@ class _$FilterCatalogResponseCopyWithImpl<$Res,
   // ignore: unused_field
   final $Res Function($Val) _then;
 
+  /// Create a copy of FilterCatalogResponse
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -137,6 +143,8 @@ class _$FilterCatalogResponseCopyWithImpl<$Res,
     ) as $Val);
   }
 
+  /// Create a copy of FilterCatalogResponse
+  /// with the given fields replaced by the non-null parameter values.
   @override
   @pragma('vm:prefer-inline')
   $FilterCatalogInfoResponseCopyWith<$Res>? get ct {
@@ -149,6 +157,8 @@ class _$FilterCatalogResponseCopyWithImpl<$Res,
     });
   }
 
+  /// Create a copy of FilterCatalogResponse
+  /// with the given fields replaced by the non-null parameter values.
   @override
   @pragma('vm:prefer-inline')
   $FilterCatalogInfoResponseCopyWith<$Res>? get f2 {
@@ -161,6 +171,8 @@ class _$FilterCatalogResponseCopyWithImpl<$Res,
     });
   }
 
+  /// Create a copy of FilterCatalogResponse
+  /// with the given fields replaced by the non-null parameter values.
   @override
   @pragma('vm:prefer-inline')
   $FilterCatalogInfoResponseCopyWith<$Res>? get f3 {
@@ -173,6 +185,8 @@ class _$FilterCatalogResponseCopyWithImpl<$Res,
     });
   }
 
+  /// Create a copy of FilterCatalogResponse
+  /// with the given fields replaced by the non-null parameter values.
   @override
   @pragma('vm:prefer-inline')
   $FilterCatalogInfoResponseCopyWith<$Res>? get f10 {
@@ -185,6 +199,8 @@ class _$FilterCatalogResponseCopyWithImpl<$Res,
     });
   }
 
+  /// Create a copy of FilterCatalogResponse
+  /// with the given fields replaced by the non-null parameter values.
   @override
   @pragma('vm:prefer-inline')
   $FilterCatalogInfoResponseCopyWith<$Res>? get f12 {
@@ -197,6 +213,8 @@ class _$FilterCatalogResponseCopyWithImpl<$Res,
     });
   }
 
+  /// Create a copy of FilterCatalogResponse
+  /// with the given fields replaced by the non-null parameter values.
   @override
   @pragma('vm:prefer-inline')
   $FilterCatalogInfoResponseCopyWith<$Res>? get f13 {
@@ -209,6 +227,8 @@ class _$FilterCatalogResponseCopyWithImpl<$Res,
     });
   }
 
+  /// Create a copy of FilterCatalogResponse
+  /// with the given fields replaced by the non-null parameter values.
   @override
   @pragma('vm:prefer-inline')
   $FilterCatalogInfoResponseCopyWith<$Res>? get t1 {
@@ -221,6 +241,8 @@ class _$FilterCatalogResponseCopyWithImpl<$Res,
     });
   }
 
+  /// Create a copy of FilterCatalogResponse
+  /// with the given fields replaced by the non-null parameter values.
   @override
   @pragma('vm:prefer-inline')
   $FilterCatalogInfoResponseCopyWith<$Res>? get t4 {
@@ -233,6 +255,8 @@ class _$FilterCatalogResponseCopyWithImpl<$Res,
     });
   }
 
+  /// Create a copy of FilterCatalogResponse
+  /// with the given fields replaced by the non-null parameter values.
   @override
   @pragma('vm:prefer-inline')
   $FilterCatalogInfoResponseCopyWith<$Res>? get t9 {
@@ -245,6 +269,8 @@ class _$FilterCatalogResponseCopyWithImpl<$Res,
     });
   }
 
+  /// Create a copy of FilterCatalogResponse
+  /// with the given fields replaced by the non-null parameter values.
   @override
   @pragma('vm:prefer-inline')
   $FilterCatalogInfoResponseCopyWith<$Res>? get t21 {
@@ -310,6 +336,8 @@ class __$$FilterCatalogResponseImplCopyWithImpl<$Res>
       $Res Function(_$FilterCatalogResponseImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of FilterCatalogResponse
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -431,12 +459,14 @@ class _$FilterCatalogResponseImpl extends _FilterCatalogResponse {
             (identical(other.t21, t21) || other.t21 == t21));
   }
 
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   int get hashCode =>
       Object.hash(runtimeType, ct, f2, f3, f10, f12, f13, t1, t4, t9, t21);
 
-  @JsonKey(ignore: true)
+  /// Create a copy of FilterCatalogResponse
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$FilterCatalogResponseImplCopyWith<_$FilterCatalogResponseImpl>
@@ -488,8 +518,11 @@ abstract class _FilterCatalogResponse extends FilterCatalogResponse {
   FilterCatalogInfoResponse? get t9;
   @override
   FilterCatalogInfoResponse? get t21;
+
+  /// Create a copy of FilterCatalogResponse
+  /// with the given fields replaced by the non-null parameter values.
   @override
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$FilterCatalogResponseImplCopyWith<_$FilterCatalogResponseImpl>
       get copyWith => throw _privateConstructorUsedError;
 }

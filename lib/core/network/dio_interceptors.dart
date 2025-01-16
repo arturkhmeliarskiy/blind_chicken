@@ -1,13 +1,12 @@
 import 'dart:io';
 
-import 'package:blind_chicken/core/utils/language_helper.dart';
+import 'package:blind_chicken/core_config/utils/language_helper.dart';
 import 'package:device_info_plus/device_info_plus.dart';
 import 'package:dio/dio.dart';
 import 'package:package_info_plus/package_info_plus.dart';
 
 import '../../core_config/data/repositories/local/local_repository.dart';
 import '../../core_config/di/app_locator.dart';
-import '../../core_config/env.dart';
 import '../../screens/app/router/app_router.dart';
 
 class AuthenticationInterceptor extends InterceptorsWrapper {
@@ -19,7 +18,7 @@ class AuthenticationInterceptor extends InterceptorsWrapper {
 
   @override
   void onRequest(RequestOptions options, handler) async {
-    final String? accessToken = await _local.getAccessToken();
+    final String? accessToken = await _local.getToken();
 
     if (accessToken != null) {
       options.headers['Authorization'] = 'Bearer $accessToken';

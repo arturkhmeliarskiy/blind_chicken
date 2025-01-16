@@ -24,7 +24,9 @@ mixin _$BadgeOperationInfoDataModel {
   int get notice => throw _privateConstructorUsedError;
   int get total => throw _privateConstructorUsedError;
 
-  @JsonKey(ignore: true)
+  /// Create a copy of BadgeOperationInfoDataModel
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   $BadgeOperationInfoDataModelCopyWith<BadgeOperationInfoDataModel>
       get copyWith => throw _privateConstructorUsedError;
 }
@@ -58,6 +60,8 @@ class _$BadgeOperationInfoDataModelCopyWithImpl<$Res,
   // ignore: unused_field
   final $Res Function($Val) _then;
 
+  /// Create a copy of BadgeOperationInfoDataModel
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -131,6 +135,8 @@ class __$$BadgeOperationInfoDataModelImplCopyWithImpl<$Res>
       $Res Function(_$BadgeOperationInfoDataModelImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of BadgeOperationInfoDataModel
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -227,7 +233,9 @@ class _$BadgeOperationInfoDataModelImpl extends _BadgeOperationInfoDataModel {
   int get hashCode =>
       Object.hash(runtimeType, r, e, errorMessage, news, media, notice, total);
 
-  @JsonKey(ignore: true)
+  /// Create a copy of BadgeOperationInfoDataModel
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$BadgeOperationInfoDataModelImplCopyWith<_$BadgeOperationInfoDataModelImpl>
@@ -261,8 +269,11 @@ abstract class _BadgeOperationInfoDataModel
   int get notice;
   @override
   int get total;
+
+  /// Create a copy of BadgeOperationInfoDataModel
+  /// with the given fields replaced by the non-null parameter values.
   @override
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$BadgeOperationInfoDataModelImplCopyWith<_$BadgeOperationInfoDataModelImpl>
       get copyWith => throw _privateConstructorUsedError;
 }

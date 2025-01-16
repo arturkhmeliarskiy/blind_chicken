@@ -24,8 +24,12 @@ mixin _$CatalogBreadcrumbResponse {
   String? get name => throw _privateConstructorUsedError;
   String? get value => throw _privateConstructorUsedError;
 
+  /// Serializes this CatalogBreadcrumbResponse to a JSON map.
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
-  @JsonKey(ignore: true)
+
+  /// Create a copy of CatalogBreadcrumbResponse
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   $CatalogBreadcrumbResponseCopyWith<CatalogBreadcrumbResponse> get copyWith =>
       throw _privateConstructorUsedError;
 }
@@ -50,6 +54,8 @@ class _$CatalogBreadcrumbResponseCopyWithImpl<$Res,
   // ignore: unused_field
   final $Res Function($Val) _then;
 
+  /// Create a copy of CatalogBreadcrumbResponse
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -91,6 +97,8 @@ class __$$CatalogBreadcrumbResponseImplCopyWithImpl<$Res>
       $Res Function(_$CatalogBreadcrumbResponseImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of CatalogBreadcrumbResponse
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -137,11 +145,13 @@ class _$CatalogBreadcrumbResponseImpl extends _CatalogBreadcrumbResponse {
             (identical(other.value, value) || other.value == value));
   }
 
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   int get hashCode => Object.hash(runtimeType, name, value);
 
-  @JsonKey(ignore: true)
+  /// Create a copy of CatalogBreadcrumbResponse
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$CatalogBreadcrumbResponseImplCopyWith<_$CatalogBreadcrumbResponseImpl>
@@ -169,8 +179,11 @@ abstract class _CatalogBreadcrumbResponse extends CatalogBreadcrumbResponse {
   String? get name;
   @override
   String? get value;
+
+  /// Create a copy of CatalogBreadcrumbResponse
+  /// with the given fields replaced by the non-null parameter values.
   @override
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$CatalogBreadcrumbResponseImplCopyWith<_$CatalogBreadcrumbResponseImpl>
       get copyWith => throw _privateConstructorUsedError;
 }

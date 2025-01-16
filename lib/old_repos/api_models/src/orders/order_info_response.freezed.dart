@@ -50,8 +50,12 @@ mixin _$OrderInfoResponse {
   @JsonKey(name: 'gift_card')
   OrderGiftCardResponse? get giftCard => throw _privateConstructorUsedError;
 
+  /// Serializes this OrderInfoResponse to a JSON map.
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
-  @JsonKey(ignore: true)
+
+  /// Create a copy of OrderInfoResponse
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   $OrderInfoResponseCopyWith<OrderInfoResponse> get copyWith =>
       throw _privateConstructorUsedError;
 }
@@ -97,6 +101,8 @@ class _$OrderInfoResponseCopyWithImpl<$Res, $Val extends OrderInfoResponse>
   // ignore: unused_field
   final $Res Function($Val) _then;
 
+  /// Create a copy of OrderInfoResponse
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -190,6 +196,8 @@ class _$OrderInfoResponseCopyWithImpl<$Res, $Val extends OrderInfoResponse>
     ) as $Val);
   }
 
+  /// Create a copy of OrderInfoResponse
+  /// with the given fields replaced by the non-null parameter values.
   @override
   @pragma('vm:prefer-inline')
   $OrderPromoResponseCopyWith<$Res>? get promo {
@@ -202,6 +210,8 @@ class _$OrderInfoResponseCopyWithImpl<$Res, $Val extends OrderInfoResponse>
     });
   }
 
+  /// Create a copy of OrderInfoResponse
+  /// with the given fields replaced by the non-null parameter values.
   @override
   @pragma('vm:prefer-inline')
   $OrderDeliveryResponseCopyWith<$Res>? get delivery {
@@ -214,6 +224,8 @@ class _$OrderInfoResponseCopyWithImpl<$Res, $Val extends OrderInfoResponse>
     });
   }
 
+  /// Create a copy of OrderInfoResponse
+  /// with the given fields replaced by the non-null parameter values.
   @override
   @pragma('vm:prefer-inline')
   $OrderGiftCardResponseCopyWith<$Res>? get giftCard {
@@ -271,6 +283,8 @@ class __$$OrderInfoResponseImplCopyWithImpl<$Res>
       $Res Function(_$OrderInfoResponseImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of OrderInfoResponse
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -495,7 +509,7 @@ class _$OrderInfoResponseImpl extends _OrderInfoResponse {
                 other.giftCard == giftCard));
   }
 
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   int get hashCode => Object.hash(
       runtimeType,
@@ -517,7 +531,9 @@ class _$OrderInfoResponseImpl extends _OrderInfoResponse {
       const DeepCollectionEquality().hash(_products),
       giftCard);
 
-  @JsonKey(ignore: true)
+  /// Create a copy of OrderInfoResponse
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$OrderInfoResponseImplCopyWith<_$OrderInfoResponseImpl> get copyWith =>
@@ -602,8 +618,11 @@ abstract class _OrderInfoResponse extends OrderInfoResponse {
   @override
   @JsonKey(name: 'gift_card')
   OrderGiftCardResponse? get giftCard;
+
+  /// Create a copy of OrderInfoResponse
+  /// with the given fields replaced by the non-null parameter values.
   @override
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$OrderInfoResponseImplCopyWith<_$OrderInfoResponseImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }
