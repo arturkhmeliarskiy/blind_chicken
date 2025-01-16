@@ -1,13 +1,15 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android">
-    <uses-permission android:name="android.permission.INTERNET" />
-    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION"/>
-    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION"/>
-    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE"/>
-    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE"/>
-    <uses-permission android:name="android.permission.READ_PHONE_STATE"/>
 
-    <uses-permission android:name="android.permission.VIBRATE"/>
-    <uses-permission android:name="android.permission.RECEIVE_BOOT_COMPLETED"/>
+    <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
+    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.READ_PHONE_STATE" />
+
+
+    <uses-permission android:name="android.permission.VIBRATE" />
+    <uses-permission android:name="android.permission.RECEIVE_BOOT_COMPLETED" />
 
     <!-- Provide required visibility configuration for API level 30 and above -->
     <queries>
@@ -27,44 +29,50 @@
         </intent>
     </queries>
     <application
-        android:label="Слепая курица"
         android:name=".MainApplication"
-        android:icon="@mipmap/ic_launcher">
+        android:icon="@mipmap/ic_launcher"
+        android:label="Слепая курица">
         <activity
             android:name=".MainActivity"
+            android:configChanges="orientation|keyboardHidden|keyboard|screenSize|smallestScreenSize|locale|layoutDirection|fontScale|screenLayout|density|uiMode"
             android:exported="true"
+            android:hardwareAccelerated="true"
             android:launchMode="singleTop"
             android:theme="@style/LaunchTheme"
-            android:configChanges="orientation|keyboardHidden|keyboard|screenSize|smallestScreenSize|locale|layoutDirection|fontScale|screenLayout|density|uiMode"
-            android:hardwareAccelerated="true"
             android:windowSoftInputMode="adjustResize">
             <!-- Specifies an Android theme to apply to this Activity as soon as
                  the Android process has started. This theme is visible to the user
                  while the Flutter UI initializes. After that, this theme continues
                  to determine the Window background behind the Flutter UI. -->
             <meta-data
-              android:name="io.flutter.embedding.android.NormalTheme"
-              android:resource="@style/NormalTheme"
-              />
+                android:name="io.flutter.embedding.android.NormalTheme"
+                android:resource="@style/NormalTheme" />
             <meta-data
-             android:name="io.flutter.embedding.android.SplashScreenDrawable"
-             android:resource="@drawable/launch_background"
-             />
-            <meta-data android:name="flutter_deeplinking_enabled" android:value="true" />
+                android:name="io.flutter.embedding.android.SplashScreenDrawable"
+                android:resource="@drawable/launch_background" />
+            <meta-data
+                android:name="flutter_deeplinking_enabled"
+                android:value="true" />
+
             <intent-filter android:autoVerify="true">
                 <action android:name="android.intent.action.VIEW" />
+
                 <category android:name="android.intent.category.DEFAULT" />
                 <category android:name="android.intent.category.BROWSABLE" />
-                <data android:scheme="http" android:host="slepayakurica.ru" android:pathPattern="/product/.*"/>
+
+                <data
+                    android:host="slepayakurica.ru"
+                    android:pathPattern="/product/.*"
+                    android:scheme="http" />
                 <data android:scheme="https" />
             </intent-filter>
             <intent-filter>
-                <action android:name="android.intent.action.MAIN"/>
-                <category android:name="android.intent.category.LAUNCHER"/>
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
             <intent-filter>
                 <!-- Receive silent push notifications -->
-                <action android:name="com.slepayakurica.app.action.ymp.SILENT_PUSH_RECEIVE"/>
+                <action android:name="com.slepayakurica.app.action.ymp.SILENT_PUSH_RECEIVE" />
             </intent-filter>
         </activity>
         <!-- Don't delete the meta-data below.
@@ -72,9 +80,17 @@
         <meta-data
             android:name="flutterEmbedding"
             android:value="2" />
-        <meta-data android:name="ymp_firebase_default_app_id" android:value="1:1085146611593:android:18880eab0fb8784ad56b58"/>
-        <meta-data android:name="ymp_gcm_default_sender_id" android:value="number:1085146611593"/>
-        <meta-data android:name="ymp_firebase_default_api_key" android:value="AIzaSyCIgCCJNbiCYSS4kcT7iIxHIjO7yi80Sww"/>
-        <meta-data android:name="ymp_firebase_default_project_id" android:value="blind-chicken-17561"/>
+        <meta-data
+            android:name="ymp_firebase_default_app_id"
+            android:value="1:1085146611593:android:18880eab0fb8784ad56b58" />
+        <meta-data
+            android:name="ymp_gcm_default_sender_id"
+            android:value="number:1085146611593" />
+        <meta-data
+            android:name="ymp_firebase_default_api_key"
+            android:value="AIzaSyCIgCCJNbiCYSS4kcT7iIxHIjO7yi80Sww" />
+        <meta-data
+            android:name="ymp_firebase_default_project_id"
+            android:value="blind-chicken-17561" />
     </application>
 </manifest>
