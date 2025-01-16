@@ -4,6 +4,7 @@ import 'package:appmetrica_plugin/appmetrica_plugin.dart';
 import 'package:appmetrica_push_plugin/appmetrica_push_plugin.dart';
 import 'package:blind_chicken/app.dart';
 import 'package:blind_chicken/bootstraper.dart';
+import 'package:blind_chicken/core_config/di/app_locator.dart';
 import 'package:blind_chicken/core_config/utils/logging.dart';
 import 'package:blind_chicken/old_repos/repositories/src/error_analyzer/error_analyzer_repository.dart';
 import 'package:firebase_core/firebase_core.dart';
@@ -18,20 +19,26 @@ AppMetricaConfig get _config => const AppMetricaConfig(
     );
 
 Future<void> main() async {
-  WidgetsFlutterBinding.ensureInitialized();
-
   AppMetrica.runZoneGuarded(() async {
+
+    WidgetsFlutterBinding.ensureInitialized();
+    print('main2');
+    await Locator.initBeforeAppLaunch();
+    print('main3');
     SystemChrome.setPreferredOrientations([
       DeviceOrientation.portraitUp,
     ]);
-
-    await initializeDefaultFirebase();
+    print('main4');
+    //await initializeDefaultFirebase();
+    print('main5');
 
     await AppMetrica.activate(_config);
     await AppMetricaPush.activate();
+    print('main6');
 
     await setupIoc();
 
+    print('main7');
     FlutterError.onError = (details) async {
       FlutterError.presentError(details);
       await sendError(
@@ -42,7 +49,7 @@ Future<void> main() async {
       logging('Error ${details.exception.toString()}', stackTrace: StackTrace.current);
       logging('Relevant ${details.exceptionAsString()}', stackTrace: StackTrace.current);
     };
-
+    print('main8');
     PlatformDispatcher.instance.onError = (error, stack) {
       sendError(
         exception: error.toString(),

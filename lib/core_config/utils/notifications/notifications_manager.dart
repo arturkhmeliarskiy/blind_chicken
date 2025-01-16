@@ -25,15 +25,27 @@ class NotificationsManager {
   static const String channelKey = 'high_importance_channel';
   static const String channelName = 'ic_stat_app_logo_on_a_dark_4';
 
+  Future<void> initFirebase() async {
+    await Firebase.initializeApp(
+      options: const FirebaseOptions(
+        apiKey: 'AIzaSyCIgCCJNbiCYSS4kcT7iIxHIjO7yi80Sww',
+        appId: '1:1085146611593:android:18880eab0fb8784ad56b58',
+        messagingSenderId: '1085146611593',
+        projectId: 'blind-chicken-17561',
+        storageBucket: 'blind-chicken-17561.appspot.com',
+      ),
+    );
+    await FirebaseMessaging.instance.requestPermission();
+  }
+
   Future<void> initSDK() async {
     late AndroidNotificationChannel channel;
     late FlutterLocalNotificationsPlugin flutterLocalNotificationsPlugin;
 
-    await Firebase.initializeApp(
-      //todo important!!! options: DefaultFirebaseOptions.currentPlatform,
-    );
+    //await Firebase.initializeApp(
+    //  //todo important!!! options: DefaultFirebaseOptions.currentPlatform,
+    //);
 
-    await FirebaseMessaging.instance.requestPermission();
 
     // FirebaseMessaging.instance.getToken().then((token) {
     //   print('device token is $token');

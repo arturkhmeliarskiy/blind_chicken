@@ -33,17 +33,17 @@ dependencies:
   flutter_localization: ^0.2.3
 
   #https://pub.dev/packages/auto_route
-  auto_route: ^9.3.0+1
+  auto_route: ^9.2.2
   #https://pub.dev/packages/cached_network_image
   cached_network_image: ^3.4.1
   #https://pub.dev/packages/cupertino_icons
   cupertino_icons: ^1.0.8
   #https://pub.dev/packages/get_it
-  get_it: ^8.0.3
+  get_it: ^7.1.4
   #https://pub.dev/packages/flutter_bloc
   flutter_bloc: ^8.1.6
   #https://pub.dev/packages/flutter_svg
-  flutter_svg: ^2.0.17
+  flutter_svg: ^2.0.10+1
   #https://pub.dev/packages/mask_text_input_formatter
   mask_text_input_formatter: ^2.9.0
 
@@ -58,14 +58,14 @@ dependencies:
   #https://pub.dev/packages/yandex_mapkit
   yandex_mapkit: ^4.1.0
   #https://pub.dev/packages/equatable
-  equatable: ^2.0.7
+  equatable: ^2.0.5
   #https://pub.dev/packages/permission_handler
   permission_handler: ^11.3.1
   #https://pub.dev/packages/internet_connection_checker_plus
   internet_connection_checker_plus: ^2.7.0
 
   #https://pub.dev/packages/share_plus
-  share_plus: ^10.1.3
+  share_plus: ^10.1.0
   #https://pub.dev/packages/app_links
   app_links: ^6.3.3
   #https://pub.dev/packages/zoom_widget
@@ -73,9 +73,9 @@ dependencies:
 
 
   #https://pub.dev/packages/firebase_core
-  firebase_core: ^3.9.0
+  firebase_core: ^3.0.0
   #https://pub.dev/packages/firebase_messaging
-  firebase_messaging: ^15.1.6
+  firebase_messaging: ^15.1.3
 
 
   #https://pub.dev/packages/video_player
@@ -95,7 +95,7 @@ dependencies:
   #https://pub.dev/packages/url_launcher
   url_launcher: ^6.3.1
   #https://pub.dev/packages/package_info_plus
-  package_info_plus: ^8.1.2
+  package_info_plus: ^8.1.0
   #https://pub.dev/packages/in_app_update
   in_app_update: ^4.2.3
   #https://pub.dev/packages/flutter_upgrade_version
@@ -121,29 +121,38 @@ dependencies:
   #https://pub.dev/packages/shimmer
   shimmer: ^3.0.0
   freezed: ^2.5.7
-  freezed_annotation: ^2.4.4
-  shared_preferences: ^2.3.5
+  freezed_annotation: any
+
+  shared_preferences: ^2.3.2
   qr_flutter: ^4.1.0
   dio: ^5.7.0
   geolocator: ^13.0.2
   hive: ^2.2.3
   device_info_plus: ^10.1.2
-  internet_connection_checker: ^3.0.1
+  internet_connection_checker: ^1.0.0+1
   dartz: ^0.10.1
-  flex_color_scheme: ^8.0.2
-  flutter_secure_storage: ^4.2.1
+  flex_color_scheme: ^7.3.1
+  flutter_secure_storage: ^9.2.2
   image_picker: ^1.1.2
-  modal_bottom_sheet: ^3.0.0
+
+
+  modal_bottom_sheet:
+    git:
+      url: https://github.com/agym-co/modal_bottom_sheet.git
+      ref: fix-status-bar-color-in-cupertino-modal-bottom-sheet-route
+      path: modal_bottom_sheet
+
+
   flutter_json: ^0.0.4
   multi_long_press_gesture_recognizer: ^0.0.2
   split_view: ^3.2.1
-  flutter_local_notifications: ^18.0.1
+  flutter_local_notifications: ^17.2.3
   linkify: ^5.0.0
   auto_size_text: ^3.0.0
   flutter_scale_tap: ^1.0.5
-  animated_toggle_switch: ^0.8.4
-  jiffy: ^6.3.2
-  fluttertoast: ^8.2.10
+  animated_toggle_switch: ^0.8.3
+  jiffy: ^6.3.1
+  fluttertoast: ^8.2.8
   json_annotation: ^4.9.0
   hive_generator: ^2.0.1
   firebase_analytics: ^11.4.0
@@ -161,7 +170,7 @@ dev_dependencies:
   #https://pub.dev/packages/flutter_gen_runner
   flutter_gen_runner: ^5.8.0
   analyzer: ^6.2.0
-  json_serializable: ^6.9.0
+  json_serializable: ^6.8.0
 
 # For information on the generic Dart part of this file, see the
 # following page: https://dart.dev/tools/pub/pubspec

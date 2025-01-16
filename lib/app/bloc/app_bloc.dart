@@ -42,7 +42,7 @@ class AppBloc extends Bloc<AppEvent, AppState> {
     //emit(
     //  state.copyWith(locale: Locale(LanguageHelper.getCurrentLocale())),
     //);
-    await LanguageHelper.setLocaleToDefault();
+    //await LanguageHelper.setLocaleToDefault();
   }
 
   FutureOr<void> _appLifecycleStateChanged(
