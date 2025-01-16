@@ -14,7 +14,7 @@ class DateInfo {
     String result = '';
 
     if (dateToCheck == today) {
-      result = 'сегодня в $hour:$minute';
+      result = '$hour:$minute';
     } else if (dateToCheck == yesterday) {
       result = 'вчера в $hour:$minute';
     } else {

@@ -1,5 +1,5 @@
 import 'dart:async';
-import 'dart:io';
+import 'dart:developer';
 
 import 'package:appmetrica_plugin/appmetrica_plugin.dart';
 import 'package:appmetrica_push_plugin/appmetrica_push_plugin.dart';
@@ -7,11 +7,13 @@ import 'package:blind_chicken/app.dart';
 import 'package:blind_chicken/bootstraper.dart';
 import 'package:blind_chicken/old_repos/repositories/src/error_analyzer/error_analyzer_repository.dart';
 import 'package:blind_chicken/utils/logging.dart';
+import 'package:device_info_plus/device_info_plus.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:get_it/get_it.dart';
+import 'package:package_info_plus/package_info_plus.dart';
 
 AppMetricaConfig get _config => const AppMetricaConfig(
       '0f36d6f0-0774-4cf2-ad27-20b0289ddcf1',
@@ -24,8 +26,11 @@ Future<void> main() async {
     SystemChrome.setPreferredOrientations([
       DeviceOrientation.portraitUp,
     ]);
-    AppMetrica.activate(_config);
-    AppMetricaPush.activate();
+
+    await initializeDefault();
+
+    await AppMetrica.activate(_config);
+    await AppMetricaPush.activate();
 
     await setupIoc();
 
@@ -50,9 +55,6 @@ Future<void> main() async {
     };
 
     runApp(const App());
-    if (Platform.isAndroid) {
-      await initializeDefault();
-    }
   });
 }
 
