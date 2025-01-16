@@ -60,10 +60,8 @@ class _CatalogScreenState extends State<CatalogScreen> {
   final constants = ConstatntsInfo();
   BlindChickenMessage message = BlindChickenMessage();
   final ScrollController _scrollController = ScrollController();
-  final BlindChickenShowDialogError _blindChickenCatalogProductShowDialogError =
-      BlindChickenShowDialogError();
-  final BlindChickenShowDialogError _blindChickenShoppingCartShowDialogError =
-      BlindChickenShowDialogError();
+  final BlindChickenShowDialogError _blindChickenCatalogProductShowDialogError = BlindChickenShowDialogError();
+  final BlindChickenShowDialogError _blindChickenShoppingCartShowDialogError = BlindChickenShowDialogError();
   bool _isShowDialogCatalogError = false;
   bool _isShowDialogShoppingCartError = false;
   double _paginationPosition = 0.0;
@@ -104,8 +102,7 @@ class _CatalogScreenState extends State<CatalogScreen> {
     _scrollController.jumpTo(_historyPosition);
     final updateData = GetIt.I.get<UpdateDataService>();
 
-    if (updateData.lastScreen == 'shopping_cart' &&
-        !updateData.isOpenShowModalBottomSheetCatalogScreen) {
+    if (updateData.lastScreen == 'shopping_cart' && !updateData.isOpenShowModalBottomSheetCatalogScreen) {
       context.read<CatalogBloc>().add(
             const CatalogEvent.updateInfoProducts(
               titleScreen: 'Каталог',
@@ -119,17 +116,14 @@ class _CatalogScreenState extends State<CatalogScreen> {
   void _loadMoreData() {
     context.read<CatalogBloc>().add(
           CatalogEvent.checkButtonTop(
-            isButtonTop: _historyPosition > _scrollController.position.pixels &&
-                _scrollController.position.pixels > 0,
+            isButtonTop: _historyPosition > _scrollController.position.pixels && _scrollController.position.pixels > 0,
           ),
         );
 
-    bool isActive = (_scrollController.position.maxScrollExtent - 2500).toInt() >
-            _paginationPosition.toInt() &&
+    bool isActive = (_scrollController.position.maxScrollExtent - 2500).toInt() > _paginationPosition.toInt() &&
         (_scrollController.position.maxScrollExtent - 2500).toInt() != _paginationPosition.toInt();
     //load more data
-    if ((_scrollController.offset > _scrollController.position.maxScrollExtent * _boundaryOffset) &&
-        isActive) {
+    if ((_scrollController.offset > _scrollController.position.maxScrollExtent * _boundaryOffset) && isActive) {
       _paginationPosition = _scrollController.position.maxScrollExtent - 2500;
       _currentPage++;
       _boundaryOffset = 1 - 1 / (_currentPage * 2);
@@ -293,12 +287,9 @@ class _CatalogScreenState extends State<CatalogScreen> {
                 }
                 BlindChickenMessage().showOverlay(context, 'Доступно обновление приложения', () {
                   if (Platform.isAndroid || Platform.isIOS) {
-                    final appId =
-                        Platform.isAndroid ? 'YOUR_ANDROID_PACKAGE_ID' : 'com.slepayakurica.app';
+                    final appId = Platform.isAndroid ? 'YOUR_ANDROID_PACKAGE_ID' : 'com.slepayakurica.app';
                     final url = Uri.parse(
-                      Platform.isAndroid
-                          ? "market://details?id=$appId"
-                          : "https://apps.apple.com/ru/app/id6471508431",
+                      Platform.isAndroid ? "market://details?id=$appId" : "https://apps.apple.com/ru/app/id6471508431",
                     );
                     launchUrl(
                       url,
@@ -355,9 +346,9 @@ class _CatalogScreenState extends State<CatalogScreen> {
                       Timer(const Duration(milliseconds: 150), () {
                         context.read<ShoppingCartBloc>().add(const ShoppingCartEvent.preloadData());
                       });
-                      context.read<CatalogBloc>().add(
-                          const CatalogEvent.checkOpenGetInfoProductSize(
-                              isOpenGetSizeProduct: true));
+                      context
+                          .read<CatalogBloc>()
+                          .add(const CatalogEvent.checkOpenGetInfoProductSize(isOpenGetSizeProduct: true));
                       context.navigateTo(
                         const ShoppingCartAutoRouterRoute(
                           children: [
@@ -397,9 +388,7 @@ class _CatalogScreenState extends State<CatalogScreen> {
                         () {
                           updateData.lastScreen = 'shopping_cart';
                           Timer(const Duration(milliseconds: 150), () {
-                            context
-                                .read<ShoppingCartBloc>()
-                                .add(const ShoppingCartEvent.preloadData());
+                            context.read<ShoppingCartBloc>().add(const ShoppingCartEvent.preloadData());
                           });
                           context.navigateTo(
                             const ShoppingCartAutoRouterRoute(
@@ -493,9 +482,7 @@ class _CatalogScreenState extends State<CatalogScreen> {
         listener: (context, state) {
           state.maybeMap(
             error: (value) {
-              if (!_isShowDialogShoppingCartError &&
-                  !_isShowDialogCatalogError &&
-                  value.titleScreen == 'Каталог') {
+              if (!_isShowDialogShoppingCartError && !_isShowDialogCatalogError && value.titleScreen == 'Каталог') {
                 _isShowDialogShoppingCartError = true;
                 _blindChickenShoppingCartShowDialogError.openShowDualog(
                   context: context,
@@ -533,8 +520,7 @@ class _CatalogScreenState extends State<CatalogScreen> {
                           ShoppingCartEvent.addOtherProductToSoppingCart(
                             item: BasketInfoItemDataModel(
                               titleScreen: value.item?.titleScreen ?? '',
-                              typeAddProductToShoppingCart:
-                                  value.item?.typeAddProductToShoppingCart ?? '',
+                              typeAddProductToShoppingCart: value.item?.typeAddProductToShoppingCart ?? '',
                               searchQuery: '',
                               identifierAddProductToShoppingCart: '2',
                               sectionCategoriesPath: value.item?.sectionCategoriesPath ?? [],
@@ -586,9 +572,7 @@ class _CatalogScreenState extends State<CatalogScreen> {
                             },
                             child: ListView(
                               controller: _scrollController,
-                              physics: _isScroll
-                                  ? const BouncingScrollPhysics()
-                                  : NeverScrollableScrollPhysics(),
+                              physics: _isScroll ? const BouncingScrollPhysics() : NeverScrollableScrollPhysics(),
                               children: [
                                 const AppBarBlindChicken(),
                                 BlocBuilder<CatalogBloc, CatalogState>(builder: (context, state) {
@@ -605,9 +589,7 @@ class _CatalogScreenState extends State<CatalogScreen> {
                                             onBack();
                                           }
                                           if (_isSwipe && !value) {
-                                            context
-                                                .read<CatalogBloc>()
-                                                .add(const CatalogEvent.goBackCatalogInfo());
+                                            context.read<CatalogBloc>().add(const CatalogEvent.goBackCatalogInfo());
                                             if (initState.listCatalogPath.isEmpty ||
                                                 initState.listCatalogPath.length == 1) {
                                               if (widget.lastPath.isNotEmpty) {
@@ -620,8 +602,7 @@ class _CatalogScreenState extends State<CatalogScreen> {
                                                     ]),
                                                   );
                                                   AppMetrica.reportEvent('Список новостей');
-                                                } else if (widget.lastPath ==
-                                                    'news_info_description') {
+                                                } else if (widget.lastPath == 'news_info_description') {
                                                   final newsInfo = widget.newsInfo;
                                                   if (newsInfo != null) {
                                                     context.navigateTo(
@@ -631,8 +612,7 @@ class _CatalogScreenState extends State<CatalogScreen> {
                                                     );
                                                     AppMetrica.reportEvent('Страница новостей');
                                                   }
-                                                } else if (widget.lastPath ==
-                                                    'media_info_description') {
+                                                } else if (widget.lastPath == 'media_info_description') {
                                                   final newsMediaInfo = widget.newsMediaInfo;
                                                   if (newsMediaInfo != null) {
                                                     context.navigateTo(
@@ -641,10 +621,8 @@ class _CatalogScreenState extends State<CatalogScreen> {
                                                       ),
                                                     );
                                                   }
-                                                } else if (widget.lastPath ==
-                                                    'notfication_info_description') {
-                                                  final newsNotificationInfo =
-                                                      widget.newsNotificationInfo;
+                                                } else if (widget.lastPath == 'notfication_info_description') {
+                                                  final newsNotificationInfo = widget.newsNotificationInfo;
                                                   if (newsNotificationInfo != null) {
                                                     context.navigateTo(
                                                       NotificationInfoDescriptionRoute(
@@ -652,8 +630,7 @@ class _CatalogScreenState extends State<CatalogScreen> {
                                                       ),
                                                     );
                                                   }
-                                                } else if (widget.lastPath ==
-                                                    'media_notiifcation_description') {
+                                                } else if (widget.lastPath == 'media_notiifcation_description') {
                                                   context.navigateTo(
                                                     MediaNotificationDescriptionRoute(
                                                       idNews: widget.idNews ?? '',
@@ -661,8 +638,7 @@ class _CatalogScreenState extends State<CatalogScreen> {
                                                       messageId: widget.messageId,
                                                     ),
                                                   );
-                                                } else if (widget.lastPath ==
-                                                    'news_notification_description') {
+                                                } else if (widget.lastPath == 'news_notification_description') {
                                                   context.navigateTo(
                                                     NewsNotificationDescriptionRoute(
                                                       idNews: widget.idNews ?? '',
@@ -699,12 +675,10 @@ class _CatalogScreenState extends State<CatalogScreen> {
                                               children: List.generate(
                                                 initState.products.length,
                                                 (index) {
-                                                  final codeProduct =
-                                                      (initState.codeProduct?.isNotEmpty ?? false)
-                                                          ? int.parse(initState.codeProduct ?? '0')
-                                                          : '';
-                                                  if (initState.products[index].title ==
-                                                      'proverka_zreniya') {
+                                                  final codeProduct = (initState.codeProduct?.isNotEmpty ?? false)
+                                                      ? int.parse(initState.codeProduct ?? '0')
+                                                      : '';
+                                                  if (initState.products[index].title == 'proverka_zreniya') {
                                                     return const CatalogCardProverkaZreniya();
                                                   } else {
                                                     return Listener(
@@ -750,66 +724,49 @@ class _CatalogScreenState extends State<CatalogScreen> {
                                                         onAddFavouriteProduct: () {
                                                           context.read<CatalogBloc>().add(
                                                                 CatalogEvent.addFavouriteProduct(
-                                                                  index:
-                                                                      initState.products[index].id,
-                                                                  product:
-                                                                      initState.products[index],
+                                                                  index: initState.products[index].id,
+                                                                  product: initState.products[index],
                                                                 ),
                                                               );
                                                         },
                                                         onDeleteFavouriteProduct: () {
                                                           context.read<CatalogBloc>().add(
                                                                 CatalogEvent.deleteFavouriteProduct(
-                                                                  index:
-                                                                      initState.products[index].id,
+                                                                  index: initState.products[index].id,
                                                                 ),
                                                               );
                                                         },
                                                         onSelect: () {
                                                           context.read<CatalogBloc>().add(
                                                                 CatalogEvent.getInfoProduct(
-                                                                  code: initState.products[index].id
-                                                                      .toString(),
-                                                                  titleScreen:
-                                                                      'Карточка тоавара в каталоге',
-                                                                  typeAddProductToShoppingCart:
-                                                                      'Карточка товара',
-                                                                  identifierAddProductToShoppingCart:
-                                                                      '1',
+                                                                  code: initState.products[index].id.toString(),
+                                                                  titleScreen: 'Карточка тоавара в каталоге',
+                                                                  typeAddProductToShoppingCart: 'Карточка товара',
+                                                                  identifierAddProductToShoppingCart: '1',
                                                                 ),
                                                               );
                                                           context.navigateTo(
                                                             CatalogCardInfoRoute(
                                                               item: initState.products[index],
                                                               isLike: initState.favouritesProductsId
-                                                                  .contains(
-                                                                      initState.products[index].id),
+                                                                  .contains(initState.products[index].id),
                                                               listItems: initState.products,
-                                                              favouritesProducts:
-                                                                  initState.favouritesProducts,
+                                                              favouritesProducts: initState.favouritesProducts,
                                                               isChildRoute: false,
                                                             ),
                                                           );
                                                         },
-                                                        yourPrice: initState
-                                                            .products[index].yourPrice
-                                                            .toString(),
-                                                        imageUrl:
-                                                            initState.products[index].images[0],
+                                                        yourPrice: initState.products[index].yourPrice.toString(),
+                                                        imageUrl: initState.products[index].images[0],
                                                         brend: initState.products[index].brend,
-                                                        category:
-                                                            initState.products[index].category,
-                                                        price: initState.products[index].price
-                                                            .toString(),
-                                                        isYourPriceDisplayed: initState
-                                                            .products[index].isYourPriceDisplayed,
-                                                        maximumCashback: initState
-                                                            .products[index].maximumCashback,
-                                                        discount:
-                                                            initState.products[index].discount,
-                                                        maximumPersonalDiscount: initState
-                                                            .products[index]
-                                                            .maximumPersonalDiscount,
+                                                        category: initState.products[index].category,
+                                                        price: initState.products[index].price.toString(),
+                                                        isYourPriceDisplayed:
+                                                            initState.products[index].isYourPriceDisplayed,
+                                                        maximumCashback: initState.products[index].maximumCashback,
+                                                        discount: initState.products[index].discount,
+                                                        maximumPersonalDiscount:
+                                                            initState.products[index].maximumPersonalDiscount,
                                                         isAuth: initState.isAuth,
                                                         userDiscount: initState.userDiscount,
                                                         pb: initState.products[index].pb,
@@ -817,33 +774,27 @@ class _CatalogScreenState extends State<CatalogScreen> {
                                                         onAddProductToSoppingCart: () {
                                                           context.read<CatalogBloc>().add(
                                                                 CatalogEvent.getInfoProductSize(
-                                                                  code: initState.products[index].id
-                                                                      .toString(),
-                                                                  isShop: initState
-                                                                      .products[index].isShop,
+                                                                  code: initState.products[index].id.toString(),
+                                                                  isShop: initState.products[index].isShop,
                                                                   titleScreen: 'Каталог',
                                                                 ),
                                                               );
                                                         },
                                                         listSize: initState.listSize,
-                                                        isLoad: codeProduct ==
-                                                                initState.products[index].id &&
+                                                        isLoad: codeProduct == initState.products[index].id &&
                                                             initState.isLoadGetSizeProduct,
                                                         sizeProduct: initState.products[index].sz,
                                                         promo: initState.products[index].promo,
-                                                        promoValue:
-                                                            initState.products[index].promoValue,
+                                                        promoValue: initState.products[index].promoValue,
                                                         images: initState.products[index].images,
                                                         video: initState.products[index].video,
                                                         goSwipeBack: () {
                                                           if (index.isEven) {
                                                             context.read<CatalogBloc>().add(
-                                                                  const CatalogEvent
-                                                                      .goBackCatalogInfo(),
+                                                                  const CatalogEvent.goBackCatalogInfo(),
                                                                 );
                                                             if (initState.listCatalogPath.isEmpty ||
-                                                                initState.listCatalogPath.length ==
-                                                                    1) {
+                                                                initState.listCatalogPath.length == 1) {
                                                               if (widget.lastPath.isNotEmpty) {
                                                                 if (widget.lastPath == 'news') {
                                                                   context.navigateTo(
@@ -853,10 +804,8 @@ class _CatalogScreenState extends State<CatalogScreen> {
                                                                       ),
                                                                     ]),
                                                                   );
-                                                                  AppMetrica.reportEvent(
-                                                                      'Список новостей');
-                                                                } else if (widget.lastPath ==
-                                                                    'news_info_description') {
+                                                                  AppMetrica.reportEvent('Список новостей');
+                                                                } else if (widget.lastPath == 'news_info_description') {
                                                                   final newsInfo = widget.newsInfo;
                                                                   if (newsInfo != null) {
                                                                     context.navigateTo(
@@ -864,13 +813,11 @@ class _CatalogScreenState extends State<CatalogScreen> {
                                                                         info: newsInfo,
                                                                       ),
                                                                     );
-                                                                    AppMetrica.reportEvent(
-                                                                        'Страница новостей');
+                                                                    AppMetrica.reportEvent('Страница новостей');
                                                                   }
                                                                 } else if (widget.lastPath ==
                                                                     'media_info_description') {
-                                                                  final newsMediaInfo =
-                                                                      widget.newsMediaInfo;
+                                                                  final newsMediaInfo = widget.newsMediaInfo;
                                                                   if (newsMediaInfo != null) {
                                                                     context.navigateTo(
                                                                       MediaInfoDescriptionRoute(
@@ -882,8 +829,7 @@ class _CatalogScreenState extends State<CatalogScreen> {
                                                                     'notfication_info_description') {
                                                                   final newsNotificationInfo =
                                                                       widget.newsNotificationInfo;
-                                                                  if (newsNotificationInfo !=
-                                                                      null) {
+                                                                  if (newsNotificationInfo != null) {
                                                                     context.navigateTo(
                                                                       NotificationInfoDescriptionRoute(
                                                                         info: newsNotificationInfo,
@@ -919,8 +865,7 @@ class _CatalogScreenState extends State<CatalogScreen> {
                                                                   );
                                                                 }
                                                               } else {
-                                                                WidgetsBinding.instance
-                                                                    .addPostFrameCallback((_) {
+                                                                WidgetsBinding.instance.addPostFrameCallback((_) {
                                                                   context.back();
                                                                 });
                                                               }
@@ -936,8 +881,7 @@ class _CatalogScreenState extends State<CatalogScreen> {
                                                             _isScroll = false;
                                                           });
                                                           context.read<BottomNavigationBloc>().add(
-                                                                BottomNavigationEvent.switchBlocked(
-                                                                    isBlocked: true),
+                                                                BottomNavigationEvent.switchBlocked(isBlocked: true),
                                                               );
                                                         },
                                                         onScaleStop: () {
@@ -946,8 +890,7 @@ class _CatalogScreenState extends State<CatalogScreen> {
                                                             _isScroll = true;
                                                           });
                                                           context.read<BottomNavigationBloc>().add(
-                                                                BottomNavigationEvent.switchBlocked(
-                                                                    isBlocked: false),
+                                                                BottomNavigationEvent.switchBlocked(isBlocked: false),
                                                               );
                                                         },
                                                       ),
@@ -1039,8 +982,7 @@ class _CatalogScreenState extends State<CatalogScreen> {
                           context.read<CatalogBloc>().add(
                                 const CatalogEvent.goBackCatalogInfo(),
                               );
-                          if (initState.listCatalogPath.isEmpty ||
-                              initState.listCatalogPath.length == 1) {
+                          if (initState.listCatalogPath.isEmpty || initState.listCatalogPath.length == 1) {
                             if (widget.lastPath.isNotEmpty) {
                               if (widget.lastPath == 'news') {
                                 context.navigateTo(
@@ -1095,8 +1037,7 @@ class _CatalogScreenState extends State<CatalogScreen> {
                                     messageId: widget.messageId,
                                   ),
                                 );
-                              } else if (widget.lastPath ==
-                                  'notfication_info_notfication_description') {
+                              } else if (widget.lastPath == 'notfication_info_notfication_description') {
                                 context.navigateTo(
                                   NotificationInfoNotificationDescriptionRoute(
                                     idNews: widget.idNews ?? '',
@@ -1118,8 +1059,7 @@ class _CatalogScreenState extends State<CatalogScreen> {
                         }
                       },
                       child: Container(
-                        height:
-                            MediaQuery.of(context).size.height - (initState.isButtonTop ? 180 : 0),
+                        height: MediaQuery.of(context).size.height - (initState.isButtonTop ? 180 : 0),
                         width: 50,
                         color: Colors.transparent,
                       ),

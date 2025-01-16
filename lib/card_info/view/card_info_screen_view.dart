@@ -68,11 +68,8 @@ class CardInfoScreenView extends StatefulWidget {
 class _CardInfoScreenViewState extends State<CardInfoScreenView> {
   final ScrollController _scrollController = ScrollController();
   BlindChickenMessage message = BlindChickenMessage();
-  final BlindChickenShowDialogError
-      _blindChickenCardInfoProductShowDialogError =
-      BlindChickenShowDialogError();
-  final BlindChickenShowDialogError _blindChickenShoppingCartShowDialogError =
-      BlindChickenShowDialogError();
+  final BlindChickenShowDialogError _blindChickenCardInfoProductShowDialogError = BlindChickenShowDialogError();
+  final BlindChickenShowDialogError _blindChickenShoppingCartShowDialogError = BlindChickenShowDialogError();
   bool _isShowDialogCardInfoError = false;
   bool _isShowDialogShoppingCartError = false;
   bool _isShoppingCartButton = true;
@@ -148,9 +145,7 @@ class _CardInfoScreenViewState extends State<CardInfoScreenView> {
       item = product;
     }
     if (product != null && _isOpenSizeProduct) {
-      context.read<CardInfoBloc>().add(
-          const CardInfoEvent.checkOpenGetInfoProductSize(
-              isOpenGetSizeProduct: false));
+      context.read<CardInfoBloc>().add(const CardInfoEvent.checkOpenGetInfoProductSize(isOpenGetSizeProduct: false));
       context.read<CardInfoBloc>().add(
             CardInfoEvent.getInfoProductSize(
               code: product.id.toString(),
@@ -237,10 +232,8 @@ class _CardInfoScreenViewState extends State<CardInfoScreenView> {
                                 product: initState.product,
                                 code: initState.codeProduct ?? '',
                                 titleScreen: initState.titleScreen ?? '',
-                                typeAddProductToShoppingCart:
-                                    initState.typeAddProductToShoppingCart ?? '',
-                                identifierAddProductToShoppingCart:
-                                    initState.identifierAddProductToShoppingCart ?? '',
+                                typeAddProductToShoppingCart: initState.typeAddProductToShoppingCart ?? '',
+                                identifierAddProductToShoppingCart: initState.identifierAddProductToShoppingCart ?? '',
                               ),
                             );
                         break;
@@ -259,8 +252,7 @@ class _CardInfoScreenViewState extends State<CardInfoScreenView> {
                           context.read<CardInfoBloc>().add(
                                 CardInfoEvent.addFavouriteProduct(
                                   product: product,
-                                  index:
-                                      initState.detailsProduct?.product.id ?? 0,
+                                  index: initState.detailsProduct?.product.id ?? 0,
                                 ),
                               );
                         }
@@ -268,8 +260,7 @@ class _CardInfoScreenViewState extends State<CardInfoScreenView> {
                       case 'удалить товар из избранного':
                         context.read<CardInfoBloc>().add(
                               CardInfoEvent.deleteFavouriteProduct(
-                                index:
-                                    initState.detailsProduct?.product.id ?? 0,
+                                index: initState.detailsProduct?.product.id ?? 0,
                               ),
                             );
                         break;
@@ -298,7 +289,7 @@ class _CardInfoScreenViewState extends State<CardInfoScreenView> {
                     ]),
                   );
                   AppMetrica.reportEvent('Список новостей');
-                }else if (widget.lastPath == 'news_info_description') {
+                } else if (widget.lastPath == 'news_info_description') {
                   final newsInfo = widget.newsInfo;
                   if (newsInfo != null) {
                     context.navigateTo(
@@ -308,7 +299,7 @@ class _CardInfoScreenViewState extends State<CardInfoScreenView> {
                     );
                     AppMetrica.reportEvent('Страница новостей');
                   }
-                }else if (widget.lastPath == 'media_info_description') {
+                } else if (widget.lastPath == 'media_info_description') {
                   final newsMediaInfo = widget.newsMediaInfo;
                   if (newsMediaInfo != null) {
                     context.navigateTo(
@@ -317,7 +308,7 @@ class _CardInfoScreenViewState extends State<CardInfoScreenView> {
                       ),
                     );
                   }
-                }else if (widget.lastPath == 'notfication_info_description') {
+                } else if (widget.lastPath == 'notfication_info_description') {
                   final newsNotificationInfo = widget.newsNotificationInfo;
                   if (newsNotificationInfo != null) {
                     context.navigateTo(
@@ -326,7 +317,7 @@ class _CardInfoScreenViewState extends State<CardInfoScreenView> {
                       ),
                     );
                   }
-                }else if (widget.lastPath == 'media_notiifcation_description') {
+                } else if (widget.lastPath == 'media_notiifcation_description') {
                   context.navigateTo(
                     MediaNotificationDescriptionRoute(
                       idNews: widget.idNews ?? '',
@@ -334,7 +325,7 @@ class _CardInfoScreenViewState extends State<CardInfoScreenView> {
                       messageId: widget.messageId,
                     ),
                   );
-                }else if (widget.lastPath == 'news_notification_description') {
+                } else if (widget.lastPath == 'news_notification_description') {
                   context.navigateTo(
                     NewsNotificationDescriptionRoute(
                       idNews: widget.idNews ?? '',
@@ -342,7 +333,7 @@ class _CardInfoScreenViewState extends State<CardInfoScreenView> {
                       messageId: widget.messageId,
                     ),
                   );
-                }else if (widget.lastPath == 'notfication_info_notfication_description') {
+                } else if (widget.lastPath == 'notfication_info_notfication_description') {
                   context.navigateTo(
                     NotificationInfoNotificationDescriptionRoute(
                       idNews: widget.idNews ?? '',
@@ -350,21 +341,16 @@ class _CardInfoScreenViewState extends State<CardInfoScreenView> {
                       messageId: widget.messageId,
                     ),
                   );
-                }
-
-              else if (!updateData
-                        .isOpenShowModalBottomSheetShoppingCardInfoScreen &&
+                } else if (!updateData.isOpenShowModalBottomSheetShoppingCardInfoScreen &&
                     !initState.isBlocBackBotton &&
                     !_isNavigateMainScreen) {
                   context.back();
-                }else {
-                final sharedService = GetIt.I.get<SharedPreferencesService>();
-                if (sharedService.getString(key: SharedPrefKeys.lastScreen) ==
-                    'catalog_card_info' &&
-                    _isGoBack) {
-                  context.back();
-                  _isGoBack = false;
-                }
+                } else {
+                  final sharedService = GetIt.I.get<SharedPreferencesService>();
+                  if (sharedService.getString(key: SharedPrefKeys.lastScreen) == 'catalog_card_info' && _isGoBack) {
+                    context.back();
+                    _isGoBack = false;
+                  }
                 }
               }
             }
@@ -385,9 +371,7 @@ class _CardInfoScreenViewState extends State<CardInfoScreenView> {
                       updateData.lastScreen = 'shopping_cart';
                       Navigator.pop(context);
                       Timer(const Duration(milliseconds: 150), () {
-                        context
-                            .read<ShoppingCartBloc>()
-                            .add(const ShoppingCartEvent.preloadData());
+                        context.read<ShoppingCartBloc>().add(const ShoppingCartEvent.preloadData());
                       });
                       context.navigateTo(
                         const ShoppingCartAutoRouterRoute(
@@ -398,19 +382,14 @@ class _CardInfoScreenViewState extends State<CardInfoScreenView> {
                       );
                     },
                     addProductToSoppingCart: (size) {
-                      _addToCart(
-                          code: initState.code,
-                          size: size,
-                          identifierAddProductToShoppingCart: '2');
+                      _addToCart(code: initState.code, size: size, identifierAddProductToShoppingCart: '2');
                       message.showOverlay(
                         context,
                         'Размер ${size.value} добавлен в корзину',
                         () {
                           updateData.lastScreen = 'shopping_cart';
                           Timer(const Duration(milliseconds: 150), () {
-                            context
-                                .read<ShoppingCartBloc>()
-                                .add(const ShoppingCartEvent.preloadData());
+                            context.read<ShoppingCartBloc>().add(const ShoppingCartEvent.preloadData());
                           });
                           context.navigateTo(
                             const ShoppingCartAutoRouterRoute(
@@ -440,8 +419,7 @@ class _CardInfoScreenViewState extends State<CardInfoScreenView> {
             }
           },
           addProductToSoppingCart: (initState) {
-            _addToCart(
-                code: initState.code, identifierAddProductToShoppingCart: '1');
+            _addToCart(code: initState.code, identifierAddProductToShoppingCart: '1');
             BlindChickenMessage().showOverlay(
               context,
               'Добавлено в корзину',
@@ -449,9 +427,7 @@ class _CardInfoScreenViewState extends State<CardInfoScreenView> {
                 final updateData = GetIt.I.get<UpdateDataService>();
                 updateData.lastScreen = 'shopping_cart';
                 Timer(const Duration(milliseconds: 150), () {
-                  context
-                      .read<ShoppingCartBloc>()
-                      .add(const ShoppingCartEvent.preloadData());
+                  context.read<ShoppingCartBloc>().add(const ShoppingCartEvent.preloadData());
                 });
                 context.navigateTo(
                   const ShoppingCartAutoRouterRoute(
@@ -468,9 +444,7 @@ class _CardInfoScreenViewState extends State<CardInfoScreenView> {
             final updateData = GetIt.I.get<UpdateDataService>();
             updateData.lastScreen = 'shopping_cart';
             Timer(const Duration(milliseconds: 150), () {
-              context
-                  .read<ShoppingCartBloc>()
-                  .add(const ShoppingCartEvent.preloadData());
+              context.read<ShoppingCartBloc>().add(const ShoppingCartEvent.preloadData());
             });
             context.navigateTo(
               const ShoppingCartAutoRouterRoute(
@@ -512,10 +486,7 @@ class _CardInfoScreenViewState extends State<CardInfoScreenView> {
                         error: (value) {
                           return Text(
                             'Повторить',
-                            style: Theme.of(context)
-                                .textTheme
-                                .displayMedium
-                                ?.copyWith(
+                            style: Theme.of(context).textTheme.displayMedium?.copyWith(
                                   color: BlindChickenColors.backgroundColor,
                                 ),
                             textAlign: TextAlign.center,
@@ -530,15 +501,11 @@ class _CardInfoScreenViewState extends State<CardInfoScreenView> {
                           ShoppingCartEvent.addOtherProductToSoppingCart(
                             item: BasketInfoItemDataModel(
                               titleScreen: value.item?.titleScreen ?? '',
-                              typeAddProductToShoppingCart:
-                                  value.item?.typeAddProductToShoppingCart ??
-                                      '',
+                              typeAddProductToShoppingCart: value.item?.typeAddProductToShoppingCart ?? '',
                               searchQuery: '',
                               identifierAddProductToShoppingCart: '2',
-                              sectionCategoriesPath:
-                                  value.item?.sectionCategoriesPath ?? [],
-                              productCategoriesPath:
-                                  value.item?.productCategoriesPath ?? [],
+                              sectionCategoriesPath: value.item?.sectionCategoriesPath ?? [],
+                              productCategoriesPath: value.item?.productCategoriesPath ?? [],
                               code: value.item?.code ?? '',
                               sku: value.item?.sku ?? '',
                               count: 1,
@@ -572,177 +539,160 @@ class _CardInfoScreenViewState extends State<CardInfoScreenView> {
             }
           },
           child: Stack(
-          alignment: Alignment.bottomCenter,
-          children: [
-            Stack(
-              children: [
-                Scaffold(
-                  body: SafeArea(
-                      child: ListView(
-                    controller: _scrollController,
-                    children: [
-                      AppBarBlindChicken(
-                        onBack: () {
-                          setState(() {
-                            _isNavigateMainScreen = true;
-                          });
-                          context.navigateNamedTo('/dashboard/home/main');
-                        },
-                      ),
-                      BlocBuilder<CardInfoBloc, CardInfoState>(
-                          builder: (context, state) {
-                        return state.maybeMap(
-                          productInfoCard: (initState) {
-                            final sky = initState.detailsProduct?.sku ?? [];
-                            final price = int.parse(
-                                initState.detailsProduct?.price.pc ?? '0');
-                            return PopScope(
-                              canPop: false,
-                              onPopInvoked: (value) {
-                                if (_isSwipe) {
-                                  if (initState.listProductsCode.isNotEmpty) {
-                                    context.read<CardInfoBloc>().add(
-                                        const CardInfoEvent
-                                            .goBackProductInfo());
-                                  } else {
-                                    if (widget.lastPath.isNotEmpty) {
-                                      if (widget.lastPath == 'news') {
-                                        context.navigateTo(
-                                          NewsRoute(children: [
-                                            NewsInfoRoute(
-                                              indexPage: 0,
-                                            ),
-                                          ]),
-                                        );
-                                        AppMetrica.reportEvent('Список новостей');
-                                      } else if (widget.lastPath == 'news_info_description') {
-                                        final newsInfo = widget.newsInfo;
-                                        if (newsInfo != null) {
-                                          context.navigateTo(
-                                            NewsInfoDescriptionRoute(
-                                              info: newsInfo,
-                                            ),
-                                          );
-                                          AppMetrica.reportEvent('Страница новостей');
-                                        }
-                                      } else if (widget.lastPath == 'media_info_description') {
-                                        final newsMediaInfo = widget.newsMediaInfo;
-                                        if (newsMediaInfo != null) {
-                                          context.navigateTo(
-                                            MediaInfoDescriptionRoute(
-                                              info: newsMediaInfo,
-                                            ),
-                                          );
-                                        }
-                                      } else if (widget.lastPath ==
-                                          'notfication_info_description') {
-                                        final newsNotificationInfo = widget.newsNotificationInfo;
-                                        if (newsNotificationInfo != null) {
-                                          context.navigateTo(
-                                            NotificationInfoDescriptionRoute(
-                                              info: newsNotificationInfo,
-                                            ),
-                                          );
-                                        }
-                                      } else if (widget.lastPath ==
-                                          'media_notiifcation_description') {
-                                        context.navigateTo(
-                                          MediaNotificationDescriptionRoute(
-                                            idNews: widget.idNews ?? '',
-                                            isNotification: true,
-                                            messageId: widget.messageId,
-                                          ),
-                                        );
-                                      } else if (widget.lastPath ==
-                                          'news_notification_description') {
-                                        context.navigateTo(
-                                          NewsNotificationDescriptionRoute(
-                                            idNews: widget.idNews ?? '',
-                                            isNotification: true,
-                                            messageId: widget.messageId,
-                                          ),
-                                        );
-                                      } else if (widget.lastPath ==
-                                          'notfication_info_notfication_description') {
-                                        context.navigateTo(
-                                          NotificationInfoNotificationDescriptionRoute(
-                                            idNews: widget.idNews ?? '',
-                                            isNotification: true,
-                                            messageId: widget.messageId,
-                                          ),
-                                        );
-                                      }
+            alignment: Alignment.bottomCenter,
+            children: [
+              Stack(
+                children: [
+                  Scaffold(
+                    body: SafeArea(
+                        child: ListView(
+                      controller: _scrollController,
+                      children: [
+                        AppBarBlindChicken(
+                          onBack: () {
+                            setState(() {
+                              _isNavigateMainScreen = true;
+                            });
+                            context.navigateNamedTo('/dashboard/home/main');
+                          },
+                        ),
+                        BlocBuilder<CardInfoBloc, CardInfoState>(builder: (context, state) {
+                          return state.maybeMap(
+                            productInfoCard: (initState) {
+                              final sky = initState.detailsProduct?.sku ?? [];
+                              final price = int.parse(initState.detailsProduct?.price.pc ?? '0');
+                              return PopScope(
+                                canPop: false,
+                                onPopInvoked: (value) {
+                                  if (_isSwipe) {
+                                    if (initState.listProductsCode.isNotEmpty) {
+                                      context.read<CardInfoBloc>().add(const CardInfoEvent.goBackProductInfo());
                                     } else {
-                                      WidgetsBinding.instance.addPostFrameCallback((_) {
-                                        context.back();
-                                      });
+                                      if (widget.lastPath.isNotEmpty) {
+                                        if (widget.lastPath == 'news') {
+                                          context.navigateTo(
+                                            NewsRoute(children: [
+                                              NewsInfoRoute(
+                                                indexPage: 0,
+                                              ),
+                                            ]),
+                                          );
+                                          AppMetrica.reportEvent('Список новостей');
+                                        } else if (widget.lastPath == 'news_info_description') {
+                                          final newsInfo = widget.newsInfo;
+                                          if (newsInfo != null) {
+                                            context.navigateTo(
+                                              NewsInfoDescriptionRoute(
+                                                info: newsInfo,
+                                              ),
+                                            );
+                                            AppMetrica.reportEvent('Страница новостей');
+                                          }
+                                        } else if (widget.lastPath == 'media_info_description') {
+                                          final newsMediaInfo = widget.newsMediaInfo;
+                                          if (newsMediaInfo != null) {
+                                            context.navigateTo(
+                                              MediaInfoDescriptionRoute(
+                                                info: newsMediaInfo,
+                                              ),
+                                            );
+                                          }
+                                        } else if (widget.lastPath == 'notfication_info_description') {
+                                          final newsNotificationInfo = widget.newsNotificationInfo;
+                                          if (newsNotificationInfo != null) {
+                                            context.navigateTo(
+                                              NotificationInfoDescriptionRoute(
+                                                info: newsNotificationInfo,
+                                              ),
+                                            );
+                                          }
+                                        } else if (widget.lastPath == 'media_notiifcation_description') {
+                                          context.navigateTo(
+                                            MediaNotificationDescriptionRoute(
+                                              idNews: widget.idNews ?? '',
+                                              isNotification: true,
+                                              messageId: widget.messageId,
+                                            ),
+                                          );
+                                        } else if (widget.lastPath == 'news_notification_description') {
+                                          context.navigateTo(
+                                            NewsNotificationDescriptionRoute(
+                                              idNews: widget.idNews ?? '',
+                                              isNotification: true,
+                                              messageId: widget.messageId,
+                                            ),
+                                          );
+                                        } else if (widget.lastPath == 'notfication_info_notfication_description') {
+                                          context.navigateTo(
+                                            NotificationInfoNotificationDescriptionRoute(
+                                              idNews: widget.idNews ?? '',
+                                              isNotification: true,
+                                              messageId: widget.messageId,
+                                            ),
+                                          );
+                                        }
+                                      } else {
+                                        WidgetsBinding.instance.addPostFrameCallback((_) {
+                                          context.back();
+                                        });
+                                      }
                                     }
                                   }
-                                }
-                              },
-                              child: Column(
-                                children: [
-                                  CatalogSliderImages(
-                                    listImages: initState.detailsProduct?.photo.mini ?? [],
-                                    isLike: initState.favouritesProductsId
-                                        .contains(initState.detailsProduct?.code ?? 0),
-                                    goBotton: () {
-                                      context.read<CardInfoBloc>().add(
-                                          const CardInfoEvent
-                                              .goBackProductInfo());
-                                    },
-                                    isZoom: false,
-                                    addLike: () {
-                                      DetailProductDataModel? detailsProduct =
-                                          initState.detailsProduct;
-                                      if (detailsProduct != null) {
-                                        context.read<CardInfoBloc>().add(
-                                              CardInfoEvent
-                                                  .addFavouriteProduct(
-                                                product: detailsProduct.product,
-                                                index: detailsProduct.code,
-                                              ),
-                                            );
-                                      }
-                                    },
-                                    deleteLike: () {
-                                      DetailProductDataModel? detailsProduct =
-                                          initState.detailsProduct;
-                                      if (detailsProduct != null) {
-                                        context.read<CardInfoBloc>().add(
-                                              CardInfoEvent
-                                                  .deleteFavouriteProduct(
-                                                index: detailsProduct.code,
-                                              ),
-                                            );
-                                      }
-                                    },
-                                    onTap: (index) {
-                                      context.pushRoute(
-                                        CatalogPreviewImagesRoute(
-                                          selectIndex: index,
-                                          listImages: initState.detailsProduct?.photo.full ?? [],
-                                          goBotton: () {},
-                                          goBottonInfoProduct: () {
-                                            context.back();
-                                            if (_isChildRoute) {
-                                              context.navigateTo(
-                                                CardInfoRoute(
-                                                  isChildRoute: true,
-                                                  product: item,
-                                                  isLike: widget.isLike,
-                                                  listItems: widget.listItems,
-                                                  favouritesProducts: widget.favouritesProducts,
-                                                    codeProduct:
-                                                        initState.codeProduct,
-                                                    titleScreen:
-                                                        initState.titleScreen,
+                                },
+                                child: Column(
+                                  children: [
+                                    CatalogSliderImages(
+                                      listImages: initState.detailsProduct?.photo.mini ?? [],
+                                      isLike:
+                                          initState.favouritesProductsId.contains(initState.detailsProduct?.code ?? 0),
+                                      goBotton: () {
+                                        context.read<CardInfoBloc>().add(const CardInfoEvent.goBackProductInfo());
+                                      },
+                                      isZoom: false,
+                                      addLike: () {
+                                        DetailProductDataModel? detailsProduct = initState.detailsProduct;
+                                        if (detailsProduct != null) {
+                                          context.read<CardInfoBloc>().add(
+                                                CardInfoEvent.addFavouriteProduct(
+                                                  product: detailsProduct.product,
+                                                  index: detailsProduct.code,
+                                                ),
+                                              );
+                                        }
+                                      },
+                                      deleteLike: () {
+                                        DetailProductDataModel? detailsProduct = initState.detailsProduct;
+                                        if (detailsProduct != null) {
+                                          context.read<CardInfoBloc>().add(
+                                                CardInfoEvent.deleteFavouriteProduct(
+                                                  index: detailsProduct.code,
+                                                ),
+                                              );
+                                        }
+                                      },
+                                      onTap: (index) {
+                                        context.pushRoute(
+                                          CatalogPreviewImagesRoute(
+                                            selectIndex: index,
+                                            listImages: initState.detailsProduct?.photo.full ?? [],
+                                            goBotton: () {},
+                                            goBottonInfoProduct: () {
+                                              context.back();
+                                              if (_isChildRoute) {
+                                                context.navigateTo(
+                                                  CardInfoRoute(
+                                                    isChildRoute: true,
+                                                    product: item,
+                                                    isLike: widget.isLike,
+                                                    listItems: widget.listItems,
+                                                    favouritesProducts: widget.favouritesProducts,
+                                                    codeProduct: initState.codeProduct,
+                                                    titleScreen: initState.titleScreen,
                                                   ),
                                                 );
                                               }
                                             },
-                                            video: initState
-                                                    .detailsProduct?.video ??
+                                            video: initState.detailsProduct?.video ??
                                                 DetailProductVideoDataModel(
                                                   i: '',
                                                   v: '',
@@ -750,12 +700,9 @@ class _CardInfoScreenViewState extends State<CardInfoScreenView> {
                                           ),
                                         );
                                       },
-                                    goSwipeBack: () {
-                                        if (initState
-                                            .listProductsCode.isNotEmpty) {
-                                          context.read<CardInfoBloc>().add(
-                                              const CardInfoEvent
-                                                  .goBackProductInfo());
+                                      goSwipeBack: () {
+                                        if (initState.listProductsCode.isNotEmpty) {
+                                          context.read<CardInfoBloc>().add(const CardInfoEvent.goBackProductInfo());
                                         } else {
                                           context.back();
                                         }
@@ -771,478 +718,390 @@ class _CardInfoScreenViewState extends State<CardInfoScreenView> {
                                     ),
                                     Padding(
                                       padding: const EdgeInsets.symmetric(
-                                      horizontal: 14,
-                                    ),
-                                    child: Column(
-                                      crossAxisAlignment: CrossAxisAlignment.start,
-                                      children: [
-                                        Row(
-                                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                                          children: [
-                                            Expanded(
-                                              child: Column(
-                                                crossAxisAlignment: CrossAxisAlignment.start,
-                                                children: [
-                                                  Text(
-                                                    initState.detailsProduct?.brand.n ?? '',
-                                                    style: Theme.of(context)
-                                                        .textTheme
-                                                        .titleSmall
-                                                        ?.copyWith(
-                                                      fontWeight: FontWeight.w700,
-                                                      shadows: [
-                                                        Shadow(
-                                                          color: BlindChickenColors
-                                                              .activeBorderTextField
-                                                              .withOpacity(
-                                                            0.2,
-                                                          ),
-                                                          offset: const Offset(0, 1),
-                                                          blurRadius: 1,
-                                                        ),
-                                                      ],
-                                                    ),
-                                                  ),
-                                                  const SizedBox(
-                                                    height: 9,
-                                                  ),
-                                                  Text(
-                                                    initState.detailsProduct?.name ?? '',
-                                                    style:
-                                                        Theme.of(context).textTheme.displayMedium,
-                                                    overflow: TextOverflow.ellipsis,
-                                                    maxLines: 1,
-                                                  ),
-                                                ],
-                                              ),
-                                            ),
-                                            GestureDetector(
-                                              onTap: () {
-                                                Share.share(
-                                                  'https://slepayakurica.ru/product/${initState.detailsProduct?.code ?? 0}/',
-                                                  subject: 'Слепая курица',
-                                                );
-                                              },
-                                              child: Container(
-                                                height: 40,
-                                                width: 40,
-                                                color: Colors.transparent,
-                                                child: const Icon(
-                                                  Icons.share_outlined,
-                                                ),
-                                              ),
-                                            )
-                                          ],
-                                        ),
-                                        const SizedBox(
-                                          height: 28,
-                                        ),
-                                        Row(
-                                          children: [
-                                            if (!(initState.detailsProduct?.product
-                                                        .isYourPriceDisplayed ??
-                                                    false) ||
-                                                (initState.detailsProduct?.product.promoValue ??
-                                                        0) >
-                                                    0)
-                                              Row(
-                                                children: [
-                                                  SvgPicture.asset(
-                                                    'assets/icons/lightning.svg',
-                                                    height: 14,
-                                                    width: 14,
-                                                  ),
-                                                  const SizedBox(
-                                                    width: 7,
-                                                  ),
-                                                  if ((initState
-                                                              .detailsProduct?.product.promoValue ??
-                                                          0) >
-                                                      0)
-                                                    Padding(
-                                                      padding: const EdgeInsets.only(right: 7),
-                                                      child: RichText(
-                                                        text: TextSpan(
-                                                          text: (initState.detailsProduct?.price
-                                                                      .yourPrice ??
-                                                                  0)
-                                                              .toString()
-                                                              .spaceSeparateNumbers(),
-                                                          style: Theme.of(context)
-                                                              .textTheme
-                                                              .displayMedium
-                                                              ?.copyWith(
-                                                                fontWeight: FontWeight.w700,
-                                                              ),
-                                                          children: const <TextSpan>[
-                                                            TextSpan(
-                                                              text: ' ₽',
-                                                              style: TextStyle(
-                                                                fontFamily: 'Roboto',
-                                                                fontSize: 13,
-                                                              ),
+                                        horizontal: 14,
+                                      ),
+                                      child: Column(
+                                        crossAxisAlignment: CrossAxisAlignment.start,
+                                        children: [
+                                          Row(
+                                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                                            children: [
+                                              Expanded(
+                                                child: Column(
+                                                  crossAxisAlignment: CrossAxisAlignment.start,
+                                                  children: [
+                                                    Text(
+                                                      initState.detailsProduct?.brand.n ?? '',
+                                                      style: Theme.of(context).textTheme.titleSmall?.copyWith(
+                                                        fontWeight: FontWeight.w700,
+                                                        shadows: [
+                                                          Shadow(
+                                                            color: BlindChickenColors.activeBorderTextField.withOpacity(
+                                                              0.2,
                                                             ),
-                                                          ],
-                                                        ),
+                                                            offset: const Offset(0, 1),
+                                                            blurRadius: 1,
+                                                          ),
+                                                        ],
                                                       ),
                                                     ),
-                                                ],
-                                              ),
-                                            RichText(
-                                              text: TextSpan(
-                                                text: (initState.detailsProduct?.price.p ?? 0)
-                                                    .toString()
-                                                    .spaceSeparateNumbers(),
-                                                style: Theme.of(context)
-                                                    .textTheme
-                                                    .displayMedium
-                                                    ?.copyWith(
-                                                      fontWeight: initState.detailsProduct?.product
-                                                                  .isYourPriceDisplayed ??
-                                                              false
-                                                          ? FontWeight.w400
-                                                          : FontWeight.w700,
-                                                      decoration: (initState.detailsProduct?.product
-                                                                      .promoValue ??
-                                                                  0) >
-                                                              0
-                                                          ? TextDecoration.lineThrough
-                                                          : TextDecoration.none,
+                                                    const SizedBox(
+                                                      height: 9,
                                                     ),
-                                                children: const <TextSpan>[
-                                                  TextSpan(
-                                                    text: ' ₽',
-                                                    style: TextStyle(
-                                                      fontFamily: 'Roboto',
-                                                      fontSize: 13,
+                                                    Text(
+                                                      initState.detailsProduct?.name ?? '',
+                                                      style: Theme.of(context).textTheme.displayMedium,
+                                                      overflow: TextOverflow.ellipsis,
+                                                      maxLines: 1,
                                                     ),
-                                                  ),
-                                                ],
+                                                  ],
+                                                ),
                                               ),
-                                            ),
-                                            if (int.parse(
-                                                    initState.detailsProduct?.price.pb ?? '0') >
-                                                int.parse(initState.detailsProduct?.price.p ?? '0'))
-                                              Row(
-                                                children: [
-                                                  const SizedBox(
-                                                    width: 7,
-                                                  ),
-                                                  Text(
-                                                    (initState.detailsProduct?.price.pb ?? '0')
-                                                        .spaceSeparateNumbers(),
-                                                    style: Theme.of(context)
-                                                        .textTheme
-                                                        .headlineLarge
-                                                        ?.copyWith(
-                                                          decoration: TextDecoration.lineThrough,
-                                                        ),
-                                                  ),
-                                                  const Text(
-                                                    ' ₽',
-                                                    style: TextStyle(
-                                                      fontFamily: 'Roboto',
-                                                      fontSize: 13,
-                                                      decoration: TextDecoration.lineThrough,
-                                                    ),
-                                                  )
-                                                ],
-                                              ),
-                                            const SizedBox(
-                                              width: 7,
-                                            ),
-                                            if ((initState.detailsProduct?.product
-                                                        .isYourPriceDisplayed ??
-                                                    false) &&
-                                                initState.detailsProduct?.product.promoValue == 0)
-                                              Row(
-                                                children: [
-                                                  SvgPicture.asset(
-                                                    'assets/icons/lightning.svg',
-                                                    height: 14,
-                                                    width: 14,
-                                                  ),
-                                                  const SizedBox(
-                                                    width: 7,
-                                                  ),
-                                                  RichText(
-                                                    text: TextSpan(
-                                                      text: 'Ваша цена ',
-                                                      style: Theme.of(context)
-                                                          .textTheme
-                                                          .displayMedium
-                                                          ?.copyWith(
-                                                            fontWeight: FontWeight.w700,
-                                                          ),
-                                                      children: <TextSpan>[
-                                                        TextSpan(
-                                                          text: (initState.detailsProduct?.price
-                                                                      .yourPrice ??
-                                                                  0)
-                                                              .toString()
-                                                              .spaceSeparateNumbers(),
-                                                          style: Theme.of(context)
-                                                              .textTheme
-                                                              .displayMedium
-                                                              ?.copyWith(
-                                                                fontWeight: FontWeight.w700,
-                                                              ),
-                                                        ),
-                                                        TextSpan(
-                                                          text: ' ₽',
-                                                          style: Theme.of(context)
-                                                              .textTheme
-                                                              .displayMedium
-                                                              ?.copyWith(
-                                                                fontWeight: FontWeight.w700,
-                                                              ),
-                                                        ),
-                                                      ],
-                                                    ),
-                                                  ),
-                                                ],
-                                              ),
-                                          ],
-                                        ),
-                                        if ((initState.detailsProduct?.product.promoValue ?? 0) > 0)
-                                          Tooltip(
-                                            decoration: BoxDecoration(
-                                              color: BlindChickenColors.activeBorderTextField
-                                                  .withOpacity(0.8),
-                                              borderRadius: const BorderRadius.all(
-                                                Radius.circular(4),
-                                              ),
-                                            ),
-                                            margin: const EdgeInsets.only(left: 10, right: 10),
-                                            richMessage: WidgetSpan(
-                                              alignment: PlaceholderAlignment.baseline,
-                                              baseline: TextBaseline.alphabetic,
-                                              child: Text(
-                                                initState.detailsProduct?.product.promo ?? '',
-                                                style: Theme.of(context)
-                                                    .textTheme
-                                                    .displayMedium
-                                                    ?.copyWith(
-                                                      color: BlindChickenColors.backgroundColor,
-                                                    ),
-                                              ),
-                                            ),
-                                            child: Container(
-                                              padding: const EdgeInsets.only(
-                                                top: 1,
-                                                left: 4,
-                                                right: 4,
-                                                bottom: 1,
-                                              ),
-                                              margin: const EdgeInsets.only(top: 7, bottom: 7),
-                                              decoration: BoxDecoration(
-                                                borderRadius: BorderRadius.circular(4),
-                                                color: BlindChickenColors.activeBorderTextField,
-                                              ),
-                                              child: Row(
-                                                mainAxisSize: MainAxisSize.min,
-                                                children: [
-                                                  Text(
-                                                    '-${initState.detailsProduct?.product.promoValue ?? 0}% по акции',
-                                                    style: Theme.of(context)
-                                                        .textTheme
-                                                        .displayMedium
-                                                        ?.copyWith(
-                                                          color: BlindChickenColors.backgroundColor,
-                                                        ),
-                                                  ),
-                                                  const SizedBox(
-                                                    width: 5,
-                                                  ),
-                                                  SvgPicture.asset(
-                                                    'assets/icons/info.svg',
-                                                    color: BlindChickenColors.backgroundColor,
-                                                    height: 16,
-                                                    width: 16,
-                                                  ),
-                                                ],
-                                              ),
-                                            ),
-                                          ),
-                                        PaymentInInstalmentWidget(price: price),
-                                        const SizedBox(
-                                          height: 7,
-                                        ),
-                                        CatalogCashbackInfo(
-                                          cashback: initState.detailsProduct?.price.cashback ?? 0,
-                                          bonusYear: initState.detailsProduct?.price.bonusYear ?? 0,
-                                          discountVal:
-                                              initState.detailsProduct?.price.discountVal ?? 0,
-                                          bonusLoyal:
-                                              initState.detailsProduct?.price.bonusLoyal ?? 0,
-                                          bonusGift: initState.detailsProduct?.price.bonusGift ?? 0,
-                                          userDiscount: initState.detailsProduct?.userDiscount ?? 0,
-                                          p: int.parse(initState.detailsProduct?.price.p ?? '0'),
-                                          pc: int.parse(initState.detailsProduct?.price.pc ?? '0'),
-                                          userNextDiscount:
-                                              initState.detailsProduct?.userNextDiscount ?? 0,
-                                          isAuth: initState.isAuth,
-                                          userBuyForNextDiscount:
-                                              initState.detailsProduct?.userBuyForNextDiscount ?? 0,
-                                          userBuyForNextDiscountVal:
-                                              initState.detailsProduct?.userBuyForNextDiscountVal ??
-                                                  0,
-                                          pb: int.parse(initState.detailsProduct?.price.pb ?? '0'),
-                                          successfullyLogin: () {
-                                            Navigator.of(context, rootNavigator: true).pop();
-                                            context.read<CardInfoBloc>().add(
-                                                  CardInfoEvent.getProduct(
-                                                      product:
-                                                          initState.product,
-                                                      code: (initState.detailsProduct?.code ?? 0)
-                                                        .toString(),
-                                                    isUpdate: true,
-                                                      titleScreen:
-                                                          widget.titleScreen,
-                                                      typeAddProductToShoppingCart: 'Кнопка',
-                                                    identifierAddProductToShoppingCart: '4',
-                                                  ),
-                                                );
-                                          },
-                                          onBack: (buildContext) {
-                                            buildContext.back();
-                                          },
-                                        ),
-                                        const SizedBox(
-                                          height: 28,
-                                        ),
-                                        if (sky.isNotEmpty)
-                                          Column(
-                                            crossAxisAlignment: CrossAxisAlignment.start,
-                                            children: [
-                                              Text(
-                                                'Размер',
-                                                style: Theme.of(context)
-                                                    .textTheme
-                                                    .displayMedium
-                                                    ?.copyWith(
-                                                      fontWeight: FontWeight.w700,
-                                                    ),
-                                              ),
-                                              const SizedBox(
-                                                height: 7,
-                                              ),
-                                              InkWell(
+                                              GestureDetector(
                                                 onTap: () {
-                                                  context.navigateTo(
-                                                    CatalogSizeProductRoute(
-                                                      onChange: (value) {
-                                                        if (value.id.contains('-') &&
-                                                            value.id.length > 10) {
-                                                            context
-                                                                .read<
-                                                                    CardInfoBloc>()
-                                                                .add(
-                                                                  CardInfoEvent
-                                                                      .changeSizeProduct(
-                                                                    selectSizeProduct:
-                                                                        value,
+                                                  Share.share(
+                                                    'https://slepayakurica.ru/product/${initState.detailsProduct?.code ?? 0}/',
+                                                    subject: 'Слепая курица',
+                                                  );
+                                                },
+                                                child: Container(
+                                                  height: 40,
+                                                  width: 40,
+                                                  color: Colors.transparent,
+                                                  child: const Icon(
+                                                    Icons.share_outlined,
+                                                  ),
+                                                ),
+                                              )
+                                            ],
+                                          ),
+                                          const SizedBox(
+                                            height: 28,
+                                          ),
+                                          Row(
+                                            children: [
+                                              if (!(initState.detailsProduct?.product.isYourPriceDisplayed ?? false) ||
+                                                  (initState.detailsProduct?.product.promoValue ?? 0) > 0)
+                                                Row(
+                                                  children: [
+                                                    SvgPicture.asset(
+                                                      'assets/icons/lightning.svg',
+                                                      height: 14,
+                                                      width: 14,
+                                                    ),
+                                                    const SizedBox(
+                                                      width: 7,
+                                                    ),
+                                                    if ((initState.detailsProduct?.product.promoValue ?? 0) > 0)
+                                                      Padding(
+                                                        padding: const EdgeInsets.only(right: 7),
+                                                        child: RichText(
+                                                          text: TextSpan(
+                                                            text: (initState.detailsProduct?.price.yourPrice ?? 0)
+                                                                .toString()
+                                                                .spaceSeparateNumbers(),
+                                                            style: Theme.of(context).textTheme.displayMedium?.copyWith(
+                                                                  fontWeight: FontWeight.w700,
+                                                                ),
+                                                            children: const <TextSpan>[
+                                                              TextSpan(
+                                                                text: ' ₽',
+                                                                style: TextStyle(
+                                                                  fontFamily: 'Roboto',
+                                                                  fontSize: 13,
+                                                                ),
+                                                              ),
+                                                            ],
+                                                          ),
+                                                        ),
+                                                      ),
+                                                  ],
+                                                ),
+                                              RichText(
+                                                text: TextSpan(
+                                                  text: (initState.detailsProduct?.price.p ?? 0)
+                                                      .toString()
+                                                      .spaceSeparateNumbers(),
+                                                  style: Theme.of(context).textTheme.displayMedium?.copyWith(
+                                                        fontWeight:
+                                                            initState.detailsProduct?.product.isYourPriceDisplayed ??
+                                                                    false
+                                                                ? FontWeight.w400
+                                                                : FontWeight.w700,
+                                                        decoration:
+                                                            (initState.detailsProduct?.product.promoValue ?? 0) > 0
+                                                                ? TextDecoration.lineThrough
+                                                                : TextDecoration.none,
+                                                      ),
+                                                  children: const <TextSpan>[
+                                                    TextSpan(
+                                                      text: ' ₽',
+                                                      style: TextStyle(
+                                                        fontFamily: 'Roboto',
+                                                        fontSize: 13,
+                                                      ),
+                                                    ),
+                                                  ],
+                                                ),
+                                              ),
+                                              if (int.parse(initState.detailsProduct?.price.pb ?? '0') >
+                                                  int.parse(initState.detailsProduct?.price.p ?? '0'))
+                                                Row(
+                                                  children: [
+                                                    const SizedBox(
+                                                      width: 7,
+                                                    ),
+                                                    Text(
+                                                      (initState.detailsProduct?.price.pb ?? '0')
+                                                          .spaceSeparateNumbers(),
+                                                      style: Theme.of(context).textTheme.headlineLarge?.copyWith(
+                                                            decoration: TextDecoration.lineThrough,
+                                                          ),
+                                                    ),
+                                                    const Text(
+                                                      ' ₽',
+                                                      style: TextStyle(
+                                                        fontFamily: 'Roboto',
+                                                        fontSize: 13,
+                                                        decoration: TextDecoration.lineThrough,
+                                                      ),
+                                                    )
+                                                  ],
+                                                ),
+                                              const SizedBox(
+                                                width: 7,
+                                              ),
+                                              if ((initState.detailsProduct?.product.isYourPriceDisplayed ?? false) &&
+                                                  initState.detailsProduct?.product.promoValue == 0)
+                                                Row(
+                                                  children: [
+                                                    SvgPicture.asset(
+                                                      'assets/icons/lightning.svg',
+                                                      height: 14,
+                                                      width: 14,
+                                                    ),
+                                                    const SizedBox(
+                                                      width: 7,
+                                                    ),
+                                                    RichText(
+                                                      text: TextSpan(
+                                                        text: 'Ваша цена ',
+                                                        style: Theme.of(context).textTheme.displayMedium?.copyWith(
+                                                              fontWeight: FontWeight.w700,
+                                                            ),
+                                                        children: <TextSpan>[
+                                                          TextSpan(
+                                                            text: (initState.detailsProduct?.price.yourPrice ?? 0)
+                                                                .toString()
+                                                                .spaceSeparateNumbers(),
+                                                            style: Theme.of(context).textTheme.displayMedium?.copyWith(
+                                                                  fontWeight: FontWeight.w700,
+                                                                ),
+                                                          ),
+                                                          TextSpan(
+                                                            text: ' ₽',
+                                                            style: Theme.of(context).textTheme.displayMedium?.copyWith(
+                                                                  fontWeight: FontWeight.w700,
+                                                                ),
+                                                          ),
+                                                        ],
+                                                      ),
+                                                    ),
+                                                  ],
+                                                ),
+                                            ],
+                                          ),
+                                          if ((initState.detailsProduct?.product.promoValue ?? 0) > 0)
+                                            Tooltip(
+                                              decoration: BoxDecoration(
+                                                color: BlindChickenColors.activeBorderTextField.withOpacity(0.8),
+                                                borderRadius: const BorderRadius.all(
+                                                  Radius.circular(4),
+                                                ),
+                                              ),
+                                              margin: const EdgeInsets.only(left: 10, right: 10),
+                                              richMessage: WidgetSpan(
+                                                alignment: PlaceholderAlignment.baseline,
+                                                baseline: TextBaseline.alphabetic,
+                                                child: Text(
+                                                  initState.detailsProduct?.product.promo ?? '',
+                                                  style: Theme.of(context).textTheme.displayMedium?.copyWith(
+                                                        color: BlindChickenColors.backgroundColor,
+                                                      ),
+                                                ),
+                                              ),
+                                              child: Container(
+                                                padding: const EdgeInsets.only(
+                                                  top: 1,
+                                                  left: 4,
+                                                  right: 4,
+                                                  bottom: 1,
+                                                ),
+                                                margin: const EdgeInsets.only(top: 7, bottom: 7),
+                                                decoration: BoxDecoration(
+                                                  borderRadius: BorderRadius.circular(4),
+                                                  color: BlindChickenColors.activeBorderTextField,
+                                                ),
+                                                child: Row(
+                                                  mainAxisSize: MainAxisSize.min,
+                                                  children: [
+                                                    Text(
+                                                      '-${initState.detailsProduct?.product.promoValue ?? 0}% по акции',
+                                                      style: Theme.of(context).textTheme.displayMedium?.copyWith(
+                                                            color: BlindChickenColors.backgroundColor,
+                                                          ),
+                                                    ),
+                                                    const SizedBox(
+                                                      width: 5,
+                                                    ),
+                                                    SvgPicture.asset(
+                                                      'assets/icons/info.svg',
+                                                      color: BlindChickenColors.backgroundColor,
+                                                      height: 16,
+                                                      width: 16,
+                                                    ),
+                                                  ],
+                                                ),
+                                              ),
+                                            ),
+                                          PaymentInInstalmentWidget(price: price),
+                                          const SizedBox(
+                                            height: 7,
+                                          ),
+                                          CatalogCashbackInfo(
+                                            cashback: initState.detailsProduct?.price.cashback ?? 0,
+                                            bonusYear: initState.detailsProduct?.price.bonusYear ?? 0,
+                                            discountVal: initState.detailsProduct?.price.discountVal ?? 0,
+                                            bonusLoyal: initState.detailsProduct?.price.bonusLoyal ?? 0,
+                                            bonusGift: initState.detailsProduct?.price.bonusGift ?? 0,
+                                            userDiscount: initState.detailsProduct?.userDiscount ?? 0,
+                                            p: int.parse(initState.detailsProduct?.price.p ?? '0'),
+                                            pc: int.parse(initState.detailsProduct?.price.pc ?? '0'),
+                                            userNextDiscount: initState.detailsProduct?.userNextDiscount ?? 0,
+                                            isAuth: initState.isAuth,
+                                            userBuyForNextDiscount:
+                                                initState.detailsProduct?.userBuyForNextDiscount ?? 0,
+                                            userBuyForNextDiscountVal:
+                                                initState.detailsProduct?.userBuyForNextDiscountVal ?? 0,
+                                            pb: int.parse(initState.detailsProduct?.price.pb ?? '0'),
+                                            successfullyLogin: () {
+                                              Navigator.of(context, rootNavigator: true).pop();
+                                              context.read<CardInfoBloc>().add(
+                                                    CardInfoEvent.getProduct(
+                                                      product: initState.product,
+                                                      code: (initState.detailsProduct?.code ?? 0).toString(),
+                                                      isUpdate: true,
+                                                      titleScreen: widget.titleScreen,
+                                                      typeAddProductToShoppingCart: 'Кнопка',
+                                                      identifierAddProductToShoppingCart: '4',
+                                                    ),
+                                                  );
+                                            },
+                                            onBack: (buildContext) {
+                                              buildContext.back();
+                                            },
+                                          ),
+                                          const SizedBox(
+                                            height: 28,
+                                          ),
+                                          if (sky.isNotEmpty)
+                                            Column(
+                                              crossAxisAlignment: CrossAxisAlignment.start,
+                                              children: [
+                                                Text(
+                                                  'Размер',
+                                                  style: Theme.of(context).textTheme.displayMedium?.copyWith(
+                                                        fontWeight: FontWeight.w700,
+                                                      ),
+                                                ),
+                                                const SizedBox(
+                                                  height: 7,
+                                                ),
+                                                InkWell(
+                                                  onTap: () {
+                                                    context.navigateTo(
+                                                      CatalogSizeProductRoute(
+                                                        onChange: (value) {
+                                                          if (value.id.contains('-') && value.id.length > 10) {
+                                                            context.read<CardInfoBloc>().add(
+                                                                  CardInfoEvent.changeSizeProduct(
+                                                                    selectSizeProduct: value,
                                                                   ),
                                                                 );
-                                                            context
-                                                                .read<
-                                                                    CardInfoBloc>()
-                                                                .add(
-                                                                  CardInfoEvent
-                                                                      .checkProductToSoppingCart(
+                                                            context.read<CardInfoBloc>().add(
+                                                                  CardInfoEvent.checkProductToSoppingCart(
                                                                     size: value,
                                                                   ),
                                                                 );
                                                             context.back();
                                                           } else {
                                                             context.back();
-                                                            context
-                                                                .read<
-                                                                    CardInfoBloc>()
-                                                                .add(
-                                                                  CardInfoEvent
-                                                                      .getProduct(
-                                                                    code: value
-                                                                        .id
-                                                                        .toString(),
+                                                            context.read<CardInfoBloc>().add(
+                                                                  CardInfoEvent.getProduct(
+                                                                    code: value.id.toString(),
                                                                     size: value,
-                                                                    titleScreen:
-                                                                        widget
-                                                                            .titleScreen,
-                                                                    typeAddProductToShoppingCart:
-                                                                        'Кнопка',
-                                                                    identifierAddProductToShoppingCart:
-                                                                        '4',
+                                                                    titleScreen: widget.titleScreen,
+                                                                    typeAddProductToShoppingCart: 'Кнопка',
+                                                                    identifierAddProductToShoppingCart: '4',
                                                                   ),
                                                                 );
                                                           }
-                                                      },
-                                                      listSizeProduct: sky,
-                                                      selectItem:
-                                                          initState.selectSizeProduct ?? sky.first,
+                                                        },
+                                                        listSizeProduct: sky,
+                                                        selectItem: initState.selectSizeProduct ?? sky.first,
+                                                      ),
+                                                    );
+                                                  },
+                                                  child: Container(
+                                                    height: 37,
+                                                    decoration: BoxDecoration(
+                                                        border: Border.all(
+                                                          color: BlindChickenColors.borderTextField,
+                                                        ),
+                                                        borderRadius: BorderRadius.circular(
+                                                          4,
+                                                        )),
+                                                    child: Row(
+                                                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                                                      children: [
+                                                        Padding(
+                                                          padding: const EdgeInsets.only(
+                                                            left: 10.5,
+                                                          ),
+                                                          child: Text(
+                                                            initState.selectSizeProduct?.value ?? sky.first.value,
+                                                            style: Theme.of(context).textTheme.displayMedium,
+                                                          ),
+                                                        ),
+                                                        Padding(
+                                                          padding: const EdgeInsets.only(
+                                                            right: 8,
+                                                          ),
+                                                          child: SvgPicture.asset(
+                                                            'assets/icons/chevron-bottom.svg',
+                                                            height: 17.5,
+                                                            width: 17.5,
+                                                          ),
+                                                        ),
+                                                      ],
                                                     ),
-                                                  );
-                                                },
-                                                child: Container(
-                                                  height: 37,
-                                                  decoration: BoxDecoration(
-                                                      border: Border.all(
-                                                        color: BlindChickenColors.borderTextField,
-                                                      ),
-                                                      borderRadius: BorderRadius.circular(
-                                                        4,
-                                                      )),
-                                                  child: Row(
-                                                    mainAxisAlignment:
-                                                        MainAxisAlignment.spaceBetween,
-                                                    children: [
-                                                      Padding(
-                                                        padding: const EdgeInsets.only(
-                                                          left: 10.5,
-                                                        ),
-                                                        child: Text(
-                                                          initState.selectSizeProduct?.value ??
-                                                              sky.first.value,
-                                                          style: Theme.of(context)
-                                                              .textTheme
-                                                              .displayMedium,
-                                                        ),
-                                                      ),
-                                                      Padding(
-                                                        padding: const EdgeInsets.only(
-                                                          right: 8,
-                                                        ),
-                                                        child: SvgPicture.asset(
-                                                          'assets/icons/chevron-bottom.svg',
-                                                          height: 17.5,
-                                                          width: 17.5,
-                                                        ),
-                                                      ),
-                                                    ],
                                                   ),
                                                 ),
-                                              ),
-                                              const SizedBox(
-                                                height: 10,
-                                              ),
-                                            ],
-                                          ),
+                                                const SizedBox(
+                                                  height: 10,
+                                                ),
+                                              ],
+                                            ),
                                           BlindChickenButtonShoppingCartProduct(
-                                            title: initState.isShoppingCart ??
-                                                    false
+                                            title: initState.isShoppingCart ?? false
                                                 ? 'Перейти в корзину'
                                                 : 'Добавить в корзину',
                                             onChenge: () {
-                                              if (initState.isShoppingCart ??
-                                                  false) {
-                                                Timer(
-                                                    const Duration(
-                                                        milliseconds: 150), () {
+                                              if (initState.isShoppingCart ?? false) {
+                                                Timer(const Duration(milliseconds: 150), () {
                                                   context
                                                       .read<ShoppingCartBloc>()
-                                                      .add(
-                                                          const ShoppingCartEvent
-                                                              .preloadData());
+                                                      .add(const ShoppingCartEvent.preloadData());
                                                 });
                                                 context.navigateTo(
                                                   const ShoppingCartAutoRouterRoute(
@@ -1253,16 +1112,9 @@ class _CardInfoScreenViewState extends State<CardInfoScreenView> {
                                                 );
                                               } else {
                                                 _addToCart(
-                                                    code: (initState
-                                                                .detailsProduct
-                                                                ?.code ??
-                                                            0)
-                                                        .toString(),
-                                                    size: initState
-                                                            .selectSizeProduct ??
-                                                        sky.first,
-                                                    identifierAddProductToShoppingCart:
-                                                        '1');
+                                                    code: (initState.detailsProduct?.code ?? 0).toString(),
+                                                    size: initState.selectSizeProduct ?? sky.first,
+                                                    identifierAddProductToShoppingCart: '1');
                                               }
                                             },
                                           ),
@@ -1271,311 +1123,283 @@ class _CardInfoScreenViewState extends State<CardInfoScreenView> {
                                           ),
                                           Text(
                                             'Получение',
-                                            style:
-                                              Theme.of(context).textTheme.displayMedium?.copyWith(
-                                                    fontWeight: FontWeight.w700,
-                                                  ),
-                                        ),
-                                        const SizedBox(
-                                          height: 7,
-                                        ),
-                                        CatalogBoutiquesInfo(
-                                          listBoutiques: initState.detailsProduct?.stock ?? [],
-                                        ),
-                                        const SizedBox(
-                                          height: 3.5,
-                                        ),
-                                        Text(
-                                          'Бесплатная доставка по России от 10 000 ₽',
-                                          style: Theme.of(context).textTheme.displayMedium,
-                                        ),
-                                        const SizedBox(
-                                          height: 28,
-                                        ),
-                                        if (initState.detailsProduct?.option.isNotEmpty ?? false)
-                                          Column(
-                                            crossAxisAlignment: CrossAxisAlignment.start,
-                                            children: [
-                                              Text(
-                                                'Варианты',
-                                                style: Theme.of(context)
-                                                    .textTheme
-                                                    .displayMedium
-                                                    ?.copyWith(
-                                                      fontWeight: FontWeight.w700,
-                                                    ),
-                                              ),
-                                              const SizedBox(
-                                                height: 10,
-                                              ),
-                                              CatalogVariantSliderImages(
-                                                listOptionProduct:
-                                                    initState.detailsProduct?.option ?? [],
-                                                onTap: (product) {
-                                                  // в боевой Api раскомментировать
-                                                    context
-                                                        .read<CardInfoBloc>()
-                                                        .add(
-                                                          CardInfoEvent
-                                                              .getProduct(
+                                            style: Theme.of(context).textTheme.displayMedium?.copyWith(
+                                                  fontWeight: FontWeight.w700,
+                                                ),
+                                          ),
+                                          const SizedBox(
+                                            height: 7,
+                                          ),
+                                          CatalogBoutiquesInfo(
+                                            listBoutiques: initState.detailsProduct?.stock ?? [],
+                                          ),
+                                          const SizedBox(
+                                            height: 3.5,
+                                          ),
+                                          Text(
+                                            'Бесплатная доставка по России от 10 000 ₽',
+                                            style: Theme.of(context).textTheme.displayMedium,
+                                          ),
+                                          const SizedBox(
+                                            height: 28,
+                                          ),
+                                          if (initState.detailsProduct?.option.isNotEmpty ?? false)
+                                            Column(
+                                              crossAxisAlignment: CrossAxisAlignment.start,
+                                              children: [
+                                                Text(
+                                                  'Варианты',
+                                                  style: Theme.of(context).textTheme.displayMedium?.copyWith(
+                                                        fontWeight: FontWeight.w700,
+                                                      ),
+                                                ),
+                                                const SizedBox(
+                                                  height: 10,
+                                                ),
+                                                CatalogVariantSliderImages(
+                                                  listOptionProduct: initState.detailsProduct?.option ?? [],
+                                                  onTap: (product) {
+                                                    // в боевой Api раскомментировать
+                                                    context.read<CardInfoBloc>().add(
+                                                          CardInfoEvent.getProduct(
                                                             product: product,
-                                                            code: product.id
-                                                                .toString(),
-                                                            titleScreen:
-                                                                'Описание товара (Варианты)',
-                                                            typeAddProductToShoppingCart:
-                                                                'Кнопка',
-                                                            identifierAddProductToShoppingCart:
-                                                                '4',
+                                                            code: product.id.toString(),
+                                                            titleScreen: 'Описание товара (Варианты)',
+                                                            typeAddProductToShoppingCart: 'Кнопка',
+                                                            identifierAddProductToShoppingCart: '4',
                                                           ),
                                                         );
 
-                                                    final favouritesProductsId = initState
-                                                      .favouritesProducts
-                                                      .map((item) => item.id)
-                                                      .toList();
+                                                    final favouritesProductsId =
+                                                        initState.favouritesProducts.map((item) => item.id).toList();
 
-                                                  context.navigateTo(
-                                                    CardInfoRoute(
-                                                      isChildRoute: true,
-                                                      product: product,
-                                                      isLike:
-                                                          favouritesProductsId.contains(product.id),
-                                                      listItems: widget.listItems,
-                                                      favouritesProducts: widget.favouritesProducts,
-                                                      codeProduct: initState
-                                                              .codeProduct ??
-                                                            '',
-                                                        titleScreen: initState
-                                                            .titleScreen,
+                                                    context.navigateTo(
+                                                      CardInfoRoute(
+                                                        isChildRoute: true,
+                                                        product: product,
+                                                        isLike: favouritesProductsId.contains(product.id),
+                                                        listItems: widget.listItems,
+                                                        favouritesProducts: widget.favouritesProducts,
+                                                        codeProduct: initState.codeProduct ?? '',
+                                                        titleScreen: initState.titleScreen,
                                                       ),
-                                                  );
-                                                },
-                                              ),
-                                              const SizedBox(
-                                                height: 40,
-                                              ),
-                                            ],
+                                                    );
+                                                  },
+                                                ),
+                                                const SizedBox(
+                                                  height: 40,
+                                                ),
+                                              ],
+                                            ),
+                                          Text(
+                                            'О товаре',
+                                            style: Theme.of(context).textTheme.displayMedium?.copyWith(
+                                                  fontWeight: FontWeight.w700,
+                                                ),
                                           ),
-                                        Text(
-                                          'О товаре',
-                                          style:
-                                              Theme.of(context).textTheme.displayMedium?.copyWith(
-                                                    fontWeight: FontWeight.w700,
-                                                  ),
-                                        ),
-                                        if (initState.detailsProduct?.text
-                                                .isNotEmpty ??
-                                            false)
-                                          Column(
-                                            children: [
-                                              const SizedBox(
-                                                height: 7,
-                                              ),
-                                              CatalogDescriptionProductInfo(
-                                                text: initState
-                                                        .detailsProduct?.text ??
-                                                    '',
-                                              )
-                                            ],
+                                          if (initState.detailsProduct?.text.isNotEmpty ?? false)
+                                            Column(
+                                              children: [
+                                                const SizedBox(
+                                                  height: 7,
+                                                ),
+                                                CatalogDescriptionProductInfo(
+                                                  text: initState.detailsProduct?.text ?? '',
+                                                )
+                                              ],
+                                            ),
+                                          const SizedBox(
+                                            height: 7,
                                           ),
-                                        const SizedBox(
-                                          height: 7,
-                                        ),
-                                        CatalogDescriptionInfo(
-                                          char: initState.detailsProduct?.char ?? [],
-                                        ),
-                                          BlocBuilder<CardInfoBloc,
-                                              CardInfoState>(
+                                          CatalogDescriptionInfo(
+                                            char: initState.detailsProduct?.char ?? [],
+                                          ),
+                                          BlocBuilder<CardInfoBloc, CardInfoState>(
                                             builder: (context, state) {
                                               return state.maybeMap(
                                                   productInfoCard: (initState) {
-                                                    if (initState
-                                                        .listProdcutsComplect
-                                                        .isNotEmpty) {
+                                                    if (initState.listProdcutsComplect.isNotEmpty) {
                                                       return Column(
-                                                        crossAxisAlignment:
-                                                            CrossAxisAlignment
-                                                                .start,
+                                                        crossAxisAlignment: CrossAxisAlignment.start,
                                                         children: [
                                                           const SizedBox(
                                                             height: 35,
                                                           ),
                                                           Text(
-                                                          'Носят вместе',
-                                                          style: Theme.of(context)
-                                                              .textTheme
-                                                              .displayMedium
-                                                              ?.copyWith(
-                                                                fontWeight: FontWeight.w700,
-                                                              ),
-                                                        ),
-                                                        const SizedBox(
-                                                          height: 10.5,
-                                                        ),
-                                                        CatalogSliderProducts(
-                                                          onSelectProduct: (value) {
-                                                            context
-                                                                .read<
-                                                                    CardInfoBloc>()
-                                                                .add(
-                                                                  CardInfoEvent
-                                                                      .getProduct(
-                                                                      product:
-                                                                          value,
+                                                            'Носят вместе',
+                                                            style: Theme.of(context).textTheme.displayMedium?.copyWith(
+                                                                  fontWeight: FontWeight.w700,
+                                                                ),
+                                                          ),
+                                                          const SizedBox(
+                                                            height: 10.5,
+                                                          ),
+                                                          CatalogSliderProducts(
+                                                            onSelectProduct: (value) {
+                                                              context.read<CardInfoBloc>().add(
+                                                                    CardInfoEvent.getProduct(
+                                                                      product: value,
                                                                       code: value.id.toString(),
-                                                                      titleScreen:
-                                                                          'Описание товара (Носят вместе)',
-                                                                      typeAddProductToShoppingCart:
-                                                                          'Карточка товара',
-                                                                      identifierAddProductToShoppingCart:
-                                                                          '1',
+                                                                      titleScreen: 'Описание товара (Носят вместе)',
+                                                                      typeAddProductToShoppingCart: 'Карточка товара',
+                                                                      identifierAddProductToShoppingCart: '1',
                                                                     ),
                                                                   );
                                                             },
-                                                            listProducts: initState
-                                                                .listProdcutsComplect,
-                                                            favouritesProductsId:
-                                                                initState
-                                                                    .favouritesProductsId,
+                                                            listProducts: initState.listProdcutsComplect,
+                                                            favouritesProductsId: initState.favouritesProductsId,
                                                             addLike: (index) {
-                                                            context
-                                                                .read<
-                                                                    CardInfoBloc>()
-                                                                .add(
-                                                                  CardInfoEvent
-                                                                      .addFavouriteProduct(
-                                                                    product: initState
-                                                                            .listProdcutsComplect[
-                                                                        index],
-                                                                    index: initState
-                                                                        .listProdcutsComplect[index]
-                                                                        .id,
-                                                                  ),
-                                                                );
-                                                          },
-                                                          deleteLike: (index) {
-                                                            context
-                                                                .read<
-                                                                    CardInfoBloc>()
-                                                                .add(
-                                                                  CardInfoEvent
-                                                                      .deleteFavouriteProduct(
-                                                                    index: initState
-                                                                        .listProdcutsComplect[index]
-                                                                        .id,
-                                                                  ),
-                                                                );
-                                                          },
-                                                          isAuth: initState.isAuth,
-                                                        )
-                                                      ],
-                                                    );
-                                                  } else {
-                                                    return const SizedBox();
-                                                  }
-                                                },
-                                                orElse: () => const SizedBox());
-                                          },
-                                        ),
-                                          BlocBuilder<CardInfoBloc,
-                                              CardInfoState>(
+                                                              context.read<CardInfoBloc>().add(
+                                                                    CardInfoEvent.addFavouriteProduct(
+                                                                      product: initState.listProdcutsComplect[index],
+                                                                      index: initState.listProdcutsComplect[index].id,
+                                                                    ),
+                                                                  );
+                                                            },
+                                                            deleteLike: (index) {
+                                                              context.read<CardInfoBloc>().add(
+                                                                    CardInfoEvent.deleteFavouriteProduct(
+                                                                      index: initState.listProdcutsComplect[index].id,
+                                                                    ),
+                                                                  );
+                                                            },
+                                                            isAuth: initState.isAuth,
+                                                          )
+                                                        ],
+                                                      );
+                                                    } else {
+                                                      return const SizedBox();
+                                                    }
+                                                  },
+                                                  orElse: () => const SizedBox());
+                                            },
+                                          ),
+                                          BlocBuilder<CardInfoBloc, CardInfoState>(
                                             builder: (context, state) {
                                               return state.maybeMap(
                                                   productInfoCard: (initState) {
-                                                    if (initState
-                                                        .listProdcutsStyle
-                                                        .isNotEmpty) {
+                                                    if (initState.listProdcutsStyle.isNotEmpty) {
                                                       return Column(
-                                                        crossAxisAlignment:
-                                                            CrossAxisAlignment
-                                                                .start,
+                                                        crossAxisAlignment: CrossAxisAlignment.start,
                                                         children: [
                                                           const SizedBox(
                                                             height: 35,
                                                           ),
                                                           Text(
-                                                          'Рекомендации стилистов',
-                                                          style: Theme.of(context)
-                                                              .textTheme
-                                                              .displayMedium
-                                                              ?.copyWith(
-                                                                fontWeight: FontWeight.w700,
-                                                              ),
-                                                        ),
-                                                        const SizedBox(
-                                                          height: 10.5,
-                                                        ),
-                                                        CatalogSliderProducts(
-                                                          onSelectProduct: (value) {
-                                                              context
-                                                                  .read<
-                                                                      CardInfoBloc>()
-                                                                  .add(
-                                                                    CardInfoEvent
-                                                                        .getProduct(
-                                                                      product:
-                                                                          value,
+                                                            'Рекомендации стилистов',
+                                                            style: Theme.of(context).textTheme.displayMedium?.copyWith(
+                                                                  fontWeight: FontWeight.w700,
+                                                                ),
+                                                          ),
+                                                          const SizedBox(
+                                                            height: 10.5,
+                                                          ),
+                                                          CatalogSliderProducts(
+                                                            onSelectProduct: (value) {
+                                                              context.read<CardInfoBloc>().add(
+                                                                    CardInfoEvent.getProduct(
+                                                                      product: value,
                                                                       code: value.id.toString(),
                                                                       titleScreen:
                                                                           'Описание товара (Рекомендации стилистов)',
-                                                                      typeAddProductToShoppingCart:
-                                                                          'Карточка товара',
-                                                                      identifierAddProductToShoppingCart:
-                                                                          '1',
+                                                                      typeAddProductToShoppingCart: 'Карточка товара',
+                                                                      identifierAddProductToShoppingCart: '1',
                                                                     ),
                                                                   );
                                                             },
-                                                            listProducts: initState
-                                                                .listProdcutsStyle,
-                                                            favouritesProductsId:
-                                                                initState
-                                                                    .favouritesProductsId,
+                                                            listProducts: initState.listProdcutsStyle,
+                                                            favouritesProductsId: initState.favouritesProductsId,
                                                             addLike: (index) {
-                                                            context
-                                                                .read<
-                                                                    CardInfoBloc>()
-                                                                .add(
-                                                                  CardInfoEvent
-                                                                      .addFavouriteProduct(
-                                                                    product: initState
-                                                                        .listProdcutsStyle[index],
-                                                                    index: initState
-                                                                        .listProdcutsStyle[index]
-                                                                        .id,
-                                                                  ),
-                                                                );
-                                                          },
-                                                          deleteLike: (index) {
-                                                            context
-                                                                .read<
-                                                                    CardInfoBloc>()
-                                                                .add(
-                                                                  CardInfoEvent
-                                                                      .deleteFavouriteProduct(
-                                                                    index: initState
-                                                                        .listProdcutsStyle[index]
-                                                                        .id,
-                                                                  ),
-                                                                );
-                                                          },
-                                                          isAuth: initState.isAuth,
-                                                        )
-                                                      ],
-                                                    );
-                                                  } else {
-                                                    return const SizedBox();
-                                                  }
-                                                },
-                                                orElse: () => const SizedBox());
-                                          },
-                                        ),
-                                        BlocBuilder<CardInfoBloc,
-                                            CardInfoState>(
-                                          builder: (context, state) {
-                                            return state.maybeMap(
+                                                              context.read<CardInfoBloc>().add(
+                                                                    CardInfoEvent.addFavouriteProduct(
+                                                                      product: initState.listProdcutsStyle[index],
+                                                                      index: initState.listProdcutsStyle[index].id,
+                                                                    ),
+                                                                  );
+                                                            },
+                                                            deleteLike: (index) {
+                                                              context.read<CardInfoBloc>().add(
+                                                                    CardInfoEvent.deleteFavouriteProduct(
+                                                                      index: initState.listProdcutsStyle[index].id,
+                                                                    ),
+                                                                  );
+                                                            },
+                                                            isAuth: initState.isAuth,
+                                                          )
+                                                        ],
+                                                      );
+                                                    } else {
+                                                      return const SizedBox();
+                                                    }
+                                                  },
+                                                  orElse: () => const SizedBox());
+                                            },
+                                          ),
+                                          BlocBuilder<CardInfoBloc, CardInfoState>(
+                                            builder: (context, state) {
+                                              return state.maybeMap(
+                                                  productInfoCard: (initState) {
+                                                    if (initState.listProdcutsAlso.isNotEmpty) {
+                                                      return Column(
+                                                        crossAxisAlignment: CrossAxisAlignment.start,
+                                                        children: [
+                                                          const SizedBox(
+                                                            height: 35,
+                                                          ),
+                                                          Text(
+                                                            'Смотрите также',
+                                                            style: Theme.of(context).textTheme.displayMedium?.copyWith(
+                                                                  fontWeight: FontWeight.w700,
+                                                                ),
+                                                          ),
+                                                          const SizedBox(
+                                                            height: 10.5,
+                                                          ),
+                                                          CatalogSliderProducts(
+                                                            onSelectProduct: (value) {
+                                                              context.read<CardInfoBloc>().add(
+                                                                    CardInfoEvent.getProduct(
+                                                                      product: value,
+                                                                      code: value.id.toString(),
+                                                                      titleScreen: 'Описание товара (Смотрите также)',
+                                                                      typeAddProductToShoppingCart: 'Карточка товара',
+                                                                      identifierAddProductToShoppingCart: '1',
+                                                                    ),
+                                                                  );
+                                                            },
+                                                            listProducts: initState.listProdcutsAlso,
+                                                            favouritesProductsId: initState.favouritesProductsId,
+                                                            addLike: (index) {
+                                                              context.read<CardInfoBloc>().add(
+                                                                    CardInfoEvent.addFavouriteProduct(
+                                                                      product: initState.listProdcutsAlso[index],
+                                                                      index: initState.listProdcutsAlso[index].id,
+                                                                    ),
+                                                                  );
+                                                            },
+                                                            deleteLike: (index) {
+                                                              context.read<CardInfoBloc>().add(
+                                                                    CardInfoEvent.deleteFavouriteProduct(
+                                                                      index: initState.listProdcutsAlso[index].id,
+                                                                    ),
+                                                                  );
+                                                            },
+                                                            isAuth: initState.isAuth,
+                                                          )
+                                                        ],
+                                                      );
+                                                    } else {
+                                                      return const SizedBox();
+                                                    }
+                                                  },
+                                                  orElse: () => const SizedBox());
+                                            },
+                                          ),
+                                          BlocBuilder<CardInfoBloc, CardInfoState>(
+                                            builder: (context, state) {
+                                              return state.maybeMap(
                                                 productInfoCard: (initState) {
-                                                  if (initState.listProdcutsAlso.isNotEmpty) {
+                                                  if (initState.detailsProduct?.sections.isNotEmpty ?? false) {
                                                     return Column(
                                                       crossAxisAlignment: CrossAxisAlignment.start,
                                                       children: [
@@ -1583,11 +1407,64 @@ class _CardInfoScreenViewState extends State<CardInfoScreenView> {
                                                           height: 35,
                                                         ),
                                                         Text(
-                                                          'Смотрите также',
-                                                          style: Theme.of(context)
-                                                              .textTheme
-                                                              .displayMedium
-                                                              ?.copyWith(
+                                                          'С этим товаром смотрят',
+                                                          style: Theme.of(context).textTheme.displayMedium?.copyWith(
+                                                                fontWeight: FontWeight.w700,
+                                                              ),
+                                                        ),
+                                                        const SizedBox(
+                                                          height: 10.5,
+                                                        ),
+                                                        CatalogCategoryInfo(
+                                                          sections: initState.detailsProduct?.sections.first.list ?? [],
+                                                          onTap: (path) {
+                                                            Timer(
+                                                              const Duration(milliseconds: 30),
+                                                              () {
+                                                                context.read<CatalogBloc>().add(
+                                                                      CatalogEvent.getInfoProducts(
+                                                                        path: path,
+                                                                        isCleanHistory: true,
+                                                                      ),
+                                                                    );
+                                                              },
+                                                            );
+                                                            context.navigateTo(
+                                                              HomeAutoRouterRoute(
+                                                                children: [
+                                                                  CatalogRoute(
+                                                                    title: '',
+                                                                    url: path,
+                                                                  ),
+                                                                ],
+                                                              ),
+                                                            );
+                                                          },
+                                                        ),
+                                                      ],
+                                                    );
+                                                  } else {
+                                                    return const SizedBox();
+                                                  }
+                                                },
+                                                orElse: () => const SizedBox(),
+                                              );
+                                            },
+                                          ),
+                                          BlocBuilder<CardInfoBloc, CardInfoState>(
+                                            builder: (context, state) {
+                                              return state.maybeMap(
+                                                productInfoCard: (initState) {
+                                                  if (initState.listProdcutsBrand.isNotEmpty) {
+                                                    return Column(
+                                                      crossAxisAlignment: CrossAxisAlignment.start,
+                                                      children: [
+                                                        const SizedBox(
+                                                          height: 35,
+                                                        ),
+                                                        Text(
+                                                          'Товары бренда',
+                                                          style: Theme.of(context).textTheme.displayMedium?.copyWith(
                                                                 fontWeight: FontWeight.w700,
                                                               ),
                                                         ),
@@ -1596,288 +1473,117 @@ class _CardInfoScreenViewState extends State<CardInfoScreenView> {
                                                         ),
                                                         CatalogSliderProducts(
                                                           onSelectProduct: (value) {
-                                                              context
-                                                                  .read<
-                                                                      CardInfoBloc>()
-                                                                  .add(
-                                                                    CardInfoEvent
-                                                                        .getProduct(
-                                                                      product:
-                                                                          value,
-                                                                      code: value.id.toString(),
-                                                                      titleScreen:
-                                                                          'Описание товара (Смотрите также)',
-                                                                      typeAddProductToShoppingCart:
-                                                                          'Карточка товара',
-                                                                      identifierAddProductToShoppingCart:
-                                                                          '1',
-                                                                    ),
-                                                                  );
-                                                            },
-                                                            listProducts: initState.listProdcutsAlso,
-                                                            favouritesProductsId:
-                                                                initState.favouritesProductsId,
-                                                            addLike: (index) {
-                                                            context
-                                                                .read<
-                                                                    CardInfoBloc>()
-                                                                .add(
-                                                                  CardInfoEvent
-                                                                      .addFavouriteProduct(
-                                                                    product: initState
-                                                                        .listProdcutsAlso[index],
-                                                                    index: initState
-                                                                        .listProdcutsAlso[index].id,
+                                                            context.read<CardInfoBloc>().add(
+                                                                  CardInfoEvent.getProduct(
+                                                                    product: value,
+                                                                    code: value.id.toString(),
+                                                                    titleScreen: 'Описание товара (Товары бренда)',
+                                                                    typeAddProductToShoppingCart: 'Карточка товара',
+                                                                    identifierAddProductToShoppingCart: '1',
+                                                                  ),
+                                                                );
+                                                          },
+                                                          listProducts: initState.listProdcutsBrand,
+                                                          favouritesProductsId: initState.favouritesProductsId,
+                                                          addLike: (index) {
+                                                            context.read<CardInfoBloc>().add(
+                                                                  CardInfoEvent.addFavouriteProduct(
+                                                                    product: initState.listProdcutsBrand[index],
+                                                                    index: initState.listProdcutsBrand[index].id,
                                                                   ),
                                                                 );
                                                           },
                                                           deleteLike: (index) {
-                                                            context
-                                                                .read<
-                                                                    CardInfoBloc>()
-                                                                .add(
-                                                                  CardInfoEvent
-                                                                      .deleteFavouriteProduct(
-                                                                    index: initState
-                                                                        .listProdcutsAlso[index].id,
+                                                            context.read<CardInfoBloc>().add(
+                                                                  CardInfoEvent.deleteFavouriteProduct(
+                                                                    index: initState.listProdcutsBrand[index].id,
                                                                   ),
                                                                 );
                                                           },
                                                           isAuth: initState.isAuth,
-                                                        )
+                                                        ),
                                                       ],
                                                     );
                                                   } else {
                                                     return const SizedBox();
                                                   }
                                                 },
-                                                orElse: () => const SizedBox());
-                                          },
-                                        ),
-                                        BlocBuilder<CardInfoBloc,
-                                            CardInfoState>(
-                                          builder: (context, state) {
-                                            return state.maybeMap(
-                                              productInfoCard: (initState) {
-                                                if (initState.detailsProduct?.sections.isNotEmpty ??
-                                                    false) {
-                                                  return Column(
-                                                    crossAxisAlignment: CrossAxisAlignment.start,
-                                                    children: [
-                                                      const SizedBox(
-                                                        height: 35,
-                                                      ),
-                                                      Text(
-                                                        'С этим товаром смотрят',
-                                                        style: Theme.of(context)
-                                                            .textTheme
-                                                            .displayMedium
-                                                            ?.copyWith(
-                                                              fontWeight: FontWeight.w700,
-                                                            ),
-                                                      ),
-                                                      const SizedBox(
-                                                        height: 10.5,
-                                                      ),
-                                                      CatalogCategoryInfo(
-                                                        sections: initState.detailsProduct?.sections
-                                                                .first.list ??
-                                                            [],
-                                                        onTap: (path) {
-                                                          Timer(
-                                                            const Duration(milliseconds: 30),
-                                                            () {
-                                                              context.read<CatalogBloc>().add(
-                                                                    CatalogEvent.getInfoProducts(
-                                                                      path: path,
-                                                                      isCleanHistory: true,
-                                                                    ),
-                                                                  );
-                                                            },
-                                                          );
-                                                          context.navigateTo(
-                                                            HomeAutoRouterRoute(
-                                                              children: [
-                                                                CatalogRoute(
-                                                                  title: '',
-                                                                  url: path,
-                                                                ),
-                                                              ],
-                                                            ),
-                                                          );
-                                                        },
-                                                      ),
-                                                    ],
-                                                  );
-                                                } else {
-                                                  return const SizedBox();
-                                                }
-                                              },
-                                              orElse: () => const SizedBox(),
-                                            );
-                                          },
-                                        ),
-                                        BlocBuilder<CardInfoBloc,
-                                            CardInfoState>(
-                                          builder: (context, state) {
-                                            return state.maybeMap(
-                                              productInfoCard: (initState) {
-                                                if (initState.listProdcutsBrand.isNotEmpty) {
-                                                  return Column(
-                                                    crossAxisAlignment: CrossAxisAlignment.start,
-                                                    children: [
-                                                      const SizedBox(
-                                                        height: 35,
-                                                      ),
-                                                      Text(
-                                                        'Товары бренда',
-                                                        style: Theme.of(context)
-                                                            .textTheme
-                                                            .displayMedium
-                                                            ?.copyWith(
-                                                              fontWeight: FontWeight.w700,
-                                                            ),
-                                                      ),
-                                                      const SizedBox(
-                                                        height: 10.5,
-                                                      ),
-                                                      CatalogSliderProducts(
-                                                        onSelectProduct: (value) {
-                                                          context
-                                                              .read<
-                                                                  CardInfoBloc>()
-                                                              .add(
-                                                                CardInfoEvent
-                                                                    .getProduct(
-                                                                    product:
-                                                                        value,
-                                                                    code: value.id.toString(),
-                                                                    titleScreen:
-                                                                        'Описание товара (Товары бренда)',
-                                                                    typeAddProductToShoppingCart:
-                                                                        'Карточка товара',
-                                                                    identifierAddProductToShoppingCart:
-                                                                        '1',
-                                                                  ),
-                                                                );
-                                                          },
-                                                          listProducts: initState
-                                                              .listProdcutsBrand,
-                                                          favouritesProductsId:
-                                                              initState
-                                                                  .favouritesProductsId,
-                                                          addLike: (index) {
-                                                          context
-                                                              .read<
-                                                                  CardInfoBloc>()
-                                                              .add(
-                                                                CardInfoEvent
-                                                                    .addFavouriteProduct(
-                                                                  product: initState
-                                                                      .listProdcutsBrand[index],
-                                                                  index: initState
-                                                                      .listProdcutsBrand[index].id,
-                                                                ),
-                                                              );
-                                                        },
-                                                        deleteLike: (index) {
-                                                          context
-                                                              .read<
-                                                                  CardInfoBloc>()
-                                                              .add(
-                                                                CardInfoEvent
-                                                                    .deleteFavouriteProduct(
-                                                                  index: initState
-                                                                      .listProdcutsBrand[index].id,
-                                                                ),
-                                                              );
-                                                        },
-                                                        isAuth: initState.isAuth,
-                                                      ),
-                                                    ],
-                                                  );
-                                                } else {
-                                                  return const SizedBox();
-                                                }
-                                              },
-                                              orElse: () => const SizedBox(),
-                                            );
-                                          },
-                                        ),
-                                        const SizedBox(
-                                          height: 80,
-                                        )
-                                      ],
-                                    ),
-                                  )
-                                ],
-                              ),
-                            );
-                          },
-                          orElse: () => const SizedBox(),
-                        );
-                      })
-                    ],
-                  )),
-                ),
-                BlocBuilder<CardInfoBloc, CardInfoState>(
-                  builder: (context, state) {
-                    return state.maybeMap(
-                      load: (value) {
-                        return Center(
-                          child: CircularProgressIndicator(
-                            color: Colors.black,
-                            backgroundColor: Colors.grey.shade400,
-                          ),
-                        );
-                      },
-                      orElse: () => const SizedBox(),
-                    );
-                  },
-                ),
-              ],
-            ),
-            BlocBuilder<CardInfoBloc, CardInfoState>(
-              builder: (context, state) {
-                return state.maybeMap(
-                  productInfoCard: (initState) {
-                    if (_isShoppingCartButton) {
-                      return BlindChickenTitleButton(
-                        title: (initState.isShoppingCartDetailsProduct ?? false)
-                            ? 'Перейти в корзину'
-                            : 'Добавить в корзину',
-                        onChange: () {
-                          if (!initState.isLoadGetSizeProduct) {
-                            context.read<CardInfoBloc>().add(
-                                  CardInfoEvent.getInfoProductSize(
-                                    code: (initState.detailsProduct?.code ?? 0).toString(),
-                                    isShop: initState.isShoppingCart ?? false,
-                                    titleScreen: initState.titleScreen,
-                                  ),
-                                );
-                          }
+                                                orElse: () => const SizedBox(),
+                                              );
+                                            },
+                                          ),
+                                          const SizedBox(
+                                            height: 80,
+                                          )
+                                        ],
+                                      ),
+                                    )
+                                  ],
+                                ),
+                              );
+                            },
+                            orElse: () => const SizedBox(),
+                          );
+                        })
+                      ],
+                    )),
+                  ),
+                  BlocBuilder<CardInfoBloc, CardInfoState>(
+                    builder: (context, state) {
+                      return state.maybeMap(
+                        load: (value) {
+                          return Center(
+                            child: CircularProgressIndicator(
+                              color: Colors.black,
+                              backgroundColor: Colors.grey.shade400,
+                            ),
+                          );
                         },
-                        isLoad: initState.isLoadGetSizeProduct,
+                        orElse: () => const SizedBox(),
                       );
-                    } else {
-                      return const SizedBox();
-                    }
-                  },
-                  orElse: () => const SizedBox(),
-                );
-              },
-            )
-          ],
+                    },
+                  ),
+                ],
+              ),
+              BlocBuilder<CardInfoBloc, CardInfoState>(
+                builder: (context, state) {
+                  return state.maybeMap(
+                    productInfoCard: (initState) {
+                      if (_isShoppingCartButton) {
+                        return BlindChickenTitleButton(
+                          title: (initState.isShoppingCartDetailsProduct ?? false)
+                              ? 'Перейти в корзину'
+                              : 'Добавить в корзину',
+                          onChange: () {
+                            if (!initState.isLoadGetSizeProduct) {
+                              context.read<CardInfoBloc>().add(
+                                    CardInfoEvent.getInfoProductSize(
+                                      code: (initState.detailsProduct?.code ?? 0).toString(),
+                                      isShop: initState.isShoppingCart ?? false,
+                                      titleScreen: initState.titleScreen,
+                                    ),
+                                  );
+                            }
+                          },
+                          isLoad: initState.isLoadGetSizeProduct,
+                        );
+                      } else {
+                        return const SizedBox();
+                      }
+                    },
+                    orElse: () => const SizedBox(),
+                  );
+                },
+              )
+            ],
+          ),
         ),
-      ),
       ),
     );
   }
 
   void _addToCart(
-      {required String code,
-      SkuProductDataModel? size,
-      required String identifierAddProductToShoppingCart}) {
+      {required String code, SkuProductDataModel? size, required String identifierAddProductToShoppingCart}) {
     String typeAddProductToShoppingCart;
     switch (identifierAddProductToShoppingCart) {
       case '1':
@@ -1898,8 +1604,7 @@ class _CardInfoScreenViewState extends State<CardInfoScreenView> {
                   value: '',
                 ),
             typeAddProductToShoppingCart: typeAddProductToShoppingCart,
-            identifierAddProductToShoppingCart:
-                identifierAddProductToShoppingCart,
+            identifierAddProductToShoppingCart: identifierAddProductToShoppingCart,
           ),
         );
     context.read<ShoppingCartBloc>().add(
@@ -1911,8 +1616,7 @@ class _CardInfoScreenViewState extends State<CardInfoScreenView> {
               titleScreen: widget.titleScreen,
               searchQuery: '',
               typeAddProductToShoppingCart: typeAddProductToShoppingCart,
-              identifierAddProductToShoppingCart:
-                  identifierAddProductToShoppingCart,
+              identifierAddProductToShoppingCart: identifierAddProductToShoppingCart,
               sectionCategoriesPath: [],
               productCategoriesPath: [],
             ),
