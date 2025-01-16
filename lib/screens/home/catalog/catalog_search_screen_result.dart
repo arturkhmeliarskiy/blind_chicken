@@ -440,9 +440,12 @@ class _CatalogSearchResultScreenState extends State<CatalogSearchResultScreen> {
                             builder: (context, state) {
                               return state.maybeMap(
                                   searchProductsResult: (initState) {
-                                    if (_scrollController.position.pixels == 0) {
-                                      WidgetsBinding.instance.addPostFrameCallback((_) {
-                                        _scrollController.jumpTo(_historyPosition);
+                                    if (_scrollController.position.pixels ==
+                                        0) {
+                                      WidgetsBinding.instance
+                                          .addPostFrameCallback((_) {
+                                        _scrollController
+                                            .jumpTo(_historyPosition);
                                       });
                                     }
                                     if (initState.offset == 1) {
@@ -450,8 +453,11 @@ class _CatalogSearchResultScreenState extends State<CatalogSearchResultScreen> {
                                     }
                                     return GestureDetector(
                                       onHorizontalDragUpdate: (details) {},
-                                      onHorizontalDragEnd: (DragEndDetails details) {
-                                        if (details.velocity.pixelsPerSecond.dx > 0) {
+                                      onHorizontalDragEnd:
+                                          (DragEndDetails details) {
+                                        if (details
+                                                .velocity.pixelsPerSecond.dx >
+                                            0) {
                                           context.back();
                                         }
                                       },
@@ -459,11 +465,13 @@ class _CatalogSearchResultScreenState extends State<CatalogSearchResultScreen> {
                                         canPop: false,
                                         onPopInvoked: (value) {
                                           context.read<SearchBloc>().add(
-                                                SearchEvent.searchProfucts(initState.query),
+                                                SearchEvent.searchProfucts(
+                                                    initState.query),
                                               );
                                         },
                                         child: Column(
-                                          crossAxisAlignment: CrossAxisAlignment.start,
+                                          crossAxisAlignment:
+                                              CrossAxisAlignment.start,
                                           children: [
                                             Padding(
                                               padding: const EdgeInsets.only(
@@ -478,12 +486,13 @@ class _CatalogSearchResultScreenState extends State<CatalogSearchResultScreen> {
                                                     TextSpan(
                                                       text:
                                                           'По запросу «${initState.query}» найдено  ',
-                                                      style: Theme.of(context).textTheme.titleSmall,
+                                                      style: Theme.of(context)
+                                                          .textTheme
+                                                          .titleSmall,
                                                     ),
                                                     TextSpan(
-                                                      text:
-                                                          '${initState.searchResultInfo?.count} товара'
-                                                              .spaceSeparateNumbers(),
+                                                      text: '${initState.searchResultInfo?.count} товара'
+                                                          .spaceSeparateNumbers(),
                                                       style: Theme.of(context)
                                                           .textTheme
                                                           .bodyMedium
@@ -523,34 +532,51 @@ class _CatalogSearchResultScreenState extends State<CatalogSearchResultScreen> {
                                                           .textTheme
                                                           .displayMedium
                                                           ?.copyWith(
-                                                            fontWeight: FontWeight.w700,
+                                                            fontWeight:
+                                                                FontWeight.w700,
                                                           ),
                                                     ),
-                                                    BlocBuilder<SearchBloc, SearchState>(
-                                                        builder: (context, state) {
+                                                    BlocBuilder<SearchBloc,
+                                                            SearchState>(
+                                                        builder:
+                                                            (context, state) {
                                                       return state.maybeMap(
-                                                        searchProductsResult: (initState) {
+                                                        searchProductsResult:
+                                                            (initState) {
                                                           if (initState
-                                                              .allSelectFilter.isNotEmpty) {
+                                                              .allSelectFilter
+                                                              .isNotEmpty) {
                                                             return Container(
                                                               height: 14,
-                                                              padding: const EdgeInsets.only(
+                                                              padding:
+                                                                  const EdgeInsets
+                                                                      .only(
                                                                 right: 4,
                                                                 left: 4,
                                                               ),
                                                               margin:
-                                                                  const EdgeInsets.only(left: 6),
-                                                              alignment: Alignment.center,
-                                                              decoration: BoxDecoration(
+                                                                  const EdgeInsets
+                                                                      .only(
+                                                                      left: 6),
+                                                              alignment:
+                                                                  Alignment
+                                                                      .center,
+                                                              decoration:
+                                                                  BoxDecoration(
                                                                 color: BlindChickenColors
                                                                     .activeBorderTextField,
                                                                 borderRadius:
-                                                                    BorderRadius.circular(8),
+                                                                    BorderRadius
+                                                                        .circular(
+                                                                            8),
                                                               ),
                                                               child: Text(
-                                                                initState.allSelectFilter.length
+                                                                initState
+                                                                    .allSelectFilter
+                                                                    .length
                                                                     .toString(),
-                                                                style: Theme.of(context)
+                                                                style: Theme.of(
+                                                                        context)
                                                                     .textTheme
                                                                     .bodyLarge
                                                                     ?.copyWith(
@@ -564,14 +590,16 @@ class _CatalogSearchResultScreenState extends State<CatalogSearchResultScreen> {
                                                             return const SizedBox();
                                                           }
                                                         },
-                                                        orElse: () => const SizedBox(),
+                                                        orElse: () =>
+                                                            const SizedBox(),
                                                       );
                                                     })
                                                   ],
                                                 ),
                                               ),
                                             ),
-                                            if (initState.allSelectFilter.isNotEmpty)
+                                            if (initState
+                                                .allSelectFilter.isNotEmpty)
                                               Container(
                                                 margin: const EdgeInsets.only(
                                                   left: 12,
@@ -579,64 +607,89 @@ class _CatalogSearchResultScreenState extends State<CatalogSearchResultScreen> {
                                                 ),
                                                 height: 34,
                                                 child: ListView(
-                                                    scrollDirection: Axis.horizontal,
+                                                    scrollDirection:
+                                                        Axis.horizontal,
                                                     children: [
                                                       Row(
-                                                        mainAxisAlignment: MainAxisAlignment.start,
+                                                        mainAxisAlignment:
+                                                            MainAxisAlignment
+                                                                .start,
                                                         crossAxisAlignment:
-                                                            CrossAxisAlignment.start,
+                                                            CrossAxisAlignment
+                                                                .start,
                                                         children: List.generate(
-                                                            initState.allSelectFilter.length,
+                                                            initState
+                                                                .allSelectFilter
+                                                                .length,
                                                             (index) {
                                                           return InkWell(
                                                             onTap: () {
-                                                              context.read<SearchBloc>().add(
-                                                                    SearchEvent.deleteCatalogFilter(
+                                                              context
+                                                                  .read<
+                                                                      SearchBloc>()
+                                                                  .add(
+                                                                    SearchEvent
+                                                                        .deleteCatalogFilter(
                                                                       key: initState
-                                                                          .allSelectFilter[index]
+                                                                          .allSelectFilter[
+                                                                              index]
                                                                           .keys
                                                                           .first,
-                                                                      index: index,
+                                                                      index:
+                                                                          index,
                                                                       item: initState
-                                                                          .allSelectFilter[index]
+                                                                          .allSelectFilter[
+                                                                              index]
                                                                           .values
                                                                           .first,
                                                                     ),
                                                                   );
                                                             },
                                                             child: Container(
-                                                              decoration: BoxDecoration(
+                                                              decoration:
+                                                                  BoxDecoration(
                                                                 color: BlindChickenColors
                                                                     .backgroundColorItemFilter,
                                                                 borderRadius:
-                                                                    BorderRadius.circular(4),
+                                                                    BorderRadius
+                                                                        .circular(
+                                                                            4),
                                                               ),
-                                                              margin: EdgeInsets.only(
-                                                                right: initState.allSelectFilter
-                                                                                .length -
+                                                              margin: EdgeInsets
+                                                                  .only(
+                                                                right: initState.allSelectFilter.length -
                                                                             1 !=
                                                                         index
                                                                     ? 12
                                                                     : 0,
                                                               ),
-                                                              padding: const EdgeInsets.all(3.5),
+                                                              padding:
+                                                                  const EdgeInsets
+                                                                      .all(3.5),
                                                               height: 27,
                                                               child: Row(
                                                                 children: [
                                                                   Text(
-                                                                    initState.allSelectFilter[index]
-                                                                        .values.first.value,
-                                                                    style: Theme.of(context)
+                                                                    initState
+                                                                        .allSelectFilter[
+                                                                            index]
+                                                                        .values
+                                                                        .first
+                                                                        .value,
+                                                                    style: Theme.of(
+                                                                            context)
                                                                         .textTheme
                                                                         .displaySmall,
                                                                   ),
                                                                   const SizedBox(
                                                                     width: 7,
                                                                   ),
-                                                                  SvgPicture.asset(
+                                                                  SvgPicture
+                                                                      .asset(
                                                                     'assets/icons/x.svg',
                                                                     width: 13.3,
-                                                                    height: 13.3,
+                                                                    height:
+                                                                        13.3,
                                                                   )
                                                                 ],
                                                               ),
@@ -653,7 +706,8 @@ class _CatalogSearchResultScreenState extends State<CatalogSearchResultScreen> {
                                                   return Listener(
                                                     onPointerDown: (details) {
                                                       _touchCount++;
-                                                      if (_touchCount > 1 || _isZoom) {
+                                                      if (_touchCount > 1 ||
+                                                          _isZoom) {
                                                         setState(() {
                                                           _isScroll = false;
                                                         });
@@ -665,7 +719,8 @@ class _CatalogSearchResultScreenState extends State<CatalogSearchResultScreen> {
                                                     },
                                                     onPointerUp: (details) {
                                                       _touchCount--;
-                                                      if (_touchCount > 1 || _isZoom) {
+                                                      if (_touchCount > 1 ||
+                                                          _isZoom) {
                                                         setState(() {
                                                           _isScroll = false;
                                                         });
@@ -677,7 +732,8 @@ class _CatalogSearchResultScreenState extends State<CatalogSearchResultScreen> {
                                                     },
                                                     onPointerCancel: (details) {
                                                       _touchCount--;
-                                                      if (_touchCount > 1 || _isZoom) {
+                                                      if (_touchCount > 1 ||
+                                                          _isZoom) {
                                                         setState(() {
                                                           _isScroll = false;
                                                         });
@@ -688,12 +744,21 @@ class _CatalogSearchResultScreenState extends State<CatalogSearchResultScreen> {
                                                       }
                                                     },
                                                     child: CatalogCardItem(
-                                                      isLike: initState.favouritesProductsId
-                                                          .contains(initState.products[index].id),
+                                                      isLike: initState
+                                                          .favouritesProductsId
+                                                          .contains(initState
+                                                              .products[index]
+                                                              .id),
                                                       onSelect: () {
-                                                        context.read<SearchBloc>().add(
-                                                              SearchEvent.getInfoProduct(
-                                                                code: initState.products[index].id
+                                                        context
+                                                            .read<SearchBloc>()
+                                                            .add(
+                                                              SearchEvent
+                                                                  .getInfoProduct(
+                                                                code: initState
+                                                                    .products[
+                                                                        index]
+                                                                    .id
                                                                     .toString(),
                                                                 titleScreen:
                                                                     'Карточка товара в резльтате поиска',
@@ -705,79 +770,144 @@ class _CatalogSearchResultScreenState extends State<CatalogSearchResultScreen> {
                                                                     'описание товара в поиске',
                                                               ),
                                                             );
-
                                                         context.navigateTo(
-                                                          CatalogSearchCardInfoResultRoute(
+                                                          CardInfoRoute(
                                                             isChildRoute: false,
-                                                            item: initState.products[index],
+                                                            product: initState
+                                                                .products[index],
                                                             isLike: initState.favouritesProductsId
-                                                                .contains(
-                                                                    initState.products[index].id),
+                                                                .contains(initState.products[index].id),
                                                             listItems: initState.products,
                                                             favouritesProducts:
-                                                                initState.favouritesProducts ?? [],
+                                                            initState
+                                                                .favouritesProducts ??
+                                                                [],
+                                                            titleScreen:
+                                                            'Карточка товара в резльтате поиска',
+                                                            codeProduct: initState
+                                                                .products[index].id
+                                                                .toString(),
                                                           ),
                                                         );
                                                       },
-                                                      imageUrl: initState.products[index].images[0],
-                                                      brend: initState.products[index].brend,
-                                                      category: initState.products[index].category,
-                                                      yourPrice: initState.products[index].yourPrice
+                                                      imageUrl: initState
+                                                          .products[index]
+                                                          .images[0],
+                                                      brend: initState
+                                                          .products[index]
+                                                          .brend,
+                                                      category: initState
+                                                          .products[index]
+                                                          .category,
+                                                      yourPrice: initState
+                                                          .products[index]
+                                                          .yourPrice
                                                           .toString(),
-                                                      price: initState.products[index].price
+                                                      price: initState
+                                                          .products[index].price
                                                           .toString(),
-                                                      isYourPriceDisplayed: initState
-                                                          .products[index].isYourPriceDisplayed,
-                                                      maximumCashback:
-                                                          initState.products[index].maximumCashback,
-                                                      discount: initState.products[index].discount,
-                                                      maximumPersonalDiscount: initState
-                                                          .products[index].maximumPersonalDiscount,
+                                                      isYourPriceDisplayed:
+                                                          initState
+                                                              .products[index]
+                                                              .isYourPriceDisplayed,
+                                                      maximumCashback: initState
+                                                          .products[index]
+                                                          .maximumCashback,
+                                                      discount: initState
+                                                          .products[index]
+                                                          .discount,
+                                                      maximumPersonalDiscount:
+                                                          initState
+                                                              .products[index]
+                                                              .maximumPersonalDiscount,
                                                       isAuth: initState.isAuth,
-                                                      onAddFavouriteProduct: () {
-                                                        context.read<SearchBloc>().add(
-                                                              SearchEvent.addFavouriteProduct(
-                                                                product: initState.products[index],
-                                                                index: initState.products[index].id,
+                                                      onAddFavouriteProduct:
+                                                          () {
+                                                        context
+                                                            .read<SearchBloc>()
+                                                            .add(
+                                                              SearchEvent
+                                                                  .addFavouriteProduct(
+                                                                product: initState
+                                                                        .products[
+                                                                    index],
+                                                                index: initState
+                                                                    .products[
+                                                                        index]
+                                                                    .id,
                                                                 typeError:
                                                                     'добавить товар в избранное в результатах поиска',
                                                               ),
                                                             );
                                                       },
-                                                      pb: initState.products[index].pb,
-                                                      onDeleteFavouriteProduct: () {
-                                                        context.read<SearchBloc>().add(
-                                                              SearchEvent.deleteFavouriteProduct(
-                                                                index: initState.products[index].id,
+                                                      pb: initState
+                                                          .products[index].pb,
+                                                      onDeleteFavouriteProduct:
+                                                          () {
+                                                        context
+                                                            .read<SearchBloc>()
+                                                            .add(
+                                                              SearchEvent
+                                                                  .deleteFavouriteProduct(
+                                                                index: initState
+                                                                    .products[
+                                                                        index]
+                                                                    .id,
                                                                 typeError:
                                                                     'удалить товар из избранного в результатах поиска',
                                                               ),
                                                             );
                                                       },
-                                                      isShop: initState.products[index].isShop,
-                                                      onAddProductToSoppingCart: () {
-                                                        context.read<SearchBloc>().add(
-                                                              SearchEvent.getInfoProductSize(
-                                                                code: initState.products[index].id
+                                                      isShop: initState
+                                                          .products[index]
+                                                          .isShop,
+                                                      onAddProductToSoppingCart:
+                                                          () {
+                                                        context
+                                                            .read<SearchBloc>()
+                                                            .add(
+                                                              SearchEvent
+                                                                  .getInfoProductSize(
+                                                                code: initState
+                                                                    .products[
+                                                                        index]
+                                                                    .id
                                                                     .toString(),
                                                                 isShop: initState
-                                                                    .products[index].isShop,
-                                                                titleScreen: 'Результаты поиска',
+                                                                    .products[
+                                                                        index]
+                                                                    .isShop,
+                                                                titleScreen:
+                                                                    'Результаты поиска',
                                                               ),
                                                             );
                                                       },
-                                                      listSize: initState.listSize,
-                                                      isLoad:
-                                                          int.parse(initState.codeProduct ?? '0') ==
-                                                                  initState.products[index].id &&
-                                                              initState.isLoadGetSizeProduct,
-                                                      userDiscount: initState.userDiscount,
+                                                      listSize:
+                                                          initState.listSize,
+                                                      isLoad: int.parse(initState
+                                                                      .codeProduct ??
+                                                                  '0') ==
+                                                              initState
+                                                                  .products[
+                                                                      index]
+                                                                  .id &&
+                                                          initState
+                                                              .isLoadGetSizeProduct,
+                                                      userDiscount: initState
+                                                          .userDiscount,
                                                       sizeProduct: const [],
-                                                      promo: initState.products[index].promo,
-                                                      promoValue:
-                                                          initState.products[index].promoValue,
-                                                      images: initState.products[index].images,
-                                                      video: initState.products[index].video,
+                                                      promo: initState
+                                                          .products[index]
+                                                          .promo,
+                                                      promoValue: initState
+                                                          .products[index]
+                                                          .promoValue,
+                                                      images: initState
+                                                          .products[index]
+                                                          .images,
+                                                      video: initState
+                                                          .products[index]
+                                                          .video,
                                                       goSwipeBack: () {
                                                         context.back();
                                                       },
@@ -786,9 +916,14 @@ class _CatalogSearchResultScreenState extends State<CatalogSearchResultScreen> {
                                                           _isZoom = true;
                                                           _isScroll = false;
                                                         });
-                                                        context.read<BottomNavigationBloc>().add(
-                                                              BottomNavigationEvent.switchBlocked(
-                                                                  isBlocked: true),
+                                                        context
+                                                            .read<
+                                                                BottomNavigationBloc>()
+                                                            .add(
+                                                              BottomNavigationEvent
+                                                                  .switchBlocked(
+                                                                      isBlocked:
+                                                                          true),
                                                             );
                                                       },
                                                       onScaleStop: () {
@@ -796,9 +931,14 @@ class _CatalogSearchResultScreenState extends State<CatalogSearchResultScreen> {
                                                           _isZoom = false;
                                                           _isScroll = true;
                                                         });
-                                                        context.read<BottomNavigationBloc>().add(
-                                                              BottomNavigationEvent.switchBlocked(
-                                                                  isBlocked: false),
+                                                        context
+                                                            .read<
+                                                                BottomNavigationBloc>()
+                                                            .add(
+                                                              BottomNavigationEvent
+                                                                  .switchBlocked(
+                                                                      isBlocked:
+                                                                          false),
                                                             );
                                                       },
                                                     ),
@@ -830,10 +970,12 @@ class _CatalogSearchResultScreenState extends State<CatalogSearchResultScreen> {
                               child: Container(
                                 height: 45,
                                 width: 45,
-                                margin: const EdgeInsets.only(left: 15, bottom: 15),
+                                margin:
+                                    const EdgeInsets.only(left: 15, bottom: 15),
                                 padding: const EdgeInsets.all(10),
                                 decoration: BoxDecoration(
-                                  color: BlindChickenColors.activeBorderTextField,
+                                  color:
+                                      BlindChickenColors.activeBorderTextField,
                                   borderRadius: BorderRadius.circular(25),
                                 ),
                                 child: SvgPicture.asset(

@@ -317,7 +317,7 @@ class _ShoppingCartScreenState extends State<ShoppingCartScreen> {
                                                               if (initState.shoppingCart
                                                                       .basket[index].code !=
                                                                   '15846') {
-                                                                context
+                                            /*                    context
                                                                     .read<ShoppingCartBloc>()
                                                                     .add(
                                                                       ShoppingCartEvent
@@ -331,16 +331,18 @@ class _ShoppingCartScreenState extends State<ShoppingCartScreen> {
                                                                         identifierAddProductToShoppingCart:
                                                                             '3',
                                                                       ),
-                                                                    );
+                                                                    );*/
                                                                 context.navigateTo(
-                                                                  ShoppingCardInfoRoute(
+                                                                  CardInfoRoute(
                                                                     isChildRoute: false,
-                                                                    item: initState.shoppingCart
+                                                                    favouritesProducts: initState.favouritesProducts,
+                                                                    codeProduct:  initState.shoppingCart
+                                                                        .basket[index].code,
+                                                                    product: initState.shoppingCart
                                                                         .basket[index].product,
+                                                                    titleScreen: 'Элемента списка в корзине',
                                                                     isLike: false,
                                                                     listItems: const [],
-                                                                    favouritesProducts: initState
-                                                                        .favouritesProducts,
                                                                   ),
                                                                 );
                                                               } else {

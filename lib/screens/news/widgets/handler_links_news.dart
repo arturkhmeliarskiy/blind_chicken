@@ -71,20 +71,12 @@ class HandlerLinksNews {
         AppMetrica.reportEvent('$titleAppMetrica в подарочную карту');
       } else if (url.contains('product')) {
         final code = url.replaceAll('https://slepayakurica.ru/product', '').replaceAll('/', '');
-        context.read<CatalogBloc>().add(
-              CatalogEvent.getInfoProduct(
-                code: code,
-                titleScreen: 'Список новостей',
-                typeAddProductToShoppingCart: 'Кнопка',
-                identifierAddProductToShoppingCart: '4',
-              ),
-            );
         context.navigateTo(
           DashboardRoute(
             children: [
               HomeAutoRouterRoute(
                 children: [
-                  CatalogCardInfoRoute(
+                  CardInfoRoute(
                     isLike: false,
                     listItems: const [],
                     favouritesProducts: const [],
@@ -95,6 +87,8 @@ class HandlerLinksNews {
                     newsInfo: newsInfo,
                     newsMediaInfo: newsMediaInfo,
                     newsNotificationInfo: newsNotificationInfo,
+                    codeProduct: code,
+                    titleScreen: 'Список новостей',
                   ),
                 ],
               ),

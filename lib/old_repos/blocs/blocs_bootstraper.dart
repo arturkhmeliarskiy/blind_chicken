@@ -18,6 +18,16 @@ Future<void> initBloc(GetIt getIt) async {
       ),
     )
     ..registerFactory(
+      () => CardInfoBloc(
+        getIt.get<CatalogRepository>(),
+        getIt.get<BasketRepository>(),
+        getIt.get<SharedPreferencesService>(),
+        getIt.get<UpdateDataService>(),
+        getIt.get<AppMetricaEcommerceService>(),
+        getIt.get<FavouritesRepository>(),
+      ),
+    )
+    ..registerFactory(
       () => BoutiquesBloc(
         getIt.get<BoutiquesRepository>(),
         getIt.get<UpdateDataService>(),

@@ -427,31 +427,17 @@ class _CatalogSearchScreenState extends State<CatalogSearchScreen> {
                                                           initState.searchProducts.length - 1 ==
                                                               index,
                                                       onTap: () {
-                                                        context.read<SearchBloc>().add(
-                                                              SearchEvent.getInfoProduct(
-                                                                code: initState
-                                                                    .searchProducts[index].id
-                                                                    .toString(),
-                                                                titleScreen:
-                                                                    'Карточка товара в резльтате поиска',
-                                                                typeAddProductToShoppingCart:
-                                                                    'Элемент списка',
-                                                                identifierAddProductToShoppingCart:
-                                                                    '3',
-                                                                typeError:
-                                                                    'карточка товара в поиске',
-                                                              ),
-                                                            );
                                                         context.navigateTo(
-                                                          CatalogSearchCardInfoRoute(
+                                                          CardInfoRoute(
                                                             isChildRoute: false,
-                                                            item: initState.searchProducts[index],
+                                                            product: initState.searchProducts[index],
                                                             isLike: initState.favouritesProductsId
-                                                                .contains(initState
-                                                                    .searchProducts[index].id),
+                                                                .contains(initState.searchProducts[index].id),
                                                             listItems: initState.searchProducts,
-                                                            favouritesProducts:
-                                                                initState.favouritesProducts ?? [],
+                                                            favouritesProducts: initState.favouritesProducts ?? [],
+                                                            titleScreen: 'Карточка товара в резльтате поиска',
+                                                            codeProduct: initState.searchProducts[index].id
+                                                                .toString(),
                                                           ),
                                                         );
                                                       },

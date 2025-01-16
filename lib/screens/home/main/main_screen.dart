@@ -230,13 +230,14 @@ class _MainScreenState extends State<MainScreen> {
                     }
                     if (notificationMessage.type == 'product') {
                       context.navigateTo(
-                        CatalogCardInfoRoute(
+                        CardInfoRoute(
                           isLike: false,
                           listItems: const [],
                           favouritesProducts: const [],
                           isChildRoute: false,
-                          code: notificationMessage.codeProduct,
+                          codeProduct: notificationMessage.codeProduct,
                           messageId: notificationMessage.idMessage,
+                          titleScreen: 'Описание товара из push-уведомления',
                         ),
                       );
                     }

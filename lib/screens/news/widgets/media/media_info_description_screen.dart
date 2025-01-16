@@ -348,13 +348,15 @@ class _MediaInfoDescriptionScreenState extends State<MediaInfoDescriptionScreen>
                                         children: [
                                           HomeAutoRouterRoute(
                                             children: [
-                                              CatalogCardInfoRoute(
+                                              CardInfoRoute(
                                                 isLike: false,
                                                 listItems: const [],
                                                 favouritesProducts: const [],
                                                 isChildRoute: false,
                                                 lastPath: 'media_info_description',
                                                 newsMediaInfo: widget.info,
+                                                codeProduct: widget.info.code,
+                                                titleScreen: 'Описание медиа',
                                               ),
                                             ],
                                           ),

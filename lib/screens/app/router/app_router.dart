@@ -1,4 +1,5 @@
 import 'package:auto_route/auto_route.dart';
+import 'package:blind_chicken/card_info/view/card_info_screen.dart';
 import 'package:blind_chicken/screens/%D1%81ashback_and_discounts/blind_chicken_%D1%81ashback_and_discounts_screen.dart';
 import 'package:blind_chicken/screens/account/account_screen.dart';
 import 'package:blind_chicken/screens/account/electronic_order_forms_screen.dart';
@@ -22,6 +23,7 @@ import 'package:blind_chicken/screens/gift_card/gift_card_screen.dart';
 import 'package:blind_chicken/screens/gift_card/widgets/gift_card_delivery_info_screen.dart';
 import 'package:blind_chicken/screens/gift_card/widgets/gift_virtual_card_colors_screen.dart';
 import 'package:blind_chicken/screens/gift_card/widgets/map/gift_yandex_map_screen.dart';
+import 'package:blind_chicken/screens/home/catalog/catalog_card_info_screen.dart';
 import 'package:blind_chicken/screens/home/catalog/catalog_filter_select_value/catalog_filter_select_value_screen.dart';
 import 'package:blind_chicken/screens/home/catalog/catalog_filter_select_value_search/catalog_filter_select_value_search_screen.dart';
 import 'package:blind_chicken/screens/home/catalog/catalog_search_auto_router_screen.dart';
@@ -51,12 +53,10 @@ import 'package:blind_chicken/screens/no_internet/no_internet_screen.dart';
 import 'package:blind_chicken/screens/payment_verification/payment_verification_screen.dart';
 import 'package:blind_chicken/screens/pdf_view/blind_chicken_pdf_view.dart';
 import 'package:blind_chicken/screens/service_card/service_card_screen.dart';
-import 'package:blind_chicken/screens/shopping_cart/shopping_card_info_screen.dart';
 import 'package:blind_chicken/screens/shopping_cart/shopping_cart_auto_route_screen.dart';
 import 'package:blind_chicken/screens/shopping_cart/shopping_cart_screen.dart';
 import 'package:blind_chicken/screens/chat/chat_screen.dart';
 import 'package:blind_chicken/screens/favourites/favourites_screen.dart';
-import 'package:blind_chicken/screens/home/catalog/catalog_card_info_screen.dart';
 import 'package:blind_chicken/screens/home/catalog/catalog_preview_images_screen.dart';
 import 'package:blind_chicken/screens/home/catalog/catalog_screen.dart';
 import 'package:blind_chicken/screens/home/catalog/catalog_search_screen.dart';
@@ -106,12 +106,12 @@ class AppRouter extends RootStackRouter {
             ),
             AutoRoute(
               keepHistory: false,
-              page: CatalogSearchCardInfoRoute.page,
+              page: CardInfoRoute.page,
               path: 'catalog_search_card_info',
             ),
             AutoRoute(
               keepHistory: false,
-              page: CatalogSearchCardInfoResultRoute.page,
+              page: CardInfoRoute.page,
               path: 'catalog_search_card_info_result',
             ),
             AutoRoute(
@@ -214,7 +214,7 @@ class AppRouter extends RootStackRouter {
             ),
             AutoRoute(
               keepHistory: false,
-              page: OrderCardInfoRoute.page,
+              page: CardInfoRoute.page,
             ),
           ]),
           AutoRoute(page: ShoppingCartAutoRouterRoute.page, path: 'shopping_cart', children: [
@@ -228,8 +228,8 @@ class AppRouter extends RootStackRouter {
             ),
             AutoRoute(
               keepHistory: false,
-              page: ShoppingCardInfoRoute.page,
-              path: "shopping_card_info",
+              page: CardInfoRoute.page,
+              path: "card_info",
             ),
           ]),
           AutoRoute(page: FavouritesRoute.page, path: 'favourites', children: [
@@ -239,8 +239,7 @@ class AppRouter extends RootStackRouter {
             ),
             AutoRoute(
               keepHistory: false,
-              page: FavouritesCardInfoRoute.page,
-              path: "favourites_card_info",
+              page: CardInfoRoute.page,
             ),
           ]),
           AutoRoute(

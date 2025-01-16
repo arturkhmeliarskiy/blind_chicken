@@ -403,25 +403,17 @@ class _OrderUserInfoScreenState extends State<OrderUserInfoScreen> {
                                                     context
                                                         .read<ShoppingCartBloc>()
                                                         .add(ShoppingCartEvent.init());
-                                                    context.read<AccountBloc>().add(
-                                                          AccountEvent.getInfoProduct(
-                                                            code: orderInfo.products[index].id
-                                                                .toString(),
-                                                            titleScreen: 'Элемент списка заказа',
-                                                            typeAddProductToShoppingCart:
-                                                                'Элемент списка',
-                                                            identifierAddProductToShoppingCart: '3',
-                                                          ),
-                                                        );
                                                     context.navigateTo(
-                                                      OrderCardInfoRoute(
+                                                      CardInfoRoute(
                                                         isChildRoute: false,
-                                                        item: orderInfo.products[index],
                                                         isLike: initState.favouritesProductsId
                                                             .contains(orderInfo.products[index].id),
                                                         listItems: const [],
                                                         favouritesProducts:
                                                             initState.favouritesProducts,
+                                                        codeProduct: orderInfo.products[index].id.toString(),
+                                                        product: orderInfo.products[index],
+                                                        titleScreen: 'Элемент списка заказа',
                                                       ),
                                                     );
                                                   },
