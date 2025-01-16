@@ -1,5 +1,6 @@
 import 'dart:async';
 
+import 'package:blind_chicken/core_config/di/app_locator.dart';
 import 'package:get_it/get_it.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
@@ -7,9 +8,9 @@ class SharedPreferencesService {
   late final SharedPreferences _prefs;
 
   Future<void> initialize() async {
-    _prefs = await SharedPreferences.getInstance();
+    _prefs = Locator.injection();
 
-    GetIt.I.registerSingleton(_prefs);
+    //GetIt.I.registerSingleton(_prefs);
   }
 
   FutureOr<void> setString({
