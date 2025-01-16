@@ -8,7 +8,9 @@ import 'package:blind_chicken/old_repos/repositories/repositories.dart';
 import 'package:blind_chicken/old_repos/shared/shared.dart';
 
 part 'news_bloc.freezed.dart';
+
 part 'news_event.dart';
+
 part 'news_state.dart';
 
 class NewsBloc extends Bloc<NewsEvent, NewsState> {
@@ -21,25 +23,21 @@ class NewsBloc extends Bloc<NewsEvent, NewsState> {
     this._storeVersionAppRepository,
     this._sharedPreferencesService,
   ) : super(const NewsState.init()) {
-    on<NewsEvent>(
-      (event, emit) => event.map<Future<void>>(
-        init: (event) => _init(event, emit),
-        getNews: (event) => _getNews(event, emit),
-        getMedia: (event) => _getMedia(event, emit),
-        getNotifications: (event) => _getNotifications(event, emit),
-        paginationNews: (event) => _paginationNews(event, emit),
-        paginationMedia: (event) => _paginationMedia(event, emit),
-        paginationNotifications: (event) => _paginationNotifications(event, emit),
-        getNewsDescriptionInfo: (event) => _getNewsDescriptionInfo(event, emit),
-        getMediaDescriptionInfo: (event) => _getMediaDescriptionInfo(event, emit),
-        getNotificationDescriptionInfo: (event) => _getNotificationDescriptionInfo(event, emit),
-        goBackNewsInfo: (event) => _goBackNewsInfo(event, emit),
-        updateReadNews: (event) => _updateReadNews(event, emit),
-        checkingReadNews: (event) => _checkingReadNews(event, emit),
-        checkButtonTop: (event) => _checkButtonTop(event, emit),
-        checkiDisabledVideo: (event) => _checkiDisabledVideo(event, emit),
-      ),
-    );
+    on<InitNewsEvent>(_init);
+    on<GetNewsEvent>(_getNews);
+    on<GetMediaEvent>(_getMedia);
+    on<GetNotificationsEvent>(_getNotifications);
+    on<PaginationNewsNewsEvent>(_paginationNews);
+    on<PaginationMediasNewsEvent>(_paginationMedia);
+    on<PaginationNotificationsNewsEvent>(_paginationNotifications);
+    on<GetNewsDescriptionInfoNewsEvent>(_getNewsDescriptionInfo);
+    on<GetMediaDescriptionInfoNewsEvent>(_getMediaDescriptionInfo);
+    on<GetNotificationDescriptionInfoNewsEvent>(_getNotificationDescriptionInfo);
+    on<GoBackNewsInfoNewsEvent>(_goBackNewsInfo);
+    on<UpdateReadNewsEvent>(_updateReadNews);
+    on<CheckingReadNewsEvent>(_checkingReadNews);
+    on<CheckButtonTopNewsEvent>(_checkButtonTop);
+    on<CheckDisabledVideoNewsEvent>(_checkDisabledVideo);
   }
 
   Future<void> _init(
@@ -48,10 +46,8 @@ class NewsBloc extends Bloc<NewsEvent, NewsState> {
   ) async {
     final countBadges = await _newsRepository.getNumberUnreaNews();
 
-    NewsInfoDataModel news =
-        NewsInfoDataModel(e: '', r: '', errorMessage: '', list: [], isViewed: false);
-    MediaInfoDataModel media =
-        MediaInfoDataModel(e: '', r: '', errorMessage: '', list: [], isViewed: false);
+    NewsInfoDataModel news = NewsInfoDataModel(e: '', r: '', errorMessage: '', list: [], isViewed: false);
+    MediaInfoDataModel media = MediaInfoDataModel(e: '', r: '', errorMessage: '', list: [], isViewed: false);
     NotificationInfoDataModel notificatios =
         NotificationInfoDataModel(e: '', r: '', errorMessage: '', list: [], isViewed: false);
     emit(
@@ -93,8 +89,7 @@ class NewsBloc extends Bloc<NewsEvent, NewsState> {
         ));
       }
 
-      List<String> listNewsPath =
-          event.isCleanListNewsPath ?? false ? [] : initState.listNewsPath.toList();
+      List<String> listNewsPath = event.isCleanListNewsPath ?? false ? [] : initState.listNewsPath.toList();
       NewsInfoDataModel news = await _newsRepository.getNews(page: 1);
       if (news.errorMessage.isEmpty) {
         listNewsPath.add('0');
@@ -300,8 +295,7 @@ class NewsBloc extends Bloc<NewsEvent, NewsState> {
     await state.mapOrNull(preloadDataCompleted: (initState) async {
       int offsetNotificatios = initState.offsetNotificatios + 1;
 
-      NotificationInfoDataModel notificatios =
-          await _newsRepository.getNotifications(page: offsetNotificatios);
+      NotificationInfoDataModel notificatios = await _newsRepository.getNotifications(page: offsetNotificatios);
 
       if (notificatios.errorMessage.isEmpty) {
         notificatios = initState.notificatios.copyWith(
@@ -331,10 +325,8 @@ class NewsBloc extends Bloc<NewsEvent, NewsState> {
       emit(const NewsState.load());
     }
 
-    NewsInfoDataModel news =
-        NewsInfoDataModel(e: '', r: '', errorMessage: '', list: [], isViewed: false);
-    MediaInfoDataModel media =
-        MediaInfoDataModel(e: '', r: '', errorMessage: '', list: [], isViewed: false);
+    NewsInfoDataModel news = NewsInfoDataModel(e: '', r: '', errorMessage: '', list: [], isViewed: false);
+    MediaInfoDataModel media = MediaInfoDataModel(e: '', r: '', errorMessage: '', list: [], isViewed: false);
     NotificationInfoDataModel notificatios =
         NotificationInfoDataModel(e: '', r: '', errorMessage: '', list: [], isViewed: false);
     String appStoreInfoVersion = '';
@@ -363,9 +355,8 @@ class NewsBloc extends Bloc<NewsEvent, NewsState> {
 
     final listNewsNotifications = _newsRepository.getNewsNotifications();
 
-    final isCheckReadNews = listNewsNotifications
-        .where((element) => element.id == event.id && element.typeNews == 'news')
-        .isEmpty;
+    final isCheckReadNews =
+        listNewsNotifications.where((element) => element.id == event.id && element.typeNews == 'news').isEmpty;
 
     if (isCheckReadNews) {
       countBadges = await _newsRepository.postReadNews(
@@ -428,10 +419,8 @@ class NewsBloc extends Bloc<NewsEvent, NewsState> {
       messageId: event.messageId,
     );
 
-    NewsInfoDataModel news =
-        NewsInfoDataModel(e: '', r: '', errorMessage: '', list: [], isViewed: false);
-    MediaInfoDataModel media =
-        MediaInfoDataModel(e: '', r: '', errorMessage: '', list: [], isViewed: false);
+    NewsInfoDataModel news = NewsInfoDataModel(e: '', r: '', errorMessage: '', list: [], isViewed: false);
+    MediaInfoDataModel media = MediaInfoDataModel(e: '', r: '', errorMessage: '', list: [], isViewed: false);
     NotificationInfoDataModel notificatios =
         NotificationInfoDataModel(e: '', r: '', errorMessage: '', list: [], isViewed: false);
 
@@ -460,9 +449,8 @@ class NewsBloc extends Bloc<NewsEvent, NewsState> {
 
     final listNewsNotifications = _newsRepository.getNewsNotifications();
 
-    final isCheckReadNews = listNewsNotifications
-        .where((element) => element.id == event.id && element.typeNews == 'media')
-        .isEmpty;
+    final isCheckReadNews =
+        listNewsNotifications.where((element) => element.id == event.id && element.typeNews == 'media').isEmpty;
 
     if (isCheckReadNews) {
       countBadges = await _newsRepository.postReadNews(
@@ -526,10 +514,8 @@ class NewsBloc extends Bloc<NewsEvent, NewsState> {
       messageId: event.messageId,
     );
 
-    NewsInfoDataModel news =
-        NewsInfoDataModel(e: '', r: '', errorMessage: '', list: [], isViewed: false);
-    MediaInfoDataModel media =
-        MediaInfoDataModel(e: '', r: '', errorMessage: '', list: [], isViewed: false);
+    NewsInfoDataModel news = NewsInfoDataModel(e: '', r: '', errorMessage: '', list: [], isViewed: false);
+    MediaInfoDataModel media = MediaInfoDataModel(e: '', r: '', errorMessage: '', list: [], isViewed: false);
     NotificationInfoDataModel notificatios =
         NotificationInfoDataModel(e: '', r: '', errorMessage: '', list: [], isViewed: false);
 
@@ -557,9 +543,8 @@ class NewsBloc extends Bloc<NewsEvent, NewsState> {
 
     final listNewsNotifications = _newsRepository.getNewsNotifications();
 
-    final isCheckReadNews = listNewsNotifications
-        .where((element) => element.id == event.id && element.typeNews == 'notice')
-        .isEmpty;
+    final isCheckReadNews =
+        listNewsNotifications.where((element) => element.id == event.id && element.typeNews == 'notice').isEmpty;
 
     if (isCheckReadNews) {
       countBadges = await _newsRepository.postReadNews(
@@ -733,8 +718,7 @@ class NewsBloc extends Bloc<NewsEvent, NewsState> {
           case 'notice':
             indexNews = notificatios.list.indexWhere((element) => element.id == event.id);
             List<NotificationInfoItemDataModel> listNotificatios = notificatios.list.toList();
-            NotificationInfoItemDataModel item =
-                notificatios.list[indexNews].copyWith(isViewed: false);
+            NotificationInfoItemDataModel item = notificatios.list[indexNews].copyWith(isViewed: false);
             if (DateTime.parse(item.createAt).isAfter(
               DateTime.parse(dateReceiptNewNews),
             )) {
@@ -809,7 +793,7 @@ class NewsBloc extends Bloc<NewsEvent, NewsState> {
     });
   }
 
-  Future<void> _checkiDisabledVideo(
+  Future<void> _checkDisabledVideo(
     CheckDisabledVideoNewsEvent event,
     Emitter<NewsState> emit,
   ) async {

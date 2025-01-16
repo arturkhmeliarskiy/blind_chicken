@@ -3,6 +3,7 @@ import 'dart:io';
 import 'package:blind_chicken/old_repos/models/models.dart';
 import 'package:blind_chicken/utils/logging.dart';
 import 'package:firebase_core/firebase_core.dart';
+
 // import 'package:firebase_messaging/firebase_messaging.dart';
 import 'package:flutter/material.dart';
 
@@ -13,14 +14,14 @@ class PushNotificationManager extends StatefulWidget {
   const PushNotificationManager({
     required this.child,
     required this.openScreen,
-    Key? key,
-  }) : super(key: key);
+    super.key,
+  });
 
   @override
-  _PushNotificationManagerState createState() => _PushNotificationManagerState();
+  PushNotificationManagerState createState() => PushNotificationManagerState();
 }
 
-class _PushNotificationManagerState extends State<PushNotificationManager> {
+class PushNotificationManagerState extends State<PushNotificationManager> {
   Future<void> setNotifications() async {
     // FirebaseMessaging.onMessageOpenedApp.listen(openMessage);
   }

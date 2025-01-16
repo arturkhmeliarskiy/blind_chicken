@@ -34,14 +34,12 @@ class NewsNotificationDescriptionScreen extends StatefulWidget {
   final bool isNotification;
 
   @override
-  State<NewsNotificationDescriptionScreen> createState() =>
-      _NewsNotificationDescriptionScreenState();
+  State<NewsNotificationDescriptionScreen> createState() => _NewsNotificationDescriptionScreenState();
 }
 
 class _NewsNotificationDescriptionScreenState extends State<NewsNotificationDescriptionScreen> {
-  final BlindChickenShowDialogError _blindChickenNotificationShowDialogError =
-      BlindChickenShowDialogError();
-  bool _isShowDialogNotificatioInfoError = false;
+  final BlindChickenShowDialogError _blindChickenNotificationShowDialogError = BlindChickenShowDialogError();
+  bool _isShowDialogNotificationInfoError = false;
   bool _isFullScreenVideo = false;
   double _aspectRatio = 0.0;
   bool _isSwipe = true;
@@ -49,8 +47,7 @@ class _NewsNotificationDescriptionScreenState extends State<NewsNotificationDesc
   @override
   void initState() {
     if (widget.idNews.isNotEmpty) {
-      AppMetrica.reportEvent(
-          'Страница описания уведомления из push-уведомления id ${widget.idNews}');
+      AppMetrica.reportEvent('Страница описания уведомления из push-уведомления id ${widget.idNews}');
       context.read<NewsBloc>().add(
             NewsEvent.getNewsDescriptionInfo(
               id: widget.idNews,
@@ -81,8 +78,8 @@ class _NewsNotificationDescriptionScreenState extends State<NewsNotificationDesc
       listener: (context, state) {
         state.maybeMap(
           preloadDataCompleted: (initState) {
-            if (_isShowDialogNotificatioInfoError) {
-              _isShowDialogNotificatioInfoError = false;
+            if (_isShowDialogNotificationInfoError) {
+              _isShowDialogNotificationInfoError = false;
               _blindChickenNotificationShowDialogError.closeShowDialog();
             }
             if (initState.isUpdateVersionApp && initState.isNotification) {
@@ -93,12 +90,9 @@ class _NewsNotificationDescriptionScreenState extends State<NewsNotificationDesc
 
               BlindChickenMessage().showOverlay(context, 'Доступно обновление приложения', () {
                 if (Platform.isAndroid || Platform.isIOS) {
-                  final appId =
-                      Platform.isAndroid ? 'YOUR_ANDROID_PACKAGE_ID' : 'com.slepayakurica.app';
+                  final appId = Platform.isAndroid ? 'YOUR_ANDROID_PACKAGE_ID' : 'com.slepayakurica.app';
                   final url = Uri.parse(
-                    Platform.isAndroid
-                        ? "market://details?id=$appId"
-                        : "https://apps.apple.com/ru/app/id6471508431",
+                    Platform.isAndroid ? "market://details?id=$appId" : "https://apps.apple.com/ru/app/id6471508431",
                   );
                   launchUrl(
                     url,
@@ -120,8 +114,8 @@ class _NewsNotificationDescriptionScreenState extends State<NewsNotificationDesc
             }
           },
           error: (value) {
-            if (!_isShowDialogNotificatioInfoError) {
-              _isShowDialogNotificatioInfoError = true;
+            if (!_isShowDialogNotificationInfoError) {
+              _isShowDialogNotificationInfoError = true;
               _blindChickenNotificationShowDialogError.openShowDualog(
                 context: context,
                 errorMessage: value.errorMessage,
@@ -209,9 +203,7 @@ class _NewsNotificationDescriptionScreenState extends State<NewsNotificationDesc
                                         ),
                                       );
                                       if (initState.news.list.isEmpty) {
-                                        context
-                                            .read<NewsBloc>()
-                                            .add(NewsEvent.getNews(isGoBack: false));
+                                        context.read<NewsBloc>().add(NewsEvent.getNews(isGoBack: false));
                                       }
                                       context.read<NewsBloc>().add(NewsEvent.checkingReadNews());
                                       setState(() {
@@ -231,9 +223,7 @@ class _NewsNotificationDescriptionScreenState extends State<NewsNotificationDesc
                                           ),
                                         );
                                         if (initState.news.list.isEmpty) {
-                                          context
-                                              .read<NewsBloc>()
-                                              .add(NewsEvent.getNews(isGoBack: false));
+                                          context.read<NewsBloc>().add(NewsEvent.getNews(isGoBack: false));
                                         }
                                         context.read<NewsBloc>().add(NewsEvent.checkingReadNews());
                                       }
@@ -260,8 +250,9 @@ class _NewsNotificationDescriptionScreenState extends State<NewsNotificationDesc
                                                     child: InkWell(
                                                       onTap: () {
                                                         if (initState.news.list.isEmpty) {
-                                                          context.read<NewsBloc>().add(
-                                                              NewsEvent.getNews(isGoBack: false));
+                                                          context
+                                                              .read<NewsBloc>()
+                                                              .add(NewsEvent.getNews(isGoBack: false));
                                                         }
                                                         context.navigateTo(
                                                           NewsInfoRoute(
@@ -281,10 +272,7 @@ class _NewsNotificationDescriptionScreenState extends State<NewsNotificationDesc
                                                 ),
                                                 TextSpan(
                                                   text: initState.oneNews?.data.title ?? '',
-                                                  style: Theme.of(context)
-                                                      .textTheme
-                                                      .titleSmall
-                                                      ?.copyWith(
+                                                  style: Theme.of(context).textTheme.titleSmall?.copyWith(
                                                         fontWeight: FontWeight.w700,
                                                         height: 1.2,
                                                       ),
@@ -296,13 +284,10 @@ class _NewsNotificationDescriptionScreenState extends State<NewsNotificationDesc
                                             height: 6,
                                           ),
                                           Text(
-                                            createAt.isNotEmpty
-                                                ? DateInfo.dateFormat(createAt)
-                                                : '',
-                                            style:
-                                                Theme.of(context).textTheme.displaySmall?.copyWith(
-                                                      color: BlindChickenColors.textInput,
-                                                    ),
+                                            createAt.isNotEmpty ? DateInfo.dateFormat(createAt) : '',
+                                            style: Theme.of(context).textTheme.displaySmall?.copyWith(
+                                                  color: BlindChickenColors.textInput,
+                                                ),
                                           ),
                                           if ((initState.oneNews?.data.typeMedia ?? '') == 'media')
                                             Column(
@@ -321,10 +306,8 @@ class _NewsNotificationDescriptionScreenState extends State<NewsNotificationDesc
                                                     context.navigateTo(
                                                       NewsPreviewMediaInfoRoute(
                                                         selectedIndex: index,
-                                                        images:
-                                                            initState.oneNews?.data.images ?? [],
-                                                        videos:
-                                                            initState.oneNews?.data.videos ?? [],
+                                                        images: initState.oneNews?.data.images ?? [],
+                                                        videos: initState.oneNews?.data.videos ?? [],
                                                         goBotton: () {
                                                           context.back();
                                                         },
@@ -334,8 +317,7 @@ class _NewsNotificationDescriptionScreenState extends State<NewsNotificationDesc
                                                 ),
                                               ],
                                             ),
-                                          if ((initState.oneNews?.data.typeMedia ?? '') ==
-                                                  'images' &&
+                                          if ((initState.oneNews?.data.typeMedia ?? '') == 'images' &&
                                               (initState.oneNews?.data.images.length ?? 0) == 1)
                                             Column(
                                               children: [
@@ -355,21 +337,17 @@ class _NewsNotificationDescriptionScreenState extends State<NewsNotificationDesc
                                                     );
                                                   },
                                                   child: CachedNetworkImage(
-                                                    imageUrl:
-                                                        initState.oneNews?.data.images.first ?? '',
-                                                    width: MediaQuery.of(context).orientation ==
-                                                            Orientation.portrait
+                                                    imageUrl: initState.oneNews?.data.images.first ?? '',
+                                                    width: MediaQuery.of(context).orientation == Orientation.portrait
                                                         ? width
                                                         : width / 2,
                                                     fit: BoxFit.cover,
-                                                    errorWidget: (context, url, error) =>
-                                                        const Icon(Icons.error),
+                                                    errorWidget: (context, url, error) => const Icon(Icons.error),
                                                   ),
                                                 ),
                                               ],
                                             ),
-                                          if ((initState.oneNews?.data.typeMedia ?? '') ==
-                                                  'images' &&
+                                          if ((initState.oneNews?.data.typeMedia ?? '') == 'images' &&
                                               (initState.oneNews?.data.images.length ?? 0) > 1)
                                             Column(
                                               children: [
@@ -396,10 +374,8 @@ class _NewsNotificationDescriptionScreenState extends State<NewsNotificationDesc
                                                 ),
                                               ],
                                             ),
-                                          if ((initState.oneNews?.data.typeMedia ?? '') ==
-                                                  'video' &&
-                                              (initState.oneNews?.data.typeVideo ?? '') ==
-                                                  'youtube')
+                                          if ((initState.oneNews?.data.typeMedia ?? '') == 'video' &&
+                                              (initState.oneNews?.data.typeVideo ?? '') == 'youtube')
                                             Column(
                                               children: [
                                                 const SizedBox(
@@ -416,10 +392,8 @@ class _NewsNotificationDescriptionScreenState extends State<NewsNotificationDesc
                                                 ),
                                               ],
                                             ),
-                                          if ((initState.oneNews?.data.typeMedia ?? '') ==
-                                                  'video' &&
-                                              (initState.oneNews?.data.typeVideo ?? '') ==
-                                                  'original')
+                                          if ((initState.oneNews?.data.typeMedia ?? '') == 'video' &&
+                                              (initState.oneNews?.data.typeVideo ?? '') == 'original')
                                             Column(
                                               children: [
                                                 const SizedBox(
@@ -429,10 +403,8 @@ class _NewsNotificationDescriptionScreenState extends State<NewsNotificationDesc
                                                   url: initState.oneNews?.data.video ?? '',
                                                   image: initState.oneNews?.data.videoImage ?? '',
                                                   isFullScreenVideo: _isFullScreenVideo,
-                                                  videoImageHeight:
-                                                      initState.oneNews?.data.videoImageHeight ?? 0,
-                                                  videoImageWeight:
-                                                      initState.oneNews?.data.videoImageWeight ?? 0,
+                                                  videoImageHeight: initState.oneNews?.data.videoImageHeight ?? 0,
+                                                  videoImageWeight: initState.oneNews?.data.videoImageWeight ?? 0,
                                                   onEnterFullScreen: (aspectRatio) {
                                                     setState(() {
                                                       _isFullScreenVideo = true;
@@ -468,8 +440,7 @@ class _NewsNotificationDescriptionScreenState extends State<NewsNotificationDesc
                                           if (initState.oneNews?.data.path.isNotEmpty ?? false)
                                             GestureDetector(
                                               onTap: () {
-                                                if ((initState.oneNews?.data.typePath ?? '') ==
-                                                    'catalog') {
+                                                if ((initState.oneNews?.data.typePath ?? '') == 'catalog') {
                                                   context.read<CatalogBloc>().add(
                                                         CatalogEvent.getInfoProducts(
                                                           path: initState.oneNews?.data.path ?? '',
@@ -488,9 +459,7 @@ class _NewsNotificationDescriptionScreenState extends State<NewsNotificationDesc
                                                       ],
                                                     ),
                                                   ]));
-                                                } else if ((initState.oneNews?.data.typePath ??
-                                                        '') ==
-                                                    'product') {
+                                                } else if ((initState.oneNews?.data.typePath ?? '') == 'product') {
                                                   context.navigateTo(
                                                     DashboardRoute(
                                                       children: [
@@ -501,8 +470,7 @@ class _NewsNotificationDescriptionScreenState extends State<NewsNotificationDesc
                                                               listItems: const [],
                                                               favouritesProducts: const [],
                                                               isChildRoute: false,
-                                                              lastPath:
-                                                                  'news_notification_description',
+                                                              lastPath: 'news_notification_description',
                                                               newsInfo: initState.oneNews?.data,
                                                               codeProduct: initState.oneNews?.data.code ?? '',
                                                               titleScreen:
@@ -513,13 +481,10 @@ class _NewsNotificationDescriptionScreenState extends State<NewsNotificationDesc
                                                       ],
                                                     ),
                                                   );
-                                                } else if ((initState.oneNews?.data.typePath ??
-                                                        '') ==
-                                                    'boutique') {
+                                                } else if ((initState.oneNews?.data.typePath ?? '') == 'boutique') {
                                                   context.read<BoutiquesBloc>().add(
                                                         BoutiquesEvent.getInfoBoutique(
-                                                          uid: initState.oneNews?.data.uidStore ??
-                                                              '',
+                                                          uid: initState.oneNews?.data.uidStore ?? '',
                                                         ),
                                                       );
                                                   context.navigateTo(
@@ -528,8 +493,7 @@ class _NewsNotificationDescriptionScreenState extends State<NewsNotificationDesc
                                                         HomeAutoRouterRoute(
                                                           children: [
                                                             BoutiquesDescriptionRoute(
-                                                              lastPath:
-                                                                  'news_notification_description',
+                                                              lastPath: 'news_notification_description',
                                                               newsInfo: initState.oneNews?.data,
                                                             ),
                                                           ],
@@ -537,17 +501,14 @@ class _NewsNotificationDescriptionScreenState extends State<NewsNotificationDesc
                                                       ],
                                                     ),
                                                   );
-                                                } else if ((initState.oneNews?.data.typePath ??
-                                                        '') ==
-                                                    'gift_card') {
+                                                } else if ((initState.oneNews?.data.typePath ?? '') == 'gift_card') {
                                                   context.navigateTo(
                                                     DashboardRoute(
                                                       children: [
                                                         HomeAutoRouterRoute(
                                                           children: [
                                                             GiftCardRoute(
-                                                              lastPath:
-                                                                  'news_notification_description',
+                                                              lastPath: 'news_notification_description',
                                                               newsInfo: initState.oneNews?.data,
                                                             ),
                                                           ],
@@ -566,12 +527,8 @@ class _NewsNotificationDescriptionScreenState extends State<NewsNotificationDesc
                                                 alignment: Alignment.center,
                                                 child: Text(
                                                   initState.oneNews?.data.titleButton ?? '',
-                                                  style: Theme.of(context)
-                                                      .textTheme
-                                                      .displayMedium
-                                                      ?.copyWith(
-                                                        color: BlindChickenColors
-                                                            .activeBorderTextField,
+                                                  style: Theme.of(context).textTheme.displayMedium?.copyWith(
+                                                        color: BlindChickenColors.activeBorderTextField,
                                                       ),
                                                 ),
                                               ),
