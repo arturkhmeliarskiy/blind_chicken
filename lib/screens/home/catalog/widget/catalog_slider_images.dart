@@ -126,11 +126,10 @@ class _CatalogSliderImagesState extends State<CatalogSliderImages> {
                           scrollDirection: Axis.horizontal,
                           itemCount: 1,
                           itemBuilder: (context, index) {
-                            var isPortrait =
-                                MediaQuery.of(context).orientation == Orientation.portrait;
-                            final widthController = ((MediaQuery.of(context).size.width /
-                                    (isPortrait ? widget.listImages.length : 2)) +
-                                (_position));
+                            var isPortrait = MediaQuery.of(context).orientation == Orientation.portrait;
+                            final widthController =
+                                ((MediaQuery.of(context).size.width / (isPortrait ? widget.listImages.length : 2)) +
+                                    (_position));
 
                             return Container(
                               height: 2,
@@ -138,12 +137,10 @@ class _CatalogSliderImagesState extends State<CatalogSliderImages> {
                                   ? widthController.isNegative
                                       ? 0
                                       : widthController
-                                  : MediaQuery.of(context).size.width /
-                                      (isPortrait ? widget.listImages.length : 2),
+                                  : MediaQuery.of(context).size.width / (isPortrait ? widget.listImages.length : 2),
                               margin: EdgeInsets.symmetric(
-                                horizontal: _position.isNegative
-                                    ? 0
-                                    : _position / (isPortrait ? widget.listImages.length : 2),
+                                horizontal:
+                                    _position.isNegative ? 0 : _position / (isPortrait ? widget.listImages.length : 2),
                               ),
                               color: BlindChickenColors.activeBorderTextField,
                             );
