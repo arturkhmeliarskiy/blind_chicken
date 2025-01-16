@@ -9,7 +9,7 @@ part of 'detail_product_response.dart';
 _$DetailProductResponseImpl _$$DetailProductResponseImplFromJson(
         Map<String, dynamic> json) =>
     _$DetailProductResponseImpl(
-      code: json['code'] as int?,
+      code: (json['code'] as num?)?.toInt(),
       photo: json['photo'] == null
           ? null
           : PhotoProductResponse.fromJson(
@@ -37,12 +37,14 @@ _$DetailProductResponseImpl _$$DetailProductResponseImplFromJson(
       sections: _convertSections(json['sections']),
       text: json['text'] as String?,
       name: json['name'] as String?,
-      quantity: json['quantity'] as int?,
+      quantity: (json['quantity'] as num?)?.toInt(),
       art: json['art'] as String?,
-      userDiscount: json['user_discount'] as int?,
-      userBuyForNextDiscount: json['user_buy_for_next_discount'] as int?,
-      userBuyForNextDiscountVal: json['user_buy_for_next_discount_val'] as int?,
-      userNextDiscount: json['user_next_discount'] as int?,
+      userDiscount: (json['user_discount'] as num?)?.toInt(),
+      userBuyForNextDiscount:
+          (json['user_buy_for_next_discount'] as num?)?.toInt(),
+      userBuyForNextDiscountVal:
+          (json['user_buy_for_next_discount_val'] as num?)?.toInt(),
+      userNextDiscount: (json['user_next_discount'] as num?)?.toInt(),
       price: json['price'] == null
           ? null
           : PriceProductResponse.fromJson(

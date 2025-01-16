@@ -12,10 +12,10 @@ _$BadgeOperationInfoResponseImpl _$$BadgeOperationInfoResponseImplFromJson(
       r: json['r'] as String?,
       e: json['e'] as String?,
       errorMessage: json['errorMessage'] as String?,
-      news: json['news'] as int?,
-      media: json['media'] as int?,
-      notice: json['notice'] as int?,
-      total: json['total'] as int?,
+      news: (json['news'] as num?)?.toInt(),
+      media: (json['media'] as num?)?.toInt(),
+      notice: (json['notice'] as num?)?.toInt(),
+      total: (json['total'] as num?)?.toInt(),
     );
 
 Map<String, dynamic> _$$BadgeOperationInfoResponseImplToJson(

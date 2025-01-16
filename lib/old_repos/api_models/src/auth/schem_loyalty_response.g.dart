@@ -9,8 +9,8 @@ part of 'schem_loyalty_response.dart';
 _$SchemLoyaltyResponseImpl _$$SchemLoyaltyResponseImplFromJson(
         Map<String, dynamic> json) =>
     _$SchemLoyaltyResponseImpl(
-      discount: json['discount'] as int?,
-      value: json['value'] as int?,
+      discount: (json['discount'] as num?)?.toInt(),
+      value: (json['value'] as num?)?.toInt(),
     );
 
 Map<String, dynamic> _$$SchemLoyaltyResponseImplToJson(

@@ -12,7 +12,7 @@ _$PaymentBonusResponseImpl _$$PaymentBonusResponseImplFromJson(
       r: json['r'] as String?,
       e: json['e'] as String?,
       info: json['info'] as String?,
-      balance: json['balance'] as int?,
+      balance: (json['balance'] as num?)?.toInt(),
       errorMessage: json['errorMessage'] as String?,
     );
 

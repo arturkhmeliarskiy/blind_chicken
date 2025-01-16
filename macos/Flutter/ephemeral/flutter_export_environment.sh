@@ -1,11 +1,11 @@
 #!/bin/sh
 # This is a generated file; do not edit or check into version control.
-export "FLUTTER_ROOT=/usr/local/Caskroom/flutter/3.19.5/flutter"
-export "FLUTTER_APPLICATION_PATH=/Users/fittin/StudioProjects/blind-chicken"
+export "FLUTTER_ROOT=C:\SRC\flutter"
+export "FLUTTER_APPLICATION_PATH=D:\PRJ\blind_chicken"
 export "COCOAPODS_PARALLEL_CODE_SIGN=true"
 export "FLUTTER_BUILD_DIR=build"
-export "FLUTTER_BUILD_NAME=1.0.40"
-export "FLUTTER_BUILD_NUMBER=59"
+export "FLUTTER_BUILD_NAME=1.0.75"
+export "FLUTTER_BUILD_NUMBER=1"
 export "DART_OBFUSCATION=false"
 export "TRACK_WIDGET_CREATION=true"
 export "TREE_SHAKE_ICONS=false"

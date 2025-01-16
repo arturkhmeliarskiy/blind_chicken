@@ -40,8 +40,12 @@ mixin _$OptionProductResponse {
   @JsonKey(name: 'ct')
   String? get ct => throw _privateConstructorUsedError;
 
+  /// Serializes this OptionProductResponse to a JSON map.
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
-  @JsonKey(ignore: true)
+
+  /// Create a copy of OptionProductResponse
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   $OptionProductResponseCopyWith<OptionProductResponse> get copyWith =>
       throw _privateConstructorUsedError;
 }
@@ -75,6 +79,8 @@ class _$OptionProductResponseCopyWithImpl<$Res,
   // ignore: unused_field
   final $Res Function($Val) _then;
 
+  /// Create a copy of OptionProductResponse
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -159,6 +165,8 @@ class __$$OptionProductResponseImplCopyWithImpl<$Res>
       $Res Function(_$OptionProductResponseImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of OptionProductResponse
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -280,11 +288,13 @@ class _$OptionProductResponseImpl extends _OptionProductResponse {
             (identical(other.ct, ct) || other.ct == ct));
   }
 
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   int get hashCode => Object.hash(runtimeType, c, n, f, b, ne, pr, u, g, ct);
 
-  @JsonKey(ignore: true)
+  /// Create a copy of OptionProductResponse
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$OptionProductResponseImplCopyWith<_$OptionProductResponseImpl>
@@ -342,8 +352,11 @@ abstract class _OptionProductResponse extends OptionProductResponse {
   @override
   @JsonKey(name: 'ct')
   String? get ct;
+
+  /// Create a copy of OptionProductResponse
+  /// with the given fields replaced by the non-null parameter values.
   @override
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$OptionProductResponseImplCopyWith<_$OptionProductResponseImpl>
       get copyWith => throw _privateConstructorUsedError;
 }

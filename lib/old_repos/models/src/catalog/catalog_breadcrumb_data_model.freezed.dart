@@ -19,7 +19,9 @@ mixin _$CatalogBreadcrumbDataModel {
   String get name => throw _privateConstructorUsedError;
   String get value => throw _privateConstructorUsedError;
 
-  @JsonKey(ignore: true)
+  /// Create a copy of CatalogBreadcrumbDataModel
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   $CatalogBreadcrumbDataModelCopyWith<CatalogBreadcrumbDataModel>
       get copyWith => throw _privateConstructorUsedError;
 }
@@ -45,6 +47,8 @@ class _$CatalogBreadcrumbDataModelCopyWithImpl<$Res,
   // ignore: unused_field
   final $Res Function($Val) _then;
 
+  /// Create a copy of CatalogBreadcrumbDataModel
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -86,6 +90,8 @@ class __$$CatalogBreadcrumbDataModelImplCopyWithImpl<$Res>
       $Res Function(_$CatalogBreadcrumbDataModelImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of CatalogBreadcrumbDataModel
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -133,7 +139,9 @@ class _$CatalogBreadcrumbDataModelImpl extends _CatalogBreadcrumbDataModel {
   @override
   int get hashCode => Object.hash(runtimeType, name, value);
 
-  @JsonKey(ignore: true)
+  /// Create a copy of CatalogBreadcrumbDataModel
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$CatalogBreadcrumbDataModelImplCopyWith<_$CatalogBreadcrumbDataModelImpl>
@@ -151,8 +159,11 @@ abstract class _CatalogBreadcrumbDataModel extends CatalogBreadcrumbDataModel {
   String get name;
   @override
   String get value;
+
+  /// Create a copy of CatalogBreadcrumbDataModel
+  /// with the given fields replaced by the non-null parameter values.
   @override
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$CatalogBreadcrumbDataModelImplCopyWith<_$CatalogBreadcrumbDataModelImpl>
       get copyWith => throw _privateConstructorUsedError;
 }

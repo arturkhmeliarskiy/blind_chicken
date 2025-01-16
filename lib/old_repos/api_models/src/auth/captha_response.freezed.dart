@@ -23,8 +23,12 @@ mixin _$CapthaResponse {
   String? get img => throw _privateConstructorUsedError;
   String? get code => throw _privateConstructorUsedError;
 
+  /// Serializes this CapthaResponse to a JSON map.
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
-  @JsonKey(ignore: true)
+
+  /// Create a copy of CapthaResponse
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   $CapthaResponseCopyWith<CapthaResponse> get copyWith =>
       throw _privateConstructorUsedError;
 }
@@ -48,6 +52,8 @@ class _$CapthaResponseCopyWithImpl<$Res, $Val extends CapthaResponse>
   // ignore: unused_field
   final $Res Function($Val) _then;
 
+  /// Create a copy of CapthaResponse
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -86,6 +92,8 @@ class __$$CapthaResponseImplCopyWithImpl<$Res>
       _$CapthaResponseImpl _value, $Res Function(_$CapthaResponseImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of CapthaResponse
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -132,11 +140,13 @@ class _$CapthaResponseImpl extends _CapthaResponse {
             (identical(other.code, code) || other.code == code));
   }
 
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   int get hashCode => Object.hash(runtimeType, img, code);
 
-  @JsonKey(ignore: true)
+  /// Create a copy of CapthaResponse
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$CapthaResponseImplCopyWith<_$CapthaResponseImpl> get copyWith =>
@@ -163,8 +173,11 @@ abstract class _CapthaResponse extends CapthaResponse {
   String? get img;
   @override
   String? get code;
+
+  /// Create a copy of CapthaResponse
+  /// with the given fields replaced by the non-null parameter values.
   @override
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$CapthaResponseImplCopyWith<_$CapthaResponseImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }

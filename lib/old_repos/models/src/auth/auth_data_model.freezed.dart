@@ -22,7 +22,9 @@ mixin _$AuthDataModel {
   int get seconds => throw _privateConstructorUsedError;
   String get send => throw _privateConstructorUsedError;
 
-  @JsonKey(ignore: true)
+  /// Create a copy of AuthDataModel
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   $AuthDataModelCopyWith<AuthDataModel> get copyWith =>
       throw _privateConstructorUsedError;
 }
@@ -53,6 +55,8 @@ class _$AuthDataModelCopyWithImpl<$Res, $Val extends AuthDataModel>
   // ignore: unused_field
   final $Res Function($Val) _then;
 
+  /// Create a copy of AuthDataModel
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -86,6 +90,8 @@ class _$AuthDataModelCopyWithImpl<$Res, $Val extends AuthDataModel>
     ) as $Val);
   }
 
+  /// Create a copy of AuthDataModel
+  /// with the given fields replaced by the non-null parameter values.
   @override
   @pragma('vm:prefer-inline')
   $CapthaDataModelCopyWith<$Res> get captcha {
@@ -122,6 +128,8 @@ class __$$AuthDataModelImplCopyWithImpl<$Res>
       _$AuthDataModelImpl _value, $Res Function(_$AuthDataModelImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of AuthDataModel
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -200,7 +208,9 @@ class _$AuthDataModelImpl extends _AuthDataModel {
   int get hashCode =>
       Object.hash(runtimeType, r, captcha, errorMessage, seconds, send);
 
-  @JsonKey(ignore: true)
+  /// Create a copy of AuthDataModel
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$AuthDataModelImplCopyWith<_$AuthDataModelImpl> get copyWith =>
@@ -226,8 +236,11 @@ abstract class _AuthDataModel extends AuthDataModel {
   int get seconds;
   @override
   String get send;
+
+  /// Create a copy of AuthDataModel
+  /// with the given fields replaced by the non-null parameter values.
   @override
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$AuthDataModelImplCopyWith<_$AuthDataModelImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }

@@ -26,8 +26,12 @@ mixin _$BasketCategoryResponse {
   @JsonKey(name: 'ch_n')
   String? get chN => throw _privateConstructorUsedError;
 
+  /// Serializes this BasketCategoryResponse to a JSON map.
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
-  @JsonKey(ignore: true)
+
+  /// Create a copy of BasketCategoryResponse
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   $BasketCategoryResponseCopyWith<BasketCategoryResponse> get copyWith =>
       throw _privateConstructorUsedError;
 }
@@ -52,6 +56,8 @@ class _$BasketCategoryResponseCopyWithImpl<$Res,
   // ignore: unused_field
   final $Res Function($Val) _then;
 
+  /// Create a copy of BasketCategoryResponse
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -98,6 +104,8 @@ class __$$BasketCategoryResponseImplCopyWithImpl<$Res>
       $Res Function(_$BasketCategoryResponseImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of BasketCategoryResponse
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -155,11 +163,13 @@ class _$BasketCategoryResponseImpl extends _BasketCategoryResponse {
             (identical(other.chN, chN) || other.chN == chN));
   }
 
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   int get hashCode => Object.hash(runtimeType, id, n, chN);
 
-  @JsonKey(ignore: true)
+  /// Create a copy of BasketCategoryResponse
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$BasketCategoryResponseImplCopyWith<_$BasketCategoryResponseImpl>
@@ -191,8 +201,11 @@ abstract class _BasketCategoryResponse extends BasketCategoryResponse {
   @override
   @JsonKey(name: 'ch_n')
   String? get chN;
+
+  /// Create a copy of BasketCategoryResponse
+  /// with the given fields replaced by the non-null parameter values.
   @override
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$BasketCategoryResponseImplCopyWith<_$BasketCategoryResponseImpl>
       get copyWith => throw _privateConstructorUsedError;
 }

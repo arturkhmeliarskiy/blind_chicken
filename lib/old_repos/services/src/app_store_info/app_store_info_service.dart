@@ -1,5 +1,5 @@
 import 'dart:convert';
-import 'package:blind_chicken/core/utils/logging.dart';
+import 'package:blind_chicken/core_config/utils/logging.dart';
 import 'package:blind_chicken/old_repos/api_models/api_models.dart';
 import 'package:dio/dio.dart';
 import 'package:blind_chicken/old_repos/shared/shared.dart';

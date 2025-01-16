@@ -28,8 +28,12 @@ mixin _$BoutiqueInfoDetailResponse {
   List<BoutiqueCategoryItemResponse>? get category =>
       throw _privateConstructorUsedError;
 
+  /// Serializes this BoutiqueInfoDetailResponse to a JSON map.
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
-  @JsonKey(ignore: true)
+
+  /// Create a copy of BoutiqueInfoDetailResponse
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   $BoutiqueInfoDetailResponseCopyWith<BoutiqueInfoDetailResponse>
       get copyWith => throw _privateConstructorUsedError;
 }
@@ -60,6 +64,8 @@ class _$BoutiqueInfoDetailResponseCopyWithImpl<$Res,
   // ignore: unused_field
   final $Res Function($Val) _then;
 
+  /// Create a copy of BoutiqueInfoDetailResponse
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -116,6 +122,8 @@ class __$$BoutiqueInfoDetailResponseImplCopyWithImpl<$Res>
       $Res Function(_$BoutiqueInfoDetailResponseImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of BoutiqueInfoDetailResponse
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -195,12 +203,14 @@ class _$BoutiqueInfoDetailResponseImpl extends _BoutiqueInfoDetailResponse {
             const DeepCollectionEquality().equals(other._category, _category));
   }
 
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   int get hashCode => Object.hash(runtimeType, r, e, errorMessage,
       const DeepCollectionEquality().hash(_category));
 
-  @JsonKey(ignore: true)
+  /// Create a copy of BoutiqueInfoDetailResponse
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$BoutiqueInfoDetailResponseImplCopyWith<_$BoutiqueInfoDetailResponseImpl>
@@ -237,8 +247,11 @@ abstract class _BoutiqueInfoDetailResponse extends BoutiqueInfoDetailResponse {
   @override
   @JsonKey(name: 'category', fromJson: _convertCategory)
   List<BoutiqueCategoryItemResponse>? get category;
+
+  /// Create a copy of BoutiqueInfoDetailResponse
+  /// with the given fields replaced by the non-null parameter values.
   @override
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$BoutiqueInfoDetailResponseImplCopyWith<_$BoutiqueInfoDetailResponseImpl>
       get copyWith => throw _privateConstructorUsedError;
 }

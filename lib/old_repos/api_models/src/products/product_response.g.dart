@@ -9,14 +9,14 @@ part of 'product_response.dart';
 _$ProductResponseImpl _$$ProductResponseImplFromJson(
         Map<String, dynamic> json) =>
     _$ProductResponseImpl(
-      id: json['id'] as int?,
+      id: (json['id'] as num?)?.toInt(),
       title: json['title'] as String?,
       category: json['category'] as String?,
       size: (json['size'] as List<dynamic>?)?.map((e) => e as String).toList(),
-      price: json['price'] as int?,
+      price: (json['price'] as num?)?.toInt(),
       brend: json['brend'] as String?,
-      lensDiameter: json['lens_diameter'] as int?,
-      templeLength: json['temple_length'] as int?,
+      lensDiameter: (json['lens_diameter'] as num?)?.toInt(),
+      templeLength: (json['temple_length'] as num?)?.toInt(),
       country: json['country'] as String?,
       images:
           (json['images'] as List<dynamic>?)?.map((e) => e as String).toList(),

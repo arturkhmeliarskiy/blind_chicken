@@ -1,12 +1,12 @@
 import 'dart:convert';
 
+import 'package:blind_chicken/core_config/utils/debug_overlay/log/log_event.dart';
+import 'package:blind_chicken/core_config/utils/logging.dart';
 import 'package:dio/dio.dart';
 
 import '../../app/bloc/app_bloc.dart';
 import '../../core_config/di/app_locator.dart';
 import '../bloc/bloc_action.dart';
-import '../utils/debug_overlay/log/log_event.dart';
-import '../utils/logging.dart';
 
 class DioInterceptToCurl extends Interceptor {
   final bool? printOnSuccess;

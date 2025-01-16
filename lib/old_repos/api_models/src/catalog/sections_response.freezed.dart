@@ -28,8 +28,12 @@ mixin _$SectionsResponse {
   List<SectionItemResponse>? get listNext => throw _privateConstructorUsedError;
   List<SectionItemResponse>? get listThis => throw _privateConstructorUsedError;
 
+  /// Serializes this SectionsResponse to a JSON map.
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
-  @JsonKey(ignore: true)
+
+  /// Create a copy of SectionsResponse
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   $SectionsResponseCopyWith<SectionsResponse> get copyWith =>
       throw _privateConstructorUsedError;
 }
@@ -63,6 +67,8 @@ class _$SectionsResponseCopyWithImpl<$Res, $Val extends SectionsResponse>
   // ignore: unused_field
   final $Res Function($Val) _then;
 
+  /// Create a copy of SectionsResponse
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -101,6 +107,8 @@ class _$SectionsResponseCopyWithImpl<$Res, $Val extends SectionsResponse>
     ) as $Val);
   }
 
+  /// Create a copy of SectionsResponse
+  /// with the given fields replaced by the non-null parameter values.
   @override
   @pragma('vm:prefer-inline')
   $PrevResponseCopyWith<$Res>? get prev {
@@ -113,6 +121,8 @@ class _$SectionsResponseCopyWithImpl<$Res, $Val extends SectionsResponse>
     });
   }
 
+  /// Create a copy of SectionsResponse
+  /// with the given fields replaced by the non-null parameter values.
   @override
   @pragma('vm:prefer-inline')
   $ThisResponseCopyWith<$Res>? get thiss {
@@ -125,6 +135,8 @@ class _$SectionsResponseCopyWithImpl<$Res, $Val extends SectionsResponse>
     });
   }
 
+  /// Create a copy of SectionsResponse
+  /// with the given fields replaced by the non-null parameter values.
   @override
   @pragma('vm:prefer-inline')
   $NextResponseCopyWith<$Res>? get next {
@@ -170,6 +182,8 @@ class __$$SectionsResponseImplCopyWithImpl<$Res>
       $Res Function(_$SectionsResponseImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of SectionsResponse
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -282,7 +296,7 @@ class _$SectionsResponseImpl extends _SectionsResponse {
             const DeepCollectionEquality().equals(other._listThis, _listThis));
   }
 
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   int get hashCode => Object.hash(
       runtimeType,
@@ -293,7 +307,9 @@ class _$SectionsResponseImpl extends _SectionsResponse {
       const DeepCollectionEquality().hash(_listNext),
       const DeepCollectionEquality().hash(_listThis));
 
-  @JsonKey(ignore: true)
+  /// Create a copy of SectionsResponse
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$SectionsResponseImplCopyWith<_$SectionsResponseImpl> get copyWith =>
@@ -334,8 +350,11 @@ abstract class _SectionsResponse extends SectionsResponse {
   List<SectionItemResponse>? get listNext;
   @override
   List<SectionItemResponse>? get listThis;
+
+  /// Create a copy of SectionsResponse
+  /// with the given fields replaced by the non-null parameter values.
   @override
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$SectionsResponseImplCopyWith<_$SectionsResponseImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }

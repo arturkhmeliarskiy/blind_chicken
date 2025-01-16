@@ -24,8 +24,12 @@ mixin _$OrderPromoResponse {
   @JsonKey(name: 'promo_info')
   String? get promocodeInfo => throw _privateConstructorUsedError;
 
+  /// Serializes this OrderPromoResponse to a JSON map.
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
-  @JsonKey(ignore: true)
+
+  /// Create a copy of OrderPromoResponse
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   $OrderPromoResponseCopyWith<OrderPromoResponse> get copyWith =>
       throw _privateConstructorUsedError;
 }
@@ -50,6 +54,8 @@ class _$OrderPromoResponseCopyWithImpl<$Res, $Val extends OrderPromoResponse>
   // ignore: unused_field
   final $Res Function($Val) _then;
 
+  /// Create a copy of OrderPromoResponse
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -89,6 +95,8 @@ class __$$OrderPromoResponseImplCopyWithImpl<$Res>
       $Res Function(_$OrderPromoResponseImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of OrderPromoResponse
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -140,11 +148,13 @@ class _$OrderPromoResponseImpl extends _OrderPromoResponse {
                 other.promocodeInfo == promocodeInfo));
   }
 
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   int get hashCode => Object.hash(runtimeType, promocode, promocodeInfo);
 
-  @JsonKey(ignore: true)
+  /// Create a copy of OrderPromoResponse
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$OrderPromoResponseImplCopyWith<_$OrderPromoResponseImpl> get copyWith =>
@@ -174,8 +184,11 @@ abstract class _OrderPromoResponse extends OrderPromoResponse {
   @override
   @JsonKey(name: 'promo_info')
   String? get promocodeInfo;
+
+  /// Create a copy of OrderPromoResponse
+  /// with the given fields replaced by the non-null parameter values.
   @override
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$OrderPromoResponseImplCopyWith<_$OrderPromoResponseImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }

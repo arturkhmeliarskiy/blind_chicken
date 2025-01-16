@@ -21,7 +21,9 @@ mixin _$TopBannerDataModel {
   String get errorMessage => throw _privateConstructorUsedError;
   TopBannerInfoDataModel get data => throw _privateConstructorUsedError;
 
-  @JsonKey(ignore: true)
+  /// Create a copy of TopBannerDataModel
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   $TopBannerDataModelCopyWith<TopBannerDataModel> get copyWith =>
       throw _privateConstructorUsedError;
 }
@@ -48,6 +50,8 @@ class _$TopBannerDataModelCopyWithImpl<$Res, $Val extends TopBannerDataModel>
   // ignore: unused_field
   final $Res Function($Val) _then;
 
+  /// Create a copy of TopBannerDataModel
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -76,6 +80,8 @@ class _$TopBannerDataModelCopyWithImpl<$Res, $Val extends TopBannerDataModel>
     ) as $Val);
   }
 
+  /// Create a copy of TopBannerDataModel
+  /// with the given fields replaced by the non-null parameter values.
   @override
   @pragma('vm:prefer-inline')
   $TopBannerInfoDataModelCopyWith<$Res> get data {
@@ -108,6 +114,8 @@ class __$$TopBannerDataModelImplCopyWithImpl<$Res>
       $Res Function(_$TopBannerDataModelImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of TopBannerDataModel
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -176,7 +184,9 @@ class _$TopBannerDataModelImpl extends _TopBannerDataModel {
   @override
   int get hashCode => Object.hash(runtimeType, r, e, errorMessage, data);
 
-  @JsonKey(ignore: true)
+  /// Create a copy of TopBannerDataModel
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$TopBannerDataModelImplCopyWith<_$TopBannerDataModelImpl> get copyWith =>
@@ -200,8 +210,11 @@ abstract class _TopBannerDataModel extends TopBannerDataModel {
   String get errorMessage;
   @override
   TopBannerInfoDataModel get data;
+
+  /// Create a copy of TopBannerDataModel
+  /// with the given fields replaced by the non-null parameter values.
   @override
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$TopBannerDataModelImplCopyWith<_$TopBannerDataModelImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }

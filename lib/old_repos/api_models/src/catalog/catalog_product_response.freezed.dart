@@ -40,8 +40,12 @@ mixin _$CatalogProductResponse {
   List<CatalogSizeProductResponse>? get sz =>
       throw _privateConstructorUsedError;
 
+  /// Serializes this CatalogProductResponse to a JSON map.
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
-  @JsonKey(ignore: true)
+
+  /// Create a copy of CatalogProductResponse
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   $CatalogProductResponseCopyWith<CatalogProductResponse> get copyWith =>
       throw _privateConstructorUsedError;
 }
@@ -84,6 +88,8 @@ class _$CatalogProductResponseCopyWithImpl<$Res,
   // ignore: unused_field
   final $Res Function($Val) _then;
 
+  /// Create a copy of CatalogProductResponse
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -172,6 +178,8 @@ class _$CatalogProductResponseCopyWithImpl<$Res,
     ) as $Val);
   }
 
+  /// Create a copy of CatalogProductResponse
+  /// with the given fields replaced by the non-null parameter values.
   @override
   @pragma('vm:prefer-inline')
   $DetailProductVideoResponseCopyWith<$Res>? get v {
@@ -226,6 +234,8 @@ class __$$CatalogProductResponseImplCopyWithImpl<$Res>
       $Res Function(_$CatalogProductResponseImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of CatalogProductResponse
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -420,7 +430,7 @@ class _$CatalogProductResponseImpl extends _CatalogProductResponse {
             const DeepCollectionEquality().equals(other._sz, _sz));
   }
 
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   int get hashCode => Object.hash(
       runtimeType,
@@ -441,7 +451,9 @@ class _$CatalogProductResponseImpl extends _CatalogProductResponse {
       promoValue,
       const DeepCollectionEquality().hash(_sz));
 
-  @JsonKey(ignore: true)
+  /// Create a copy of CatalogProductResponse
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$CatalogProductResponseImplCopyWith<_$CatalogProductResponseImpl>
@@ -513,8 +525,11 @@ abstract class _CatalogProductResponse extends CatalogProductResponse {
   int? get promoValue;
   @override
   List<CatalogSizeProductResponse>? get sz;
+
+  /// Create a copy of CatalogProductResponse
+  /// with the given fields replaced by the non-null parameter values.
   @override
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$CatalogProductResponseImplCopyWith<_$CatalogProductResponseImpl>
       get copyWith => throw _privateConstructorUsedError;
 }

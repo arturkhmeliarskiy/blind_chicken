@@ -1,12 +1,10 @@
 import 'package:freezed_annotation/freezed_annotation.dart';
-
 part 'media_info_item_response.freezed.dart';
 part 'media_info_item_response.g.dart';
 
 @freezed
 class MediaInfoItemResponse with _$MediaInfoItemResponse {
-  const MediaInfoItemResponse._();
-  factory MediaInfoItemResponse({
+  const factory MediaInfoItemResponse({
     String? id,
     String? title,
     @JsonKey(name: 'create_at') String? createAt,
@@ -26,6 +24,7 @@ class MediaInfoItemResponse with _$MediaInfoItemResponse {
     @JsonKey(name: 'number_views') int? numberViews,
     @JsonKey(name: 'is_viewed') bool? isViewed,
   }) = _MediaInfoItemResponse;
+
   factory MediaInfoItemResponse.fromJson(Map<String, dynamic> json) =>
       _$MediaInfoItemResponseFromJson(json);
 }

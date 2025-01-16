@@ -26,8 +26,12 @@ mixin _$PaymentBonusResponse {
   int? get balance => throw _privateConstructorUsedError;
   String? get errorMessage => throw _privateConstructorUsedError;
 
+  /// Serializes this PaymentBonusResponse to a JSON map.
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
-  @JsonKey(ignore: true)
+
+  /// Create a copy of PaymentBonusResponse
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   $PaymentBonusResponseCopyWith<PaymentBonusResponse> get copyWith =>
       throw _privateConstructorUsedError;
 }
@@ -53,6 +57,8 @@ class _$PaymentBonusResponseCopyWithImpl<$Res,
   // ignore: unused_field
   final $Res Function($Val) _then;
 
+  /// Create a copy of PaymentBonusResponse
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -107,6 +113,8 @@ class __$$PaymentBonusResponseImplCopyWithImpl<$Res>
       $Res Function(_$PaymentBonusResponseImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of PaymentBonusResponse
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -180,12 +188,14 @@ class _$PaymentBonusResponseImpl extends _PaymentBonusResponse {
                 other.errorMessage == errorMessage));
   }
 
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   int get hashCode =>
       Object.hash(runtimeType, r, e, info, balance, errorMessage);
 
-  @JsonKey(ignore: true)
+  /// Create a copy of PaymentBonusResponse
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$PaymentBonusResponseImplCopyWith<_$PaymentBonusResponseImpl>
@@ -223,8 +233,11 @@ abstract class _PaymentBonusResponse extends PaymentBonusResponse {
   int? get balance;
   @override
   String? get errorMessage;
+
+  /// Create a copy of PaymentBonusResponse
+  /// with the given fields replaced by the non-null parameter values.
   @override
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$PaymentBonusResponseImplCopyWith<_$PaymentBonusResponseImpl>
       get copyWith => throw _privateConstructorUsedError;
 }

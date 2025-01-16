@@ -14,8 +14,6 @@ _$MediaInfoItemResponseImpl _$$MediaInfoItemResponseImplFromJson(
       createAt: json['create_at'] as String?,
       images:
           (json['images'] as List<dynamic>?)?.map((e) => e as String).toList(),
-      videos:
-          (json['videos'] as List<dynamic>?)?.map((e) => e as String).toList(),
       video: json['video'] as String?,
       typeVideo: json['type_video'] as String?,
       videoImage: json['video_image'] as String?,
@@ -28,7 +26,7 @@ _$MediaInfoItemResponseImpl _$$MediaInfoItemResponseImplFromJson(
       sort: json['sort'] as String?,
       filterSelect: json['filter_select'] as String?,
       uidStore: json['uid_store'] as String?,
-      numberViews: json['number_views'] as int?,
+      numberViews: (json['number_views'] as num?)?.toInt(),
       isViewed: json['is_viewed'] as bool?,
     );
 
@@ -39,7 +37,6 @@ Map<String, dynamic> _$$MediaInfoItemResponseImplToJson(
       'title': instance.title,
       'create_at': instance.createAt,
       'images': instance.images,
-      'videos': instance.videos,
       'video': instance.video,
       'type_video': instance.typeVideo,
       'video_image': instance.videoImage,

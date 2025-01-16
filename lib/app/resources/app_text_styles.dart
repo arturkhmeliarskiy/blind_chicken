@@ -1,6 +1,7 @@
+import 'package:blind_chicken/core_config/ui/resources/app_colors.dart';
+import 'package:blind_chicken/core_config/utils/figma_dimention.dart';
 import 'package:flutter/material.dart';
-import 'package:pimmer_app/app/resources/app_colors.dart';
-import 'package:pimmer_app/core/utils/figma_dimention.dart';
+
 
 class AppTextStyles {
   /// Display

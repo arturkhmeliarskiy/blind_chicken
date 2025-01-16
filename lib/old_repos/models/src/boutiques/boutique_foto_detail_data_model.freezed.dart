@@ -19,7 +19,9 @@ mixin _$BoutiqueFotoDetailDataModel {
   String get orig => throw _privateConstructorUsedError;
   String get min => throw _privateConstructorUsedError;
 
-  @JsonKey(ignore: true)
+  /// Create a copy of BoutiqueFotoDetailDataModel
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   $BoutiqueFotoDetailDataModelCopyWith<BoutiqueFotoDetailDataModel>
       get copyWith => throw _privateConstructorUsedError;
 }
@@ -46,6 +48,8 @@ class _$BoutiqueFotoDetailDataModelCopyWithImpl<$Res,
   // ignore: unused_field
   final $Res Function($Val) _then;
 
+  /// Create a copy of BoutiqueFotoDetailDataModel
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -87,6 +91,8 @@ class __$$BoutiqueFotoDetailDataModelImplCopyWithImpl<$Res>
       $Res Function(_$BoutiqueFotoDetailDataModelImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of BoutiqueFotoDetailDataModel
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -134,7 +140,9 @@ class _$BoutiqueFotoDetailDataModelImpl extends _BoutiqueFotoDetailDataModel {
   @override
   int get hashCode => Object.hash(runtimeType, orig, min);
 
-  @JsonKey(ignore: true)
+  /// Create a copy of BoutiqueFotoDetailDataModel
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$BoutiqueFotoDetailDataModelImplCopyWith<_$BoutiqueFotoDetailDataModelImpl>
@@ -153,8 +161,11 @@ abstract class _BoutiqueFotoDetailDataModel
   String get orig;
   @override
   String get min;
+
+  /// Create a copy of BoutiqueFotoDetailDataModel
+  /// with the given fields replaced by the non-null parameter values.
   @override
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$BoutiqueFotoDetailDataModelImplCopyWith<_$BoutiqueFotoDetailDataModelImpl>
       get copyWith => throw _privateConstructorUsedError;
 }

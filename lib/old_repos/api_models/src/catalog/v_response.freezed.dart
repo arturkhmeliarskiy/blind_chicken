@@ -23,8 +23,12 @@ mixin _$VResponse {
   String? get n => throw _privateConstructorUsedError;
   String? get id => throw _privateConstructorUsedError;
 
+  /// Serializes this VResponse to a JSON map.
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
-  @JsonKey(ignore: true)
+
+  /// Create a copy of VResponse
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   $VResponseCopyWith<VResponse> get copyWith =>
       throw _privateConstructorUsedError;
 }
@@ -47,6 +51,8 @@ class _$VResponseCopyWithImpl<$Res, $Val extends VResponse>
   // ignore: unused_field
   final $Res Function($Val) _then;
 
+  /// Create a copy of VResponse
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -85,6 +91,8 @@ class __$$VResponseImplCopyWithImpl<$Res>
       _$VResponseImpl _value, $Res Function(_$VResponseImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of VResponse
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -131,11 +139,13 @@ class _$VResponseImpl extends _VResponse {
             (identical(other.id, id) || other.id == id));
   }
 
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   int get hashCode => Object.hash(runtimeType, n, id);
 
-  @JsonKey(ignore: true)
+  /// Create a copy of VResponse
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$VResponseImplCopyWith<_$VResponseImpl> get copyWith =>
@@ -160,8 +170,11 @@ abstract class _VResponse extends VResponse {
   String? get n;
   @override
   String? get id;
+
+  /// Create a copy of VResponse
+  /// with the given fields replaced by the non-null parameter values.
   @override
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$VResponseImplCopyWith<_$VResponseImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }

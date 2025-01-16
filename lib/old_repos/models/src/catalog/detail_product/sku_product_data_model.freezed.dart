@@ -19,7 +19,9 @@ mixin _$SkuProductDataModel {
   String get id => throw _privateConstructorUsedError;
   String get value => throw _privateConstructorUsedError;
 
-  @JsonKey(ignore: true)
+  /// Create a copy of SkuProductDataModel
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   $SkuProductDataModelCopyWith<SkuProductDataModel> get copyWith =>
       throw _privateConstructorUsedError;
 }
@@ -43,6 +45,8 @@ class _$SkuProductDataModelCopyWithImpl<$Res, $Val extends SkuProductDataModel>
   // ignore: unused_field
   final $Res Function($Val) _then;
 
+  /// Create a copy of SkuProductDataModel
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -81,6 +85,8 @@ class __$$SkuProductDataModelImplCopyWithImpl<$Res>
       $Res Function(_$SkuProductDataModelImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of SkuProductDataModel
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -128,7 +134,9 @@ class _$SkuProductDataModelImpl extends _SkuProductDataModel {
   @override
   int get hashCode => Object.hash(runtimeType, id, value);
 
-  @JsonKey(ignore: true)
+  /// Create a copy of SkuProductDataModel
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$SkuProductDataModelImplCopyWith<_$SkuProductDataModelImpl> get copyWith =>
@@ -146,8 +154,11 @@ abstract class _SkuProductDataModel extends SkuProductDataModel {
   String get id;
   @override
   String get value;
+
+  /// Create a copy of SkuProductDataModel
+  /// with the given fields replaced by the non-null parameter values.
   @override
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$SkuProductDataModelImplCopyWith<_$SkuProductDataModelImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }

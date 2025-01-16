@@ -25,8 +25,12 @@ mixin _$FavouritesResponse {
   List<String>? get favorites => throw _privateConstructorUsedError;
   String? get errorMessage => throw _privateConstructorUsedError;
 
+  /// Serializes this FavouritesResponse to a JSON map.
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
-  @JsonKey(ignore: true)
+
+  /// Create a copy of FavouritesResponse
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   $FavouritesResponseCopyWith<FavouritesResponse> get copyWith =>
       throw _privateConstructorUsedError;
 }
@@ -54,6 +58,8 @@ class _$FavouritesResponseCopyWithImpl<$Res, $Val extends FavouritesResponse>
   // ignore: unused_field
   final $Res Function($Val) _then;
 
+  /// Create a copy of FavouritesResponse
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -106,6 +112,8 @@ class __$$FavouritesResponseImplCopyWithImpl<$Res>
       $Res Function(_$FavouritesResponseImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of FavouritesResponse
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -181,12 +189,14 @@ class _$FavouritesResponseImpl extends _FavouritesResponse {
                 other.errorMessage == errorMessage));
   }
 
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   int get hashCode => Object.hash(runtimeType, code, sku,
       const DeepCollectionEquality().hash(_favorites), errorMessage);
 
-  @JsonKey(ignore: true)
+  /// Create a copy of FavouritesResponse
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$FavouritesResponseImplCopyWith<_$FavouritesResponseImpl> get copyWith =>
@@ -220,8 +230,11 @@ abstract class _FavouritesResponse extends FavouritesResponse {
   List<String>? get favorites;
   @override
   String? get errorMessage;
+
+  /// Create a copy of FavouritesResponse
+  /// with the given fields replaced by the non-null parameter values.
   @override
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$FavouritesResponseImplCopyWith<_$FavouritesResponseImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }

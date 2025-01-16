@@ -5,12 +5,12 @@ import 'dart:io';
 import 'package:app_links/app_links.dart';
 import 'package:appmetrica_plugin/appmetrica_plugin.dart';
 import 'package:appmetrica_push_plugin/appmetrica_push_plugin.dart';
+import 'package:blind_chicken/core_config/utils/logging.dart';
 import 'package:blind_chicken/lifecycle_manager.dart';
 import 'package:blind_chicken/old_repos/blocs/blocs.dart';
 import 'package:blind_chicken/old_repos/shared/shared.dart';
 import 'package:blind_chicken/old_repos/ui_kit/ui_kit.dart';
 import 'package:blind_chicken/screens/app/router/app_router.dart';
-import 'package:blind_chicken/core/utils/logging.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -73,6 +73,7 @@ class _AppState extends State<App> {
 
   @override
   Widget build(BuildContext context) {
+    _appRouter.push(DashboardRoute());
     return MultiBlocProvider(
       providers: [
         BlocProvider(

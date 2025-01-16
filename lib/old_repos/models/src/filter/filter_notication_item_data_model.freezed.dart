@@ -19,7 +19,9 @@ mixin _$FilterNotifcationItemDataModel {
   String get value => throw _privateConstructorUsedError;
   String get typeFilter => throw _privateConstructorUsedError;
 
-  @JsonKey(ignore: true)
+  /// Create a copy of FilterNotifcationItemDataModel
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   $FilterNotifcationItemDataModelCopyWith<FilterNotifcationItemDataModel>
       get copyWith => throw _privateConstructorUsedError;
 }
@@ -46,6 +48,8 @@ class _$FilterNotifcationItemDataModelCopyWithImpl<$Res,
   // ignore: unused_field
   final $Res Function($Val) _then;
 
+  /// Create a copy of FilterNotifcationItemDataModel
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -87,6 +91,8 @@ class __$$FilterNotifcationItemDataModelImplCopyWithImpl<$Res>
       $Res Function(_$FilterNotifcationItemDataModelImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of FilterNotifcationItemDataModel
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -137,7 +143,9 @@ class _$FilterNotifcationItemDataModelImpl
   @override
   int get hashCode => Object.hash(runtimeType, value, typeFilter);
 
-  @JsonKey(ignore: true)
+  /// Create a copy of FilterNotifcationItemDataModel
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$FilterNotifcationItemDataModelImplCopyWith<
@@ -157,8 +165,11 @@ abstract class _FilterNotifcationItemDataModel
   String get value;
   @override
   String get typeFilter;
+
+  /// Create a copy of FilterNotifcationItemDataModel
+  /// with the given fields replaced by the non-null parameter values.
   @override
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$FilterNotifcationItemDataModelImplCopyWith<
           _$FilterNotifcationItemDataModelImpl>
       get copyWith => throw _privateConstructorUsedError;

@@ -21,7 +21,9 @@ mixin _$PaymentOrderDataModel {
   int get id => throw _privateConstructorUsedError;
   String get errorMessage => throw _privateConstructorUsedError;
 
-  @JsonKey(ignore: true)
+  /// Create a copy of PaymentOrderDataModel
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   $PaymentOrderDataModelCopyWith<PaymentOrderDataModel> get copyWith =>
       throw _privateConstructorUsedError;
 }
@@ -46,6 +48,8 @@ class _$PaymentOrderDataModelCopyWithImpl<$Res,
   // ignore: unused_field
   final $Res Function($Val) _then;
 
+  /// Create a copy of PaymentOrderDataModel
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -96,6 +100,8 @@ class __$$PaymentOrderDataModelImplCopyWithImpl<$Res>
       $Res Function(_$PaymentOrderDataModelImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of PaymentOrderDataModel
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -164,7 +170,9 @@ class _$PaymentOrderDataModelImpl extends _PaymentOrderDataModel {
   @override
   int get hashCode => Object.hash(runtimeType, r, e, id, errorMessage);
 
-  @JsonKey(ignore: true)
+  /// Create a copy of PaymentOrderDataModel
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$PaymentOrderDataModelImplCopyWith<_$PaymentOrderDataModelImpl>
@@ -188,8 +196,11 @@ abstract class _PaymentOrderDataModel extends PaymentOrderDataModel {
   int get id;
   @override
   String get errorMessage;
+
+  /// Create a copy of PaymentOrderDataModel
+  /// with the given fields replaced by the non-null parameter values.
   @override
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$PaymentOrderDataModelImplCopyWith<_$PaymentOrderDataModelImpl>
       get copyWith => throw _privateConstructorUsedError;
 }

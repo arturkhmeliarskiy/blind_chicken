@@ -29,7 +29,7 @@ _$NewsInfoItemResponseImpl _$$NewsInfoItemResponseImplFromJson(
       sort: json['sort'] as String?,
       filterSelect: json['filter_select'] as String?,
       uidStore: json['uid_store'] as String?,
-      numberViews: json['number_views'] as int?,
+      numberViews: (json['number_views'] as num?)?.toInt(),
       isViewed: json['is_viewed'] as bool?,
     );
 

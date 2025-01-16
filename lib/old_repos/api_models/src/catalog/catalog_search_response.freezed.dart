@@ -31,8 +31,12 @@ mixin _$CatalogSearchResponse {
       throw _privateConstructorUsedError;
   String? get errorMessage => throw _privateConstructorUsedError;
 
+  /// Serializes this CatalogSearchResponse to a JSON map.
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
-  @JsonKey(ignore: true)
+
+  /// Create a copy of CatalogSearchResponse
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   $CatalogSearchResponseCopyWith<CatalogSearchResponse> get copyWith =>
       throw _privateConstructorUsedError;
 }
@@ -62,6 +66,8 @@ class _$CatalogSearchResponseCopyWithImpl<$Res,
   // ignore: unused_field
   final $Res Function($Val) _then;
 
+  /// Create a copy of CatalogSearchResponse
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -122,6 +128,8 @@ class __$$CatalogSearchResponseImplCopyWithImpl<$Res>
       $Res Function(_$CatalogSearchResponseImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of CatalogSearchResponse
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -221,7 +229,7 @@ class _$CatalogSearchResponseImpl extends _CatalogSearchResponse {
                 other.errorMessage == errorMessage));
   }
 
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   int get hashCode => Object.hash(
       runtimeType,
@@ -231,7 +239,9 @@ class _$CatalogSearchResponseImpl extends _CatalogSearchResponse {
       const DeepCollectionEquality().hash(_sections),
       errorMessage);
 
-  @JsonKey(ignore: true)
+  /// Create a copy of CatalogSearchResponse
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$CatalogSearchResponseImplCopyWith<_$CatalogSearchResponseImpl>
@@ -270,8 +280,11 @@ abstract class _CatalogSearchResponse extends CatalogSearchResponse {
   List<CatalogSectionResponse>? get sections;
   @override
   String? get errorMessage;
+
+  /// Create a copy of CatalogSearchResponse
+  /// with the given fields replaced by the non-null parameter values.
   @override
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$CatalogSearchResponseImplCopyWith<_$CatalogSearchResponseImpl>
       get copyWith => throw _privateConstructorUsedError;
 }

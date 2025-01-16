@@ -1,5 +1,5 @@
+import 'package:blind_chicken/core/bloc/bloc_action.dart';
 import 'package:flutter/material.dart';
-import 'package:pimmer_app/core/bloc/bloc_action.dart';
 
 class ShowLearningModeModal extends BlocAction {
   ShowLearningModeModal({

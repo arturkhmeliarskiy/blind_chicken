@@ -9,8 +9,8 @@ part of 'boutique_shedule_data_model.dart';
 BoutiqueSheduleDataModel _$BoutiqueSheduleDataModelFromJson(
         Map<String, dynamic> json) =>
     BoutiqueSheduleDataModel(
-      s: json['s'] as int,
-      e: json['e'] as int,
+      s: (json['s'] as num).toInt(),
+      e: (json['e'] as num).toInt(),
     );
 
 Map<String, dynamic> _$BoutiqueSheduleDataModelToJson(

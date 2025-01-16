@@ -1,6 +1,8 @@
-import 'package:blind_chicken/core/utils/logging.dart';
+import 'package:blind_chicken/core_config/utils/logging.dart';
 
 import 'package:auto_route/auto_route.dart';
+import 'package:blind_chicken/old_repos/ui_kit/reaction_button/flutter_reaction_button.dart';
+import 'package:blind_chicken/old_repos/ui_kit/reaction_button/src/widgets/reaction_button.dart';
 import 'package:blind_chicken/screens/app/router/app_router.dart';
 import 'package:blind_chicken/screens/news/widgets/handler_links_news.dart';
 import 'package:blind_chicken/screens/news/widgets/news_media_slider.dart';
@@ -8,7 +10,6 @@ import 'package:blind_chicken/screens/news/widgets/news_slider.dart';
 import 'package:blind_chicken/screens/news/widgets/news_youtube_video_player.dart';
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
-import 'package:blind_chicken/utils/reaction_button/flutter_reaction_button.dart';
 import 'package:flutter_widget_from_html/flutter_widget_from_html.dart';
 import 'package:get_it/get_it.dart';
 import 'package:blind_chicken/old_repos/models/models.dart';

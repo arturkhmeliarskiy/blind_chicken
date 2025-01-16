@@ -20,7 +20,9 @@ mixin _$OrderDeliveryDataModel {
   String get method => throw _privateConstructorUsedError;
   String get address => throw _privateConstructorUsedError;
 
-  @JsonKey(ignore: true)
+  /// Create a copy of OrderDeliveryDataModel
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   $OrderDeliveryDataModelCopyWith<OrderDeliveryDataModel> get copyWith =>
       throw _privateConstructorUsedError;
 }
@@ -45,6 +47,8 @@ class _$OrderDeliveryDataModelCopyWithImpl<$Res,
   // ignore: unused_field
   final $Res Function($Val) _then;
 
+  /// Create a copy of OrderDeliveryDataModel
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -91,6 +95,8 @@ class __$$OrderDeliveryDataModelImplCopyWithImpl<$Res>
       $Res Function(_$OrderDeliveryDataModelImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of OrderDeliveryDataModel
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -147,7 +153,9 @@ class _$OrderDeliveryDataModelImpl extends _OrderDeliveryDataModel {
   @override
   int get hashCode => Object.hash(runtimeType, price, method, address);
 
-  @JsonKey(ignore: true)
+  /// Create a copy of OrderDeliveryDataModel
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$OrderDeliveryDataModelImplCopyWith<_$OrderDeliveryDataModelImpl>
@@ -168,8 +176,11 @@ abstract class _OrderDeliveryDataModel extends OrderDeliveryDataModel {
   String get method;
   @override
   String get address;
+
+  /// Create a copy of OrderDeliveryDataModel
+  /// with the given fields replaced by the non-null parameter values.
   @override
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$OrderDeliveryDataModelImplCopyWith<_$OrderDeliveryDataModelImpl>
       get copyWith => throw _privateConstructorUsedError;
 }

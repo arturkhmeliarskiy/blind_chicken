@@ -19,7 +19,9 @@ mixin _$CapthaDataModel {
   String get img => throw _privateConstructorUsedError;
   String get code => throw _privateConstructorUsedError;
 
-  @JsonKey(ignore: true)
+  /// Create a copy of CapthaDataModel
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   $CapthaDataModelCopyWith<CapthaDataModel> get copyWith =>
       throw _privateConstructorUsedError;
 }
@@ -43,6 +45,8 @@ class _$CapthaDataModelCopyWithImpl<$Res, $Val extends CapthaDataModel>
   // ignore: unused_field
   final $Res Function($Val) _then;
 
+  /// Create a copy of CapthaDataModel
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -81,6 +85,8 @@ class __$$CapthaDataModelImplCopyWithImpl<$Res>
       _$CapthaDataModelImpl _value, $Res Function(_$CapthaDataModelImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of CapthaDataModel
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -127,7 +133,9 @@ class _$CapthaDataModelImpl extends _CapthaDataModel {
   @override
   int get hashCode => Object.hash(runtimeType, img, code);
 
-  @JsonKey(ignore: true)
+  /// Create a copy of CapthaDataModel
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$CapthaDataModelImplCopyWith<_$CapthaDataModelImpl> get copyWith =>
@@ -145,8 +153,11 @@ abstract class _CapthaDataModel extends CapthaDataModel {
   String get img;
   @override
   String get code;
+
+  /// Create a copy of CapthaDataModel
+  /// with the given fields replaced by the non-null parameter values.
   @override
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$CapthaDataModelImplCopyWith<_$CapthaDataModelImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }

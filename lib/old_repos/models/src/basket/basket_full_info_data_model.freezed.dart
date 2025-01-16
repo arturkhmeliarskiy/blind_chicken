@@ -24,7 +24,9 @@ mixin _$BasketFullInfoDataModel {
   List<BasketFullInfoItemDataModel> get basket =>
       throw _privateConstructorUsedError;
 
-  @JsonKey(ignore: true)
+  /// Create a copy of BasketFullInfoDataModel
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   $BasketFullInfoDataModelCopyWith<BasketFullInfoDataModel> get copyWith =>
       throw _privateConstructorUsedError;
 }
@@ -55,6 +57,8 @@ class _$BasketFullInfoDataModelCopyWithImpl<$Res,
   // ignore: unused_field
   final $Res Function($Val) _then;
 
+  /// Create a copy of BasketFullInfoDataModel
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -122,6 +126,8 @@ class __$$BasketFullInfoDataModelImplCopyWithImpl<$Res>
       $Res Function(_$BasketFullInfoDataModelImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of BasketFullInfoDataModel
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -216,7 +222,9 @@ class _$BasketFullInfoDataModelImpl extends _BasketFullInfoDataModel {
   int get hashCode => Object.hash(runtimeType, r, e, errorMessage,
       promoDescription, info, const DeepCollectionEquality().hash(_basket));
 
-  @JsonKey(ignore: true)
+  /// Create a copy of BasketFullInfoDataModel
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$BasketFullInfoDataModelImplCopyWith<_$BasketFullInfoDataModelImpl>
@@ -247,8 +255,11 @@ abstract class _BasketFullInfoDataModel extends BasketFullInfoDataModel {
   String get info;
   @override
   List<BasketFullInfoItemDataModel> get basket;
+
+  /// Create a copy of BasketFullInfoDataModel
+  /// with the given fields replaced by the non-null parameter values.
   @override
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$BasketFullInfoDataModelImplCopyWith<_$BasketFullInfoDataModelImpl>
       get copyWith => throw _privateConstructorUsedError;
 }

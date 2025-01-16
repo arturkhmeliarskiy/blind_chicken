@@ -37,7 +37,9 @@ mixin _$MediaInfoItemDataModel {
   int get numberViews => throw _privateConstructorUsedError;
   bool get isViewed => throw _privateConstructorUsedError;
 
-  @JsonKey(ignore: true)
+  /// Create a copy of MediaInfoItemDataModel
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   $MediaInfoItemDataModelCopyWith<MediaInfoItemDataModel> get copyWith =>
       throw _privateConstructorUsedError;
 }
@@ -82,6 +84,8 @@ class _$MediaInfoItemDataModelCopyWithImpl<$Res,
   // ignore: unused_field
   final $Res Function($Val) _then;
 
+  /// Create a copy of MediaInfoItemDataModel
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -233,6 +237,8 @@ class __$$MediaInfoItemDataModelImplCopyWithImpl<$Res>
       $Res Function(_$MediaInfoItemDataModelImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of MediaInfoItemDataModel
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -486,7 +492,9 @@ class _$MediaInfoItemDataModelImpl extends _MediaInfoItemDataModel {
         isViewed
       ]);
 
-  @JsonKey(ignore: true)
+  /// Create a copy of MediaInfoItemDataModel
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$MediaInfoItemDataModelImplCopyWith<_$MediaInfoItemDataModelImpl>
@@ -558,8 +566,11 @@ abstract class _MediaInfoItemDataModel extends MediaInfoItemDataModel {
   int get numberViews;
   @override
   bool get isViewed;
+
+  /// Create a copy of MediaInfoItemDataModel
+  /// with the given fields replaced by the non-null parameter values.
   @override
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$MediaInfoItemDataModelImplCopyWith<_$MediaInfoItemDataModelImpl>
       get copyWith => throw _privateConstructorUsedError;
 }

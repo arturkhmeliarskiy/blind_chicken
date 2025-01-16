@@ -29,7 +29,9 @@ mixin _$CatalogProductDataModel {
   List<CatalogSizeProductDataModel> get sz =>
       throw _privateConstructorUsedError;
 
-  @JsonKey(ignore: true)
+  /// Create a copy of CatalogProductDataModel
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   $CatalogProductDataModelCopyWith<CatalogProductDataModel> get copyWith =>
       throw _privateConstructorUsedError;
 }
@@ -65,6 +67,8 @@ class _$CatalogProductDataModelCopyWithImpl<$Res,
   // ignore: unused_field
   final $Res Function($Val) _then;
 
+  /// Create a copy of CatalogProductDataModel
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -162,6 +166,8 @@ class __$$CatalogProductDataModelImplCopyWithImpl<$Res>
       $Res Function(_$CatalogProductDataModelImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of CatalogProductDataModel
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -299,7 +305,9 @@ class _$CatalogProductDataModelImpl extends _CatalogProductDataModel {
   int get hashCode => Object.hash(runtimeType, c, f, b, n, p, pb, pc, pbc, ca,
       dv, const DeepCollectionEquality().hash(_sz));
 
-  @JsonKey(ignore: true)
+  /// Create a copy of CatalogProductDataModel
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$CatalogProductDataModelImplCopyWith<_$CatalogProductDataModelImpl>
@@ -345,8 +353,11 @@ abstract class _CatalogProductDataModel extends CatalogProductDataModel {
   int get dv;
   @override
   List<CatalogSizeProductDataModel> get sz;
+
+  /// Create a copy of CatalogProductDataModel
+  /// with the given fields replaced by the non-null parameter values.
   @override
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$CatalogProductDataModelImplCopyWith<_$CatalogProductDataModelImpl>
       get copyWith => throw _privateConstructorUsedError;
 }

@@ -30,8 +30,12 @@ mixin _$BasketFullInfoResponse {
   List<BasketFullInfoItemResponse>? get basket =>
       throw _privateConstructorUsedError;
 
+  /// Serializes this BasketFullInfoResponse to a JSON map.
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
-  @JsonKey(ignore: true)
+
+  /// Create a copy of BasketFullInfoResponse
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   $BasketFullInfoResponseCopyWith<BasketFullInfoResponse> get copyWith =>
       throw _privateConstructorUsedError;
 }
@@ -62,6 +66,8 @@ class _$BasketFullInfoResponseCopyWithImpl<$Res,
   // ignore: unused_field
   final $Res Function($Val) _then;
 
+  /// Create a copy of BasketFullInfoResponse
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -129,6 +135,8 @@ class __$$BasketFullInfoResponseImplCopyWithImpl<$Res>
       $Res Function(_$BasketFullInfoResponseImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of BasketFullInfoResponse
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -225,12 +233,14 @@ class _$BasketFullInfoResponseImpl extends _BasketFullInfoResponse {
             const DeepCollectionEquality().equals(other._basket, _basket));
   }
 
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   int get hashCode => Object.hash(runtimeType, r, e, errorMessage, info,
       promoDescription, const DeepCollectionEquality().hash(_basket));
 
-  @JsonKey(ignore: true)
+  /// Create a copy of BasketFullInfoResponse
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$BasketFullInfoResponseImplCopyWith<_$BasketFullInfoResponseImpl>
@@ -272,8 +282,11 @@ abstract class _BasketFullInfoResponse extends BasketFullInfoResponse {
   String? get promoDescription;
   @override
   List<BasketFullInfoItemResponse>? get basket;
+
+  /// Create a copy of BasketFullInfoResponse
+  /// with the given fields replaced by the non-null parameter values.
   @override
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$BasketFullInfoResponseImplCopyWith<_$BasketFullInfoResponseImpl>
       get copyWith => throw _privateConstructorUsedError;
 }

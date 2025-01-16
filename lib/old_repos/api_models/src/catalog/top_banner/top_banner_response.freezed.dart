@@ -25,8 +25,12 @@ mixin _$TopBannerResponse {
   String? get errorMessage => throw _privateConstructorUsedError;
   TopBannerDataResponse? get data => throw _privateConstructorUsedError;
 
+  /// Serializes this TopBannerResponse to a JSON map.
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
-  @JsonKey(ignore: true)
+
+  /// Create a copy of TopBannerResponse
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   $TopBannerResponseCopyWith<TopBannerResponse> get copyWith =>
       throw _privateConstructorUsedError;
 }
@@ -56,6 +60,8 @@ class _$TopBannerResponseCopyWithImpl<$Res, $Val extends TopBannerResponse>
   // ignore: unused_field
   final $Res Function($Val) _then;
 
+  /// Create a copy of TopBannerResponse
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -84,6 +90,8 @@ class _$TopBannerResponseCopyWithImpl<$Res, $Val extends TopBannerResponse>
     ) as $Val);
   }
 
+  /// Create a copy of TopBannerResponse
+  /// with the given fields replaced by the non-null parameter values.
   @override
   @pragma('vm:prefer-inline')
   $TopBannerDataResponseCopyWith<$Res>? get data {
@@ -123,6 +131,8 @@ class __$$TopBannerResponseImplCopyWithImpl<$Res>
       $Res Function(_$TopBannerResponseImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of TopBannerResponse
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -187,11 +197,13 @@ class _$TopBannerResponseImpl extends _TopBannerResponse {
             (identical(other.data, data) || other.data == data));
   }
 
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   int get hashCode => Object.hash(runtimeType, r, e, errorMessage, data);
 
-  @JsonKey(ignore: true)
+  /// Create a copy of TopBannerResponse
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$TopBannerResponseImplCopyWith<_$TopBannerResponseImpl> get copyWith =>
@@ -225,8 +237,11 @@ abstract class _TopBannerResponse extends TopBannerResponse {
   String? get errorMessage;
   @override
   TopBannerDataResponse? get data;
+
+  /// Create a copy of TopBannerResponse
+  /// with the given fields replaced by the non-null parameter values.
   @override
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$TopBannerResponseImplCopyWith<_$TopBannerResponseImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }

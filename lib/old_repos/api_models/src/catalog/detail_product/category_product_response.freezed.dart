@@ -28,8 +28,12 @@ mixin _$CategoryProductResponse {
   @JsonKey(name: 'ch_n')
   String? get u => throw _privateConstructorUsedError;
 
+  /// Serializes this CategoryProductResponse to a JSON map.
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
-  @JsonKey(ignore: true)
+
+  /// Create a copy of CategoryProductResponse
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   $CategoryProductResponseCopyWith<CategoryProductResponse> get copyWith =>
       throw _privateConstructorUsedError;
 }
@@ -57,6 +61,8 @@ class _$CategoryProductResponseCopyWithImpl<$Res,
   // ignore: unused_field
   final $Res Function($Val) _then;
 
+  /// Create a copy of CategoryProductResponse
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -106,6 +112,8 @@ class __$$CategoryProductResponseImplCopyWithImpl<$Res>
       $Res Function(_$CategoryProductResponseImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of CategoryProductResponse
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -167,11 +175,13 @@ class _$CategoryProductResponseImpl extends _CategoryProductResponse {
             (identical(other.u, u) || other.u == u));
   }
 
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   int get hashCode => Object.hash(runtimeType, id, n, u);
 
-  @JsonKey(ignore: true)
+  /// Create a copy of CategoryProductResponse
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$CategoryProductResponseImplCopyWith<_$CategoryProductResponseImpl>
@@ -205,8 +215,11 @@ abstract class _CategoryProductResponse extends CategoryProductResponse {
   @override
   @JsonKey(name: 'ch_n')
   String? get u;
+
+  /// Create a copy of CategoryProductResponse
+  /// with the given fields replaced by the non-null parameter values.
   @override
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$CategoryProductResponseImplCopyWith<_$CategoryProductResponseImpl>
       get copyWith => throw _privateConstructorUsedError;
 }

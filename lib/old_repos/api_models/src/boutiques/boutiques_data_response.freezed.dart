@@ -39,8 +39,12 @@ mixin _$BoutiquesDataResponse {
   List<BoutiqueSheduleResponse>? get scheduleInfo =>
       throw _privateConstructorUsedError;
 
+  /// Serializes this BoutiquesDataResponse to a JSON map.
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
-  @JsonKey(ignore: true)
+
+  /// Create a copy of BoutiquesDataResponse
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   $BoutiquesDataResponseCopyWith<BoutiquesDataResponse> get copyWith =>
       throw _privateConstructorUsedError;
 }
@@ -79,6 +83,8 @@ class _$BoutiquesDataResponseCopyWithImpl<$Res,
   // ignore: unused_field
   final $Res Function($Val) _then;
 
+  /// Create a copy of BoutiquesDataResponse
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -137,6 +143,8 @@ class _$BoutiquesDataResponseCopyWithImpl<$Res,
     ) as $Val);
   }
 
+  /// Create a copy of BoutiquesDataResponse
+  /// with the given fields replaced by the non-null parameter values.
   @override
   @pragma('vm:prefer-inline')
   $BoutiqueCoordinatesResponseCopyWith<$Res>? get coordinates {
@@ -187,6 +195,8 @@ class __$$BoutiquesDataResponseImplCopyWithImpl<$Res>
       $Res Function(_$BoutiquesDataResponseImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of BoutiquesDataResponse
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -328,7 +338,7 @@ class _$BoutiquesDataResponseImpl extends _BoutiquesDataResponse {
                 .equals(other._scheduleInfo, _scheduleInfo));
   }
 
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   int get hashCode => Object.hash(
       runtimeType,
@@ -343,7 +353,9 @@ class _$BoutiquesDataResponseImpl extends _BoutiquesDataResponse {
       coordinates,
       const DeepCollectionEquality().hash(_scheduleInfo));
 
-  @JsonKey(ignore: true)
+  /// Create a copy of BoutiquesDataResponse
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$BoutiquesDataResponseImplCopyWith<_$BoutiquesDataResponseImpl>
@@ -403,8 +415,11 @@ abstract class _BoutiquesDataResponse extends BoutiquesDataResponse {
   @override
   @JsonKey(name: 'schedule_json')
   List<BoutiqueSheduleResponse>? get scheduleInfo;
+
+  /// Create a copy of BoutiquesDataResponse
+  /// with the given fields replaced by the non-null parameter values.
   @override
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$BoutiquesDataResponseImplCopyWith<_$BoutiquesDataResponseImpl>
       get copyWith => throw _privateConstructorUsedError;
 }

@@ -29,8 +29,12 @@ mixin _$BadgeOperationInfoResponse {
   int? get notice => throw _privateConstructorUsedError;
   int? get total => throw _privateConstructorUsedError;
 
+  /// Serializes this BadgeOperationInfoResponse to a JSON map.
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
-  @JsonKey(ignore: true)
+
+  /// Create a copy of BadgeOperationInfoResponse
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   $BadgeOperationInfoResponseCopyWith<BadgeOperationInfoResponse>
       get copyWith => throw _privateConstructorUsedError;
 }
@@ -63,6 +67,8 @@ class _$BadgeOperationInfoResponseCopyWithImpl<$Res,
   // ignore: unused_field
   final $Res Function($Val) _then;
 
+  /// Create a copy of BadgeOperationInfoResponse
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -136,6 +142,8 @@ class __$$BadgeOperationInfoResponseImplCopyWithImpl<$Res>
       $Res Function(_$BadgeOperationInfoResponseImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of BadgeOperationInfoResponse
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -232,12 +240,14 @@ class _$BadgeOperationInfoResponseImpl extends _BadgeOperationInfoResponse {
             (identical(other.total, total) || other.total == total));
   }
 
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   int get hashCode =>
       Object.hash(runtimeType, r, e, errorMessage, news, media, notice, total);
 
-  @JsonKey(ignore: true)
+  /// Create a copy of BadgeOperationInfoResponse
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$BadgeOperationInfoResponseImplCopyWith<_$BadgeOperationInfoResponseImpl>
@@ -280,8 +290,11 @@ abstract class _BadgeOperationInfoResponse extends BadgeOperationInfoResponse {
   int? get notice;
   @override
   int? get total;
+
+  /// Create a copy of BadgeOperationInfoResponse
+  /// with the given fields replaced by the non-null parameter values.
   @override
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$BadgeOperationInfoResponseImplCopyWith<_$BadgeOperationInfoResponseImpl>
       get copyWith => throw _privateConstructorUsedError;
 }

@@ -10,7 +10,7 @@ _$OrderItemResponseImpl _$$OrderItemResponseImplFromJson(
         Map<String, dynamic> json) =>
     _$OrderItemResponseImpl(
       id: json['id'] as String?,
-      sum: json['sum'] as int?,
+      sum: (json['sum'] as num?)?.toInt(),
       status: json['status'] as String?,
       date: json['date'] as String?,
     );

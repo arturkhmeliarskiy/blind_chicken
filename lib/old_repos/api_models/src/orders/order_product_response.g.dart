@@ -28,7 +28,7 @@ _$OrderProductResponseImpl _$$OrderProductResponseImplFromJson(
       titleScreen: json['title_screen'] as String?,
       searchQuery: json['search_query'] as String?,
       promo: json['promo'] as String?,
-      promoValue: json['promo_value'] as int?,
+      promoValue: (json['promo_value'] as num?)?.toInt(),
     );
 
 Map<String, dynamic> _$$OrderProductResponseImplToJson(

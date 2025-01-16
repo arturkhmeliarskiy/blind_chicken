@@ -1,23 +1,22 @@
 import 'package:auto_route/auto_route.dart';
+import 'package:blind_chicken/app/bloc/app_bloc.dart';
+
+import 'package:blind_chicken/core_config/di/app_locator.dart';
+import 'package:blind_chicken/core_config/env.dart';
+import 'package:blind_chicken/core_config/localization/l10n/generated/l10n.dart';
+import 'package:blind_chicken/core_config/ui/resources/app_themes.dart';
+import 'package:blind_chicken/core_config/ui/scroll_behavior/disable_glow_effect_scroll_behavior.dart';
+import 'package:blind_chicken/core_config/ui/widgets/base_bloc_state_widget.dart';
+import 'package:blind_chicken/core_config/ui/widgets/close_keyboard_by_tap.dart';
+import 'package:blind_chicken/core_config/utils/context_extensions.dart';
+import 'package:blind_chicken/core_config/utils/debug_overlay/debug_overlay.dart';
+import 'package:blind_chicken/screens/app/router/app_router.dart';
 import 'package:flex_color_scheme/flex_color_scheme.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:get_it/get_it.dart';
-import 'package:hive_flutter/hive_flutter.dart';
-import 'package:pimmer_app/app/bloc/app_bloc.dart';
-import 'package:pimmer_app/app/navigation/app_router.dart';
-import 'package:pimmer_app/app/resources/app_themes.dart';
-import 'package:pimmer_app/core/ui/scroll_behavior/disable_glow_effect_scroll_behavior.dart';
-import 'package:pimmer_app/core/ui/widgets/base_bloc_state_widget.dart';
-import 'package:pimmer_app/core/ui/widgets/close_keyboard_by_tap.dart';
-import 'package:pimmer_app/core/utils/context_extensions.dart';
-import 'package:pimmer_app/core/utils/debug_overlay/debug_overlay.dart';
-import 'package:pimmer_app/di/app_locator.dart';
-import 'package:pimmer_app/domain/enums/color_scheme_type.dart';
-import 'package:pimmer_app/env.dart';
-import 'package:pimmer_app/localization/l10n/generated/l10n.dart';
+import 'package:flutter_localizations/flutter_localizations.dart';
 
 final sl = GetIt.instance;
 
@@ -49,7 +48,6 @@ class AppWidgetState extends BaseBlocStateWidget<App, AppBloc, AppEvent> with Wi
 
   @override
   void dispose() {
-    Hive.close();
     WidgetsBinding.instance.removeObserver(this);
     super.dispose();
   }
@@ -58,9 +56,6 @@ class AppWidgetState extends BaseBlocStateWidget<App, AppBloc, AppEvent> with Wi
   Widget build(BuildContext context) {
     context.unFocus();
     return BlocBuilder<AppBloc, AppState>(
-        buildWhen: (previous, current) =>
-            previous.locale?.languageCode != current.locale?.languageCode ||
-            previous.colorSchemeMode != current.colorSchemeMode,
         builder: (context, state) {
           //ThemeMode themeMode = getColorsSchemeMode(state.colorSchemeMode);
           return CloseKeyboardByTap(
@@ -70,7 +65,7 @@ class AppWidgetState extends BaseBlocStateWidget<App, AppBloc, AppEvent> with Wi
             themeMode: ThemeMode.light,
 
             //themeMode,
-            locale: state.locale,
+            //locale: state.locale,
             debugShowCheckedModeBanner: false,
             builder: (_, widget) {
               Widget child = widget ?? const SizedBox();
@@ -112,7 +107,6 @@ class AppWidgetState extends BaseBlocStateWidget<App, AppBloc, AppEvent> with Wi
           context,
           invertStatusIcons: true,
           systemNavBarStyle: FlexSystemNavBarStyle.transparent,
-
           useDivider: false,
         ),
         child: Column(
@@ -122,21 +116,5 @@ class AppWidgetState extends BaseBlocStateWidget<App, AppBloc, AppEvent> with Wi
         ),
       ),
     );
-  }
-
-  ThemeMode getColorsSchemeMode(ColorSchemeMode schemeMode) {
-    ThemeMode themeMode = ThemeMode.dark;
-    switch (schemeMode) {
-      case ColorSchemeMode.auto:
-        themeMode = ThemeMode.system;
-        break;
-      case ColorSchemeMode.dark:
-        themeMode = ThemeMode.dark;
-        break;
-      case ColorSchemeMode.light:
-        themeMode = ThemeMode.light;
-        break;
-    }
-    return themeMode;
   }
 }

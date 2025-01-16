@@ -34,8 +34,12 @@ mixin _$ProductResponse {
   List<String>? get images => throw _privateConstructorUsedError;
   List<String>? get variants => throw _privateConstructorUsedError;
 
+  /// Serializes this ProductResponse to a JSON map.
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
-  @JsonKey(ignore: true)
+
+  /// Create a copy of ProductResponse
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   $ProductResponseCopyWith<ProductResponse> get copyWith =>
       throw _privateConstructorUsedError;
 }
@@ -70,6 +74,8 @@ class _$ProductResponseCopyWithImpl<$Res, $Val extends ProductResponse>
   // ignore: unused_field
   final $Res Function($Val) _then;
 
+  /// Create a copy of ProductResponse
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -164,6 +170,8 @@ class __$$ProductResponseImplCopyWithImpl<$Res>
       _$ProductResponseImpl _value, $Res Function(_$ProductResponseImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of ProductResponse
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -325,7 +333,7 @@ class _$ProductResponseImpl extends _ProductResponse {
             const DeepCollectionEquality().equals(other._variants, _variants));
   }
 
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   int get hashCode => Object.hash(
       runtimeType,
@@ -341,7 +349,9 @@ class _$ProductResponseImpl extends _ProductResponse {
       const DeepCollectionEquality().hash(_images),
       const DeepCollectionEquality().hash(_variants));
 
-  @JsonKey(ignore: true)
+  /// Create a copy of ProductResponse
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$ProductResponseImplCopyWith<_$ProductResponseImpl> get copyWith =>
@@ -398,8 +408,11 @@ abstract class _ProductResponse extends ProductResponse {
   List<String>? get images;
   @override
   List<String>? get variants;
+
+  /// Create a copy of ProductResponse
+  /// with the given fields replaced by the non-null parameter values.
   @override
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$ProductResponseImplCopyWith<_$ProductResponseImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }

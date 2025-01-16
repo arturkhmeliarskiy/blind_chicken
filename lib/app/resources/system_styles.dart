@@ -1,6 +1,6 @@
+import 'package:blind_chicken/core_config/ui/resources/app_colors.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-import 'package:pimmer_app/app/resources/app_colors.dart';
 
 class SystemStyles {
   static SystemUiOverlayStyle main = const SystemUiOverlayStyle(

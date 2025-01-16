@@ -19,7 +19,9 @@ mixin _$AppStoreInfoDataModel {
   String get appStroreVersion => throw _privateConstructorUsedError;
   String get errorMessage => throw _privateConstructorUsedError;
 
-  @JsonKey(ignore: true)
+  /// Create a copy of AppStoreInfoDataModel
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   $AppStoreInfoDataModelCopyWith<AppStoreInfoDataModel> get copyWith =>
       throw _privateConstructorUsedError;
 }
@@ -44,6 +46,8 @@ class _$AppStoreInfoDataModelCopyWithImpl<$Res,
   // ignore: unused_field
   final $Res Function($Val) _then;
 
+  /// Create a copy of AppStoreInfoDataModel
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -84,6 +88,8 @@ class __$$AppStoreInfoDataModelImplCopyWithImpl<$Res>
       $Res Function(_$AppStoreInfoDataModelImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of AppStoreInfoDataModel
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -134,7 +140,9 @@ class _$AppStoreInfoDataModelImpl extends _AppStoreInfoDataModel {
   @override
   int get hashCode => Object.hash(runtimeType, appStroreVersion, errorMessage);
 
-  @JsonKey(ignore: true)
+  /// Create a copy of AppStoreInfoDataModel
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$AppStoreInfoDataModelImplCopyWith<_$AppStoreInfoDataModelImpl>
@@ -152,8 +160,11 @@ abstract class _AppStoreInfoDataModel extends AppStoreInfoDataModel {
   String get appStroreVersion;
   @override
   String get errorMessage;
+
+  /// Create a copy of AppStoreInfoDataModel
+  /// with the given fields replaced by the non-null parameter values.
   @override
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$AppStoreInfoDataModelImplCopyWith<_$AppStoreInfoDataModelImpl>
       get copyWith => throw _privateConstructorUsedError;
 }

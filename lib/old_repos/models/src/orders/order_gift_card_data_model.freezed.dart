@@ -22,7 +22,9 @@ mixin _$OrderGiftCardDataModel {
   String get img => throw _privateConstructorUsedError;
   String get sum => throw _privateConstructorUsedError;
 
-  @JsonKey(ignore: true)
+  /// Create a copy of OrderGiftCardDataModel
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   $OrderGiftCardDataModelCopyWith<OrderGiftCardDataModel> get copyWith =>
       throw _privateConstructorUsedError;
 }
@@ -47,6 +49,8 @@ class _$OrderGiftCardDataModelCopyWithImpl<$Res,
   // ignore: unused_field
   final $Res Function($Val) _then;
 
+  /// Create a copy of OrderGiftCardDataModel
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -103,6 +107,8 @@ class __$$OrderGiftCardDataModelImplCopyWithImpl<$Res>
       $Res Function(_$OrderGiftCardDataModelImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of OrderGiftCardDataModel
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -179,7 +185,9 @@ class _$OrderGiftCardDataModelImpl extends _OrderGiftCardDataModel {
   @override
   int get hashCode => Object.hash(runtimeType, type, color, name, img, sum);
 
-  @JsonKey(ignore: true)
+  /// Create a copy of OrderGiftCardDataModel
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$OrderGiftCardDataModelImplCopyWith<_$OrderGiftCardDataModelImpl>
@@ -206,8 +214,11 @@ abstract class _OrderGiftCardDataModel extends OrderGiftCardDataModel {
   String get img;
   @override
   String get sum;
+
+  /// Create a copy of OrderGiftCardDataModel
+  /// with the given fields replaced by the non-null parameter values.
   @override
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$OrderGiftCardDataModelImplCopyWith<_$OrderGiftCardDataModelImpl>
       get copyWith => throw _privateConstructorUsedError;
 }

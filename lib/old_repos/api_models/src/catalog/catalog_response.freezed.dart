@@ -41,8 +41,12 @@ mixin _$CatalogResponse {
   @JsonKey(name: 'discount_first_mobile')
   int? get discountFirstMobile => throw _privateConstructorUsedError;
 
+  /// Serializes this CatalogResponse to a JSON map.
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
-  @JsonKey(ignore: true)
+
+  /// Create a copy of CatalogResponse
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   $CatalogResponseCopyWith<CatalogResponse> get copyWith =>
       throw _privateConstructorUsedError;
 }
@@ -83,6 +87,8 @@ class _$CatalogResponseCopyWithImpl<$Res, $Val extends CatalogResponse>
   // ignore: unused_field
   final $Res Function($Val) _then;
 
+  /// Create a copy of CatalogResponse
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -151,6 +157,8 @@ class _$CatalogResponseCopyWithImpl<$Res, $Val extends CatalogResponse>
     ) as $Val);
   }
 
+  /// Create a copy of CatalogResponse
+  /// with the given fields replaced by the non-null parameter values.
   @override
   @pragma('vm:prefer-inline')
   $SectionsResponseCopyWith<$Res>? get sections {
@@ -201,6 +209,8 @@ class __$$CatalogResponseImplCopyWithImpl<$Res>
       _$CatalogResponseImpl _value, $Res Function(_$CatalogResponseImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of CatalogResponse
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -380,7 +390,7 @@ class _$CatalogResponseImpl extends _CatalogResponse {
                 other.discountFirstMobile == discountFirstMobile));
   }
 
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   int get hashCode => Object.hash(
       runtimeType,
@@ -397,7 +407,9 @@ class _$CatalogResponseImpl extends _CatalogResponse {
       errorMessage,
       discountFirstMobile);
 
-  @JsonKey(ignore: true)
+  /// Create a copy of CatalogResponse
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$CatalogResponseImplCopyWith<_$CatalogResponseImpl> get copyWith =>
@@ -464,8 +476,11 @@ abstract class _CatalogResponse extends CatalogResponse {
   @override
   @JsonKey(name: 'discount_first_mobile')
   int? get discountFirstMobile;
+
+  /// Create a copy of CatalogResponse
+  /// with the given fields replaced by the non-null parameter values.
   @override
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$CatalogResponseImplCopyWith<_$CatalogResponseImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }

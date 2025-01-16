@@ -22,7 +22,9 @@ mixin _$FilterNotifcationDataModel {
   List<FilterNotifcationItemDataModel> get fullFilter =>
       throw _privateConstructorUsedError;
 
-  @JsonKey(ignore: true)
+  /// Create a copy of FilterNotifcationDataModel
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   $FilterNotifcationDataModelCopyWith<FilterNotifcationDataModel>
       get copyWith => throw _privateConstructorUsedError;
 }
@@ -51,6 +53,8 @@ class _$FilterNotifcationDataModelCopyWithImpl<$Res,
   // ignore: unused_field
   final $Res Function($Val) _then;
 
+  /// Create a copy of FilterNotifcationDataModel
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -100,6 +104,8 @@ class __$$FilterNotifcationDataModelImplCopyWithImpl<$Res>
       $Res Function(_$FilterNotifcationDataModelImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of FilterNotifcationDataModel
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -176,7 +182,9 @@ class _$FilterNotifcationDataModelImpl extends _FilterNotifcationDataModel {
       const DeepCollectionEquality().hash(_filter),
       const DeepCollectionEquality().hash(_fullFilter));
 
-  @JsonKey(ignore: true)
+  /// Create a copy of FilterNotifcationDataModel
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$FilterNotifcationDataModelImplCopyWith<_$FilterNotifcationDataModelImpl>
@@ -198,8 +206,11 @@ abstract class _FilterNotifcationDataModel extends FilterNotifcationDataModel {
   List<FilterNotifcationItemDataModel> get filter;
   @override
   List<FilterNotifcationItemDataModel> get fullFilter;
+
+  /// Create a copy of FilterNotifcationDataModel
+  /// with the given fields replaced by the non-null parameter values.
   @override
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$FilterNotifcationDataModelImplCopyWith<_$FilterNotifcationDataModelImpl>
       get copyWith => throw _privateConstructorUsedError;
 }

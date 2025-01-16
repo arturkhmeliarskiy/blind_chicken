@@ -33,7 +33,9 @@ mixin _$BasketInfoItemDataModel {
       throw _privateConstructorUsedError; // категории тоарва "Продукты", "Молочные продукты", "Йогурты"
   String? get skuName => throw _privateConstructorUsedError;
 
-  @JsonKey(ignore: true)
+  /// Create a copy of BasketInfoItemDataModel
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   $BasketInfoItemDataModelCopyWith<BasketInfoItemDataModel> get copyWith =>
       throw _privateConstructorUsedError;
 }
@@ -68,6 +70,8 @@ class _$BasketInfoItemDataModelCopyWithImpl<$Res,
   // ignore: unused_field
   final $Res Function($Val) _then;
 
+  /// Create a copy of BasketInfoItemDataModel
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -160,6 +164,8 @@ class __$$BasketInfoItemDataModelImplCopyWithImpl<$Res>
       $Res Function(_$BasketInfoItemDataModelImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of BasketInfoItemDataModel
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -327,7 +333,9 @@ class _$BasketInfoItemDataModelImpl extends _BasketInfoItemDataModel {
       const DeepCollectionEquality().hash(_productCategoriesPath),
       skuName);
 
-  @JsonKey(ignore: true)
+  /// Create a copy of BasketInfoItemDataModel
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$BasketInfoItemDataModelImplCopyWith<_$BasketInfoItemDataModelImpl>
@@ -356,21 +364,28 @@ abstract class _BasketInfoItemDataModel extends BasketInfoItemDataModel {
   @override
   int get count;
   @override
-  String get titleScreen;
-  @override // экран добавления в корзину
-  String get searchQuery;
-  @override // поисковой запрос
-  String get typeAddProductToShoppingCart;
-  @override // с помощью чего добавляется в корзину
-  String get identifierAddProductToShoppingCart;
-  @override // идентификатор отарвителя товара в корзину (1 кнопка, 2 выпадающий список)
-  List<String> get sectionCategoriesPath;
-  @override // категории в к оторых находится товар "Акции", "Красная цена"
-  List<String> get productCategoriesPath;
-  @override // категории тоарва "Продукты", "Молочные продукты", "Йогурты"
-  String? get skuName;
+  String get titleScreen; // экран добавления в корзину
   @override
-  @JsonKey(ignore: true)
+  String get searchQuery; // поисковой запрос
+  @override
+  String
+      get typeAddProductToShoppingCart; // с помощью чего добавляется в корзину
+  @override
+  String
+      get identifierAddProductToShoppingCart; // идентификатор отарвителя товара в корзину (1 кнопка, 2 выпадающий список)
+  @override
+  List<String>
+      get sectionCategoriesPath; // категории в к оторых находится товар "Акции", "Красная цена"
+  @override
+  List<String>
+      get productCategoriesPath; // категории тоарва "Продукты", "Молочные продукты", "Йогурты"
+  @override
+  String? get skuName;
+
+  /// Create a copy of BasketInfoItemDataModel
+  /// with the given fields replaced by the non-null parameter values.
+  @override
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$BasketInfoItemDataModelImplCopyWith<_$BasketInfoItemDataModelImpl>
       get copyWith => throw _privateConstructorUsedError;
 }

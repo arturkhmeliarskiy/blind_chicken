@@ -20,7 +20,9 @@ mixin _$BasketBrandDataModel {
   String get n => throw _privateConstructorUsedError;
   String get u => throw _privateConstructorUsedError;
 
-  @JsonKey(ignore: true)
+  /// Create a copy of BasketBrandDataModel
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   $BasketBrandDataModelCopyWith<BasketBrandDataModel> get copyWith =>
       throw _privateConstructorUsedError;
 }
@@ -45,6 +47,8 @@ class _$BasketBrandDataModelCopyWithImpl<$Res,
   // ignore: unused_field
   final $Res Function($Val) _then;
 
+  /// Create a copy of BasketBrandDataModel
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -88,6 +92,8 @@ class __$$BasketBrandDataModelImplCopyWithImpl<$Res>
       $Res Function(_$BasketBrandDataModelImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of BasketBrandDataModel
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -144,7 +150,9 @@ class _$BasketBrandDataModelImpl extends _BasketBrandDataModel {
   @override
   int get hashCode => Object.hash(runtimeType, id, n, u);
 
-  @JsonKey(ignore: true)
+  /// Create a copy of BasketBrandDataModel
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$BasketBrandDataModelImplCopyWith<_$BasketBrandDataModelImpl>
@@ -166,8 +174,11 @@ abstract class _BasketBrandDataModel extends BasketBrandDataModel {
   String get n;
   @override
   String get u;
+
+  /// Create a copy of BasketBrandDataModel
+  /// with the given fields replaced by the non-null parameter values.
   @override
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$BasketBrandDataModelImplCopyWith<_$BasketBrandDataModelImpl>
       get copyWith => throw _privateConstructorUsedError;
 }

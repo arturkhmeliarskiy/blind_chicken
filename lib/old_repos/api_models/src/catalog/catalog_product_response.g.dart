@@ -20,13 +20,13 @@ _$CatalogProductResponseImpl _$$CatalogProductResponseImplFromJson(
       n: json['n'] as String?,
       p: json['p'] as String?,
       pb: json['pb'] as String?,
-      pc: json['pc'] as int?,
-      pbc: json['pbc'] as int?,
-      ca: json['ca'] as int?,
-      dv: json['dv'] as int?,
-      d: json['d'] as int?,
+      pc: (json['pc'] as num?)?.toInt(),
+      pbc: (json['pbc'] as num?)?.toInt(),
+      ca: (json['ca'] as num?)?.toInt(),
+      dv: (json['dv'] as num?)?.toInt(),
+      d: (json['d'] as num?)?.toInt(),
       promo: json['promo'] as String?,
-      promoValue: json['promo_value'] as int?,
+      promoValue: (json['promo_value'] as num?)?.toInt(),
       sz: (json['sz'] as List<dynamic>?)
           ?.map((e) =>
               CatalogSizeProductResponse.fromJson(e as Map<String, dynamic>))

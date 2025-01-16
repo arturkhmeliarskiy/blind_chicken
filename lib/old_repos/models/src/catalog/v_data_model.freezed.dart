@@ -19,7 +19,9 @@ mixin _$VDataModel {
   String get n => throw _privateConstructorUsedError;
   String get id => throw _privateConstructorUsedError;
 
-  @JsonKey(ignore: true)
+  /// Create a copy of VDataModel
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   $VDataModelCopyWith<VDataModel> get copyWith =>
       throw _privateConstructorUsedError;
 }
@@ -43,6 +45,8 @@ class _$VDataModelCopyWithImpl<$Res, $Val extends VDataModel>
   // ignore: unused_field
   final $Res Function($Val) _then;
 
+  /// Create a copy of VDataModel
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -81,6 +85,8 @@ class __$$VDataModelImplCopyWithImpl<$Res>
       _$VDataModelImpl _value, $Res Function(_$VDataModelImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of VDataModel
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -127,7 +133,9 @@ class _$VDataModelImpl extends _VDataModel {
   @override
   int get hashCode => Object.hash(runtimeType, n, id);
 
-  @JsonKey(ignore: true)
+  /// Create a copy of VDataModel
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$VDataModelImplCopyWith<_$VDataModelImpl> get copyWith =>
@@ -143,8 +151,11 @@ abstract class _VDataModel extends VDataModel {
   String get n;
   @override
   String get id;
+
+  /// Create a copy of VDataModel
+  /// with the given fields replaced by the non-null parameter values.
   @override
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$VDataModelImplCopyWith<_$VDataModelImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }

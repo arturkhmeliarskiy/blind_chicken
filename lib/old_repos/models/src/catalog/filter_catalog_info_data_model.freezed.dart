@@ -19,7 +19,9 @@ mixin _$FilterCatalogInfoDataModel {
   List<VDataModel> get v => throw _privateConstructorUsedError;
   String get n => throw _privateConstructorUsedError;
 
-  @JsonKey(ignore: true)
+  /// Create a copy of FilterCatalogInfoDataModel
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   $FilterCatalogInfoDataModelCopyWith<FilterCatalogInfoDataModel>
       get copyWith => throw _privateConstructorUsedError;
 }
@@ -45,6 +47,8 @@ class _$FilterCatalogInfoDataModelCopyWithImpl<$Res,
   // ignore: unused_field
   final $Res Function($Val) _then;
 
+  /// Create a copy of FilterCatalogInfoDataModel
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -86,6 +90,8 @@ class __$$FilterCatalogInfoDataModelImplCopyWithImpl<$Res>
       $Res Function(_$FilterCatalogInfoDataModelImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of FilterCatalogInfoDataModel
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -142,7 +148,9 @@ class _$FilterCatalogInfoDataModelImpl extends _FilterCatalogInfoDataModel {
   int get hashCode =>
       Object.hash(runtimeType, const DeepCollectionEquality().hash(_v), n);
 
-  @JsonKey(ignore: true)
+  /// Create a copy of FilterCatalogInfoDataModel
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$FilterCatalogInfoDataModelImplCopyWith<_$FilterCatalogInfoDataModelImpl>
@@ -160,8 +168,11 @@ abstract class _FilterCatalogInfoDataModel extends FilterCatalogInfoDataModel {
   List<VDataModel> get v;
   @override
   String get n;
+
+  /// Create a copy of FilterCatalogInfoDataModel
+  /// with the given fields replaced by the non-null parameter values.
   @override
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$FilterCatalogInfoDataModelImplCopyWith<_$FilterCatalogInfoDataModelImpl>
       get copyWith => throw _privateConstructorUsedError;
 }

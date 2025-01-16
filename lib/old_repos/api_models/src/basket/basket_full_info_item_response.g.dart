@@ -11,7 +11,7 @@ _$BasketFullInfoItemResponseImpl _$$BasketFullInfoItemResponseImplFromJson(
     _$BasketFullInfoItemResponseImpl(
       code: json['code'] as String?,
       sku: json['sku'] as String?,
-      count: json['count'] as int?,
+      count: (json['count'] as num?)?.toInt(),
       type: json['type'] as String?,
       identifier: json['identifier'] as String?,
       sectionCategoriesPath: (json['section_categories_path'] as List<dynamic>?)

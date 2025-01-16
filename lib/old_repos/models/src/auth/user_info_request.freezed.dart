@@ -24,7 +24,9 @@ mixin _$UserInfoRequest {
   List<String> get favorites => throw _privateConstructorUsedError;
   List<BasketRequest> get basket => throw _privateConstructorUsedError;
 
-  @JsonKey(ignore: true)
+  /// Create a copy of UserInfoRequest
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   $UserInfoRequestCopyWith<UserInfoRequest> get copyWith =>
       throw _privateConstructorUsedError;
 }
@@ -55,6 +57,8 @@ class _$UserInfoRequestCopyWithImpl<$Res, $Val extends UserInfoRequest>
   // ignore: unused_field
   final $Res Function($Val) _then;
 
+  /// Create a copy of UserInfoRequest
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -125,6 +129,8 @@ class __$$UserInfoRequestImplCopyWithImpl<$Res>
       _$UserInfoRequestImpl _value, $Res Function(_$UserInfoRequestImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of UserInfoRequest
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -243,7 +249,9 @@ class _$UserInfoRequestImpl extends _UserInfoRequest {
       const DeepCollectionEquality().hash(_favorites),
       const DeepCollectionEquality().hash(_basket));
 
-  @JsonKey(ignore: true)
+  /// Create a copy of UserInfoRequest
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$UserInfoRequestImplCopyWith<_$UserInfoRequestImpl> get copyWith =>
@@ -276,8 +284,11 @@ abstract class _UserInfoRequest extends UserInfoRequest {
   List<String> get favorites;
   @override
   List<BasketRequest> get basket;
+
+  /// Create a copy of UserInfoRequest
+  /// with the given fields replaced by the non-null parameter values.
   @override
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$UserInfoRequestImplCopyWith<_$UserInfoRequestImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }

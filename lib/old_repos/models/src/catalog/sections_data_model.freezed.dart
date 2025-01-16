@@ -20,7 +20,9 @@ mixin _$SectionsDataModel {
   ThisDataModel get thiss => throw _privateConstructorUsedError;
   NextDataModel get next => throw _privateConstructorUsedError;
 
-  @JsonKey(ignore: true)
+  /// Create a copy of SectionsDataModel
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   $SectionsDataModelCopyWith<SectionsDataModel> get copyWith =>
       throw _privateConstructorUsedError;
 }
@@ -48,6 +50,8 @@ class _$SectionsDataModelCopyWithImpl<$Res, $Val extends SectionsDataModel>
   // ignore: unused_field
   final $Res Function($Val) _then;
 
+  /// Create a copy of SectionsDataModel
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -71,6 +75,8 @@ class _$SectionsDataModelCopyWithImpl<$Res, $Val extends SectionsDataModel>
     ) as $Val);
   }
 
+  /// Create a copy of SectionsDataModel
+  /// with the given fields replaced by the non-null parameter values.
   @override
   @pragma('vm:prefer-inline')
   $PrevDataModelCopyWith<$Res> get prev {
@@ -79,6 +85,8 @@ class _$SectionsDataModelCopyWithImpl<$Res, $Val extends SectionsDataModel>
     });
   }
 
+  /// Create a copy of SectionsDataModel
+  /// with the given fields replaced by the non-null parameter values.
   @override
   @pragma('vm:prefer-inline')
   $ThisDataModelCopyWith<$Res> get thiss {
@@ -87,6 +95,8 @@ class _$SectionsDataModelCopyWithImpl<$Res, $Val extends SectionsDataModel>
     });
   }
 
+  /// Create a copy of SectionsDataModel
+  /// with the given fields replaced by the non-null parameter values.
   @override
   @pragma('vm:prefer-inline')
   $NextDataModelCopyWith<$Res> get next {
@@ -122,6 +132,8 @@ class __$$SectionsDataModelImplCopyWithImpl<$Res>
       $Res Function(_$SectionsDataModelImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of SectionsDataModel
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -178,7 +190,9 @@ class _$SectionsDataModelImpl extends _SectionsDataModel {
   @override
   int get hashCode => Object.hash(runtimeType, prev, thiss, next);
 
-  @JsonKey(ignore: true)
+  /// Create a copy of SectionsDataModel
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$SectionsDataModelImplCopyWith<_$SectionsDataModelImpl> get copyWith =>
@@ -199,8 +213,11 @@ abstract class _SectionsDataModel extends SectionsDataModel {
   ThisDataModel get thiss;
   @override
   NextDataModel get next;
+
+  /// Create a copy of SectionsDataModel
+  /// with the given fields replaced by the non-null parameter values.
   @override
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$SectionsDataModelImplCopyWith<_$SectionsDataModelImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }

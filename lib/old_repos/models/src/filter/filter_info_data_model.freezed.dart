@@ -22,7 +22,9 @@ mixin _$FilterInfoDataModel {
   bool get isSearch => throw _privateConstructorUsedError;
   List<FilterItemDataModel> get items => throw _privateConstructorUsedError;
 
-  @JsonKey(ignore: true)
+  /// Create a copy of FilterInfoDataModel
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   $FilterInfoDataModelCopyWith<FilterInfoDataModel> get copyWith =>
       throw _privateConstructorUsedError;
 }
@@ -51,6 +53,8 @@ class _$FilterInfoDataModelCopyWithImpl<$Res, $Val extends FilterInfoDataModel>
   // ignore: unused_field
   final $Res Function($Val) _then;
 
+  /// Create a copy of FilterInfoDataModel
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -109,6 +113,8 @@ class __$$FilterInfoDataModelImplCopyWithImpl<$Res>
       $Res Function(_$FilterInfoDataModelImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of FilterInfoDataModel
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -194,7 +200,9 @@ class _$FilterInfoDataModelImpl extends _FilterInfoDataModel {
   int get hashCode => Object.hash(runtimeType, id, title, typeFilter, isSearch,
       const DeepCollectionEquality().hash(_items));
 
-  @JsonKey(ignore: true)
+  /// Create a copy of FilterInfoDataModel
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$FilterInfoDataModelImplCopyWith<_$FilterInfoDataModelImpl> get copyWith =>
@@ -222,8 +230,11 @@ abstract class _FilterInfoDataModel extends FilterInfoDataModel {
   bool get isSearch;
   @override
   List<FilterItemDataModel> get items;
+
+  /// Create a copy of FilterInfoDataModel
+  /// with the given fields replaced by the non-null parameter values.
   @override
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$FilterInfoDataModelImplCopyWith<_$FilterInfoDataModelImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }

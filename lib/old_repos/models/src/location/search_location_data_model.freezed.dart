@@ -21,7 +21,9 @@ mixin _$SearchLocationDataModel {
   List<SearchLocationInfoDataModel> get result =>
       throw _privateConstructorUsedError;
 
-  @JsonKey(ignore: true)
+  /// Create a copy of SearchLocationDataModel
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   $SearchLocationDataModelCopyWith<SearchLocationDataModel> get copyWith =>
       throw _privateConstructorUsedError;
 }
@@ -50,6 +52,8 @@ class _$SearchLocationDataModelCopyWithImpl<$Res,
   // ignore: unused_field
   final $Res Function($Val) _then;
 
+  /// Create a copy of SearchLocationDataModel
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -68,6 +72,8 @@ class _$SearchLocationDataModelCopyWithImpl<$Res,
     ) as $Val);
   }
 
+  /// Create a copy of SearchLocationDataModel
+  /// with the given fields replaced by the non-null parameter values.
   @override
   @pragma('vm:prefer-inline')
   $SearchContextDataModelCopyWith<$Res> get searchContext {
@@ -104,6 +110,8 @@ class __$$SearchLocationDataModelImplCopyWithImpl<$Res>
       $Res Function(_$SearchLocationDataModelImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of SearchLocationDataModel
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -161,7 +169,9 @@ class _$SearchLocationDataModelImpl extends _SearchLocationDataModel {
   int get hashCode => Object.hash(
       runtimeType, searchContext, const DeepCollectionEquality().hash(_result));
 
-  @JsonKey(ignore: true)
+  /// Create a copy of SearchLocationDataModel
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$SearchLocationDataModelImplCopyWith<_$SearchLocationDataModelImpl>
@@ -180,8 +190,11 @@ abstract class _SearchLocationDataModel extends SearchLocationDataModel {
   SearchContextDataModel get searchContext;
   @override
   List<SearchLocationInfoDataModel> get result;
+
+  /// Create a copy of SearchLocationDataModel
+  /// with the given fields replaced by the non-null parameter values.
   @override
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$SearchLocationDataModelImplCopyWith<_$SearchLocationDataModelImpl>
       get copyWith => throw _privateConstructorUsedError;
 }

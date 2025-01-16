@@ -24,8 +24,12 @@ mixin _$GiftCardResponse {
   @JsonKey(name: 'e')
   String? get errorMessage => throw _privateConstructorUsedError;
 
+  /// Serializes this GiftCardResponse to a JSON map.
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
-  @JsonKey(ignore: true)
+
+  /// Create a copy of GiftCardResponse
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   $GiftCardResponseCopyWith<GiftCardResponse> get copyWith =>
       throw _privateConstructorUsedError;
 }
@@ -49,6 +53,8 @@ class _$GiftCardResponseCopyWithImpl<$Res, $Val extends GiftCardResponse>
   // ignore: unused_field
   final $Res Function($Val) _then;
 
+  /// Create a copy of GiftCardResponse
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -87,6 +93,8 @@ class __$$GiftCardResponseImplCopyWithImpl<$Res>
       $Res Function(_$GiftCardResponseImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of GiftCardResponse
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -136,11 +144,13 @@ class _$GiftCardResponseImpl extends _GiftCardResponse {
                 other.errorMessage == errorMessage));
   }
 
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   int get hashCode => Object.hash(runtimeType, r, errorMessage);
 
-  @JsonKey(ignore: true)
+  /// Create a copy of GiftCardResponse
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$GiftCardResponseImplCopyWith<_$GiftCardResponseImpl> get copyWith =>
@@ -169,8 +179,11 @@ abstract class _GiftCardResponse extends GiftCardResponse {
   @override
   @JsonKey(name: 'e')
   String? get errorMessage;
+
+  /// Create a copy of GiftCardResponse
+  /// with the given fields replaced by the non-null parameter values.
   @override
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$GiftCardResponseImplCopyWith<_$GiftCardResponseImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }

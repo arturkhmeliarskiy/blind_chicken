@@ -25,7 +25,9 @@ mixin _$MenuItemDataModel {
   int get brand => throw _privateConstructorUsedError;
   int get bold => throw _privateConstructorUsedError;
 
-  @JsonKey(ignore: true)
+  /// Create a copy of MenuItemDataModel
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   $MenuItemDataModelCopyWith<MenuItemDataModel> get copyWith =>
       throw _privateConstructorUsedError;
 }
@@ -57,6 +59,8 @@ class _$MenuItemDataModelCopyWithImpl<$Res, $Val extends MenuItemDataModel>
   // ignore: unused_field
   final $Res Function($Val) _then;
 
+  /// Create a copy of MenuItemDataModel
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -133,6 +137,8 @@ class __$$MenuItemDataModelImplCopyWithImpl<$Res>
       $Res Function(_$MenuItemDataModelImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of MenuItemDataModel
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -238,7 +244,9 @@ class _$MenuItemDataModelImpl extends _MenuItemDataModel {
   int get hashCode => Object.hash(
       runtimeType, idParent, id, url, name, sub, title, brand, bold);
 
-  @JsonKey(ignore: true)
+  /// Create a copy of MenuItemDataModel
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$MenuItemDataModelImplCopyWith<_$MenuItemDataModelImpl> get copyWith =>
@@ -274,8 +282,11 @@ abstract class _MenuItemDataModel extends MenuItemDataModel {
   int get brand;
   @override
   int get bold;
+
+  /// Create a copy of MenuItemDataModel
+  /// with the given fields replaced by the non-null parameter values.
   @override
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$MenuItemDataModelImplCopyWith<_$MenuItemDataModelImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }

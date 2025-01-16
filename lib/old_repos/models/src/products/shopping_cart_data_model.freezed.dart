@@ -21,7 +21,9 @@ mixin _$ShoppingCartDataModel {
   int get price => throw _privateConstructorUsedError;
   int get id => throw _privateConstructorUsedError;
 
-  @JsonKey(ignore: true)
+  /// Create a copy of ShoppingCartDataModel
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   $ShoppingCartDataModelCopyWith<ShoppingCartDataModel> get copyWith =>
       throw _privateConstructorUsedError;
 }
@@ -48,6 +50,8 @@ class _$ShoppingCartDataModelCopyWithImpl<$Res,
   // ignore: unused_field
   final $Res Function($Val) _then;
 
+  /// Create a copy of ShoppingCartDataModel
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -76,6 +80,8 @@ class _$ShoppingCartDataModelCopyWithImpl<$Res,
     ) as $Val);
   }
 
+  /// Create a copy of ShoppingCartDataModel
+  /// with the given fields replaced by the non-null parameter values.
   @override
   @pragma('vm:prefer-inline')
   $ProductDataModelCopyWith<$Res> get product {
@@ -109,6 +115,8 @@ class __$$ShoppingCartDataModelImplCopyWithImpl<$Res>
       $Res Function(_$ShoppingCartDataModelImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of ShoppingCartDataModel
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -176,7 +184,9 @@ class _$ShoppingCartDataModelImpl extends _ShoppingCartDataModel {
   @override
   int get hashCode => Object.hash(runtimeType, product, count, price, id);
 
-  @JsonKey(ignore: true)
+  /// Create a copy of ShoppingCartDataModel
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$ShoppingCartDataModelImplCopyWith<_$ShoppingCartDataModelImpl>
@@ -200,8 +210,11 @@ abstract class _ShoppingCartDataModel extends ShoppingCartDataModel {
   int get price;
   @override
   int get id;
+
+  /// Create a copy of ShoppingCartDataModel
+  /// with the given fields replaced by the non-null parameter values.
   @override
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$ShoppingCartDataModelImplCopyWith<_$ShoppingCartDataModelImpl>
       get copyWith => throw _privateConstructorUsedError;
 }

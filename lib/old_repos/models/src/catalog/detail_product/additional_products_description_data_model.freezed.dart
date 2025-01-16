@@ -20,7 +20,9 @@ mixin _$AdditionalProductsDescriptionDataModel {
   String get errorMessage => throw _privateConstructorUsedError;
   List<ProductDataModel> get products => throw _privateConstructorUsedError;
 
-  @JsonKey(ignore: true)
+  /// Create a copy of AdditionalProductsDescriptionDataModel
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   $AdditionalProductsDescriptionDataModelCopyWith<
           AdditionalProductsDescriptionDataModel>
       get copyWith => throw _privateConstructorUsedError;
@@ -49,6 +51,8 @@ class _$AdditionalProductsDescriptionDataModelCopyWithImpl<$Res,
   // ignore: unused_field
   final $Res Function($Val) _then;
 
+  /// Create a copy of AdditionalProductsDescriptionDataModel
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -96,6 +100,8 @@ class __$$AdditionalProductsDescriptionDataModelImplCopyWithImpl<$Res>
       $Res Function(_$AdditionalProductsDescriptionDataModelImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of AdditionalProductsDescriptionDataModel
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -163,7 +169,9 @@ class _$AdditionalProductsDescriptionDataModelImpl
   int get hashCode => Object.hash(runtimeType, name, errorMessage,
       const DeepCollectionEquality().hash(_products));
 
-  @JsonKey(ignore: true)
+  /// Create a copy of AdditionalProductsDescriptionDataModel
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$AdditionalProductsDescriptionDataModelImplCopyWith<
@@ -188,8 +196,11 @@ abstract class _AdditionalProductsDescriptionDataModel
   String get errorMessage;
   @override
   List<ProductDataModel> get products;
+
+  /// Create a copy of AdditionalProductsDescriptionDataModel
+  /// with the given fields replaced by the non-null parameter values.
   @override
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$AdditionalProductsDescriptionDataModelImplCopyWith<
           _$AdditionalProductsDescriptionDataModelImpl>
       get copyWith => throw _privateConstructorUsedError;
