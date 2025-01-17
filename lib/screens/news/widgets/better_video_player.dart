@@ -13,7 +13,9 @@ class BetterVideoPlayer extends StatefulWidget {
 class _BetterVideoPlayerState extends State<BetterVideoPlayer> {
   @override
   Widget build(BuildContext context) {
-    return BetterPlayer(controller: widget.controller);
+    return BetterPlayer(
+      controller: widget.controller,
+    );
   }
 
   @override

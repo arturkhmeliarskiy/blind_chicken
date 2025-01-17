@@ -1,11 +1,11 @@
 import 'package:blind_chicken/screens/login/login_captcha_screen.dart';
 import 'package:blind_chicken/screens/login/login_sms_code_screen.dart';
-import 'package:blocs/blocs.dart';
+import 'package:blind_chicken/old_repos/blocs/blocs.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:mask_text_input_formatter/mask_text_input_formatter.dart';
-import 'package:ui_kit/ui_kit.dart';
+import 'package:blind_chicken/old_repos/ui_kit/ui_kit.dart';
 
 class LoginPhoneScreen extends StatefulWidget {
   const LoginPhoneScreen({

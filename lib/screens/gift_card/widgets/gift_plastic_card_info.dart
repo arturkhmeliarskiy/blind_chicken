@@ -4,12 +4,12 @@ import 'package:blind_chicken/screens/gift_card/widgets/gift_card_delivery_info.
 import 'package:blind_chicken/screens/gift_card/widgets/gift_plastic_card_edit_delivery_info.dart';
 import 'package:blind_chicken/screens/gift_card/widgets/gift_plastic_card_switch_delivery_type.dart';
 import 'package:blind_chicken/screens/login/login_phone_screen.dart';
-import 'package:blocs/blocs.dart';
+import 'package:blind_chicken/old_repos/blocs/blocs.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:models/models.dart';
-import 'package:ui_kit/ui_kit.dart';
+import 'package:blind_chicken/old_repos/models/models.dart';
+import 'package:blind_chicken/old_repos/ui_kit/ui_kit.dart';
 
 class GiftPlasticCardInfo extends StatefulWidget {
   const GiftPlasticCardInfo({

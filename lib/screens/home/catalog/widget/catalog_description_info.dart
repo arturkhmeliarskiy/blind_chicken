@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:models/models.dart';
-import 'package:ui_kit/ui_kit.dart';
+import 'package:blind_chicken/old_repos/models/models.dart';
+import 'package:blind_chicken/old_repos/ui_kit/ui_kit.dart';
 
 class CatalogDescriptionInfo extends StatefulWidget {
   const CatalogDescriptionInfo({

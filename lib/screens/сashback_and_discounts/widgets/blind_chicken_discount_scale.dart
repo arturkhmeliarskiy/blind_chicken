@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:ui_kit/ui_kit.dart';
+import 'package:blind_chicken/old_repos/ui_kit/ui_kit.dart';
 
 class BlindChickenDiscountScale extends StatelessWidget {
   const BlindChickenDiscountScale({
@@ -31,7 +31,7 @@ class BlindChickenDiscountScale extends StatelessWidget {
               listDiscount.length,
               (index) {
                 return Container(
-                  width: index != listDiscount.length - 1
+                  width: index != listDiscount.length
                       ? MediaQuery.of(context).size.width * 0.20
                       : listDiscount[index].length * 16,
                   height: 20,

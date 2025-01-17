@@ -1,16 +1,16 @@
-import 'dart:developer';
+import 'package:blind_chicken/utils/logging.dart';
 
 import 'package:appmetrica_plugin/appmetrica_plugin.dart';
 import 'package:auto_route/auto_route.dart';
 import 'package:blind_chicken/screens/app/router/app_router.dart';
-import 'package:blocs/blocs.dart';
+import 'package:blind_chicken/old_repos/blocs/blocs.dart';
 import 'package:dynamic_height_grid_view/dynamic_height_grid_view.dart';
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_svg/svg.dart';
-import 'package:models/models.dart';
-import 'package:ui_kit/ui_kit.dart';
+import 'package:blind_chicken/old_repos/models/models.dart';
+import 'package:blind_chicken/old_repos/ui_kit/ui_kit.dart';
 
 @RoutePage()
 class BrandsScreen extends StatefulWidget {
@@ -283,7 +283,7 @@ class _BrandsScreenState extends State<BrandsScreen> {
             setState(() {
               _isSwipe = false;
             });
-            log((details.velocity.pixelsPerSecond.dx).toString());
+            logging((details.velocity.pixelsPerSecond.dx).toString(), stackTrace: StackTrace.current);
           }
         },
         child: PopScope(

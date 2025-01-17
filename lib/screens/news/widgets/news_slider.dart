@@ -1,10 +1,9 @@
-import 'dart:developer';
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:photo_view/photo_view.dart';
-import 'package:shared/shared.dart';
-import 'package:ui_kit/ui_kit.dart';
+import 'package:blind_chicken/old_repos/shared/shared.dart';
+import 'package:blind_chicken/old_repos/ui_kit/ui_kit.dart';
 
 class NewsSlider extends StatefulWidget {
   const NewsSlider({
@@ -14,7 +13,7 @@ class NewsSlider extends StatefulWidget {
     required this.onTap,
     this.isSwitch = true,
     this.isBuilder = false,
-    this.borderRadius = 4,
+    this.borderRadius = 15,
   });
 
   final List<String> media;
@@ -37,21 +36,23 @@ class _NewsSliderState extends State<NewsSlider> {
   void initState() {
     _scrollController.addListener(_scrollListener);
     getImageAspectRatio(widget.media.first).then((value) {
-      setState(() {
-        _aspectRatio = value;
+      WidgetsBinding.instance.addPostFrameCallback((_) {
+        setState(() {
+          _aspectRatio = value;
+        });
       });
     });
     super.initState();
   }
 
   _scrollListener() {
-    setState(() {
-      if (_scrollController.position.pixels < -80) {
-        widget.goBotton();
-      }
+    // if (_scrollController.position.pixels < -160) {
+    //   setState(() {
+    //     widget.goBotton();
 
-      log(_scrollController.position.pixels.toString());
-    });
+    //     logging(_scrollController.position.pixels.toString(), stackTrace: StackTrace.current);
+    //   });
+    // }
   }
 
   Future<double> getImageAspectRatio(String url) async {
@@ -68,6 +69,7 @@ class _NewsSliderState extends State<NewsSlider> {
   @override
   Widget build(BuildContext context) {
     final width = MediaQuery.of(context).size.width;
+
     return AspectRatio(
       aspectRatio: _aspectRatio,
       child: Stack(
@@ -78,6 +80,7 @@ class _NewsSliderState extends State<NewsSlider> {
             itemCount: widget.media.length,
             controller: _scrollController,
             onPageChanged: (value) {
+              _indexItem = value;
               getImageAspectRatio(widget.media[value]).then((item) {
                 setState(() {
                   _aspectRatio = item;
@@ -90,7 +93,10 @@ class _NewsSliderState extends State<NewsSlider> {
                   widget.onTap(index);
                 },
                 child: ClipRRect(
-                  borderRadius: BorderRadius.circular(widget.borderRadius),
+                  borderRadius: BorderRadius.only(
+                    bottomLeft: Radius.circular(widget.borderRadius),
+                    bottomRight: Radius.circular(widget.borderRadius),
+                  ),
                   child: CachedNetworkImage(
                     imageUrl: widget.media[index],
                     width: MediaQuery.of(context).orientation == Orientation.portrait
@@ -129,65 +135,70 @@ class _NewsSliderState extends State<NewsSlider> {
                 Row(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
-                    InkWell(
-                      onTap: () {
-                        setState(() {
-                          if (_indexItem != 0) {
-                            _indexItem--;
-                            _scrollController.animateTo(
-                              width * _indexItem,
-                              curve: Curves.linear,
-                              duration: const Duration(
-                                milliseconds: 500,
-                              ),
-                            );
-                          }
-                        });
-                      },
-                      child: Container(
-                        height: 38.5,
-                        width: 38.5,
-                        decoration: BoxDecoration(
-                          borderRadius: BorderRadius.circular(20),
-                          color: BlindChickenColors.backgroundColor,
+                    if (_indexItem != 0)
+                      InkWell(
+                        onTap: () {
+                          setState(() {
+                            if (_indexItem != 0) {
+                              _indexItem--;
+                              _scrollController.previousPage(
+                                curve: Curves.linear,
+                                duration: const Duration(
+                                  milliseconds: 500,
+                                ),
+                              );
+                            }
+                          });
+                        },
+                        child: Container(
+                          height: 38.5,
+                          width: 38.5,
+                          decoration: BoxDecoration(
+                            borderRadius: BorderRadius.circular(20),
+                            color: BlindChickenColors.backgroundColor.withOpacity(0.8),
+                          ),
+                          padding: const EdgeInsets.all(10.0),
+                          child: SvgPicture.asset(
+                            'assets/icons/chevron-left.svg',
+                            height: 24,
+                            width: 24,
+                          ),
                         ),
-                        padding: const EdgeInsets.all(10.0),
-                        child: SvgPicture.asset(
-                          'assets/icons/chevron-left.svg',
-                          height: 24,
-                          width: 24,
+                      )
+                    else
+                      SizedBox(),
+                    if (_indexItem != widget.media.length - 1)
+                      InkWell(
+                        onTap: () {
+                          setState(() {
+                            if ((_indexItem + 1) < widget.media.length) {
+                              _indexItem++;
+                              _scrollController.nextPage(
+                                curve: Curves.linear,
+                                duration: const Duration(
+                                  milliseconds: 500,
+                                ),
+                              );
+                            }
+                          });
+                        },
+                        child: Container(
+                          height: 38.5,
+                          width: 38.5,
+                          decoration: BoxDecoration(
+                            borderRadius: BorderRadius.circular(20),
+                            color: BlindChickenColors.backgroundColor.withOpacity(0.8),
+                          ),
+                          padding: const EdgeInsets.all(10.0),
+                          child: SvgPicture.asset(
+                            'assets/icons/chevron-right.svg',
+                            height: 24,
+                            width: 24,
+                          ),
                         ),
-                      ),
-                    ),
-                    InkWell(
-                      onTap: () {
-                        setState(() {
-                          if ((_indexItem + 1) < widget.media.length) {
-                            _indexItem++;
-                            _scrollController.nextPage(
-                              curve: Curves.linear,
-                              duration: const Duration(
-                                milliseconds: 500,
-                              ),
-                            );
-                          }
-                        });
-                      },
-                      child: Container(
-                        height: 38.5,
-                        width: 38.5,
-                        decoration: BoxDecoration(
-                          borderRadius: BorderRadius.circular(20),
-                          color: BlindChickenColors.backgroundColor,
-                        ),
-                        padding: const EdgeInsets.all(10.0),
-                        child: SvgPicture.asset(
-                          'assets/icons/chevron-right.svg',
-                          height: 24,
-                          width: 24,
-                        ),
-                      ),
-                    ),
+                      )
+                    else
+                      SizedBox()
                   ],
                 )
               ],

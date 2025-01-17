@@ -1,6 +1,6 @@
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
-import 'package:models/models.dart';
+import 'package:blind_chicken/old_repos/models/models.dart';
 
 class CatalogVariantSliderImages extends StatelessWidget {
   const CatalogVariantSliderImages({

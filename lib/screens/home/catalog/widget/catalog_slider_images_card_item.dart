@@ -1,9 +1,8 @@
-import 'dart:developer';
 import 'package:blind_chicken/screens/home/catalog/widget/catalog_slider_item_video.dart';
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
-import 'package:models/models.dart';
-import 'package:ui_kit/ui_kit.dart';
+import 'package:blind_chicken/old_repos/models/models.dart';
+import 'package:blind_chicken/old_repos/ui_kit/ui_kit.dart';
 
 class CatalogSliderImagesCardItem extends StatefulWidget {
   const CatalogSliderImagesCardItem({
@@ -27,26 +26,8 @@ class CatalogSliderImagesCardItem extends StatefulWidget {
 
 class _CatalogSliderImagesCardItemState extends State<CatalogSliderImagesCardItem> {
   final PageController _pageController = PageController();
-  bool _isSwipe = true;
   bool _isScroll = true;
   int _page = 0;
-
-  @override
-  void initState() {
-    _pageController.addListener(_scrollListener);
-    super.initState();
-  }
-
-  _scrollListener() {
-    setState(() {
-      log(_pageController.position.pixels.toString());
-
-      if (_pageController.position.pixels < -60 && _isSwipe) {
-        widget.goSwipeBack();
-        _isSwipe = false;
-      }
-    });
-  }
 
   @override
   void dispose() {

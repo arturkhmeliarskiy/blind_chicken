@@ -6,18 +6,17 @@ import 'package:appmetrica_push_plugin/appmetrica_push_plugin.dart';
 import 'package:auto_route/auto_route.dart';
 import 'package:blind_chicken/screens/app/router/app_router.dart';
 import 'package:blind_chicken/screens/home/main/widgets/main_category_item.dart';
-import 'package:blocs/blocs.dart';
+import 'package:blind_chicken/old_repos/blocs/blocs.dart';
 import 'package:dynamic_height_grid_view/dynamic_height_grid_view.dart';
-import 'package:firebase_messaging/firebase_messaging.dart';
+// import 'package:firebase_messaging/firebase_messaging.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/services.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:get_it/get_it.dart';
 import 'package:package_info_plus/package_info_plus.dart';
-import 'package:repositories/repositories.dart';
-import 'package:shared/shared.dart';
-import 'package:ui_kit/ui_kit.dart';
+import 'package:blind_chicken/old_repos/repositories/repositories.dart';
+import 'package:blind_chicken/old_repos/shared/shared.dart';
+import 'package:blind_chicken/old_repos/ui_kit/ui_kit.dart';
 import 'package:url_launcher/url_launcher.dart';
 
 @RoutePage()
@@ -50,7 +49,7 @@ class _MainScreenState extends State<MainScreen> {
   @override
   void initState() {
     _init();
-
+    _checkPushToken();
     context.read<CatalogBloc>().add(const CatalogEvent.preloadData());
     context.read<ShoppingCartBloc>().add(const ShoppingCartEvent.init());
     context.read<BrandBloc>().add(const BrandEvent.getBrands(
@@ -72,7 +71,6 @@ class _MainScreenState extends State<MainScreen> {
         context.read<NewsBloc>().add(const NewsEvent.checkingReadNews());
       },
     );
-
     _scrollController.addListener(_loadMoreData);
     super.initState();
   }
@@ -170,7 +168,7 @@ class _MainScreenState extends State<MainScreen> {
       final tokens = await AppMetricaPush.getTokens();
       pushTokenNow = tokens['apns'] ?? '';
     } else {
-      pushTokenNow = await FirebaseMessaging.instance.getToken() ?? '';
+      // pushTokenNow = await FirebaseMessaging.instance.getToken() ?? '';
     }
 
     if (!pushTokenNow.contains(pushToken ?? '')) {

@@ -4,11 +4,11 @@ import 'package:blind_chicken/screens/login/login_phone_screen.dart';
 import 'package:blind_chicken/screens/vision_warning/widgets/doctor_appointment_calendar.dart';
 import 'package:blind_chicken/screens/vision_warning/widgets/doctor_appointment_edit_delivery_info.dart';
 import 'package:blind_chicken/screens/vision_warning/widgets/doctor_appointment_time.dart';
-import 'package:blocs/blocs.dart';
+import 'package:blind_chicken/old_repos/blocs/blocs.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_svg/svg.dart';
-import 'package:ui_kit/ui_kit.dart';
+import 'package:blind_chicken/old_repos/ui_kit/ui_kit.dart';
 
 @RoutePage()
 class DoctorAppointmentScreen extends StatefulWidget {

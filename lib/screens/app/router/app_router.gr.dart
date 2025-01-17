@@ -2218,6 +2218,7 @@ class NewsInfoRoute extends PageRouteInfo<NewsInfoRouteArgs> {
     Key? key,
     required int indexPage,
     String? idNews,
+    String? typeNews,
     List<PageRouteInfo>? children,
   }) : super(
           NewsInfoRoute.name,
@@ -2225,6 +2226,7 @@ class NewsInfoRoute extends PageRouteInfo<NewsInfoRouteArgs> {
             key: key,
             indexPage: indexPage,
             idNews: idNews,
+            typeNews: typeNews,
           ),
           initialChildren: children,
         );
@@ -2239,6 +2241,7 @@ class NewsInfoRoute extends PageRouteInfo<NewsInfoRouteArgs> {
         key: args.key,
         indexPage: args.indexPage,
         idNews: args.idNews,
+        typeNews: args.typeNews,
       );
     },
   );
@@ -2249,6 +2252,7 @@ class NewsInfoRouteArgs {
     this.key,
     required this.indexPage,
     this.idNews,
+    this.typeNews,
   });
 
   final Key? key;
@@ -2257,9 +2261,11 @@ class NewsInfoRouteArgs {
 
   final String? idNews;
 
+  final String? typeNews;
+
   @override
   String toString() {
-    return 'NewsInfoRouteArgs{key: $key, indexPage: $indexPage, idNews: $idNews}';
+    return 'NewsInfoRouteArgs{key: $key, indexPage: $indexPage, idNews: $idNews, typeNews: $typeNews}';
   }
 }
 
@@ -2325,7 +2331,8 @@ class NewsNotificationDescriptionRouteArgs {
 
 /// generated route for
 /// [NewsPreviewMediaInfoScreen]
-class NewsPreviewMediaInfoRoute extends PageRouteInfo<NewsPreviewMediaInfoRouteArgs> {
+class NewsPreviewMediaInfoRoute
+    extends PageRouteInfo<NewsPreviewMediaInfoRouteArgs> {
   NewsPreviewMediaInfoRoute({
     Key? key,
     required List<String> images,
@@ -2515,6 +2522,64 @@ class NewsRoute extends PageRouteInfo<void> {
       return const NewsScreen();
     },
   );
+}
+
+/// generated route for
+/// [NewsVideoPlayerScreen]
+class NewsVideoPlayerRoute extends PageRouteInfo<NewsVideoPlayerRouteArgs> {
+  NewsVideoPlayerRoute({
+    Key? key,
+    required VoidCallback goBack,
+    required double aspectRatio,
+    required NewsInfoItemDataModel item,
+    List<PageRouteInfo>? children,
+  }) : super(
+          NewsVideoPlayerRoute.name,
+          args: NewsVideoPlayerRouteArgs(
+            key: key,
+            goBack: goBack,
+            aspectRatio: aspectRatio,
+            item: item,
+          ),
+          initialChildren: children,
+        );
+
+  static const String name = 'NewsVideoPlayerRoute';
+
+  static PageInfo page = PageInfo(
+    name,
+    builder: (data) {
+      final args = data.argsAs<NewsVideoPlayerRouteArgs>();
+      return NewsVideoPlayerScreen(
+        key: args.key,
+        goBack: args.goBack,
+        aspectRatio: args.aspectRatio,
+        item: args.item,
+      );
+    },
+  );
+}
+
+class NewsVideoPlayerRouteArgs {
+  const NewsVideoPlayerRouteArgs({
+    this.key,
+    required this.goBack,
+    required this.aspectRatio,
+    required this.item,
+  });
+
+  final Key? key;
+
+  final VoidCallback goBack;
+
+  final double aspectRatio;
+
+  final NewsInfoItemDataModel item;
+
+  @override
+  String toString() {
+    return 'NewsVideoPlayerRouteArgs{key: $key, goBack: $goBack, aspectRatio: $aspectRatio, item: $item}';
+  }
 }
 
 /// generated route for

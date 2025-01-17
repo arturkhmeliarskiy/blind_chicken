@@ -3,12 +3,12 @@ import 'package:blind_chicken/screens/%D1%81ashback_and_discounts/widgets/blind_
 import 'package:blind_chicken/screens/%D1%81ashback_and_discounts/widgets/blind_chicken_discount_scale.dart';
 import 'package:blind_chicken/screens/app/router/app_router.dart';
 import 'package:blind_chicken/screens/login/login_phone_screen.dart';
-import 'package:blocs/blocs.dart';
+import 'package:blind_chicken/old_repos/blocs/blocs.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_svg/flutter_svg.dart';
-import 'package:shared/shared.dart';
-import 'package:ui_kit/ui_kit.dart';
+import 'package:blind_chicken/old_repos/shared/shared.dart';
+import 'package:blind_chicken/old_repos/ui_kit/ui_kit.dart';
 
 class CatalogCashbackInfoModal extends StatefulWidget {
   const CatalogCashbackInfoModal({
@@ -175,7 +175,7 @@ class _CatalogCashbackInfoModalState extends State<CatalogCashbackInfoModal> {
                           ),
                         ),
                         Text(
-                          'Начисляются при покупке от 10 000 ₽',
+                          'Начисляются при покупке от 20 000 ₽',
                           style: Theme.of(context).textTheme.labelLarge,
                         )
                       ],
@@ -384,9 +384,9 @@ class _CatalogCashbackInfoModalState extends State<CatalogCashbackInfoModal> {
                             ],
                             listPrice: const [
                               'Покупки от',
-                              '10 000',
-                              '100 000',
-                              '300 000',
+                              '20 000',
+                              '200 000',
+                              '500 000',
                             ],
                             typeValue: '%',
                             firstSymbol: '',

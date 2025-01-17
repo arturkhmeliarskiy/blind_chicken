@@ -1,12 +1,12 @@
 import 'package:auto_route/auto_route.dart';
 import 'package:blind_chicken/screens/home/catalog/widget/catalog_cashback_info_modal.dart';
 import 'package:blind_chicken/screens/login/login_phone_screen.dart';
-import 'package:blocs/blocs.dart';
+import 'package:blind_chicken/old_repos/blocs/blocs.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_svg/flutter_svg.dart';
-import 'package:shared/shared.dart';
-import 'package:ui_kit/ui_kit.dart';
+import 'package:blind_chicken/old_repos/shared/shared.dart';
+import 'package:blind_chicken/old_repos/ui_kit/ui_kit.dart';
 
 class CatalogCashbackInfo extends StatefulWidget {
   const CatalogCashbackInfo({

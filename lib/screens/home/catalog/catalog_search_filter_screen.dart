@@ -3,11 +3,11 @@ import 'package:blind_chicken/screens/app/router/app_router.dart';
 import 'package:blind_chicken/screens/home/filters/widgets/blind_chicken_close_botton.dart';
 import 'package:blind_chicken/screens/home/filters/widgets/filter_item_catalog.dart';
 import 'package:blind_chicken/screens/home/widgets/catalog_header_info.dart';
-import 'package:blocs/blocs.dart';
+import 'package:blind_chicken/old_repos/blocs/blocs.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:models/models.dart';
-import 'package:ui_kit/ui_kit.dart';
+import 'package:blind_chicken/old_repos/models/models.dart';
+import 'package:blind_chicken/old_repos/ui_kit/ui_kit.dart';
 
 @RoutePage()
 class CatalogSearchFiltersScreen extends StatefulWidget {

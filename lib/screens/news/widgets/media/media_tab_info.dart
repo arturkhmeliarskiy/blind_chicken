@@ -1,10 +1,10 @@
 import 'package:blind_chicken/screens/news/widgets/media/media_collection_item_tab_info.dart';
-import 'package:blocs/blocs.dart';
+import 'package:blind_chicken/old_repos/blocs/blocs.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_svg/flutter_svg.dart';
-import 'package:models/models.dart';
-import 'package:ui_kit/ui_kit.dart';
+import 'package:blind_chicken/old_repos/models/models.dart';
+import 'package:blind_chicken/old_repos/ui_kit/ui_kit.dart';
 
 class MediaTabInfo extends StatefulWidget {
   const MediaTabInfo({
@@ -28,7 +28,6 @@ class _MediaTabInfoState extends State<MediaTabInfo> {
 
   @override
   void initState() {
-    context.read<NewsBloc>().add(const NewsEvent.getMedia());
     final idNews = widget.idNews;
     if (idNews != null) {
       context.read<NewsBloc>().add(NewsEvent.updateReadNews(
@@ -70,114 +69,106 @@ class _MediaTabInfoState extends State<MediaTabInfo> {
 
   @override
   Widget build(BuildContext context) {
-    return GestureDetector(
-      onVerticalDragUpdate: (details) {},
-      onHorizontalDragEnd: (DragEndDetails details) {
-        if (details.velocity.pixelsPerSecond.dx > 0) {
-          widget.goBack();
-        }
-      },
-      child: Stack(
-        children: [
-          Stack(
-            alignment: Alignment.bottomLeft,
-            children: [
-              BlocBuilder<NewsBloc, NewsState>(builder: (context, state) {
-                return state.maybeMap(
-                  preloadDataCompleted: (initState) {
-                    if (initState.offsetMedia == 1) {
-                      _paginationPosition = 0;
-                    }
-                    List<List<MediaInfoItemDataModel>> listMedia = [];
-                    int chunkSize = 15;
-                    for (var i = 0; i < initState.media.list.length; i += chunkSize) {
-                      listMedia.add(
-                        initState.media.list.sublist(
-                          i,
-                          i + chunkSize > initState.media.list.length
-                              ? initState.media.list.length
-                              : i + chunkSize,
+    return Stack(
+      children: [
+        Stack(
+          alignment: Alignment.bottomLeft,
+          children: [
+            BlocBuilder<NewsBloc, NewsState>(builder: (context, state) {
+              return state.maybeMap(
+                preloadDataCompleted: (initState) {
+                  if (initState.offsetMedia == 1) {
+                    _paginationPosition = 0;
+                  }
+                  List<List<MediaInfoItemDataModel>> listMedia = [];
+                  int chunkSize = 15;
+                  for (var i = 0; i < initState.media.list.length; i += chunkSize) {
+                    listMedia.add(
+                      initState.media.list.sublist(
+                        i,
+                        i + chunkSize > initState.media.list.length
+                            ? initState.media.list.length
+                            : i + chunkSize,
+                      ),
+                    );
+                  }
+                  if (listMedia.isNotEmpty) {
+                    return ListView.builder(
+                        controller: _scrollController,
+                        itemCount: listMedia.length,
+                        itemBuilder: (context, index) {
+                          return MediaCollectionItemTabInfo(
+                            listMedia: listMedia[index],
+                          );
+                        });
+                  } else {
+                    return LayoutBuilder(builder: (context, constraint) {
+                      return Container(
+                        height: constraint.maxHeight,
+                        width: constraint.maxWidth,
+                        alignment: Alignment.center,
+                        color: Colors.transparent,
+                        child: Text(
+                          'Нет медиа',
+                          style: Theme.of(context).textTheme.headlineLarge,
                         ),
                       );
-                    }
-                    if (listMedia.isNotEmpty) {
-                      return ListView.builder(
-                          controller: _scrollController,
-                          itemCount: listMedia.length,
-                          itemBuilder: (context, index) {
-                            return MediaCollectionItemTabInfo(
-                              listMedia: listMedia[index],
-                            );
+                    });
+                  }
+                },
+                orElse: () => const SizedBox(),
+              );
+            }),
+            BlocBuilder<NewsBloc, NewsState>(
+              builder: (context, state) {
+                return state.maybeMap(
+                  preloadDataCompleted: (value) {
+                    if (_isButtonTop) {
+                      return GestureDetector(
+                        onTap: () {
+                          _scrollController.jumpTo(0.0);
+                          setState(() {
+                            _isButtonTop = false;
                           });
-                    } else {
-                      return LayoutBuilder(builder: (context, constraint) {
-                        return Container(
-                          height: constraint.maxHeight,
-                          width: constraint.maxWidth,
-                          alignment: Alignment.center,
-                          color: Colors.transparent,
-                          child: Text(
-                            'Нет медиа',
-                            style: Theme.of(context).textTheme.headlineLarge,
+                        },
+                        child: Container(
+                          height: 45,
+                          width: 45,
+                          margin: const EdgeInsets.only(left: 15, bottom: 15),
+                          padding: const EdgeInsets.all(10),
+                          decoration: BoxDecoration(
+                            color: BlindChickenColors.activeBorderTextField,
+                            borderRadius: BorderRadius.circular(25),
                           ),
-                        );
-                      });
+                          child: SvgPicture.asset(
+                            'assets/icons/chevron-top.svg',
+                          ),
+                        ),
+                      );
+                    } else {
+                      return const SizedBox();
                     }
                   },
                   orElse: () => const SizedBox(),
                 );
-              }),
-              BlocBuilder<NewsBloc, NewsState>(
-                builder: (context, state) {
-                  return state.maybeMap(
-                    preloadDataCompleted: (value) {
-                      if (_isButtonTop) {
-                        return GestureDetector(
-                          onTap: () {
-                            _scrollController.jumpTo(0.0);
-                            setState(() {
-                              _isButtonTop = false;
-                            });
-                          },
-                          child: Container(
-                            height: 45,
-                            width: 45,
-                            margin: const EdgeInsets.only(left: 15, bottom: 15),
-                            padding: const EdgeInsets.all(10),
-                            decoration: BoxDecoration(
-                              color: BlindChickenColors.activeBorderTextField,
-                              borderRadius: BorderRadius.circular(25),
-                            ),
-                            child: SvgPicture.asset(
-                              'assets/icons/chevron-top.svg',
-                            ),
-                          ),
-                        );
-                      } else {
-                        return const SizedBox();
-                      }
-                    },
-                    orElse: () => const SizedBox(),
-                  );
-                },
-              )
-            ],
-          ),
-          BlocBuilder<NewsBloc, NewsState>(builder: (context, state) {
-            return state.maybeMap(
-              load: (value) {
-                return Center(
-                  child: CircularProgressIndicator(
-                    color: Colors.black,
-                    backgroundColor: Colors.grey.shade400,
-                  ),
-                );
               },
-              orElse: () => const SizedBox(),
-            );
-          }),
-        ],
-      ),
+            )
+          ],
+        ),
+        BlocBuilder<NewsBloc, NewsState>(builder: (context, state) {
+          return state.maybeMap(
+            load: (value) {
+              return Center(
+                child: CircularProgressIndicator(
+                  color: Colors.black,
+                  backgroundColor: Colors.grey.shade400,
+                ),
+              );
+            },
+            orElse: () => const SizedBox(),
+          );
+        }),
+      ],
     );
   }
 }
