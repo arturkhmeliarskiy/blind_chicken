@@ -187,7 +187,7 @@ class _NotificationInfoNotificationDescriptionScreenState
                                   onHorizontalDragEnd: (DragEndDetails details) {
                                     if (details.velocity.pixelsPerSecond.dx > 0) {
                                       context.navigateTo(
-                                        NewsInfoRoute(
+                                        NewsInfoRepairedRoute(
                                           indexPage: 2,
                                           idNews: widget.idNews,
                                           typeNews: 'notice',
@@ -209,7 +209,7 @@ class _NotificationInfoNotificationDescriptionScreenState
                                     onPopInvoked: (value) {
                                       if (_isSwipe && !value) {
                                         context.navigateTo(
-                                          NewsInfoRoute(
+                                          NewsInfoRepairedRoute(
                                             indexPage: 2,
                                             idNews: widget.idNews,
                                             typeNews: 'notice',
@@ -249,7 +249,7 @@ class _NotificationInfoNotificationDescriptionScreenState
                                                               const NewsEvent.getNotifications());
                                                         }
                                                         context.navigateTo(
-                                                          NewsInfoRoute(
+                                                          NewsInfoRepairedRoute(
                                                             indexPage: 2,
                                                             idNews: widget.idNews,
                                                             typeNews: 'notice',

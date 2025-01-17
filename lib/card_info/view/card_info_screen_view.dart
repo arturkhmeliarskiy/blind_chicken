@@ -281,7 +281,7 @@ class _CardInfoScreenViewState extends State<CardInfoScreenView> {
                 if (widget.lastPath == 'news') {
                   context.navigateTo(
                     NewsRoute(children: [
-                      NewsInfoRoute(
+                      NewsInfoRepairedRoute(
                         indexPage: 0,
                       ),
                     ]),
@@ -566,7 +566,7 @@ class _CardInfoScreenViewState extends State<CardInfoScreenView> {
                                         if (widget.lastPath == 'news') {
                                           context.navigateTo(
                                             NewsRoute(children: [
-                                              NewsInfoRoute(
+                                              NewsInfoRepairedRoute(
                                                 indexPage: 0,
                                               ),
                                             ]),

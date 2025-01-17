@@ -173,7 +173,7 @@ class _MediaNotificationDescriptionScreenState extends State<MediaNotificationDe
                                 if (details.velocity.pixelsPerSecond.dx > 0) {
                                   context.read<NewsBloc>().add(NewsEvent.getMedia());
                                   context.navigateTo(
-                                    NewsInfoRoute(
+                                    NewsInfoRepairedRoute(
                                       indexPage: 1,
                                       idNews: widget.idNews,
                                       typeNews: 'media',
@@ -190,7 +190,7 @@ class _MediaNotificationDescriptionScreenState extends State<MediaNotificationDe
                                   if (_isSwipe && !value) {
                                     context.read<NewsBloc>().add(NewsEvent.getMedia());
                                     context.navigateTo(
-                                      NewsInfoRoute(
+                                      NewsInfoRepairedRoute(
                                         indexPage: 1,
                                         idNews: widget.idNews,
                                         typeNews: 'media',
@@ -223,7 +223,7 @@ class _MediaNotificationDescriptionScreenState extends State<MediaNotificationDe
                                                         .read<NewsBloc>()
                                                         .add(NewsEvent.getMedia());
                                                     context.navigateTo(
-                                                      NewsInfoRoute(
+                                                      NewsInfoRepairedRoute(
                                                         indexPage: 1,
                                                         idNews: widget.idNews,
                                                         typeNews: 'media',

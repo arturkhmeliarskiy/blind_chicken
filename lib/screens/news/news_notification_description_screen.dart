@@ -196,7 +196,7 @@ class _NewsNotificationDescriptionScreenState extends State<NewsNotificationDesc
                                   onHorizontalDragEnd: (DragEndDetails details) {
                                     if (details.velocity.pixelsPerSecond.dx > 0) {
                                       context.navigateTo(
-                                        NewsInfoRoute(
+                                        NewsInfoRepairedRoute(
                                           indexPage: 0,
                                           idNews: widget.idNews,
                                           typeNews: 'news',
@@ -216,7 +216,7 @@ class _NewsNotificationDescriptionScreenState extends State<NewsNotificationDesc
                                     onPopInvoked: (value) {
                                       if (_isSwipe && !value) {
                                         context.navigateTo(
-                                          NewsInfoRoute(
+                                          NewsInfoRepairedRoute(
                                             indexPage: 0,
                                             idNews: widget.idNews,
                                             typeNews: 'news',
@@ -255,7 +255,7 @@ class _NewsNotificationDescriptionScreenState extends State<NewsNotificationDesc
                                                               .add(NewsEvent.getNews(isGoBack: false));
                                                         }
                                                         context.navigateTo(
-                                                          NewsInfoRoute(
+                                                          NewsInfoRepairedRoute(
                                                             indexPage: 0,
                                                             idNews: widget.idNews,
                                                             typeNews: 'news',

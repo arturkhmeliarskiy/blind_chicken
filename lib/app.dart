@@ -5,6 +5,8 @@ import 'dart:io';
 import 'package:app_links/app_links.dart';
 import 'package:appmetrica_plugin/appmetrica_plugin.dart';
 import 'package:appmetrica_push_plugin/appmetrica_push_plugin.dart';
+import 'package:blind_chicken/app/bloc/app_bloc.dart';
+import 'package:blind_chicken/core_config/di/app_locator.dart';
 import 'package:blind_chicken/core_config/utils/logging.dart';
 import 'package:blind_chicken/lifecycle_manager.dart';
 import 'package:blind_chicken/old_repos/blocs/blocs.dart';
@@ -24,7 +26,7 @@ class App extends StatefulWidget {
 }
 
 class _AppState extends State<App> {
-  final _appRouter = AppRouter();
+  final AppRouter _appRouter = Locator.injection();
   final StreamController<String> _stateController = StreamController();
   late AppLinks _appLinks;
 
@@ -76,6 +78,18 @@ class _AppState extends State<App> {
     _appRouter.push(DashboardRoute());
     return MultiBlocProvider(
       providers: [
+        BlocProvider(
+          create: (context) => AppBloc(
+            Locator.injection(),
+            Locator.injection(),
+          ),
+        ),
+        BlocProvider(
+          create: (context) => GetIt.I.get<InternetConnectionBloc>()
+            ..add(
+              const InternetConnectionEvent.init(),
+            ),
+        ),
         BlocProvider(
           create: (context) => GetIt.I.get<InternetConnectionBloc>()
             ..add(
@@ -152,9 +166,7 @@ class _AppState extends State<App> {
               const AppointmentEvent.preloadData(),
             ),
         ),
-        BlocProvider(
-            create: (context) => GetIt.I.get<CardInfoBloc>()
-              ..add(CardInfoEvent.init())),
+        BlocProvider(create: (context) => GetIt.I.get<CardInfoBloc>()..add(CardInfoEvent.init())),
       ],
       child: PushNotificationManager(
         openScreen: (notificationMessage) {
@@ -186,7 +198,7 @@ class _AppState extends State<App> {
                     deeplinkCode: notificationMessage.codeProduct,
                     messageId: notificationMessage.idMessage,
                     titleScreen: 'Описание товара из push-уведомления',
-                    codeProduct:  notificationMessage.codeProduct,
+                    codeProduct: notificationMessage.codeProduct,
                   ),
                 );
               }
@@ -265,7 +277,8 @@ class _AppState extends State<App> {
                     isChildRoute: false,
                     deeplinkCode: productCode,
                     titleScreen: 'Описание товара из push-уведомления',
-                    codeProduct: productCode,                  ),
+                    codeProduct: productCode,
+                  ),
                 );
               }
             }

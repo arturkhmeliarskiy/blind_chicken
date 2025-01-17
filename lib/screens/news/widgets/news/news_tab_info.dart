@@ -2,6 +2,7 @@ import 'package:blind_chicken/core_config/utils/logging.dart';
 
 import 'package:appmetrica_plugin/appmetrica_plugin.dart';
 import 'package:auto_route/auto_route.dart';
+import 'package:blind_chicken/gen/assets.gen.dart';
 import 'package:blind_chicken/screens/app/router/app_router.dart';
 import 'package:blind_chicken/screens/news/widgets/news/news_item_tab_info.dart';
 import 'package:get_it/get_it.dart';
@@ -72,7 +73,8 @@ class _NewsTabInfoState extends State<NewsTabInfo> {
                         decoration: BoxDecoration(
                           color: BlindChickenColors.borderBottomColor,
                           image: DecorationImage(
-                            image: AssetImage('assets/images/news_background.png'),
+                            //image: AssetImage('assets/images/news_background.png'),
+                            image: AssetImage(Assets.images.newsBackground.path),
                             fit: BoxFit.cover,
                           ),
                         ),
@@ -96,8 +98,7 @@ class _NewsTabInfoState extends State<NewsTabInfo> {
                                     onVisibilityChanged: (visibilityInfo) {
                                       if (!(initState.isError ?? false)) {
                                         if (initState.news.list.length - 6 < index &&
-                                            (initState.news.list.length - 3) ~/ 10 !=
-                                                initState.offsetNews) {
+                                            (initState.news.list.length - 3) ~/ 10 != initState.offsetNews) {
                                           context.read<NewsBloc>().add(NewsEvent.paginationNews());
                                         } else {
                                           if (visibilityInfo.visibleFraction > 0.0 &&
@@ -116,8 +117,7 @@ class _NewsTabInfoState extends State<NewsTabInfo> {
                                         if (initState.news.list[index].typeMedia != 'video' &&
                                             initState.news.list[index].typeVideo != 'original' &&
                                             updateData.videoController.value.isInitialized &&
-                                            updateData.videoController.value.duration !=
-                                                Duration.zero) {
+                                            updateData.videoController.value.duration != Duration.zero) {
                                           // context.read<NewsBloc>().add(
                                           //       NewsEvent.checkiDisabledVideo(
                                           //         isDisabledVideo: true,
@@ -143,8 +143,7 @@ class _NewsTabInfoState extends State<NewsTabInfo> {
                                       },
                                       onGoTap: () {
                                         if (initState.news.list[index].typePath == 'catalog') {
-                                          AppMetrica.reportEvent(
-                                              'Переход в каталог из списка новостей по кнопке');
+                                          AppMetrica.reportEvent('Переход в каталог из списка новостей по кнопке');
                                           context.read<CatalogBloc>().add(
                                                 CatalogEvent.getInfoProducts(
                                                   path: initState.news.list[index].path,
@@ -163,8 +162,7 @@ class _NewsTabInfoState extends State<NewsTabInfo> {
                                               ],
                                             ),
                                           );
-                                        } else if (initState.news.list[index].typePath ==
-                                            'product') {
+                                        } else if (initState.news.list[index].typePath == 'product') {
                                           AppMetrica.reportEvent(
                                               'Переход в описание товара из списка новостей по кнопке');
                                           context.navigateTo(
@@ -182,8 +180,7 @@ class _NewsTabInfoState extends State<NewsTabInfo> {
                                               ],
                                             ),
                                           );
-                                        } else if (initState.news.list[index].typePath ==
-                                            'boutique') {
+                                        } else if (initState.news.list[index].typePath == 'boutique') {
                                           AppMetrica.reportEvent(
                                               'Переход в описание бутика из списка новостей по кнопке');
                                           context.read<BoutiquesBloc>().add(
@@ -200,8 +197,7 @@ class _NewsTabInfoState extends State<NewsTabInfo> {
                                               ],
                                             ),
                                           );
-                                        } else if (initState.news.list[index].typePath ==
-                                            'gift_card') {
+                                        } else if (initState.news.list[index].typePath == 'gift_card') {
                                           AppMetrica.reportEvent(
                                               'Переход на страницу подарочной карты из списка новостей по кнопке');
                                           context.navigateTo(

@@ -155,7 +155,7 @@ class _GiftCardScreenState extends State<GiftCardScreen> {
                                 if (widget.lastPath == 'news') {
                                   context.navigateTo(
                                     NewsRoute(children: [
-                                      NewsInfoRoute(
+                                      NewsInfoRepairedRoute(
                                         indexPage: 0,
                                       ),
                                     ]),
