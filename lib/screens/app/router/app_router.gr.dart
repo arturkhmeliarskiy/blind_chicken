@@ -2212,6 +2212,66 @@ class NewsInfoDescriptionRouteArgs {
 }
 
 /// generated route for
+/// [NewsInfoRepairedScreen]
+class NewsInfoRepairedRoute extends PageRouteInfo<NewsInfoRepairedRouteArgs> {
+  NewsInfoRepairedRoute({
+    Key? key,
+    int? indexPage,
+    String? idNews,
+    String? typeNews,
+    List<PageRouteInfo>? children,
+  }) : super(
+          NewsInfoRepairedRoute.name,
+          args: NewsInfoRepairedRouteArgs(
+            key: key,
+            indexPage: indexPage,
+            idNews: idNews,
+            typeNews: typeNews,
+          ),
+          initialChildren: children,
+        );
+
+  static const String name = 'NewsInfoRepairedRoute';
+
+  static PageInfo page = PageInfo(
+    name,
+    builder: (data) {
+      final args = data.argsAs<NewsInfoRepairedRouteArgs>(
+          orElse: () => const NewsInfoRepairedRouteArgs());
+      return WrappedRoute(
+          child: NewsInfoRepairedScreen(
+        key: args.key,
+        indexPage: args.indexPage,
+        idNews: args.idNews,
+        typeNews: args.typeNews,
+      ));
+    },
+  );
+}
+
+class NewsInfoRepairedRouteArgs {
+  const NewsInfoRepairedRouteArgs({
+    this.key,
+    this.indexPage,
+    this.idNews,
+    this.typeNews,
+  });
+
+  final Key? key;
+
+  final int? indexPage;
+
+  final String? idNews;
+
+  final String? typeNews;
+
+  @override
+  String toString() {
+    return 'NewsInfoRepairedRouteArgs{key: $key, indexPage: $indexPage, idNews: $idNews, typeNews: $typeNews}';
+  }
+}
+
+/// generated route for
 /// [NewsInfoScreen]
 class NewsInfoRoute extends PageRouteInfo<NewsInfoRouteArgs> {
   NewsInfoRoute({

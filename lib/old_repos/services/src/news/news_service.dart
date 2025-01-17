@@ -75,8 +75,7 @@ class NewsService {
     final token = _sharedPreferencesService.getString(key: SharedPrefKeys.deviceId) ?? '';
     final hashToken = _converterService.generateMd5("Hf5_dfg23fhh9p$token");
     final pushToken = _sharedPreferencesService.getString(key: SharedPrefKeys.pushToken) ?? '';
-    final platformDevice =
-        _sharedPreferencesService.getString(key: SharedPrefKeys.platformDevice) ?? '';
+    final platformDevice = _sharedPreferencesService.getString(key: SharedPrefKeys.platformDevice) ?? '';
     final appVersion = _sharedPreferencesService.getString(key: SharedPrefKeys.appVersion) ?? '';
 
     try {
@@ -184,8 +183,7 @@ class NewsService {
     final token = _sharedPreferencesService.getString(key: SharedPrefKeys.deviceId) ?? '';
     final hashToken = _converterService.generateMd5("Hf5_dfg23fhh9p$token");
     final pushToken = _sharedPreferencesService.getString(key: SharedPrefKeys.pushToken) ?? '';
-    final platformDevice =
-        _sharedPreferencesService.getString(key: SharedPrefKeys.platformDevice) ?? '';
+    final platformDevice = _sharedPreferencesService.getString(key: SharedPrefKeys.platformDevice) ?? '';
     final appVersion = _sharedPreferencesService.getString(key: SharedPrefKeys.appVersion) ?? '';
 
     try {
@@ -355,63 +353,62 @@ class NewsService {
     }
   }
 
-  Future<BadgeOperationInfoResponse> getNumberUnreaNews() async {
-    BadgeOperationInfoResponse? badgeOperationInfoResponse;
-    String hashTokenTel = '';
-    final isAuth = _sharedPreferencesService.getBool(key: SharedPrefKeys.userAuthorized) ?? false;
-    final token = _sharedPreferencesService.getString(key: SharedPrefKeys.deviceId) ?? '';
-    final hashToken = _converterService.generateMd5("Hf5_dfg23fhh9p$token");
-    final tel = _sharedPreferencesService.getString(key: SharedPrefKeys.userPhoneNumber) ?? '';
-    if (tel.isNotEmpty) {
-      hashTokenTel = _converterService.generateMd5("Hf5_dfg23fhh9p$tel");
-    }
-    final platformDevice =
-        _sharedPreferencesService.getString(key: SharedPrefKeys.platformDevice) ?? '';
-
-    try {
-      logging(_dio.options.headers.toString(), stackTrace: StackTrace.current);
-      final response = await _dio.post(
-        '/local/service/app/badge_operation.php',
-        data: {
-          "auth": isAuth ? 1 : 0,
-          "token": token,
-          "hash_token": hashToken,
-          "tel": tel,
-          "hash_token_tel": hashTokenTel,
-          "platform_device": platformDevice == 'IOS' ? 1 : 2,
-        },
-      );
-      try {
-        final result = await jsonDecode(response.data);
-        if (result["r"] == '1') {
-          badgeOperationInfoResponse = BadgeOperationInfoResponse.fromJson(result);
-        } else {
-          badgeOperationInfoResponse = BadgeOperationInfoResponse(
-            errorMessage: MessageInfo.errorMessage,
-          );
-        }
-      } catch (e) {
-        badgeOperationInfoResponse = BadgeOperationInfoResponse(
-          errorMessage: MessageInfo.errorMessage,
-        );
-      }
-
-      return badgeOperationInfoResponse;
-    } on DioException catch (e) {
-      if (e.response != null) {
-        logging(e.response!.data.toString(), stackTrace: StackTrace.current);
-        logging(e.response!.headers.toString(), stackTrace: StackTrace.current);
-        logging(e.response!.requestOptions.toString(), stackTrace: StackTrace.current);
-      } else {
-        // Something happened in setting up or sending the request that triggered an Error
-        logging(e.requestOptions.toString(), stackTrace: StackTrace.current);
-        logging(e.message.toString(), stackTrace: StackTrace.current);
-      }
-      return BadgeOperationInfoResponse(
-        errorMessage: MessageInfo.errorMessage,
-      );
-    }
-  }
+  //Future<BadgeOperationInfoResponse> getNumberUnreaNews() async {
+  //  BadgeOperationInfoResponse? badgeOperationInfoResponse;
+  //  String hashTokenTel = '';
+  //  final isAuth = _sharedPreferencesService.getBool(key: SharedPrefKeys.userAuthorized) ?? false;
+  //  final token = _sharedPreferencesService.getString(key: SharedPrefKeys.deviceId) ?? '';
+  //  final hashToken = _converterService.generateMd5("Hf5_dfg23fhh9p$token");
+  //  final tel = _sharedPreferencesService.getString(key: SharedPrefKeys.userPhoneNumber) ?? '';
+  //  if (tel.isNotEmpty) {
+  //    hashTokenTel = _converterService.generateMd5("Hf5_dfg23fhh9p$tel");
+  //  }
+  //  final platformDevice =
+  //      _sharedPreferencesService.getString(key: SharedPrefKeys.platformDevice) ?? '';
+//
+  //  try {
+  //    logging(_dio.options.headers.toString(), stackTrace: StackTrace.current);
+  //    final response = await _dio.post(
+  //      '/local/service/app/badge_operation.php',
+  //      data: {
+  //        "auth": isAuth ? 1 : 0,
+  //        "token": token,
+  //        "hash_token": hashToken,
+  //        "tel": tel,
+  //        "hash_token_tel": hashTokenTel,
+  //        "platform_device": platformDevice == 'IOS' ? 1 : 2,
+  //      },
+  //    );
+  //    try {
+  //      final result = await jsonDecode(response.data);
+  //      if (result["r"] == '1') {
+  //        badgeOperationInfoResponse = BadgeOperationInfoResponse.fromJson(result);
+  //      } else {
+  //        badgeOperationInfoResponse = BadgeOperationInfoResponse(
+  //          errorMessage: MessageInfo.errorMessage,
+  //        );
+  //      }
+  //    } catch (e) {
+  //      badgeOperationInfoResponse = BadgeOperationInfoResponse(
+  //        errorMessage: MessageInfo.errorMessage,
+  //      );
+  //    }
+  //    return badgeOperationInfoResponse;
+  //  } on DioException catch (e) {
+  //    if (e.response != null) {
+  //      logging(e.response!.data.toString(), stackTrace: StackTrace.current);
+  //      logging(e.response!.headers.toString(), stackTrace: StackTrace.current);
+  //      logging(e.response!.requestOptions.toString(), stackTrace: StackTrace.current);
+  //    } else {
+  //      // Something happened in setting up or sending the request that triggered an Error
+  //      logging(e.requestOptions.toString(), stackTrace: StackTrace.current);
+  //      logging(e.message.toString(), stackTrace: StackTrace.current);
+  //    }
+  //    return BadgeOperationInfoResponse(
+  //      errorMessage: MessageInfo.errorMessage,
+  //    );
+  //  }
+  //}
 
   Future<BadgeOperationInfoResponse> postReadNews({
     required String idRead,
@@ -426,8 +423,7 @@ class NewsService {
     if (tel.isNotEmpty) {
       hashTokenTel = _converterService.generateMd5("Hf5_dfg23fhh9p$tel");
     }
-    final platformDevice =
-        _sharedPreferencesService.getString(key: SharedPrefKeys.platformDevice) ?? '';
+    final platformDevice = _sharedPreferencesService.getString(key: SharedPrefKeys.platformDevice) ?? '';
 
     try {
       logging(_dio.options.headers.toString(), stackTrace: StackTrace.current);

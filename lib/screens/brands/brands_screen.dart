@@ -67,8 +67,7 @@ class _BrandsScreenState extends State<BrandsScreen> {
   }
 
   void _loadMoreData() async {
-    if (_historyPosition > _scrollController.position.pixels &&
-        _scrollController.position.pixels > 0) {
+    if (_historyPosition > _scrollController.position.pixels && _scrollController.position.pixels > 0) {
       setState(() {
         _isButtonTop = true;
       });
@@ -97,8 +96,7 @@ class _BrandsScreenState extends State<BrandsScreen> {
           preloadDataCompleted: (initState) {
             final typeError = initState.typeError ?? '';
             if (initState.isError ?? false) {
-              if (!_isShowDialogError &&
-                  (typeError == 'переключение гендерности' || typeError == 'назад в бренды')) {
+              if (!_isShowDialogError && (typeError == 'переключение гендерности' || typeError == 'назад в бренды')) {
                 _isShowDialogError = true;
                 _blindChickenShowDialogError.openShowDualog(
                   context: context,
@@ -160,7 +158,7 @@ class _BrandsScreenState extends State<BrandsScreen> {
                   if (widget.lastPath == 'news') {
                     context.navigateTo(
                       NewsRoute(children: [
-                        NewsInfoRoute(
+                        NewsInfoRepairedRoute(
                           indexPage: 0,
                         ),
                       ]),
@@ -430,17 +428,13 @@ class _BrandsScreenState extends State<BrandsScreen> {
                                                           ),
                                                           alignment: Alignment.center,
                                                           decoration: BoxDecoration(
-                                                            color: BlindChickenColors
-                                                                .backgroundColorItemFilter,
+                                                            color: BlindChickenColors.backgroundColorItemFilter,
                                                             borderRadius: BorderRadius.circular(
                                                               4,
                                                             ),
                                                           ),
-                                                          child: Text(
-                                                              initState.listTypePeople[index],
-                                                              style: Theme.of(context)
-                                                                  .textTheme
-                                                                  .displayMedium),
+                                                          child: Text(initState.listTypePeople[index],
+                                                              style: Theme.of(context).textTheme.displayMedium),
                                                         ),
                                                       );
                                                     });
@@ -459,19 +453,15 @@ class _BrandsScreenState extends State<BrandsScreen> {
                                             return SizedBox(
                                               height: 37,
                                               child: Theme(
-                                                data: Theme.of(context)
-                                                    .copyWith(splashColor: Colors.transparent),
+                                                data: Theme.of(context).copyWith(splashColor: Colors.transparent),
                                                 child: TextField(
                                                   onTap: () {},
                                                   onChanged: (value) {
                                                     setState(() {});
-                                                    context
-                                                        .read<BrandBloc>()
-                                                        .add(BrandEvent.search(query: value));
+                                                    context.read<BrandBloc>().add(BrandEvent.search(query: value));
                                                   },
                                                   controller: _search,
-                                                  cursorColor:
-                                                      BlindChickenColors.activeBorderTextField,
+                                                  cursorColor: BlindChickenColors.activeBorderTextField,
                                                   textCapitalization: TextCapitalization.sentences,
                                                   style: Theme.of(context).textTheme.displayMedium,
                                                   decoration: InputDecoration(
@@ -490,8 +480,7 @@ class _BrandsScreenState extends State<BrandsScreen> {
                                                     ),
                                                     focusedBorder: OutlineInputBorder(
                                                       borderSide: const BorderSide(
-                                                        color: BlindChickenColors
-                                                            .activeBorderTextField,
+                                                        color: BlindChickenColors.activeBorderTextField,
                                                       ),
                                                       borderRadius: BorderRadius.circular(5),
                                                     ),
@@ -500,22 +489,17 @@ class _BrandsScreenState extends State<BrandsScreen> {
                                                             onTap: () {
                                                               _search.clear();
                                                               context.read<BrandBloc>().add(
-                                                                    const BrandEvent.search(
-                                                                        query: ''),
+                                                                    const BrandEvent.search(query: ''),
                                                                   );
                                                             },
                                                             child: Transform.scale(
                                                               scale: 0.5,
-                                                              child: SvgPicture.asset(
-                                                                  'assets/icons/x.svg'),
+                                                              child: SvgPicture.asset('assets/icons/x.svg'),
                                                             ),
                                                           )
                                                         : const SizedBox(),
                                                     hintText: 'Поиск',
-                                                    hintStyle: Theme.of(context)
-                                                        .textTheme
-                                                        .displayMedium
-                                                        ?.copyWith(
+                                                    hintStyle: Theme.of(context).textTheme.displayMedium?.copyWith(
                                                           color: BlindChickenColors.textInput,
                                                         ),
                                                     prefixIconConstraints: const BoxConstraints(
@@ -559,22 +543,14 @@ class _BrandsScreenState extends State<BrandsScreen> {
                                                   (index) {
                                                     if (initState.listBrands.isNotEmpty) {
                                                       return TextSpan(
-                                                        text:
-                                                            '${initState.listBrands[index].title}   ',
-                                                        style: Theme.of(context)
-                                                            .textTheme
-                                                            .headlineLarge,
+                                                        text: '${initState.listBrands[index].title}   ',
+                                                        style: Theme.of(context).textTheme.headlineLarge,
                                                         recognizer: TapGestureRecognizer()
                                                           ..onTap = () {
                                                             _scrollController.animateTo(
-                                                              (initState.listCountBrand[index]
-                                                                          .countAlphabet *
-                                                                      50) +
-                                                                  ((initState.listCountBrand[index]
-                                                                          .countBrands *
-                                                                      40)),
-                                                              duration:
-                                                                  const Duration(microseconds: 1),
+                                                              (initState.listCountBrand[index].countAlphabet * 50) +
+                                                                  ((initState.listCountBrand[index].countBrands * 40)),
+                                                              duration: const Duration(microseconds: 1),
                                                               curve: Curves.linearToEaseOut,
                                                             );
                                                           },
@@ -618,23 +594,17 @@ class _BrandsScreenState extends State<BrandsScreen> {
                                                           ),
                                                           child: Text(
                                                             initState.listBrands[index].title,
-                                                            style: Theme.of(context)
-                                                                .textTheme
-                                                                .displayLarge
-                                                                ?.copyWith(
+                                                            style: Theme.of(context).textTheme.displayLarge?.copyWith(
                                                                   fontWeight: FontWeight.w700,
                                                                 ),
                                                           ),
                                                         ),
                                                         DynamicHeightGridView(
                                                           shrinkWrap: true,
-                                                          itemCount: initState
-                                                              .listBrands[index].value.length,
-                                                          physics:
-                                                              const NeverScrollableScrollPhysics(),
-                                                          crossAxisCount: width > 767
-                                                              ? 3
-                                                              : 2, // number of items in each row
+                                                          itemCount: initState.listBrands[index].value.length,
+                                                          physics: const NeverScrollableScrollPhysics(),
+                                                          crossAxisCount: width > 767 ? 3 : 2,
+                                                          // number of items in each row
                                                           crossAxisSpacing: 13,
                                                           mainAxisSpacing: 13,
                                                           builder: (context, indexBrand) {
@@ -643,35 +613,27 @@ class _BrandsScreenState extends State<BrandsScreen> {
                                                                 FocusScope.of(context).unfocus();
                                                                 _search.clear();
                                                                 context.read<BrandBloc>().add(
-                                                                      const BrandEvent.search(
-                                                                          query: ''),
+                                                                      const BrandEvent.search(query: ''),
                                                                     );
                                                                 context.read<CatalogBloc>().add(
                                                                       CatalogEvent.getInfoProducts(
                                                                         path: initState
-                                                                            .listBrands[index]
-                                                                            .value[indexBrand]
-                                                                            .u,
+                                                                            .listBrands[index].value[indexBrand].u,
                                                                         isCleanHistory: true,
                                                                       ),
                                                                     );
                                                                 context.navigateTo(
                                                                   CatalogRoute(
-                                                                    title: initState
-                                                                        .listBrands[index]
-                                                                        .value[indexBrand]
-                                                                        .n,
-                                                                    url: initState.listBrands[index]
-                                                                        .value[indexBrand].u,
+                                                                    title:
+                                                                        initState.listBrands[index].value[indexBrand].n,
+                                                                    url:
+                                                                        initState.listBrands[index].value[indexBrand].u,
                                                                   ),
                                                                 );
                                                               },
                                                               child: Text(
-                                                                initState.listBrands[index]
-                                                                    .value[indexBrand].n,
-                                                                style: Theme.of(context)
-                                                                    .textTheme
-                                                                    .headlineLarge,
+                                                                initState.listBrands[index].value[indexBrand].n,
+                                                                style: Theme.of(context).textTheme.headlineLarge,
                                                               ),
                                                             );
                                                           },

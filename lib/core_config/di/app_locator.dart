@@ -1,23 +1,15 @@
 import 'package:blind_chicken/app/bloc/app_bloc.dart';
 import 'package:blind_chicken/core/network/dio_provider.dart';
-import 'package:blind_chicken/core/network/network_info.dart';
 import 'package:blind_chicken/core_config/data/repositories/local/local_repository.dart';
 import 'package:blind_chicken/core_config/data/repositories/remote/remote_repository.dart';
-import 'package:blind_chicken/core_config/env.dart';
 import 'package:blind_chicken/core_config/utils/debug_overlay/util/log_bucket.dart';
-import 'package:blind_chicken/core_config/utils/logging.dart';
 import 'package:blind_chicken/core_config/utils/notifications/notifications_manager.dart';
-import 'package:blind_chicken/core_config/utils/store_launcher.dart';
 import 'package:blind_chicken/screens/app/router/app_router.dart';
 import 'package:device_info_plus/device_info_plus.dart';
 import 'package:dio/dio.dart';
 import 'package:equatable/equatable.dart';
-import 'package:firebase_core/firebase_core.dart';
-import 'package:firebase_messaging/firebase_messaging.dart';
 import 'package:flutter_secure_storage/flutter_secure_storage.dart';
 import 'package:get_it/get_it.dart';
-import 'package:image_picker/image_picker.dart';
-import 'package:internet_connection_checker/internet_connection_checker.dart';
 import 'package:package_info_plus/package_info_plus.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 

@@ -109,7 +109,7 @@ class _VisionWarningScreenState extends State<VisionWarningScreen> {
                         if (widget.lastPath == 'news') {
                           context.navigateTo(
                             NewsRoute(children: [
-                              NewsInfoRoute(
+                              NewsInfoRepairedRoute(
                                 indexPage: 0,
                               ),
                             ]),
@@ -184,7 +184,7 @@ class _VisionWarningScreenState extends State<VisionWarningScreen> {
                           if (widget.lastPath == 'news') {
                             context.navigateTo(
                               NewsRoute(children: [
-                                NewsInfoRoute(
+                                NewsInfoRepairedRoute(
                                   indexPage: 0,
                                 ),
                               ]),

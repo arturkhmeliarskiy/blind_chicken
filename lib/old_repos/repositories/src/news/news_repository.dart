@@ -104,8 +104,9 @@ class NewsRepository {
   }
 
   Future<BadgeOperationInfoDataModel> getNumberUnreaNews() async {
-    final news = await _newsService.getNumberUnreaNews();
-    return news.toNumberUnreaNews();
+    return BadgeOperationInfoDataModel(r: '', e: '', errorMessage: '', news: 0, media: 0, notice: 0, total: 0);
+    //final news = await _newsService.getNumberUnreaNews();
+    //return news.toNumberUnreaNews();
   }
 
   Future<BadgeOperationInfoDataModel> postReadNews({
