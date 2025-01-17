@@ -253,12 +253,15 @@ void navigateToCorrectPage(BuildContext context, NewsInfoItemDataModel item) {
     router.push(
       HomeAutoRouterRoute(
         children: [
-          CatalogCardInfoRoute(
+          CardInfoRoute(
             isLike: false,
             listItems: const [],
             favouritesProducts: const [],
             isChildRoute: false,
             lastPath: 'news',
+            titleScreen: 'Экран новостей',
+            codeProduct: '',
+
           ),
         ],
       ),
