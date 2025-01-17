@@ -4,7 +4,6 @@ import 'package:blind_chicken/old_repos/ui_kit/reaction_button/src/extensions/ke
 import 'package:blind_chicken/old_repos/ui_kit/reaction_button/src/widgets/reactions_box.dart';
 import 'package:flutter/material.dart';
 
-
 class ReactionButton<T> extends StatefulWidget {
   const ReactionButton({
     super.key,
@@ -25,6 +24,7 @@ class ReactionButton<T> extends StatefulWidget {
     this.boxAnimationDuration = const Duration(milliseconds: 200),
     this.itemAnimationDuration = const Duration(milliseconds: 100),
     this.hoverDuration = const Duration(milliseconds: 400),
+    this.additionalWidth,
     this.child,
     this.direction = ReactionsBoxAlignment.ltr,
   }) : _type = child != null ? ReactionType.container : ReactionType.button;
@@ -82,6 +82,8 @@ class ReactionButton<T> extends StatefulWidget {
 
   final ReactionType _type;
 
+  final double? additionalWidth;
+
   @override
   State<ReactionButton<T>> createState() => _ReactionButtonState<T>();
 }
@@ -89,8 +91,7 @@ class ReactionButton<T> extends StatefulWidget {
 class _ReactionButtonState<T> extends State<ReactionButton<T>> {
   final GlobalKey _globalKey = GlobalKey();
 
-  late Reaction<T>? _selectedReaction =
-      _isChecked ? widget.selectedReaction : widget.placeholder;
+  late Reaction<T>? _selectedReaction = _isChecked ? widget.selectedReaction : widget.placeholder;
 
   late bool _isChecked = widget.isChecked;
 
@@ -109,9 +110,7 @@ class _ReactionButtonState<T> extends State<ReactionButton<T>> {
   void _onCheck() {
     _isChecked = !_isChecked;
     _updateReaction(
-      _isChecked
-          ? widget.selectedReaction ?? widget.reactions.first
-          : widget.placeholder,
+      _isChecked ? widget.selectedReaction ?? widget.reactions.first : widget.placeholder,
     );
   }
 
@@ -132,6 +131,7 @@ class _ReactionButtonState<T> extends State<ReactionButton<T>> {
           itemScaleDuration: widget.itemAnimationDuration,
           animateBox: widget.animateBox,
           direction: widget.direction,
+          additionalWidth: widget.additionalWidth,
           onReactionSelected: (reaction) {
             _updateReaction(reaction);
             _disposeOverlayEntry();
@@ -161,9 +161,7 @@ class _ReactionButtonState<T> extends State<ReactionButton<T>> {
 
   @override
   Widget build(BuildContext context) {
-    final Widget? child = _isContainer
-        ? widget.child
-        : (_selectedReaction ?? widget.reactions.first)!.icon;
+    final Widget? child = _isContainer ? widget.child : (_selectedReaction ?? widget.reactions.first)!.icon;
 
     return GestureDetector(
       key: _globalKey,
@@ -174,7 +172,7 @@ class _ReactionButtonState<T> extends State<ReactionButton<T>> {
         //  _onShowReactionsBox();
         //}
         if (widget.toggle) {
-          _onShowReactionsBox( null);
+          _onShowReactionsBox(null);
         }
       },
       onLongPressStart: (details) {

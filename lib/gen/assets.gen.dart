@@ -271,6 +271,9 @@ class $AssetsIconsGen {
   /// File path: assets/icons/product.svg
   String get product => 'assets/icons/product.svg';
 
+  /// Directory path: assets/icons/reaction
+  $AssetsIconsReactionGen get reaction => const $AssetsIconsReactionGen();
+
   /// File path: assets/icons/search.svg
   String get search => 'assets/icons/search.svg';
 
@@ -1588,6 +1591,43 @@ class $AssetsIconsOtherGen {
         usersRole,
         widget,
         yml2
+      ];
+}
+
+class $AssetsIconsReactionGen {
+  const $AssetsIconsReactionGen();
+
+  /// File path: assets/icons/reaction/dislike-svgrepo-com.svg
+  String get dislikeSvgrepoCom =>
+      'assets/icons/reaction/dislike-svgrepo-com.svg';
+
+  /// File path: assets/icons/reaction/fire-svgrepo-com.svg
+  String get fireSvgrepoCom => 'assets/icons/reaction/fire-svgrepo-com.svg';
+
+  /// File path: assets/icons/reaction/grinning-face-with-smiling-eyes-svgrepo-com.svg
+  String get grinningFaceWithSmilingEyesSvgrepoCom =>
+      'assets/icons/reaction/grinning-face-with-smiling-eyes-svgrepo-com.svg';
+
+  /// File path: assets/icons/reaction/heart-red-svgrepo-com.svg
+  String get heartRedSvgrepoCom =>
+      'assets/icons/reaction/heart-red-svgrepo-com.svg';
+
+  /// File path: assets/icons/reaction/smile-plus-svgrepo-com.svg
+  String get smilePlusSvgrepoCom =>
+      'assets/icons/reaction/smile-plus-svgrepo-com.svg';
+
+  /// File path: assets/icons/reaction/thinking-face-svgrepo-com.svg
+  String get thinkingFaceSvgrepoCom =>
+      'assets/icons/reaction/thinking-face-svgrepo-com.svg';
+
+  /// List of all assets
+  List<String> get values => [
+        dislikeSvgrepoCom,
+        fireSvgrepoCom,
+        grinningFaceWithSmilingEyesSvgrepoCom,
+        heartRedSvgrepoCom,
+        smilePlusSvgrepoCom,
+        thinkingFaceSvgrepoCom
       ];
 }
 

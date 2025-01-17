@@ -1,6 +1,7 @@
 import 'dart:async';
 import 'package:appmetrica_plugin/appmetrica_plugin.dart';
 import 'package:auto_route/auto_route.dart';
+import 'package:blind_chicken/core_config/di/app_locator.dart';
 import 'package:blind_chicken/screens/app/router/app_router.dart';
 import 'package:blind_chicken/screens/home/catalog/widget/catalog_boutiques_info.dart';
 import 'package:blind_chicken/screens/home/catalog/widget/catalog_cashback_info.dart';
@@ -279,14 +280,16 @@ class _CardInfoScreenViewState extends State<CardInfoScreenView> {
               final updateData = GetIt.I.get<UpdateDataService>();
               if (initState.listProductsCode.isEmpty) {
                 if (widget.lastPath == 'news') {
-                  context.navigateTo(
-                    NewsRoute(children: [
-                      NewsInfoRepairedRoute(
-                        indexPage: 0,
-                      ),
-                    ]),
-                  );
-                  AppMetrica.reportEvent('Список новостей');
+                  AppRouter appRouter = Locator.injection();
+                  appRouter.popForced();
+                  //context.navigateTo(
+                  //  NewsRoute(children: [
+                  //    NewsInfoRepairedRoute(
+                  //      indexPage: 0,
+                  //    ),
+                  //  ]),
+                  //);
+                  //AppMetrica.reportEvent('Список новостей');
                 } else if (widget.lastPath == 'news_info_description') {
                   final newsInfo = widget.newsInfo;
                   if (newsInfo != null) {
@@ -564,14 +567,16 @@ class _CardInfoScreenViewState extends State<CardInfoScreenView> {
                                     } else {
                                       if (widget.lastPath.isNotEmpty) {
                                         if (widget.lastPath == 'news') {
-                                          context.navigateTo(
-                                            NewsRoute(children: [
-                                              NewsInfoRepairedRoute(
-                                                indexPage: 0,
-                                              ),
-                                            ]),
-                                          );
-                                          AppMetrica.reportEvent('Список новостей');
+                                          AppRouter appRouter = Locator.injection();
+                                          appRouter.popForced();
+                                          //context.navigateTo(
+                                          //  NewsRoute(children: [
+                                          //    NewsInfoRepairedRoute(
+                                          //      indexPage: 0,
+                                          //    ),
+                                          //  ]),
+                                          //);
+                                          //AppMetrica.reportEvent('Список новостей');
                                         } else if (widget.lastPath == 'news_info_description') {
                                           final newsInfo = widget.newsInfo;
                                           if (newsInfo != null) {
