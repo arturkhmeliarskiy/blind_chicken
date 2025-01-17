@@ -60,9 +60,9 @@ class _NewsItemTabInfoState extends State<NewsItemTabInfo> with AutomaticKeepAli
         _controller?.setLooping(true);
       });
     _controller?.setLooping(true);
-    final valueContorller = _controller;
-    if (valueContorller != null) {
-      updateData.videoController = valueContorller;
+    final valueController = _controller;
+    if (valueController != null) {
+      updateData.videoController = valueController;
     }
   }
 
@@ -70,6 +70,7 @@ class _NewsItemTabInfoState extends State<NewsItemTabInfo> with AutomaticKeepAli
   Widget build(BuildContext context) {
     super.build(context); //this line is needed
     final width = MediaQuery.of(context).size.width;
+
     return Stack(
       alignment: Alignment.topRight,
       children: [
@@ -79,23 +80,16 @@ class _NewsItemTabInfoState extends State<NewsItemTabInfo> with AutomaticKeepAli
             double visiblePercentage = visibilityInfo.visibleFraction * 100;
             logging("Video visibility: $visiblePercentage%", name: "Visibility", stackTrace: StackTrace.current);
 
+            final valueController = _controller;
             if (visiblePercentage > 35) {
-              final valueContorller = _controller;
-              if (valueContorller != null) {
-                // Check if the video is already playing, if not, play it
-                if (!(_controller?.value.isPlaying ?? false)) {
-                  _controller?.play();
-                  logging("Video started playing", name: "VideoState", stackTrace: StackTrace.current);
-                }
+              if ((valueController?.value.isInitialized ?? false) && !(valueController?.value.isPlaying ?? false)) {
+                valueController?.play();
+                logging("Video started playing", name: "VideoState", stackTrace: StackTrace.current);
               }
             } else {
-              final valueContorller = _controller;
-              if (valueContorller != null) {
-                // Pause the video if it's not the active video or is less than 50% visible
-                if (_controller?.value.isInitialized ?? false) {
-                  _controller?.pause();
-                  logging("Video paused", name: "VideoState", stackTrace: StackTrace.current);
-                }
+              if (valueController?.value.isInitialized ?? false) {
+                valueController?.pause();
+                logging("Video paused", name: "VideoState", stackTrace: StackTrace.current);
               }
             }
           },
@@ -120,7 +114,7 @@ class _NewsItemTabInfoState extends State<NewsItemTabInfo> with AutomaticKeepAli
                       onTap: widget.onTap,
                       child: Container(
                         decoration: BoxDecoration(
-                          borderRadius: BorderRadius.only(
+                          borderRadius: const BorderRadius.only(
                             topLeft: Radius.circular(15),
                             topRight: Radius.circular(15),
                           ),
@@ -129,9 +123,7 @@ class _NewsItemTabInfoState extends State<NewsItemTabInfo> with AutomaticKeepAli
                               : BlindChickenColors.backgroundColor,
                         ),
                         child: ClipRRect(
-                          borderRadius: BorderRadius.all(
-                            Radius.circular(15),
-                          ),
+                          borderRadius: const BorderRadius.all(Radius.circular(15)),
                           child: Column(
                             crossAxisAlignment: CrossAxisAlignment.start,
                             children: [
@@ -147,14 +139,6 @@ class _NewsItemTabInfoState extends State<NewsItemTabInfo> with AutomaticKeepAli
                                 padding: const EdgeInsets.symmetric(horizontal: 16),
                                 child: Row(
                                   children: [
-                                    //Expanded(
-                                    //  child: Text(
-                                    //    widget.item.title,
-                                    //    style: Theme.of(context).textTheme.headlineMedium?.copyWith(
-                                    //          fontWeight: FontWeight.w700,
-                                    //        ),
-                                    //  ),
-                                    //),
                                     if (widget.item.isViewed)
                                       const SizedBox(
                                         height: 15,
@@ -172,11 +156,10 @@ class _NewsItemTabInfoState extends State<NewsItemTabInfo> with AutomaticKeepAli
                                   buildEmotionButton(),
                                   buildEmotionButton(),
                                   buildEmotionButton(),
-                                  Spacer(),
+                                  const Spacer(),
                                   buildReadChecker(context),
                                 ],
                               ),
-
                             ],
                           ),
                         ),

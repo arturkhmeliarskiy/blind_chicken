@@ -486,7 +486,7 @@ class _DashboardPageState extends State<DashboardPage> {
 
                         context.navigateTo(
                           NewsRoute(children: [
-                            NewsInfoRoute(
+                            NewsInfoRepairedRoute(
                               indexPage: 0,
                             ),
                           ]),

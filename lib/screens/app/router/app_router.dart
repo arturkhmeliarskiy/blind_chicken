@@ -78,6 +78,7 @@ import 'package:flutter/material.dart';
 import 'package:blind_chicken/old_repos/models/models.dart';
 import 'package:youtube_player_flutter/youtube_player_flutter.dart';
 import '../../contacts/contacts_screen.dart';
+import '../../news/news_info/news_info_screen.dart';
 
 part 'app_router.gr.dart';
 
@@ -249,6 +250,10 @@ class AppRouter extends RootStackRouter {
               AutoRoute(
                 initial: true,
                 page: NewsInfoRoute.page,
+              ),
+              AutoRoute(
+                  page: NewsInfoRepairedRoute.page,
+                  path: 'newsV2'
               ),
             ],
           ),

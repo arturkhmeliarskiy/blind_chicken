@@ -136,7 +136,7 @@ class _NewsInfoDescriptionScreenState extends State<NewsInfoDescriptionScreen> {
                         onHorizontalDragEnd: (DragEndDetails details) {
                           if (details.velocity.pixelsPerSecond.dx > 0) {
                             context.navigateTo(
-                              NewsInfoRoute(
+                              NewsInfoRepairedRoute(
                                 indexPage: 0,
                               ),
                             );
@@ -152,7 +152,7 @@ class _NewsInfoDescriptionScreenState extends State<NewsInfoDescriptionScreen> {
                           onPopInvoked: (value) {
                             if (_isSwipe && !value) {
                               context.navigateTo(
-                                NewsInfoRoute(
+                                NewsInfoRepairedRoute(
                                   indexPage: 0,
                                 ),
                               );
@@ -182,7 +182,7 @@ class _NewsInfoDescriptionScreenState extends State<NewsInfoDescriptionScreen> {
                                           child: InkWell(
                                             onTap: () {
                                               context.navigateTo(
-                                                NewsInfoRoute(
+                                                NewsInfoRepairedRoute(
                                                   indexPage: 0,
                                                 ),
                                               );
