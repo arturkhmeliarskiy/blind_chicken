@@ -25,7 +25,7 @@ class AuthenticationInterceptor extends InterceptorsWrapper {
     }
     //options.headers['serviceToken'] = Env.serviceToken;
     options.headers['Accept'] = 'application/json';
-    options.headers['Content-Type'] = 'application/json';
+    options.headers['Content-Type'] = 'application/x-www-form-urlencoded';
 
     handler.next(options);
   }

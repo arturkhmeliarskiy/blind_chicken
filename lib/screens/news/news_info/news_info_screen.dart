@@ -2,7 +2,9 @@ import 'package:appmetrica_plugin/appmetrica_plugin.dart';
 import 'package:auto_route/auto_route.dart';
 import 'package:blind_chicken/core_config/di/app_locator.dart';
 import 'package:blind_chicken/core_config/ui/widgets/base_bloc_listener.dart';
+import 'package:blind_chicken/core_config/ui/widgets/widgets/loaders/circular_holder.dart';
 import 'package:blind_chicken/core_config/ui/widgets/widgets/others/screen_wrapper.dart';
+import 'package:blind_chicken/core_config/utils/context_extensions.dart';
 import 'package:blind_chicken/gen/assets.gen.dart';
 import 'package:blind_chicken/old_repos/models/src/news/news_info_item_data_model.dart';
 import 'package:blind_chicken/old_repos/ui_kit/src/constants/colors/blind_chicken_colors.dart';
@@ -10,7 +12,6 @@ import 'package:blind_chicken/old_repos/ui_kit/src/widgets/app_bar_blind_chicken
 import 'package:blind_chicken/screens/app/router/app_router.dart';
 import 'package:blind_chicken/screens/news/news_info/bloc/news_info_bloc.dart';
 import 'package:blind_chicken/screens/news/widgets/news/news_item_tab_info.dart';
-import 'package:blind_chicken/screens/news/widgets/news/news_tab_info.dart';
 import 'package:blind_chicken/screens/news/widgets/notifications/notifications_tab_info.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -35,6 +36,7 @@ class NewsInfoRepairedScreen extends StatefulWidget implements AutoRouteWrapper 
   Widget wrappedRoute(context) => BlocProvider(
         create: (context) => NewsInfoBloc(
           Locator.injection(),
+          Locator.injection(),
         ),
         child: this,
       );
@@ -52,6 +54,29 @@ class _NewsInfoRepairedScreenState extends State<NewsInfoRepairedScreen> with Ti
     AppMetrica.reportEvent('Страница новостей');
 
     return BaseBlocListener<NewsInfoBloc, NewsInfoState>(
+      listener: (context, state, action) async {
+        if (action is TabPressed) {
+          String text = '';
+          switch (action.tabIndex) {
+            case 0:
+              text = 'Переход на страницу новостей из верхней панели навигации';
+              break;
+            case 1:
+              text = 'Переход на страницу уведомлений из верхней панели навигации';
+              break;
+            case 2:
+              text = 'Переход на страницу медиа из верхней панели навигации';
+              break;
+            default:
+              text = '';
+          }
+          if (action.tabIndex == _tabController?.index) {
+            _scrollController.animateTo(0.0, duration: Duration(milliseconds: 300), curve: Curves.ease);
+          } else {
+            AppMetrica.reportEvent(text);
+          }
+        }
+      },
       child: BlocBuilder<NewsInfoBloc, NewsInfoState>(
         builder: (context, state) {
           return ScreenWrapper(
@@ -103,8 +128,8 @@ class _NewsInfoRepairedScreenState extends State<NewsInfoRepairedScreen> with Ti
       dividerColor: BlindChickenColors.borderBottomColor,
       controller: _tabController,
       onTap: (int? index) {
+        context.sendEvent<NewsInfoBloc>(NewsInfoEvent.switchTab(index ?? 0));
         //todo
-        AppMetrica.reportEvent(_getAppMetricaEvent(index ?? 0));
       },
       tabs: [
         //todo
@@ -114,19 +139,6 @@ class _NewsInfoRepairedScreenState extends State<NewsInfoRepairedScreen> with Ti
         _buildTab(context, 'Уведомления', 1),
       ],
     );
-  }
-
-  String _getAppMetricaEvent(int index) {
-    switch (index) {
-      case 0:
-        return 'Переход на страницу новостей из верхней панели навигации';
-      case 1:
-        return 'Переход на страницу уведомлений из верхней панели навигации';
-      case 2:
-        return 'Переход на страницу медиа из верхней панели навигации';
-      default:
-        return '';
-    }
   }
 
   Widget _buildTab(BuildContext context, String title, int index, {int? badgeCount}) {
@@ -158,12 +170,13 @@ class _NewsInfoRepairedScreenState extends State<NewsInfoRepairedScreen> with Ti
       physics: const NeverScrollableScrollPhysics(),
       children: [
         listNews(),
-        NewsTabInfo(
-          goBack: () {
-            //context.read<NewsBloc>().add(const NewsEvent.goBackNewsInfo());
-          },
-          onJump: () => _scrollController.jumpTo(0.0),
-        ),
+        listNotifications(),
+        //NewsTabInfo(
+        //  goBack: () {
+        //    context.read<NewsBloc>().add(const NewsEvent.goBackNewsInfo());
+        //  },
+        //  onJump: () => _scrollController.jumpTo(0.0),
+        //),
         NotificationsTabInfo(
           goBack: () {
             //context.read<NewsBloc>().add(const NewsEvent.goBackNewsInfo());
@@ -186,47 +199,92 @@ class _NewsInfoRepairedScreenState extends State<NewsInfoRepairedScreen> with Ti
               fit: BoxFit.cover,
             ),
           ),
-          child: NotificationListener<ScrollNotification>(
-            onNotification: (scrollNotification) {
-              // Здесь можно добавить логику для загрузки дополнительных данных при прокрутке
-              return true;
-            },
-            child: ListView.builder(
-              itemCount: state.listNews.length,
-              padding: EdgeInsets.zero,
-              itemBuilder: (context, index) {
-                return Column(
-                  children: [
-                    SizedBox(
-                      height: index == 0 ? 46 : 0,
-                    ),
-                    NewsItemTabInfo(
-                      item: state.listNews[index],
-                      onTap: () {
-                        context.navigateTo(
-                          NewsInfoDescriptionRoute(
-                            info: state.listNews[index],
-                          ),
-                        );
-                      },
-                      onGoTap: () {
-                        navigateToCorrectPage(context, state.listNews[index]);
-                      },
-                    ),
-                    //if (_isLoading && index == initState.news.list.length - 1)
-                    //  Container(
-                    //    height: 40,
-                    //    width: 40,
-                    //    padding: EdgeInsets.all(8),
-                    //    child: CircularProgressIndicator(
-                    //      strokeWidth: 3,
-                    //    ),
-                    //  ),
-                  ],
+          child: listBuilderNews(state),
+        );
+      },
+    );
+  }
+
+  Widget listBuilderNews(NewsInfoState state) {
+    if (state.isLoading) return CircularHolder();
+    if (state.listNews.isEmpty) return Container();
+    return ListView.builder(
+      itemCount: state.listNews.length,
+      padding: EdgeInsets.zero,
+      itemBuilder: (context, index) {
+        if (state.listNews.length - 1 - 4 == index) {
+          context.sendEvent<NewsInfoBloc>(NewsInfoEvent.loadMore());
+        }
+        return Column(
+          children: [
+            SizedBox(
+              height: index == 0 ? 46 : 0,
+            ),
+            NewsItemTabInfo(
+              item: state.listNews[index],
+              onTap: () {
+                context.navigateTo(
+                  NewsInfoDescriptionRoute(
+                    info: state.listNews[index],
+                  ),
                 );
               },
+              onGoTap: () {
+                navigateToCorrectPage(context, state.listNews[index]);
+              },
+            ),
+          ],
+        );
+      },
+    );
+  }
+
+  Widget listNotifications() {
+    return BlocBuilder<NewsInfoBloc, NewsInfoState>(
+      builder: (context, state) {
+        return Container(
+          decoration: BoxDecoration(
+            color: BlindChickenColors.borderBottomColor,
+            image: DecorationImage(
+              image: AssetImage(Assets.images.newsBackground.path),
+              fit: BoxFit.cover,
             ),
           ),
+          child: listBuilderNews(state),
+        );
+      },
+    );
+  }
+
+  Widget listBuilderNotifications(NewsInfoState state) {
+    if (state.isLoading) return CircularHolder();
+    if (state.listNews.isEmpty) return Container();
+    return ListView.builder(
+      itemCount: state.listNews.length,
+      padding: EdgeInsets.zero,
+      itemBuilder: (context, index) {
+        if (state.listNews.length - 1 - 4 == index) {
+          context.sendEvent<NewsInfoBloc>(NewsInfoEvent.loadMore());
+        }
+        return Column(
+          children: [
+            SizedBox(
+              height: index == 0 ? 46 : 0,
+            ),
+            NewsItemTabInfo(
+              item: state.listNews[index],
+              onTap: () {
+                context.navigateTo(
+                  NewsInfoDescriptionRoute(
+                    info: state.listNews[index],
+                  ),
+                );
+              },
+              onGoTap: () {
+                navigateToCorrectPage(context, state.listNews[index]);
+              },
+            ),
+          ],
         );
       },
     );

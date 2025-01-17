@@ -32,6 +32,7 @@ class NewsRepository {
   void deleteAllFavouritesProducts() {
     _newsNotificationsService.deleteAllNewsNotifications();
   }
+
   //favourites end
 
   Future<NewsInfoDataModel> getNews({
@@ -138,10 +139,8 @@ extension on NewsInfoResponse {
                   )
                   .isEmpty;
               final videoImage = "https://slepayakurica.ru${item.videoImage ?? ''}";
-              List<String> images =
-                  item.images?.map((item) => "https://slepayakurica.ru$item").toList() ?? [];
-              List<String> videos =
-                  item.videos?.map((item) => "https://slepayakurica.ru$item").toList() ?? [];
+              List<String> images = item.images?.map((item) => "https://slepayakurica.ru$item").toList() ?? [];
+              List<String> videos = item.videos?.map((item) => "https://slepayakurica.ru$item").toList() ?? [];
 
               return NewsInfoItemDataModel(
                 id: item.id ?? '',
@@ -305,8 +304,7 @@ extension on OneNewsInfoResponse {
             )
             .toList() ??
         [];
-    List<String> videos =
-        data?.videos?.map((item) => "https://slepayakurica.ru$item").toList() ?? [];
+    List<String> videos = data?.videos?.map((item) => "https://slepayakurica.ru$item").toList() ?? [];
 
     return OneNewsInfoDataModel(
       r: r ?? '',
@@ -318,9 +316,8 @@ extension on OneNewsInfoResponse {
         createAt: data?.createAt ?? '',
         images: images.isNotEmpty ? images : [],
         videos: videos.isNotEmpty ? images : [],
-        video: (data?.typeVideo ?? '') == 'original'
-            ? "https://slepayakurica.ru${data?.video ?? ''}"
-            : data?.video ?? '',
+        video:
+            (data?.typeVideo ?? '') == 'original' ? "https://slepayakurica.ru${data?.video ?? ''}" : data?.video ?? '',
         typeVideo: data?.typeVideo ?? '',
         videoImage: data?.videoImage?.isNotEmpty ?? false ? videoImage : '',
         announcement: data?.announcement ?? '',
@@ -361,9 +358,8 @@ extension on OneMediaInfoResponse {
         title: data?.title ?? '',
         createAt: data?.createAt ?? '',
         images: images.isNotEmpty ? images : [],
-        video: (data?.typeVideo ?? '') == 'original'
-            ? "https://slepayakurica.ru${data?.video ?? ''}"
-            : data?.video ?? '',
+        video:
+            (data?.typeVideo ?? '') == 'original' ? "https://slepayakurica.ru${data?.video ?? ''}" : data?.video ?? '',
         typeVideo: data?.typeVideo ?? '',
         videoImage: data?.videoImage?.isNotEmpty ?? false ? videoImage : '',
         typeMedia: data?.typeMedia ?? '',
@@ -403,9 +399,8 @@ extension on OneNotificationInfoResponse {
         title: data?.title ?? '',
         createAt: data?.createAt ?? '',
         images: images.isNotEmpty ? images : [],
-        video: (data?.typeVideo ?? '') == 'original'
-            ? "https://slepayakurica.ru${data?.video ?? ''}"
-            : data?.video ?? '',
+        video:
+            (data?.typeVideo ?? '') == 'original' ? "https://slepayakurica.ru${data?.video ?? ''}" : data?.video ?? '',
         typeVideo: data?.typeVideo ?? '',
         videoImage: data?.videoImage?.isNotEmpty ?? false ? videoImage : '',
         typeMedia: data?.typeMedia ?? '',
