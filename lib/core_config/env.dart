@@ -1,6 +1,7 @@
 class Env {
   static bool enableDebugLog = true;
   static bool enableDebugOverlay = false;
-  static String baseUrl = 'https://kladr-api.com';
+  ///https://slepayakurica.ru
+  static String baseUrl = 'https://slepayakurica.ru';
   static String serviceToken = '';
 }

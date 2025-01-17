@@ -15,7 +15,6 @@ class DioHelper {
     Dio dio = Dio()
       ..options.headers = {
         'Accept': 'application/json',
-        // 'User-Agent': 'Pimmer ver.name 1.6.5 ver.code 725',
         'User-Agent': await getUserAgent(),
       }
       ..options.receiveDataWhenStatusError = true
@@ -64,7 +63,7 @@ class DioHelper {
     Dio dio = Dio()
       ..options.headers = {
         'Accept': 'application/json',
-        'Content-Type': 'application/json;charset=utf-8',
+        'Content-Type': 'application/x-www-form-urlencoded;charset=utf-8',
       }
       ..options.receiveDataWhenStatusError = true
       ..options.baseUrl = baseUrl

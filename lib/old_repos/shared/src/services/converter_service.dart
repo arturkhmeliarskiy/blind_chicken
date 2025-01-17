@@ -9,4 +9,8 @@ class ConverterService {
   static int roundUpAbsolute(double number) {
     return number.isNegative ? number.floor() : number.ceil();
   }
+
+  static String generateMd5Static(String input) {
+    return md5.convert(utf8.encode(input)).toString();
+  }
 }
