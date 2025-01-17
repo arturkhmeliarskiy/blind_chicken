@@ -1,6 +1,7 @@
 import 'package:blind_chicken/core_config/utils/logging.dart';
 
 import 'package:auto_route/auto_route.dart';
+import 'package:blind_chicken/gen/assets.gen.dart';
 import 'package:blind_chicken/old_repos/ui_kit/reaction_button/flutter_reaction_button.dart';
 import 'package:blind_chicken/old_repos/ui_kit/reaction_button/src/widgets/reaction_button.dart';
 import 'package:blind_chicken/screens/app/router/app_router.dart';
@@ -10,6 +11,7 @@ import 'package:blind_chicken/screens/news/widgets/news_slider.dart';
 import 'package:blind_chicken/screens/news/widgets/news_youtube_video_player.dart';
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_svg/flutter_svg.dart';
 import 'package:flutter_widget_from_html/flutter_widget_from_html.dart';
 import 'package:get_it/get_it.dart';
 import 'package:blind_chicken/old_repos/models/models.dart';
@@ -25,11 +27,13 @@ class NewsItemTabInfo extends StatefulWidget {
     required this.item,
     required this.onTap,
     required this.onGoTap,
+    this.emotionWidget,
   });
 
   final NewsInfoItemDataModel item;
   final VoidCallback onTap;
   final VoidCallback onGoTap;
+  final Widget? emotionWidget;
 
   @override
   State<NewsItemTabInfo> createState() => _NewsItemTabInfoState();
@@ -150,16 +154,15 @@ class _NewsItemTabInfoState extends State<NewsItemTabInfo> with AutomaticKeepAli
                               const SizedBox(height: 14),
                               buildTextPost(context),
                               const SizedBox(height: 12),
+                              widget.emotionWidget ?? SizedBox(),
                               Row(
+                                crossAxisAlignment: CrossAxisAlignment.start,
                                 children: [
-                                  buildEmotionButton(),
-                                  buildEmotionButton(),
-                                  buildEmotionButton(),
-                                  buildEmotionButton(),
                                   const Spacer(),
                                   buildReadChecker(context),
                                 ],
                               ),
+                              const SizedBox(height: 16),
                             ],
                           ),
                         ),
@@ -348,26 +351,13 @@ class _NewsItemTabInfoState extends State<NewsItemTabInfo> with AutomaticKeepAli
     );
   }
 
-  InkWell buildSingleImage(BuildContext context, double width) {
-    return InkWell(
-      onTap: () {
-        context.navigateTo(
-          NewsPreviewMediaRoute(
-            media: widget.item.images,
-            goBotton: () {
-              context.back();
-            },
-            selectIndex: 0,
-          ),
-        );
-      },
-      child: CachedNetworkImage(
-        imageUrl: widget.item.images.first,
-        repeat: ImageRepeat.repeat,
-        width: MediaQuery.of(context).orientation == Orientation.portrait ? width : width / 2,
-        fit: BoxFit.cover,
-        errorWidget: (context, url, error) => const Icon(Icons.error),
-      ),
+  Widget buildSingleImage(BuildContext context, double width) {
+    return CachedNetworkImage(
+      imageUrl: widget.item.images.first,
+      repeat: ImageRepeat.repeat,
+      width: MediaQuery.of(context).orientation == Orientation.portrait ? width : width / 2,
+      fit: BoxFit.cover,
+      errorWidget: (context, url, error) => const Icon(Icons.error),
     );
   }
 
@@ -396,46 +386,6 @@ class _NewsItemTabInfoState extends State<NewsItemTabInfo> with AutomaticKeepAli
             });
       },
       onExitFullScreen: () {},
-    );
-  }
-
-  Widget buildEmotionButton() {
-    return Row(
-      children: [
-        ReactionButton<String>(
-          itemSize: Size(40, 40),
-          onReactionChanged: (Reaction<String>? reaction) {
-            debugPrint('Selected value: ${reaction?.value}');
-          },
-          reactions: <Reaction<String>>[
-            Reaction<String>(
-              value: 'like_fill',
-              icon: Icon(Icons.link),
-            ),
-            Reaction<String>(
-              value: 'like',
-              icon: Icon(Icons.done),
-            ),
-            Reaction<String>(
-              value: 'love',
-              icon: Icon(Icons.heart_broken),
-            ),
-            Reaction<String>(
-              value: 'love2',
-              icon: Icon(Icons.monitor_heart_outlined),
-            ),
-            Reaction<String>(
-              value: 'love3',
-              icon: Icon(Icons.satellite_alt),
-            ),
-          ],
-          selectedReaction: Reaction<String>(
-            value: 'like_fill',
-            icon: Icon(Icons.link),
-          ),
-          //child: Icon(Icons.link),
-        ),
-      ],
     );
   }
 

@@ -1,12 +1,13 @@
 import 'package:appmetrica_plugin/appmetrica_plugin.dart';
-import 'package:auto_route/auto_route.dart';
-import 'package:blind_chicken/screens/app/router/app_router.dart';
+import 'package:blind_chicken/core_config/di/app_locator.dart';
+import 'package:blind_chicken/core_config/utils/logging.dart';
 import 'package:blind_chicken/old_repos/blocs/blocs.dart';
+import 'package:blind_chicken/old_repos/models/models.dart';
+import 'package:blind_chicken/old_repos/shared/shared.dart';
+import 'package:blind_chicken/screens/app/router/app_router.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:get_it/get_it.dart';
-import 'package:blind_chicken/old_repos/models/models.dart';
-import 'package:blind_chicken/old_repos/shared/shared.dart';
 import 'package:url_launcher/url_launcher.dart';
 
 class HandlerLinksNews {
@@ -21,6 +22,8 @@ class HandlerLinksNews {
     String? idNews,
     String? messageId,
   }) async {
+    logging(url, name: 'url slepayakurica.ru');
+    AppRouter appRouter = Locator.injection();
     if (url.contains('slepayakurica.ru') && url != 'https://slepayakurica.ru') {
       if (url.contains('stores')) {
         final path = url.replaceAll('https://slepayakurica.ru/stores', '');
@@ -30,7 +33,7 @@ class HandlerLinksNews {
                 path: path,
               ),
             );
-        context.navigateTo(
+        appRouter.push(
           DashboardRoute(
             children: [
               HomeAutoRouterRoute(
@@ -50,7 +53,7 @@ class HandlerLinksNews {
         );
         AppMetrica.reportEvent('$titleAppMetrica в описание бутика');
       } else if (url.contains('giftcard')) {
-        context.navigateTo(
+        appRouter.push(
           DashboardRoute(
             children: [
               HomeAutoRouterRoute(
@@ -71,28 +74,20 @@ class HandlerLinksNews {
         AppMetrica.reportEvent('$titleAppMetrica в подарочную карту');
       } else if (url.contains('product')) {
         final code = url.replaceAll('https://slepayakurica.ru/product', '').replaceAll('/', '');
-        context.navigateTo(
-          DashboardRoute(
-            children: [
-              HomeAutoRouterRoute(
-                children: [
-                  CardInfoRoute(
-                    isLike: false,
-                    listItems: const [],
-                    favouritesProducts: const [],
-                    isChildRoute: false,
-                    lastPath: titleScreen,
-                    messageId: messageId,
-                    idNews: idNews,
-                    newsInfo: newsInfo,
-                    newsMediaInfo: newsMediaInfo,
-                    newsNotificationInfo: newsNotificationInfo,
-                    codeProduct: code,
-                    titleScreen: 'Список новостей',
-                  ),
-                ],
-              ),
-            ],
+        await appRouter.push(
+          CardInfoRoute(
+            isLike: false,
+            listItems: const [],
+            favouritesProducts: const [],
+            isChildRoute: false,
+            lastPath: titleScreen,
+            messageId: messageId,
+            idNews: idNews,
+            newsInfo: newsInfo,
+            newsMediaInfo: newsMediaInfo,
+            newsNotificationInfo: newsNotificationInfo,
+            codeProduct: code,
+            titleScreen: 'Список новостей',
           ),
         );
         AppMetrica.reportEvent('$titleAppMetrica в описание товара');
@@ -105,6 +100,7 @@ class HandlerLinksNews {
                 ),
               );
           navigateToBrandsScreen(
+            appRouter: appRouter,
             titleScreen: titleScreen,
             messageId: messageId ?? '',
             idNews: idNews ?? '',
@@ -121,6 +117,7 @@ class HandlerLinksNews {
                 ),
               );
           navigateToBrandsScreen(
+            appRouter: appRouter,
             titleScreen: titleScreen,
             messageId: messageId ?? '',
             idNews: idNews ?? '',
@@ -137,6 +134,7 @@ class HandlerLinksNews {
                 ),
               );
           navigateToBrandsScreen(
+            appRouter: appRouter,
             titleScreen: titleScreen,
             messageId: messageId ?? '',
             idNews: idNews ?? '',
@@ -153,6 +151,7 @@ class HandlerLinksNews {
                 ),
               );
           navigateToBrandsScreen(
+            appRouter: appRouter,
             titleScreen: titleScreen,
             messageId: messageId ?? '',
             idNews: idNews ?? '',
@@ -174,7 +173,7 @@ class HandlerLinksNews {
                   filterNotifcation: info,
                 ),
               );
-          context.navigateTo(
+          appRouter.push(
             DashboardRoute(
               children: [
                 HomeAutoRouterRoute(
@@ -202,7 +201,7 @@ class HandlerLinksNews {
                 code: '15846',
               ),
             );
-        context.navigateTo(
+        appRouter.push(
           DashboardRoute(
             children: [
               HomeAutoRouterRoute(
@@ -222,7 +221,7 @@ class HandlerLinksNews {
         );
         AppMetrica.reportEvent('$titleAppMetrica в сервисную карту');
       } else if (url.contains('proverka-zreniya')) {
-        context.navigateTo(
+        appRouter.push(
           DashboardRoute(
             children: [
               HomeAutoRouterRoute(
@@ -254,7 +253,7 @@ class HandlerLinksNews {
                 filterNotifcation: info,
               ),
             );
-        context.navigateTo(
+        appRouter.push(
           DashboardRoute(
             children: [
               HomeAutoRouterRoute(
@@ -297,7 +296,8 @@ class HandlerLinksNews {
     return true;
   }
 
-  static navigateToBrandsScreen({
+  static void navigateToBrandsScreen({
+    required AppRouter appRouter,
     required String titleScreen,
     NewsInfoItemDataModel? newsInfo,
     MediaInfoItemDataModel? newsMediaInfo,
@@ -306,7 +306,7 @@ class HandlerLinksNews {
     String? idNews,
     required BuildContext context,
   }) {
-    context.navigateTo(
+    appRouter.push(
       DashboardRoute(
         children: [
           HomeAutoRouterRoute(
