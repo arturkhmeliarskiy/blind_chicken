@@ -1,12 +1,28 @@
 import 'dart:developer';
 
 import 'package:appmetrica_plugin/appmetrica_plugin.dart';
+import 'package:blind_chicken/old_repos/models/src/app_metrica/app_metrica_enum.dart';
+import 'package:blind_chicken/old_repos/models/src/basket/basket_full_info_data_model.dart';
+import 'package:blind_chicken/old_repos/models/src/basket/basket_full_info_item_data_model.dart';
+import 'package:blind_chicken/old_repos/models/src/basket/basket_info_item_data_model.dart';
+import 'package:blind_chicken/old_repos/models/src/catalog/detail_product/detail_product_data_model.dart';
+import 'package:blind_chicken/old_repos/models/src/catalog/detail_product/sku_product_data_model.dart';
+import 'package:blind_chicken/old_repos/models/src/favourites/favourites_catalog_info_data_model.dart';
+import 'package:blind_chicken/old_repos/models/src/favourites/favourites_catalog_products_request.dart';
+import 'package:blind_chicken/old_repos/models/src/favourites/favourites_data_model.dart';
+import 'package:blind_chicken/old_repos/models/src/favourites/favourites_info_data_model.dart';
+import 'package:blind_chicken/old_repos/models/src/products/product_data_model.dart';
+import 'package:blind_chicken/old_repos/repositories/src/basket/basket_repository.dart';
+import 'package:blind_chicken/old_repos/repositories/src/catalog/catalog_repository.dart';
+import 'package:blind_chicken/old_repos/repositories/src/favourites/favourites_repository.dart';
+import 'package:blind_chicken/old_repos/shared/src/constants/message_info.dart';
+import 'package:blind_chicken/old_repos/shared/src/constants/shared_pref_keys.dart';
+import 'package:blind_chicken/old_repos/shared/src/services/app_metrica_ecommerce_service.dart';
+import 'package:blind_chicken/old_repos/shared/src/services/shared_preferences_service.dart';
+import 'package:blind_chicken/old_repos/shared/src/services/update_data_service.dart';
 import 'package:decimal/decimal.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
-import 'package:blind_chicken/old_repos/models/models.dart';
-import 'package:blind_chicken/old_repos/repositories/repositories.dart';
-import 'package:blind_chicken/old_repos/shared/shared.dart';
 
 part 'card_info_event.dart';
 

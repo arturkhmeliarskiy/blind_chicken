@@ -1,4 +1,6 @@
 import 'package:auto_route/auto_route.dart';
+import 'package:blind_chicken/old_repos/ui_kit/src/constants/colors/blind_chicken_colors.dart';
+import 'package:blind_chicken/old_repos/ui_kit/src/widgets/blind_chicken_pay_installments_sberbank.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:blind_chicken/old_repos/ui_kit/ui_kit.dart';

@@ -1,8 +1,11 @@
 import 'package:auto_route/auto_route.dart';
-import 'package:blind_chicken/old_repos/blocs/blocs.dart';
+import 'package:blind_chicken/old_repos/blocs/src/card_info/card_info_bloc.dart';
+import 'package:blind_chicken/old_repos/models/src/news/media_info_item_data_model.dart';
+import 'package:blind_chicken/old_repos/models/src/news/news_info_item_data_model.dart';
+import 'package:blind_chicken/old_repos/models/src/news/notification_info_item_data_model.dart';
+import 'package:blind_chicken/old_repos/models/src/products/product_data_model.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:blind_chicken/old_repos/models/models.dart';
 
 import 'card_info_screen_view.dart';
 
