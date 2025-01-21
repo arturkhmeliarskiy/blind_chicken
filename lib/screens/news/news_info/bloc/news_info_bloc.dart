@@ -75,6 +75,9 @@ class NewsInfoBloc extends Bloc<NewsInfoEvent, NewsInfoState> {
           if (_localRepository.getNewsWasReadValue(item.id)) {
             item.isViewed = true;
           }
+          if (_localRepository.getNewsWasLikedValue(item.id) == true) {
+            item.isLiked = true;
+          }
           list.add(item);
         }
         emit(state.copyWith(listNews: list));
@@ -128,42 +131,59 @@ class NewsInfoBloc extends Bloc<NewsInfoEvent, NewsInfoState> {
     await _appRouter.push(NotificationInfoDescriptionRoute(info: event.item));
   }
 
+  final _callTimestamps = <DateTime>[];
+
   FutureOr<void> _itemWasRead(_ItemWasRead event, Emitter<NewsInfoState> emit) async {
-    //Either<ErrorResponse?, UnreadModel?> newsResponseUnread = await _remoteRepository.news.sendWhatRead(
-    //  idRead: event.item.id,
-    //  typeContent: state.typeContentActive,
-    //);
-    //newsResponseUnread.fold(
-    //  (l) {
-    //    emit(state.copyWith(action: ShowSomethingWrong(errorResponse: l)));
-    //  },
-    //  (r) {
-    //    emit(state.copyWith(unreadModel: r));
-    //  },
-    //);
-//
-    //for (var item in state.listNews) {
-    //  if (item.id == event.item.id) {
-    //    logging(item.toRawJson(), name: 'item');
-    //  }
-    //}
-    //await _localRepository.setNewsWasReadValue(event.item.id);
-    //List<NewsElement> list = [];
-    //for (var item in state.listNews) {
-    //  if (item.id == event.item.id) {
-    //    NewsElement newsElement = NewsElement.fromRawJson(item.toRawJson());
-    //    newsElement.isViewed = true;
-    //    list.add(newsElement);
-    //  } else {
-    //    list.add(item);
-    //  }
-    //}
-    //emit(state.copyWith(listNews: list.toList()));
-    //for (var item in state.listNews) {
-    //  if (item.id == event.item.id) {
-    //    logging(item.toRawJson(), name: 'item');
-    //  }
-    //}
+    logging('sendWhatRead', stackTrace: StackTrace.current);
+    final now = DateTime.now();
+
+    // Удаляем старые записи временных меток старше 1/3 секунды
+    _callTimestamps.removeWhere((timestamp) => now.difference(timestamp).inMilliseconds > 333);
+
+    // Добавляем текущую временную метку
+    _callTimestamps.add(now);
+
+    // Если количество вызовов больше 10 за последние 1/3 секунды, выходим из метода
+    if (_callTimestamps.length > 10) {
+      logging('Method call limit exceeded', name: 'itemWasRead', stackTrace: StackTrace.current);
+      return;
+    }
+
+    Either<ErrorResponse?, UnreadModel?> newsResponseUnread = await _remoteRepository.news.sendWhatRead(
+      idRead: event.item.id,
+      typeContent: state.typeContentActive,
+    );
+    newsResponseUnread.fold(
+      (l) {
+        emit(state.copyWith(action: ShowSomethingWrong(errorResponse: l)));
+      },
+      (r) {
+        emit(state.copyWith(unreadModel: r));
+      },
+    );
+
+    for (var item in state.listNews) {
+      if (item.id == event.item.id) {
+        logging(item.toRawJson(), name: 'item');
+      }
+    }
+    await _localRepository.setNewsWasReadValue(event.item.id);
+    List<NewsElement> list = [];
+    for (var item in state.listNews) {
+      if (item.id == event.item.id) {
+        NewsElement newsElement = NewsElement.fromRawJson(item.toRawJson());
+        newsElement.isViewed = true;
+        list.add(newsElement);
+      } else {
+        list.add(item);
+      }
+    }
+    emit(state.copyWith(listNews: list.toList()));
+    for (var item in state.listNews) {
+      if (item.id == event.item.id) {
+        logging(item.toRawJson(), name: 'item');
+      }
+    }
   }
 
   FutureOr<void> _switchTab(_SwitchTab event, Emitter<NewsInfoState> emit) {
@@ -188,13 +208,38 @@ class NewsInfoBloc extends Bloc<NewsInfoEvent, NewsInfoState> {
     SharedPreferencesService sharedPreferencesService = SharedPreferencesService();
     await sharedPreferencesService.initialize();
     final isAuth = sharedPreferencesService.getBool(key: SharedPrefKeys.userAuthorized) ?? false;
+    _localRepository.setNewsWasLikedValue(event.item.id);
 
     if (isAuth == false) {
       emit(state.copyWith(action: LogInToLike()));
     } else {
-      await _remoteRepository.news.likeNews(
+      Either<ErrorResponse?, int> value = await _remoteRepository.news.likeNews(
         idNews: event.item.id,
         isLiked: event.isLike,
+      );
+      value.fold(
+        (l) {
+          emit(state.copyWith(action: ShowSomethingWrong(errorResponse: l)));
+        },
+        (r) {
+          for (var item in state.listNews) {
+            if (item.id == event.item.id) {
+              NewsElement newsElement = NewsElement.fromRawJson(item.toRawJson());
+              newsElement.countLike = r;
+              newsElement.isLiked = event.isLike;
+              List<NewsElement> list = [];
+              for (var item in state.listNews) {
+                if (item.id == event.item.id) {
+                  list.add(newsElement);
+                }else {
+                  list.add(item);
+                }
+              }
+              list.add(newsElement);
+              emit(state.copyWith(listNews: list.toList()));
+            }
+          }
+        },
       );
     }
   }

@@ -11,7 +11,6 @@ import 'package:blind_chicken/core_config/ui/widgets/widgets/others/screen_wrapp
 import 'package:blind_chicken/core_config/utils/context_extensions.dart';
 import 'package:blind_chicken/gen/assets.gen.dart';
 import 'package:blind_chicken/old_repos/shared/src/constants/date_info.dart';
-import 'package:blind_chicken/old_repos/ui_kit/reaction_button/flutter_reaction_button.dart';
 import 'package:blind_chicken/old_repos/ui_kit/src/constants/colors/blind_chicken_colors.dart';
 import 'package:blind_chicken/old_repos/ui_kit/src/widgets/app_bar_blind_chicken.dart';
 import 'package:blind_chicken/screens/app/router/app_router.dart';
@@ -141,13 +140,15 @@ class _NewsInfoRepairedScreenState extends State<NewsInfoRepairedScreen> with Ti
           return SizedBox.shrink();
         }
         return GestureDetector(
-          onTap: () async{
+          onTap: () async {
             await _scrollController.animateTo(
               0,
               duration: Duration(milliseconds: 300),
               curve: Curves.easeInOut,
             );
-            context.sendEvent<NewsInfoBloc>(NewsInfoEvent.hideArrow(_scrollController.position.pixels));
+            if (context.mounted) {
+              context.sendEvent<NewsInfoBloc>(NewsInfoEvent.hideArrow(_scrollController.position.pixels));
+            }
           },
           child: Container(
             height: 40,
@@ -300,10 +301,10 @@ class _NewsInfoRepairedScreenState extends State<NewsInfoRepairedScreen> with Ti
       padding: EdgeInsets.zero,
       itemBuilder: (context, index) {
         if (state.listNews[index].isViewed == false) {
-          //todo back context.sendEvent<NewsInfoBloc>(NewsInfoEvent.itemWasRead(state.listNews[index]));
+          context.sendEvent<NewsInfoBloc>(NewsInfoEvent.itemWasRead(state.listNews[index]));
         }
-        if (state.listNews.length - 1 - 4 == index) {
-         context.sendEvent<NewsInfoBloc>(NewsInfoEvent.loadMore());
+        if (state.listNews.length - 5 == index) {
+          context.sendEvent<NewsInfoBloc>(NewsInfoEvent.loadMore());
         }
         return Column(
           children: [
@@ -324,8 +325,16 @@ class _NewsInfoRepairedScreenState extends State<NewsInfoRepairedScreen> with Ti
               },
               emotionWidget: Row(
                 children: [
-                  buildEmotionButtons(state.listNews[index]),
-                  if (state.listNews[index].countLike > 0) Text(state.listNews[index].countLike.toString()),
+                  buildEmotionButtons(state.listNews[index], index),
+                  SizedBox(width: 8),
+                  if (state.listNews[index].countLike > 0)
+                    Text(
+                      state.listNews[index].countLike.toString(),
+                      style: TextStyle(
+                        color: state.listNews[index].isLiked == true ? AppColors.accentRed.withOpacity(0.6) : null,
+                        fontSize: 14,
+                      ),
+                    ),
                 ],
               ),
               readWidget: buildReadChecker(context, index),
@@ -349,6 +358,7 @@ class _NewsInfoRepairedScreenState extends State<NewsInfoRepairedScreen> with Ti
                 DateInfo.dateFormat(state.listNews[index].createAt.toIso8601String()),
                 style: Theme.of(context).textTheme.displaySmall?.copyWith(
                       color: BlindChickenColors.textInput,
+                      fontSize: 14,
                     ),
               ),
               if (state.listNews[index].isViewed == false)
@@ -411,57 +421,39 @@ class _NewsInfoRepairedScreenState extends State<NewsInfoRepairedScreen> with Ti
   }
 }
 
-Widget buildEmotionButtons(NewsElement item) {
+Widget buildEmotionButtons(NewsElement item, int index) {
   return Row(
     children: [
       SizedBox(width: 16),
-      buildEmotionItem(item),
+      buildEmotionItem(item, index),
     ],
   );
 }
 
-Widget buildEmotionItem(NewsElement item) {
-  double size = 30;
-  double additionalWidth = 0;
+Widget buildEmotionItem(NewsElement item, int index) {
+  double size = 24;
   return BlocBuilder<NewsInfoBloc, NewsInfoState>(
+    buildWhen: (previous, current) => previous.listNews[index].isLiked != current.listNews[index].isLiked,
     builder: (context, state) {
-      return Row(
-        children: [
-          ReactionButton<String>(
-            additionalWidth: additionalWidth,
-            itemSize: Size(size, size),
-            onReactionChanged: (Reaction<String>? reaction) {
-              debugPrint('Selected value: ${reaction?.value}');
-              context.sendEvent<NewsInfoBloc>(NewsInfoEvent.likeSelected(item, reaction?.value == 'like'));
-            },
-            reactions: <Reaction<String>>[
-              Reaction<String>(
-                value: 'dislike',
-                icon: SvgPicture.asset(
-                  Assets.icons.reaction.dislikeSvgrepoCom,
-                  height: size,
-                  width: size,
-                ),
-              ),
-              Reaction<String>(
-                value: 'like',
-                icon: SvgPicture.asset(
-                  Assets.icons.reaction.heartRedSvgrepoCom,
-                  height: size,
-                  width: size,
-                ),
-              ),
-            ],
-            selectedReaction: Reaction<String>(
-              value: 'like',
-              icon: SvgPicture.asset(
-                Assets.icons.reaction.heartRedSvgrepoCom,
-                height: size,
-                width: size,
-              ),
-            ),
-          ),
-        ],
+      return GestureWrapper(
+        onTap: () {
+          context.sendEvent<NewsInfoBloc>(NewsInfoEvent.likeSelected(item, !item.isLiked));
+        },
+        child: Row(
+          children: [
+            item.isLiked == true
+                ? SvgPicture.asset(
+                    Assets.icons.reaction.heartDecorationSvgrepoCom,
+                    height: size,
+                    width: size,
+                  )
+                : SvgPicture.asset(
+                    Assets.icons.reaction.heartSvgrepoCom,
+                    height: size,
+                    width: size,
+                  ),
+          ],
+        ),
       );
     },
   );

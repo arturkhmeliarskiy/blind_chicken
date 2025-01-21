@@ -7,7 +7,7 @@ abstract class _RepositoryNews {
 
   Future<Either<ErrorResponse?, NotificationInfoResponse?>> getNotification({required int page});
 
-  Future<Either<ErrorResponse?, bool>> likeNews({
+  Future<Either<ErrorResponse?, int>> likeNews({
     required String idNews,
     required bool isLiked,
   });
@@ -64,7 +64,7 @@ class RemoteRepositoryNews implements _RepositoryNews {
       final result = jsonDecode(response.data);
 
       newsResponse = News.fromJson(result);
-      logging(newsResponse.list.first.videos.toString(),stackTrace: StackTrace.current,name: 'newsResponseError');
+      logging(newsResponse.list.first.videos.toString(), stackTrace: StackTrace.current, name: 'newsResponseError');
       return Right(newsResponse);
     } on DioException catch (e, s) {
       logging(e.toString(), stackTrace: StackTrace.current, logLevel: LogLevel.error);
@@ -275,7 +275,7 @@ class RemoteRepositoryNews implements _RepositoryNews {
   }
 
   @override
-  Future<Either<ErrorResponse?, bool>> likeNews({required String idNews, required bool isLiked}) async {
+  Future<Either<ErrorResponse?, int>> likeNews({required String idNews, required bool isLiked}) async {
     String currentMethod = CustomTrace.from(StackTrace.current).functionName.toString();
     SharedPreferencesService sharedPreferencesService = SharedPreferencesService();
     await sharedPreferencesService.initialize();
@@ -308,7 +308,9 @@ class RemoteRepositoryNews implements _RepositoryNews {
       );
       logging(response.toString(), name: 'Body $currentMethod');
       logging('end', stackTrace: StackTrace.current);
-      return Right(true);
+      int result = 0;
+      result = int.tryParse(jsonDecode(response.data)['body']['count'])??0;
+      return Right(result);
     } on DioException catch (e, s) {
       logging(e.toString(), stackTrace: StackTrace.current, logLevel: LogLevel.error);
       logging(s.toString(), stackTrace: StackTrace.current, logLevel: LogLevel.error);

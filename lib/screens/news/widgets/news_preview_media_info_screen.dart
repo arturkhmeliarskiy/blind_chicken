@@ -147,8 +147,8 @@ class _NewsPreviewMediaScreenState extends State<NewsPreviewMediaInfoScreen> {
                         },
                         child: Container(
                           margin: const EdgeInsets.only(
-                            top: 14,
-                            right: 10.5,
+                            top: 15,
+                            right: 15,
                           ),
                           alignment: Alignment.topRight,
                           child: SvgPicture.asset(

@@ -52,6 +52,7 @@ class NewsElement {
   String? uidStore;
   int countLike;
   bool isViewed;
+  bool isLiked;
 
   NewsElement({
     required this.id,
@@ -74,6 +75,7 @@ class NewsElement {
     required this.uidStore,
     required this.countLike,
     this.isViewed = false,
+    this.isLiked = false,
   });
 
   factory NewsElement.fromRawJson(String str) => NewsElement.fromJson(json.decode(str));
@@ -81,12 +83,20 @@ class NewsElement {
   String toRawJson() => json.encode(toJson());
 
   factory NewsElement.fromJson(Map<String, dynamic> json) {
+    String? video;
+    if (json["video"] != null) {
+      video = Env.baseUrl + json["video"];
+      if (json["video"].toString().isNullOrEmpty) {
+        video = null;
+      }
+    }
+
     return NewsElement(
       id: json["id"],
       title: json["title"],
       createAt: DateTime.parse(json["create_at"]),
       images: List<String>.from(json["images"].map((x) => "${Env.baseUrl}$x")),
-      video: json["video"].toString().isNullOrEmpty ? null : (Env.baseUrl + json["video"]),
+      video: video,
       videos: List<String>.from(json["videos"].map((x) {
         if (x.toString().isNotNullOrEmpty) return "${Env.baseUrl}$x";
       })),
@@ -104,6 +114,7 @@ class NewsElement {
       uidStore: json["uid_store"],
       countLike: json["count_like"],
       isViewed: json["isViewed"] ?? false,
+      isLiked: json["isLiked"] ?? false,
     );
   }
 
@@ -128,6 +139,7 @@ class NewsElement {
         "uid_store": uidStore,
         "count_like": countLike,
         "isViewed": isViewed,
+        "isLiked": isLiked,
       };
 }
 

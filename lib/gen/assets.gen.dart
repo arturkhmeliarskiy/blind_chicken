@@ -223,26 +223,6 @@ class $AssetsIconsGen {
   /// File path: assets/icons/message-circle.svg
   String get messageCircle => 'assets/icons/message-circle.svg';
 
-  /// Directory path: assets/icons/onboarding_fifth_step
-  $AssetsIconsOnboardingFifthStepGen get onboardingFifthStep =>
-      const $AssetsIconsOnboardingFifthStepGen();
-
-  /// Directory path: assets/icons/onboarding_first_step
-  $AssetsIconsOnboardingFirstStepGen get onboardingFirstStep =>
-      const $AssetsIconsOnboardingFirstStepGen();
-
-  /// Directory path: assets/icons/onboarding_fourth_step
-  $AssetsIconsOnboardingFourthStepGen get onboardingFourthStep =>
-      const $AssetsIconsOnboardingFourthStepGen();
-
-  /// Directory path: assets/icons/onboarding_second_step
-  $AssetsIconsOnboardingSecondStepGen get onboardingSecondStep =>
-      const $AssetsIconsOnboardingSecondStepGen();
-
-  /// Directory path: assets/icons/onboarding_third_step
-  $AssetsIconsOnboardingThirdStepGen get onboardingThirdStep =>
-      const $AssetsIconsOnboardingThirdStepGen();
-
   /// Directory path: assets/icons/order
   $AssetsIconsOrderGen get order => const $AssetsIconsOrderGen();
 
@@ -295,16 +275,8 @@ class $AssetsIconsGen {
   /// File path: assets/icons/sort.svg
   String get sort => 'assets/icons/sort.svg';
 
-  /// Directory path: assets/icons/store_settings
-  $AssetsIconsStoreSettingsGen get storeSettings =>
-      const $AssetsIconsStoreSettingsGen();
-
   /// Directory path: assets/icons/tabbar
   $AssetsIconsTabbarGen get tabbar => const $AssetsIconsTabbarGen();
-
-  /// Directory path: assets/icons/tip_after_registration
-  $AssetsIconsTipAfterRegistrationGen get tipAfterRegistration =>
-      const $AssetsIconsTipAfterRegistrationGen();
 
   /// File path: assets/icons/user.svg
   String get user => 'assets/icons/user.svg';
@@ -1166,65 +1138,6 @@ class $AssetsIconsMapGen {
   List<String> get values => [mapIcon, markerAndroid, markerIos];
 }
 
-class $AssetsIconsOnboardingFifthStepGen {
-  const $AssetsIconsOnboardingFifthStepGen();
-
-  /// File path: assets/icons/onboarding_fifth_step/apple.svg
-  String get apple => 'assets/icons/onboarding_fifth_step/apple.svg';
-
-  /// File path: assets/icons/onboarding_fifth_step/google.svg
-  String get google => 'assets/icons/onboarding_fifth_step/google.svg';
-
-  /// File path: assets/icons/onboarding_fifth_step/mark.svg
-  String get mark => 'assets/icons/onboarding_fifth_step/mark.svg';
-
-  /// File path: assets/icons/onboarding_fifth_step/separator.svg
-  String get separator => 'assets/icons/onboarding_fifth_step/separator.svg';
-
-  /// List of all assets
-  List<String> get values => [apple, google, mark, separator];
-}
-
-class $AssetsIconsOnboardingFirstStepGen {
-  const $AssetsIconsOnboardingFirstStepGen();
-
-  /// File path: assets/icons/onboarding_first_step/earth.svg
-  String get earth => 'assets/icons/onboarding_first_step/earth.svg';
-
-  /// List of all assets
-  List<String> get values => [earth];
-}
-
-class $AssetsIconsOnboardingFourthStepGen {
-  const $AssetsIconsOnboardingFourthStepGen();
-
-  /// File path: assets/icons/onboarding_fourth_step/money_bag.svg
-  String get moneyBag => 'assets/icons/onboarding_fourth_step/money_bag.svg';
-
-  /// List of all assets
-  List<String> get values => [moneyBag];
-}
-
-class $AssetsIconsOnboardingSecondStepGen {
-  const $AssetsIconsOnboardingSecondStepGen();
-
-  /// File path: assets/icons/onboarding_second_step/phone.svg
-  String get phone => 'assets/icons/onboarding_second_step/phone.svg';
-
-  /// List of all assets
-  List<String> get values => [phone];
-}
-
-class $AssetsIconsOnboardingThirdStepGen {
-  const $AssetsIconsOnboardingThirdStepGen();
-
-  /// File path: assets/icons/onboarding_third_step/robot_face.svg
-  String get robotFace => 'assets/icons/onboarding_third_step/robot_face.svg';
-
-  /// List of all assets
-  List<String> get values => [robotFace];
-}
-
 class $AssetsIconsOrderGen {
   const $AssetsIconsOrderGen();
 
@@ -1597,57 +1510,15 @@ class $AssetsIconsOtherGen {
 class $AssetsIconsReactionGen {
   const $AssetsIconsReactionGen();
 
-  /// File path: assets/icons/reaction/dislike-svgrepo-com.svg
-  String get dislikeSvgrepoCom =>
-      'assets/icons/reaction/dislike-svgrepo-com.svg';
+  /// File path: assets/icons/reaction/heart-decoration-svgrepo-com.svg
+  String get heartDecorationSvgrepoCom =>
+      'assets/icons/reaction/heart-decoration-svgrepo-com.svg';
 
-  /// File path: assets/icons/reaction/fire-svgrepo-com.svg
-  String get fireSvgrepoCom => 'assets/icons/reaction/fire-svgrepo-com.svg';
-
-  /// File path: assets/icons/reaction/grinning-face-with-smiling-eyes-svgrepo-com.svg
-  String get grinningFaceWithSmilingEyesSvgrepoCom =>
-      'assets/icons/reaction/grinning-face-with-smiling-eyes-svgrepo-com.svg';
-
-  /// File path: assets/icons/reaction/heart-red-svgrepo-com.svg
-  String get heartRedSvgrepoCom =>
-      'assets/icons/reaction/heart-red-svgrepo-com.svg';
-
-  /// File path: assets/icons/reaction/smile-plus-svgrepo-com.svg
-  String get smilePlusSvgrepoCom =>
-      'assets/icons/reaction/smile-plus-svgrepo-com.svg';
-
-  /// File path: assets/icons/reaction/thinking-face-svgrepo-com.svg
-  String get thinkingFaceSvgrepoCom =>
-      'assets/icons/reaction/thinking-face-svgrepo-com.svg';
+  /// File path: assets/icons/reaction/heart-svgrepo-com.svg
+  String get heartSvgrepoCom => 'assets/icons/reaction/heart-svgrepo-com.svg';
 
   /// List of all assets
-  List<String> get values => [
-        dislikeSvgrepoCom,
-        fireSvgrepoCom,
-        grinningFaceWithSmilingEyesSvgrepoCom,
-        heartRedSvgrepoCom,
-        smilePlusSvgrepoCom,
-        thinkingFaceSvgrepoCom
-      ];
-}
-
-class $AssetsIconsStoreSettingsGen {
-  const $AssetsIconsStoreSettingsGen();
-
-  /// File path: assets/icons/store_settings/check.svg
-  String get check => 'assets/icons/store_settings/check.svg';
-
-  /// File path: assets/icons/store_settings/error_icon.svg
-  String get errorIcon => 'assets/icons/store_settings/error_icon.svg';
-
-  /// File path: assets/icons/store_settings/frame.svg
-  String get frame => 'assets/icons/store_settings/frame.svg';
-
-  /// File path: assets/icons/store_settings/question.svg
-  String get question => 'assets/icons/store_settings/question.svg';
-
-  /// List of all assets
-  List<String> get values => [check, errorIcon, frame, question];
+  List<String> get values => [heartDecorationSvgrepoCom, heartSvgrepoCom];
 }
 
 class $AssetsIconsTabbarGen {
@@ -1694,16 +1565,6 @@ class $AssetsIconsTabbarGen {
         shoppingCartActive,
         shoppingCartInactive
       ];
-}
-
-class $AssetsIconsTipAfterRegistrationGen {
-  const $AssetsIconsTipAfterRegistrationGen();
-
-  /// File path: assets/icons/tip_after_registration/boomber.svg
-  String get boomber => 'assets/icons/tip_after_registration/boomber.svg';
-
-  /// List of all assets
-  List<String> get values => [boomber];
 }
 
 class $AssetsImagesCreateProductGen {

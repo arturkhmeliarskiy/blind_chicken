@@ -66,14 +66,14 @@ class _NewsItemTabInfoState extends State<NewsItemTabInfo> with AutomaticKeepAli
     if (videoUrl.isNullOrEmpty) {
       return buildBody(width, context);
     }
-    print(videoUrl);
+    //print(videoUrl);
     return Stack(
       alignment: Alignment.topRight,
       children: [
         VisibilityDetector(
           key: Key('video_$videoUrl'),
           onVisibilityChanged: (visibilityInfo) {
-            print(videoUrl);
+            //print(videoUrl);
             double visiblePercentage = visibilityInfo.visibleFraction * 100;
             logging("Video visibility: $visiblePercentage%", name: "Visibility", stackTrace: StackTrace.current);
 
@@ -121,6 +121,8 @@ class _NewsItemTabInfoState extends State<NewsItemTabInfo> with AutomaticKeepAli
                     borderRadius: const BorderRadius.only(
                       topLeft: Radius.circular(15),
                       topRight: Radius.circular(15),
+                      bottomLeft: Radius.circular(15),
+                      bottomRight: Radius.circular(15),
                     ),
                     color: widget.item.isViewed
                         ? BlindChickenColors.backgroundColorItemFilter
@@ -138,31 +140,31 @@ class _NewsItemTabInfoState extends State<NewsItemTabInfo> with AutomaticKeepAli
                           buildMultipleImages(context),
                         if (widget.item.typeMedia == TypeMedia.video && widget.item.typeVideo == TypeVideo.original)
                           buildOriginalVideo(),
-                        const SizedBox(height: 12),
-                        Padding(
-                          padding: const EdgeInsets.symmetric(horizontal: 16),
-                          child: Row(
-                            children: [
-                              if (widget.item.isViewed)
-                                const SizedBox(
-                                  height: 15,
-                                  width: 25,
-                                ),
-                            ],
-                          ),
-                        ),
-                        const SizedBox(height: 14),
+                        //const SizedBox(height: 12),
+                        //Padding(
+                        //  padding: const EdgeInsets.symmetric(horizontal: 16),
+                        //  child: Row(
+                        //    children: [
+                        //      if (widget.item.isViewed)
+                        //        const SizedBox(
+                        //          height: 15,
+                        //          width: 25,
+                        //        ),
+                        //    ],
+                        //  ),
+                        //),
+                        const SizedBox(height: 20),
                         buildTextPost(context),
-                        const SizedBox(height: 12),
+                        const SizedBox(height: 16),
                         Row(
-                          crossAxisAlignment: CrossAxisAlignment.end,
+                          crossAxisAlignment: CrossAxisAlignment.center,
                           children: [
                             widget.emotionWidget ?? SizedBox(),
                             const Spacer(),
                             widget.readWidget ?? SizedBox(),
                           ],
                         ),
-                        const SizedBox(height: 16),
+                        const SizedBox(height: 12),
                       ],
                     ),
                   ),

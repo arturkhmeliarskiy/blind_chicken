@@ -1,6 +1,5 @@
 import 'package:blind_chicken/core_config/ui/resources/app_border_radius.dart';
 import 'package:blind_chicken/core_config/ui/widgets/widgets/inputs/app_text_form_field.dart';
-import 'package:blind_chicken/core_config/ui/widgets/widgets/others/separator.dart';
 import 'package:blind_chicken/core_config/utils/context_extensions.dart';
 import 'package:blind_chicken/core_config/utils/list_extensions.dart';
 import 'package:flutter/material.dart';
@@ -35,7 +34,6 @@ Future<dynamic> showModalWithTextField({
         child: Column(
           mainAxisSize: MainAxisSize.min,
           children: [
-            const BottomSheetSeparator(isSmall: true),
             const SizedBox(height: 16),
             Column(
               mainAxisSize: MainAxisSize.min,

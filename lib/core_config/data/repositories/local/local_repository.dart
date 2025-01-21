@@ -25,6 +25,7 @@ class LocalRepository {
   static const _tokenKey = 'token';
   static const _exampleKey = 'exampleKey';
   static const _newsKey = 'news';
+  static const _likesKey = 'likes';
 
   FlutterSecureStorage flutterSecureStorage;
   SharedPreferences sharedPreferences;
@@ -53,6 +54,17 @@ class LocalRepository {
 
   bool getNewsWasReadValue(String idNews) {
     return sharedPreferences.getBool(idNews + _newsKey) ?? false;
+  }
+
+  Future<bool> setNewsWasLikedValue(String idNews) {
+    if (getNewsWasLikedValue(idNews) == true) {
+      return sharedPreferences.remove(idNews + _likesKey);
+    }
+    return sharedPreferences.setBool(idNews + _likesKey, true);
+  }
+
+  bool getNewsWasLikedValue(String idNews) {
+    return sharedPreferences.getBool(idNews + _likesKey) ?? false;
   }
 
   Future<void> clear() async {
