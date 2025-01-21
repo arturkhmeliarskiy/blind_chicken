@@ -5,8 +5,10 @@ class NewsInfoState extends BaseBlocState with _$NewsInfoState {
   factory NewsInfoState({
     BlocAction? action,
     @Default(true) bool isLoading,
-    @Default([]) List<NewsInfoItemDataModel> listNews,
+    @Default([]) List<NewsElement> listNews,
     @Default([]) List<NotificationInfoItemDataModel> listNotifications,
+    @Default(null) UnreadModel? unreadModel,
     @Default(TypeContent.news) TypeContent typeContentActive,
+    @Default(false) bool isArrowVisible,
   }) = _StartState;
 }

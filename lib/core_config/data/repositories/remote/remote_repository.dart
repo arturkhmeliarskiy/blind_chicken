@@ -13,6 +13,8 @@ import 'package:blind_chicken/old_repos/api_models/src/news/notification_info_re
 import 'package:blind_chicken/old_repos/shared/src/constants/shared_pref_keys.dart';
 import 'package:blind_chicken/old_repos/shared/src/services/converter_service.dart';
 import 'package:blind_chicken/old_repos/shared/src/services/shared_preferences_service.dart';
+import 'package:blind_chicken/screens/news/news_info/models/news_model.dart';
+import 'package:blind_chicken/screens/news/news_info/models/unread_model.dart';
 import 'package:dartz/dartz.dart';
 import 'package:dio/dio.dart';
 import 'package:package_info_plus/package_info_plus.dart';

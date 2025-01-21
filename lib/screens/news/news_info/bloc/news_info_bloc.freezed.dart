@@ -20,32 +20,38 @@ mixin _$NewsInfoEvent {
   TResult when<TResult extends Object?>({
     required TResult Function() init,
     required TResult Function() loadMore,
-    required TResult Function(NewsInfoItemDataModel item) itemWasRead,
+    required TResult Function(NewsElement item) itemWasRead,
     required TResult Function(TypeContent typeContent) switchTab,
-    required TResult Function() likeSelected,
+    required TResult Function(NewsElement item, bool isLike) likeSelected,
     required TResult Function(NotificationInfoItemDataModel item)
         pressedOnNotification,
+    required TResult Function(double scrollPosition) onScrollUp,
+    required TResult Function(double scrollPosition) hideArrow,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? init,
     TResult? Function()? loadMore,
-    TResult? Function(NewsInfoItemDataModel item)? itemWasRead,
+    TResult? Function(NewsElement item)? itemWasRead,
     TResult? Function(TypeContent typeContent)? switchTab,
-    TResult? Function()? likeSelected,
+    TResult? Function(NewsElement item, bool isLike)? likeSelected,
     TResult? Function(NotificationInfoItemDataModel item)?
         pressedOnNotification,
+    TResult? Function(double scrollPosition)? onScrollUp,
+    TResult? Function(double scrollPosition)? hideArrow,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? init,
     TResult Function()? loadMore,
-    TResult Function(NewsInfoItemDataModel item)? itemWasRead,
+    TResult Function(NewsElement item)? itemWasRead,
     TResult Function(TypeContent typeContent)? switchTab,
-    TResult Function()? likeSelected,
+    TResult Function(NewsElement item, bool isLike)? likeSelected,
     TResult Function(NotificationInfoItemDataModel item)? pressedOnNotification,
+    TResult Function(double scrollPosition)? onScrollUp,
+    TResult Function(double scrollPosition)? hideArrow,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -58,6 +64,8 @@ mixin _$NewsInfoEvent {
     required TResult Function(_LikeSelected value) likeSelected,
     required TResult Function(_PressedOnNotification value)
         pressedOnNotification,
+    required TResult Function(_OnScrollUp value) onScrollUp,
+    required TResult Function(_HideArrow value) hideArrow,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -68,6 +76,8 @@ mixin _$NewsInfoEvent {
     TResult? Function(_SwitchTab value)? switchTab,
     TResult? Function(_LikeSelected value)? likeSelected,
     TResult? Function(_PressedOnNotification value)? pressedOnNotification,
+    TResult? Function(_OnScrollUp value)? onScrollUp,
+    TResult? Function(_HideArrow value)? hideArrow,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -78,6 +88,8 @@ mixin _$NewsInfoEvent {
     TResult Function(_SwitchTab value)? switchTab,
     TResult Function(_LikeSelected value)? likeSelected,
     TResult Function(_PressedOnNotification value)? pressedOnNotification,
+    TResult Function(_OnScrollUp value)? onScrollUp,
+    TResult Function(_HideArrow value)? hideArrow,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -146,11 +158,13 @@ class _$InitImpl implements _Init {
   TResult when<TResult extends Object?>({
     required TResult Function() init,
     required TResult Function() loadMore,
-    required TResult Function(NewsInfoItemDataModel item) itemWasRead,
+    required TResult Function(NewsElement item) itemWasRead,
     required TResult Function(TypeContent typeContent) switchTab,
-    required TResult Function() likeSelected,
+    required TResult Function(NewsElement item, bool isLike) likeSelected,
     required TResult Function(NotificationInfoItemDataModel item)
         pressedOnNotification,
+    required TResult Function(double scrollPosition) onScrollUp,
+    required TResult Function(double scrollPosition) hideArrow,
   }) {
     return init();
   }
@@ -160,11 +174,13 @@ class _$InitImpl implements _Init {
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? init,
     TResult? Function()? loadMore,
-    TResult? Function(NewsInfoItemDataModel item)? itemWasRead,
+    TResult? Function(NewsElement item)? itemWasRead,
     TResult? Function(TypeContent typeContent)? switchTab,
-    TResult? Function()? likeSelected,
+    TResult? Function(NewsElement item, bool isLike)? likeSelected,
     TResult? Function(NotificationInfoItemDataModel item)?
         pressedOnNotification,
+    TResult? Function(double scrollPosition)? onScrollUp,
+    TResult? Function(double scrollPosition)? hideArrow,
   }) {
     return init?.call();
   }
@@ -174,10 +190,12 @@ class _$InitImpl implements _Init {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? init,
     TResult Function()? loadMore,
-    TResult Function(NewsInfoItemDataModel item)? itemWasRead,
+    TResult Function(NewsElement item)? itemWasRead,
     TResult Function(TypeContent typeContent)? switchTab,
-    TResult Function()? likeSelected,
+    TResult Function(NewsElement item, bool isLike)? likeSelected,
     TResult Function(NotificationInfoItemDataModel item)? pressedOnNotification,
+    TResult Function(double scrollPosition)? onScrollUp,
+    TResult Function(double scrollPosition)? hideArrow,
     required TResult orElse(),
   }) {
     if (init != null) {
@@ -196,6 +214,8 @@ class _$InitImpl implements _Init {
     required TResult Function(_LikeSelected value) likeSelected,
     required TResult Function(_PressedOnNotification value)
         pressedOnNotification,
+    required TResult Function(_OnScrollUp value) onScrollUp,
+    required TResult Function(_HideArrow value) hideArrow,
   }) {
     return init(this);
   }
@@ -209,6 +229,8 @@ class _$InitImpl implements _Init {
     TResult? Function(_SwitchTab value)? switchTab,
     TResult? Function(_LikeSelected value)? likeSelected,
     TResult? Function(_PressedOnNotification value)? pressedOnNotification,
+    TResult? Function(_OnScrollUp value)? onScrollUp,
+    TResult? Function(_HideArrow value)? hideArrow,
   }) {
     return init?.call(this);
   }
@@ -222,6 +244,8 @@ class _$InitImpl implements _Init {
     TResult Function(_SwitchTab value)? switchTab,
     TResult Function(_LikeSelected value)? likeSelected,
     TResult Function(_PressedOnNotification value)? pressedOnNotification,
+    TResult Function(_OnScrollUp value)? onScrollUp,
+    TResult Function(_HideArrow value)? hideArrow,
     required TResult orElse(),
   }) {
     if (init != null) {
@@ -278,11 +302,13 @@ class _$LoadMoreImpl implements _LoadMore {
   TResult when<TResult extends Object?>({
     required TResult Function() init,
     required TResult Function() loadMore,
-    required TResult Function(NewsInfoItemDataModel item) itemWasRead,
+    required TResult Function(NewsElement item) itemWasRead,
     required TResult Function(TypeContent typeContent) switchTab,
-    required TResult Function() likeSelected,
+    required TResult Function(NewsElement item, bool isLike) likeSelected,
     required TResult Function(NotificationInfoItemDataModel item)
         pressedOnNotification,
+    required TResult Function(double scrollPosition) onScrollUp,
+    required TResult Function(double scrollPosition) hideArrow,
   }) {
     return loadMore();
   }
@@ -292,11 +318,13 @@ class _$LoadMoreImpl implements _LoadMore {
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? init,
     TResult? Function()? loadMore,
-    TResult? Function(NewsInfoItemDataModel item)? itemWasRead,
+    TResult? Function(NewsElement item)? itemWasRead,
     TResult? Function(TypeContent typeContent)? switchTab,
-    TResult? Function()? likeSelected,
+    TResult? Function(NewsElement item, bool isLike)? likeSelected,
     TResult? Function(NotificationInfoItemDataModel item)?
         pressedOnNotification,
+    TResult? Function(double scrollPosition)? onScrollUp,
+    TResult? Function(double scrollPosition)? hideArrow,
   }) {
     return loadMore?.call();
   }
@@ -306,10 +334,12 @@ class _$LoadMoreImpl implements _LoadMore {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? init,
     TResult Function()? loadMore,
-    TResult Function(NewsInfoItemDataModel item)? itemWasRead,
+    TResult Function(NewsElement item)? itemWasRead,
     TResult Function(TypeContent typeContent)? switchTab,
-    TResult Function()? likeSelected,
+    TResult Function(NewsElement item, bool isLike)? likeSelected,
     TResult Function(NotificationInfoItemDataModel item)? pressedOnNotification,
+    TResult Function(double scrollPosition)? onScrollUp,
+    TResult Function(double scrollPosition)? hideArrow,
     required TResult orElse(),
   }) {
     if (loadMore != null) {
@@ -328,6 +358,8 @@ class _$LoadMoreImpl implements _LoadMore {
     required TResult Function(_LikeSelected value) likeSelected,
     required TResult Function(_PressedOnNotification value)
         pressedOnNotification,
+    required TResult Function(_OnScrollUp value) onScrollUp,
+    required TResult Function(_HideArrow value) hideArrow,
   }) {
     return loadMore(this);
   }
@@ -341,6 +373,8 @@ class _$LoadMoreImpl implements _LoadMore {
     TResult? Function(_SwitchTab value)? switchTab,
     TResult? Function(_LikeSelected value)? likeSelected,
     TResult? Function(_PressedOnNotification value)? pressedOnNotification,
+    TResult? Function(_OnScrollUp value)? onScrollUp,
+    TResult? Function(_HideArrow value)? hideArrow,
   }) {
     return loadMore?.call(this);
   }
@@ -354,6 +388,8 @@ class _$LoadMoreImpl implements _LoadMore {
     TResult Function(_SwitchTab value)? switchTab,
     TResult Function(_LikeSelected value)? likeSelected,
     TResult Function(_PressedOnNotification value)? pressedOnNotification,
+    TResult Function(_OnScrollUp value)? onScrollUp,
+    TResult Function(_HideArrow value)? hideArrow,
     required TResult orElse(),
   }) {
     if (loadMore != null) {
@@ -373,9 +409,7 @@ abstract class _$$ItemWasReadImplCopyWith<$Res> {
           _$ItemWasReadImpl value, $Res Function(_$ItemWasReadImpl) then) =
       __$$ItemWasReadImplCopyWithImpl<$Res>;
   @useResult
-  $Res call({NewsInfoItemDataModel item});
-
-  $NewsInfoItemDataModelCopyWith<$Res> get item;
+  $Res call({NewsElement item});
 }
 
 /// @nodoc
@@ -397,18 +431,8 @@ class __$$ItemWasReadImplCopyWithImpl<$Res>
       null == item
           ? _value.item
           : item // ignore: cast_nullable_to_non_nullable
-              as NewsInfoItemDataModel,
+              as NewsElement,
     ));
-  }
-
-  /// Create a copy of NewsInfoEvent
-  /// with the given fields replaced by the non-null parameter values.
-  @override
-  @pragma('vm:prefer-inline')
-  $NewsInfoItemDataModelCopyWith<$Res> get item {
-    return $NewsInfoItemDataModelCopyWith<$Res>(_value.item, (value) {
-      return _then(_value.copyWith(item: value));
-    });
   }
 }
 
@@ -418,7 +442,7 @@ class _$ItemWasReadImpl implements _ItemWasRead {
   const _$ItemWasReadImpl(this.item);
 
   @override
-  final NewsInfoItemDataModel item;
+  final NewsElement item;
 
   @override
   String toString() {
@@ -449,11 +473,13 @@ class _$ItemWasReadImpl implements _ItemWasRead {
   TResult when<TResult extends Object?>({
     required TResult Function() init,
     required TResult Function() loadMore,
-    required TResult Function(NewsInfoItemDataModel item) itemWasRead,
+    required TResult Function(NewsElement item) itemWasRead,
     required TResult Function(TypeContent typeContent) switchTab,
-    required TResult Function() likeSelected,
+    required TResult Function(NewsElement item, bool isLike) likeSelected,
     required TResult Function(NotificationInfoItemDataModel item)
         pressedOnNotification,
+    required TResult Function(double scrollPosition) onScrollUp,
+    required TResult Function(double scrollPosition) hideArrow,
   }) {
     return itemWasRead(item);
   }
@@ -463,11 +489,13 @@ class _$ItemWasReadImpl implements _ItemWasRead {
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? init,
     TResult? Function()? loadMore,
-    TResult? Function(NewsInfoItemDataModel item)? itemWasRead,
+    TResult? Function(NewsElement item)? itemWasRead,
     TResult? Function(TypeContent typeContent)? switchTab,
-    TResult? Function()? likeSelected,
+    TResult? Function(NewsElement item, bool isLike)? likeSelected,
     TResult? Function(NotificationInfoItemDataModel item)?
         pressedOnNotification,
+    TResult? Function(double scrollPosition)? onScrollUp,
+    TResult? Function(double scrollPosition)? hideArrow,
   }) {
     return itemWasRead?.call(item);
   }
@@ -477,10 +505,12 @@ class _$ItemWasReadImpl implements _ItemWasRead {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? init,
     TResult Function()? loadMore,
-    TResult Function(NewsInfoItemDataModel item)? itemWasRead,
+    TResult Function(NewsElement item)? itemWasRead,
     TResult Function(TypeContent typeContent)? switchTab,
-    TResult Function()? likeSelected,
+    TResult Function(NewsElement item, bool isLike)? likeSelected,
     TResult Function(NotificationInfoItemDataModel item)? pressedOnNotification,
+    TResult Function(double scrollPosition)? onScrollUp,
+    TResult Function(double scrollPosition)? hideArrow,
     required TResult orElse(),
   }) {
     if (itemWasRead != null) {
@@ -499,6 +529,8 @@ class _$ItemWasReadImpl implements _ItemWasRead {
     required TResult Function(_LikeSelected value) likeSelected,
     required TResult Function(_PressedOnNotification value)
         pressedOnNotification,
+    required TResult Function(_OnScrollUp value) onScrollUp,
+    required TResult Function(_HideArrow value) hideArrow,
   }) {
     return itemWasRead(this);
   }
@@ -512,6 +544,8 @@ class _$ItemWasReadImpl implements _ItemWasRead {
     TResult? Function(_SwitchTab value)? switchTab,
     TResult? Function(_LikeSelected value)? likeSelected,
     TResult? Function(_PressedOnNotification value)? pressedOnNotification,
+    TResult? Function(_OnScrollUp value)? onScrollUp,
+    TResult? Function(_HideArrow value)? hideArrow,
   }) {
     return itemWasRead?.call(this);
   }
@@ -525,6 +559,8 @@ class _$ItemWasReadImpl implements _ItemWasRead {
     TResult Function(_SwitchTab value)? switchTab,
     TResult Function(_LikeSelected value)? likeSelected,
     TResult Function(_PressedOnNotification value)? pressedOnNotification,
+    TResult Function(_OnScrollUp value)? onScrollUp,
+    TResult Function(_HideArrow value)? hideArrow,
     required TResult orElse(),
   }) {
     if (itemWasRead != null) {
@@ -535,10 +571,9 @@ class _$ItemWasReadImpl implements _ItemWasRead {
 }
 
 abstract class _ItemWasRead implements NewsInfoEvent {
-  const factory _ItemWasRead(final NewsInfoItemDataModel item) =
-      _$ItemWasReadImpl;
+  const factory _ItemWasRead(final NewsElement item) = _$ItemWasReadImpl;
 
-  NewsInfoItemDataModel get item;
+  NewsElement get item;
 
   /// Create a copy of NewsInfoEvent
   /// with the given fields replaced by the non-null parameter values.
@@ -618,11 +653,13 @@ class _$SwitchTabImpl implements _SwitchTab {
   TResult when<TResult extends Object?>({
     required TResult Function() init,
     required TResult Function() loadMore,
-    required TResult Function(NewsInfoItemDataModel item) itemWasRead,
+    required TResult Function(NewsElement item) itemWasRead,
     required TResult Function(TypeContent typeContent) switchTab,
-    required TResult Function() likeSelected,
+    required TResult Function(NewsElement item, bool isLike) likeSelected,
     required TResult Function(NotificationInfoItemDataModel item)
         pressedOnNotification,
+    required TResult Function(double scrollPosition) onScrollUp,
+    required TResult Function(double scrollPosition) hideArrow,
   }) {
     return switchTab(typeContent);
   }
@@ -632,11 +669,13 @@ class _$SwitchTabImpl implements _SwitchTab {
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? init,
     TResult? Function()? loadMore,
-    TResult? Function(NewsInfoItemDataModel item)? itemWasRead,
+    TResult? Function(NewsElement item)? itemWasRead,
     TResult? Function(TypeContent typeContent)? switchTab,
-    TResult? Function()? likeSelected,
+    TResult? Function(NewsElement item, bool isLike)? likeSelected,
     TResult? Function(NotificationInfoItemDataModel item)?
         pressedOnNotification,
+    TResult? Function(double scrollPosition)? onScrollUp,
+    TResult? Function(double scrollPosition)? hideArrow,
   }) {
     return switchTab?.call(typeContent);
   }
@@ -646,10 +685,12 @@ class _$SwitchTabImpl implements _SwitchTab {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? init,
     TResult Function()? loadMore,
-    TResult Function(NewsInfoItemDataModel item)? itemWasRead,
+    TResult Function(NewsElement item)? itemWasRead,
     TResult Function(TypeContent typeContent)? switchTab,
-    TResult Function()? likeSelected,
+    TResult Function(NewsElement item, bool isLike)? likeSelected,
     TResult Function(NotificationInfoItemDataModel item)? pressedOnNotification,
+    TResult Function(double scrollPosition)? onScrollUp,
+    TResult Function(double scrollPosition)? hideArrow,
     required TResult orElse(),
   }) {
     if (switchTab != null) {
@@ -668,6 +709,8 @@ class _$SwitchTabImpl implements _SwitchTab {
     required TResult Function(_LikeSelected value) likeSelected,
     required TResult Function(_PressedOnNotification value)
         pressedOnNotification,
+    required TResult Function(_OnScrollUp value) onScrollUp,
+    required TResult Function(_HideArrow value) hideArrow,
   }) {
     return switchTab(this);
   }
@@ -681,6 +724,8 @@ class _$SwitchTabImpl implements _SwitchTab {
     TResult? Function(_SwitchTab value)? switchTab,
     TResult? Function(_LikeSelected value)? likeSelected,
     TResult? Function(_PressedOnNotification value)? pressedOnNotification,
+    TResult? Function(_OnScrollUp value)? onScrollUp,
+    TResult? Function(_HideArrow value)? hideArrow,
   }) {
     return switchTab?.call(this);
   }
@@ -694,6 +739,8 @@ class _$SwitchTabImpl implements _SwitchTab {
     TResult Function(_SwitchTab value)? switchTab,
     TResult Function(_LikeSelected value)? likeSelected,
     TResult Function(_PressedOnNotification value)? pressedOnNotification,
+    TResult Function(_OnScrollUp value)? onScrollUp,
+    TResult Function(_HideArrow value)? hideArrow,
     required TResult orElse(),
   }) {
     if (switchTab != null) {
@@ -720,6 +767,8 @@ abstract class _$$LikeSelectedImplCopyWith<$Res> {
   factory _$$LikeSelectedImplCopyWith(
           _$LikeSelectedImpl value, $Res Function(_$LikeSelectedImpl) then) =
       __$$LikeSelectedImplCopyWithImpl<$Res>;
+  @useResult
+  $Res call({NewsElement item, bool isLike});
 }
 
 /// @nodoc
@@ -732,39 +781,74 @@ class __$$LikeSelectedImplCopyWithImpl<$Res>
 
   /// Create a copy of NewsInfoEvent
   /// with the given fields replaced by the non-null parameter values.
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? item = null,
+    Object? isLike = null,
+  }) {
+    return _then(_$LikeSelectedImpl(
+      null == item
+          ? _value.item
+          : item // ignore: cast_nullable_to_non_nullable
+              as NewsElement,
+      null == isLike
+          ? _value.isLike
+          : isLike // ignore: cast_nullable_to_non_nullable
+              as bool,
+    ));
+  }
 }
 
 /// @nodoc
 
 class _$LikeSelectedImpl implements _LikeSelected {
-  const _$LikeSelectedImpl();
+  const _$LikeSelectedImpl(this.item, this.isLike);
+
+  @override
+  final NewsElement item;
+  @override
+  final bool isLike;
 
   @override
   String toString() {
-    return 'NewsInfoEvent.likeSelected()';
+    return 'NewsInfoEvent.likeSelected(item: $item, isLike: $isLike)';
   }
 
   @override
   bool operator ==(Object other) {
     return identical(this, other) ||
-        (other.runtimeType == runtimeType && other is _$LikeSelectedImpl);
+        (other.runtimeType == runtimeType &&
+            other is _$LikeSelectedImpl &&
+            (identical(other.item, item) || other.item == item) &&
+            (identical(other.isLike, isLike) || other.isLike == isLike));
   }
 
   @override
-  int get hashCode => runtimeType.hashCode;
+  int get hashCode => Object.hash(runtimeType, item, isLike);
+
+  /// Create a copy of NewsInfoEvent
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  @override
+  @pragma('vm:prefer-inline')
+  _$$LikeSelectedImplCopyWith<_$LikeSelectedImpl> get copyWith =>
+      __$$LikeSelectedImplCopyWithImpl<_$LikeSelectedImpl>(this, _$identity);
 
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() init,
     required TResult Function() loadMore,
-    required TResult Function(NewsInfoItemDataModel item) itemWasRead,
+    required TResult Function(NewsElement item) itemWasRead,
     required TResult Function(TypeContent typeContent) switchTab,
-    required TResult Function() likeSelected,
+    required TResult Function(NewsElement item, bool isLike) likeSelected,
     required TResult Function(NotificationInfoItemDataModel item)
         pressedOnNotification,
+    required TResult Function(double scrollPosition) onScrollUp,
+    required TResult Function(double scrollPosition) hideArrow,
   }) {
-    return likeSelected();
+    return likeSelected(item, isLike);
   }
 
   @override
@@ -772,13 +856,15 @@ class _$LikeSelectedImpl implements _LikeSelected {
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? init,
     TResult? Function()? loadMore,
-    TResult? Function(NewsInfoItemDataModel item)? itemWasRead,
+    TResult? Function(NewsElement item)? itemWasRead,
     TResult? Function(TypeContent typeContent)? switchTab,
-    TResult? Function()? likeSelected,
+    TResult? Function(NewsElement item, bool isLike)? likeSelected,
     TResult? Function(NotificationInfoItemDataModel item)?
         pressedOnNotification,
+    TResult? Function(double scrollPosition)? onScrollUp,
+    TResult? Function(double scrollPosition)? hideArrow,
   }) {
-    return likeSelected?.call();
+    return likeSelected?.call(item, isLike);
   }
 
   @override
@@ -786,14 +872,16 @@ class _$LikeSelectedImpl implements _LikeSelected {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? init,
     TResult Function()? loadMore,
-    TResult Function(NewsInfoItemDataModel item)? itemWasRead,
+    TResult Function(NewsElement item)? itemWasRead,
     TResult Function(TypeContent typeContent)? switchTab,
-    TResult Function()? likeSelected,
+    TResult Function(NewsElement item, bool isLike)? likeSelected,
     TResult Function(NotificationInfoItemDataModel item)? pressedOnNotification,
+    TResult Function(double scrollPosition)? onScrollUp,
+    TResult Function(double scrollPosition)? hideArrow,
     required TResult orElse(),
   }) {
     if (likeSelected != null) {
-      return likeSelected();
+      return likeSelected(item, isLike);
     }
     return orElse();
   }
@@ -808,6 +896,8 @@ class _$LikeSelectedImpl implements _LikeSelected {
     required TResult Function(_LikeSelected value) likeSelected,
     required TResult Function(_PressedOnNotification value)
         pressedOnNotification,
+    required TResult Function(_OnScrollUp value) onScrollUp,
+    required TResult Function(_HideArrow value) hideArrow,
   }) {
     return likeSelected(this);
   }
@@ -821,6 +911,8 @@ class _$LikeSelectedImpl implements _LikeSelected {
     TResult? Function(_SwitchTab value)? switchTab,
     TResult? Function(_LikeSelected value)? likeSelected,
     TResult? Function(_PressedOnNotification value)? pressedOnNotification,
+    TResult? Function(_OnScrollUp value)? onScrollUp,
+    TResult? Function(_HideArrow value)? hideArrow,
   }) {
     return likeSelected?.call(this);
   }
@@ -834,6 +926,8 @@ class _$LikeSelectedImpl implements _LikeSelected {
     TResult Function(_SwitchTab value)? switchTab,
     TResult Function(_LikeSelected value)? likeSelected,
     TResult Function(_PressedOnNotification value)? pressedOnNotification,
+    TResult Function(_OnScrollUp value)? onScrollUp,
+    TResult Function(_HideArrow value)? hideArrow,
     required TResult orElse(),
   }) {
     if (likeSelected != null) {
@@ -844,7 +938,17 @@ class _$LikeSelectedImpl implements _LikeSelected {
 }
 
 abstract class _LikeSelected implements NewsInfoEvent {
-  const factory _LikeSelected() = _$LikeSelectedImpl;
+  const factory _LikeSelected(final NewsElement item, final bool isLike) =
+      _$LikeSelectedImpl;
+
+  NewsElement get item;
+  bool get isLike;
+
+  /// Create a copy of NewsInfoEvent
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  _$$LikeSelectedImplCopyWith<_$LikeSelectedImpl> get copyWith =>
+      throw _privateConstructorUsedError;
 }
 
 /// @nodoc
@@ -931,11 +1035,13 @@ class _$PressedOnNotificationImpl implements _PressedOnNotification {
   TResult when<TResult extends Object?>({
     required TResult Function() init,
     required TResult Function() loadMore,
-    required TResult Function(NewsInfoItemDataModel item) itemWasRead,
+    required TResult Function(NewsElement item) itemWasRead,
     required TResult Function(TypeContent typeContent) switchTab,
-    required TResult Function() likeSelected,
+    required TResult Function(NewsElement item, bool isLike) likeSelected,
     required TResult Function(NotificationInfoItemDataModel item)
         pressedOnNotification,
+    required TResult Function(double scrollPosition) onScrollUp,
+    required TResult Function(double scrollPosition) hideArrow,
   }) {
     return pressedOnNotification(item);
   }
@@ -945,11 +1051,13 @@ class _$PressedOnNotificationImpl implements _PressedOnNotification {
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? init,
     TResult? Function()? loadMore,
-    TResult? Function(NewsInfoItemDataModel item)? itemWasRead,
+    TResult? Function(NewsElement item)? itemWasRead,
     TResult? Function(TypeContent typeContent)? switchTab,
-    TResult? Function()? likeSelected,
+    TResult? Function(NewsElement item, bool isLike)? likeSelected,
     TResult? Function(NotificationInfoItemDataModel item)?
         pressedOnNotification,
+    TResult? Function(double scrollPosition)? onScrollUp,
+    TResult? Function(double scrollPosition)? hideArrow,
   }) {
     return pressedOnNotification?.call(item);
   }
@@ -959,10 +1067,12 @@ class _$PressedOnNotificationImpl implements _PressedOnNotification {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? init,
     TResult Function()? loadMore,
-    TResult Function(NewsInfoItemDataModel item)? itemWasRead,
+    TResult Function(NewsElement item)? itemWasRead,
     TResult Function(TypeContent typeContent)? switchTab,
-    TResult Function()? likeSelected,
+    TResult Function(NewsElement item, bool isLike)? likeSelected,
     TResult Function(NotificationInfoItemDataModel item)? pressedOnNotification,
+    TResult Function(double scrollPosition)? onScrollUp,
+    TResult Function(double scrollPosition)? hideArrow,
     required TResult orElse(),
   }) {
     if (pressedOnNotification != null) {
@@ -981,6 +1091,8 @@ class _$PressedOnNotificationImpl implements _PressedOnNotification {
     required TResult Function(_LikeSelected value) likeSelected,
     required TResult Function(_PressedOnNotification value)
         pressedOnNotification,
+    required TResult Function(_OnScrollUp value) onScrollUp,
+    required TResult Function(_HideArrow value) hideArrow,
   }) {
     return pressedOnNotification(this);
   }
@@ -994,6 +1106,8 @@ class _$PressedOnNotificationImpl implements _PressedOnNotification {
     TResult? Function(_SwitchTab value)? switchTab,
     TResult? Function(_LikeSelected value)? likeSelected,
     TResult? Function(_PressedOnNotification value)? pressedOnNotification,
+    TResult? Function(_OnScrollUp value)? onScrollUp,
+    TResult? Function(_HideArrow value)? hideArrow,
   }) {
     return pressedOnNotification?.call(this);
   }
@@ -1007,6 +1121,8 @@ class _$PressedOnNotificationImpl implements _PressedOnNotification {
     TResult Function(_SwitchTab value)? switchTab,
     TResult Function(_LikeSelected value)? likeSelected,
     TResult Function(_PressedOnNotification value)? pressedOnNotification,
+    TResult Function(_OnScrollUp value)? onScrollUp,
+    TResult Function(_HideArrow value)? hideArrow,
     required TResult orElse(),
   }) {
     if (pressedOnNotification != null) {
@@ -1030,14 +1146,375 @@ abstract class _PressedOnNotification implements NewsInfoEvent {
 }
 
 /// @nodoc
+abstract class _$$OnScrollUpImplCopyWith<$Res> {
+  factory _$$OnScrollUpImplCopyWith(
+          _$OnScrollUpImpl value, $Res Function(_$OnScrollUpImpl) then) =
+      __$$OnScrollUpImplCopyWithImpl<$Res>;
+  @useResult
+  $Res call({double scrollPosition});
+}
+
+/// @nodoc
+class __$$OnScrollUpImplCopyWithImpl<$Res>
+    extends _$NewsInfoEventCopyWithImpl<$Res, _$OnScrollUpImpl>
+    implements _$$OnScrollUpImplCopyWith<$Res> {
+  __$$OnScrollUpImplCopyWithImpl(
+      _$OnScrollUpImpl _value, $Res Function(_$OnScrollUpImpl) _then)
+      : super(_value, _then);
+
+  /// Create a copy of NewsInfoEvent
+  /// with the given fields replaced by the non-null parameter values.
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? scrollPosition = null,
+  }) {
+    return _then(_$OnScrollUpImpl(
+      null == scrollPosition
+          ? _value.scrollPosition
+          : scrollPosition // ignore: cast_nullable_to_non_nullable
+              as double,
+    ));
+  }
+}
+
+/// @nodoc
+
+class _$OnScrollUpImpl implements _OnScrollUp {
+  const _$OnScrollUpImpl(this.scrollPosition);
+
+  @override
+  final double scrollPosition;
+
+  @override
+  String toString() {
+    return 'NewsInfoEvent.onScrollUp(scrollPosition: $scrollPosition)';
+  }
+
+  @override
+  bool operator ==(Object other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$OnScrollUpImpl &&
+            (identical(other.scrollPosition, scrollPosition) ||
+                other.scrollPosition == scrollPosition));
+  }
+
+  @override
+  int get hashCode => Object.hash(runtimeType, scrollPosition);
+
+  /// Create a copy of NewsInfoEvent
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  @override
+  @pragma('vm:prefer-inline')
+  _$$OnScrollUpImplCopyWith<_$OnScrollUpImpl> get copyWith =>
+      __$$OnScrollUpImplCopyWithImpl<_$OnScrollUpImpl>(this, _$identity);
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function() init,
+    required TResult Function() loadMore,
+    required TResult Function(NewsElement item) itemWasRead,
+    required TResult Function(TypeContent typeContent) switchTab,
+    required TResult Function(NewsElement item, bool isLike) likeSelected,
+    required TResult Function(NotificationInfoItemDataModel item)
+        pressedOnNotification,
+    required TResult Function(double scrollPosition) onScrollUp,
+    required TResult Function(double scrollPosition) hideArrow,
+  }) {
+    return onScrollUp(scrollPosition);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function()? init,
+    TResult? Function()? loadMore,
+    TResult? Function(NewsElement item)? itemWasRead,
+    TResult? Function(TypeContent typeContent)? switchTab,
+    TResult? Function(NewsElement item, bool isLike)? likeSelected,
+    TResult? Function(NotificationInfoItemDataModel item)?
+        pressedOnNotification,
+    TResult? Function(double scrollPosition)? onScrollUp,
+    TResult? Function(double scrollPosition)? hideArrow,
+  }) {
+    return onScrollUp?.call(scrollPosition);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? init,
+    TResult Function()? loadMore,
+    TResult Function(NewsElement item)? itemWasRead,
+    TResult Function(TypeContent typeContent)? switchTab,
+    TResult Function(NewsElement item, bool isLike)? likeSelected,
+    TResult Function(NotificationInfoItemDataModel item)? pressedOnNotification,
+    TResult Function(double scrollPosition)? onScrollUp,
+    TResult Function(double scrollPosition)? hideArrow,
+    required TResult orElse(),
+  }) {
+    if (onScrollUp != null) {
+      return onScrollUp(scrollPosition);
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(_Init value) init,
+    required TResult Function(_LoadMore value) loadMore,
+    required TResult Function(_ItemWasRead value) itemWasRead,
+    required TResult Function(_SwitchTab value) switchTab,
+    required TResult Function(_LikeSelected value) likeSelected,
+    required TResult Function(_PressedOnNotification value)
+        pressedOnNotification,
+    required TResult Function(_OnScrollUp value) onScrollUp,
+    required TResult Function(_HideArrow value) hideArrow,
+  }) {
+    return onScrollUp(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(_Init value)? init,
+    TResult? Function(_LoadMore value)? loadMore,
+    TResult? Function(_ItemWasRead value)? itemWasRead,
+    TResult? Function(_SwitchTab value)? switchTab,
+    TResult? Function(_LikeSelected value)? likeSelected,
+    TResult? Function(_PressedOnNotification value)? pressedOnNotification,
+    TResult? Function(_OnScrollUp value)? onScrollUp,
+    TResult? Function(_HideArrow value)? hideArrow,
+  }) {
+    return onScrollUp?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(_Init value)? init,
+    TResult Function(_LoadMore value)? loadMore,
+    TResult Function(_ItemWasRead value)? itemWasRead,
+    TResult Function(_SwitchTab value)? switchTab,
+    TResult Function(_LikeSelected value)? likeSelected,
+    TResult Function(_PressedOnNotification value)? pressedOnNotification,
+    TResult Function(_OnScrollUp value)? onScrollUp,
+    TResult Function(_HideArrow value)? hideArrow,
+    required TResult orElse(),
+  }) {
+    if (onScrollUp != null) {
+      return onScrollUp(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class _OnScrollUp implements NewsInfoEvent {
+  const factory _OnScrollUp(final double scrollPosition) = _$OnScrollUpImpl;
+
+  double get scrollPosition;
+
+  /// Create a copy of NewsInfoEvent
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  _$$OnScrollUpImplCopyWith<_$OnScrollUpImpl> get copyWith =>
+      throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+abstract class _$$HideArrowImplCopyWith<$Res> {
+  factory _$$HideArrowImplCopyWith(
+          _$HideArrowImpl value, $Res Function(_$HideArrowImpl) then) =
+      __$$HideArrowImplCopyWithImpl<$Res>;
+  @useResult
+  $Res call({double scrollPosition});
+}
+
+/// @nodoc
+class __$$HideArrowImplCopyWithImpl<$Res>
+    extends _$NewsInfoEventCopyWithImpl<$Res, _$HideArrowImpl>
+    implements _$$HideArrowImplCopyWith<$Res> {
+  __$$HideArrowImplCopyWithImpl(
+      _$HideArrowImpl _value, $Res Function(_$HideArrowImpl) _then)
+      : super(_value, _then);
+
+  /// Create a copy of NewsInfoEvent
+  /// with the given fields replaced by the non-null parameter values.
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? scrollPosition = null,
+  }) {
+    return _then(_$HideArrowImpl(
+      null == scrollPosition
+          ? _value.scrollPosition
+          : scrollPosition // ignore: cast_nullable_to_non_nullable
+              as double,
+    ));
+  }
+}
+
+/// @nodoc
+
+class _$HideArrowImpl implements _HideArrow {
+  const _$HideArrowImpl(this.scrollPosition);
+
+  @override
+  final double scrollPosition;
+
+  @override
+  String toString() {
+    return 'NewsInfoEvent.hideArrow(scrollPosition: $scrollPosition)';
+  }
+
+  @override
+  bool operator ==(Object other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$HideArrowImpl &&
+            (identical(other.scrollPosition, scrollPosition) ||
+                other.scrollPosition == scrollPosition));
+  }
+
+  @override
+  int get hashCode => Object.hash(runtimeType, scrollPosition);
+
+  /// Create a copy of NewsInfoEvent
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  @override
+  @pragma('vm:prefer-inline')
+  _$$HideArrowImplCopyWith<_$HideArrowImpl> get copyWith =>
+      __$$HideArrowImplCopyWithImpl<_$HideArrowImpl>(this, _$identity);
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function() init,
+    required TResult Function() loadMore,
+    required TResult Function(NewsElement item) itemWasRead,
+    required TResult Function(TypeContent typeContent) switchTab,
+    required TResult Function(NewsElement item, bool isLike) likeSelected,
+    required TResult Function(NotificationInfoItemDataModel item)
+        pressedOnNotification,
+    required TResult Function(double scrollPosition) onScrollUp,
+    required TResult Function(double scrollPosition) hideArrow,
+  }) {
+    return hideArrow(scrollPosition);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function()? init,
+    TResult? Function()? loadMore,
+    TResult? Function(NewsElement item)? itemWasRead,
+    TResult? Function(TypeContent typeContent)? switchTab,
+    TResult? Function(NewsElement item, bool isLike)? likeSelected,
+    TResult? Function(NotificationInfoItemDataModel item)?
+        pressedOnNotification,
+    TResult? Function(double scrollPosition)? onScrollUp,
+    TResult? Function(double scrollPosition)? hideArrow,
+  }) {
+    return hideArrow?.call(scrollPosition);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? init,
+    TResult Function()? loadMore,
+    TResult Function(NewsElement item)? itemWasRead,
+    TResult Function(TypeContent typeContent)? switchTab,
+    TResult Function(NewsElement item, bool isLike)? likeSelected,
+    TResult Function(NotificationInfoItemDataModel item)? pressedOnNotification,
+    TResult Function(double scrollPosition)? onScrollUp,
+    TResult Function(double scrollPosition)? hideArrow,
+    required TResult orElse(),
+  }) {
+    if (hideArrow != null) {
+      return hideArrow(scrollPosition);
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(_Init value) init,
+    required TResult Function(_LoadMore value) loadMore,
+    required TResult Function(_ItemWasRead value) itemWasRead,
+    required TResult Function(_SwitchTab value) switchTab,
+    required TResult Function(_LikeSelected value) likeSelected,
+    required TResult Function(_PressedOnNotification value)
+        pressedOnNotification,
+    required TResult Function(_OnScrollUp value) onScrollUp,
+    required TResult Function(_HideArrow value) hideArrow,
+  }) {
+    return hideArrow(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(_Init value)? init,
+    TResult? Function(_LoadMore value)? loadMore,
+    TResult? Function(_ItemWasRead value)? itemWasRead,
+    TResult? Function(_SwitchTab value)? switchTab,
+    TResult? Function(_LikeSelected value)? likeSelected,
+    TResult? Function(_PressedOnNotification value)? pressedOnNotification,
+    TResult? Function(_OnScrollUp value)? onScrollUp,
+    TResult? Function(_HideArrow value)? hideArrow,
+  }) {
+    return hideArrow?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(_Init value)? init,
+    TResult Function(_LoadMore value)? loadMore,
+    TResult Function(_ItemWasRead value)? itemWasRead,
+    TResult Function(_SwitchTab value)? switchTab,
+    TResult Function(_LikeSelected value)? likeSelected,
+    TResult Function(_PressedOnNotification value)? pressedOnNotification,
+    TResult Function(_OnScrollUp value)? onScrollUp,
+    TResult Function(_HideArrow value)? hideArrow,
+    required TResult orElse(),
+  }) {
+    if (hideArrow != null) {
+      return hideArrow(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class _HideArrow implements NewsInfoEvent {
+  const factory _HideArrow(final double scrollPosition) = _$HideArrowImpl;
+
+  double get scrollPosition;
+
+  /// Create a copy of NewsInfoEvent
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  _$$HideArrowImplCopyWith<_$HideArrowImpl> get copyWith =>
+      throw _privateConstructorUsedError;
+}
+
+/// @nodoc
 mixin _$NewsInfoState {
   BlocAction? get action => throw _privateConstructorUsedError;
   bool get isLoading => throw _privateConstructorUsedError;
-  List<NewsInfoItemDataModel> get listNews =>
-      throw _privateConstructorUsedError;
+  List<NewsElement> get listNews => throw _privateConstructorUsedError;
   List<NotificationInfoItemDataModel> get listNotifications =>
       throw _privateConstructorUsedError;
+  UnreadModel? get unreadModel => throw _privateConstructorUsedError;
   TypeContent get typeContentActive => throw _privateConstructorUsedError;
+  bool get isArrowVisible => throw _privateConstructorUsedError;
 
   /// Create a copy of NewsInfoState
   /// with the given fields replaced by the non-null parameter values.
@@ -1055,9 +1532,11 @@ abstract class $NewsInfoStateCopyWith<$Res> {
   $Res call(
       {BlocAction? action,
       bool isLoading,
-      List<NewsInfoItemDataModel> listNews,
+      List<NewsElement> listNews,
       List<NotificationInfoItemDataModel> listNotifications,
-      TypeContent typeContentActive});
+      UnreadModel? unreadModel,
+      TypeContent typeContentActive,
+      bool isArrowVisible});
 }
 
 /// @nodoc
@@ -1079,7 +1558,9 @@ class _$NewsInfoStateCopyWithImpl<$Res, $Val extends NewsInfoState>
     Object? isLoading = null,
     Object? listNews = null,
     Object? listNotifications = null,
+    Object? unreadModel = freezed,
     Object? typeContentActive = null,
+    Object? isArrowVisible = null,
   }) {
     return _then(_value.copyWith(
       action: freezed == action
@@ -1093,15 +1574,23 @@ class _$NewsInfoStateCopyWithImpl<$Res, $Val extends NewsInfoState>
       listNews: null == listNews
           ? _value.listNews
           : listNews // ignore: cast_nullable_to_non_nullable
-              as List<NewsInfoItemDataModel>,
+              as List<NewsElement>,
       listNotifications: null == listNotifications
           ? _value.listNotifications
           : listNotifications // ignore: cast_nullable_to_non_nullable
               as List<NotificationInfoItemDataModel>,
+      unreadModel: freezed == unreadModel
+          ? _value.unreadModel
+          : unreadModel // ignore: cast_nullable_to_non_nullable
+              as UnreadModel?,
       typeContentActive: null == typeContentActive
           ? _value.typeContentActive
           : typeContentActive // ignore: cast_nullable_to_non_nullable
               as TypeContent,
+      isArrowVisible: null == isArrowVisible
+          ? _value.isArrowVisible
+          : isArrowVisible // ignore: cast_nullable_to_non_nullable
+              as bool,
     ) as $Val);
   }
 }
@@ -1117,9 +1606,11 @@ abstract class _$$StartStateImplCopyWith<$Res>
   $Res call(
       {BlocAction? action,
       bool isLoading,
-      List<NewsInfoItemDataModel> listNews,
+      List<NewsElement> listNews,
       List<NotificationInfoItemDataModel> listNotifications,
-      TypeContent typeContentActive});
+      UnreadModel? unreadModel,
+      TypeContent typeContentActive,
+      bool isArrowVisible});
 }
 
 /// @nodoc
@@ -1139,7 +1630,9 @@ class __$$StartStateImplCopyWithImpl<$Res>
     Object? isLoading = null,
     Object? listNews = null,
     Object? listNotifications = null,
+    Object? unreadModel = freezed,
     Object? typeContentActive = null,
+    Object? isArrowVisible = null,
   }) {
     return _then(_$StartStateImpl(
       action: freezed == action
@@ -1153,15 +1646,23 @@ class __$$StartStateImplCopyWithImpl<$Res>
       listNews: null == listNews
           ? _value._listNews
           : listNews // ignore: cast_nullable_to_non_nullable
-              as List<NewsInfoItemDataModel>,
+              as List<NewsElement>,
       listNotifications: null == listNotifications
           ? _value._listNotifications
           : listNotifications // ignore: cast_nullable_to_non_nullable
               as List<NotificationInfoItemDataModel>,
+      unreadModel: freezed == unreadModel
+          ? _value.unreadModel
+          : unreadModel // ignore: cast_nullable_to_non_nullable
+              as UnreadModel?,
       typeContentActive: null == typeContentActive
           ? _value.typeContentActive
           : typeContentActive // ignore: cast_nullable_to_non_nullable
               as TypeContent,
+      isArrowVisible: null == isArrowVisible
+          ? _value.isArrowVisible
+          : isArrowVisible // ignore: cast_nullable_to_non_nullable
+              as bool,
     ));
   }
 }
@@ -1172,9 +1673,11 @@ class _$StartStateImpl implements _StartState {
   _$StartStateImpl(
       {this.action,
       this.isLoading = true,
-      final List<NewsInfoItemDataModel> listNews = const [],
+      final List<NewsElement> listNews = const [],
       final List<NotificationInfoItemDataModel> listNotifications = const [],
-      this.typeContentActive = TypeContent.news})
+      this.unreadModel = null,
+      this.typeContentActive = TypeContent.news,
+      this.isArrowVisible = false})
       : _listNews = listNews,
         _listNotifications = listNotifications;
 
@@ -1183,10 +1686,10 @@ class _$StartStateImpl implements _StartState {
   @override
   @JsonKey()
   final bool isLoading;
-  final List<NewsInfoItemDataModel> _listNews;
+  final List<NewsElement> _listNews;
   @override
   @JsonKey()
-  List<NewsInfoItemDataModel> get listNews {
+  List<NewsElement> get listNews {
     if (_listNews is EqualUnmodifiableListView) return _listNews;
     // ignore: implicit_dynamic_type
     return EqualUnmodifiableListView(_listNews);
@@ -1204,11 +1707,17 @@ class _$StartStateImpl implements _StartState {
 
   @override
   @JsonKey()
+  final UnreadModel? unreadModel;
+  @override
+  @JsonKey()
   final TypeContent typeContentActive;
+  @override
+  @JsonKey()
+  final bool isArrowVisible;
 
   @override
   String toString() {
-    return 'NewsInfoState(action: $action, isLoading: $isLoading, listNews: $listNews, listNotifications: $listNotifications, typeContentActive: $typeContentActive)';
+    return 'NewsInfoState(action: $action, isLoading: $isLoading, listNews: $listNews, listNotifications: $listNotifications, unreadModel: $unreadModel, typeContentActive: $typeContentActive, isArrowVisible: $isArrowVisible)';
   }
 
   @override
@@ -1222,8 +1731,12 @@ class _$StartStateImpl implements _StartState {
             const DeepCollectionEquality().equals(other._listNews, _listNews) &&
             const DeepCollectionEquality()
                 .equals(other._listNotifications, _listNotifications) &&
+            (identical(other.unreadModel, unreadModel) ||
+                other.unreadModel == unreadModel) &&
             (identical(other.typeContentActive, typeContentActive) ||
-                other.typeContentActive == typeContentActive));
+                other.typeContentActive == typeContentActive) &&
+            (identical(other.isArrowVisible, isArrowVisible) ||
+                other.isArrowVisible == isArrowVisible));
   }
 
   @override
@@ -1233,7 +1746,9 @@ class _$StartStateImpl implements _StartState {
       isLoading,
       const DeepCollectionEquality().hash(_listNews),
       const DeepCollectionEquality().hash(_listNotifications),
-      typeContentActive);
+      unreadModel,
+      typeContentActive,
+      isArrowVisible);
 
   /// Create a copy of NewsInfoState
   /// with the given fields replaced by the non-null parameter values.
@@ -1248,20 +1763,26 @@ abstract class _StartState implements NewsInfoState {
   factory _StartState(
       {final BlocAction? action,
       final bool isLoading,
-      final List<NewsInfoItemDataModel> listNews,
+      final List<NewsElement> listNews,
       final List<NotificationInfoItemDataModel> listNotifications,
-      final TypeContent typeContentActive}) = _$StartStateImpl;
+      final UnreadModel? unreadModel,
+      final TypeContent typeContentActive,
+      final bool isArrowVisible}) = _$StartStateImpl;
 
   @override
   BlocAction? get action;
   @override
   bool get isLoading;
   @override
-  List<NewsInfoItemDataModel> get listNews;
+  List<NewsElement> get listNews;
   @override
   List<NotificationInfoItemDataModel> get listNotifications;
   @override
+  UnreadModel? get unreadModel;
+  @override
   TypeContent get typeContentActive;
+  @override
+  bool get isArrowVisible;
 
   /// Create a copy of NewsInfoState
   /// with the given fields replaced by the non-null parameter values.

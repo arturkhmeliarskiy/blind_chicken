@@ -151,7 +151,7 @@ dependencies:
   auto_size_text: ^3.0.0
   flutter_scale_tap: ^1.0.5
   animated_toggle_switch: ^0.8.3
-  jiffy: ^6.3.1
+  jiffy: ^6.3.2
   fluttertoast: ^8.2.8
   json_annotation: ^4.9.0
   hive_generator: ^2.0.1

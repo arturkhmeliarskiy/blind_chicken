@@ -2,18 +2,21 @@ import 'package:appmetrica_plugin/appmetrica_plugin.dart';
 import 'package:auto_route/auto_route.dart';
 import 'package:blind_chicken/core_config/data/repositories/remote/remote_repository.dart';
 import 'package:blind_chicken/core_config/di/app_locator.dart';
+import 'package:blind_chicken/core_config/modals/info_modal.dart';
+import 'package:blind_chicken/core_config/ui/resources/app_colors.dart';
 import 'package:blind_chicken/core_config/ui/widgets/base_bloc_listener.dart';
 import 'package:blind_chicken/core_config/ui/widgets/widgets/buttons/gesture_wrapper.dart';
 import 'package:blind_chicken/core_config/ui/widgets/widgets/loaders/circular_holder.dart';
 import 'package:blind_chicken/core_config/ui/widgets/widgets/others/screen_wrapper.dart';
 import 'package:blind_chicken/core_config/utils/context_extensions.dart';
 import 'package:blind_chicken/gen/assets.gen.dart';
-import 'package:blind_chicken/old_repos/models/src/news/news_info_item_data_model.dart';
+import 'package:blind_chicken/old_repos/shared/src/constants/date_info.dart';
 import 'package:blind_chicken/old_repos/ui_kit/reaction_button/flutter_reaction_button.dart';
 import 'package:blind_chicken/old_repos/ui_kit/src/constants/colors/blind_chicken_colors.dart';
 import 'package:blind_chicken/old_repos/ui_kit/src/widgets/app_bar_blind_chicken.dart';
 import 'package:blind_chicken/screens/app/router/app_router.dart';
 import 'package:blind_chicken/screens/news/news_info/bloc/news_info_bloc.dart';
+import 'package:blind_chicken/screens/news/news_info/models/news_model.dart';
 import 'package:blind_chicken/screens/news/widgets/news/news_item_tab_info.dart';
 import 'package:blind_chicken/screens/news/widgets/notifications/notification_item_tab_info.dart';
 import 'package:flutter/material.dart';
@@ -41,6 +44,7 @@ class NewsInfoRepairedScreen extends StatefulWidget implements AutoRouteWrapper 
         create: (context) => NewsInfoBloc(
           Locator.injection(),
           Locator.injection(),
+          Locator.injection(),
         ),
         child: this,
       );
@@ -50,6 +54,22 @@ class NewsInfoRepairedScreen extends StatefulWidget implements AutoRouteWrapper 
 }
 
 class _NewsInfoRepairedScreenState extends State<NewsInfoRepairedScreen> with TickerProviderStateMixin {
+  @override
+  void initState() {
+    super.initState();
+    _scrollController.addListener(_scrollListener);
+  }
+
+  void _scrollListener() {
+    context.sendEvent<NewsInfoBloc>(NewsInfoEvent.onScrollUp(_scrollController.position.pixels));
+  }
+
+  @override
+  void dispose() {
+    _scrollController.removeListener(_scrollListener);
+    super.dispose();
+  }
+
   @override
   Widget build(BuildContext context) {
     _tabController = TabController(length: 2, vsync: this);
@@ -82,10 +102,20 @@ class _NewsInfoRepairedScreenState extends State<NewsInfoRepairedScreen> with Ti
             AppMetrica.reportEvent(text);
           }
         }
+        if (action is LogInToLike) {
+          showInfoModal(
+            context: context,
+            title: 'Внимание',
+            description: 'Авторизуйтесь чтобы лайкнуть новость',
+            buttonText: 'Понятно',
+          );
+        }
       },
       child: BlocBuilder<NewsInfoBloc, NewsInfoState>(
         builder: (context, state) {
           return ScreenWrapper(
+            floatingButtonLocation: FloatingActionButtonLocation.startFloat,
+            floatingButton: buildArrowUp(),
             child: Column(
               children: [
                 Expanded(
@@ -101,6 +131,38 @@ class _NewsInfoRepairedScreenState extends State<NewsInfoRepairedScreen> with Ti
           );
         },
       ),
+    );
+  }
+
+  Widget buildArrowUp() {
+    return BlocBuilder<NewsInfoBloc, NewsInfoState>(
+      builder: (context, state) {
+        if (!state.isArrowVisible) {
+          return SizedBox.shrink();
+        }
+        return GestureDetector(
+          onTap: () async{
+            await _scrollController.animateTo(
+              0,
+              duration: Duration(milliseconds: 300),
+              curve: Curves.easeInOut,
+            );
+            context.sendEvent<NewsInfoBloc>(NewsInfoEvent.hideArrow(_scrollController.position.pixels));
+          },
+          child: Container(
+            height: 40,
+            width: 40,
+            decoration: BoxDecoration(
+              color: AppColors.darkText,
+              borderRadius: BorderRadius.circular(24),
+            ),
+            child: Icon(
+              Icons.arrow_upward_rounded,
+              color: AppColors.white,
+            ),
+          ),
+        );
+      },
     );
   }
 
@@ -147,7 +209,7 @@ class _NewsInfoRepairedScreenState extends State<NewsInfoRepairedScreen> with Ti
     );
   }
 
-  Widget _buildTab(BuildContext context, String title, int index, {int? badgeCount}) {
+  Widget _buildTab(BuildContext context, String title, int index) {
     return Tab(
       child: Row(
         mainAxisAlignment: MainAxisAlignment.center,
@@ -158,15 +220,47 @@ class _NewsInfoRepairedScreenState extends State<NewsInfoRepairedScreen> with Ti
                   fontWeight: _tabController?.index == index ? FontWeight.w700 : null,
                 ),
           ),
-
-          //todo
-          //BlocBuilder<NewsBloc, NewsState>(
-          //  builder: (context, state) {
-          //    return _countBadges(badgeCounter(state), context);
-          //  },
-          //)
+          BlocBuilder<NewsInfoBloc, NewsInfoState>(
+            builder: (context, state) {
+              if (index == 0) return _countBadges(state.unreadModel?.news ?? 0, context);
+              if (index == 1) return _countBadges(state.unreadModel?.notice ?? 0, context);
+              return SizedBox();
+            },
+          )
         ],
       ),
+    );
+  }
+
+  Widget _countBadges(int count, BuildContext context) {
+    if (count <= 0) return SizedBox();
+
+    return Row(
+      children: [
+        SizedBox(width: 5),
+        SizedBox(
+          height: 16,
+          child: Center(
+            child: Container(
+              decoration: BoxDecoration(
+                borderRadius: BorderRadius.circular(9),
+                color: Colors.black,
+              ),
+              padding: EdgeInsets.symmetric(vertical: 2, horizontal: 5),
+              alignment: Alignment.center,
+              child: Text(
+                count > 10 ? '10+' : count.toString(),
+                style: Theme.of(context).textTheme.bodyLarge?.copyWith(
+                      color: BlindChickenColors.backgroundColor,
+                      fontWeight: FontWeight.w700,
+                      height: 1,
+                    ),
+                textAlign: TextAlign.center,
+              ),
+            ),
+          ),
+        ),
+      ],
     );
   }
 
@@ -206,10 +300,10 @@ class _NewsInfoRepairedScreenState extends State<NewsInfoRepairedScreen> with Ti
       padding: EdgeInsets.zero,
       itemBuilder: (context, index) {
         if (state.listNews[index].isViewed == false) {
-          context.sendEvent<NewsInfoBloc>(NewsInfoEvent.itemWasRead(state.listNews[index]));
+          //todo back context.sendEvent<NewsInfoBloc>(NewsInfoEvent.itemWasRead(state.listNews[index]));
         }
         if (state.listNews.length - 1 - 4 == index) {
-          context.sendEvent<NewsInfoBloc>(NewsInfoEvent.loadMore());
+         context.sendEvent<NewsInfoBloc>(NewsInfoEvent.loadMore());
         }
         return Column(
           children: [
@@ -231,10 +325,43 @@ class _NewsInfoRepairedScreenState extends State<NewsInfoRepairedScreen> with Ti
               emotionWidget: Row(
                 children: [
                   buildEmotionButtons(state.listNews[index]),
+                  if (state.listNews[index].countLike > 0) Text(state.listNews[index].countLike.toString()),
                 ],
               ),
+              readWidget: buildReadChecker(context, index),
             ),
           ],
+        );
+      },
+    );
+  }
+
+  Widget buildReadChecker(BuildContext context, int index) {
+    return BlocBuilder<NewsInfoBloc, NewsInfoState>(
+      buildWhen: (previous, current) => previous.listNews[index].isViewed != current.listNews[index].isViewed,
+      builder: (context, state) {
+        return Padding(
+          padding: const EdgeInsets.symmetric(horizontal: 16),
+          child: Row(
+            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+            children: [
+              Text(
+                DateInfo.dateFormat(state.listNews[index].createAt.toIso8601String()),
+                style: Theme.of(context).textTheme.displaySmall?.copyWith(
+                      color: BlindChickenColors.textInput,
+                    ),
+              ),
+              if (state.listNews[index].isViewed == false)
+                Text(
+                  ' Не прочитано',
+                  style: Theme.of(context).textTheme.displaySmall?.copyWith(
+                        color: BlindChickenColors.textInput,
+                      ),
+                )
+              else
+                SizedBox(),
+            ],
+          ),
         );
       },
     );
@@ -284,102 +411,63 @@ class _NewsInfoRepairedScreenState extends State<NewsInfoRepairedScreen> with Ti
   }
 }
 
-Widget buildEmotionButtons(NewsInfoItemDataModel listNew) {
-  if (int.parse(listNew.id) % 2 == 0) {
-    return Row(
-      children: [
-        SizedBox(width: 16),
-        buildEmotionItem(),
-      ],
-    );
-  } else {
-    return Row(
-      children: [
-        SizedBox(width: 16),
-        for (var i = 0; i < 5; i++) buildEmotionItem(),
-      ],
-    );
-  }
-}
-
-Row buildEmotionItem() {
-  double size = 30;
-  double additionalWidth = 0;
+Widget buildEmotionButtons(NewsElement item) {
   return Row(
     children: [
-      ReactionButton<String>(
-        additionalWidth: additionalWidth,
-        itemSize: Size(size, size),
-        onReactionChanged: (Reaction<String>? reaction) {
-          debugPrint('Selected value: ${reaction?.value}');
-        },
-        placeholder: Reaction<String>(
-          value: 'add_smile',
-          icon: Row(
-            crossAxisAlignment: CrossAxisAlignment.end,
-            children: [
-              SvgPicture.asset(
-                Assets.icons.reaction.smilePlusSvgrepoCom,
-                height: size,
-                width: size,
-              ),
-              Text('123'),
-            ],
-          ),
-        ),
-        reactions: <Reaction<String>>[
-          Reaction<String>(
-            value: 'like',
-            icon: SvgPicture.asset(
-              Assets.icons.reaction.heartRedSvgrepoCom,
-              height: size,
-              width: size,
-            ),
-          ),
-          Reaction<String>(
-            value: 'fire',
-            icon: SvgPicture.asset(
-              Assets.icons.reaction.fireSvgrepoCom,
-              height: size,
-              width: size,
-            ),
-          ),
-          Reaction<String>(
-            value: 'fanny',
-            icon: SvgPicture.asset(
-              Assets.icons.reaction.grinningFaceWithSmilingEyesSvgrepoCom,
-              height: size,
-              width: size,
-            ),
-          ),
-          Reaction<String>(
-            value: 'dislike',
-            icon: SvgPicture.asset(
-              Assets.icons.reaction.dislikeSvgrepoCom,
-              height: size,
-              width: size,
-            ),
-          ),
-          Reaction<String>(
-            value: 'thinking',
-            icon: SvgPicture.asset(
-              Assets.icons.reaction.thinkingFaceSvgrepoCom,
-              height: size,
-              width: size,
-            ),
-          ),
-        ],
-        //selectedReaction: Reaction<String>(
-        //  value: 'add_smile',
-        //  icon: SvgPicture.asset(Assets.icons.reaction.smilePlusSvgrepoCom, height: 40, width: 40),
-        //),
-        //child: Icon(Icons.link),
-      ),
+      SizedBox(width: 16),
+      buildEmotionItem(item),
     ],
   );
 }
 
-void navigateToCorrectPage(BuildContext context, NewsInfoItemDataModel item) {
+Widget buildEmotionItem(NewsElement item) {
+  double size = 30;
+  double additionalWidth = 0;
+  return BlocBuilder<NewsInfoBloc, NewsInfoState>(
+    builder: (context, state) {
+      return Row(
+        children: [
+          ReactionButton<String>(
+            additionalWidth: additionalWidth,
+            itemSize: Size(size, size),
+            onReactionChanged: (Reaction<String>? reaction) {
+              debugPrint('Selected value: ${reaction?.value}');
+              context.sendEvent<NewsInfoBloc>(NewsInfoEvent.likeSelected(item, reaction?.value == 'like'));
+            },
+            reactions: <Reaction<String>>[
+              Reaction<String>(
+                value: 'dislike',
+                icon: SvgPicture.asset(
+                  Assets.icons.reaction.dislikeSvgrepoCom,
+                  height: size,
+                  width: size,
+                ),
+              ),
+              Reaction<String>(
+                value: 'like',
+                icon: SvgPicture.asset(
+                  Assets.icons.reaction.heartRedSvgrepoCom,
+                  height: size,
+                  width: size,
+                ),
+              ),
+            ],
+            selectedReaction: Reaction<String>(
+              value: 'like',
+              icon: SvgPicture.asset(
+                Assets.icons.reaction.heartRedSvgrepoCom,
+                height: size,
+                width: size,
+              ),
+            ),
+          ),
+        ],
+      );
+    },
+  );
+}
+
+void navigateToCorrectPage(BuildContext context, NewsElement item) {
   final AppRouter router = Locator.injection();
   if (item.typePath == 'catalog') {
     AppMetrica.reportEvent('Переход в каталог из списка новостей по кнопке');
@@ -407,7 +495,6 @@ void navigateToCorrectPage(BuildContext context, NewsInfoItemDataModel item) {
             lastPath: 'news',
             titleScreen: 'Экран новостей',
             codeProduct: '',
-
           ),
         ],
       ),

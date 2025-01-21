@@ -24,6 +24,7 @@ class LocalRepository {
 
   static const _tokenKey = 'token';
   static const _exampleKey = 'exampleKey';
+  static const _newsKey = 'news';
 
   FlutterSecureStorage flutterSecureStorage;
   SharedPreferences sharedPreferences;
@@ -44,6 +45,14 @@ class LocalRepository {
 
   bool? getExampleKeyValue() {
     return sharedPreferences.getBool(_exampleKey);
+  }
+
+  Future<bool> setNewsWasReadValue(String idNews) {
+    return sharedPreferences.setBool(idNews + _newsKey, true);
+  }
+
+  bool getNewsWasReadValue(String idNews) {
+    return sharedPreferences.getBool(idNews + _newsKey) ?? false;
   }
 
   Future<void> clear() async {

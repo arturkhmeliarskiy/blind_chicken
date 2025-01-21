@@ -1,11 +1,10 @@
-import 'package:blind_chicken/core_config/utils/logging.dart';
-
 import 'package:auto_route/auto_route.dart';
+import 'package:blind_chicken/core_config/utils/logging.dart';
+import 'package:blind_chicken/old_repos/ui_kit/ui_kit.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:photo_view/photo_view.dart';
-import 'package:blind_chicken/old_repos/ui_kit/ui_kit.dart';
 
 @RoutePage()
 class NewsPreviewMediaScreen extends StatefulWidget {
@@ -25,7 +24,7 @@ class NewsPreviewMediaScreen extends StatefulWidget {
 }
 
 class _NewsPreviewMediaScreenState extends State<NewsPreviewMediaScreen> {
-  PageController _pageController = PageController();
+  final PageController _pageController = PageController();
   bool _isSwipe = true;
 
   @override
@@ -117,8 +116,8 @@ class _NewsPreviewMediaScreenState extends State<NewsPreviewMediaScreen> {
                   color: Colors.transparent,
                   child: SafeArea(
                     child: SizedBox(
-                      height: 38,
-                      width: 38,
+                      height: 40,
+                      width: 40,
                       child: InkWell(
                         onTap: () {
                           widget.goBotton();
@@ -127,6 +126,10 @@ class _NewsPreviewMediaScreenState extends State<NewsPreviewMediaScreen> {
                           });
                         },
                         child: Container(
+                          decoration: BoxDecoration(
+                            borderRadius: BorderRadius.circular(20),
+                            color: BlindChickenColors.backgroundColor.withOpacity(0.3),
+                          ),
                           margin: const EdgeInsets.only(
                             top: 14,
                             right: 10.5,

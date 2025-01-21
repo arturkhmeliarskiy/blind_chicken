@@ -6,15 +6,20 @@ class NewsInfoEvent with _$NewsInfoEvent {
 
   const factory NewsInfoEvent.loadMore() = _LoadMore;
 
-  const factory NewsInfoEvent.itemWasRead(NewsInfoItemDataModel item) = _ItemWasRead;
+  const factory NewsInfoEvent.itemWasRead(NewsElement item) = _ItemWasRead;
 
   const factory NewsInfoEvent.switchTab(TypeContent typeContent) = _SwitchTab;
 
-  const factory NewsInfoEvent.likeSelected() = _LikeSelected;
+  const factory NewsInfoEvent.likeSelected(NewsElement item, bool isLike) = _LikeSelected;
+
 
   const factory NewsInfoEvent.pressedOnNotification(
     NotificationInfoItemDataModel item,
   ) = _PressedOnNotification;
+
+  const factory NewsInfoEvent.onScrollUp(double scrollPosition) = _OnScrollUp;
+  const factory NewsInfoEvent.hideArrow(double scrollPosition) = _HideArrow;
+
 }
 
 class TabPressed extends BlocAction {
@@ -22,3 +27,5 @@ class TabPressed extends BlocAction {
 
   TabPressed({required this.tabIndex});
 }
+
+class LogInToLike extends BlocAction {}

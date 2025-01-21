@@ -126,7 +126,8 @@ class _InfoModal extends StatelessWidget {
         width: 50,
         height: 50,
         colorFilter: ColorFilter.mode(
-          AppColors.primary,
+          context.colorScheme.primary,
+          //AppColors.primary,
           BlendMode.srcIn,
         ),
       ),

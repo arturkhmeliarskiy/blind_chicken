@@ -7,7 +7,7 @@ import 'package:linkify/linkify.dart';
 extension StringExtensionsNull on String? {
   bool get isNullOrEmpty {
     if (_isNull(this)) return true;
-    if (this == '') return true;
+    if (this?.extraTrim == '') return true;
     return false;
   }
 
