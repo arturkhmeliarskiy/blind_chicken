@@ -2,6 +2,7 @@ import 'dart:async';
 
 import 'package:animated_text_kit/animated_text_kit.dart';
 import 'package:auto_route/auto_route.dart';
+import 'package:blind_chicken/core_config/ui/widgets/widgets/loaders/circular_holder.dart';
 import 'package:blind_chicken/screens/%D1%81ashback_and_discounts/widgets/blind_chicken_discount_scale.dart';
 import 'package:blind_chicken/screens/account/account_virtual_card.dart';
 import 'package:blind_chicken/screens/account/widgets/account_change_info_user.dart';
@@ -97,10 +98,7 @@ class _AccountScreenState extends State<AccountScreen> {
                           height: 15,
                           width: 15,
                           child: Center(
-                            child: CircularProgressIndicator(
-                              strokeWidth: 3,
-                              color: BlindChickenColors.backgroundColor,
-                            ),
+                            child: CircularHolder(),
                           ),
                         );
                       },

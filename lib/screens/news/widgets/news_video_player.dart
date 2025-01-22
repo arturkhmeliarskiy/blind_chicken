@@ -1,3 +1,4 @@
+import 'package:blind_chicken/core_config/ui/widgets/widgets/loaders/circular_holder.dart';
 import 'package:blind_chicken/core_config/utils/logging.dart';
 
 import 'package:cached_network_image/cached_network_image.dart';
@@ -302,10 +303,7 @@ class NewsVideoPlayerState extends State<NewsVideoPlayer> {
                                             const Icon(Icons.error),
                                       ),
                                       Center(
-                                        child: CircularProgressIndicator(
-                                          color: Colors.black,
-                                          backgroundColor: Colors.grey.shade400,
-                                        ),
+                                        child: CircularHolder(),
                                       ),
                                     ],
                                   ),
@@ -325,10 +323,7 @@ class NewsVideoPlayerState extends State<NewsVideoPlayer> {
                                                 const Icon(Icons.error),
                                           ),
                                           Center(
-                                            child: CircularProgressIndicator(
-                                              color: Colors.black,
-                                              backgroundColor: Colors.grey.shade400,
-                                            ),
+                                            child: CircularHolder(),
                                           ),
                                         ],
                                       ),
@@ -348,10 +343,7 @@ class NewsVideoPlayerState extends State<NewsVideoPlayer> {
                                                     const Icon(Icons.error),
                                               ),
                                               Center(
-                                                child: CircularProgressIndicator(
-                                                  color: Colors.black,
-                                                  backgroundColor: Colors.grey.shade400,
-                                                ),
+                                                child: CircularHolder(),
                                               ),
                                             ],
                                           ),

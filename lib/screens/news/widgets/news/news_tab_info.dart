@@ -1,3 +1,4 @@
+import 'package:blind_chicken/core_config/ui/widgets/widgets/loaders/circular_holder.dart';
 import 'package:blind_chicken/core_config/utils/logging.dart';
 
 import 'package:appmetrica_plugin/appmetrica_plugin.dart';
@@ -98,9 +99,7 @@ class _NewsTabInfoState extends State<NewsTabInfo> {
                                       height: 40,
                                       width: 40,
                                       padding: EdgeInsets.all(8),
-                                      child: CircularProgressIndicator(
-                                        strokeWidth: 3,
-                                      ),
+                                      child: CircularHolder(),
                                     ),
                                 ],
                               );
@@ -162,10 +161,7 @@ class _NewsTabInfoState extends State<NewsTabInfo> {
           return state.maybeMap(
             load: (value) {
               return Center(
-                child: CircularProgressIndicator(
-                  color: Colors.black,
-                  backgroundColor: Colors.grey.shade400,
-                ),
+                child: CircularHolder(),
               );
             },
             orElse: () => const SizedBox(),

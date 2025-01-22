@@ -212,16 +212,16 @@ class _NewsItemTabInfoState extends State<NewsItemTabInfo> with AutomaticKeepAli
                 InkWell(
                   onTap: () {
                     _videoController?.pause();
-                    //context.navigateTo(
-                    //  NewsVideoPlayerRoute(
-                    //    goBack: () {
-                    //      context.back();
-                    //      _controller?.play();
-                    //    },
-                    //    aspectRatio: valueContorller.value.aspectRatio,
-                    //    item: widget.item,
-                    //  ),
-                    //);
+                    context.navigateTo(
+                      NewsVideoPlayerRoute(
+                        goBack: () {
+                          context.back();
+                          _videoController?.play();
+                        },
+                        aspectRatio: valueContorller.value.aspectRatio,
+                        item: widget.item,
+                      ),
+                    );
                   },
                   child: AspectRatio(
                     aspectRatio: valueContorller.value.aspectRatio,

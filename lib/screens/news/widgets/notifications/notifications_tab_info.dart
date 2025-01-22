@@ -1,4 +1,5 @@
 import 'package:auto_route/auto_route.dart';
+import 'package:blind_chicken/core_config/ui/widgets/widgets/loaders/circular_holder.dart';
 import 'package:blind_chicken/screens/app/router/app_router.dart';
 import 'package:blind_chicken/screens/news/widgets/notifications/notification_item_tab_info.dart';
 import 'package:blind_chicken/old_repos/blocs/blocs.dart';
@@ -207,10 +208,7 @@ class _NotificationsTabInfoState extends State<NotificationsTabInfo> {
           return state.maybeMap(
             load: (value) {
               return Center(
-                child: CircularProgressIndicator(
-                  color: Colors.black,
-                  backgroundColor: Colors.grey.shade400,
-                ),
+                child: CircularHolder(),
               );
             },
             orElse: () => const SizedBox(),

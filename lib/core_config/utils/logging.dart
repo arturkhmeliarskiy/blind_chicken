@@ -14,7 +14,7 @@ void logging(
   StackTrace? stackTrace,
 }) {
   final LogBucket logBucket = Locator.injection();
-  String? method = name;
+  String? method;
   if (stackTrace != null) {
     method = CustomTrace.from(stackTrace).functionName.toString();
   }
@@ -23,12 +23,12 @@ void logging(
   }
   if (Env.enableDebugOverlay == true) {
     logBucket.add(LogEvent(
-      name: method,
+      name: method ?? name,
       level: logLevel ?? LogLevel.debug,
       message: logMessage,
     ));
   }
   if (Env.enableDebugLog) {
-    log(logMessage ?? 'null', name: method ?? 'DebugLog');
+    log(logMessage ?? 'null', name: method ?? name ?? 'DebugLog');
   }
 }

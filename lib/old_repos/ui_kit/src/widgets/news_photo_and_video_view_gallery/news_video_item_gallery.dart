@@ -1,3 +1,4 @@
+import 'package:blind_chicken/core_config/ui/widgets/widgets/loaders/circular_holder.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:blind_chicken/old_repos/shared/shared.dart';
@@ -209,9 +210,7 @@ class _NewsVideoItemGalleryState extends State<NewsVideoItemGallery> {
                     width: 40.0,
                     height: 40.0,
                     margin: EdgeInsets.all(10),
-                    child: CircularProgressIndicator(
-                      color: BlindChickenColors.backgroundColor,
-                    ),
+                    child: CircularHolder(),
                   ),
                 ),
               )

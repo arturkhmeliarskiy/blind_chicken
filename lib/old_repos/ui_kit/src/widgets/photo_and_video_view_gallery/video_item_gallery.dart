@@ -1,3 +1,4 @@
+import 'package:blind_chicken/core_config/ui/widgets/widgets/loaders/circular_holder.dart';
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:blind_chicken/old_repos/ui_kit/ui_kit.dart';
@@ -163,10 +164,7 @@ class _VideoItemGalleryState extends State<VideoItemGallery> {
                               errorWidget: (context, url, error) => const Icon(Icons.error),
                             ),
                             Center(
-                              child: CircularProgressIndicator(
-                                color: Colors.black,
-                                backgroundColor: Colors.grey.shade400,
-                              ),
+                              child: CircularHolder(),
                             ),
                           ],
                         ),

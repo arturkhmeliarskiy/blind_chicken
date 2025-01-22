@@ -21,7 +21,7 @@ class CircularHolder extends StatelessWidget {
             valueColor: AlwaysStoppedAnimation(
               color ?? context.colorScheme.primary,
             ),
-            strokeWidth: 3,
+            strokeWidth: 2,
           ),
         ),
       ),

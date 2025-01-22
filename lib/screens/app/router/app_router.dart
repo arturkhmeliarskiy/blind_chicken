@@ -33,6 +33,7 @@ import 'package:blind_chicken/screens/account/order_user_info_screen.dart';
 import 'package:blind_chicken/screens/info/info_screen.dart';
 import 'package:blind_chicken/screens/location/search_location_screen.dart';
 import 'package:blind_chicken/screens/news/media_notification_description_screen.dart';
+import 'package:blind_chicken/screens/news/news_info/models/news_model.dart';
 import 'package:blind_chicken/screens/news/news_notification_description_screen.dart';
 import 'package:blind_chicken/screens/news/notification_info_notification_description_screen.dart';
 import 'package:blind_chicken/screens/news/widgets/media/media_info_description_screen.dart';

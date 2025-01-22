@@ -1,3 +1,4 @@
+import 'package:blind_chicken/core_config/ui/widgets/widgets/loaders/circular_holder.dart';
 import 'package:blind_chicken/core_config/utils/logging.dart';
 
 import 'package:auto_route/auto_route.dart';
@@ -114,10 +115,7 @@ class _NewsPreviewMediaScreenState extends State<NewsPreviewMediaInfoScreen> {
                 itemCount: widget.images.length + widget.videos.length,
                 loadingBuilder: (context, event) => Center(
                   child: Center(
-                    child: CircularProgressIndicator(
-                      color: Colors.black,
-                      backgroundColor: Colors.grey.shade400,
-                    ),
+                    child: CircularHolder(),
                   ),
                 ),
                 backgroundDecoration: const BoxDecoration(

@@ -1,5 +1,6 @@
 import 'package:appmetrica_plugin/appmetrica_plugin.dart';
 import 'package:auto_route/auto_route.dart';
+import 'package:blind_chicken/core_config/ui/widgets/widgets/loaders/circular_holder.dart';
 import 'package:blind_chicken/screens/app/router/app_router.dart';
 import 'package:blind_chicken/screens/news/widgets/handler_links_news.dart';
 import 'package:blind_chicken/screens/news/widgets/news_slider.dart';
@@ -71,10 +72,7 @@ class _NotificationInfoDescriptionScreenState extends State<NotificationInfoDesc
                               height: 15,
                               width: 15,
                               child: Center(
-                                child: CircularProgressIndicator(
-                                  strokeWidth: 3,
-                                  color: BlindChickenColors.backgroundColor,
-                                ),
+                                child: CircularHolder(),
                               ),
                             );
                           } else {

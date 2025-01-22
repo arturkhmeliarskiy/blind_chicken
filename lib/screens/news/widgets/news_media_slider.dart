@@ -1,3 +1,4 @@
+import 'package:blind_chicken/core_config/ui/widgets/widgets/loaders/circular_holder.dart';
 import 'package:blind_chicken/screens/news/widgets/news_video_player_slider.dart';
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
@@ -138,7 +139,7 @@ class _NewsMediaSliderState extends State<NewsMediaSlider> {
                               width: 40.0,
                               height: 40.0,
                               margin: EdgeInsets.all(10),
-                              child: CircularProgressIndicator(),
+                              child: CircularHolder(),
                             ),
                           ),
                         );
@@ -161,74 +162,77 @@ class _NewsMediaSliderState extends State<NewsMediaSlider> {
             Column(
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
-                Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                  children: [
-                    if (_indexItem != 0)
-                      InkWell(
-                        onTap: () {
-                          setState(() {
-                            if (_indexItem != 0) {
-                              _indexItem--;
-                              _scrollController.previousPage(
-                                curve: Curves.linear,
-                                duration: const Duration(
-                                  milliseconds: 500,
-                                ),
-                              );
-                            }
-                          });
-                        },
-                        child: Container(
-                          height: 38.5,
-                          width: 38.5,
-                          decoration: BoxDecoration(
-                            borderRadius: BorderRadius.circular(20),
-                            color: BlindChickenColors.backgroundColor.withOpacity(0.8),
+                Padding(
+                  padding: const EdgeInsets.symmetric(horizontal: 4.0),
+                  child: Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    children: [
+                      if (_indexItem != 0)
+                        InkWell(
+                          onTap: () {
+                            setState(() {
+                              if (_indexItem != 0) {
+                                _indexItem--;
+                                _scrollController.previousPage(
+                                  curve: Curves.linear,
+                                  duration: const Duration(
+                                    milliseconds: 300,
+                                  ),
+                                );
+                              }
+                            });
+                          },
+                          child: Container(
+                            height: 38.5,
+                            width: 38.5,
+                            decoration: BoxDecoration(
+                              borderRadius: BorderRadius.circular(20),
+                              color: BlindChickenColors.backgroundColor.withOpacity(0.3),
+                            ),
+                            padding: const EdgeInsets.all(10.0),
+                            child: SvgPicture.asset(
+                              'assets/icons/chevron-left.svg',
+                              height: 24,
+                              width: 24,
+                            ),
                           ),
-                          padding: const EdgeInsets.all(10.0),
-                          child: SvgPicture.asset(
-                            'assets/icons/chevron-left.svg',
-                            height: 24,
-                            width: 24,
+                        )
+                      else
+                        SizedBox(),
+                      if (_indexItem != (widget.images.length + widget.videos.length) - 1)
+                        InkWell(
+                          onTap: () {
+                            setState(() {
+                              if ((_indexItem + 1) < widget.images.length + widget.videos.length) {
+                                _indexItem++;
+                                _scrollController.nextPage(
+                                  curve: Curves.linear,
+                                  duration: const Duration(
+                                    milliseconds: 300,
+                                  ),
+                                );
+                              }
+                            });
+                          },
+                          child: Container(
+                            height: 38.5,
+                            width: 38.5,
+                            decoration: BoxDecoration(
+                              borderRadius: BorderRadius.circular(20),
+                              color: BlindChickenColors.backgroundColor.withOpacity(0.3),
+                            ),
+                            padding: const EdgeInsets.all(10.0),
+                            child: SvgPicture.asset(
+                              'assets/icons/chevron-right.svg',
+                              height: 24,
+                              width: 24,
+                            ),
                           ),
-                        ),
-                      )
-                    else
-                      SizedBox(),
-                    if (_indexItem != (widget.images.length + widget.videos.length) - 1)
-                      InkWell(
-                        onTap: () {
-                          setState(() {
-                            if ((_indexItem + 1) < widget.images.length + widget.videos.length) {
-                              _indexItem++;
-                              _scrollController.nextPage(
-                                curve: Curves.linear,
-                                duration: const Duration(
-                                  milliseconds: 500,
-                                ),
-                              );
-                            }
-                          });
-                        },
-                        child: Container(
-                          height: 38.5,
-                          width: 38.5,
-                          decoration: BoxDecoration(
-                            borderRadius: BorderRadius.circular(20),
-                            color: BlindChickenColors.backgroundColor,
-                          ),
-                          padding: const EdgeInsets.all(10.0),
-                          child: SvgPicture.asset(
-                            'assets/icons/chevron-right.svg',
-                            height: 24,
-                            width: 24,
-                          ),
-                        ),
-                      )
-                    else
-                      SizedBox(),
-                  ],
+                        )
+                      else
+                        SizedBox(),
+                    ],
+                  ),
                 )
               ],
             ),

@@ -2591,7 +2591,7 @@ class NewsVideoPlayerRoute extends PageRouteInfo<NewsVideoPlayerRouteArgs> {
     Key? key,
     required VoidCallback goBack,
     required double aspectRatio,
-    required NewsInfoItemDataModel item,
+    required NewsElement item,
     List<PageRouteInfo>? children,
   }) : super(
           NewsVideoPlayerRoute.name,
@@ -2634,7 +2634,7 @@ class NewsVideoPlayerRouteArgs {
 
   final double aspectRatio;
 
-  final NewsInfoItemDataModel item;
+  final NewsElement item;
 
   @override
   String toString() {

@@ -9,6 +9,7 @@ import 'package:blind_chicken/core_config/ui/widgets/widgets/buttons/gesture_wra
 import 'package:blind_chicken/core_config/ui/widgets/widgets/loaders/circular_holder.dart';
 import 'package:blind_chicken/core_config/ui/widgets/widgets/others/screen_wrapper.dart';
 import 'package:blind_chicken/core_config/utils/context_extensions.dart';
+import 'package:blind_chicken/core_config/utils/logging.dart';
 import 'package:blind_chicken/gen/assets.gen.dart';
 import 'package:blind_chicken/old_repos/shared/src/constants/date_info.dart';
 import 'package:blind_chicken/old_repos/ui_kit/src/constants/colors/blind_chicken_colors.dart';
@@ -60,7 +61,11 @@ class _NewsInfoRepairedScreenState extends State<NewsInfoRepairedScreen> with Ti
   }
 
   void _scrollListener() {
-    context.sendEvent<NewsInfoBloc>(NewsInfoEvent.onScrollUp(_scrollController.position.pixels));
+    if (_scrollController.offset > 10) {
+      context.sendEvent<NewsInfoBloc>(NewsInfoEvent.hideArrow(_scrollController.position.pixels));
+    } else {
+      context.sendEvent<NewsInfoBloc>(NewsInfoEvent.onScrollUp(_scrollController.position.pixels));
+    }
   }
 
   @override
@@ -268,7 +273,7 @@ class _NewsInfoRepairedScreenState extends State<NewsInfoRepairedScreen> with Ti
   Widget _buildTabBarView(BuildContext context) {
     return TabBarView(
       controller: _tabController,
-      physics: const NeverScrollableScrollPhysics(),
+      //physics: const NeverScrollableScrollPhysics(),
       children: [
         listNews(),
         listNotifications(),
