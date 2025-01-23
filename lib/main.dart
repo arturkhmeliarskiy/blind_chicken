@@ -22,23 +22,18 @@ Future<void> main() async {
   AppMetrica.runZoneGuarded(() async {
 
     WidgetsFlutterBinding.ensureInitialized();
-    print('main2');
+
     await Locator.initBeforeAppLaunch();
-    print('main3');
     SystemChrome.setPreferredOrientations([
       DeviceOrientation.portraitUp,
     ]);
-    print('main4');
     //await initializeDefaultFirebase();
-    print('main5');
 
     await AppMetrica.activate(_config);
     await AppMetricaPush.activate();
-    print('main6');
 
     await setupIoc();
 
-    print('main7');
     FlutterError.onError = (details) async {
       FlutterError.presentError(details);
       await sendError(
@@ -49,7 +44,6 @@ Future<void> main() async {
       logging('Error ${details.exception.toString()}', stackTrace: StackTrace.current);
       logging('Relevant ${details.exceptionAsString()}', stackTrace: StackTrace.current);
     };
-    print('main8');
     PlatformDispatcher.instance.onError = (error, stack) {
       sendError(
         exception: error.toString(),

@@ -18,15 +18,12 @@ class Locator {
 
   static Future<void> initBeforeAppLaunch() async {
     ///Setup App Router
-    print('Setup App Router');
     injection.registerSingleton<AppRouter>(AppRouter());
 
     ///Init logging bucket
-    print('Init logging bucket');
     injection.registerSingleton<LogBucket>(LogBucket());
 
     ///Setup Dio
-    print('Setup Dio');
     injection.registerLazySingleton<DioProvider>(() => DioProvider(
           injection(),
           injection(),
@@ -38,19 +35,16 @@ class Locator {
       connectTimeout: const Duration(seconds: 120),
       receiveTimeout: const Duration(seconds: 60),
     )));
-    print('Setup Storage');
     ///Setup Storage
     injection.registerSingleton<FlutterSecureStorage>(const FlutterSecureStorage());
     injection.registerSingleton<SharedPreferences>(await SharedPreferences.getInstance());
 
-    print('Setup device info');
     ///Setup device info
     injection.registerSingleton<DeviceInfoPlugin>(DeviceInfoPlugin());
     injection.registerSingleton<PackageInfo>(await PackageInfo.fromPlatform());
 
     //injection.registerSingleton<FirebaseMessaging>(FirebaseMessaging.instance);
 
-    print('Setup Repositories');
     ///Setup Repositories
     injection.registerSingleton<LocalRepository>(
       LocalRepository(
@@ -66,14 +60,12 @@ class Locator {
       ),
     );
 
-    print('Setup Blocs');
     ///Setup Blocs
     injection.registerSingleton<AppBloc>(AppBloc(
       injection(),
       injection(),
     ));
 
-    print('Setup Data Sources');
     ///Setup Data Sources
 
     //injection.registerSingleton<InternetConnectionChecker>(InternetConnectionChecker());
@@ -82,14 +74,12 @@ class Locator {
     //injection.registerSingleton<StoreLauncher>(StoreLauncher());
     //injection.registerSingleton<ImagePicker>(ImagePicker());
 
-    print('Setup Notification Manager');
     ///Setup Notification Manager
     injection.registerSingleton<NotificationsManager>(NotificationsManager(
       appRouter: injection(),
       localRepository: injection(),
       remoteRepository: injection(),
     ));
-    print('Setup Notification Manager init');
     final NotificationsManager notificationManager = Locator.injection();
     await notificationManager.initFirebase();
     await notificationManager.initSDK();
