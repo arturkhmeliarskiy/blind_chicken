@@ -92,7 +92,7 @@ class Locator {
     print('Setup Notification Manager init');
     final NotificationsManager notificationManager = Locator.injection();
     await notificationManager.initFirebase();
-    //await notificationManager.initSDK();
+    await notificationManager.initSDK();
   }
 
   static Future<void> initAfterAppLaunch() async {
