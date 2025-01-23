@@ -63,19 +63,6 @@ Future<void> main() async {
   });
 }
 
-Future<void> initializeDefaultFirebase() async {
-  FirebaseApp app = await Firebase.initializeApp(
-    options: const FirebaseOptions(
-      apiKey: 'AIzaSyCIgCCJNbiCYSS4kcT7iIxHIjO7yi80Sww',
-      appId: '1:1085146611593:android:18880eab0fb8784ad56b58',
-      messagingSenderId: '1085146611593',
-      projectId: 'blind-chicken-17561',
-      storageBucket: 'blind-chicken-17561.appspot.com',
-    ),
-  );
-  logging('Initialized default app $app', stackTrace: StackTrace.current);
-}
-
 Future<void> sendError({
   required String stack,
   required String exception,

@@ -3,6 +3,7 @@ import 'dart:async';
 import 'package:blind_chicken/core_config/data/repositories/local/local_repository.dart';
 import 'package:blind_chicken/core_config/data/repositories/remote/remote_repository.dart';
 import 'package:blind_chicken/core_config/ui/resources/app_colors.dart';
+import 'package:blind_chicken/firebase_options.dart';
 import 'package:blind_chicken/screens/app/router/app_router.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:firebase_messaging/firebase_messaging.dart';
@@ -27,13 +28,7 @@ class NotificationsManager {
 
   Future<void> initFirebase() async {
     await Firebase.initializeApp(
-      options: const FirebaseOptions(
-        apiKey: 'AIzaSyCIgCCJNbiCYSS4kcT7iIxHIjO7yi80Sww',
-        appId: '1:1085146611593:android:18880eab0fb8784ad56b58',
-        messagingSenderId: '1085146611593',
-        projectId: 'blind-chicken-17561',
-        storageBucket: 'blind-chicken-17561.appspot.com',
-      ),
+      options: DefaultFirebaseOptions.currentPlatform,
     );
     await FirebaseMessaging.instance.requestPermission();
   }
