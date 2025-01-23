@@ -199,6 +199,7 @@ class _NewsInfoRepairedScreenState extends State<NewsInfoRepairedScreen> with Ti
       indicatorSize: TabBarIndicatorSize.label,
       dividerColor: BlindChickenColors.borderBottomColor,
       controller: _tabController,
+      physics: NeverScrollableScrollPhysics(),
       onTap: (int? index) {
         TypeContent selectedTypeContent = TypeContent.news;
         if (index != null) {
@@ -272,7 +273,7 @@ class _NewsInfoRepairedScreenState extends State<NewsInfoRepairedScreen> with Ti
   Widget _buildTabBarView(BuildContext context) {
     return TabBarView(
       controller: _tabController,
-      //physics: const NeverScrollableScrollPhysics(),
+      physics: const NeverScrollableScrollPhysics(),
       children: [
         listNews(),
         listNotifications(),
