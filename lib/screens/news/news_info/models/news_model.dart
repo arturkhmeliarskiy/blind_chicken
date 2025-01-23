@@ -1,9 +1,165 @@
 import 'dart:convert';
 
-import 'package:blind_chicken/core_config/env.dart';
+import 'package:blind_chicken/core_config/utils/file_type_identifier/file_type_enums.dart';
+import 'package:blind_chicken/core_config/utils/file_type_identifier/file_type_identifier.dart';
 import 'package:blind_chicken/core_config/utils/string_extensions.dart';
 
+class NewsResponse {
+  int idRequest;
+  String version;
+  News? result;
+  Error? error;
+
+  NewsResponse({
+    required this.idRequest,
+    required this.version,
+    required this.result,
+    required this.error,
+  });
+
+  factory NewsResponse.fromRawJson(String str) => NewsResponse.fromJson(json.decode(str));
+
+  String toRawJson() => json.encode(toJson());
+
+  factory NewsResponse.fromJson(Map<String, dynamic> json) => NewsResponse(
+        idRequest: json["idRequest"] ?? 0,
+        version: json["version"] ?? "0",
+        result: json["result"] == null ? null : News.fromJson(json["result"]),
+        error: json["error"] == null ? null : Error.fromJson(json["error"]),
+      );
+
+  Map<String, dynamic> toJson() => {
+        "idRequest": idRequest,
+        "version": version,
+        "result": result?.toJson(),
+        "error": error?.toJson(),
+      };
+}
+
+class Error {
+  int code;
+  String textError;
+
+  Error({
+    required this.code,
+    required this.textError,
+  });
+
+  factory Error.fromRawJson(String str) => Error.fromJson(json.decode(str));
+
+  String toRawJson() => json.encode(toJson());
+
+  factory Error.fromJson(Map<String, dynamic> json) => Error(
+        code: json["code"],
+        textError: json["textError"],
+      );
+
+  Map<String, dynamic> toJson() => {
+        "code": code,
+        "textError": textError,
+      };
+}
+
 class News {
+  List<NewsElement> list;
+
+  News({
+    required this.list,
+  });
+
+  factory News.fromRawJson(String str) => News.fromJson(json.decode(str));
+
+  String toRawJson() => json.encode(toJson());
+
+  factory News.fromJson(Map<String, dynamic> json) => News(
+        list: List<NewsElement>.from(json["list"].map((x) => NewsElement.fromJson(x))),
+      );
+
+  Map<String, dynamic> toJson() => {
+        "list": List<dynamic>.from(list.map((x) => x.toJson())),
+      };
+}
+
+class NewsElement {
+  String id;
+  String title;
+  DateTime createAt;
+  List<String> media;
+  List<String> images;
+  List<String> videos;
+  String announcement;
+  String description;
+  int countLike;
+  bool currentUserLikedIt;
+  bool isViewed;
+
+  NewsElement({
+    required this.id,
+    required this.title,
+    required this.createAt,
+    required this.media,
+    required this.images,
+    required this.videos,
+    required this.announcement,
+    required this.description,
+    required this.countLike,
+    required this.currentUserLikedIt,
+    this.isViewed = false,
+  });
+
+  factory NewsElement.fromRawJson(String str) => NewsElement.fromJson(json.decode(str));
+
+  String toRawJson() => json.encode(toJson());
+
+  factory NewsElement.fromJson(Map<String, dynamic> json) {
+    List<String> images = [];
+    List<String> videos = [];
+    images.clear();
+    videos.clear();
+    for (var item in json['media']) {
+      if (item.toString().isNotNullOrEmpty) {
+        FileType type = FileTypeIdentifier.detectFileType(item);
+        switch (type) {
+          case FileType.unknown:
+            break;
+          case FileType.photo:
+            images.add(item);
+            break;
+          case FileType.video:
+            videos.add(item);
+            break;
+          case FileType.document:
+            break;
+        }
+      }
+    }
+    return NewsElement(
+      id: json["id"],
+      title: json["title"],
+      createAt: DateTime.parse(json["create_at"]),
+      media: List<String>.from(json["media"].map((x) => x)),
+      images: images,
+      videos: videos,
+      announcement: json["announcement"],
+      description: json["description"],
+      countLike: json["count_like"],
+      currentUserLikedIt: json["current_user_liked_it"] == 1 ? true : false,
+    );
+  }
+
+  Map<String, dynamic> toJson() => {
+        "id": id,
+        "title": title,
+        "create_at": createAt.toIso8601String(),
+        "media": List<dynamic>.from(media.map((x) => x)),
+        "announcement": announcement,
+        "description": description,
+        "count_like": countLike,
+        "current_user_liked_it": currentUserLikedIt ? 1 : 0,
+      };
+}
+
+/*class News {
   List<NewsElement> list;
   String r;
   String e;
@@ -167,4 +323,4 @@ class EnumValues<T> {
     reverseMap = map.map((k, v) => MapEntry(v, k));
     return reverseMap;
   }
-}
+}*/

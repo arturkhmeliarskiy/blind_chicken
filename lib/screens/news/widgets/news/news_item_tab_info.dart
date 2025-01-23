@@ -43,8 +43,10 @@ class _NewsItemTabInfoState extends State<NewsItemTabInfo> with AutomaticKeepAli
   @override
   void initState() {
     super.initState();
-    if ((widget.item.video ?? '').replaceAll(Env.baseUrl, '').isNotNullOrEmpty) {
-      videoUrl = widget.item.video;
+    if (widget.item.videos.length == 1 &&
+        widget.item.images.isEmpty &&
+        (widget.item.videos.firstOrNull ?? '').replaceAll(Env.baseUrl, '').isNotNullOrEmpty) {
+      videoUrl = widget.item.videos.first;
       _videoController = VideoPlayerController.networkUrl(
         Uri.parse(videoUrl!),
       );
@@ -133,13 +135,7 @@ class _NewsItemTabInfoState extends State<NewsItemTabInfo> with AutomaticKeepAli
                     child: Column(
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
-                        if (widget.item.typeMedia == TypeMedia.media) buildNewsMediaSlider(context),
-                        if (widget.item.typeMedia == TypeMedia.images && widget.item.images.length == 1)
-                          buildSingleImage(context, width),
-                        if (widget.item.typeMedia == TypeMedia.images && widget.item.images.length > 1)
-                          buildMultipleImages(context),
-                        if (widget.item.typeMedia == TypeMedia.video && widget.item.typeVideo == TypeVideo.original)
-                          buildOriginalVideo(),
+                        buildSlider(width),
                         //const SizedBox(height: 12),
                         //Padding(
                         //  padding: const EdgeInsets.symmetric(horizontal: 16),
@@ -175,6 +171,25 @@ class _NewsItemTabInfoState extends State<NewsItemTabInfo> with AutomaticKeepAli
         ),
       ],
     );
+  }
+
+  Widget buildSlider(double width) {
+    //logging(widget.item.images.toString(), stackTrace: StackTrace.current);
+    //logging(widget.item.videos.toString(), stackTrace: StackTrace.current);
+
+    if (widget.item.videos.isEmpty && widget.item.images.isNotEmpty && widget.item.images.length == 1) {
+      return buildSingleImage(context, width);
+    }
+    if (widget.item.videos.isEmpty && widget.item.images.isNotEmpty && widget.item.images.length > 1) {
+      return buildMultipleImages(context);
+    }
+    if (widget.item.videos.isNotEmpty && widget.item.images.isEmpty && widget.item.videos.length == 1) {
+      return buildOriginalVideo();
+    }
+    if (widget.item.videos.isNotEmpty || widget.item.images.isNotEmpty) {
+      return buildNewsMediaSlider(context);
+    }
+    return SizedBox();
   }
 
   Padding buildTextPost(BuildContext context) {
@@ -365,7 +380,7 @@ class _NewsItemTabInfoState extends State<NewsItemTabInfo> with AutomaticKeepAli
 
   @override
   void dispose() {
-    if (widget.item.video.isNotNullOrEmpty) {
+    if (widget.item.videos.firstOrNull.isNotNullOrEmpty) {
       if (_videoController != null) {
         _videoController?.dispose();
       }

@@ -75,9 +75,6 @@ class NewsInfoBloc extends Bloc<NewsInfoEvent, NewsInfoState> {
           if (_localRepository.getNewsWasReadValue(item.id)) {
             item.isViewed = true;
           }
-          if (_localRepository.getNewsWasLikedValue(item.id) == true) {
-            item.isLiked = true;
-          }
           list.add(item);
         }
         emit(state.copyWith(listNews: list));
@@ -208,7 +205,6 @@ class NewsInfoBloc extends Bloc<NewsInfoEvent, NewsInfoState> {
     SharedPreferencesService sharedPreferencesService = SharedPreferencesService();
     await sharedPreferencesService.initialize();
     final isAuth = sharedPreferencesService.getBool(key: SharedPrefKeys.userAuthorized) ?? false;
-    _localRepository.setNewsWasLikedValue(event.item.id);
 
     if (isAuth == false) {
       emit(state.copyWith(action: LogInToLike()));
@@ -226,7 +222,7 @@ class NewsInfoBloc extends Bloc<NewsInfoEvent, NewsInfoState> {
             if (item.id == event.item.id) {
               NewsElement newsElement = NewsElement.fromRawJson(item.toRawJson());
               newsElement.countLike = r;
-              newsElement.isLiked = event.isLike;
+              newsElement.currentUserLikedIt = event.isLike;
               List<NewsElement> list = [];
               for (var item in state.listNews) {
                 if (item.id == event.item.id) {

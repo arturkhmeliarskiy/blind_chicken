@@ -28,8 +28,7 @@ class _InfoScreenState extends State<InfoScreen> {
   }
 
   void _loadMoreData() async {
-    if (_historyPosition > _scrollController.position.pixels &&
-        _scrollController.position.pixels > 0) {
+    if (_historyPosition > _scrollController.position.pixels && _scrollController.position.pixels > 0) {
       setState(() {
         _isButtonTop = true;
       });
@@ -135,8 +134,7 @@ class _InfoScreenState extends State<InfoScreen> {
                               text: TextSpan(
                                 children: <TextSpan>[
                                   TextSpan(
-                                    text:
-                                        'Оплата на сайте происходит через ПАО Сбербанк с использованием банковских '
+                                    text: 'Оплата на сайте происходит через ПАО Сбербанк с использованием банковских '
                                         'карт платежных систем: МИР, ',
                                     style: Theme.of(context).textTheme.displayMedium,
                                   ),

@@ -38,22 +38,32 @@ class RemoteRepositoryNews implements _RepositoryNews {
     String currentMethod = CustomTrace.from(StackTrace.current).functionName.toString();
     SharedPreferencesService sharedPreferencesService = SharedPreferencesService();
     await sharedPreferencesService.initialize();
+    final isAuth = sharedPreferencesService.getBool(key: SharedPrefKeys.userAuthorized) ?? false;
     final token = sharedPreferencesService.getString(key: SharedPrefKeys.deviceId) ?? '';
     final hashToken = ConverterService.generateMd5Static("Hf5_dfg23fhh9p$token");
+    final tel = sharedPreferencesService.getString(key: SharedPrefKeys.userPhoneNumber) ?? '';
+    final hashTokenTel = tel.isNotEmpty ? ConverterService.generateMd5Static("Hf5_dfg23fhh9p$tel") : '';
+    final platformDevice = sharedPreferencesService.getString(key: SharedPrefKeys.platformDevice) ?? '';
 
     try {
       final response = await dio.post(
-        '/local/service/app/list_news.php?nav=page-$page',
+        '/local/service/app/api/',
         options: Options(
           extra: {'customString': currentMethod},
         ),
+        queryParameters: {
+          "nav": "page-$page"
+        },
         data: {
+          "version": "2.0",
+          "method": "list_news",
           "token": token,
           "hash_token": hashToken,
-          "innerlink": 1,
-          "show": 1,
-          "get_media": 1,
-          "video_original": 1,
+          "tel": tel,
+          "hash_token_tel": hashTokenTel,
+          "params": {
+            //"id": idNews,
+          }
         },
       );
       logging(response.toString(), name: 'Body $currentMethod');
@@ -63,8 +73,8 @@ class RemoteRepositoryNews implements _RepositoryNews {
 
       final result = jsonDecode(response.data);
 
-      newsResponse = News.fromJson(result);
-      logging(newsResponse.list.first.videos.toString(), stackTrace: StackTrace.current, name: 'newsResponseError');
+      newsResponse = NewsResponse.fromJson(result).result!;
+
       return Right(newsResponse);
     } on DioException catch (e, s) {
       logging(e.toString(), stackTrace: StackTrace.current, logLevel: LogLevel.error);
@@ -308,6 +318,61 @@ class RemoteRepositoryNews implements _RepositoryNews {
       );
       logging(response.toString(), name: 'Body $currentMethod');
       logging('end', stackTrace: StackTrace.current);
+      int result = 0;
+      result = int.tryParse(jsonDecode(response.data)['body']['count'])??0;
+      return Right(result);
+    } on DioException catch (e, s) {
+      logging(e.toString(), stackTrace: StackTrace.current, logLevel: LogLevel.error);
+      logging(s.toString(), stackTrace: StackTrace.current, logLevel: LogLevel.error);
+      if (e.response != null) {
+        ErrorResponse responseError = ErrorResponse.fromJson(e.response?.data);
+        logging(responseError.toString(), stackTrace: StackTrace.current);
+        return Left(responseError);
+      } else {
+        return const Left(null);
+      }
+    } catch (e, s) {
+      logging(e.toString(), stackTrace: StackTrace.current, logLevel: LogLevel.error);
+      logging(s.toString(), stackTrace: StackTrace.current, logLevel: LogLevel.error);
+      return const Left(null);
+    }
+  }
+
+  @override
+  Future<Either<ErrorResponse?, int>> likeNewsNow({required String idNews, required bool isLiked}) async {
+    String currentMethod = CustomTrace.from(StackTrace.current).functionName.toString();
+    SharedPreferencesService sharedPreferencesService = SharedPreferencesService();
+    await sharedPreferencesService.initialize();
+    final isAuth = sharedPreferencesService.getBool(key: SharedPrefKeys.userAuthorized) ?? false;
+    final token = sharedPreferencesService.getString(key: SharedPrefKeys.deviceId) ?? '';
+    final hashToken = ConverterService.generateMd5Static("Hf5_dfg23fhh9p$token");
+    final tel = sharedPreferencesService.getString(key: SharedPrefKeys.userPhoneNumber) ?? '';
+    final hashTokenTel = tel.isNotEmpty ? ConverterService.generateMd5Static("Hf5_dfg23fhh9p$tel") : '';
+    final platformDevice = sharedPreferencesService.getString(key: SharedPrefKeys.platformDevice) ?? '';
+
+    try {
+      final response = await dio.post(
+        '/local/service/app/api/',
+        options: Options(
+          extra: {'customString': currentMethod},
+        ),
+        data: {
+          "version": "2.0",
+          "method": "like_news",
+          "token": token,
+          "hash_token": hashToken,
+          "tel": tel,
+          "hash_token_tel": hashTokenTel,
+          "params": {
+            "id": idNews,
+            "phone": tel,
+            "operation": isLiked ? 1 : 0,
+          }
+        },
+      );
+      logging(response.toString(), name: 'Body $currentMethod');
+      logging('end', stackTrace: StackTrace.current);
+
       int result = 0;
       result = int.tryParse(jsonDecode(response.data)['body']['count'])??0;
       return Right(result);

@@ -14,7 +14,6 @@ import 'package:blind_chicken/gen/assets.gen.dart';
 import 'package:blind_chicken/old_repos/shared/src/constants/date_info.dart';
 import 'package:blind_chicken/old_repos/ui_kit/src/constants/colors/blind_chicken_colors.dart';
 import 'package:blind_chicken/old_repos/ui_kit/src/widgets/app_bar_blind_chicken.dart';
-import 'package:blind_chicken/screens/app/router/app_router.dart';
 import 'package:blind_chicken/screens/news/news_info/bloc/news_info_bloc.dart';
 import 'package:blind_chicken/screens/news/news_info/models/news_model.dart';
 import 'package:blind_chicken/screens/news/widgets/news/news_item_tab_info.dart';
@@ -311,6 +310,10 @@ class _NewsInfoRepairedScreenState extends State<NewsInfoRepairedScreen> with Ti
         if (state.listNews.length - 5 == index) {
           context.sendEvent<NewsInfoBloc>(NewsInfoEvent.loadMore());
         }
+        if (state.listNews[index].id == '223') {
+          logging(state.listNews[index].images.toString(), stackTrace: StackTrace.current);
+          logging(state.listNews[index].videos.toString(), stackTrace: StackTrace.current);
+        }
         return Column(
           children: [
             SizedBox(
@@ -326,7 +329,7 @@ class _NewsInfoRepairedScreenState extends State<NewsInfoRepairedScreen> with Ti
                 //);
               },
               onGoTap: () {
-                navigateToCorrectPage(context, state.listNews[index]);
+                //navigateToCorrectPage(context, state.listNews[index]);
               },
               emotionWidget: Row(
                 children: [
@@ -336,7 +339,9 @@ class _NewsInfoRepairedScreenState extends State<NewsInfoRepairedScreen> with Ti
                     Text(
                       state.listNews[index].countLike.toString(),
                       style: TextStyle(
-                        color: state.listNews[index].isLiked == true ? AppColors.accentRed.withOpacity(0.6) : null,
+                        color: state.listNews[index].currentUserLikedIt == true
+                            ? AppColors.accentRed.withOpacity(0.6)
+                            : null,
                         fontSize: 14,
                       ),
                     ),
@@ -366,15 +371,15 @@ class _NewsInfoRepairedScreenState extends State<NewsInfoRepairedScreen> with Ti
                       fontSize: 14,
                     ),
               ),
-              if (state.listNews[index].isViewed == false)
-                Text(
-                  ' Не прочитано',
-                  style: Theme.of(context).textTheme.displaySmall?.copyWith(
-                        color: BlindChickenColors.textInput,
-                      ),
-                )
-              else
-                SizedBox(),
+              //if (state.listNews[index].isViewed == false)
+              //  Text(
+              //    ' Не прочитано',
+              //    style: Theme.of(context).textTheme.displaySmall?.copyWith(
+              //          color: BlindChickenColors.textInput,
+              //        ),
+              //  )
+              //else
+              //  SizedBox(),
             ],
           ),
         );
@@ -438,15 +443,16 @@ Widget buildEmotionButtons(NewsElement item, int index) {
 Widget buildEmotionItem(NewsElement item, int index) {
   double size = 24;
   return BlocBuilder<NewsInfoBloc, NewsInfoState>(
-    buildWhen: (previous, current) => previous.listNews[index].isLiked != current.listNews[index].isLiked,
+    buildWhen: (previous, current) =>
+        previous.listNews[index].currentUserLikedIt != current.listNews[index].currentUserLikedIt,
     builder: (context, state) {
       return GestureWrapper(
         onTap: () {
-          context.sendEvent<NewsInfoBloc>(NewsInfoEvent.likeSelected(item, !item.isLiked));
+          context.sendEvent<NewsInfoBloc>(NewsInfoEvent.likeSelected(item, !item.currentUserLikedIt));
         },
         child: Row(
           children: [
-            item.isLiked == true
+            item.currentUserLikedIt == true
                 ? SvgPicture.asset(
                     Assets.icons.reaction.heartDecorationSvgrepoCom,
                     height: size,
@@ -462,61 +468,4 @@ Widget buildEmotionItem(NewsElement item, int index) {
       );
     },
   );
-}
-
-void navigateToCorrectPage(BuildContext context, NewsElement item) {
-  final AppRouter router = Locator.injection();
-  if (item.typePath == 'catalog') {
-    AppMetrica.reportEvent('Переход в каталог из списка новостей по кнопке');
-    router.push(
-      HomeAutoRouterRoute(
-        children: [
-          CatalogRoute(
-            title: '',
-            url: item.path,
-            lastPath: 'news',
-          ),
-        ],
-      ),
-    );
-  } else if (item.typePath == 'product') {
-    AppMetrica.reportEvent('Переход в описание товара из списка новостей по кнопке');
-    router.push(
-      HomeAutoRouterRoute(
-        children: [
-          CardInfoRoute(
-            isLike: false,
-            listItems: const [],
-            favouritesProducts: const [],
-            isChildRoute: false,
-            lastPath: 'news',
-            titleScreen: 'Экран новостей',
-            codeProduct: '',
-          ),
-        ],
-      ),
-    );
-  } else if (item.typePath == 'boutique') {
-    AppMetrica.reportEvent('Переход в описание бутика из списка новостей по кнопке');
-    router.push(
-      HomeAutoRouterRoute(
-        children: [
-          BoutiquesDescriptionRoute(
-            lastPath: 'news',
-          ),
-        ],
-      ),
-    );
-  } else if (item.typePath == 'gift_card') {
-    AppMetrica.reportEvent('Переход на страницу подарочной карты из списка новостей по кнопке');
-    router.push(
-      HomeAutoRouterRoute(
-        children: [
-          GiftCardRoute(
-            lastPath: 'news',
-          ),
-        ],
-      ),
-    );
-  }
 }

@@ -1,4 +1,5 @@
 import 'package:auto_route/auto_route.dart';
+import 'package:blind_chicken/core_config/ui/resources/app_colors.dart';
 import 'package:blind_chicken/core_config/ui/widgets/widgets/loaders/circular_holder.dart';
 import 'package:blind_chicken/core_config/ui/widgets/widgets/others/screen_wrapper.dart';
 import 'package:blind_chicken/core_config/utils/logging.dart';
@@ -69,6 +70,7 @@ class _NewsPreviewMediaScreenState extends State<NewsPreviewMediaScreen> {
   @override
   Widget build(BuildContext context) {
     return ScreenWrapper(
+      backgroundColor: AppColors.darkText,
       child: GestureDetector(
         onVerticalDragUpdate: (details) {},
         onHorizontalDragEnd: (DragEndDetails details) {
@@ -91,30 +93,26 @@ class _NewsPreviewMediaScreenState extends State<NewsPreviewMediaScreen> {
     );
   }
 
-  Scaffold buildSlider() {
-    return Scaffold(
-      body: Center(
-        child: PhotoAndVideoViewGallery.builder(
-          scrollPhysics: const BouncingScrollPhysics(),
-          builder: (BuildContext context, int index) {
-            return PhotoAndVideoViewGalleryPageOptions(
-              imageProvider: NetworkImage(widget.media[index]),
-              initialScale: PhotoViewComputedScale.contained,
-              maxScale: PhotoViewComputedScale.contained * 5,
-              minScale: PhotoViewComputedScale.contained,
-              heroAttributes: PhotoViewHeroAttributes(tag: index),
-            );
-          },
-          itemCount: widget.media.length,
-          loadingBuilder: (context, event) => Center(
-            child: CircularHolder(),
-          ),
-          backgroundDecoration: const BoxDecoration(
-            color: BlindChickenColors.backgroundColor,
-          ),
-          pageController: _pageController,
-        ),
+  Widget buildSlider() {
+    return PhotoAndVideoViewGallery.builder(
+      scrollPhysics: const BouncingScrollPhysics(),
+      builder: (BuildContext context, int index) {
+        return PhotoAndVideoViewGalleryPageOptions(
+          imageProvider: NetworkImage(widget.media[index]),
+          initialScale: PhotoViewComputedScale.contained,
+          maxScale: PhotoViewComputedScale.contained * 5,
+          minScale: PhotoViewComputedScale.contained,
+          heroAttributes: PhotoViewHeroAttributes(tag: index),
+        );
+      },
+      itemCount: widget.media.length,
+      loadingBuilder: (context, event) => Center(
+        child: CircularHolder(),
       ),
+      backgroundDecoration: BoxDecoration(
+        color: AppColors.darkText,
+      ),
+      pageController: _pageController,
     );
   }
 
@@ -157,8 +155,8 @@ class _NewsPreviewMediaScreenState extends State<NewsPreviewMediaScreen> {
   }
 
   Widget buildLeftChevronIcon() {
-    if(_pageController.hasClients == false) return SizedBox();
-    if(_pageController.page?.toInt() == 0) return SizedBox();
+    if (_pageController.hasClients == false) return SizedBox();
+    if (_pageController.page?.toInt() == 0) return SizedBox();
     return Column(
       mainAxisAlignment: MainAxisAlignment.center,
       crossAxisAlignment: CrossAxisAlignment.center,

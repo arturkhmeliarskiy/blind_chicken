@@ -127,9 +127,7 @@ class _NewsMediaSliderState extends State<NewsMediaSlider> {
                     ),
                     child: CachedNetworkImage(
                       imageUrl: widget.images[index - 1],
-                      width: MediaQuery.of(context).orientation == Orientation.portrait
-                          ? width
-                          : width / 2,
+                      width: MediaQuery.of(context).orientation == Orientation.portrait ? width : width / 2,
                       fit: BoxFit.cover,
                       placeholder: (context, url) {
                         return AspectRatio(

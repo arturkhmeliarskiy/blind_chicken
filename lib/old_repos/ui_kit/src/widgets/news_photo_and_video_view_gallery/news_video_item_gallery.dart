@@ -80,9 +80,8 @@ class _NewsVideoItemGalleryState extends State<NewsVideoItemGallery> {
                   Container(
                     height: 42,
                     width: width,
-                    margin: EdgeInsets.only(
-                        bottom:
-                            MediaQuery.of(context).orientation == Orientation.portrait ? 0 : 10),
+                    margin:
+                        EdgeInsets.only(bottom: MediaQuery.of(context).orientation == Orientation.portrait ? 0 : 10),
                     color: BlindChickenColors.activeBorderTextField.withOpacity(0.1),
                     child: Row(
                       crossAxisAlignment: CrossAxisAlignment.center,
@@ -128,11 +127,9 @@ class _NewsVideoItemGalleryState extends State<NewsVideoItemGallery> {
                               setState(() {
                                 _isRotateScreen = !_isRotateScreen;
                                 if (_isRotateScreen) {
-                                  SystemChrome.setPreferredOrientations(
-                                      [DeviceOrientation.landscapeRight]);
+                                  SystemChrome.setPreferredOrientations([DeviceOrientation.landscapeRight]);
                                 } else {
-                                  SystemChrome.setPreferredOrientations(
-                                      [DeviceOrientation.portraitUp]);
+                                  SystemChrome.setPreferredOrientations([DeviceOrientation.portraitUp]);
                                 }
                               });
                             },

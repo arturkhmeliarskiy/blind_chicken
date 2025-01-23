@@ -1,4 +1,5 @@
 import 'package:blind_chicken/core_config/utils/file_type_identifier/file_type_enums.dart';
+import 'package:blind_chicken/core_config/utils/logging.dart';
 import 'package:mime/mime.dart';
 
 class FileTypeIdentifier {
@@ -26,14 +27,15 @@ class FileTypeIdentifier {
 
   static bool isPhoto(String path) {
     final mimeType = lookupMimeType(path);
-
-    return mimeType?.startsWith('image/') ?? false; //image/jpeg
+    return (mimeType?.endsWith('.jpeg') ?? false) ||
+        (mimeType?.endsWith('.png') ?? false) ||
+        (mimeType?.contains('image/jpeg') ?? false); //image/jpeg
   }
 
   static bool isVideo(String path) {
     final mimeType = lookupMimeType(path);
 
-    return mimeType?.startsWith('video/') ?? false; //video/mp4
+    return (mimeType?.endsWith('.mp4') ?? false)||(mimeType?.contains('video/mp4') ?? false); //video/mp4
   }
 
   static bool isDocument(String path) {

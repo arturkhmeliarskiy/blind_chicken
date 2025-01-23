@@ -24,8 +24,8 @@ class NewsVideoPlayerScreen extends StatelessWidget {
       child: Scaffold(
         backgroundColor: BlindChickenColors.activeBorderTextField,
         body: NewsVideoPlayer(
-          url: item.video??'',
-          image: item.videoImage,
+          url: item.videos.firstOrNull ?? '',
+          image: item.images.firstOrNull ?? '',
           isFullScreenVideo: true,
           onEnterFullScreen: (aspectRatio) {},
           aspectRatio: aspectRatio,
