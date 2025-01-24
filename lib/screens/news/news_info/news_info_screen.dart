@@ -9,7 +9,6 @@ import 'package:blind_chicken/core_config/ui/widgets/widgets/buttons/gesture_wra
 import 'package:blind_chicken/core_config/ui/widgets/widgets/loaders/circular_holder.dart';
 import 'package:blind_chicken/core_config/ui/widgets/widgets/others/screen_wrapper.dart';
 import 'package:blind_chicken/core_config/utils/context_extensions.dart';
-import 'package:blind_chicken/core_config/utils/logging.dart';
 import 'package:blind_chicken/gen/assets.gen.dart';
 import 'package:blind_chicken/old_repos/shared/src/constants/date_info.dart';
 import 'package:blind_chicken/old_repos/ui_kit/src/constants/colors/blind_chicken_colors.dart';
@@ -24,6 +23,7 @@ import 'package:flutter_svg/flutter_svg.dart';
 
 TabController? _tabController;
 final ScrollController _scrollController = ScrollController();
+final GlobalKey _appBarKey = GlobalKey();
 
 @RoutePage()
 class NewsInfoRepairedScreen extends StatefulWidget implements AutoRouteWrapper {
@@ -53,10 +53,25 @@ class NewsInfoRepairedScreen extends StatefulWidget implements AutoRouteWrapper 
 }
 
 class _NewsInfoRepairedScreenState extends State<NewsInfoRepairedScreen> with TickerProviderStateMixin {
+  double _toolbarHeight = kToolbarHeight;
+
   @override
   void initState() {
     super.initState();
     _scrollController.addListener(_scrollListener);
+    WidgetsBinding.instance.addPostFrameCallback((_) {
+      // Измеряем высоту AppBarBlindChicken после рендеринга
+      updateAppBarHeight();
+    });
+  }
+
+  void updateAppBarHeight() {
+    final appBarHeight = _appBarKey.currentContext?.size?.height;
+    if (appBarHeight != null && appBarHeight != _toolbarHeight) {
+      setState(() {
+        _toolbarHeight = appBarHeight;
+      });
+    }
   }
 
   void _scrollListener() {
@@ -69,7 +84,8 @@ class _NewsInfoRepairedScreenState extends State<NewsInfoRepairedScreen> with Ti
 
   @override
   void dispose() {
-    _scrollController.removeListener(_scrollListener);
+    _scrollController.dispose();
+    _tabController?.dispose();
     super.dispose();
   }
 
@@ -101,6 +117,7 @@ class _NewsInfoRepairedScreenState extends State<NewsInfoRepairedScreen> with Ti
           }
           if (action.tabIndex == _tabController?.index) {
             _scrollController.animateTo(0.0, duration: Duration(milliseconds: 300), curve: Curves.ease);
+            context.sendEvent<NewsInfoBloc>(NewsInfoEvent.init());
           } else {
             AppMetrica.reportEvent(text);
           }
@@ -141,7 +158,7 @@ class _NewsInfoRepairedScreenState extends State<NewsInfoRepairedScreen> with Ti
     return BlocBuilder<NewsInfoBloc, NewsInfoState>(
       builder: (context, state) {
         if (!state.isArrowVisible) {
-          return SizedBox.shrink();
+          return SizedBox();
         }
         return GestureDetector(
           onTap: () async {
@@ -179,19 +196,22 @@ class _NewsInfoRepairedScreenState extends State<NewsInfoRepairedScreen> with Ti
           forceElevated: innerBoxIsScrolled,
           pinned: true,
           floating: true,
-          toolbarHeight: kToolbarHeight * 1.65,
-          title: const AppBarBlindChicken(),
+          toolbarHeight: _toolbarHeight,
+          //kToolbarHeight,
+          //kToolbarHeight * 1.65,
+          title: AppBarBlindChicken(key: _appBarKey),
           titleSpacing: 0,
           foregroundColor: BlindChickenColors.backgroundColor,
           backgroundColor: BlindChickenColors.backgroundColor,
           surfaceTintColor: BlindChickenColors.backgroundColor,
           bottom: _buildTabBar(context),
+          //bottom: _buildTabBar(context),
         ),
       ),
     ];
   }
 
-  TabBar _buildTabBar(BuildContext context) {
+  PreferredSizeWidget? _buildTabBar(BuildContext context) {
     return TabBar(
       padding: EdgeInsets.zero,
       labelPadding: EdgeInsets.zero,
@@ -310,10 +330,6 @@ class _NewsInfoRepairedScreenState extends State<NewsInfoRepairedScreen> with Ti
         }
         if (state.listNews.length - 5 == index) {
           context.sendEvent<NewsInfoBloc>(NewsInfoEvent.loadMore());
-        }
-        if (state.listNews[index].id == '223') {
-          logging(state.listNews[index].images.toString(), stackTrace: StackTrace.current);
-          logging(state.listNews[index].videos.toString(), stackTrace: StackTrace.current);
         }
         return Column(
           children: [

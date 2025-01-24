@@ -195,7 +195,13 @@ class _NewsPreviewMediaScreenState extends State<NewsPreviewMediaScreen> {
     );
   }
 
-  Column buildRightChevronIcon() {
+  Widget buildRightChevronIcon() {
+    if (_pageController.hasClients == false) return buildRightChevron();
+    if (_pageController.page?.toInt() == widget.media.length - 1) return SizedBox();
+    return buildRightChevron();
+  }
+
+  Column buildRightChevron() {
     return Column(
       mainAxisAlignment: MainAxisAlignment.center,
       crossAxisAlignment: CrossAxisAlignment.center,

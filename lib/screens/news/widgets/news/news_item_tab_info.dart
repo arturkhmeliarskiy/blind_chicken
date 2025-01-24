@@ -47,16 +47,20 @@ class _NewsItemTabInfoState extends State<NewsItemTabInfo> with AutomaticKeepAli
         widget.item.images.isEmpty &&
         (widget.item.videos.firstOrNull ?? '').replaceAll(Env.baseUrl, '').isNotNullOrEmpty) {
       videoUrl = widget.item.videos.first;
+
       _videoController = VideoPlayerController.networkUrl(
         Uri.parse(videoUrl!),
+          videoPlayerOptions: VideoPlayerOptions(
+            mixWithOthers: true,
+          )
       );
+      _videoController?.setVolume(0.0);
+      _videoController?.setLooping(true);
+
       _videoController?.initialize().whenComplete(() {
         setState(() {
           _videoController?.play();
         });
-
-        _videoController?.setVolume(0.0);
-        _videoController?.setLooping(true);
       });
     }
   }
@@ -126,7 +130,7 @@ class _NewsItemTabInfoState extends State<NewsItemTabInfo> with AutomaticKeepAli
                       bottomLeft: Radius.circular(15),
                       bottomRight: Radius.circular(15),
                     ),
-                    color: widget.item.isViewed
+                    color: widget.item.isViewed == false
                         ? BlindChickenColors.backgroundColorItemFilter
                         : BlindChickenColors.backgroundColor,
                   ),
@@ -149,8 +153,6 @@ class _NewsItemTabInfoState extends State<NewsItemTabInfo> with AutomaticKeepAli
                         //    ],
                         //  ),
                         //),
-                        const SizedBox(height: 20),
-                        buildTextPost(context),
                         const SizedBox(height: 16),
                         Row(
                           crossAxisAlignment: CrossAxisAlignment.center,
@@ -160,7 +162,9 @@ class _NewsItemTabInfoState extends State<NewsItemTabInfo> with AutomaticKeepAli
                             widget.readWidget ?? SizedBox(),
                           ],
                         ),
-                        const SizedBox(height: 12),
+                        const SizedBox(height: 14),
+                        buildTextPost(context),
+                        const SizedBox(height: 16),
                       ],
                     ),
                   ),

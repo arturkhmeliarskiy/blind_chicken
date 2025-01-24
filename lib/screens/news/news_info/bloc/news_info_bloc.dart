@@ -161,7 +161,6 @@ class NewsInfoBloc extends Bloc<NewsInfoEvent, NewsInfoState> {
 
     for (var item in state.listNews) {
       if (item.id == event.item.id) {
-        logging(item.toRawJson(), name: 'item');
       }
     }
     await _localRepository.setNewsWasReadValue(event.item.id);
@@ -178,7 +177,6 @@ class NewsInfoBloc extends Bloc<NewsInfoEvent, NewsInfoState> {
     emit(state.copyWith(listNews: list.toList()));
     for (var item in state.listNews) {
       if (item.id == event.item.id) {
-        logging(item.toRawJson(), name: 'item');
       }
     }
   }
@@ -222,6 +220,7 @@ class NewsInfoBloc extends Bloc<NewsInfoEvent, NewsInfoState> {
             if (item.id == event.item.id) {
               NewsElement newsElement = NewsElement.fromRawJson(item.toRawJson());
               newsElement.countLike = r;
+              newsElement.isViewed = event.item.isViewed;
               newsElement.currentUserLikedIt = event.isLike;
               List<NewsElement> list = [];
               for (var item in state.listNews) {

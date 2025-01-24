@@ -37,16 +37,30 @@ class _NewsVideoPlayerSliderState extends State<NewsVideoPlayerSlider> {
 
     _controller = VideoPlayerController.networkUrl(
       Uri.parse(widget.url),
-    )..initialize().then((_) {
-        setState(() {
-          _controller?.play();
-        });
-
-        _controller?.setVolume(0.0);
-        widget.onAspectRatio(_controller?.value.aspectRatio ?? 0);
-        _controller?.setLooping(true);
-      });
+      videoPlayerOptions: VideoPlayerOptions(
+        mixWithOthers: true,
+      )
+    );
+    _controller?.setVolume(0.0);
     _controller?.setLooping(true);
+    _controller?.initialize().then((_) {
+      setState(() {
+        _controller?.play();
+      });
+    });
+
+    //_controller = VideoPlayerController.networkUrl(
+    //  Uri.parse(widget.url),
+    //)..initialize().then((_) {
+    //    setState(() {
+    //      _controller?.play();
+    //    });
+//
+    //    _controller?.setVolume(0.0);
+    //
+    //    _controller?.setLooping(true);
+    //  });
+    //_controller?.setLooping(true);
     final valueContorller = _controller;
     if (valueContorller != null) {
       updateData.videoController = valueContorller;
