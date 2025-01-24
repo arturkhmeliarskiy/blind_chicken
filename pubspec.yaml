@@ -156,7 +156,7 @@ dependencies:
   json_annotation: ^4.9.0
   hive_generator: ^2.0.1
   firebase_analytics: ^11.4.0
-  
+
 dev_dependencies:
   flutter_test:
     sdk: flutter
