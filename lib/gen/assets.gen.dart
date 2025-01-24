@@ -364,9 +364,6 @@ class $AssetsImagesGen {
   AssetGenImage get cosmeticsWoman =>
       const AssetGenImage('assets/images/cosmetics_woman.jpg');
 
-  /// Directory path: assets/images/delivery
-  $AssetsImagesDeliveryGen get delivery => const $AssetsImagesDeliveryGen();
-
   /// File path: assets/images/department_store.png
   AssetGenImage get departmentStore =>
       const AssetGenImage('assets/images/department_store.png');
@@ -912,17 +909,6 @@ class $AssetsIconsReactionGen {
 
   /// List of all assets
   List<String> get values => [heartDecorationSvgrepoCom, heartSvgrepoCom];
-}
-
-class $AssetsImagesDeliveryGen {
-  const $AssetsImagesDeliveryGen();
-
-  /// File path: assets/images/delivery/yandex_delivery.png
-  AssetGenImage get yandexDelivery =>
-      const AssetGenImage('assets/images/delivery/yandex_delivery.png');
-
-  /// List of all assets
-  List<AssetGenImage> get values => [yandexDelivery];
 }
 
 class $AssetsImagesFlagGen {

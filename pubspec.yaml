@@ -194,7 +194,6 @@ flutter:
     - assets/icons/reaction/
     - assets/icons/integrations/
     - assets/images/flag/
-    - assets/images/delivery/
 
 
   # An image asset can refer to one or more resolution-specific "variants", see
