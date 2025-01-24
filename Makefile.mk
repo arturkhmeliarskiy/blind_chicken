@@ -16,6 +16,10 @@ create_apk_file:
 	flutter build apk --release
 	./post_build.sh
 
+create_android_bundle_file:
+	flutter build appbundle
+	./post_build.sh
+
 create_ios_file:
 	flutter build ipa --release
 	./post_build.sh
