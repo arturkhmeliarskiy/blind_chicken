@@ -2,7 +2,7 @@ gen_icons:
 	flutter packages pub run flutter_launcher_icons:main
 
 change_app_package_name:
-	flutter pub run change_app_package_name:main ru.pimmer.app
+	flutter pub run change_app_package_name:main ru.application.app
 
 run_build_runner:
 	flutter pub run build_runner build --delete-conflicting-outputs
