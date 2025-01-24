@@ -164,30 +164,17 @@ class $AssetsIconsGen {
   /// File path: assets/icons/cust_menu_icon.svg
   String get custMenuIcon => 'assets/icons/cust_menu_icon.svg';
 
-  /// Directory path: assets/icons/delivery
-  $AssetsIconsDeliveryGen get delivery => const $AssetsIconsDeliveryGen();
-
   /// File path: assets/icons/document.svg
   String get document => 'assets/icons/document.svg';
 
   /// File path: assets/icons/filter.svg
   String get filter => 'assets/icons/filter.svg';
 
-  /// Directory path: assets/icons/goods
-  $AssetsIconsGoodsGen get goods => const $AssetsIconsGoodsGen();
-
   /// File path: assets/icons/heart.svg
   String get heart => 'assets/icons/heart.svg';
 
-  /// Directory path: assets/icons/help_screen
-  $AssetsIconsHelpScreenGen get helpScreen => const $AssetsIconsHelpScreenGen();
-
   /// File path: assets/icons/info.svg
   String get info => 'assets/icons/info.svg';
-
-  /// Directory path: assets/icons/integration
-  $AssetsIconsIntegrationGen get integration =>
-      const $AssetsIconsIntegrationGen();
 
   /// Directory path: assets/icons/integrations
   $AssetsIconsIntegrationsGen get integrations =>
@@ -208,33 +195,14 @@ class $AssetsIconsGen {
   /// File path: assets/icons/location.svg
   String get location => 'assets/icons/location.svg';
 
-  /// Directory path: assets/icons/logo
-  $AssetsIconsLogoGen get logo => const $AssetsIconsLogoGen();
-
   /// File path: assets/icons/logo_gift_card.svg
   String get logoGiftCard => 'assets/icons/logo_gift_card.svg';
-
-  /// Directory path: assets/icons/map
-  $AssetsIconsMapGen get map => const $AssetsIconsMapGen();
 
   /// File path: assets/icons/menu.svg
   String get menu => 'assets/icons/menu.svg';
 
   /// File path: assets/icons/message-circle.svg
   String get messageCircle => 'assets/icons/message-circle.svg';
-
-  /// Directory path: assets/icons/order
-  $AssetsIconsOrderGen get order => const $AssetsIconsOrderGen();
-
-  /// Directory path: assets/icons/order_payment
-  $AssetsIconsOrderPaymentGen get orderPayment =>
-      const $AssetsIconsOrderPaymentGen();
-
-  /// Directory path: assets/icons/order_popup
-  $AssetsIconsOrderPopupGen get orderPopup => const $AssetsIconsOrderPopupGen();
-
-  /// Directory path: assets/icons/other
-  $AssetsIconsOtherGen get other => const $AssetsIconsOtherGen();
 
   /// File path: assets/icons/pchsbch.svg
   String get pchsbch => 'assets/icons/pchsbch.svg';
@@ -274,9 +242,6 @@ class $AssetsIconsGen {
 
   /// File path: assets/icons/sort.svg
   String get sort => 'assets/icons/sort.svg';
-
-  /// Directory path: assets/icons/tabbar
-  $AssetsIconsTabbarGen get tabbar => const $AssetsIconsTabbarGen();
 
   /// File path: assets/icons/user.svg
   String get user => 'assets/icons/user.svg';
@@ -399,14 +364,6 @@ class $AssetsImagesGen {
   AssetGenImage get cosmeticsWoman =>
       const AssetGenImage('assets/images/cosmetics_woman.jpg');
 
-  /// Directory path: assets/images/create_product
-  $AssetsImagesCreateProductGen get createProduct =>
-      const $AssetsImagesCreateProductGen();
-
-  /// Directory path: assets/images/default_onboarding_images
-  $AssetsImagesDefaultOnboardingImagesGen get defaultOnboardingImages =>
-      const $AssetsImagesDefaultOnboardingImagesGen();
-
   /// Directory path: assets/images/delivery
   $AssetsImagesDeliveryGen get delivery => const $AssetsImagesDeliveryGen();
 
@@ -453,10 +410,6 @@ class $AssetsImagesGen {
   AssetGenImage get giftcardF =>
       const AssetGenImage('assets/images/giftcard_f.jpg');
 
-  /// Directory path: assets/images/goods_empty
-  $AssetsImagesGoodsEmptyGen get goodsEmpty =>
-      const $AssetsImagesGoodsEmptyGen();
-
   /// File path: assets/images/lgm.svg
   String get lgm => 'assets/images/lgm.svg';
 
@@ -477,10 +430,6 @@ class $AssetsImagesGen {
   /// File path: assets/images/map_point.png
   AssetGenImage get mapPoint =>
       const AssetGenImage('assets/images/map_point.png');
-
-  /// Directory path: assets/images/new_user_hint_choses
-  $AssetsImagesNewUserHintChosesGen get newUserHintChoses =>
-      const $AssetsImagesNewUserHintChosesGen();
 
   /// File path: assets/images/news_background.png
   AssetGenImage get newsBackground =>
@@ -504,13 +453,6 @@ class $AssetsImagesGen {
   /// File path: assets/images/optics_woman.jpg
   AssetGenImage get opticsWoman =>
       const AssetGenImage('assets/images/optics_woman.jpg');
-
-  /// Directory path: assets/images/orders_empty
-  $AssetsImagesOrdersEmptyGen get ordersEmpty =>
-      const $AssetsImagesOrdersEmptyGen();
-
-  /// Directory path: assets/images/other
-  $AssetsImagesOtherGen get other => const $AssetsImagesOtherGen();
 
   /// File path: assets/images/pay.png
   AssetGenImage get pay => const AssetGenImage('assets/images/pay.png');
@@ -536,14 +478,6 @@ class $AssetsImagesGen {
 
   /// File path: assets/images/shoes.png
   AssetGenImage get shoes => const AssetGenImage('assets/images/shoes.png');
-
-  /// Directory path: assets/images/store_settings
-  $AssetsImagesStoreSettingsGen get storeSettings =>
-      const $AssetsImagesStoreSettingsGen();
-
-  /// Directory path: assets/images/tariff_plan
-  $AssetsImagesTariffPlanGen get tariffPlan =>
-      const $AssetsImagesTariffPlanGen();
 
   /// File path: assets/images/vision.jpg
   AssetGenImage get vision => const AssetGenImage('assets/images/vision.jpg');
@@ -956,149 +890,6 @@ class $AssetsImagesExternalGen {
       ];
 }
 
-class $AssetsJsonGen {
-  const $AssetsJsonGen();
-
-  /// File path: assets/json/default_onboarding_config.json
-  String get defaultOnboardingConfig =>
-      'assets/json/default_onboarding_config.json';
-
-  /// File path: assets/json/timezones.json
-  String get timezones => 'assets/json/timezones.json';
-
-  /// List of all assets
-  List<String> get values => [defaultOnboardingConfig, timezones];
-}
-
-class $AssetsMapGen {
-  const $AssetsMapGen();
-
-  /// File path: assets/map/.gitkeep
-  String get aGitkeep => 'assets/map/.gitkeep';
-
-  /// File path: assets/map/android.png
-  AssetGenImage get android => const AssetGenImage('assets/map/android.png');
-
-  /// File path: assets/map/ios.png
-  AssetGenImage get ios => const AssetGenImage('assets/map/ios.png');
-
-  /// List of all assets
-  List<dynamic> get values => [aGitkeep, android, ios];
-}
-
-class $AssetsPpGen {
-  const $AssetsPpGen();
-
-  /// File path: assets/pp/goods_empty.jpg
-  AssetGenImage get goodsEmpty =>
-      const AssetGenImage('assets/pp/goods_empty.jpg');
-
-  /// List of all assets
-  List<AssetGenImage> get values => [goodsEmpty];
-}
-
-class $AssetsIconsDeliveryGen {
-  const $AssetsIconsDeliveryGen();
-
-  /// File path: assets/icons/delivery/courier.svg
-  String get courier => 'assets/icons/delivery/courier.svg';
-
-  /// File path: assets/icons/delivery/express.svg
-  String get express => 'assets/icons/delivery/express.svg';
-
-  /// File path: assets/icons/delivery/location.svg
-  String get location => 'assets/icons/delivery/location.svg';
-
-  /// File path: assets/icons/delivery/person.svg
-  String get person => 'assets/icons/delivery/person.svg';
-
-  /// File path: assets/icons/delivery/settings.svg
-  String get settings => 'assets/icons/delivery/settings.svg';
-
-  /// File path: assets/icons/delivery/truck.svg
-  String get truck => 'assets/icons/delivery/truck.svg';
-
-  /// File path: assets/icons/delivery/truck_delivery.svg
-  String get truckDelivery => 'assets/icons/delivery/truck_delivery.svg';
-
-  /// File path: assets/icons/delivery/yandex_banner.svg
-  String get yandexBanner => 'assets/icons/delivery/yandex_banner.svg';
-
-  /// File path: assets/icons/delivery/yandex_delivery.png
-  AssetGenImage get yandexDelivery =>
-      const AssetGenImage('assets/icons/delivery/yandex_delivery.png');
-
-  /// List of all assets
-  List<dynamic> get values => [
-        courier,
-        express,
-        location,
-        person,
-        settings,
-        truck,
-        truckDelivery,
-        yandexBanner,
-        yandexDelivery
-      ];
-}
-
-class $AssetsIconsGoodsGen {
-  const $AssetsIconsGoodsGen();
-
-  /// File path: assets/icons/goods/copy_android.svg
-  String get copyAndroid => 'assets/icons/goods/copy_android.svg';
-
-  /// File path: assets/icons/goods/copy_ios.svg
-  String get copyIos => 'assets/icons/goods/copy_ios.svg';
-
-  /// File path: assets/icons/goods/delete_android.svg
-  String get deleteAndroid => 'assets/icons/goods/delete_android.svg';
-
-  /// File path: assets/icons/goods/delete_ios.svg
-  String get deleteIos => 'assets/icons/goods/delete_ios.svg';
-
-  /// List of all assets
-  List<String> get values => [copyAndroid, copyIos, deleteAndroid, deleteIos];
-}
-
-class $AssetsIconsHelpScreenGen {
-  const $AssetsIconsHelpScreenGen();
-
-  /// File path: assets/icons/help_screen/anrdoid.svg
-  String get anrdoid => 'assets/icons/help_screen/anrdoid.svg';
-
-  /// File path: assets/icons/help_screen/apple.svg
-  String get apple => 'assets/icons/help_screen/apple.svg';
-
-  /// File path: assets/icons/help_screen/chat.svg
-  String get chat => 'assets/icons/help_screen/chat.svg';
-
-  /// File path: assets/icons/help_screen/copy.svg
-  String get copy => 'assets/icons/help_screen/copy.svg';
-
-  /// File path: assets/icons/help_screen/person_icon.svg
-  String get personIcon => 'assets/icons/help_screen/person_icon.svg';
-
-  /// File path: assets/icons/help_screen/qr.svg
-  String get qr => 'assets/icons/help_screen/qr.svg';
-
-  /// List of all assets
-  List<String> get values => [anrdoid, apple, chat, copy, personIcon, qr];
-}
-
-class $AssetsIconsIntegrationGen {
-  const $AssetsIconsIntegrationGen();
-
-  /// File path: assets/icons/integration/catalog.svg
-  String get catalog => 'assets/icons/integration/catalog.svg';
-
-  /// File path: assets/icons/integration/menu.svg
-  String get menu => 'assets/icons/integration/menu.svg';
-
-  /// List of all assets
-  List<String> get values => [catalog, menu];
-}
-
 class $AssetsIconsIntegrationsGen {
   const $AssetsIconsIntegrationsGen();
 
@@ -1107,404 +898,6 @@ class $AssetsIconsIntegrationsGen {
 
   /// List of all assets
   List<String> get values => [placeholder];
-}
-
-class $AssetsIconsLogoGen {
-  const $AssetsIconsLogoGen();
-
-  /// File path: assets/icons/logo/mini_dark.svg
-  String get miniDark => 'assets/icons/logo/mini_dark.svg';
-
-  /// File path: assets/icons/logo/pimmer_white.svg
-  String get pimmerWhite => 'assets/icons/logo/pimmer_white.svg';
-
-  /// List of all assets
-  List<String> get values => [miniDark, pimmerWhite];
-}
-
-class $AssetsIconsMapGen {
-  const $AssetsIconsMapGen();
-
-  /// File path: assets/icons/map/map_icon.svg
-  String get mapIcon => 'assets/icons/map/map_icon.svg';
-
-  /// File path: assets/icons/map/marker_android.svg
-  String get markerAndroid => 'assets/icons/map/marker_android.svg';
-
-  /// File path: assets/icons/map/marker_ios.svg
-  String get markerIos => 'assets/icons/map/marker_ios.svg';
-
-  /// List of all assets
-  List<String> get values => [mapIcon, markerAndroid, markerIos];
-}
-
-class $AssetsIconsOrderGen {
-  const $AssetsIconsOrderGen();
-
-  /// File path: assets/icons/order/check_active.svg
-  String get checkActive => 'assets/icons/order/check_active.svg';
-
-  /// File path: assets/icons/order/check_inactive.svg
-  String get checkInactive => 'assets/icons/order/check_inactive.svg';
-
-  /// List of all assets
-  List<String> get values => [checkActive, checkInactive];
-}
-
-class $AssetsIconsOrderPaymentGen {
-  const $AssetsIconsOrderPaymentGen();
-
-  /// File path: assets/icons/order_payment/rectangle.svg
-  String get rectangle => 'assets/icons/order_payment/rectangle.svg';
-
-  /// List of all assets
-  List<String> get values => [rectangle];
-}
-
-class $AssetsIconsOrderPopupGen {
-  const $AssetsIconsOrderPopupGen();
-
-  /// File path: assets/icons/order_popup/cancel.svg
-  String get cancel => 'assets/icons/order_popup/cancel.svg';
-
-  /// File path: assets/icons/order_popup/info.svg
-  String get info => 'assets/icons/order_popup/info.svg';
-
-  /// File path: assets/icons/order_popup/payment.svg
-  String get payment => 'assets/icons/order_popup/payment.svg';
-
-  /// List of all assets
-  List<String> get values => [cancel, info, payment];
-}
-
-class $AssetsIconsOtherGen {
-  const $AssetsIconsOtherGen();
-
-  /// File path: assets/icons/other/abandoned_carts.svg
-  String get abandonedCarts => 'assets/icons/other/abandoned_carts.svg';
-
-  /// File path: assets/icons/other/add.svg
-  String get add => 'assets/icons/other/add.svg';
-
-  /// File path: assets/icons/other/add_file.svg
-  String get addFile => 'assets/icons/other/add_file.svg';
-
-  /// File path: assets/icons/other/add_new_product.svg
-  String get addNewProduct => 'assets/icons/other/add_new_product.svg';
-
-  /// File path: assets/icons/other/add_payment.svg
-  String get addPayment => 'assets/icons/other/add_payment.svg';
-
-  /// File path: assets/icons/other/arrow_down.svg
-  String get arrowDown => 'assets/icons/other/arrow_down.svg';
-
-  /// File path: assets/icons/other/arrow_left_android.svg
-  String get arrowLeftAndroid => 'assets/icons/other/arrow_left_android.svg';
-
-  /// File path: assets/icons/other/arrow_left_ios.svg
-  String get arrowLeftIos => 'assets/icons/other/arrow_left_ios.svg';
-
-  /// File path: assets/icons/other/barcode_icon.svg
-  String get barcodeIcon => 'assets/icons/other/barcode_icon.svg';
-
-  /// File path: assets/icons/other/barcode_scan.svg
-  String get barcodeScan => 'assets/icons/other/barcode_scan.svg';
-
-  /// File path: assets/icons/other/catalog_fit.svg
-  String get catalogFit => 'assets/icons/other/catalog_fit.svg';
-
-  /// File path: assets/icons/other/catefory_sort.svg
-  String get cateforySort => 'assets/icons/other/catefory_sort.svg';
-
-  /// File path: assets/icons/other/check.svg
-  String get check => 'assets/icons/other/check.svg';
-
-  /// File path: assets/icons/other/check_squere_active_ios.svg
-  String get checkSquereActiveIos =>
-      'assets/icons/other/check_squere_active_ios.svg';
-
-  /// File path: assets/icons/other/check_squere_inactive_ios.svg
-  String get checkSquereInactiveIos =>
-      'assets/icons/other/check_squere_inactive_ios.svg';
-
-  /// File path: assets/icons/other/checked.svg
-  String get checked => 'assets/icons/other/checked.svg';
-
-  /// File path: assets/icons/other/checked_active.svg
-  String get checkedActive => 'assets/icons/other/checked_active.svg';
-
-  /// File path: assets/icons/other/chevron_down.svg
-  String get chevronDown => 'assets/icons/other/chevron_down.svg';
-
-  /// File path: assets/icons/other/chevron_right.svg
-  String get chevronRight => 'assets/icons/other/chevron_right.svg';
-
-  /// File path: assets/icons/other/circum_percent.svg
-  String get circumPercent => 'assets/icons/other/circum_percent.svg';
-
-  /// File path: assets/icons/other/delivery_methods.svg
-  String get deliveryMethods => 'assets/icons/other/delivery_methods.svg';
-
-  /// File path: assets/icons/other/done.svg
-  String get done => 'assets/icons/other/done.svg';
-
-  /// File path: assets/icons/other/edit_android.svg
-  String get editAndroid => 'assets/icons/other/edit_android.svg';
-
-  /// File path: assets/icons/other/edit_ios.svg
-  String get editIos => 'assets/icons/other/edit_ios.svg';
-
-  /// File path: assets/icons/other/email_message.svg
-  String get emailMessage => 'assets/icons/other/email_message.svg';
-
-  /// File path: assets/icons/other/empty_select.svg
-  String get emptySelect => 'assets/icons/other/empty_select.svg';
-
-  /// File path: assets/icons/other/empty_store.svg
-  String get emptyStore => 'assets/icons/other/empty_store.svg';
-
-  /// File path: assets/icons/other/error3_notify.svg
-  String get error3Notify => 'assets/icons/other/error3_notify.svg';
-
-  /// File path: assets/icons/other/filter_active.svg
-  String get filterActive => 'assets/icons/other/filter_active.svg';
-
-  /// File path: assets/icons/other/filters.svg
-  String get filters => 'assets/icons/other/filters.svg';
-
-  /// File path: assets/icons/other/filters_red.svg
-  String get filtersRed => 'assets/icons/other/filters_red.svg';
-
-  /// File path: assets/icons/other/fluent_print.svg
-  String get fluentPrint => 'assets/icons/other/fluent_print.svg';
-
-  /// File path: assets/icons/other/forbid.svg
-  String get forbid => 'assets/icons/other/forbid.svg';
-
-  /// File path: assets/icons/other/gis_map_route.svg
-  String get gisMapRoute => 'assets/icons/other/gis_map_route.svg';
-
-  /// File path: assets/icons/other/history_clock.svg
-  String get historyClock => 'assets/icons/other/history_clock.svg';
-
-  /// File path: assets/icons/other/icon_placeholder.svg
-  String get iconPlaceholder => 'assets/icons/other/icon_placeholder.svg';
-
-  /// File path: assets/icons/other/import_catalog.svg
-  String get importCatalog => 'assets/icons/other/import_catalog.svg';
-
-  /// File path: assets/icons/other/info_chat.svg
-  String get infoChat => 'assets/icons/other/info_chat.svg';
-
-  /// File path: assets/icons/other/info_icon.svg
-  String get infoIcon => 'assets/icons/other/info_icon.svg';
-
-  /// File path: assets/icons/other/integracion_crm.svg
-  String get integracionCrm => 'assets/icons/other/integracion_crm.svg';
-
-  /// File path: assets/icons/other/integracion_invoice.svg
-  String get integracionInvoice => 'assets/icons/other/integracion_invoice.svg';
-
-  /// File path: assets/icons/other/intervals_not_set.svg
-  String get intervalsNotSet => 'assets/icons/other/intervals_not_set.svg';
-
-  /// File path: assets/icons/other/la_coins.svg
-  String get laCoins => 'assets/icons/other/la_coins.svg';
-
-  /// File path: assets/icons/other/languages.svg
-  String get languages => 'assets/icons/other/languages.svg';
-
-  /// File path: assets/icons/other/logout.svg
-  String get logout => 'assets/icons/other/logout.svg';
-
-  /// File path: assets/icons/other/map_pointer.svg
-  String get mapPointer => 'assets/icons/other/map_pointer.svg';
-
-  /// File path: assets/icons/other/min_order_sum.svg
-  String get minOrderSum => 'assets/icons/other/min_order_sum.svg';
-
-  /// File path: assets/icons/other/n1_small_logo.svg
-  String get n1SmallLogo => 'assets/icons/other/n1_small_logo.svg';
-
-  /// File path: assets/icons/other/no_search_result.svg
-  String get noSearchResult => 'assets/icons/other/no_search_result.svg';
-
-  /// File path: assets/icons/other/payment_method.svg
-  String get paymentMethod => 'assets/icons/other/payment_method.svg';
-
-  /// File path: assets/icons/other/picture_paceholder.svg
-  String get picturePaceholder => 'assets/icons/other/picture_paceholder.svg';
-
-  /// File path: assets/icons/other/play.svg
-  String get play => 'assets/icons/other/play.svg';
-
-  /// File path: assets/icons/other/point_active.svg
-  String get pointActive => 'assets/icons/other/point_active.svg';
-
-  /// File path: assets/icons/other/point_inactive.svg
-  String get pointInactive => 'assets/icons/other/point_inactive.svg';
-
-  /// File path: assets/icons/other/price_arrow_left.svg
-  String get priceArrowLeft => 'assets/icons/other/price_arrow_left.svg';
-
-  /// File path: assets/icons/other/price_arrow_right.svg
-  String get priceArrowRight => 'assets/icons/other/price_arrow_right.svg';
-
-  /// File path: assets/icons/other/product_attr.svg
-  String get productAttr => 'assets/icons/other/product_attr.svg';
-
-  /// File path: assets/icons/other/product_catergories.svg
-  String get productCatergories => 'assets/icons/other/product_catergories.svg';
-
-  /// File path: assets/icons/other/promo_banner.svg
-  String get promoBanner => 'assets/icons/other/promo_banner.svg';
-
-  /// File path: assets/icons/other/purchase_price2.svg
-  String get purchasePrice2 => 'assets/icons/other/purchase_price2.svg';
-
-  /// File path: assets/icons/other/question.svg
-  String get question => 'assets/icons/other/question.svg';
-
-  /// File path: assets/icons/other/save_file_icon.svg
-  String get saveFileIcon => 'assets/icons/other/save_file_icon.svg';
-
-  /// File path: assets/icons/other/search.svg
-  String get search => 'assets/icons/other/search.svg';
-
-  /// File path: assets/icons/other/select_bg.svg
-  String get selectBg => 'assets/icons/other/select_bg.svg';
-
-  /// File path: assets/icons/other/select_o.svg
-  String get selectO => 'assets/icons/other/select_o.svg';
-
-  /// File path: assets/icons/other/settings_error.svg
-  String get settingsError => 'assets/icons/other/settings_error.svg';
-
-  /// File path: assets/icons/other/share_icon.svg
-  String get shareIcon => 'assets/icons/other/share_icon.svg';
-
-  /// File path: assets/icons/other/shop.svg
-  String get shop => 'assets/icons/other/shop.svg';
-
-  /// File path: assets/icons/other/shop_select.svg
-  String get shopSelect => 'assets/icons/other/shop_select.svg';
-
-  /// File path: assets/icons/other/small_separator.svg
-  String get smallSeparator => 'assets/icons/other/small_separator.svg';
-
-  /// File path: assets/icons/other/status_not_payed.svg
-  String get statusNotPayed => 'assets/icons/other/status_not_payed.svg';
-
-  /// File path: assets/icons/other/status_payed.svg
-  String get statusPayed => 'assets/icons/other/status_payed.svg';
-
-  /// File path: assets/icons/other/status_processing.svg
-  String get statusProcessing => 'assets/icons/other/status_processing.svg';
-
-  /// File path: assets/icons/other/status_warning.svg
-  String get statusWarning => 'assets/icons/other/status_warning.svg';
-
-  /// File path: assets/icons/other/time.svg
-  String get time => 'assets/icons/other/time.svg';
-
-  /// File path: assets/icons/other/umag.svg
-  String get umag => 'assets/icons/other/umag.svg';
-
-  /// File path: assets/icons/other/umag_banner.svg
-  String get umagBanner => 'assets/icons/other/umag_banner.svg';
-
-  /// File path: assets/icons/other/users_role.svg
-  String get usersRole => 'assets/icons/other/users_role.svg';
-
-  /// File path: assets/icons/other/widget.svg
-  String get widget => 'assets/icons/other/widget.svg';
-
-  /// File path: assets/icons/other/yml2.svg
-  String get yml2 => 'assets/icons/other/yml2.svg';
-
-  /// List of all assets
-  List<String> get values => [
-        abandonedCarts,
-        add,
-        addFile,
-        addNewProduct,
-        addPayment,
-        arrowDown,
-        arrowLeftAndroid,
-        arrowLeftIos,
-        barcodeIcon,
-        barcodeScan,
-        catalogFit,
-        cateforySort,
-        check,
-        checkSquereActiveIos,
-        checkSquereInactiveIos,
-        checked,
-        checkedActive,
-        chevronDown,
-        chevronRight,
-        circumPercent,
-        deliveryMethods,
-        done,
-        editAndroid,
-        editIos,
-        emailMessage,
-        emptySelect,
-        emptyStore,
-        error3Notify,
-        filterActive,
-        filters,
-        filtersRed,
-        fluentPrint,
-        forbid,
-        gisMapRoute,
-        historyClock,
-        iconPlaceholder,
-        importCatalog,
-        infoChat,
-        infoIcon,
-        integracionCrm,
-        integracionInvoice,
-        intervalsNotSet,
-        laCoins,
-        languages,
-        logout,
-        mapPointer,
-        minOrderSum,
-        n1SmallLogo,
-        noSearchResult,
-        paymentMethod,
-        picturePaceholder,
-        play,
-        pointActive,
-        pointInactive,
-        priceArrowLeft,
-        priceArrowRight,
-        productAttr,
-        productCatergories,
-        promoBanner,
-        purchasePrice2,
-        question,
-        saveFileIcon,
-        search,
-        selectBg,
-        selectO,
-        settingsError,
-        shareIcon,
-        shop,
-        shopSelect,
-        smallSeparator,
-        statusNotPayed,
-        statusPayed,
-        statusProcessing,
-        statusWarning,
-        time,
-        umag,
-        umagBanner,
-        usersRole,
-        widget,
-        yml2
-      ];
 }
 
 class $AssetsIconsReactionGen {
@@ -1519,75 +912,6 @@ class $AssetsIconsReactionGen {
 
   /// List of all assets
   List<String> get values => [heartDecorationSvgrepoCom, heartSvgrepoCom];
-}
-
-class $AssetsIconsTabbarGen {
-  const $AssetsIconsTabbarGen();
-
-  /// File path: assets/icons/tabbar/lifebelt_active.svg
-  String get lifebeltActive => 'assets/icons/tabbar/lifebelt_active.svg';
-
-  /// File path: assets/icons/tabbar/lifebelt_inactive.svg
-  String get lifebeltInactive => 'assets/icons/tabbar/lifebelt_inactive.svg';
-
-  /// File path: assets/icons/tabbar/list_active.svg
-  String get listActive => 'assets/icons/tabbar/list_active.svg';
-
-  /// File path: assets/icons/tabbar/list_inactive.svg
-  String get listInactive => 'assets/icons/tabbar/list_inactive.svg';
-
-  /// File path: assets/icons/tabbar/plus_outlined.svg
-  String get plusOutlined => 'assets/icons/tabbar/plus_outlined.svg';
-
-  /// File path: assets/icons/tabbar/settings_active.svg
-  String get settingsActive => 'assets/icons/tabbar/settings_active.svg';
-
-  /// File path: assets/icons/tabbar/settings_inactive.svg
-  String get settingsInactive => 'assets/icons/tabbar/settings_inactive.svg';
-
-  /// File path: assets/icons/tabbar/shopping_cart_active.svg
-  String get shoppingCartActive =>
-      'assets/icons/tabbar/shopping_cart_active.svg';
-
-  /// File path: assets/icons/tabbar/shopping_cart_inactive.svg
-  String get shoppingCartInactive =>
-      'assets/icons/tabbar/shopping_cart_inactive.svg';
-
-  /// List of all assets
-  List<String> get values => [
-        lifebeltActive,
-        lifebeltInactive,
-        listActive,
-        listInactive,
-        plusOutlined,
-        settingsActive,
-        settingsInactive,
-        shoppingCartActive,
-        shoppingCartInactive
-      ];
-}
-
-class $AssetsImagesCreateProductGen {
-  const $AssetsImagesCreateProductGen();
-
-  /// File path: assets/images/create_product/add.png
-  AssetGenImage get add =>
-      const AssetGenImage('assets/images/create_product/add.png');
-
-  /// List of all assets
-  List<AssetGenImage> get values => [add];
-}
-
-class $AssetsImagesDefaultOnboardingImagesGen {
-  const $AssetsImagesDefaultOnboardingImagesGen();
-
-  /// Directory path: assets/images/default_onboarding_images/en
-  $AssetsImagesDefaultOnboardingImagesEnGen get en =>
-      const $AssetsImagesDefaultOnboardingImagesEnGen();
-
-  /// Directory path: assets/images/default_onboarding_images/ru
-  $AssetsImagesDefaultOnboardingImagesRuGen get ru =>
-      const $AssetsImagesDefaultOnboardingImagesRuGen();
 }
 
 class $AssetsImagesDeliveryGen {
@@ -1639,217 +963,6 @@ class $AssetsImagesFlagGen {
       [eng, fra, ind, kaz, kir, por, rus, spa, vie, zho];
 }
 
-class $AssetsImagesGoodsEmptyGen {
-  const $AssetsImagesGoodsEmptyGen();
-
-  /// File path: assets/images/goods_empty/badge.png
-  AssetGenImage get badge =>
-      const AssetGenImage('assets/images/goods_empty/badge.png');
-
-  /// List of all assets
-  List<AssetGenImage> get values => [badge];
-}
-
-class $AssetsImagesNewUserHintChosesGen {
-  const $AssetsImagesNewUserHintChosesGen();
-
-  /// File path: assets/images/new_user_hint_choses/food_and_drinks.png
-  AssetGenImage get foodAndDrinks => const AssetGenImage(
-      'assets/images/new_user_hint_choses/food_and_drinks.png');
-
-  /// File path: assets/images/new_user_hint_choses/other.png
-  AssetGenImage get other =>
-      const AssetGenImage('assets/images/new_user_hint_choses/other.png');
-
-  /// File path: assets/images/new_user_hint_choses/phisical_goods.png
-  AssetGenImage get phisicalGoods => const AssetGenImage(
-      'assets/images/new_user_hint_choses/phisical_goods.png');
-
-  /// File path: assets/images/new_user_hint_choses/tickets_for_event.png
-  AssetGenImage get ticketsForEvent => const AssetGenImage(
-      'assets/images/new_user_hint_choses/tickets_for_event.png');
-
-  /// List of all assets
-  List<AssetGenImage> get values =>
-      [foodAndDrinks, other, phisicalGoods, ticketsForEvent];
-}
-
-class $AssetsImagesOrdersEmptyGen {
-  const $AssetsImagesOrdersEmptyGen();
-
-  /// File path: assets/images/orders_empty/box.png
-  AssetGenImage get box =>
-      const AssetGenImage('assets/images/orders_empty/box.png');
-
-  /// List of all assets
-  List<AssetGenImage> get values => [box];
-}
-
-class $AssetsImagesOtherGen {
-  const $AssetsImagesOtherGen();
-
-  /// File path: assets/images/other/analytics.png
-  AssetGenImage get analytics =>
-      const AssetGenImage('assets/images/other/analytics.png');
-
-  /// File path: assets/images/other/basket.png
-  AssetGenImage get basket =>
-      const AssetGenImage('assets/images/other/basket.png');
-
-  /// File path: assets/images/other/business_community.png
-  AssetGenImage get businessCommunity =>
-      const AssetGenImage('assets/images/other/business_community.png');
-
-  /// File path: assets/images/other/default_category_image.png
-  AssetGenImage get defaultCategoryImage =>
-      const AssetGenImage('assets/images/other/default_category_image.png');
-
-  /// File path: assets/images/other/empty_category.png
-  AssetGenImage get emptyCategory =>
-      const AssetGenImage('assets/images/other/empty_category.png');
-
-  /// File path: assets/images/other/empty_order.png
-  AssetGenImage get emptyOrder =>
-      const AssetGenImage('assets/images/other/empty_order.png');
-
-  /// File path: assets/images/other/empty_package.png
-  AssetGenImage get emptyPackage =>
-      const AssetGenImage('assets/images/other/empty_package.png');
-
-  /// File path: assets/images/other/import.png
-  AssetGenImage get import =>
-      const AssetGenImage('assets/images/other/import.png');
-
-  /// File path: assets/images/other/import_camera.png
-  AssetGenImage get importCamera =>
-      const AssetGenImage('assets/images/other/import_camera.png');
-
-  /// File path: assets/images/other/import_galery.png
-  AssetGenImage get importGalery =>
-      const AssetGenImage('assets/images/other/import_galery.png');
-
-  /// File path: assets/images/other/import_xml.png
-  AssetGenImage get importXml =>
-      const AssetGenImage('assets/images/other/import_xml.png');
-
-  /// File path: assets/images/other/invite_error.png
-  AssetGenImage get inviteError =>
-      const AssetGenImage('assets/images/other/invite_error.png');
-
-  /// File path: assets/images/other/purchase_price.png
-  AssetGenImage get purchasePrice =>
-      const AssetGenImage('assets/images/other/purchase_price.png');
-
-  /// File path: assets/images/other/shop_card.png
-  AssetGenImage get shopCard =>
-      const AssetGenImage('assets/images/other/shop_card.png');
-
-  /// File path: assets/images/other/user_role.png
-  AssetGenImage get userRole =>
-      const AssetGenImage('assets/images/other/user_role.png');
-
-  /// File path: assets/images/other/users_role.png
-  AssetGenImage get usersRole =>
-      const AssetGenImage('assets/images/other/users_role.png');
-
-  /// File path: assets/images/other/xml_icon.png
-  AssetGenImage get xmlIcon =>
-      const AssetGenImage('assets/images/other/xml_icon.png');
-
-  /// List of all assets
-  List<AssetGenImage> get values => [
-        analytics,
-        basket,
-        businessCommunity,
-        defaultCategoryImage,
-        emptyCategory,
-        emptyOrder,
-        emptyPackage,
-        import,
-        importCamera,
-        importGalery,
-        importXml,
-        inviteError,
-        purchasePrice,
-        shopCard,
-        userRole,
-        usersRole,
-        xmlIcon
-      ];
-}
-
-class $AssetsImagesStoreSettingsGen {
-  const $AssetsImagesStoreSettingsGen();
-
-  /// File path: assets/images/store_settings/frame.png
-  AssetGenImage get frame =>
-      const AssetGenImage('assets/images/store_settings/frame.png');
-
-  /// List of all assets
-  List<AssetGenImage> get values => [frame];
-}
-
-class $AssetsImagesTariffPlanGen {
-  const $AssetsImagesTariffPlanGen();
-
-  /// File path: assets/images/tariff_plan/arrows.png
-  AssetGenImage get arrows =>
-      const AssetGenImage('assets/images/tariff_plan/arrows.png');
-
-  /// File path: assets/images/tariff_plan/wall.png
-  AssetGenImage get wall =>
-      const AssetGenImage('assets/images/tariff_plan/wall.png');
-
-  /// List of all assets
-  List<AssetGenImage> get values => [arrows, wall];
-}
-
-class $AssetsImagesDefaultOnboardingImagesEnGen {
-  const $AssetsImagesDefaultOnboardingImagesEnGen();
-
-  /// File path: assets/images/default_onboarding_images/en/1en.png
-  AssetGenImage get a1en =>
-      const AssetGenImage('assets/images/default_onboarding_images/en/1en.png');
-
-  /// File path: assets/images/default_onboarding_images/en/2en.png
-  AssetGenImage get a2en =>
-      const AssetGenImage('assets/images/default_onboarding_images/en/2en.png');
-
-  /// File path: assets/images/default_onboarding_images/en/3en.png
-  AssetGenImage get a3en =>
-      const AssetGenImage('assets/images/default_onboarding_images/en/3en.png');
-
-  /// File path: assets/images/default_onboarding_images/en/4en.png
-  AssetGenImage get a4en =>
-      const AssetGenImage('assets/images/default_onboarding_images/en/4en.png');
-
-  /// List of all assets
-  List<AssetGenImage> get values => [a1en, a2en, a3en, a4en];
-}
-
-class $AssetsImagesDefaultOnboardingImagesRuGen {
-  const $AssetsImagesDefaultOnboardingImagesRuGen();
-
-  /// File path: assets/images/default_onboarding_images/ru/1ru.png
-  AssetGenImage get a1ru =>
-      const AssetGenImage('assets/images/default_onboarding_images/ru/1ru.png');
-
-  /// File path: assets/images/default_onboarding_images/ru/2ru.png
-  AssetGenImage get a2ru =>
-      const AssetGenImage('assets/images/default_onboarding_images/ru/2ru.png');
-
-  /// File path: assets/images/default_onboarding_images/ru/3ru.png
-  AssetGenImage get a3ru =>
-      const AssetGenImage('assets/images/default_onboarding_images/ru/3ru.png');
-
-  /// File path: assets/images/default_onboarding_images/ru/4ru.png
-  AssetGenImage get a4ru =>
-      const AssetGenImage('assets/images/default_onboarding_images/ru/4ru.png');
-
-  /// List of all assets
-  List<AssetGenImage> get values => [a1ru, a2ru, a3ru, a4ru];
-}
-
 class Assets {
   Assets._();
 
@@ -1858,13 +971,6 @@ class Assets {
   static const $AssetsImagesGen images = $AssetsImagesGen();
   static const $AssetsImagesExternalGen imagesExternal =
       $AssetsImagesExternalGen();
-  static const $AssetsJsonGen json = $AssetsJsonGen();
-  static const AssetGenImage logo = AssetGenImage('assets/logo.png');
-  static const $AssetsMapGen map = $AssetsMapGen();
-  static const $AssetsPpGen pp = $AssetsPpGen();
-
-  /// List of all assets
-  static List<AssetGenImage> get values => [logo];
 }
 
 class AssetGenImage {

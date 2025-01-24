@@ -190,35 +190,11 @@ flutter:
     - assets/images_external/
     - assets/
     - assets/fonts/
-    - assets/map/
     - assets/icons/
-    - assets/icons/map/
-    - assets/icons/goods/
-    - assets/icons/help_screen/
-    - assets/icons/order_popup/
-    - assets/icons/order_payment/
-    - assets/icons/order/
     - assets/icons/reaction/
-    - assets/icons/integration/
-    - assets/icons/delivery/
-    - assets/icons/logo/
     - assets/icons/integrations/
-    - assets/icons/other/
-    - assets/icons/tabbar/
     - assets/images/flag/
-    - assets/pp/
     - assets/images/delivery/
-    - assets/images/create_product/
-    - assets/images/new_user_hint_choses/
-    - assets/images/store_settings/
-    - assets/images/goods_empty/
-    - assets/images/orders_empty/
-    - assets/images/tariff_plan/
-    - assets/images/other/
-    - assets/json/
-    - assets/images/default_onboarding_images/
-    - assets/images/default_onboarding_images/en/
-    - assets/images/default_onboarding_images/ru/
 
 
   # An image asset can refer to one or more resolution-specific "variants", see

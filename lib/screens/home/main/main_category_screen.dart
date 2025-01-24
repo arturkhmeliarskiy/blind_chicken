@@ -69,8 +69,7 @@ class _MainCategoryScreenState extends State<MainCategoryScreen> {
   }
 
   void _loadMoreData() async {
-    if (_historyPosition > _scrollController.position.pixels &&
-        _scrollController.position.pixels > 0) {
+    if (_historyPosition > _scrollController.position.pixels && _scrollController.position.pixels > 0) {
       setState(() {
         _isButtonTop = true;
       });
@@ -187,20 +186,17 @@ class _MainCategoryScreenState extends State<MainCategoryScreen> {
                                       ),
                                     );
                                 context.read<CatalogBloc>().add(
-                                      CatalogEvent.switchTypePeople(
-                                          selectIndexType: _selectIndexType),
+                                      CatalogEvent.switchTypePeople(selectIndexType: _selectIndexType),
                                     );
                               },
                               child: Text(
                                 'Женщинам',
                                 style: Theme.of(context).textTheme.displayLarge?.copyWith(
-                                  fontWeight:
-                                      _selectIndexType == 1 ? FontWeight.w600 : FontWeight.w400,
+                                  fontWeight: _selectIndexType == 1 ? FontWeight.w600 : FontWeight.w400,
                                   shadows: [
                                     _selectIndexType == 1
                                         ? Shadow(
-                                            color: BlindChickenColors.activeBorderTextField
-                                                .withOpacity(
+                                            color: BlindChickenColors.activeBorderTextField.withOpacity(
                                               0.2,
                                             ),
                                             offset: const Offset(0, 1),
@@ -226,20 +222,17 @@ class _MainCategoryScreenState extends State<MainCategoryScreen> {
                                       ),
                                     );
                                 context.read<CatalogBloc>().add(
-                                      CatalogEvent.switchTypePeople(
-                                          selectIndexType: _selectIndexType),
+                                      CatalogEvent.switchTypePeople(selectIndexType: _selectIndexType),
                                     );
                               },
                               child: Text(
                                 'Мужчинам',
                                 style: Theme.of(context).textTheme.displayLarge?.copyWith(
-                                  fontWeight:
-                                      _selectIndexType == 2 ? FontWeight.w600 : FontWeight.w400,
+                                  fontWeight: _selectIndexType == 2 ? FontWeight.w600 : FontWeight.w400,
                                   shadows: [
                                     _selectIndexType == 2
                                         ? Shadow(
-                                            color: BlindChickenColors.activeBorderTextField
-                                                .withOpacity(
+                                            color: BlindChickenColors.activeBorderTextField.withOpacity(
                                               0.2,
                                             ),
                                             offset: const Offset(0, 1),
@@ -265,20 +258,17 @@ class _MainCategoryScreenState extends State<MainCategoryScreen> {
                                       ),
                                     );
                                 context.read<CatalogBloc>().add(
-                                      CatalogEvent.switchTypePeople(
-                                          selectIndexType: _selectIndexType),
+                                      CatalogEvent.switchTypePeople(selectIndexType: _selectIndexType),
                                     );
                               },
                               child: Text(
                                 'Детям',
                                 style: Theme.of(context).textTheme.displayLarge?.copyWith(
-                                  fontWeight:
-                                      _selectIndexType == 3 ? FontWeight.w600 : FontWeight.w400,
+                                  fontWeight: _selectIndexType == 3 ? FontWeight.w600 : FontWeight.w400,
                                   shadows: [
                                     _selectIndexType == 3
                                         ? Shadow(
-                                            color: BlindChickenColors.activeBorderTextField
-                                                .withOpacity(
+                                            color: BlindChickenColors.activeBorderTextField.withOpacity(
                                               0.2,
                                             ),
                                             offset: const Offset(0, 1),
@@ -316,8 +306,7 @@ class _MainCategoryScreenState extends State<MainCategoryScreen> {
                                     context.navigateTo(GiftCardRoute());
                                   } else if (initState.category[index].title == 'Проверка зрения') {
                                     context.navigateTo(VisionWarningRoute());
-                                  } else if (initState.category[index].title ==
-                                      'Специальные предложения') {
+                                  } else if (initState.category[index].title == 'Специальные предложения') {
                                     context.read<CatalogBloc>().add(
                                           CatalogEvent.getInfoProducts(
                                             path: initState.menu[index].url,
@@ -498,8 +487,8 @@ class _MainCategoryScreenState extends State<MainCategoryScreen> {
                                 child: DynamicHeightGridView(
                                     shrinkWrap: true,
                                     itemCount: initState.allBrands.length,
-                                    crossAxisCount:
-                                        width > 767 ? 3 : 2, // number of items in each row
+                                    crossAxisCount: width > 767 ? 3 : 2,
+                                    // number of items in each row
                                     crossAxisSpacing: 13,
                                     mainAxisSpacing: 13,
                                     physics: const NeverScrollableScrollPhysics(),

@@ -121,7 +121,7 @@ class AppListTileChevronRight extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     var chevronIcon = SvgPicture.asset(
-      Assets.icons.other.chevronRight,
+      Assets.icons.chevronRight,
       colorFilter: ColorFilter.mode(
         AppColors.greyDD,
         BlendMode.srcIn,
