@@ -1,7 +1,5 @@
 import 'package:hive/hive.dart';
 
-import 'index.dart';
-
 part 'cache_info_data_model.g.dart';
 
 @HiveType(typeId: 3)
@@ -27,5 +25,5 @@ class CacheInfoDataModel {
   List<String> images;
 
   @HiveField(4)
-  List<CacheInfoItemDataModel> info;
+  List<Map<String, dynamic>> info;
 }

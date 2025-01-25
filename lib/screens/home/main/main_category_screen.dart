@@ -1,6 +1,6 @@
 import 'package:auto_route/auto_route.dart';
 import 'package:blind_chicken/screens/app/router/app_router.dart';
-import 'package:blind_chicken/screens/home/main/widgets/main_category_item.dart';
+import 'package:blind_chicken/screens/home/main/widgets/main_category_cache_item.dart';
 import 'package:blind_chicken/screens/home/main/widgets/main_category_product_item.dart';
 import 'package:blocs/blocs.dart';
 import 'package:dynamic_height_grid_view/dynamic_height_grid_view.dart';
@@ -288,7 +288,7 @@ class _MainCategoryScreenState extends State<MainCategoryScreen> {
                                   ],
                                 ),
                               ),
-                            ),
+                            )
                           ],
                         ),
                       ],
@@ -343,21 +343,21 @@ class _MainCategoryScreenState extends State<MainCategoryScreen> {
                                   } else {
                                     context.read<CatalogBloc>().add(
                                           CatalogEvent.getInfoProducts(
-                                            path: initState.category[index].pathMenu,
+                                            path: initState.category[index].url,
                                             isCleanHistory: true,
                                           ),
                                         );
                                     context.navigateTo(
                                       CatalogRoute(
                                         title: initState.category[index].title,
-                                        url: initState.category[index].pathMenu,
+                                        url: initState.category[index].url,
                                       ),
                                     );
                                   }
                                 },
                                 child: width > 1023 && index > 5
-                                    ? MainCategoryItem(
-                                        image: '${initState.category[index].imagePath}_f',
+                                    ? MainCategoryCacheItem(
+                                        image: initState.category[index].tabletImage,
                                         title: initState.category[index].title,
                                         width: width / 3 - 20,
                                         padding: const EdgeInsets.only(
@@ -365,9 +365,11 @@ class _MainCategoryScreenState extends State<MainCategoryScreen> {
                                           left: 7,
                                           right: 7,
                                         ),
+                                        aspectRatio: 16 / 9,
                                       )
                                     : MainCategoryProductItem(
-                                        image: initState.category[index].imagePath,
+                                        isLoading: initState.isLoadImage,
+                                        image: initState.category[index].mobileImage,
                                         title: initState.category[index].title,
                                       ),
                               );

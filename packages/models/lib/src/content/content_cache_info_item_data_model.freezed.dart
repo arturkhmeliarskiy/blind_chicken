@@ -3,7 +3,7 @@
 // ignore_for_file: type=lint
 // ignore_for_file: unused_element, deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies, annotate_overrides, invalid_annotation_target, unnecessary_question_mark
 
-part of 'content_info_item_data_model.dart';
+part of 'content_cache_info_item_data_model.dart';
 
 // **************************************************************************
 // FreezedGenerator
@@ -15,46 +15,48 @@ final _privateConstructorUsedError = UnsupportedError(
     'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#adding-getters-and-methods-to-our-models');
 
 /// @nodoc
-mixin _$ContentInfoItemDataModel {
+mixin _$ContentCacheInfoItemDataModel {
   String get id => throw _privateConstructorUsedError;
   String get title => throw _privateConstructorUsedError;
-  String get mobileImage => throw _privateConstructorUsedError;
-  String get tabletImage => throw _privateConstructorUsedError;
+  Uint8List get mobileImage => throw _privateConstructorUsedError;
+  Uint8List get tabletImage => throw _privateConstructorUsedError;
   String get url => throw _privateConstructorUsedError;
 
-  /// Create a copy of ContentInfoItemDataModel
+  /// Create a copy of ContentCacheInfoItemDataModel
   /// with the given fields replaced by the non-null parameter values.
   @JsonKey(includeFromJson: false, includeToJson: false)
-  $ContentInfoItemDataModelCopyWith<ContentInfoItemDataModel> get copyWith =>
-      throw _privateConstructorUsedError;
+  $ContentCacheInfoItemDataModelCopyWith<ContentCacheInfoItemDataModel>
+      get copyWith => throw _privateConstructorUsedError;
 }
 
 /// @nodoc
-abstract class $ContentInfoItemDataModelCopyWith<$Res> {
-  factory $ContentInfoItemDataModelCopyWith(ContentInfoItemDataModel value,
-          $Res Function(ContentInfoItemDataModel) then) =
-      _$ContentInfoItemDataModelCopyWithImpl<$Res, ContentInfoItemDataModel>;
+abstract class $ContentCacheInfoItemDataModelCopyWith<$Res> {
+  factory $ContentCacheInfoItemDataModelCopyWith(
+          ContentCacheInfoItemDataModel value,
+          $Res Function(ContentCacheInfoItemDataModel) then) =
+      _$ContentCacheInfoItemDataModelCopyWithImpl<$Res,
+          ContentCacheInfoItemDataModel>;
   @useResult
   $Res call(
       {String id,
       String title,
-      String mobileImage,
-      String tabletImage,
+      Uint8List mobileImage,
+      Uint8List tabletImage,
       String url});
 }
 
 /// @nodoc
-class _$ContentInfoItemDataModelCopyWithImpl<$Res,
-        $Val extends ContentInfoItemDataModel>
-    implements $ContentInfoItemDataModelCopyWith<$Res> {
-  _$ContentInfoItemDataModelCopyWithImpl(this._value, this._then);
+class _$ContentCacheInfoItemDataModelCopyWithImpl<$Res,
+        $Val extends ContentCacheInfoItemDataModel>
+    implements $ContentCacheInfoItemDataModelCopyWith<$Res> {
+  _$ContentCacheInfoItemDataModelCopyWithImpl(this._value, this._then);
 
   // ignore: unused_field
   final $Val _value;
   // ignore: unused_field
   final $Res Function($Val) _then;
 
-  /// Create a copy of ContentInfoItemDataModel
+  /// Create a copy of ContentCacheInfoItemDataModel
   /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
@@ -77,11 +79,11 @@ class _$ContentInfoItemDataModelCopyWithImpl<$Res,
       mobileImage: null == mobileImage
           ? _value.mobileImage
           : mobileImage // ignore: cast_nullable_to_non_nullable
-              as String,
+              as Uint8List,
       tabletImage: null == tabletImage
           ? _value.tabletImage
           : tabletImage // ignore: cast_nullable_to_non_nullable
-              as String,
+              as Uint8List,
       url: null == url
           ? _value.url
           : url // ignore: cast_nullable_to_non_nullable
@@ -91,33 +93,33 @@ class _$ContentInfoItemDataModelCopyWithImpl<$Res,
 }
 
 /// @nodoc
-abstract class _$$ContentInfoItemDataModelImplCopyWith<$Res>
-    implements $ContentInfoItemDataModelCopyWith<$Res> {
-  factory _$$ContentInfoItemDataModelImplCopyWith(
-          _$ContentInfoItemDataModelImpl value,
-          $Res Function(_$ContentInfoItemDataModelImpl) then) =
-      __$$ContentInfoItemDataModelImplCopyWithImpl<$Res>;
+abstract class _$$ContentCacheInfoItemDataModelImplCopyWith<$Res>
+    implements $ContentCacheInfoItemDataModelCopyWith<$Res> {
+  factory _$$ContentCacheInfoItemDataModelImplCopyWith(
+          _$ContentCacheInfoItemDataModelImpl value,
+          $Res Function(_$ContentCacheInfoItemDataModelImpl) then) =
+      __$$ContentCacheInfoItemDataModelImplCopyWithImpl<$Res>;
   @override
   @useResult
   $Res call(
       {String id,
       String title,
-      String mobileImage,
-      String tabletImage,
+      Uint8List mobileImage,
+      Uint8List tabletImage,
       String url});
 }
 
 /// @nodoc
-class __$$ContentInfoItemDataModelImplCopyWithImpl<$Res>
-    extends _$ContentInfoItemDataModelCopyWithImpl<$Res,
-        _$ContentInfoItemDataModelImpl>
-    implements _$$ContentInfoItemDataModelImplCopyWith<$Res> {
-  __$$ContentInfoItemDataModelImplCopyWithImpl(
-      _$ContentInfoItemDataModelImpl _value,
-      $Res Function(_$ContentInfoItemDataModelImpl) _then)
+class __$$ContentCacheInfoItemDataModelImplCopyWithImpl<$Res>
+    extends _$ContentCacheInfoItemDataModelCopyWithImpl<$Res,
+        _$ContentCacheInfoItemDataModelImpl>
+    implements _$$ContentCacheInfoItemDataModelImplCopyWith<$Res> {
+  __$$ContentCacheInfoItemDataModelImplCopyWithImpl(
+      _$ContentCacheInfoItemDataModelImpl _value,
+      $Res Function(_$ContentCacheInfoItemDataModelImpl) _then)
       : super(_value, _then);
 
-  /// Create a copy of ContentInfoItemDataModel
+  /// Create a copy of ContentCacheInfoItemDataModel
   /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
@@ -128,7 +130,7 @@ class __$$ContentInfoItemDataModelImplCopyWithImpl<$Res>
     Object? tabletImage = null,
     Object? url = null,
   }) {
-    return _then(_$ContentInfoItemDataModelImpl(
+    return _then(_$ContentCacheInfoItemDataModelImpl(
       id: null == id
           ? _value.id
           : id // ignore: cast_nullable_to_non_nullable
@@ -140,11 +142,11 @@ class __$$ContentInfoItemDataModelImplCopyWithImpl<$Res>
       mobileImage: null == mobileImage
           ? _value.mobileImage
           : mobileImage // ignore: cast_nullable_to_non_nullable
-              as String,
+              as Uint8List,
       tabletImage: null == tabletImage
           ? _value.tabletImage
           : tabletImage // ignore: cast_nullable_to_non_nullable
-              as String,
+              as Uint8List,
       url: null == url
           ? _value.url
           : url // ignore: cast_nullable_to_non_nullable
@@ -155,8 +157,9 @@ class __$$ContentInfoItemDataModelImplCopyWithImpl<$Res>
 
 /// @nodoc
 
-class _$ContentInfoItemDataModelImpl extends _ContentInfoItemDataModel {
-  _$ContentInfoItemDataModelImpl(
+class _$ContentCacheInfoItemDataModelImpl
+    extends _ContentCacheInfoItemDataModel {
+  _$ContentCacheInfoItemDataModelImpl(
       {required this.id,
       required this.title,
       required this.mobileImage,
@@ -169,69 +172,77 @@ class _$ContentInfoItemDataModelImpl extends _ContentInfoItemDataModel {
   @override
   final String title;
   @override
-  final String mobileImage;
+  final Uint8List mobileImage;
   @override
-  final String tabletImage;
+  final Uint8List tabletImage;
   @override
   final String url;
 
   @override
   String toString() {
-    return 'ContentInfoItemDataModel(id: $id, title: $title, mobileImage: $mobileImage, tabletImage: $tabletImage, url: $url)';
+    return 'ContentCacheInfoItemDataModel(id: $id, title: $title, mobileImage: $mobileImage, tabletImage: $tabletImage, url: $url)';
   }
 
   @override
   bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$ContentInfoItemDataModelImpl &&
+            other is _$ContentCacheInfoItemDataModelImpl &&
             (identical(other.id, id) || other.id == id) &&
             (identical(other.title, title) || other.title == title) &&
-            (identical(other.mobileImage, mobileImage) ||
-                other.mobileImage == mobileImage) &&
-            (identical(other.tabletImage, tabletImage) ||
-                other.tabletImage == tabletImage) &&
+            const DeepCollectionEquality()
+                .equals(other.mobileImage, mobileImage) &&
+            const DeepCollectionEquality()
+                .equals(other.tabletImage, tabletImage) &&
             (identical(other.url, url) || other.url == url));
   }
 
   @override
-  int get hashCode =>
-      Object.hash(runtimeType, id, title, mobileImage, tabletImage, url);
+  int get hashCode => Object.hash(
+      runtimeType,
+      id,
+      title,
+      const DeepCollectionEquality().hash(mobileImage),
+      const DeepCollectionEquality().hash(tabletImage),
+      url);
 
-  /// Create a copy of ContentInfoItemDataModel
+  /// Create a copy of ContentCacheInfoItemDataModel
   /// with the given fields replaced by the non-null parameter values.
   @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
-  _$$ContentInfoItemDataModelImplCopyWith<_$ContentInfoItemDataModelImpl>
-      get copyWith => __$$ContentInfoItemDataModelImplCopyWithImpl<
-          _$ContentInfoItemDataModelImpl>(this, _$identity);
+  _$$ContentCacheInfoItemDataModelImplCopyWith<
+          _$ContentCacheInfoItemDataModelImpl>
+      get copyWith => __$$ContentCacheInfoItemDataModelImplCopyWithImpl<
+          _$ContentCacheInfoItemDataModelImpl>(this, _$identity);
 }
 
-abstract class _ContentInfoItemDataModel extends ContentInfoItemDataModel {
-  factory _ContentInfoItemDataModel(
+abstract class _ContentCacheInfoItemDataModel
+    extends ContentCacheInfoItemDataModel {
+  factory _ContentCacheInfoItemDataModel(
       {required final String id,
       required final String title,
-      required final String mobileImage,
-      required final String tabletImage,
-      required final String url}) = _$ContentInfoItemDataModelImpl;
-  _ContentInfoItemDataModel._() : super._();
+      required final Uint8List mobileImage,
+      required final Uint8List tabletImage,
+      required final String url}) = _$ContentCacheInfoItemDataModelImpl;
+  _ContentCacheInfoItemDataModel._() : super._();
 
   @override
   String get id;
   @override
   String get title;
   @override
-  String get mobileImage;
+  Uint8List get mobileImage;
   @override
-  String get tabletImage;
+  Uint8List get tabletImage;
   @override
   String get url;
 
-  /// Create a copy of ContentInfoItemDataModel
+  /// Create a copy of ContentCacheInfoItemDataModel
   /// with the given fields replaced by the non-null parameter values.
   @override
   @JsonKey(includeFromJson: false, includeToJson: false)
-  _$$ContentInfoItemDataModelImplCopyWith<_$ContentInfoItemDataModelImpl>
+  _$$ContentCacheInfoItemDataModelImplCopyWith<
+          _$ContentCacheInfoItemDataModelImpl>
       get copyWith => throw _privateConstructorUsedError;
 }

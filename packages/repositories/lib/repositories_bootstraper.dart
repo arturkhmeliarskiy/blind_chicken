@@ -80,6 +80,8 @@ Future<void> initRepositories(GetIt getIt) async {
     ..registerFactory(
       () => ContentRepository(
         getIt.get<ContentService>(),
+        getIt.get<CacheInfoService>(),
+        getIt.get<ImageService>(),
       ),
     );
 }

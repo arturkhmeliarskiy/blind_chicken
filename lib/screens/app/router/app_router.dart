@@ -223,7 +223,7 @@ class AppRouter extends RootStackRouter {
               page: ShoppingCartRoute.page,
             ),
             AutoRoute(
-              page: ShoppingCartDeliveryInfoRoute.page,
+              page: ShoppingCartDeliveryInfoRoute.page, // удалить (эксперементальная странинца)
               path: "shopping_cart_delivery_info",
             ),
             AutoRoute(

@@ -83,6 +83,7 @@ class CatalogBloc extends Bloc<CatalogEvent, CatalogState> {
           changeSizeProduct: (event) => _changeSizeProduct(event, emit),
           checkOpenGetInfoProductSize: (event) => _checkOpenGetInfoProductSize(event, emit),
           checkButtonTop: (event) => _checkButtonTop(event, emit),
+          updateCacheContent: (event) => _updateCacheContent(event, emit),
         ));
   }
 
@@ -107,71 +108,10 @@ class CatalogBloc extends Bloc<CatalogEvent, CatalogState> {
     Emitter<CatalogState> emit,
   ) async {
     String platformDevice = '';
-    // bool isHomeScreenUpdate = false;
     String pushToken = _sharedPreferencesService.getString(
           key: SharedPrefKeys.pushToken,
         ) ??
         '';
-
-    // final dateLastChangesCachedInformation = _sharedPreferencesService.getString(
-    //       key: SharedPrefKeys.dateLastChangesCachedInformation,
-    //     ) ??
-    //     '';
-
-    // final checkContent = await _contentRepository.checkContentInfo(
-    //   dateTime: dateLastChangesCachedInformation,
-    // );
-
-    // _sharedPreferencesService.setString(
-    //   key: SharedPrefKeys.dateLastChangesCachedInformation,
-    //   value: checkContent.dateTime,
-    // );
-
-    // _sharedPreferencesService.setString(
-    //   key: SharedPrefKeys.cacheChangeScreens,
-    //   value: checkContent.screens.toString(),
-    // );
-
-    // final cacheChangeScreens = _sharedPreferencesService.getString(
-    //       key: SharedPrefKeys.cacheChangeScreens,
-    //     ) ??
-    //     '';
-
-    // final screensCacheChange = jsonDecode(cacheChangeScreens) as List<String>;
-
-    // for (int i = 0; i < screensCacheChange.length; i++) {
-    //   if (screensCacheChange[i] == 'home') {
-    //     isHomeScreenUpdate = true;
-    //   }
-    // }
-
-    // if (isHomeScreenUpdate) {
-    // final contentInfo = await _contentRepository.getContentInfo(
-    //   screen: 'home',
-    // );
-
-    // contentInfo;
-
-    // _cacheInfoService.addCacheInfo(
-    //   CacheInfoDataModel(
-    //     screen: 'home',
-    //     dateTime: contentInfo.dateTime,
-    //     content: contentInfo.content,
-    //     images: contentInfo.images,
-    //     info: List<CacheInfoItemDataModel>.from(
-    //       contentInfo.info.map(
-    //         (item) => CacheInfoItemDataModel(
-    //           id: item.id,
-    //           title: item.title,
-    //           mobileImage: item.mobileImage,
-    //           tabletImage: item.tabletImage,
-    //           url: item.url,
-    //         ),
-    //       ),
-    //     ),
-    //   ),
-    // );
-    // }
 
     if (Platform.isIOS && pushToken.isEmpty) {
       await Future<void>.delayed(
@@ -279,11 +219,13 @@ class CatalogBloc extends Bloc<CatalogEvent, CatalogState> {
     String nowVersionApp = '';
     String updateVersionApp = '';
     bool isUpdateVersionApp = false;
+
     SystemChannels.textInput.invokeMethod('TextInput.hide');
     List<int> favouritesProductsId = [];
     FavouritesDataModel? favourites;
     FilterNotifcationDataModel? filterNotifcation;
     PushNotificationMessageDataModel? notitcationMessage;
+    ContentCacheInfoDataModel? contentCacheInfo;
     String appStoreInfoVersion = '';
     String type = '';
     String section = '';
@@ -292,6 +234,35 @@ class CatalogBloc extends Bloc<CatalogEvent, CatalogState> {
     String uid = '';
     String codeProduct = '';
     String idNews = '';
+
+    // cache data start
+
+    final isAppInstalled = _sharedPreferencesService.getBool(
+          key: SharedPrefKeys.appInstalled,
+        ) ??
+        false;
+
+    if (!isAppInstalled) {
+      _sharedPreferencesService.setString(
+        key: SharedPrefKeys.cacheChangeScreens,
+        value: '["home","women","men","children"]',
+      );
+    }
+
+    final listContent = _contentRepository.getContentCacheInfo();
+
+    if (listContent.isNotEmpty) {
+      for (int i = 0; i < listContent.length; i++) {
+        if (listContent[i].screen == 'home') {
+          contentCacheInfo = listContent[i];
+        }
+      }
+      contentCacheInfo ??= await _contentRepository.getDefaultContentInfo(screen: 'home');
+    } else {
+      contentCacheInfo = await _contentRepository.getDefaultContentInfo(screen: 'home');
+    }
+
+    // cache data end
 
     bool isAuth = _sharedPreferencesService.getBool(
           key: SharedPrefKeys.userAuthorized,
@@ -460,9 +431,19 @@ class CatalogBloc extends Bloc<CatalogEvent, CatalogState> {
           favouritesProductsId: favouritesProductsId,
           brands: _constatntsInfo.brandsWoman,
           defaultBrands: _constatntsInfo.brandsWoman,
-          category: _constatntsInfo.categoryWoman,
+          category: List.generate(
+            9,
+            (index) => ContentCacheInfoItemDataModel(
+              id: '',
+              title: 'info',
+              mobileImage: Uint8List(0),
+              tabletImage: Uint8List(0),
+              url: '',
+            ),
+          ).toList(),
           allBrands: allBrands,
           request: CatalogProductsRequest(),
+          contentCacheInfo: contentCacheInfo,
           listProdcutsAlso: [],
           listProdcutsBrand: [],
           listProdcutsComplect: [],
@@ -483,10 +464,12 @@ class CatalogBloc extends Bloc<CatalogEvent, CatalogState> {
           userDiscount: 0,
           isOpenGetSizeProduct: false,
           isButtonTop: false,
+          isLoadImage: false,
           isPromotionsForPurchases: false,
           isSaleSectionVisible: countProductUrl.count > 0,
         ),
       );
+      await _checkAndUpdateCacheContent(screen: 'home', isDataInDatabase: listContent.isNotEmpty);
     }
   }
 
@@ -1066,27 +1049,51 @@ class CatalogBloc extends Bloc<CatalogEvent, CatalogState> {
     SwitchTypePeopleCatalogEvent event,
     Emitter<CatalogState> emit,
   ) async {
-    state.mapOrNull(preloadDataCompleted: (initState) {
-      List<MainCategoryModel> category = [];
+    await state.mapOrNull(preloadDataCompleted: (initState) async {
+      List<ContentCacheInfoItemDataModel> category = [];
       List<String> brands = [];
+      String screen = '';
       String name = '';
+
+      emit(
+        initState.copyWith(
+          isLoadImage: true,
+        ),
+      );
 
       switch (event.selectIndexType) {
         case 1:
-          category = _constatntsInfo.categoryWoman.toList();
+          screen = 'women';
           brands = _constatntsInfo.brandsWoman;
           _updateDataService.selectedIndexGender = 1;
           name = 'Женщинам';
         case 2:
-          category = _constatntsInfo.categoryMan.toList();
+          screen = 'men';
           brands = _constatntsInfo.brandsMan;
           _updateDataService.selectedIndexGender = 2;
           name = 'Мужчинам';
         case 3:
-          category = _constatntsInfo.categoryChild.toList();
+          screen = 'children';
           brands = _constatntsInfo.brandsChilren;
           _updateDataService.selectedIndexGender = 3;
           name = 'Детям';
+      }
+
+      final listContent = _contentRepository.getContentCacheInfo();
+
+      if (listContent.isNotEmpty) {
+        for (int i = 0; i < listContent.length; i++) {
+          if (listContent[i].screen == screen) {
+            category = listContent[i].info.toList();
+          }
+        }
+        if (category.isEmpty) {
+          final result = await _contentRepository.getDefaultContentInfo(screen: screen);
+          category = result.info.toList();
+        }
+      } else {
+        final result = await _contentRepository.getDefaultContentInfo(screen: screen);
+        category = result.info.toList();
       }
 
       List<MenuItemDataModel> pathMenu = [
@@ -1103,12 +1110,9 @@ class CatalogBloc extends Bloc<CatalogEvent, CatalogState> {
       ];
 
       if (!initState.isSaleSectionVisible) {
-        category.removeLast();
-        category.add(const MainCategoryModel(
-          title: 'Каталог брендов',
-          imagePath: 'brands',
-          pathMenu: '',
-        ));
+        category.removeWhere((item) => item.title == 'Спецпредложения');
+      } else {
+        category.removeWhere((item) => item.title == 'Бренды');
       }
 
       emit(
@@ -1119,8 +1123,11 @@ class CatalogBloc extends Bloc<CatalogEvent, CatalogState> {
           brands: brands,
           isNotification: false,
           isUpdateVersionApp: false,
+          isLoadImage: false,
         ),
       );
+
+      await _checkAndUpdateCacheContent(screen: screen, isDataInDatabase: listContent.isNotEmpty);
     });
   }
 
@@ -1415,6 +1422,7 @@ class CatalogBloc extends Bloc<CatalogEvent, CatalogState> {
         userDiscount: catalogInfo.userDiscount,
         isOpenGetSizeProduct: false,
         isButtonTop: false,
+        isLoadImage: false,
         isPromotionsForPurchases: false,
         isSaleSectionVisible: false,
       ),
@@ -2346,5 +2354,141 @@ class CatalogBloc extends Bloc<CatalogEvent, CatalogState> {
         isButtonTop: event.isButtonTop,
       ));
     });
+  }
+
+  Future<void> _updateCacheContent(
+    UpdateCacheContentCatalogEvent event,
+    Emitter<CatalogState> emit,
+  ) async {
+    state.mapOrNull(preloadDataCompleted: (initState) {
+      List<ContentCacheInfoItemDataModel> category = initState.category.toList();
+      ContentCacheInfoDataModel? contentCacheInfo = initState.contentCacheInfo;
+
+      final listContent = _contentRepository.getContentCacheInfo();
+
+      if (event.screen == 'home') {
+        for (int i = 0; i < listContent.length; i++) {
+          if (listContent[i].screen == 'home') {
+            contentCacheInfo = listContent[i];
+          }
+        }
+      } else {
+        for (int i = 0; i < listContent.length; i++) {
+          if (listContent[i].screen == event.screen) {
+            category = listContent[i].info.toList();
+          }
+        }
+      }
+
+      if (category.isNotEmpty) {
+        if (!initState.isSaleSectionVisible) {
+          category.removeWhere((item) => item.title == 'Спецпредложения');
+        } else {
+          category.removeWhere((item) => item.title == 'Бренды');
+        }
+      }
+
+      emit(initState.copyWith(
+        contentCacheInfo: contentCacheInfo,
+        category: category,
+      ));
+    });
+  }
+
+  _checkAndUpdateCacheContent({
+    required String screen,
+    required bool isDataInDatabase,
+  }) async {
+    bool isScreenUpdate = false;
+
+    // final dateLastChangesCachedInformation = _sharedPreferencesService.getString(
+    //       key: SharedPrefKeys.dateLastChangesCachedInformation,
+    //     ) ??
+    //     '';
+
+    // final checkContent = await _contentRepository.checkContentInfo(
+    //   dateTime: dateLastChangesCachedInformation,
+    // );
+
+    // _sharedPreferencesService.setString(
+    //   key: SharedPrefKeys.dateLastChangesCachedInformation,
+    //   value: checkContent.dateTime,
+    // );
+
+    // _sharedPreferencesService.setString(
+    //   key: SharedPrefKeys.cacheChangeScreens,
+    //   value: '[]',
+    // );
+
+    final cacheChangeScreens = _sharedPreferencesService.getString(
+          key: SharedPrefKeys.cacheChangeScreens,
+        ) ??
+        '';
+
+    List screensCacheChange = jsonDecode(cacheChangeScreens) as List;
+
+    for (int i = 0; i < screensCacheChange.length; i++) {
+      if (screensCacheChange[i] == screen) {
+        isScreenUpdate = true;
+      }
+    }
+
+    if (isScreenUpdate) {
+      final contentInfo = await _contentRepository.getContentInfo(
+        screen: screen,
+      );
+
+      screensCacheChange.remove(screen);
+
+      _sharedPreferencesService.setString(
+        key: SharedPrefKeys.cacheChangeScreens,
+        value: jsonEncode(screensCacheChange),
+      );
+
+      _cacheInfoService.addCacheInfo(
+        CacheInfoDataModel(
+          screen: screen,
+          dateTime: contentInfo.dateTime,
+          content: contentInfo.content,
+          images: contentInfo.images,
+          info: List<Map<String, dynamic>>.from(
+            contentInfo.info.map(
+              (item) => ContentInfoItemDataModel(
+                id: item.id,
+                title: item.title,
+                mobileImage: item.mobileImage,
+                tabletImage: item.tabletImage,
+                url: item.url,
+              ).toJson(),
+            ),
+          ).toList(),
+        ),
+      );
+      add(UpdateCacheContentCatalogEvent(screen: screen));
+    }
+
+    if (!isDataInDatabase) {
+      final contentInfo = await _contentRepository.getDefaultContentInfo(screen: screen);
+
+      _cacheInfoService.addCacheInfo(
+        CacheInfoDataModel(
+          screen: screen,
+          dateTime: contentInfo.dateTime,
+          content: contentInfo.content,
+          images: contentInfo.images,
+          info: List<Map<String, dynamic>>.from(
+            contentInfo.info.map(
+              (item) => ContentInfoItemDataModel(
+                id: item.id,
+                title: item.title,
+                mobileImage: item.mobileImage.toString(),
+                tabletImage: item.tabletImage.toString(),
+                url: item.url,
+              ).toJson(),
+            ),
+          ).toList(),
+        ),
+      );
+    }
   }
 }

@@ -21,7 +21,7 @@ class CacheInfoDataModelAdapter extends TypeAdapter<CacheInfoDataModel> {
       dateTime: fields[1] as String,
       content: (fields[2] as List).cast<String>(),
       images: (fields[3] as List).cast<String>(),
-      info: (fields[4] as List).cast<CacheInfoItemDataModel>(),
+      info: (fields[4] as List).map((dynamic e) => (e as Map).cast<String, dynamic>()).toList(),
     );
   }
 
