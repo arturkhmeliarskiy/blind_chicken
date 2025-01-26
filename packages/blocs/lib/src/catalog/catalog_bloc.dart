@@ -257,7 +257,9 @@ class CatalogBloc extends Bloc<CatalogEvent, CatalogState> {
           contentCacheInfo = listContent[i];
         }
       }
-      contentCacheInfo ??= await _contentRepository.getDefaultContentInfo(screen: 'home');
+      if (contentCacheInfo?.info.isEmpty ?? true) {
+        contentCacheInfo = await _contentRepository.getDefaultContentInfo(screen: 'home');
+      }
     } else {
       contentCacheInfo = await _contentRepository.getDefaultContentInfo(screen: 'home');
     }
@@ -2400,6 +2402,7 @@ class CatalogBloc extends Bloc<CatalogEvent, CatalogState> {
     required bool isDataInDatabase,
   }) async {
     bool isScreenUpdate = false;
+    String _screen = '';
 
     // final dateLastChangesCachedInformation = _sharedPreferencesService.getString(
     //       key: SharedPrefKeys.dateLastChangesCachedInformation,
@@ -2430,6 +2433,7 @@ class CatalogBloc extends Bloc<CatalogEvent, CatalogState> {
     for (int i = 0; i < screensCacheChange.length; i++) {
       if (screensCacheChange[i] == screen) {
         isScreenUpdate = true;
+        _screen = screen;
       }
     }
 
@@ -2467,7 +2471,7 @@ class CatalogBloc extends Bloc<CatalogEvent, CatalogState> {
       add(UpdateCacheContentCatalogEvent(screen: screen));
     }
 
-    if (!isDataInDatabase) {
+    if (!isDataInDatabase && _screen != 'home') {
       final contentInfo = await _contentRepository.getDefaultContentInfo(screen: screen);
 
       _cacheInfoService.addCacheInfo(
