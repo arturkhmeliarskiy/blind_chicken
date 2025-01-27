@@ -96,6 +96,7 @@ class NewsInfoBloc extends Bloc<NewsInfoEvent, NewsInfoState> {
   }
 
   bool _isLoadingMore = false; // Флаг для отслеживания выполнения метода
+
   FutureOr<void> _loadMore(_LoadMore event, Emitter<NewsInfoState> emit) async {
     // Проверяем, запущен ли уже метод
     if (_isLoadingMore) return;
@@ -113,17 +114,48 @@ class NewsInfoBloc extends Bloc<NewsInfoEvent, NewsInfoState> {
           emit(state.copyWith(action: ShowSomethingWrong(errorResponse: l)));
         },
         (r) {
+          // Инициализируем списки
           List<NewsElement> list = [];
+          List<String> listIdList = [];
+
+          // Добавляем элементы из текущего состояния
           for (var item in state.listNews) {
             list.add(item);
+            listIdList.add(item.id);
           }
+
+          // Добавляем новые элементы, помечаем их как прочитанные, если нужно
           for (var item in r?.list ?? []) {
             if (_localRepository.getNewsWasReadValue(item.id)) {
               item.isViewed = true;
             }
             list.add(item);
+            listIdList.add(item.id);
           }
-          emit(state.copyWith(listNews: list.toList()));
+
+          // Создаем карту для подсчета повторений элементов
+          Map<String, int> elementCount = {};
+
+          // Подсчитываем количество элементов
+          for (var element in listIdList) {
+            elementCount[element] = (elementCount[element] ?? 0) + 1;
+          }
+
+          // Удаляем элементы, которые повторяются более одного раза
+          List<NewsElement> uniqueList = [];
+          for (var item in list) {
+            if (elementCount[item.id] == 1) {
+              uniqueList.add(item);
+            } else if ((elementCount[item.id] ?? 0) > 1) {
+              // Уменьшаем количество повторений
+              if(elementCount[item.id] != null) {
+                elementCount[item.id] = elementCount[item.id]! - 1;
+              }
+            }
+          }
+
+          // Обновляем состояние с уникальными новостями
+          emit(state.copyWith(listNews: uniqueList));
         },
       );
     } finally {
@@ -186,7 +218,7 @@ class NewsInfoBloc extends Bloc<NewsInfoEvent, NewsInfoState> {
       for (var item in state.listNews) {
         if (item.id == event.item.id) {}
       }
-    }else{
+    } else {
       await _localRepository.setNewsWasReadValue(event.item.id);
       logging('Метод не выполнялся ввиду превышения даты', name: 'itemWasRead', stackTrace: StackTrace.current);
     }

@@ -74,27 +74,36 @@ class _NewsVideoPlayerSliderState extends State<NewsVideoPlayerSlider> {
     return VisibilityDetector(
         key: Key('video_${widget.url}'),
         onVisibilityChanged: (visibilityInfo) {
-          double visiblePercentage = visibilityInfo.visibleFraction * 100;
-          logging("Video visibility: $visiblePercentage%", name: "Visibility", stackTrace: StackTrace.current);
+          // Проверяем корректность значений и избегаем ошибки
+          if (visibilityInfo.size.height >= 0 && visibilityInfo.size.width >= 0) {
+            double visiblePercentage = visibilityInfo.visibleFraction * 100;
+            logging("Video visibility: $visiblePercentage%", name: "Visibility", stackTrace: StackTrace.current);
 
-          if (visiblePercentage > 35) {
-            final valueContorller = _controller;
-            if (valueContorller != null) {
-              // Check if the video is already playing, if not, play it
-              if (!(_controller?.value.isPlaying ?? false)) {
-                _controller?.play();
-                logging("Video started playing", name: "VideoState", stackTrace: StackTrace.current);
+            if (visiblePercentage > 35) {
+              final valueContorller = _controller;
+              if (valueContorller != null) {
+                // Check if the video is already playing, if not, play it
+                if (!(_controller?.value.isPlaying ?? false)) {
+                  if (context.mounted) {
+                    _controller?.play();
+                  }
+                  logging("Video started playing", name: "VideoState", stackTrace: StackTrace.current);
+                }
+              }
+            } else {
+              final valueContorller = _controller;
+              if (valueContorller != null) {
+                // Pause the video if it's not the active video or is less than 50% visible
+                if (_controller?.value.isInitialized ?? false) {
+                  if(context.mounted) {
+                    _controller?.pause();
+                  }
+                  logging("Video paused", name: "VideoState", stackTrace: StackTrace.current);
+                }
               }
             }
           } else {
-            final valueContorller = _controller;
-            if (valueContorller != null) {
-              // Pause the video if it's not the active video or is less than 50% visible
-              if (_controller?.value.isInitialized ?? false) {
-                _controller?.pause();
-                logging("Video paused", name: "VideoState", stackTrace: StackTrace.current);
-              }
-            }
+            logging("Invalid visibilityInfo size: height=${visibilityInfo.size.height}, width=${visibilityInfo.size.width}", name: "Visibility", stackTrace: StackTrace.current);
           }
         },
         child: LayoutBuilder(

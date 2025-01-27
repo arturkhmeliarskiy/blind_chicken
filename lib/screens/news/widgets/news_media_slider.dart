@@ -6,6 +6,7 @@ import 'package:flutter_svg/flutter_svg.dart';
 import 'package:photo_view/photo_view.dart';
 import 'package:blind_chicken/old_repos/shared/shared.dart';
 import 'package:blind_chicken/old_repos/ui_kit/ui_kit.dart';
+import 'package:video_player/video_player.dart';
 
 class NewsMediaSlider extends StatefulWidget {
   const NewsMediaSlider({
@@ -38,17 +39,26 @@ class _NewsMediaSliderState extends State<NewsMediaSlider> {
   final Map<int, double> _videosAspectRatio = {};
 
   @override
+  @override
   void initState() {
+    super.initState();
     _scrollController.addListener(_scrollListener);
-    if (widget.videos.isEmpty) {
+
+    if (widget.videos.isNotEmpty) {
+      final videoUrl = widget.videos.first;
+      getVideoAspectRatio(videoUrl).then((value) {
+        setState(() {
+          _aspectRatio = value;
+          _videosAspectRatio[0] = value;
+        });
+      });
+    } else if (widget.images.isNotEmpty) {
       getImageAspectRatio(widget.images.first).then((value) {
         setState(() {
           _aspectRatio = value;
         });
       });
     }
-
-    super.initState();
   }
 
   _scrollListener() {
@@ -72,6 +82,14 @@ class _NewsMediaSliderState extends State<NewsMediaSlider> {
     super.dispose();
   }
 
+  Future<double> getVideoAspectRatio(String url) async {
+    final VideoPlayerController controller = VideoPlayerController.networkUrl(Uri.parse(url));
+    await controller.initialize();
+    final double aspectRatio = controller.value.aspectRatio;
+    controller.dispose();
+    return aspectRatio;
+  }
+
   @override
   Widget build(BuildContext context) {
     final width = MediaQuery.of(context).size.width;
@@ -88,11 +106,21 @@ class _NewsMediaSliderState extends State<NewsMediaSlider> {
             onPageChanged: (value) {
               _indexItem = value;
               if (widget.videos.isNotEmpty && widget.videos.length > value) {
+                final videoUrl = widget.videos[value];
                 setState(() {
-                  _aspectRatio = _videosAspectRatio[value] ?? 0;
+                  _aspectRatio = _videosAspectRatio[value] ?? 1;
                 });
+                if (!_videosAspectRatio.containsKey(value)) {
+                  getVideoAspectRatio(videoUrl).then((item) {
+                    setState(() {
+                      _aspectRatio = item;
+                      _videosAspectRatio[value] = item;
+                    });
+                  });
+                }
               } else {
-                getImageAspectRatio(widget.images[value - 1]).then((item) {
+                final imageUrl = widget.images[value - 1];
+                getImageAspectRatio(imageUrl).then((item) {
                   setState(() {
                     _aspectRatio = item;
                   });
