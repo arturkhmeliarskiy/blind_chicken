@@ -95,33 +95,41 @@ class NewsInfoBloc extends Bloc<NewsInfoEvent, NewsInfoState> {
     emit(state.copyWith(isLoading: false));
   }
 
+  bool _isLoadingMore = false; // Флаг для отслеживания выполнения метода
   FutureOr<void> _loadMore(_LoadMore event, Emitter<NewsInfoState> emit) async {
-    // Чтобы не дублировать новости, мы используем длину списка новостей,
-    // разделенную на 10 (количество новостей на странице) + 1 (номер следующей страницы)
-    // и используем полученный номер страницы в вызове getNews.
-
-    Either<ErrorResponse?, News?> newsResponse = await _remoteRepository.news.getNews(
-      page: state.listNews.length ~/ 10 + 1,
-    );
-
-    newsResponse.fold(
-      (l) {
-        emit(state.copyWith(action: ShowSomethingWrong(errorResponse: l)));
-      },
-      (r) {
-        List<NewsElement> list = [];
-        for (var item in state.listNews) {
-          list.add(item);
-        }
-        for (var item in r?.list ?? []) {
-          if (_localRepository.getNewsWasReadValue(item.id)) {
-            item.isViewed = true;
+    // Проверяем, запущен ли уже метод
+    if (_isLoadingMore) return;
+    // Устанавливаем флаг, чтобы предотвратить повторное выполнение
+    _isLoadingMore = true;
+    try {
+      // Чтобы не дублировать новости, мы используем длину списка новостей,
+      // разделенную на 10 (количество новостей на странице) + 1 (номер следующей страницы)
+      // и используем полученный номер страницы в вызове getNews.
+      Either<ErrorResponse?, News?> newsResponse = await _remoteRepository.news.getNews(
+        page: (state.listNews.length ~/ 20) + 1,
+      );
+      newsResponse.fold(
+        (l) {
+          emit(state.copyWith(action: ShowSomethingWrong(errorResponse: l)));
+        },
+        (r) {
+          List<NewsElement> list = [];
+          for (var item in state.listNews) {
+            list.add(item);
           }
-          list.add(item);
-        }
-        emit(state.copyWith(listNews: list.toList()));
-      },
-    );
+          for (var item in r?.list ?? []) {
+            if (_localRepository.getNewsWasReadValue(item.id)) {
+              item.isViewed = true;
+            }
+            list.add(item);
+          }
+          emit(state.copyWith(listNews: list.toList()));
+        },
+      );
+    } finally {
+      // Сбрасываем флаг, чтобы метод можно было вызвать снова
+      _isLoadingMore = false;
+    }
   }
 
   FutureOr<void> _pressedOnNotification(_PressedOnNotification event, Emitter<NewsInfoState> emit) async {
@@ -160,8 +168,7 @@ class NewsInfoBloc extends Bloc<NewsInfoEvent, NewsInfoState> {
     );
 
     for (var item in state.listNews) {
-      if (item.id == event.item.id) {
-      }
+      if (item.id == event.item.id) {}
     }
     await _localRepository.setNewsWasReadValue(event.item.id);
     List<NewsElement> list = [];
@@ -176,8 +183,7 @@ class NewsInfoBloc extends Bloc<NewsInfoEvent, NewsInfoState> {
     }
     emit(state.copyWith(listNews: list.toList()));
     for (var item in state.listNews) {
-      if (item.id == event.item.id) {
-      }
+      if (item.id == event.item.id) {}
     }
   }
 
@@ -226,7 +232,7 @@ class NewsInfoBloc extends Bloc<NewsInfoEvent, NewsInfoState> {
               for (var item in state.listNews) {
                 if (item.id == event.item.id) {
                   list.add(newsElement);
-                }else {
+                } else {
                   list.add(item);
                 }
               }

@@ -334,7 +334,7 @@ class _NewsInfoRepairedScreenState extends State<NewsInfoRepairedScreen> with Ti
         return Column(
           children: [
             SizedBox(
-              height: index == 0 ? 46 : 0,
+              height: index == 0 ? 38 : 0,
             ),
             NewsItemTabInfo(
               item: state.listNews[index],

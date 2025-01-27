@@ -196,6 +196,7 @@ class _NewsPreviewMediaScreenState extends State<NewsPreviewMediaScreen> {
   }
 
   Widget buildRightChevronIcon() {
+    if (widget.media.length == 1) return SizedBox();
     if (_pageController.hasClients == false) return buildRightChevron();
     if (_pageController.page?.toInt() == widget.media.length - 1) return SizedBox();
     return buildRightChevron();

@@ -1,5 +1,6 @@
 import 'package:auto_route/auto_route.dart';
 import 'package:blind_chicken/core_config/env.dart';
+import 'package:blind_chicken/core_config/ui/widgets/widgets/buttons/gesture_wrapper.dart';
 import 'package:blind_chicken/core_config/utils/logging.dart';
 import 'package:blind_chicken/core_config/utils/string_extensions.dart';
 import 'package:blind_chicken/old_repos/ui_kit/ui_kit.dart';
@@ -48,12 +49,10 @@ class _NewsItemTabInfoState extends State<NewsItemTabInfo> with AutomaticKeepAli
         (widget.item.videos.firstOrNull ?? '').replaceAll(Env.baseUrl, '').isNotNullOrEmpty) {
       videoUrl = widget.item.videos.first;
 
-      _videoController = VideoPlayerController.networkUrl(
-        Uri.parse(videoUrl!),
+      _videoController = VideoPlayerController.networkUrl(Uri.parse(videoUrl!),
           videoPlayerOptions: VideoPlayerOptions(
             mixWithOthers: true,
-          )
-      );
+          ));
       _videoController?.setVolume(0.0);
       _videoController?.setLooping(true);
 
@@ -344,12 +343,25 @@ class _NewsItemTabInfoState extends State<NewsItemTabInfo> with AutomaticKeepAli
   }
 
   Widget buildSingleImage(BuildContext context, double width) {
-    return CachedNetworkImage(
-      imageUrl: widget.item.images.first,
-      repeat: ImageRepeat.repeat,
-      width: MediaQuery.of(context).orientation == Orientation.portrait ? width : width / 2,
-      fit: BoxFit.cover,
-      errorWidget: (context, url, error) => const Icon(Icons.error),
+    return GestureWrapper(
+      onTap: () {
+        context.navigateTo(
+          NewsPreviewMediaRoute(
+            media: widget.item.images,
+            goBotton: () {
+              context.back();
+            },
+            selectIndex: 0,
+          ),
+        );
+      },
+      child: CachedNetworkImage(
+        imageUrl: widget.item.images.first,
+        repeat: ImageRepeat.repeat,
+        width: MediaQuery.of(context).orientation == Orientation.portrait ? width : width / 2,
+        fit: BoxFit.cover,
+        errorWidget: (context, url, error) => const Icon(Icons.error),
+      ),
     );
   }
 
