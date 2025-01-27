@@ -120,7 +120,7 @@ class _CatalogCashbackInfoState extends State<CatalogCashbackInfo> {
                         style: Theme.of(context).textTheme.bodyMedium,
                       ),
                       Text(
-                        'при заказе от 10 000 ₽',
+                        'при заказе от 20 000 ₽',
                         style: Theme.of(context).textTheme.labelLarge,
                       ),
                       Expanded(
