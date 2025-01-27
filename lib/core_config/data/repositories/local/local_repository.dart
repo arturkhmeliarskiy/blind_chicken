@@ -24,6 +24,7 @@ class LocalRepository {
 
   static const _tokenKey = 'token';
   static const _exampleKey = 'exampleKey';
+  static const _installKey = 'installKey';
   static const _newsKey = 'news';
   static const _likesKey = 'likes';
 
@@ -65,6 +66,15 @@ class LocalRepository {
 
   bool getNewsWasLikedValue(String idNews) {
     return sharedPreferences.getBool(idNews + _likesKey) ?? false;
+  }
+
+  Future<bool> setDateInstall() {
+    DateTime now = DateTime.now();
+    return sharedPreferences.setString(_installKey, now.toIso8601String());
+  }
+
+  DateTime? getDateInstall() {
+    return DateTime.tryParse(sharedPreferences.getString(_installKey) ?? '');
   }
 
   Future<void> clear() async {

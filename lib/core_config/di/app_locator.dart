@@ -87,6 +87,11 @@ class Locator {
 
   static Future<void> initAfterAppLaunch() async {
     EquatableConfig.stringify = true;
+    LocalRepository localRepository = Locator.injection();
+    DateTime? dateTime = localRepository.getDateInstall();
+    if (dateTime == null) {
+      await localRepository.setDateInstall();
+    }
 
     //В будущем понадобиться для определения самсунга, тк там приколы со шрифтами
     // DeviceInfoPlugin deviceInfo = Locator.injection();

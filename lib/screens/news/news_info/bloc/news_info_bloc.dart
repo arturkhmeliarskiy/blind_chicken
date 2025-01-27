@@ -142,49 +142,65 @@ class NewsInfoBloc extends Bloc<NewsInfoEvent, NewsInfoState> {
     logging('sendWhatRead', stackTrace: StackTrace.current);
     final now = DateTime.now();
 
-    // Удаляем старые записи временных меток старше 1/3 секунды
-    _callTimestamps.removeWhere((timestamp) => now.difference(timestamp).inMilliseconds > 333);
+    if (shouldSkip(event.item.createAt)) {
+      // Удаляем старые записи временных меток старше 1/3 секунды
+      _callTimestamps.removeWhere((timestamp) => now.difference(timestamp).inMilliseconds > 333);
 
-    // Добавляем текущую временную метку
-    _callTimestamps.add(now);
+      // Добавляем текущую временную метку
+      _callTimestamps.add(now);
 
-    // Если количество вызовов больше 10 за последние 1/3 секунды, выходим из метода
-    if (_callTimestamps.length > 10) {
-      logging('Method call limit exceeded', name: 'itemWasRead', stackTrace: StackTrace.current);
-      return;
+      // Если количество вызовов больше 10 за последние 1/3 секунды, выходим из метода
+      if (_callTimestamps.length > 10) {
+        logging('Method call limit exceeded', name: 'itemWasRead', stackTrace: StackTrace.current);
+        return;
+      }
+
+      Either<ErrorResponse?, UnreadModel?> newsResponseUnread = await _remoteRepository.news.sendWhatRead(
+        idRead: event.item.id,
+        typeContent: state.typeContentActive,
+      );
+      newsResponseUnread.fold(
+        (l) {
+          emit(state.copyWith(action: ShowSomethingWrong(errorResponse: l)));
+        },
+        (r) {
+          emit(state.copyWith(unreadModel: r));
+        },
+      );
+
+      for (var item in state.listNews) {
+        if (item.id == event.item.id) {}
+      }
+      await _localRepository.setNewsWasReadValue(event.item.id);
+      List<NewsElement> list = [];
+      for (var item in state.listNews) {
+        if (item.id == event.item.id) {
+          NewsElement newsElement = NewsElement.fromRawJson(item.toRawJson());
+          newsElement.isViewed = true;
+          list.add(newsElement);
+        } else {
+          list.add(item);
+        }
+      }
+      emit(state.copyWith(listNews: list.toList()));
+      for (var item in state.listNews) {
+        if (item.id == event.item.id) {}
+      }
+    }else{
+      await _localRepository.setNewsWasReadValue(event.item.id);
+      logging('Метод не выполнялся ввиду превышения даты', name: 'itemWasRead', stackTrace: StackTrace.current);
     }
+  }
 
-    Either<ErrorResponse?, UnreadModel?> newsResponseUnread = await _remoteRepository.news.sendWhatRead(
-      idRead: event.item.id,
-      typeContent: state.typeContentActive,
-    );
-    newsResponseUnread.fold(
-      (l) {
-        emit(state.copyWith(action: ShowSomethingWrong(errorResponse: l)));
-      },
-      (r) {
-        emit(state.copyWith(unreadModel: r));
-      },
-    );
-
-    for (var item in state.listNews) {
-      if (item.id == event.item.id) {}
-    }
-    await _localRepository.setNewsWasReadValue(event.item.id);
-    List<NewsElement> list = [];
-    for (var item in state.listNews) {
-      if (item.id == event.item.id) {
-        NewsElement newsElement = NewsElement.fromRawJson(item.toRawJson());
-        newsElement.isViewed = true;
-        list.add(newsElement);
-      } else {
-        list.add(item);
+  bool shouldSkip(DateTime createAt) {
+    DateTime? dateTime = _localRepository.getDateInstall();
+    if (dateTime != null) {
+      DateTime dateTimeMinusTwoWeeks = dateTime.subtract(Duration(days: 14));
+      if (createAt.isBefore(dateTimeMinusTwoWeeks)) {
+        return true; // ничего не делаем
       }
     }
-    emit(state.copyWith(listNews: list.toList()));
-    for (var item in state.listNews) {
-      if (item.id == event.item.id) {}
-    }
+    return false; // выполняем условие
   }
 
   FutureOr<void> _switchTab(_SwitchTab event, Emitter<NewsInfoState> emit) {
