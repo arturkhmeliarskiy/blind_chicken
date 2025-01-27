@@ -1,5 +1,6 @@
 import 'package:blind_chicken/core_config/ui/widgets/widgets/loaders/circular_holder.dart';
 import 'package:blind_chicken/core_config/utils/logging.dart';
+import 'package:blind_chicken/gen/assets.gen.dart';
 
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
@@ -135,8 +136,7 @@ class NewsVideoPlayerState extends State<NewsVideoPlayer> {
                                     InkWell(
                                       onTap: widget.isTapVideoFullScreen
                                           ? () {
-                                              widget
-                                                  .onEnterFullScreen(_controller.value.aspectRatio);
+                                              widget.onEnterFullScreen(_controller.value.aspectRatio);
                                               _controller.pause();
                                             }
                                           : null,
@@ -153,13 +153,11 @@ class NewsVideoPlayerState extends State<NewsVideoPlayer> {
                                         width: width,
                                         margin: EdgeInsets.only(
                                             bottom: _isFullScreenVideo
-                                                ? MediaQuery.of(context).orientation ==
-                                                        Orientation.portrait
+                                                ? MediaQuery.of(context).orientation == Orientation.portrait
                                                     ? 0
                                                     : 10
                                                 : 0),
-                                        color: BlindChickenColors.activeBorderTextField
-                                            .withOpacity(0.1),
+                                        color: BlindChickenColors.activeBorderTextField.withOpacity(0.1),
                                         child: Row(
                                           crossAxisAlignment: CrossAxisAlignment.center,
                                           children: [
@@ -193,8 +191,7 @@ class NewsVideoPlayerState extends State<NewsVideoPlayer> {
                                                   padding: EdgeInsets.zero,
                                                   colors: const VideoProgressColors(
                                                     playedColor: BlindChickenColors.backgroundColor,
-                                                    bufferedColor:
-                                                        BlindChickenColors.borderTextFieldSearch,
+                                                    bufferedColor: BlindChickenColors.borderTextFieldSearch,
                                                   ),
                                                 ),
                                               ),
@@ -233,8 +230,7 @@ class NewsVideoPlayerState extends State<NewsVideoPlayer> {
                                                 setState(() {
                                                   _isFullScreenVideo = !_isFullScreenVideo;
                                                   if (_isFullScreenVideo) {
-                                                    widget.onEnterFullScreen(
-                                                        _controller.value.aspectRatio);
+                                                    widget.onEnterFullScreen(_controller.value.aspectRatio);
                                                   } else {
                                                     SystemChrome.setPreferredOrientations(
                                                         [DeviceOrientation.portraitUp]);
@@ -246,9 +242,7 @@ class NewsVideoPlayerState extends State<NewsVideoPlayer> {
                                                 width: 48,
                                                 height: 42,
                                                 child: Icon(
-                                                  _isFullScreenVideo
-                                                      ? Icons.fullscreen_exit
-                                                      : Icons.fullscreen,
+                                                  _isFullScreenVideo ? Icons.fullscreen_exit : Icons.fullscreen,
                                                   size: 30,
                                                   color: BlindChickenColors.backgroundColor,
                                                 ),
@@ -276,8 +270,7 @@ class NewsVideoPlayerState extends State<NewsVideoPlayer> {
                                       width: 60,
                                       decoration: BoxDecoration(
                                         borderRadius: BorderRadius.circular(30),
-                                        color: BlindChickenColors.activeBorderTextField
-                                            .withOpacity(0.2),
+                                        color: BlindChickenColors.activeBorderTextField.withOpacity(0.2),
                                       ),
                                       child: const Icon(
                                         Icons.play_arrow,
@@ -288,8 +281,7 @@ class NewsVideoPlayerState extends State<NewsVideoPlayer> {
                                   )
                               ],
                             )
-                          : _isFullScreenVideo &&
-                                  MediaQuery.of(context).orientation == Orientation.portrait
+                          : _isFullScreenVideo && MediaQuery.of(context).orientation == Orientation.portrait
                               ? AspectRatio(
                                   aspectRatio: widget.aspectRatio,
                                   child: Stack(
@@ -299,8 +291,7 @@ class NewsVideoPlayerState extends State<NewsVideoPlayer> {
                                         width: width,
                                         height: height,
                                         fit: BoxFit.cover,
-                                        errorWidget: (context, url, error) =>
-                                            const Icon(Icons.error),
+                                        errorWidget: (context, url, error) => const Icon(Icons.error),
                                       ),
                                       Center(
                                         child: CircularHolder(),
@@ -319,8 +310,7 @@ class NewsVideoPlayerState extends State<NewsVideoPlayer> {
                                             width: width,
                                             height: height,
                                             fit: BoxFit.cover,
-                                            errorWidget: (context, url, error) =>
-                                                const Icon(Icons.error),
+                                            errorWidget: (context, url, error) => const Icon(Icons.error),
                                           ),
                                           Center(
                                             child: CircularHolder(),
@@ -339,8 +329,7 @@ class NewsVideoPlayerState extends State<NewsVideoPlayer> {
                                                 width: width,
                                                 height: null,
                                                 fit: BoxFit.cover,
-                                                errorWidget: (context, url, error) =>
-                                                    const Icon(Icons.error),
+                                                errorWidget: (context, url, error) => const Icon(Icons.error),
                                               ),
                                               Center(
                                                 child: CircularHolder(),
@@ -352,8 +341,7 @@ class NewsVideoPlayerState extends State<NewsVideoPlayer> {
                                           aspectRatio: 1,
                                           child: Shimmer.fromColors(
                                             baseColor: BlindChickenColors.borderSwitchCard,
-                                            highlightColor:
-                                                BlindChickenColors.backgroundColorItemFilter,
+                                            highlightColor: BlindChickenColors.backgroundColorItemFilter,
                                             period: Duration(seconds: 2),
                                             child: Container(
                                               color: BlindChickenColors.borderSwitchCard,
@@ -377,24 +365,25 @@ class NewsVideoPlayerState extends State<NewsVideoPlayer> {
                               ),
                               margin: EdgeInsets.only(
                                 top: 10.5,
-                                right: MediaQuery.of(context).orientation == Orientation.portrait
-                                    ? 10.5
-                                    : 14.5,
+                                right: MediaQuery.of(context).orientation == Orientation.portrait ? 10.5 : 14.5,
                               ),
                               child: GestureDetector(
                                 onTap: () {
-                                  SystemChrome.setPreferredOrientations(
-                                      [DeviceOrientation.portraitUp]);
+                                  SystemChrome.setPreferredOrientations([DeviceOrientation.portraitUp]);
                                   widget.onExitFullScreen();
                                 },
                                 child: Container(
-                                  alignment: Alignment.center,
-                                  padding: const EdgeInsets.all(6),
+                                  height: 38.5,
+                                  width: 38.5,
+                                  decoration: BoxDecoration(
+                                    borderRadius: BorderRadius.circular(40),
+                                    color: BlindChickenColors.backgroundColor.withOpacity(0.3),
+                                  ),
+                                  padding: const EdgeInsets.all(10.0),
                                   child: SvgPicture.asset(
-                                    'assets/icons/x.svg',
-                                    height: 28,
-                                    width: 28,
-                                    color: BlindChickenColors.backgroundColor,
+                                    Assets.icons.x,
+                                    height: 24,
+                                    width: 24,
                                   ),
                                 ),
                               ),
@@ -412,8 +401,7 @@ class NewsVideoPlayerState extends State<NewsVideoPlayer> {
                       _controller.play();
                     });
                   },
-                  child: _isFullScreenVideo &&
-                          MediaQuery.of(context).orientation == Orientation.portrait
+                  child: _isFullScreenVideo && MediaQuery.of(context).orientation == Orientation.portrait
                       ? Center(
                           child: AspectRatio(
                             aspectRatio: widget.aspectRatio,
@@ -433,8 +421,7 @@ class NewsVideoPlayerState extends State<NewsVideoPlayer> {
                                     width: 60,
                                     decoration: BoxDecoration(
                                       borderRadius: BorderRadius.circular(30),
-                                      color:
-                                          BlindChickenColors.activeBorderTextField.withOpacity(0.2),
+                                      color: BlindChickenColors.activeBorderTextField.withOpacity(0.2),
                                     ),
                                     child: const Icon(
                                       Icons.play_arrow,
@@ -465,8 +452,7 @@ class NewsVideoPlayerState extends State<NewsVideoPlayer> {
                                       width: 60,
                                       decoration: BoxDecoration(
                                         borderRadius: BorderRadius.circular(30),
-                                        color: BlindChickenColors.activeBorderTextField
-                                            .withOpacity(0.2),
+                                        color: BlindChickenColors.activeBorderTextField.withOpacity(0.2),
                                       ),
                                       child: const Icon(
                                         Icons.play_arrow,
@@ -488,8 +474,7 @@ class NewsVideoPlayerState extends State<NewsVideoPlayer> {
                                         width: width,
                                         height: null,
                                         fit: BoxFit.cover,
-                                        errorWidget: (context, url, error) =>
-                                            const Icon(Icons.error),
+                                        errorWidget: (context, url, error) => const Icon(Icons.error),
                                       ),
                                       if (widget.isPlayIcon)
                                         Container(
@@ -497,8 +482,7 @@ class NewsVideoPlayerState extends State<NewsVideoPlayer> {
                                           width: 60,
                                           decoration: BoxDecoration(
                                             borderRadius: BorderRadius.circular(30),
-                                            color: BlindChickenColors.activeBorderTextField
-                                                .withOpacity(0.2),
+                                            color: BlindChickenColors.activeBorderTextField.withOpacity(0.2),
                                           ),
                                           child: const Icon(
                                             Icons.play_arrow,
