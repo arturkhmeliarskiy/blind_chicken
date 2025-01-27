@@ -35,7 +35,7 @@ class FileTypeIdentifier {
   static bool isVideo(String path) {
     final mimeType = lookupMimeType(path);
 
-    return (mimeType?.endsWith('.mp4') ?? false)||(mimeType?.contains('video/mp4') ?? false); //video/mp4
+    return (mimeType?.contains('video/quicktime') ?? false) || (mimeType?.contains('video/mp4') ?? false); //video/mp4 //video/quicktime
   }
 
   static bool isDocument(String path) {
