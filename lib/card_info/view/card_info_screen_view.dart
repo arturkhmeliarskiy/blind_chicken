@@ -532,12 +532,10 @@ class _CardInfoScreenViewState extends State<CardInfoScreenView> {
         },
         child: SwipeDetector(
           onSwipeRight: (offset) {
-            context.read<CardInfoBloc>().add(
-                  const CardInfoEvent.goBackProductInfo(),
-                );
-            setState(() {
-              _isSwipe = false;
-            });
+            //context.read<CardInfoBloc>().add(const CardInfoEvent.goBackProductInfo());
+            //setState(() {
+            //  _isSwipe = false;
+            //});
           },
           child: Stack(
             alignment: Alignment.bottomCenter,
@@ -566,7 +564,7 @@ class _CardInfoScreenViewState extends State<CardInfoScreenView> {
                               final price = int.parse(initState.detailsProduct?.price.pc ?? '0');
                               return PopScope(
                                 canPop: false,
-                                onPopInvoked: (value) {
+                                onPopInvoked: (value) async {
                                   logging('onPopInvoked', name: 'Debug', stackTrace: StackTrace.current);
                                   if (_isSwipe) {
                                     if (initState.listProductsCode.isNotEmpty) {
@@ -575,7 +573,7 @@ class _CardInfoScreenViewState extends State<CardInfoScreenView> {
                                         name: 'Debug',
                                         stackTrace: StackTrace.current,
                                       );
-                                      forcedBack(initState, context);
+                                      await forcedBack(initState, context);
                                     } else {
                                       if (widget.lastPath.isNotEmpty) {
                                         if (widget.lastPath == 'news') {
@@ -658,8 +656,8 @@ class _CardInfoScreenViewState extends State<CardInfoScreenView> {
                                       listImages: initState.detailsProduct?.photo.mini ?? [],
                                       isLike:
                                           initState.favouritesProductsId.contains(initState.detailsProduct?.code ?? 0),
-                                      goBotton: () {
-                                        forcedBack(initState, context);
+                                      goBotton: () async {
+                                        await forcedBack(initState, context);
                                       },
                                       isZoom: false,
                                       addLike: () {
@@ -741,9 +739,9 @@ class _CardInfoScreenViewState extends State<CardInfoScreenView> {
                                           ),
                                         );
                                       },
-                                      goSwipeBack: () {
+                                      goSwipeBack: () async {
                                         logging('goSwipeBack', name: 'Debug', stackTrace: StackTrace.current);
-                                        forcedBack(initState, context);
+                                        await forcedBack(initState, context);
                                       },
                                       video: initState.detailsProduct?.video ??
                                           DetailProductVideoDataModel(
@@ -1620,13 +1618,22 @@ class _CardInfoScreenViewState extends State<CardInfoScreenView> {
     );
   }
 
-  void forcedBack(ProductsCardInfoState initState, BuildContext context) {
-    if (initState.listProductsCode.isNotEmpty) {
-      logging('goSwipeBack listProductsCode', name: 'Debug', stackTrace: StackTrace.current);
-      context.read<CardInfoBloc>().add(const CardInfoEvent.goBackProductInfo());
-    } else {
-      logging('goSwipeBack context.back', name: 'Debug', stackTrace: StackTrace.current);
-      context.back();
+  bool mayBeUsed = true;
+
+  Future<void> forcedBack(ProductsCardInfoState initState, BuildContext context) async {
+    if (mayBeUsed == false) return;
+    if (mayBeUsed == true) {
+      mayBeUsed == false;
+      Future.delayed(Duration(milliseconds: 200)).whenComplete(() {
+        mayBeUsed = true;
+      });
+      if (initState.listProductsCode.isNotEmpty) {
+        logging('forcedBack listProductsCode.isNotEmpty', name: 'Debug', stackTrace: StackTrace.current);
+        context.read<CardInfoBloc>().add(const CardInfoEvent.goBackProductInfo());
+      } else {
+        logging('forcedBack', name: 'Debug', stackTrace: StackTrace.current);
+        context.back();
+      }
     }
   }
 
