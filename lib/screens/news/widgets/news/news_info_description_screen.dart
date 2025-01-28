@@ -1,5 +1,6 @@
 import 'package:appmetrica_plugin/appmetrica_plugin.dart';
 import 'package:auto_route/auto_route.dart';
+import 'package:blind_chicken/core_config/di/app_locator.dart';
 import 'package:blind_chicken/screens/app/router/app_router.dart';
 import 'package:blind_chicken/screens/news/widgets/handler_links_news.dart';
 import 'package:blind_chicken/screens/news/widgets/news_media_slider.dart';
@@ -135,11 +136,13 @@ class _NewsInfoDescriptionScreenState extends State<NewsInfoDescriptionScreen> {
                         onHorizontalDragUpdate: (details) {},
                         onHorizontalDragEnd: (DragEndDetails details) {
                           if (details.velocity.pixelsPerSecond.dx > 0) {
-                            context.navigateTo(
+                            AppRouter appRouter = Locator.injection();
+                            appRouter.popForced();
+                            /*context.navigateTo(
                               NewsInfoRepairedRoute(
                                 indexPage: 0,
                               ),
-                            );
+                            );*/
                             context.read<NewsBloc>().add(NewsEvent.checkingReadNews());
                             AppMetrica.reportEvent('Список новостей');
                             setState(() {
@@ -151,11 +154,13 @@ class _NewsInfoDescriptionScreenState extends State<NewsInfoDescriptionScreen> {
                           canPop: false,
                           onPopInvoked: (value) {
                             if (_isSwipe && !value) {
-                              context.navigateTo(
-                                NewsInfoRepairedRoute(
-                                  indexPage: 0,
-                                ),
-                              );
+                              AppRouter appRouter = Locator.injection();
+                              appRouter.popForced();
+                              //context.navigateTo(
+                              //  NewsInfoRepairedRoute(
+                              //    indexPage: 0,
+                              //  ),
+                              //);
                               context.read<NewsBloc>().add(NewsEvent.checkingReadNews());
                               AppMetrica.reportEvent('Список новостей');
                             }
@@ -181,11 +186,13 @@ class _NewsInfoDescriptionScreenState extends State<NewsInfoDescriptionScreen> {
                                           ),
                                           child: InkWell(
                                             onTap: () {
-                                              context.navigateTo(
+                                              AppRouter appRouter = Locator.injection();
+                                              appRouter.popForced();
+                                              /*context.navigateTo(
                                                 NewsInfoRepairedRoute(
                                                   indexPage: 0,
                                                 ),
-                                              );
+                                              );*/
                                               context
                                                   .read<NewsBloc>()
                                                   .add(NewsEvent.checkingReadNews());

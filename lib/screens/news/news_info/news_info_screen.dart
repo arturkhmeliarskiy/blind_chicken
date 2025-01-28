@@ -10,6 +10,7 @@ import 'package:blind_chicken/core_config/ui/widgets/widgets/loaders/circular_ho
 import 'package:blind_chicken/core_config/ui/widgets/widgets/others/screen_wrapper.dart';
 import 'package:blind_chicken/core_config/utils/context_extensions.dart';
 import 'package:blind_chicken/gen/assets.gen.dart';
+import 'package:blind_chicken/old_repos/models/src/news/news_info_item_data_model.dart';
 import 'package:blind_chicken/old_repos/shared/src/constants/date_info.dart';
 import 'package:blind_chicken/old_repos/ui_kit/src/constants/colors/blind_chicken_colors.dart';
 import 'package:blind_chicken/old_repos/ui_kit/src/widgets/app_bar_blind_chicken.dart';
@@ -20,6 +21,8 @@ import 'package:blind_chicken/screens/news/widgets/notifications/notification_it
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_svg/flutter_svg.dart';
+
+import '../../app/router/app_router.dart';
 
 TabController? _tabController;
 final ScrollController _scrollController = ScrollController();
@@ -75,10 +78,12 @@ class _NewsInfoRepairedScreenState extends State<NewsInfoRepairedScreen> with Ti
   }
 
   void _scrollListener() {
-    if (_scrollController.offset > 10) {
-      context.sendEvent<NewsInfoBloc>(NewsInfoEvent.hideArrow(_scrollController.position.pixels));
-    } else {
-      context.sendEvent<NewsInfoBloc>(NewsInfoEvent.onScrollUp(_scrollController.position.pixels));
+    if (_scrollController.hasClients) {
+      if (_scrollController.offset > 10) {
+        context.sendEvent<NewsInfoBloc>(NewsInfoEvent.hideArrow(_scrollController.position.pixels));
+      } else {
+        context.sendEvent<NewsInfoBloc>(NewsInfoEvent.onScrollUp(_scrollController.position.pixels));
+      }
     }
   }
 
@@ -339,11 +344,34 @@ class _NewsInfoRepairedScreenState extends State<NewsInfoRepairedScreen> with Ti
             NewsItemTabInfo(
               item: state.listNews[index],
               onTap: () {
-                //context.navigateTo(
-                //  NewsInfoDescriptionRoute(
-                //    info: state.listNews[index],
-                //  ),
-                //);
+                /*context.navigateTo(
+                  NewsInfoDescriptionRoute(
+                    info: NewsInfoItemDataModel(
+                      id: state.listNews[index].id,
+                      title: state.listNews[index].title,
+                      createAt: state.listNews[index].createAt.toIso8601String(),
+                      images: [],
+                      videos: [],
+                      video: '',
+                      announcement: state.listNews[index].announcement,
+                      typeMedia: '',
+                      description: state.listNews[index].description,
+                      titleButton: '',
+                      typePath: '',
+                      path: '',
+                      code: '',
+                      sort: '',
+                      filterSelect: '',
+                      uidStore: '',
+                      typeVideo: '',
+                      videoImage: '',
+                      videoImageHeight: 0,
+                      videoImageWeight: 0,
+                      numberViews: 9,
+                      isViewed: false,
+                    ),
+                  ),
+                );*/
               },
               onGoTap: () {
                 //navigateToCorrectPage(context, state.listNews[index]);
