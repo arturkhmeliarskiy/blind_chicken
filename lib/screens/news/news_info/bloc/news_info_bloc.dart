@@ -174,7 +174,7 @@ class NewsInfoBloc extends Bloc<NewsInfoEvent, NewsInfoState> {
     logging('sendWhatRead', stackTrace: StackTrace.current);
     final now = DateTime.now();
 
-    if (shouldSkip(event.item.createAt)) {
+    if (shouldSkip(event.item.createAt)==false) {
       // Удаляем старые записи временных меток старше 1/3 секунды
       _callTimestamps.removeWhere((timestamp) => now.difference(timestamp).inMilliseconds > 333);
 
@@ -219,7 +219,6 @@ class NewsInfoBloc extends Bloc<NewsInfoEvent, NewsInfoState> {
         if (item.id == event.item.id) {}
       }
     } else {
-      await _localRepository.setNewsWasReadValue(event.item.id);
       logging('Метод не выполнялся ввиду превышения даты', name: 'itemWasRead', stackTrace: StackTrace.current);
     }
   }
@@ -228,7 +227,8 @@ class NewsInfoBloc extends Bloc<NewsInfoEvent, NewsInfoState> {
     DateTime? dateTime = _localRepository.getDateInstall();
     if (dateTime != null) {
       DateTime dateTimeMinusTwoWeeks = dateTime.subtract(Duration(days: 14));
-      if (createAt.isBefore(dateTimeMinusTwoWeeks)) {
+      // Если дата создания новостей позже, чем дата установки минус две недели, пропустить (true)
+      if (createAt.isAfter(dateTimeMinusTwoWeeks)) {
         return true; // ничего не делаем
       }
     }

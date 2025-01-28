@@ -55,13 +55,10 @@ class CardInfoBloc extends Bloc<CardInfoEvent, CardInfoState> {
         addFavouriteProduct: (event) => _addFavouriteProduct(event, emit),
         deleteFavouriteProduct: (event) => _deleteFavouriteProduct(event, emit),
         changeSizeProduct: (event) => _changeSizeProduct(event, emit),
-        addProductToSoppingCart: (event) =>
-            _addProductToSoppingCart(event, emit),
-        addProductToSoppingCartInfo: (event) =>
-            _addProductToSoppingCartInfo(event, emit),
+        addProductToSoppingCart: (event) => _addProductToSoppingCart(event, emit),
+        addProductToSoppingCartInfo: (event) => _addProductToSoppingCartInfo(event, emit),
         checkOpenGetInfoProductSize: (event) => _checkOpenGetInfoProductSize(event, emit),
-        checkProductToSoppingCart: (event) =>
-            _checkProductToSoppingCart(event, emit),
+        checkProductToSoppingCart: (event) => _checkProductToSoppingCart(event, emit),
       ),
     );
   }
@@ -73,7 +70,8 @@ class CardInfoBloc extends Bloc<CardInfoEvent, CardInfoState> {
         ) ??
         false;
 
-    emit(CardInfoState.productInfoCard(
+    emit(
+      CardInfoState.productInfoCard(
         favouritesProducts: [],
         listProductsCode: [],
         listProdcutsStyle: [],
@@ -93,8 +91,7 @@ class CardInfoBloc extends Bloc<CardInfoEvent, CardInfoState> {
     );
   }
 
-  Future<void> _getProduct(
-      GetProductCardInfoEvent event, Emitter<CardInfoState> emit) async {
+  Future<void> _getProduct(GetProductCardInfoEvent event, Emitter<CardInfoState> emit) async {
     await state.mapOrNull(productInfoCard: (initState) async {
       SkuProductDataModel? selectSizeProduct;
       List<int> favouritesProductsId = [];
@@ -123,26 +120,22 @@ class CardInfoBloc extends Bloc<CardInfoEvent, CardInfoState> {
         messageId: event.messageId,
       );
 
-      final additionalProductsDescriptionStyle =
-          await _catalogRepository.getAdditionalProductsDescription(
+      final additionalProductsDescriptionStyle = await _catalogRepository.getAdditionalProductsDescription(
         code: event.code,
         block: 'style',
       );
 
-      final additionalProductsDescriptionAlso =
-          await _catalogRepository.getAdditionalProductsDescription(
+      final additionalProductsDescriptionAlso = await _catalogRepository.getAdditionalProductsDescription(
         code: event.code,
         block: 'also',
       );
 
-      final additionalProductsDescriptionBrand =
-          await _catalogRepository.getAdditionalProductsDescription(
+      final additionalProductsDescriptionBrand = await _catalogRepository.getAdditionalProductsDescription(
         code: event.code,
         block: 'brand',
       );
 
-      final additionalProductsDescriptionComplect =
-          await _catalogRepository.getAdditionalProductsDescription(
+      final additionalProductsDescriptionComplect = await _catalogRepository.getAdditionalProductsDescription(
         code: event.code,
         block: 'complect',
       );
@@ -150,8 +143,7 @@ class CardInfoBloc extends Bloc<CardInfoEvent, CardInfoState> {
 
       if (isAuth) {
         favouritesProductsInfo = await _favouritesRepository.getFavouritesProdcuts();
-        favouritesProductsId =
-            favouritesProductsInfo.favorites.map((item) => int.parse(item)).toList();
+        favouritesProductsId = favouritesProductsInfo.favorites.map((item) => int.parse(item)).toList();
         log(favouritesProductsInfo.toString());
       } else {
         favouritesProducts = _catalogRepository.getFavouritesProducts();
@@ -160,8 +152,7 @@ class CardInfoBloc extends Bloc<CardInfoEvent, CardInfoState> {
       List<BasketFullInfoItemDataModel> soppingCart = [];
 
       if (detailsProduct.sku.length > 1) {
-        if (!detailsProduct.sku.first.id.contains('-') &&
-            detailsProduct.sku.first.id.length < 10) {
+        if (!detailsProduct.sku.first.id.contains('-') && detailsProduct.sku.first.id.length < 10) {
           for (int i = 0; i < detailsProduct.sku.length; i++) {
             if (detailsProduct.sku[i].id == event.code) {
               selectSizeProduct = detailsProduct.sku[i];
@@ -172,9 +163,7 @@ class CardInfoBloc extends Bloc<CardInfoEvent, CardInfoState> {
             .where(
               (element) =>
                   int.parse(element.code) == detailsProduct.code &&
-                  (element.sku.isNotEmpty
-                      ? element.sku == detailsProduct.sku.first.id
-                      : true),
+                  (element.sku.isNotEmpty ? element.sku == detailsProduct.sku.first.id : true),
             )
             .toList();
       } else {
@@ -191,17 +180,11 @@ class CardInfoBloc extends Bloc<CardInfoEvent, CardInfoState> {
       }
 
       _appMetricaEcommerceService.viewingProductPage(
-        titleScreen: event.messageId?.isNotEmpty ?? false
-            ? 'Уведомление'
-            : event.titleScreen,
+        titleScreen: event.messageId?.isNotEmpty ?? false ? 'Уведомление' : event.titleScreen,
         titleProduct: detailsProduct.name,
         codeProduct: detailsProduct.code.toString(),
-        type: event.messageId?.isNotEmpty ?? false
-            ? 'Уведомление'
-            : event.typeAddProductToShoppingCart,
-        identifier: event.messageId?.isNotEmpty ?? false
-            ? '2'
-            : event.identifierAddProductToShoppingCart,
+        type: event.messageId?.isNotEmpty ?? false ? 'Уведомление' : event.typeAddProductToShoppingCart,
+        identifier: event.messageId?.isNotEmpty ?? false ? '2' : event.identifierAddProductToShoppingCart,
         sectionCategoriesPath: [],
         productCategoriesPath: [],
         priceActual: detailsProduct.price.yourPrice,
@@ -210,15 +193,11 @@ class CardInfoBloc extends Bloc<CardInfoEvent, CardInfoState> {
             ? [
                 AppMetricaECommerceAmount(
                   amount: Decimal.fromInt(detailsProduct.price.yourPrice),
-                  currency: detailsProduct.sku.isNotEmpty
-                      ? detailsProduct.sku.first.value
-                      : '',
+                  currency: detailsProduct.sku.isNotEmpty ? detailsProduct.sku.first.value : '',
                 ),
                 AppMetricaECommerceAmount(
                   amount: Decimal.fromInt(detailsProduct.price.yourPrice),
-                  currency: detailsProduct.sku.isNotEmpty
-                      ? detailsProduct.sku.first.id
-                      : '',
+                  currency: detailsProduct.sku.isNotEmpty ? detailsProduct.sku.first.id : '',
                 ),
               ]
             : [],
@@ -226,15 +205,11 @@ class CardInfoBloc extends Bloc<CardInfoEvent, CardInfoState> {
             ? [
                 AppMetricaECommerceAmount(
                   amount: Decimal.parse(detailsProduct.price.pb),
-                  currency: detailsProduct.sku.isNotEmpty
-                      ? detailsProduct.sku.first.value
-                      : '',
+                  currency: detailsProduct.sku.isNotEmpty ? detailsProduct.sku.first.value : '',
                 ),
                 AppMetricaECommerceAmount(
                   amount: Decimal.parse(detailsProduct.price.pb),
-                  currency: detailsProduct.sku.isNotEmpty
-                      ? detailsProduct.sku.first.id
-                      : '',
+                  currency: detailsProduct.sku.isNotEmpty ? detailsProduct.sku.first.id : '',
                 ),
               ]
             : [],
@@ -272,74 +247,80 @@ class CardInfoBloc extends Bloc<CardInfoEvent, CardInfoState> {
         codeProduct: event.code,
         titleScreen: event.titleScreen,
         typeAddProductToShoppingCart: event.typeAddProductToShoppingCart,
-        identifierAddProductToShoppingCart:
-            event.identifierAddProductToShoppingCart,
+        identifierAddProductToShoppingCart: event.identifierAddProductToShoppingCart,
         typeError: 'описание товара',
       ));
     });
-  }  Future<void> _goBackProductInfo(
+  }
+
+  bool mayBeUsed = true;
+
+  Future<void> _goBackProductInfo(
     GoBackProductInfoCategotyCardInfoEvent event,
     Emitter<CardInfoState> emit,
-      ) async {
-    await state.mapOrNull(productInfoCard: (initState) async {
-      List<String> listProductsCode = initState.listProductsCode.toList();
+  ) async {
+    if (mayBeUsed == false) return;
+    if (mayBeUsed == true) {
+      mayBeUsed == false;
+      Future.delayed(Duration(milliseconds: 300)).whenComplete(() {
+        mayBeUsed = true;
+      });
+      await state.mapOrNull(productInfoCard: (initState) async {
+        List<String> listProductsCode = initState.listProductsCode.toList();
 
-      if (listProductsCode.isNotEmpty) {
-        listProductsCode.removeLast();
-      }
+        if (listProductsCode.isNotEmpty) {
+          listProductsCode.removeLast();
+        }
 
-      emit(initState.copyWith(
-        listProductsCode: listProductsCode.toList(),
-      ));
-
-      if (listProductsCode.isNotEmpty) {
-        emit(const CardInfoState.load());
-        final detailsProduct = await _catalogRepository.getDetailsProduct(
-          code: listProductsCode.last,
-          genderIndex: _updateDataService.selectedIndexGender.toString(),
-        );
-
-        final additionalProductsDescriptionStyle =
-        await _catalogRepository.getAdditionalProductsDescription(
-          code: listProductsCode.last,
-          block: 'style',
-        );
-
-        final additionalProductsDescriptionAlso =
-        await _catalogRepository.getAdditionalProductsDescription(
-          code: listProductsCode.last,
-          block: 'also',
-        );
-
-        final additionalProductsDescriptionBrand =
-        await _catalogRepository.getAdditionalProductsDescription(
-          code: listProductsCode.last,
-          block: 'brand',
-        );
-
-        final additionalProductsDescriptionComplect =
-        await _catalogRepository.getAdditionalProductsDescription(
-          code: listProductsCode.last,
-          block: 'complect',
-        );
-
-        emit(initState.copyWith(
-          detailsProduct: detailsProduct,
-          listProdcutsStyle: additionalProductsDescriptionStyle.products,
-          listProdcutsAlso: additionalProductsDescriptionAlso.products,
-          listProdcutsBrand: additionalProductsDescriptionBrand.products,
-          listProdcutsComplect: additionalProductsDescriptionComplect.products,
-          listProductsCode: listProductsCode,
-          selectSizeProduct: null,
-        ));
-      }
-      if (listProductsCode.isNotEmpty) {
-        listProductsCode = [];
         emit(initState.copyWith(
           listProductsCode: listProductsCode.toList(),
         ));
-      }
-    });
+
+        if (listProductsCode.isNotEmpty) {
+          emit(const CardInfoState.load());
+          final detailsProduct = await _catalogRepository.getDetailsProduct(
+            code: listProductsCode.last,
+            genderIndex: _updateDataService.selectedIndexGender.toString(),
+          );
+
+          final additionalProductsDescriptionStyle = await _catalogRepository.getAdditionalProductsDescription(
+            code: listProductsCode.last,
+            block: 'style',
+          );
+
+          final additionalProductsDescriptionAlso = await _catalogRepository.getAdditionalProductsDescription(
+            code: listProductsCode.last,
+            block: 'also',
+          );
+
+          final additionalProductsDescriptionBrand = await _catalogRepository.getAdditionalProductsDescription(
+            code: listProductsCode.last,
+            block: 'brand',
+          );
+
+          final additionalProductsDescriptionComplect = await _catalogRepository.getAdditionalProductsDescription(
+            code: listProductsCode.last,
+            block: 'complect',
+          );
+
+          emit(initState.copyWith(
+            detailsProduct: detailsProduct,
+            listProdcutsStyle: additionalProductsDescriptionStyle.products,
+            listProdcutsAlso: additionalProductsDescriptionAlso.products,
+            listProdcutsBrand: additionalProductsDescriptionBrand.products,
+            listProdcutsComplect: additionalProductsDescriptionComplect.products,
+            listProductsCode: listProductsCode,
+            selectSizeProduct: null,
+          ));
+        }
+        if (listProductsCode.isNotEmpty) {
+          listProductsCode = [];
+          emit(initState.copyWith(
+            listProductsCode: listProductsCode.toList(),
+          ));
+        }
+      });
+    }
   }
 
   Future<void> _getInfoProductSize(
@@ -364,8 +345,7 @@ class CardInfoBloc extends Bloc<CardInfoEvent, CardInfoState> {
 
       if (detailsProduct.errorMessage.isEmpty) {
         if (detailsProduct.sku.isNotEmpty) {
-          if (detailsProduct.sku.first.id.contains('-') &&
-              detailsProduct.sku.first.id.length > 10) {
+          if (detailsProduct.sku.first.id.contains('-') && detailsProduct.sku.first.id.length > 10) {
             emit(CardInfoState.getSizeProduct(
               code: event.code,
               listSize: detailsProduct.sku,
@@ -395,9 +375,7 @@ class CardInfoBloc extends Bloc<CardInfoEvent, CardInfoState> {
       }
 
       emit(initState.copyWith(
-        detailsProduct: detailsProduct.errorMessage.isNotEmpty
-            ? initState.detailsProduct
-            : detailsProduct,
+        detailsProduct: detailsProduct.errorMessage.isNotEmpty ? initState.detailsProduct : detailsProduct,
         listSize: detailsProduct.sku,
         isLoadGetSizeProduct: false,
         codeProduct: event.code,
@@ -427,8 +405,7 @@ class CardInfoBloc extends Bloc<CardInfoEvent, CardInfoState> {
           ) ??
           false;
       if (isAuth) {
-        favouritesProductsInfo =
-            await _favouritesRepository.addFavouriteProdcut(
+        favouritesProductsInfo = await _favouritesRepository.addFavouriteProdcut(
           code: event.product.id.toString(),
         );
         favouritesInfo = await updateFavouritesProducts(
@@ -439,15 +416,13 @@ class CardInfoBloc extends Bloc<CardInfoEvent, CardInfoState> {
         favouritesInfo = await updateFavouritesProducts();
       }
 
-      if ((favouritesProductsInfo?.errorMessage.isEmpty ?? false) ||
-          favouritesInfo.errorMessage.isEmpty) {
+      if ((favouritesProductsInfo?.errorMessage.isEmpty ?? false) || favouritesInfo.errorMessage.isEmpty) {
         emit(const CardInfoState.load());
       }
       emit(
         initState.copyWith(
           favouritesProducts: favouritesInfo.products,
-          isError: (favouritesProductsInfo?.errorMessage.isNotEmpty ?? false) ||
-              favouritesInfo.errorMessage.isNotEmpty,
+          isError: (favouritesProductsInfo?.errorMessage.isNotEmpty ?? false) || favouritesInfo.errorMessage.isNotEmpty,
           errorMessage: MessageInfo.errorMessage,
           typeError: 'добавить товар в избранное',
           product: event.product,
@@ -474,8 +449,7 @@ class CardInfoBloc extends Bloc<CardInfoEvent, CardInfoState> {
           ) ??
           false;
       if (isAuth) {
-        favouritesProductsInfo = await _favouritesRepository
-            .deleteFavouriteProdcut(code: event.index.toString());
+        favouritesProductsInfo = await _favouritesRepository.deleteFavouriteProdcut(code: event.index.toString());
         favouritesInfo = await updateFavouritesProducts(
           isLocal: false,
         );
@@ -484,15 +458,13 @@ class CardInfoBloc extends Bloc<CardInfoEvent, CardInfoState> {
         favouritesInfo = await updateFavouritesProducts();
       }
 
-      if ((favouritesProductsInfo?.errorMessage.isEmpty ?? false) ||
-          favouritesInfo.errorMessage.isEmpty) {
+      if ((favouritesProductsInfo?.errorMessage.isEmpty ?? false) || favouritesInfo.errorMessage.isEmpty) {
         emit(const CardInfoState.load());
       }
       emit(
         initState.copyWith(
           favouritesProducts: favouritesInfo.products,
-          isError: (favouritesProductsInfo?.errorMessage.isNotEmpty ?? false) ||
-              favouritesInfo.errorMessage.isNotEmpty,
+          isError: (favouritesProductsInfo?.errorMessage.isNotEmpty ?? false) || favouritesInfo.errorMessage.isNotEmpty,
           errorMessage: MessageInfo.errorMessage,
           typeError: 'удалить товар из избранного',
           isLoadErrorButton: false,
@@ -501,8 +473,7 @@ class CardInfoBloc extends Bloc<CardInfoEvent, CardInfoState> {
     });
   }
 
-  Future<void> _changeSizeProduct(
-      ChangeSizeProductCardInfoEvent event, Emitter<CardInfoState> emit) async {
+  Future<void> _changeSizeProduct(ChangeSizeProductCardInfoEvent event, Emitter<CardInfoState> emit) async {
     state.mapOrNull(productInfoCard: (initState) {
       emit(initState.copyWith(
         selectSizeProduct: event.selectSizeProduct,
@@ -530,8 +501,7 @@ class CardInfoBloc extends Bloc<CardInfoEvent, CardInfoState> {
         titleScreen: initState.titleScreen,
         titleProduct: initState.detailsProduct?.name ?? '',
         codeProduct: (initState.detailsProduct?.code ?? 0).toString(),
-        typeProductToSoppingCart:
-            AppMetricaShoppingCartEnum.addProductToShoppingCart,
+        typeProductToSoppingCart: AppMetricaShoppingCartEnum.addProductToShoppingCart,
         type: event.typeAddProductToShoppingCart,
         identifier: event.identifierAddProductToShoppingCart,
         quantity: 1,
@@ -541,13 +511,11 @@ class CardInfoBloc extends Bloc<CardInfoEvent, CardInfoState> {
         priceOriginal: int.parse(initState.detailsProduct?.price.pb ?? '0'),
         internalComponentsActualPrice: [
           AppMetricaECommerceAmount(
-            amount:
-                Decimal.fromInt(initState.detailsProduct?.price.yourPrice ?? 0),
+            amount: Decimal.fromInt(initState.detailsProduct?.price.yourPrice ?? 0),
             currency: event.size.value,
           ),
           AppMetricaECommerceAmount(
-            amount:
-                Decimal.fromInt(initState.detailsProduct?.price.yourPrice ?? 0),
+            amount: Decimal.fromInt(initState.detailsProduct?.price.yourPrice ?? 0),
             currency: event.size.id,
           ),
         ],
@@ -578,8 +546,7 @@ class CardInfoBloc extends Bloc<CardInfoEvent, CardInfoState> {
                     id: '',
                     value: '',
                   ));
-        if (selectSizeProduct.id == (event.size.id) &&
-            (event.size.id).contains('-')) {
+        if (selectSizeProduct.id == (event.size.id) && (event.size.id).contains('-')) {
           isShoppingCart = true;
         }
 
@@ -617,9 +584,7 @@ class CardInfoBloc extends Bloc<CardInfoEvent, CardInfoState> {
           false;
       final basketInfo = await getBasketInfo(isLocal: !isAuth);
       final soppingCart = basketInfo.basket.where(
-        (element) =>
-            int.parse(element.code) == (initState.detailsProduct?.code ?? 0) &&
-            element.sku == event.size.id,
+        (element) => int.parse(element.code) == (initState.detailsProduct?.code ?? 0) && element.sku == event.size.id,
       );
       emit(initState.copyWith(isShoppingCart: soppingCart.isNotEmpty));
     });
@@ -628,8 +593,7 @@ class CardInfoBloc extends Bloc<CardInfoEvent, CardInfoState> {
   Future<FavouritesCatalogInfoDataModel> updateFavouritesProducts({
     bool isLocal = true,
   }) async {
-    FavouritesCatalogProductsRequest request =
-        FavouritesCatalogProductsRequest();
+    FavouritesCatalogProductsRequest request = FavouritesCatalogProductsRequest();
     List<String> favourites = [];
     if (isLocal) {
       final favouritesProducts = _catalogRepository.getFavouritesProducts();
@@ -638,8 +602,7 @@ class CardInfoBloc extends Bloc<CardInfoEvent, CardInfoState> {
       }
     }
 
-    final favouritesInfo =
-        await _favouritesRepository.getFavouritesProdcutsInfo(
+    final favouritesInfo = await _favouritesRepository.getFavouritesProdcutsInfo(
       request: request.copyWith(favourites: favourites),
     );
 
@@ -657,10 +620,8 @@ class CardInfoBloc extends Bloc<CardInfoEvent, CardInfoState> {
           count: shopping[i].count,
           titleScreen: shopping[i].titleScreen,
           searchQuery: shopping[i].searchQuery,
-          typeAddProductToShoppingCart:
-              shopping[i].typeAddProductToShoppingCart,
-          identifierAddProductToShoppingCart:
-              shopping[i].identifierAddProductToShoppingCart,
+          typeAddProductToShoppingCart: shopping[i].typeAddProductToShoppingCart,
+          identifierAddProductToShoppingCart: shopping[i].identifierAddProductToShoppingCart,
           sectionCategoriesPath: shopping[i].sectionCategoriesPath,
           productCategoriesPath: shopping[i].productCategoriesPath,
         ));
@@ -681,15 +642,10 @@ class CardInfoBloc extends Bloc<CardInfoEvent, CardInfoState> {
             count: basketInfo.basket[i].count,
             titleScreen: basketInfo.basket[i].product.titleScreen ?? '',
             searchQuery: basketInfo.basket[i].product.searchQuery ?? '',
-            typeAddProductToShoppingCart:
-                basketInfo.basket[i].product.typeAddProductToShoppingCart ?? '',
-            identifierAddProductToShoppingCart: basketInfo
-                    .basket[i].product.identifierAddProductToShoppingCart ??
-                '',
-            sectionCategoriesPath:
-                basketInfo.basket[i].product.sectionCategoriesPath ?? [],
-            productCategoriesPath:
-                basketInfo.basket[i].product.productCategoriesPath ?? [],
+            typeAddProductToShoppingCart: basketInfo.basket[i].product.typeAddProductToShoppingCart ?? '',
+            identifierAddProductToShoppingCart: basketInfo.basket[i].product.identifierAddProductToShoppingCart ?? '',
+            sectionCategoriesPath: basketInfo.basket[i].product.sectionCategoriesPath ?? [],
+            productCategoriesPath: basketInfo.basket[i].product.productCategoriesPath ?? [],
           ),
         );
       }
@@ -713,10 +669,8 @@ class CardInfoBloc extends Bloc<CardInfoEvent, CardInfoState> {
           count: shopping[i].count,
           titleScreen: shopping[i].titleScreen,
           searchQuery: shopping[i].searchQuery,
-          typeAddProductToShoppingCart:
-              shopping[i].typeAddProductToShoppingCart,
-          identifierAddProductToShoppingCart:
-              shopping[i].identifierAddProductToShoppingCart,
+          typeAddProductToShoppingCart: shopping[i].typeAddProductToShoppingCart,
+          identifierAddProductToShoppingCart: shopping[i].identifierAddProductToShoppingCart,
           sectionCategoriesPath: shopping[i].sectionCategoriesPath,
           productCategoriesPath: shopping[i].productCategoriesPath,
         ));
@@ -739,15 +693,10 @@ class CardInfoBloc extends Bloc<CardInfoEvent, CardInfoState> {
             count: basketInfo.basket[i].count,
             titleScreen: basketInfo.basket[i].product.titleScreen ?? '',
             searchQuery: basketInfo.basket[i].product.searchQuery ?? '',
-            typeAddProductToShoppingCart:
-                basketInfo.basket[i].product.typeAddProductToShoppingCart ?? '',
-            identifierAddProductToShoppingCart: basketInfo
-                    .basket[i].product.identifierAddProductToShoppingCart ??
-                '',
-            sectionCategoriesPath:
-                basketInfo.basket[i].product.sectionCategoriesPath ?? [],
-            productCategoriesPath:
-                basketInfo.basket[i].product.productCategoriesPath ?? [],
+            typeAddProductToShoppingCart: basketInfo.basket[i].product.typeAddProductToShoppingCart ?? '',
+            identifierAddProductToShoppingCart: basketInfo.basket[i].product.identifierAddProductToShoppingCart ?? '',
+            sectionCategoriesPath: basketInfo.basket[i].product.sectionCategoriesPath ?? [],
+            productCategoriesPath: basketInfo.basket[i].product.productCategoriesPath ?? [],
           ),
         );
       }
@@ -755,10 +704,11 @@ class CardInfoBloc extends Bloc<CardInfoEvent, CardInfoState> {
 
     return basketInfo;
   }
+
   Future<void> _checkOpenGetInfoProductSize(
-      CheckOpenGetInfoProductSizeCardInfoEvent event,
-      Emitter<CardInfoState> emit,
-      ) async {
+    CheckOpenGetInfoProductSizeCardInfoEvent event,
+    Emitter<CardInfoState> emit,
+  ) async {
     state.mapOrNull(productInfoCard: (initState) {
       emit(initState.copyWith(
         isOpenGetSizeProduct: event.isOpenGetSizeProduct,

@@ -1,4 +1,5 @@
 import 'package:appmetrica_plugin/appmetrica_plugin.dart';
+import 'package:blind_chicken/core_config/utils/logging.dart';
 import 'package:decimal/decimal.dart';
 import 'package:blind_chicken/old_repos/models/models.dart';
 
@@ -8,23 +9,17 @@ class AppMetricaEcommerceService {
     required String titleScreen, // экран добавления в корзину
     required String titleProduct, // название товара
     required String codeProduct, // код товара
-    AppMetricaShoppingCartEnum typeProductToSoppingCart =
-        AppMetricaShoppingCartEnum.addProductToShoppingCart,
+    AppMetricaShoppingCartEnum typeProductToSoppingCart = AppMetricaShoppingCartEnum.addProductToShoppingCart,
     String type = '', // с помощью чего добавляется в корзину
-    String identifier =
-        '', // идентификатор отпрввителя товара в корзину (1 (3,4,5) кнопка, 2 выпадающий список)
+    String identifier = '', // идентификатор отпрввителя товара в корзину (1 (3,4,5) кнопка, 2 выпадающий список)
     String searchQuery = '', // поисковой запрос
     int quantity = 0, // количество товаров
-    List<String>?
-        sectionCategoriesPath, // категории в к оторых находится товар "Акции", "Красная цена"
-    List<String>?
-        productCategoriesPath, // категории тоарва "Продукты", "Молочные продукты", "Йогурты"
+    List<String>? sectionCategoriesPath, // категории в к оторых находится товар "Акции", "Красная цена"
+    List<String>? productCategoriesPath, // категории тоарва "Продукты", "Молочные продукты", "Йогурты"
     int priceActual = 0, // текущая стоимость товара
     int priceOriginal = 0, // базовая цена на товар
-    List<AppMetricaECommerceAmount>?
-        internalComponentsActualPrice, // дополнительные настройки для текущей стоимости
-    List<AppMetricaECommerceAmount>?
-        internalComponentsOriginalPrice, // дополнительные настройки для текущей стоимости
+    List<AppMetricaECommerceAmount>? internalComponentsActualPrice, // дополнительные настройки для текущей стоимости
+    List<AppMetricaECommerceAmount>? internalComponentsOriginalPrice, // дополнительные настройки для текущей стоимости
     List<String>? promocodes, // промокоды
   }) {
     // Payload
@@ -90,14 +85,12 @@ class AppMetricaEcommerceService {
 
     switch (typeProductToSoppingCart) {
       case AppMetricaShoppingCartEnum.addProductToShoppingCart:
-        AppMetricaECommerceEvent addCartItemEvent =
-            AppMetricaECommerce.addCartItemEvent(addedItems1);
+        AppMetricaECommerceEvent addCartItemEvent = AppMetricaECommerce.addCartItemEvent(addedItems1);
         AppMetrica.reportECommerce(addCartItemEvent);
         AppMetrica.reportEvent('Добавление товара в корзину');
         break;
       case AppMetricaShoppingCartEnum.removeProductToShoppingCart:
-        AppMetricaECommerceEvent removeCartItemEvent =
-            AppMetricaECommerce.removeCartItemEvent(addedItems1);
+        AppMetricaECommerceEvent removeCartItemEvent = AppMetricaECommerce.removeCartItemEvent(addedItems1);
         AppMetrica.reportECommerce(removeCartItemEvent);
         AppMetrica.reportEvent('Удаление товара из корзины');
         break;
@@ -109,8 +102,7 @@ class AppMetricaEcommerceService {
     required List<ProductDataModel> products, // товары
     String orderId = '', // id заказа
     String promocode = '',
-    AppMetricaTypeCreatePurchaseEnum typeProductToSoppingCart =
-        AppMetricaTypeCreatePurchaseEnum.startCreatePurchase,
+    AppMetricaTypeCreatePurchaseEnum typeProductToSoppingCart = AppMetricaTypeCreatePurchaseEnum.startCreatePurchase,
   }) {
     List<AppMetricaECommerceCartItem> items = [];
 
@@ -227,8 +219,7 @@ class AppMetricaEcommerceService {
     String priceActual = '', // текущая стоимость товара
     String priceOriginal = '', // базовая цена на товар
     int quantity = 0, // количество подарочных карт
-    AppMetricaTypeCreatePurchaseEnum typeProductToSoppingCart =
-        AppMetricaTypeCreatePurchaseEnum.startCreatePurchase,
+    AppMetricaTypeCreatePurchaseEnum typeProductToSoppingCart = AppMetricaTypeCreatePurchaseEnum.startCreatePurchase,
   }) {
     Map<String, String> payload = {
       "configuration": "landscape",
@@ -261,8 +252,7 @@ class AppMetricaEcommerceService {
       currency: "RUB",
     );
 
-    AppMetricaECommercePrice originalPrice =
-        AppMetricaECommercePrice(fiat: amountOriginaPrice, internalComponents: [
+    AppMetricaECommercePrice originalPrice = AppMetricaECommercePrice(fiat: amountOriginaPrice, internalComponents: [
       AppMetricaECommerceAmount(
         amount: Decimal.parse(priceOriginal),
         currency: idColor,
@@ -318,6 +308,7 @@ class AppMetricaEcommerceService {
     String searchQuery = '',
     List<String>? sectionCategoriesPath,
   }) {
+    logging('openPages $titleScreen', name: 'commerce service', stackTrace: StackTrace.current);
     Map<String, String> payload = {
       "configuration": "landscape",
       "full_screen": "true",
@@ -344,16 +335,12 @@ class AppMetricaEcommerceService {
     String identifier =
         '', // идентификатор открытия карточки товара, 1 карточка товара, 2 уведомление, 3 элемент списка, 4 кнопка
     String searchQuery = '', // поисковой запрос
-    List<String>?
-        sectionCategoriesPath, // категории в к оторых находится товар "Акции", "Красная цена"
-    List<String>?
-        productCategoriesPath, // категории тоарва "Продукты", "Молочные продукты", "Йогурты"
+    List<String>? sectionCategoriesPath, // категории в к оторых находится товар "Акции", "Красная цена"
+    List<String>? productCategoriesPath, // категории тоарва "Продукты", "Молочные продукты", "Йогурты"
     int priceActual = 0, // текущая стоимость товара
     int priceOriginal = 0, // базовая цена на товар
-    List<AppMetricaECommerceAmount>?
-        internalComponentsActualPrice, // дополнительные настройки для текущей стоимости
-    List<AppMetricaECommerceAmount>?
-        internalComponentsOriginalPrice, // дополнительные настройки для текущей стоимости
+    List<AppMetricaECommerceAmount>? internalComponentsActualPrice, // дополнительные настройки для текущей стоимости
+    List<AppMetricaECommerceAmount>? internalComponentsOriginalPrice, // дополнительные настройки для текущей стоимости
     List<String>? promocodes, // промокоды
   }) {
     Map<String, String> payload = {

@@ -560,13 +560,13 @@ class _CatalogScreenState extends State<CatalogScreen> {
                           child: NotificationListener<ScrollNotification>(
                             onNotification: (scrollNotification) {
                               if (scrollNotification is ScrollStartNotification) {
-                                logging('ScrollStartNotification', stackTrace: StackTrace.current);
+                                //logging('ScrollStartNotification', stackTrace: StackTrace.current);
                                 _isSwipe = false;
                               } else if (scrollNotification is ScrollUpdateNotification) {
-                                logging('ScrollUpdateNotification', stackTrace: StackTrace.current);
+                                //logging('ScrollUpdateNotification', stackTrace: StackTrace.current);
                                 _isSwipe = false;
                               } else if (scrollNotification is ScrollEndNotification) {
-                                logging('ScrollEndNotification', stackTrace: StackTrace.current);
+                                //logging('ScrollEndNotification', stackTrace: StackTrace.current);
                                 _isSwipe = true;
                               }
                               return true;
@@ -585,7 +585,7 @@ class _CatalogScreenState extends State<CatalogScreen> {
                                       return PopScope(
                                         canPop: false,
                                         onPopInvoked: (value) {
-                                          logging('onPopInvoked', name: 'Debug');
+                                          logging('onPopInvoked', stackTrace: StackTrace.current);
                                           final onBack = widget.onBack;
                                           if (onBack != null) {
                                             logging('onBack', name: 'Debug');
@@ -597,7 +597,8 @@ class _CatalogScreenState extends State<CatalogScreen> {
                                                 initState.listCatalogPath.length == 1) {
                                               if (widget.lastPath.isNotEmpty) {
                                                 if (widget.lastPath == 'news') {
-                                                  logging('lastPath == news', name: 'Debug');
+                                                  logging('lastPath == news',
+                                                      name: 'Debug', stackTrace: StackTrace.current);
                                                   AppRouter appRouter = Locator.injection();
                                                   appRouter.popForced();
                                                   //context.navigateTo(
@@ -751,10 +752,8 @@ class _CatalogScreenState extends State<CatalogScreen> {
                                                               listItems: initState.products,
                                                               favouritesProducts: initState.favouritesProducts,
                                                               isChildRoute: false,
-                                                              codeProduct: initState.products[index].id
-                                                                  .toString(),
-                                                              titleScreen:
-                                                              'Карточка тоавара в каталоге',
+                                                              codeProduct: initState.products[index].id.toString(),
+                                                              titleScreen: 'Карточка тоавара в каталоге',
                                                             ),
                                                           );
                                                         },
@@ -982,14 +981,12 @@ class _CatalogScreenState extends State<CatalogScreen> {
                       onHorizontalDragUpdate: (details) {},
                       onHorizontalDragEnd: (DragEndDetails details) {
                         if (details.velocity.pixelsPerSecond.dx > 1000 && _isSwipe) {
-                          logging('onHorizontalDragEnd', name: 'Debug');
-                          context.read<CatalogBloc>().add(
-                                const CatalogEvent.goBackCatalogInfo(),
-                              );
+                          logging('onHorizontalDragEnd', name: 'Debug',stackTrace: StackTrace.current);
+                          context.read<CatalogBloc>().add(const CatalogEvent.goBackCatalogInfo());
                           if (initState.listCatalogPath.isEmpty || initState.listCatalogPath.length == 1) {
                             if (widget.lastPath.isNotEmpty) {
                               if (widget.lastPath == 'news') {
-                                logging('lastPath == news [3]', name: 'Debug');
+                                logging('lastPath == news [3]', name: 'Debug',stackTrace: StackTrace.current);
                                 AppRouter appRouter = Locator.injection();
                                 appRouter.popForced();
                                 //context.navigateTo(

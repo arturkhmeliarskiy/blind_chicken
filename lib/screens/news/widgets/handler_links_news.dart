@@ -10,6 +10,8 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:get_it/get_it.dart';
 import 'package:url_launcher/url_launcher.dart';
 
+bool _isFirst = true; //Это дикий костыль, но я не понимаю почему не работает
+
 class HandlerLinksNews {
   static Future<bool> handlerLinks({
     required BuildContext context,
@@ -73,7 +75,27 @@ class HandlerLinksNews {
         );
         AppMetrica.reportEvent('$titleAppMetrica в подарочную карту');
       } else if (url.contains('product')) {
+        logging('url.contains(product)', name: 'Debug', stackTrace: StackTrace.current);
         final code = url.replaceAll('https://slepayakurica.ru/product', '').replaceAll('/', '');
+        if (_isFirst) {
+          _isFirst = false;
+          await appRouter.push(
+            CardInfoRoute(
+              isLike: false,
+              listItems: const [],
+              favouritesProducts: const [],
+              isChildRoute: false,
+              lastPath: titleScreen,
+              messageId: messageId,
+              idNews: idNews,
+              newsInfo: newsInfo,
+              newsMediaInfo: newsMediaInfo,
+              newsNotificationInfo: newsNotificationInfo,
+              codeProduct: code,
+              titleScreen: 'Список новостей',
+            ),
+          );
+        }
         await appRouter.push(
           CardInfoRoute(
             isLike: false,
@@ -161,7 +183,7 @@ class HandlerLinksNews {
             newsNotificationInfo: newsNotificationInfo,
           );
         } else {
-          for(var element in appRouter.routes){
+          for (var element in appRouter.routes) {
             print(element.page.name);
           }
           final path = url.replaceAll('https://slepayakurica.ru', '');
@@ -244,7 +266,7 @@ class HandlerLinksNews {
         );
         AppMetrica.reportEvent('$titleAppMetrica в проверку зрения');
       } else {
-        for(var element in appRouter.stack){
+        for (var element in appRouter.stack) {
           print('${element.name} $element');
         }
         final path = url.replaceAll('https://slepayakurica.ru', '');
@@ -259,18 +281,16 @@ class HandlerLinksNews {
                 filterNotifcation: info,
               ),
             );
-        appRouter.push(
-            CatalogRoute(
-              title: '',
-              url: path,
-              lastPath: titleScreen,
-              messageId: messageId,
-              idNews: idNews,
-              newsInfo: newsInfo,
-              newsMediaInfo: newsMediaInfo,
-              newsNotificationInfo: newsNotificationInfo,
-            )
-        );
+        appRouter.push(CatalogRoute(
+          title: '',
+          url: path,
+          lastPath: titleScreen,
+          messageId: messageId,
+          idNews: idNews,
+          newsInfo: newsInfo,
+          newsMediaInfo: newsMediaInfo,
+          newsNotificationInfo: newsNotificationInfo,
+        ));
         //appRouter.push(
         //  DashboardRoute(
         //    children: [
