@@ -289,7 +289,7 @@ class CardInfoBloc extends Bloc<CardInfoEvent, CardInfoState> {
       }
 
       emit(initState.copyWith(
-        listProductsCode: listProductsCode,
+        listProductsCode: listProductsCode.toList(),
       ));
 
       if (listProductsCode.isNotEmpty) {
@@ -331,6 +331,12 @@ class CardInfoBloc extends Bloc<CardInfoEvent, CardInfoState> {
           listProdcutsComplect: additionalProductsDescriptionComplect.products,
           listProductsCode: listProductsCode,
           selectSizeProduct: null,
+        ));
+      }
+      if (listProductsCode.isNotEmpty) {
+        listProductsCode = [];
+        emit(initState.copyWith(
+          listProductsCode: listProductsCode.toList(),
         ));
       }
     });

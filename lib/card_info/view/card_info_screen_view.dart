@@ -569,11 +569,11 @@ class _CardInfoScreenViewState extends State<CardInfoScreenView> {
                                   if (_isSwipe) {
                                     if (initState.listProductsCode.isNotEmpty) {
                                       logging(
-                                        'listProductsCode.isNotEmpty',
+                                        'PopScope listProductsCode.isNotEmpty',
                                         name: 'Debug',
                                         stackTrace: StackTrace.current,
                                       );
-                                      await forcedBack(initState, context);
+                                      forcedBack(initState, context);
                                     } else {
                                       if (widget.lastPath.isNotEmpty) {
                                         if (widget.lastPath == 'news') {
@@ -656,8 +656,9 @@ class _CardInfoScreenViewState extends State<CardInfoScreenView> {
                                       listImages: initState.detailsProduct?.photo.mini ?? [],
                                       isLike:
                                           initState.favouritesProductsId.contains(initState.detailsProduct?.code ?? 0),
-                                      goBotton: () async {
-                                        await forcedBack(initState, context);
+                                      goBotton: () {
+                                        logging('CatalogSliderImages', name: 'Debug', stackTrace: StackTrace.current);
+                                        forcedBack(initState, context);
                                       },
                                       isZoom: false,
                                       addLike: () {
@@ -741,7 +742,7 @@ class _CardInfoScreenViewState extends State<CardInfoScreenView> {
                                       },
                                       goSwipeBack: () async {
                                         logging('goSwipeBack', name: 'Debug', stackTrace: StackTrace.current);
-                                        await forcedBack(initState, context);
+                                        forcedBack(initState, context);
                                       },
                                       video: initState.detailsProduct?.video ??
                                           DetailProductVideoDataModel(
@@ -1620,7 +1621,7 @@ class _CardInfoScreenViewState extends State<CardInfoScreenView> {
 
   bool mayBeUsed = true;
 
-  Future<void> forcedBack(ProductsCardInfoState initState, BuildContext context) async {
+  void forcedBack(ProductsCardInfoState initState, BuildContext context) {
     if (mayBeUsed == false) return;
     if (mayBeUsed == true) {
       mayBeUsed == false;

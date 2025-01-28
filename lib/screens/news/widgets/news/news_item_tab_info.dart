@@ -202,6 +202,7 @@ class _NewsItemTabInfoState extends State<NewsItemTabInfo> with AutomaticKeepAli
         widget.item.announcement,
         textStyle: Theme.of(context).textTheme.displayMedium,
         onTapUrl: (url) async {
+          logging('buildTextPost', name: 'Debug', stackTrace: StackTrace.current);
           return HandlerLinksNews.handlerLinks(
             context: context,
             url: url,
