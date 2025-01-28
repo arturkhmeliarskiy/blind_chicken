@@ -1,3 +1,4 @@
+import 'package:blind_chicken/core_config/di/app_locator.dart';
 import 'package:blind_chicken/core_config/utils/logging.dart';
 
 import 'package:appmetrica_plugin/appmetrica_plugin.dart';
@@ -140,9 +141,7 @@ class _BrandsScreenState extends State<BrandsScreen> {
                             );
                         break;
                       case 'назад в бренды':
-                        context.read<BrandBloc>().add(
-                              const BrandEvent.goBackBrandInfo(),
-                            );
+                        context.read<BrandBloc>().add(const BrandEvent.goBackBrandInfo());
                         break;
                     }
                   },
@@ -156,33 +155,39 @@ class _BrandsScreenState extends State<BrandsScreen> {
               if (initState.listBrandsPath.isEmpty) {
                 if (widget.lastPath.isNotEmpty) {
                   if (widget.lastPath == 'news') {
-                    context.navigateTo(
-                      NewsRoute(children: [
-                        NewsInfoRepairedRoute(
-                          indexPage: 0,
-                        ),
-                      ]),
-                    );
+                    AppRouter appRouter = Locator.injection();
+                    appRouter.popForced();
+                    //context.navigateTo(
+                    //  NewsRoute(children: [
+                    //    NewsInfoRepairedRoute(
+                    //      indexPage: 0,
+                    //    ),
+                    //  ]),
+                    //);
                     AppMetrica.reportEvent('Список новостей');
                   } else if (widget.lastPath == 'news_info_description') {
-                    final newsInfo = widget.newsInfo;
-                    if (newsInfo != null) {
-                      context.navigateTo(
-                        NewsInfoDescriptionRoute(
-                          info: newsInfo,
-                        ),
-                      );
-                      AppMetrica.reportEvent('Страница новостей');
-                    }
+                    AppRouter appRouter = Locator.injection();
+                    appRouter.popForced();
+                    //final newsInfo = widget.newsInfo;
+                    //if (newsInfo != null) {
+                    //  context.navigateTo(
+                    //    NewsInfoDescriptionRoute(
+                    //      info: newsInfo,
+                    //    ),
+                    //  );
+                    //  AppMetrica.reportEvent('Страница новостей');
+                    //}
                   } else if (widget.lastPath == 'media_info_description') {
-                    final newsMediaInfo = widget.newsMediaInfo;
-                    if (newsMediaInfo != null) {
-                      context.navigateTo(
-                        MediaInfoDescriptionRoute(
-                          info: newsMediaInfo,
-                        ),
-                      );
-                    }
+                    AppRouter appRouter = Locator.injection();
+                    appRouter.popForced();
+                    //final newsMediaInfo = widget.newsMediaInfo;
+                    //if (newsMediaInfo != null) {
+                    //  context.navigateTo(
+                    //    MediaInfoDescriptionRoute(
+                    //      info: newsMediaInfo,
+                    //    ),
+                    //  );
+                    //}
                   } else if (widget.lastPath == 'notfication_info_description') {
                     final newsNotificationInfo = widget.newsNotificationInfo;
                     if (newsNotificationInfo != null) {
@@ -288,9 +293,7 @@ class _BrandsScreenState extends State<BrandsScreen> {
           canPop: false,
           onPopInvoked: (value) {
             if (_isSwipe && !value) {
-              context.read<BrandBloc>().add(
-                    const BrandEvent.goBackBrandInfo(),
-                  );
+              context.read<BrandBloc>().add(const BrandEvent.goBackBrandInfo());
             }
           },
           child: SafeArea(

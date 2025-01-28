@@ -1,4 +1,5 @@
 import 'package:auto_route/auto_route.dart';
+import 'package:blind_chicken/core_config/di/app_locator.dart';
 import 'package:blind_chicken/screens/app/router/app_router.dart';
 import 'package:blind_chicken/screens/home/catalog/widget/catalog_search_item.dart';
 import 'package:blind_chicken/old_repos/blocs/blocs.dart';
@@ -397,7 +398,8 @@ class _CatalogSearchScreenState extends State<CatalogSearchScreen> {
                                                       product: initState.searchProducts[index],
                                                       isButton: initState.searchProducts.length - 1 == index,
                                                       onTap: () {
-                                                        context.navigateTo(
+                                                        AppRouter appRouter = Locator.injection();
+                                                        appRouter.replace(
                                                           CardInfoRoute(
                                                             isChildRoute: false,
                                                             product: initState.searchProducts[index],
@@ -409,6 +411,18 @@ class _CatalogSearchScreenState extends State<CatalogSearchScreen> {
                                                             codeProduct: initState.searchProducts[index].id.toString(),
                                                           ),
                                                         );
+                                                        //context.navigateTo(
+                                                        //  CardInfoRoute(
+                                                        //    isChildRoute: false,
+                                                        //    product: initState.searchProducts[index],
+                                                        //    isLike: initState.favouritesProductsId
+                                                        //        .contains(initState.searchProducts[index].id),
+                                                        //    listItems: initState.searchProducts,
+                                                        //    favouritesProducts: initState.favouritesProducts ?? [],
+                                                        //    titleScreen: 'Карточка товара в резльтате поиска',
+                                                        //    codeProduct: initState.searchProducts[index].id.toString(),
+                                                        //  ),
+                                                        //);
                                                       },
                                                       onMoreInfo: () {
                                                         context.read<SearchBloc>().add(

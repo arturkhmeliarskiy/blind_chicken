@@ -1,4 +1,5 @@
 import 'dart:async';
+import 'package:blind_chicken/core_config/di/app_locator.dart';
 import 'package:blind_chicken/core_config/utils/logging.dart';
 import 'dart:io';
 
@@ -584,8 +585,10 @@ class _CatalogScreenState extends State<CatalogScreen> {
                                       return PopScope(
                                         canPop: false,
                                         onPopInvoked: (value) {
+                                          logging('onPopInvoked', name: 'Debug');
                                           final onBack = widget.onBack;
                                           if (onBack != null) {
+                                            logging('onBack', name: 'Debug');
                                             onBack();
                                           }
                                           if (_isSwipe && !value) {
@@ -594,13 +597,16 @@ class _CatalogScreenState extends State<CatalogScreen> {
                                                 initState.listCatalogPath.length == 1) {
                                               if (widget.lastPath.isNotEmpty) {
                                                 if (widget.lastPath == 'news') {
-                                                  context.navigateTo(
-                                                    NewsRoute(children: [
-                                                      NewsInfoRepairedRoute(
-                                                        indexPage: 0,
-                                                      ),
-                                                    ]),
-                                                  );
+                                                  logging('lastPath == news', name: 'Debug');
+                                                  AppRouter appRouter = Locator.injection();
+                                                  appRouter.popForced();
+                                                  //context.navigateTo(
+                                                  //  NewsRoute(children: [
+                                                  //    NewsInfoRepairedRoute(
+                                                  //      indexPage: 0,
+                                                  //    ),
+                                                  //  ]),
+                                                  //);
                                                   AppMetrica.reportEvent('Список новостей');
                                                 } else if (widget.lastPath == 'news_info_description') {
                                                   final newsInfo = widget.newsInfo;
@@ -793,6 +799,7 @@ class _CatalogScreenState extends State<CatalogScreen> {
                                                                 initState.listCatalogPath.length == 1) {
                                                               if (widget.lastPath.isNotEmpty) {
                                                                 if (widget.lastPath == 'news') {
+                                                                  logging('lastPath == news [2]', name: 'Debug');
                                                                   context.navigateTo(
                                                                     NewsRoute(children: [
                                                                       NewsInfoRepairedRoute(
@@ -975,19 +982,23 @@ class _CatalogScreenState extends State<CatalogScreen> {
                       onHorizontalDragUpdate: (details) {},
                       onHorizontalDragEnd: (DragEndDetails details) {
                         if (details.velocity.pixelsPerSecond.dx > 1000 && _isSwipe) {
+                          logging('onHorizontalDragEnd', name: 'Debug');
                           context.read<CatalogBloc>().add(
                                 const CatalogEvent.goBackCatalogInfo(),
                               );
                           if (initState.listCatalogPath.isEmpty || initState.listCatalogPath.length == 1) {
                             if (widget.lastPath.isNotEmpty) {
                               if (widget.lastPath == 'news') {
-                                context.navigateTo(
-                                  NewsRoute(children: [
-                                    NewsInfoRepairedRoute(
-                                      indexPage: 0,
-                                    ),
-                                  ]),
-                                );
+                                logging('lastPath == news [3]', name: 'Debug');
+                                AppRouter appRouter = Locator.injection();
+                                appRouter.popForced();
+                                //context.navigateTo(
+                                //  NewsRoute(children: [
+                                //    NewsInfoRepairedRoute(
+                                //      indexPage: 0,
+                                //    ),
+                                //  ]),
+                                //);
                                 AppMetrica.reportEvent('Список новостей');
                               } else if (widget.lastPath == 'news_info_description') {
                                 final newsInfo = widget.newsInfo;

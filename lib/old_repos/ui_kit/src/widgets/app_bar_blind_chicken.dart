@@ -114,8 +114,8 @@ class _AppBarBlindChickenState extends State<AppBarBlindChicken> {
   Widget _buildAction(BuildContext context, String route, String assetName) {
     return GestureDetector(
       onTap: () {
-        context.navigateNamedTo(route);
         _pauseVideo();
+        context.navigateNamedTo(route);
       },
       child: Container(
         padding: const EdgeInsets.symmetric(horizontal: 10.5),

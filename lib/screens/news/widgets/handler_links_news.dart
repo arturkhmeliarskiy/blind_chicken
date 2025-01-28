@@ -53,7 +53,7 @@ class HandlerLinksNews {
         );
         AppMetrica.reportEvent('$titleAppMetrica в описание бутика');
       } else if (url.contains('giftcard')) {
-        appRouter.push(
+        await appRouter.push(
           DashboardRoute(
             children: [
               HomeAutoRouterRoute(
@@ -116,7 +116,7 @@ class HandlerLinksNews {
                   titleScreen: 'бренды',
                 ),
               );
-          navigateToBrandsScreen(
+          await navigateToBrandsScreen(
             appRouter: appRouter,
             titleScreen: titleScreen,
             messageId: messageId ?? '',
@@ -133,7 +133,7 @@ class HandlerLinksNews {
                   titleScreen: 'бренды',
                 ),
               );
-          navigateToBrandsScreen(
+          await navigateToBrandsScreen(
             appRouter: appRouter,
             titleScreen: titleScreen,
             messageId: messageId ?? '',
@@ -150,7 +150,7 @@ class HandlerLinksNews {
                   titleScreen: 'бренды',
                 ),
               );
-          navigateToBrandsScreen(
+          await navigateToBrandsScreen(
             appRouter: appRouter,
             titleScreen: titleScreen,
             messageId: messageId ?? '',
@@ -161,6 +161,9 @@ class HandlerLinksNews {
             newsNotificationInfo: newsNotificationInfo,
           );
         } else {
+          for(var element in appRouter.routes){
+            print(element.page.name);
+          }
           final path = url.replaceAll('https://slepayakurica.ru', '');
           final filterService = GetIt.I.get<FilterService>();
           final info = filterService.converterNotificationInfo(
@@ -241,6 +244,9 @@ class HandlerLinksNews {
         );
         AppMetrica.reportEvent('$titleAppMetrica в проверку зрения');
       } else {
+        for(var element in appRouter.stack){
+          print('${element.name} $element');
+        }
         final path = url.replaceAll('https://slepayakurica.ru', '');
         final filterService = GetIt.I.get<FilterService>();
         final info = filterService.converterNotificationInfo(
@@ -254,25 +260,37 @@ class HandlerLinksNews {
               ),
             );
         appRouter.push(
-          DashboardRoute(
-            children: [
-              HomeAutoRouterRoute(
-                children: [
-                  CatalogRoute(
-                    title: '',
-                    url: path,
-                    lastPath: titleScreen,
-                    messageId: messageId,
-                    idNews: idNews,
-                    newsInfo: newsInfo,
-                    newsMediaInfo: newsMediaInfo,
-                    newsNotificationInfo: newsNotificationInfo,
-                  )
-                ],
-              ),
-            ],
-          ),
+            CatalogRoute(
+              title: '',
+              url: path,
+              lastPath: titleScreen,
+              messageId: messageId,
+              idNews: idNews,
+              newsInfo: newsInfo,
+              newsMediaInfo: newsMediaInfo,
+              newsNotificationInfo: newsNotificationInfo,
+            )
         );
+        //appRouter.push(
+        //  DashboardRoute(
+        //    children: [
+        //      HomeAutoRouterRoute(
+        //        children: [
+        //          CatalogRoute(
+        //            title: '',
+        //            url: path,
+        //            lastPath: titleScreen,
+        //            messageId: messageId,
+        //            idNews: idNews,
+        //            newsInfo: newsInfo,
+        //            newsMediaInfo: newsMediaInfo,
+        //            newsNotificationInfo: newsNotificationInfo,
+        //          )
+        //        ],
+        //      ),
+        //    ],
+        //  ),
+        //);
         final appMetricaEcommerce = GetIt.I.get<AppMetricaEcommerceService>();
         if (path.contains('sale')) {
           appMetricaEcommerce.openPages(
@@ -296,7 +314,7 @@ class HandlerLinksNews {
     return true;
   }
 
-  static void navigateToBrandsScreen({
+  static Future<void> navigateToBrandsScreen({
     required AppRouter appRouter,
     required String titleScreen,
     NewsInfoItemDataModel? newsInfo,
@@ -305,24 +323,32 @@ class HandlerLinksNews {
     String? messageId,
     String? idNews,
     required BuildContext context,
-  }) {
-    appRouter.push(
-      DashboardRoute(
-        children: [
-          HomeAutoRouterRoute(
-            children: [
-              BrandsRoute(
-                lastPath: titleScreen,
-                messageId: messageId,
-                idNews: idNews,
-                newsInfo: newsInfo,
-                newsMediaInfo: newsMediaInfo,
-                newsNotificationInfo: newsNotificationInfo,
-              ),
-            ],
-          ),
-        ],
+  }) async {
+    await appRouter.push(
+      BrandsRoute(
+        lastPath: titleScreen,
+        messageId: messageId,
+        idNews: idNews,
+        newsInfo: newsInfo,
+        newsMediaInfo: newsMediaInfo,
+        newsNotificationInfo: newsNotificationInfo,
       ),
+      //DashboardRoute(
+      //  children: [
+      //    HomeAutoRouterRoute(
+      //      children: [
+      //        BrandsRoute(
+      //          lastPath: titleScreen,
+      //          messageId: messageId,
+      //          idNews: idNews,
+      //          newsInfo: newsInfo,
+      //          newsMediaInfo: newsMediaInfo,
+      //          newsNotificationInfo: newsNotificationInfo,
+      //        ),
+      //      ],
+      //    ),
+      //  ],
+      //),
     );
   }
 }

@@ -340,9 +340,9 @@ class AppRouter extends RootStackRouter {
         AutoRoute(
           page: FavouritesFilterSelectValueSearchRoute.page,
         ),
-        //AutoRoute(
-        //  page: CatalogPreviewImagesRoute.page,
-        //),
+        AutoRoute(
+          page: CatalogPreviewImagesRoute.page,
+        ),
         AutoRoute(
           page: BoutiquePreviewMediaRoute.page,
         ),

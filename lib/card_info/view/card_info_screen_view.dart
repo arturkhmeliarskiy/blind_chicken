@@ -1,10 +1,10 @@
 import 'dart:async';
 import 'dart:developer';
 
-
 import 'package:appmetrica_plugin/appmetrica_plugin.dart';
 import 'package:auto_route/auto_route.dart';
 import 'package:blind_chicken/core_config/di/app_locator.dart';
+import 'package:blind_chicken/core_config/utils/logging.dart';
 import 'package:blind_chicken/screens/app/router/app_router.dart';
 import 'package:blind_chicken/screens/home/catalog/widget/catalog_boutiques_info.dart';
 import 'package:blind_chicken/screens/home/catalog/widget/catalog_cashback_info.dart';
@@ -180,6 +180,7 @@ class _CardInfoScreenViewState extends State<CardInfoScreenView> {
 
   @override
   Widget build(BuildContext context) {
+    AppRouter appRouter = Locator.injection();
     return BlocListener<CardInfoBloc, CardInfoState>(
       listener: (context, state) {
         state.maybeMap(
@@ -532,8 +533,8 @@ class _CardInfoScreenViewState extends State<CardInfoScreenView> {
         child: SwipeDetector(
           onSwipeRight: (offset) {
             context.read<CardInfoBloc>().add(
-              const CardInfoEvent.goBackProductInfo(),
-            );
+                  const CardInfoEvent.goBackProductInfo(),
+                );
             setState(() {
               _isSwipe = false;
             });
@@ -553,6 +554,8 @@ class _CardInfoScreenViewState extends State<CardInfoScreenView> {
                             setState(() {
                               _isNavigateMainScreen = true;
                             });
+                            //
+                            //appRouter.pushNamed('/dashboard/home/main');
                             context.navigateNamedTo('/dashboard/home/main');
                           },
                         ),
@@ -564,9 +567,15 @@ class _CardInfoScreenViewState extends State<CardInfoScreenView> {
                               return PopScope(
                                 canPop: false,
                                 onPopInvoked: (value) {
+                                  logging('onPopInvoked', name: 'Debug', stackTrace: StackTrace.current);
                                   if (_isSwipe) {
                                     if (initState.listProductsCode.isNotEmpty) {
-                                      context.read<CardInfoBloc>().add(const CardInfoEvent.goBackProductInfo());
+                                      logging(
+                                        'listProductsCode.isNotEmpty',
+                                        name: 'Debug',
+                                        stackTrace: StackTrace.current,
+                                      );
+                                      forcedBack(initState, context);
                                     } else {
                                       if (widget.lastPath.isNotEmpty) {
                                         if (widget.lastPath == 'news') {
@@ -634,6 +643,8 @@ class _CardInfoScreenViewState extends State<CardInfoScreenView> {
                                           );
                                         }
                                       } else {
+                                        logging('instance.addPostFrameCallback',
+                                            name: 'Debug', stackTrace: StackTrace.current);
                                         WidgetsBinding.instance.addPostFrameCallback((_) {
                                           context.back();
                                         });
@@ -648,7 +659,7 @@ class _CardInfoScreenViewState extends State<CardInfoScreenView> {
                                       isLike:
                                           initState.favouritesProductsId.contains(initState.detailsProduct?.code ?? 0),
                                       goBotton: () {
-                                        context.read<CardInfoBloc>().add(const CardInfoEvent.goBackProductInfo());
+                                        forcedBack(initState, context);
                                       },
                                       isZoom: false,
                                       addLike: () {
@@ -673,6 +684,34 @@ class _CardInfoScreenViewState extends State<CardInfoScreenView> {
                                         }
                                       },
                                       onTap: (index) {
+                                        appRouter.push(
+                                          CatalogPreviewImagesRoute(
+                                            selectIndex: index,
+                                            listImages: initState.detailsProduct?.photo.full ?? [],
+                                            goBotton: () {},
+                                            goBottonInfoProduct: () {
+                                              context.back();
+                                              if (_isChildRoute) {
+                                                context.navigateTo(
+                                                  CardInfoRoute(
+                                                    isChildRoute: true,
+                                                    product: item,
+                                                    isLike: widget.isLike,
+                                                    listItems: widget.listItems,
+                                                    favouritesProducts: widget.favouritesProducts,
+                                                    codeProduct: initState.codeProduct,
+                                                    titleScreen: initState.titleScreen,
+                                                  ),
+                                                );
+                                              }
+                                            },
+                                            video: initState.detailsProduct?.video ??
+                                                DetailProductVideoDataModel(
+                                                  i: '',
+                                                  v: '',
+                                                ),
+                                          ),
+                                        );
                                         context.pushRoute(
                                           CatalogPreviewImagesRoute(
                                             selectIndex: index,
@@ -703,11 +742,8 @@ class _CardInfoScreenViewState extends State<CardInfoScreenView> {
                                         );
                                       },
                                       goSwipeBack: () {
-                                        if (initState.listProductsCode.isNotEmpty) {
-                                          context.read<CardInfoBloc>().add(const CardInfoEvent.goBackProductInfo());
-                                        } else {
-                                          context.back();
-                                        }
+                                        logging('goSwipeBack', name: 'Debug', stackTrace: StackTrace.current);
+                                        forcedBack(initState, context);
                                       },
                                       video: initState.detailsProduct?.video ??
                                           DetailProductVideoDataModel(
@@ -1582,6 +1618,16 @@ class _CardInfoScreenViewState extends State<CardInfoScreenView> {
         ),
       ),
     );
+  }
+
+  void forcedBack(ProductsCardInfoState initState, BuildContext context) {
+    if (initState.listProductsCode.isNotEmpty) {
+      logging('goSwipeBack listProductsCode', name: 'Debug', stackTrace: StackTrace.current);
+      context.read<CardInfoBloc>().add(const CardInfoEvent.goBackProductInfo());
+    } else {
+      logging('goSwipeBack context.back', name: 'Debug', stackTrace: StackTrace.current);
+      context.back();
+    }
   }
 
   void _addToCart(

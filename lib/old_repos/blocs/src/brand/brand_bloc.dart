@@ -5,7 +5,9 @@ import 'package:blind_chicken/old_repos/repositories/repositories.dart';
 import 'package:blind_chicken/old_repos/shared/shared.dart';
 
 part 'brand_bloc.freezed.dart';
+
 part 'brand_event.dart';
+
 part 'brand_state.dart';
 
 class BrandBloc extends Bloc<BrandEvent, BrandState> {
@@ -209,9 +211,7 @@ class BrandBloc extends Bloc<BrandEvent, BrandState> {
         listBrandsPath.removeLast();
       }
 
-      emit(initState.copyWith(
-        listBrandsPath: listBrandsPath,
-      ));
+      emit(initState.copyWith(listBrandsPath: listBrandsPath));
 
       if (listBrandsPath.isNotEmpty) {
         List<String> listTypePeople = [
@@ -242,8 +242,7 @@ class BrandBloc extends Bloc<BrandEvent, BrandState> {
 
             if (brandsInfo.errorMessage.isEmpty) {
               for (int i = 0; i < listBrands.length; i++) {
-                final calculatePosition =
-                    _getCalculatePosition(brandsInfo.brands, listBrands[i].title);
+                final calculatePosition = _getCalculatePosition(brandsInfo.brands, listBrands[i].title);
                 listCountBrand.add(calculatePosition);
               }
             }
@@ -262,8 +261,7 @@ class BrandBloc extends Bloc<BrandEvent, BrandState> {
 
             if (brandsInfo.errorMessage.isEmpty) {
               for (int i = 0; i < listBrands.length; i++) {
-                final calculatePosition =
-                    _getCalculatePosition(brandsInfo.brands, listBrands[i].title);
+                final calculatePosition = _getCalculatePosition(brandsInfo.brands, listBrands[i].title);
                 listCountBrand.add(calculatePosition);
               }
             }
@@ -282,8 +280,7 @@ class BrandBloc extends Bloc<BrandEvent, BrandState> {
 
             if (brandsInfo.errorMessage.isEmpty) {
               for (int i = 0; i < listBrands.length; i++) {
-                final calculatePosition =
-                    _getCalculatePosition(brandsInfo.brands, listBrands[i].title);
+                final calculatePosition = _getCalculatePosition(brandsInfo.brands, listBrands[i].title);
                 listCountBrand.add(calculatePosition);
               }
             }
@@ -302,8 +299,7 @@ class BrandBloc extends Bloc<BrandEvent, BrandState> {
 
             if (brandsInfo.errorMessage.isEmpty) {
               for (int i = 0; i < listBrands.length; i++) {
-                final calculatePosition =
-                    _getCalculatePosition(brandsInfo.brands, listBrands[i].title);
+                final calculatePosition = _getCalculatePosition(brandsInfo.brands, listBrands[i].title);
                 listCountBrand.add(calculatePosition);
               }
             }
@@ -321,25 +317,14 @@ class BrandBloc extends Bloc<BrandEvent, BrandState> {
             isError: brandsInfo?.errorMessage.isNotEmpty ?? false,
             typeError: 'назад в бренды',
             errorMessage: MessageInfo.errorMessage,
-            listTypePeople: brandsInfo?.errorMessage.isNotEmpty ?? false
-                ? initState.listTypePeople
-                : listTypePeople,
-            allBrands:
-                brandsInfo?.errorMessage.isNotEmpty ?? false ? initState.allBrands : allBrands,
-            listCountBrand: brandsInfo?.errorMessage.isNotEmpty ?? false
-                ? initState.listCountBrand
-                : listCountBrand,
-            listBrands:
-                brandsInfo?.errorMessage.isNotEmpty ?? false ? initState.listBrands : listBrands,
-            defaultListBrands: brandsInfo?.errorMessage.isNotEmpty ?? false
-                ? initState.defaultListBrands
-                : listBrands,
-            selectedTypePeople: brandsInfo?.errorMessage.isNotEmpty ?? false
-                ? initState.selectedTypePeople
-                : selectedTypePeople,
-            listBrandsPath: brandsInfo?.errorMessage.isNotEmpty ?? false
-                ? deafultListBrandsPath
-                : listBrandsPath,
+            listTypePeople: brandsInfo?.errorMessage.isNotEmpty ?? false ? initState.listTypePeople : listTypePeople,
+            allBrands: brandsInfo?.errorMessage.isNotEmpty ?? false ? initState.allBrands : allBrands,
+            listCountBrand: brandsInfo?.errorMessage.isNotEmpty ?? false ? initState.listCountBrand : listCountBrand,
+            listBrands: brandsInfo?.errorMessage.isNotEmpty ?? false ? initState.listBrands : listBrands,
+            defaultListBrands: brandsInfo?.errorMessage.isNotEmpty ?? false ? initState.defaultListBrands : listBrands,
+            selectedTypePeople:
+                brandsInfo?.errorMessage.isNotEmpty ?? false ? initState.selectedTypePeople : selectedTypePeople,
+            listBrandsPath: brandsInfo?.errorMessage.isNotEmpty ?? false ? deafultListBrandsPath : listBrandsPath,
           ),
         );
       }
@@ -379,8 +364,7 @@ class BrandBloc extends Bloc<BrandEvent, BrandState> {
 
           if (brandsInfo.errorMessage.isEmpty) {
             for (int i = 0; i < listBrands.length; i++) {
-              final calculatePosition =
-                  _getCalculatePosition(brandsInfo.brands, listBrands[i].title);
+              final calculatePosition = _getCalculatePosition(brandsInfo.brands, listBrands[i].title);
               listCountBrand.add(calculatePosition);
             }
           }
@@ -399,8 +383,7 @@ class BrandBloc extends Bloc<BrandEvent, BrandState> {
 
           if (brandsInfo.errorMessage.isEmpty) {
             for (int i = 0; i < listBrands.length; i++) {
-              final calculatePosition =
-                  _getCalculatePosition(brandsInfo.brands, listBrands[i].title);
+              final calculatePosition = _getCalculatePosition(brandsInfo.brands, listBrands[i].title);
               listCountBrand.add(calculatePosition);
             }
           }
@@ -419,8 +402,7 @@ class BrandBloc extends Bloc<BrandEvent, BrandState> {
 
           if (brandsInfo.errorMessage.isEmpty) {
             for (int i = 0; i < listBrands.length; i++) {
-              final calculatePosition =
-                  _getCalculatePosition(brandsInfo.brands, listBrands[i].title);
+              final calculatePosition = _getCalculatePosition(brandsInfo.brands, listBrands[i].title);
               listCountBrand.add(calculatePosition);
             }
           }
@@ -439,8 +421,7 @@ class BrandBloc extends Bloc<BrandEvent, BrandState> {
 
           if (brandsInfo.errorMessage.isEmpty) {
             for (int i = 0; i < listBrands.length; i++) {
-              final calculatePosition =
-                  _getCalculatePosition(brandsInfo.brands, listBrands[i].title);
+              final calculatePosition = _getCalculatePosition(brandsInfo.brands, listBrands[i].title);
               listCountBrand.add(calculatePosition);
             }
           }
@@ -460,24 +441,14 @@ class BrandBloc extends Bloc<BrandEvent, BrandState> {
           selectTypePeopleIndex: event.selectTypePeople,
           isError: brandsInfo?.errorMessage.isNotEmpty ?? false,
           errorMessage: MessageInfo.errorMessage,
-          listTypePeople: brandsInfo?.errorMessage.isNotEmpty ?? false
-              ? initState.listTypePeople
-              : listTypePeople,
+          listTypePeople: brandsInfo?.errorMessage.isNotEmpty ?? false ? initState.listTypePeople : listTypePeople,
           allBrands: brandsInfo?.errorMessage.isNotEmpty ?? false ? initState.allBrands : allBrands,
-          listCountBrand: brandsInfo?.errorMessage.isNotEmpty ?? false
-              ? initState.listCountBrand
-              : listCountBrand,
-          listBrands:
-              brandsInfo?.errorMessage.isNotEmpty ?? false ? initState.listBrands : listBrands,
-          defaultListBrands: brandsInfo?.errorMessage.isNotEmpty ?? false
-              ? initState.defaultListBrands
-              : listBrands,
-          selectedTypePeople: brandsInfo?.errorMessage.isNotEmpty ?? false
-              ? initState.selectedTypePeople
-              : selectedTypePeople,
-          listBrandsPath: brandsInfo?.errorMessage.isNotEmpty ?? false
-              ? initState.listBrandsPath
-              : listBrandsPath,
+          listCountBrand: brandsInfo?.errorMessage.isNotEmpty ?? false ? initState.listCountBrand : listCountBrand,
+          listBrands: brandsInfo?.errorMessage.isNotEmpty ?? false ? initState.listBrands : listBrands,
+          defaultListBrands: brandsInfo?.errorMessage.isNotEmpty ?? false ? initState.defaultListBrands : listBrands,
+          selectedTypePeople:
+              brandsInfo?.errorMessage.isNotEmpty ?? false ? initState.selectedTypePeople : selectedTypePeople,
+          listBrandsPath: brandsInfo?.errorMessage.isNotEmpty ?? false ? initState.listBrandsPath : listBrandsPath,
         ),
       );
     });
@@ -497,18 +468,15 @@ class BrandBloc extends Bloc<BrandEvent, BrandState> {
       } else {
         return CountBrand(
           countAlphabet: countAlphabet,
-          countBrands: countBrands > 2
-              ? ConverterService.roundUpAbsolute(countBrands / 2).round().toDouble()
-              : countBrands,
+          countBrands:
+              countBrands > 2 ? ConverterService.roundUpAbsolute(countBrands / 2).round().toDouble() : countBrands,
         );
       }
     }
 
     return CountBrand(
       countAlphabet: countAlphabet,
-      countBrands: countBrands > 2
-          ? ConverterService.roundUpAbsolute(countBrands / 2).round().toDouble()
-          : countBrands,
+      countBrands: countBrands > 2 ? ConverterService.roundUpAbsolute(countBrands / 2).round().toDouble() : countBrands,
     );
   }
 }
