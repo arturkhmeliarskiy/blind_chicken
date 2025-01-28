@@ -483,7 +483,6 @@ class _DashboardPageState extends State<DashboardPage> {
                               isGoBack: true,
                               isCleanListNewsPath: true,
                             ));
-
                         context.navigateTo(
                           NewsRoute(children: [
                             NewsInfoRepairedRoute(

@@ -248,8 +248,8 @@ class AppRouter extends RootStackRouter {
                 page: NewsInfoRoute.page,
               ),
               AutoRoute(
-                  page: NewsInfoRepairedRoute.page,
-                  path: 'newsV2'
+                page: NewsInfoRepairedRoute.page,
+                path: 'newsV2',
               ),
             ],
           ),

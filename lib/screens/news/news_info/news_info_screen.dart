@@ -24,9 +24,7 @@ import 'package:flutter_svg/flutter_svg.dart';
 
 import '../../app/router/app_router.dart';
 
-TabController? _tabController;
-final ScrollController _scrollController = ScrollController();
-final GlobalKey _appBarKey = GlobalKey();
+
 
 @RoutePage()
 class NewsInfoRepairedScreen extends StatefulWidget implements AutoRouteWrapper {
@@ -57,6 +55,9 @@ class NewsInfoRepairedScreen extends StatefulWidget implements AutoRouteWrapper 
 
 class _NewsInfoRepairedScreenState extends State<NewsInfoRepairedScreen> with TickerProviderStateMixin {
   double _toolbarHeight = kToolbarHeight;
+  TabController? _tabController;
+  final ScrollController _scrollController = ScrollController();
+  final GlobalKey _appBarKey = GlobalKey();
 
   @override
   void initState() {
@@ -344,7 +345,7 @@ class _NewsInfoRepairedScreenState extends State<NewsInfoRepairedScreen> with Ti
             NewsItemTabInfo(
               item: state.listNews[index],
               onTap: () {
-                /*context.navigateTo(
+                context.navigateTo(
                   NewsInfoDescriptionRoute(
                     info: NewsInfoItemDataModel(
                       id: state.listNews[index].id,
@@ -371,7 +372,7 @@ class _NewsInfoRepairedScreenState extends State<NewsInfoRepairedScreen> with Ti
                       isViewed: false,
                     ),
                   ),
-                );*/
+                );
               },
               onGoTap: () {
                 //navigateToCorrectPage(context, state.listNews[index]);
