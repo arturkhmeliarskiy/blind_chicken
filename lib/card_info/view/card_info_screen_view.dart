@@ -28,6 +28,8 @@ import 'package:blind_chicken/old_repos/ui_kit/ui_kit.dart';
 
 import 'widget/payment_in_instalment_widget.dart';
 
+bool _mayBeUsed = true;
+
 class CardInfoScreenView extends StatefulWidget {
   const CardInfoScreenView({
     super.key,
@@ -351,12 +353,19 @@ class _CardInfoScreenViewState extends State<CardInfoScreenView> {
                 } else if (!updateData.isOpenShowModalBottomSheetShoppingCardInfoScreen &&
                     !initState.isBlocBackBotton &&
                     !_isNavigateMainScreen) {
-                  logging('_isNavigateMainScreen',name: 'Debug', stackTrace: StackTrace.current);
-                  context.back();
+                  logging('calling _isNavigateMainScreen $_mayBeUsed', name: 'Debug', stackTrace: StackTrace.current);
+                  if (_mayBeUsed == true) {
+                    _mayBeUsed = false;
+                    logging('_isNavigateMainScreen', name: 'Debug', stackTrace: StackTrace.current);
+                    Future.delayed(Duration(milliseconds: 300)).whenComplete(() {
+                      _mayBeUsed = true;
+                    });
+                    context.back();
+                  }
                 } else {
                   final sharedService = GetIt.I.get<SharedPreferencesService>();
                   if (sharedService.getString(key: SharedPrefKeys.lastScreen) == 'catalog_card_info' && _isGoBack) {
-                    logging('&& _isGoBack',name: 'Debug', stackTrace: StackTrace.current);
+                    logging('&& _isGoBack', name: 'Debug', stackTrace: StackTrace.current);
                     context.back();
                     _isGoBack = false;
                   }
@@ -693,7 +702,8 @@ class _CardInfoScreenViewState extends State<CardInfoScreenView> {
                                             listImages: initState.detailsProduct?.photo.full ?? [],
                                             goBotton: () {},
                                             goBottonInfoProduct: () {
-                                              logging('goBottonInfoProduct',name: 'Debug', stackTrace: StackTrace.current);
+                                              logging('goBottonInfoProduct',
+                                                  name: 'Debug', stackTrace: StackTrace.current);
                                               context.back();
                                               if (_isChildRoute) {
                                                 context.navigateTo(
@@ -722,7 +732,8 @@ class _CardInfoScreenViewState extends State<CardInfoScreenView> {
                                             listImages: initState.detailsProduct?.photo.full ?? [],
                                             goBotton: () {},
                                             goBottonInfoProduct: () {
-                                              logging('goBottonInfoProduct',name: 'Debug', stackTrace: StackTrace.current);
+                                              logging('goBottonInfoProduct',
+                                                  name: 'Debug', stackTrace: StackTrace.current);
                                               context.back();
                                               if (_isChildRoute) {
                                                 context.navigateTo(
@@ -1041,7 +1052,8 @@ class _CardInfoScreenViewState extends State<CardInfoScreenView> {
                                                   );
                                             },
                                             onBack: (buildContext) {
-                                              logging('onBack: (buildContext)',name: 'Debug', stackTrace: StackTrace.current);
+                                              logging('onBack: (buildContext)',
+                                                  name: 'Debug', stackTrace: StackTrace.current);
                                               buildContext.back();
                                             },
                                           ),
@@ -1077,10 +1089,12 @@ class _CardInfoScreenViewState extends State<CardInfoScreenView> {
                                                                     size: value,
                                                                   ),
                                                                 );
-                                                            logging('CardInfoEvent.checkProductToSoppingCart(',name: 'Debug', stackTrace: StackTrace.current);
+                                                            logging('CardInfoEvent.checkProductToSoppingCart(',
+                                                                name: 'Debug', stackTrace: StackTrace.current);
                                                             context.back();
                                                           } else {
-                                                            logging('CardInfoEvent.getProduct(',name: 'Debug', stackTrace: StackTrace.current);
+                                                            logging('CardInfoEvent.getProduct(',
+                                                                name: 'Debug', stackTrace: StackTrace.current);
                                                             context.back();
                                                             context.read<CardInfoBloc>().add(
                                                                   CardInfoEvent.getProduct(
