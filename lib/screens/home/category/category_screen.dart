@@ -57,6 +57,7 @@ class _CategoryScreenState extends State<CategoryScreen> {
 
   @override
   Widget build(BuildContext context) {
+    final width = MediaQuery.of(context).size.width;
     return BlocListener<CatalogBloc, CatalogState>(
       listener: (context, state) {
         state.maybeMap(
@@ -591,10 +592,27 @@ class _CategoryScreenState extends State<CategoryScreen> {
                       ),
                     );
                   },
-                  load: (value) => Center(
-                    child: CircularProgressIndicator(
-                      color: Colors.black,
-                      backgroundColor: Colors.grey.shade400,
+                  load: (value) => Padding(
+                    padding: const EdgeInsets.only(top: 15),
+                    child: SizedBox(
+                      width: width,
+                      child: Column(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        mainAxisAlignment: MainAxisAlignment.start,
+                        children: List.generate(
+                          9,
+                          (index) => BlindChickenLoading(
+                            height: 28,
+                            width: width * (index.isEven ? 0.7 : 0.5),
+                            borderRadius: BorderRadius.circular(5),
+                            margin: EdgeInsets.only(
+                              bottom: 22.5,
+                              left: 10,
+                              right: 10,
+                            ),
+                          ),
+                        ),
+                      ),
                     ),
                   ),
                   orElse: () => const SizedBox(),

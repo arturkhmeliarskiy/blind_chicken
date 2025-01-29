@@ -95,6 +95,19 @@ class _OrderUserInfoScreenState extends State<OrderUserInfoScreen> {
             context.navigateTo(
               SberbankPaymentWebViewRoute(
                 url: value.url,
+                onGoBack: () {
+                  context.read<AccountBloc>().add(
+                        AccountEvent.getInfoPayOrder(
+                          id: widget.orderId,
+                        ),
+                      );
+                  context.navigateTo(
+                    OrderUserInfoRoute(
+                      isPay: true,
+                      orderId: widget.orderId,
+                    ),
+                  );
+                },
               ),
             );
           },
