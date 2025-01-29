@@ -597,22 +597,100 @@ class _CategoryScreenState extends State<CategoryScreen> {
                     child: SizedBox(
                       width: width,
                       child: Column(
-                        crossAxisAlignment: CrossAxisAlignment.start,
-                        mainAxisAlignment: MainAxisAlignment.start,
-                        children: List.generate(
-                          9,
-                          (index) => BlindChickenLoading(
-                            height: 28,
-                            width: width * (index.isEven ? 0.7 : 0.5),
-                            borderRadius: BorderRadius.circular(5),
-                            margin: EdgeInsets.only(
-                              bottom: 22.5,
-                              left: 10,
-                              right: 10,
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          mainAxisAlignment: MainAxisAlignment.start,
+                          children: [
+                            BlindChickenLoading(
+                              height: 20,
+                              width: width * 0.5,
+                              borderRadius: BorderRadius.circular(5),
+                              margin: EdgeInsets.only(
+                                bottom: 31.5,
+                                left: 10,
+                                right: 10,
+                              ),
                             ),
-                          ),
-                        ),
-                      ),
+                            BlindChickenLoading(
+                              height: 20,
+                              width: width * 0.4,
+                              borderRadius: BorderRadius.circular(5),
+                              margin: EdgeInsets.only(
+                                bottom: 31.5,
+                                left: 10,
+                                right: 10,
+                              ),
+                            ),
+                            BlindChickenLoading(
+                              height: 20,
+                              width: width * 0.6,
+                              borderRadius: BorderRadius.circular(5),
+                              margin: EdgeInsets.only(
+                                bottom: 31.5,
+                                left: 10,
+                                right: 10,
+                              ),
+                            ),
+                            BlindChickenLoading(
+                              height: 20,
+                              width: width * 0.4,
+                              borderRadius: BorderRadius.circular(5),
+                              margin: EdgeInsets.only(
+                                bottom: 31.5,
+                                left: 10,
+                                right: 10,
+                              ),
+                            ),
+                            BlindChickenLoading(
+                              height: 20,
+                              width: width * 0.5,
+                              borderRadius: BorderRadius.circular(5),
+                              margin: EdgeInsets.only(
+                                bottom: 31.5,
+                                left: 10,
+                                right: 10,
+                              ),
+                            ),
+                            BlindChickenLoading(
+                              height: 20,
+                              width: width * 0.4,
+                              borderRadius: BorderRadius.circular(5),
+                              margin: EdgeInsets.only(
+                                bottom: 31.5,
+                                left: 10,
+                                right: 10,
+                              ),
+                            ),
+                            BlindChickenLoading(
+                              height: 20,
+                              width: width * 0.6,
+                              borderRadius: BorderRadius.circular(5),
+                              margin: EdgeInsets.only(
+                                bottom: 31.5,
+                                left: 10,
+                                right: 10,
+                              ),
+                            ),
+                            BlindChickenLoading(
+                              height: 20,
+                              width: width * 0.4,
+                              borderRadius: BorderRadius.circular(5),
+                              margin: EdgeInsets.only(
+                                bottom: 31.5,
+                                left: 10,
+                                right: 10,
+                              ),
+                            ),
+                            BlindChickenLoading(
+                              height: 20,
+                              width: width * 0.5,
+                              borderRadius: BorderRadius.circular(5),
+                              margin: EdgeInsets.only(
+                                bottom: 31.5,
+                                left: 10,
+                                right: 10,
+                              ),
+                            ),
+                          ]),
                     ),
                   ),
                   orElse: () => const SizedBox(),
