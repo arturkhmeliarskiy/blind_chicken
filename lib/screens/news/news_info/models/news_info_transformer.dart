@@ -45,7 +45,10 @@ class NewsInfoTransformer {
     );
   }
 
-  static NotificationInfoItemDataModel transformNotificationResponseToDataModel(NotificationInfoItemResponse response) {
+  static NotificationInfoItemDataModel transformNotificationResponseToDataModel(
+    NotificationInfoItemResponse response, {
+    bool? isViewed,
+  }) {
     String? videoPath;
     List<String> images = [];
     List<String> videos = [];
@@ -75,7 +78,7 @@ class NewsInfoTransformer {
       uidStore: response.uidStore ?? '',
       videoImageHeight: 0.0,
       videoImageWeight: 0.0,
-      isViewed: response.isViewed ?? false,
+      isViewed: isViewed ?? response.isViewed ?? false,
     );
   }
 }

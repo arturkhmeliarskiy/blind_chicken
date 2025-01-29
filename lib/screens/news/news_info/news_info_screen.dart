@@ -24,8 +24,6 @@ import 'package:flutter_svg/flutter_svg.dart';
 
 import '../../app/router/app_router.dart';
 
-
-
 @RoutePage()
 class NewsInfoRepairedScreen extends StatefulWidget implements AutoRouteWrapper {
   const NewsInfoRepairedScreen({
@@ -453,10 +451,30 @@ class _NewsInfoRepairedScreenState extends State<NewsInfoRepairedScreen> with Ti
   Widget listBuilderNotifications(NewsInfoState state) {
     if (state.isLoading) return CircularHolder();
     if (state.listNews.isEmpty) return Container();
+
     return ListView.builder(
       itemCount: state.listNotifications.length,
       padding: EdgeInsets.zero,
       itemBuilder: (context, index) {
+        if (state.listNotifications[index].isViewed == false) {
+          context.sendEvent<NewsInfoBloc>(
+            NewsInfoEvent.itemWasRead(
+              NewsElement(
+                id: state.listNotifications[index].id,
+                title: state.listNotifications[index].title,
+                createAt: DateTime.parse(state.listNotifications[index].createAt),
+                announcement: state.listNotifications[index].description,
+                description: state.listNotifications[index].description,
+                isViewed: false,
+                currentUserLikedIt: false,
+                countLike: 0,
+                media: state.listNotifications[index].images + [state.listNotifications[index].video],
+                images: [],
+                videos: [],
+              ),
+            ),
+          );
+        }
         return Column(
           children: [
             SizedBox(

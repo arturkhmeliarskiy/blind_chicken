@@ -26,6 +26,7 @@ class LocalRepository {
   static const _exampleKey = 'exampleKey';
   static const _installKey = 'installKey';
   static const _newsKey = 'news';
+  static const _notificationKey = 'notification';
   static const _likesKey = 'likes';
 
   FlutterSecureStorage flutterSecureStorage;
@@ -55,6 +56,13 @@ class LocalRepository {
 
   bool getNewsWasReadValue(String idNews) {
     return sharedPreferences.getBool(idNews + _newsKey) ?? false;
+  }
+  Future<bool> setNotificationWasReadValue(String idNotification) {
+    return sharedPreferences.setBool(idNotification + _notificationKey, true);
+  }
+
+  bool getNotificationWasReadValue(String idNotification) {
+    return sharedPreferences.getBool(idNotification + _notificationKey) ?? false;
   }
 
   Future<bool> setNewsWasLikedValue(String idNews) {

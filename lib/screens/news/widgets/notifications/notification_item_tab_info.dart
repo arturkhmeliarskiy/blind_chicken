@@ -26,7 +26,7 @@ class _NotificationItemTabInfoState extends State<NotificationItemTabInfo> {
       ),
       decoration: BoxDecoration(
         borderRadius: BorderRadius.circular(15),
-        color: widget.item.isViewed
+        color: widget.item.isViewed == false
             ? BlindChickenColors.backgroundColorItemFilter
             : BlindChickenColors.backgroundColor,
         boxShadow: [
@@ -68,7 +68,7 @@ class _NotificationItemTabInfoState extends State<NotificationItemTabInfo> {
                                   color: BlindChickenColors.textInput,
                                 ),
                           ),
-                          if (widget.item.isViewed)
+                          if (widget.item.isViewed==false)
                             Text(
                               'Не прочитано',
                               style: Theme.of(context).textTheme.displaySmall?.copyWith(

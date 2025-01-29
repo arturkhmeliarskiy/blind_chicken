@@ -7,6 +7,7 @@ import 'package:blind_chicken/core_config/data/repositories/local/local_reposito
 import 'package:blind_chicken/core_config/data/repositories/remote/remote_repository.dart';
 import 'package:blind_chicken/core_config/models/error_response.dart';
 import 'package:blind_chicken/core_config/utils/logging.dart';
+import 'package:blind_chicken/old_repos/api_models/src/news/notification_info_item_response.dart';
 import 'package:blind_chicken/old_repos/api_models/src/news/notification_info_response.dart';
 import 'package:blind_chicken/old_repos/models/src/news/notification_info_item_data_model.dart';
 import 'package:blind_chicken/old_repos/shared/src/constants/shared_pref_keys.dart';
@@ -86,10 +87,24 @@ class NewsInfoBloc extends Bloc<NewsInfoEvent, NewsInfoState> {
       },
       (r) {
         List<NotificationInfoItemDataModel> list = [];
-        for (var item in r?.list ?? []) {
-          list.add(NewsInfoTransformer.transformNotificationResponseToDataModel(item));
+        for (NotificationInfoItemResponse item in r?.list ?? []) {
+          //if (_localRepository.getNotificationWasReadValue(item.id)) item.isVieved = true;
+          NotificationInfoItemDataModel notificationInfoItemDataModel;
+          if (item.id != null && _localRepository.getNotificationWasReadValue(item.id!)) {
+            notificationInfoItemDataModel = NewsInfoTransformer.transformNotificationResponseToDataModel(
+              item,
+              isViewed: true,
+            );
+          } else {
+            notificationInfoItemDataModel = NewsInfoTransformer.transformNotificationResponseToDataModel(
+              item,
+              isViewed: false,
+            );
+          }
+
+          list.add(notificationInfoItemDataModel);
         }
-        emit(state.copyWith(listNotifications: list));
+        emit(state.copyWith(listNotifications: list.toList()));
       },
     );
     emit(state.copyWith(isLoading: false));
@@ -148,7 +163,7 @@ class NewsInfoBloc extends Bloc<NewsInfoEvent, NewsInfoState> {
               uniqueList.add(item);
             } else if ((elementCount[item.id] ?? 0) > 1) {
               // Уменьшаем количество повторений
-              if(elementCount[item.id] != null) {
+              if (elementCount[item.id] != null) {
                 elementCount[item.id] = elementCount[item.id]! - 1;
               }
             }
@@ -174,7 +189,7 @@ class NewsInfoBloc extends Bloc<NewsInfoEvent, NewsInfoState> {
     logging('sendWhatRead', stackTrace: StackTrace.current);
     final now = DateTime.now();
 
-    if (shouldSkip(event.item.createAt)==false) {
+    if (shouldSkip(event.item.createAt) == false) {
       // Удаляем старые записи временных меток старше 1/3 секунды
       _callTimestamps.removeWhere((timestamp) => now.difference(timestamp).inMilliseconds > 333);
 
@@ -185,6 +200,62 @@ class NewsInfoBloc extends Bloc<NewsInfoEvent, NewsInfoState> {
       if (_callTimestamps.length > 10) {
         logging('Method call limit exceeded', name: 'itemWasRead', stackTrace: StackTrace.current);
         return;
+      }
+
+      switch (state.typeContentActive) {
+        case TypeContent.news:
+          await _localRepository.setNewsWasReadValue(event.item.id);
+          List<NewsElement> list = [];
+          for (var item in state.listNews) {
+            if (item.id == event.item.id) {
+              NewsElement newsElement = NewsElement.fromRawJson(item.toRawJson());
+              newsElement.isViewed = true;
+              list.add(newsElement);
+            } else {
+              list.add(item);
+            }
+          }
+          emit(state.copyWith(listNews: list.toList()));
+
+          break;
+        case TypeContent.notice:
+          await _localRepository.setNotificationWasReadValue(event.item.id);
+          List<NotificationInfoItemDataModel> list = [];
+          for (var item in state.listNotifications) {
+            if (item.id == event.item.id) {
+              NotificationInfoItemDataModel newsElement = NotificationInfoItemDataModel(
+                id: item.id,
+                title: item.title,
+                createAt: item.createAt,
+                images: item.images,
+                video: item.video,
+                typeVideo: item.typeVideo,
+                videoImage: item.videoImage,
+                typeMedia: item.typeMedia,
+                description: item.description,
+                titleButton: item.titleButton,
+                typePath: item.typePath,
+                path: item.path,
+                code: item.code,
+                sort: item.sort,
+                filterSelect: item.filterSelect,
+                uidStore: item.uidStore,
+                videoImageHeight: item.videoImageHeight,
+                videoImageWeight: item.videoImageWeight,
+                isViewed: true,
+              );
+              list.add(newsElement);
+            } else {
+              list.add(item);
+            }
+          }
+          await Future.delayed(const Duration(seconds: 1)).whenComplete((){
+            emit(state.copyWith(listNotifications: list.toList()));
+          });
+          //emit(state.copyWith(listNotifications: list.toList()));
+          break;
+        case TypeContent.media:
+          break;
       }
 
       Either<ErrorResponse?, UnreadModel?> newsResponseUnread = await _remoteRepository.news.sendWhatRead(
@@ -199,25 +270,6 @@ class NewsInfoBloc extends Bloc<NewsInfoEvent, NewsInfoState> {
           emit(state.copyWith(unreadModel: r));
         },
       );
-
-      for (var item in state.listNews) {
-        if (item.id == event.item.id) {}
-      }
-      await _localRepository.setNewsWasReadValue(event.item.id);
-      List<NewsElement> list = [];
-      for (var item in state.listNews) {
-        if (item.id == event.item.id) {
-          NewsElement newsElement = NewsElement.fromRawJson(item.toRawJson());
-          newsElement.isViewed = true;
-          list.add(newsElement);
-        } else {
-          list.add(item);
-        }
-      }
-      emit(state.copyWith(listNews: list.toList()));
-      for (var item in state.listNews) {
-        if (item.id == event.item.id) {}
-      }
     } else {
       logging('Метод не выполнялся ввиду превышения даты', name: 'itemWasRead', stackTrace: StackTrace.current);
     }
