@@ -104,7 +104,9 @@ class _CategoryScreenState extends State<CategoryScreen> {
           child: Column(
             children: [
               _buildSearchBar(context),
+              SizedBox(height: 4),
               _buildCategorySelection(),
+              SizedBox(height: 16),
               const Padding(
                 padding: EdgeInsets.symmetric(horizontal: 12.6),
                 child: Divider(
@@ -157,7 +159,6 @@ class _CategoryScreenState extends State<CategoryScreen> {
     return Container(
       alignment: Alignment.center,
       margin: const EdgeInsets.symmetric(horizontal: 12.6),
-      height: 55,
       child: Row(
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children: [
