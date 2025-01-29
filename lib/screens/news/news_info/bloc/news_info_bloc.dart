@@ -88,7 +88,6 @@ class NewsInfoBloc extends Bloc<NewsInfoEvent, NewsInfoState> {
       (r) {
         List<NotificationInfoItemDataModel> list = [];
         for (NotificationInfoItemResponse item in r?.list ?? []) {
-          //if (_localRepository.getNotificationWasReadValue(item.id)) item.isVieved = true;
           NotificationInfoItemDataModel notificationInfoItemDataModel;
           if (item.id != null && _localRepository.getNotificationWasReadValue(item.id!)) {
             notificationInfoItemDataModel = NewsInfoTransformer.transformNotificationResponseToDataModel(
@@ -249,7 +248,7 @@ class NewsInfoBloc extends Bloc<NewsInfoEvent, NewsInfoState> {
               list.add(item);
             }
           }
-          await Future.delayed(const Duration(seconds: 1)).whenComplete((){
+          await Future.delayed(const Duration(seconds: 1)).whenComplete(() {
             emit(state.copyWith(listNotifications: list.toList()));
           });
           //emit(state.copyWith(listNotifications: list.toList()));
