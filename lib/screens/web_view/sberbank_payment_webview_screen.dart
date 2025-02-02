@@ -11,9 +11,11 @@ class SberbankPaymentWebViewScreen extends StatefulWidget {
   const SberbankPaymentWebViewScreen({
     super.key,
     required this.url,
+    required this.onGoBack,
   });
 
   final String url;
+  final VoidCallback onGoBack;
 
   @override
   State<SberbankPaymentWebViewScreen> createState() => _SberbankPaymentWebViewScreenState();
@@ -61,20 +63,26 @@ class _SberbankPaymentWebViewScreenState extends State<SberbankPaymentWebViewScr
 
   @override
   Widget build(BuildContext context) {
-    return SafeArea(
-      child: Scaffold(
-        body: SizedBox(
-          height: MediaQuery.of(context).size.height,
-          width: MediaQuery.of(context).size.width,
-          child: Column(
-            children: [
-              const AppBarBlindChicken(),
-              Expanded(
-                child: WebViewWidget(
-                  controller: controller,
+    return PopScope(
+      onPopInvokedWithResult: (didPop, result) {
+        controller.goBack();
+        widget.onGoBack();
+      },
+      child: SafeArea(
+        child: Scaffold(
+          body: SizedBox(
+            height: MediaQuery.of(context).size.height,
+            width: MediaQuery.of(context).size.width,
+            child: Column(
+              children: [
+                const AppBarBlindChicken(),
+                Expanded(
+                  child: WebViewWidget(
+                    controller: controller,
+                  ),
                 ),
-              ),
-            ],
+              ],
+            ),
           ),
         ),
       ),

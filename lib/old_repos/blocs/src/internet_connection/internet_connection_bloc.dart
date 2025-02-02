@@ -76,7 +76,8 @@ class InternetConnectionBloc extends Bloc<InternetConnectionEvent, InternetConne
 
     List<ConnectivityResult> internetStatuses = await _connectivity.checkConnectivity();
 
-    if (internetStatuses.contains(ConnectivityResult.wifi) || internetStatuses.contains(ConnectivityResult.mobile)) {
+    if (internetStatuses.contains(ConnectivityResult.wifi) ||
+        internetStatuses.contains(ConnectivityResult.mobile)) {
       emit(const InternetConnectionState.active());
     }
   }

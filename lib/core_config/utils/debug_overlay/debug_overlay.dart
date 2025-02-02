@@ -217,7 +217,8 @@ class DebugOverlayState extends State<DebugOverlay> {
     super.didChangeDependencies();
     if (_backButtonDispatcher == null) {
       BackButtonDispatcher? parentDispatcher = Router.maybeOf(context)?.backButtonDispatcher;
-      _backButtonDispatcher = parentDispatcher?.createChildBackButtonDispatcher() ?? RootBackButtonDispatcher();
+      _backButtonDispatcher =
+          parentDispatcher?.createChildBackButtonDispatcher() ?? RootBackButtonDispatcher();
       _backButtonDispatcher!.takePriority();
       _backButtonDispatcher!.addCallback(_dispatchBackButton);
     }
@@ -292,18 +293,24 @@ class DebugOverlayState extends State<DebugOverlay> {
                         BaseAppBar(
                           title: 'Debug',
                           onBackPressed: () {
-                            context.sendEvent<AppBloc>(const AppEvent.showDebugOverlay(visible: false));
+                            context.sendEvent<AppBloc>(
+                                const AppEvent.showDebugOverlay(visible: false));
                             _visible = false;
                           },
                         ),
                         Expanded(
                           child: PageTabSwitcher(
                             initialIndex: widget.initialTabIndex,
-                            physics: !Theme.of(context).useMaterial3 ? const BouncingScrollPhysics() : null,
+                            physics: !Theme.of(context).useMaterial3
+                                ? const BouncingScrollPhysics()
+                                : null,
                             items: {
-                              if (widget.debugEntries.isNotEmpty) "Debug": DebugPage(entries: widget.debugEntries),
-                              if (widget.infoEntries.isNotEmpty) "Info": InfoPage(entries: widget.infoEntries),
-                              if (widget.logBucket != null) "Logs": LogPage(bucket: widget.logBucket!),
+                              if (widget.debugEntries.isNotEmpty)
+                                "Debug": DebugPage(entries: widget.debugEntries),
+                              if (widget.infoEntries.isNotEmpty)
+                                "Info": InfoPage(entries: widget.infoEntries),
+                              if (widget.logBucket != null)
+                                "Logs": LogPage(bucket: widget.logBucket!),
                               if (widget.httpBucket != null)
                                 "HTTP": HttpLogPage(
                                   bucket: widget.httpBucket!,

@@ -53,9 +53,19 @@ Future<void> initShared(GetIt getIt) async {
     )
     ..registerSingleton(
       BadgeService(),
+    )
+    ..registerSingleton(
+      CacheInfoService(),
+    )
+    ..registerSingleton(
+      BackgroundDataLoadingService(
+        getIt.get<SharedPreferencesService>(),
+        getIt.get<CacheInfoService>(),
+      ),
     );
   await getIt.get<SharedPreferencesService>().initialize();
   await getIt.get<ProductsFavouritesService>().initFavouritesProductsHave();
   await getIt.get<ProductsShoppingCartService>().initProductsShoppingCartHave();
   await getIt.get<NewsNotificationsService>().initNewsNotificationsHave();
+  await getIt.get<CacheInfoService>().initCacheInfoHave();
 }

@@ -83,6 +83,7 @@ mixin _$CatalogEvent {
     required TResult Function(bool isOpenGetSizeProduct)
         checkOpenGetInfoProductSize,
     required TResult Function(bool isButtonTop) checkButtonTop,
+    required TResult Function(String screen) updateCacheContent,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -145,6 +146,7 @@ mixin _$CatalogEvent {
     TResult? Function(String code)? getInfoServiceCard,
     TResult? Function(bool isOpenGetSizeProduct)? checkOpenGetInfoProductSize,
     TResult? Function(bool isButtonTop)? checkButtonTop,
+    TResult? Function(String screen)? updateCacheContent,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -207,6 +209,7 @@ mixin _$CatalogEvent {
     TResult Function(String code)? getInfoServiceCard,
     TResult Function(bool isOpenGetSizeProduct)? checkOpenGetInfoProductSize,
     TResult Function(bool isButtonTop)? checkButtonTop,
+    TResult Function(String screen)? updateCacheContent,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -263,6 +266,8 @@ mixin _$CatalogEvent {
     required TResult Function(CheckOpenGetInfoProductSizeCatalogEvent value)
         checkOpenGetInfoProductSize,
     required TResult Function(CheckButtonTopCatalogEvent value) checkButtonTop,
+    required TResult Function(UpdateCacheContentCatalogEvent value)
+        updateCacheContent,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -310,6 +315,7 @@ mixin _$CatalogEvent {
     TResult? Function(CheckOpenGetInfoProductSizeCatalogEvent value)?
         checkOpenGetInfoProductSize,
     TResult? Function(CheckButtonTopCatalogEvent value)? checkButtonTop,
+    TResult? Function(UpdateCacheContentCatalogEvent value)? updateCacheContent,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -357,6 +363,7 @@ mixin _$CatalogEvent {
     TResult Function(CheckOpenGetInfoProductSizeCatalogEvent value)?
         checkOpenGetInfoProductSize,
     TResult Function(CheckButtonTopCatalogEvent value)? checkButtonTop,
+    TResult Function(UpdateCacheContentCatalogEvent value)? updateCacheContent,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -489,6 +496,7 @@ class _$InitCatalogEventImpl implements InitCatalogEvent {
     required TResult Function(bool isOpenGetSizeProduct)
         checkOpenGetInfoProductSize,
     required TResult Function(bool isButtonTop) checkButtonTop,
+    required TResult Function(String screen) updateCacheContent,
   }) {
     return init();
   }
@@ -554,6 +562,7 @@ class _$InitCatalogEventImpl implements InitCatalogEvent {
     TResult? Function(String code)? getInfoServiceCard,
     TResult? Function(bool isOpenGetSizeProduct)? checkOpenGetInfoProductSize,
     TResult? Function(bool isButtonTop)? checkButtonTop,
+    TResult? Function(String screen)? updateCacheContent,
   }) {
     return init?.call();
   }
@@ -619,6 +628,7 @@ class _$InitCatalogEventImpl implements InitCatalogEvent {
     TResult Function(String code)? getInfoServiceCard,
     TResult Function(bool isOpenGetSizeProduct)? checkOpenGetInfoProductSize,
     TResult Function(bool isButtonTop)? checkButtonTop,
+    TResult Function(String screen)? updateCacheContent,
     required TResult orElse(),
   }) {
     if (init != null) {
@@ -681,6 +691,8 @@ class _$InitCatalogEventImpl implements InitCatalogEvent {
     required TResult Function(CheckOpenGetInfoProductSizeCatalogEvent value)
         checkOpenGetInfoProductSize,
     required TResult Function(CheckButtonTopCatalogEvent value) checkButtonTop,
+    required TResult Function(UpdateCacheContentCatalogEvent value)
+        updateCacheContent,
   }) {
     return init(this);
   }
@@ -731,6 +743,7 @@ class _$InitCatalogEventImpl implements InitCatalogEvent {
     TResult? Function(CheckOpenGetInfoProductSizeCatalogEvent value)?
         checkOpenGetInfoProductSize,
     TResult? Function(CheckButtonTopCatalogEvent value)? checkButtonTop,
+    TResult? Function(UpdateCacheContentCatalogEvent value)? updateCacheContent,
   }) {
     return init?.call(this);
   }
@@ -781,6 +794,7 @@ class _$InitCatalogEventImpl implements InitCatalogEvent {
     TResult Function(CheckOpenGetInfoProductSizeCatalogEvent value)?
         checkOpenGetInfoProductSize,
     TResult Function(CheckButtonTopCatalogEvent value)? checkButtonTop,
+    TResult Function(UpdateCacheContentCatalogEvent value)? updateCacheContent,
     required TResult orElse(),
   }) {
     if (init != null) {
@@ -903,6 +917,7 @@ class _$PreloadDataCatalogEventImpl implements PreloadDataCatalogEvent {
     required TResult Function(bool isOpenGetSizeProduct)
         checkOpenGetInfoProductSize,
     required TResult Function(bool isButtonTop) checkButtonTop,
+    required TResult Function(String screen) updateCacheContent,
   }) {
     return preloadData();
   }
@@ -968,6 +983,7 @@ class _$PreloadDataCatalogEventImpl implements PreloadDataCatalogEvent {
     TResult? Function(String code)? getInfoServiceCard,
     TResult? Function(bool isOpenGetSizeProduct)? checkOpenGetInfoProductSize,
     TResult? Function(bool isButtonTop)? checkButtonTop,
+    TResult? Function(String screen)? updateCacheContent,
   }) {
     return preloadData?.call();
   }
@@ -1033,6 +1049,7 @@ class _$PreloadDataCatalogEventImpl implements PreloadDataCatalogEvent {
     TResult Function(String code)? getInfoServiceCard,
     TResult Function(bool isOpenGetSizeProduct)? checkOpenGetInfoProductSize,
     TResult Function(bool isButtonTop)? checkButtonTop,
+    TResult Function(String screen)? updateCacheContent,
     required TResult orElse(),
   }) {
     if (preloadData != null) {
@@ -1095,6 +1112,8 @@ class _$PreloadDataCatalogEventImpl implements PreloadDataCatalogEvent {
     required TResult Function(CheckOpenGetInfoProductSizeCatalogEvent value)
         checkOpenGetInfoProductSize,
     required TResult Function(CheckButtonTopCatalogEvent value) checkButtonTop,
+    required TResult Function(UpdateCacheContentCatalogEvent value)
+        updateCacheContent,
   }) {
     return preloadData(this);
   }
@@ -1145,6 +1164,7 @@ class _$PreloadDataCatalogEventImpl implements PreloadDataCatalogEvent {
     TResult? Function(CheckOpenGetInfoProductSizeCatalogEvent value)?
         checkOpenGetInfoProductSize,
     TResult? Function(CheckButtonTopCatalogEvent value)? checkButtonTop,
+    TResult? Function(UpdateCacheContentCatalogEvent value)? updateCacheContent,
   }) {
     return preloadData?.call(this);
   }
@@ -1195,6 +1215,7 @@ class _$PreloadDataCatalogEventImpl implements PreloadDataCatalogEvent {
     TResult Function(CheckOpenGetInfoProductSizeCatalogEvent value)?
         checkOpenGetInfoProductSize,
     TResult Function(CheckButtonTopCatalogEvent value)? checkButtonTop,
+    TResult Function(UpdateCacheContentCatalogEvent value)? updateCacheContent,
     required TResult orElse(),
   }) {
     if (preloadData != null) {
@@ -1319,6 +1340,7 @@ class _$UpdateFavouritesProductsCatalogEventImpl
     required TResult Function(bool isOpenGetSizeProduct)
         checkOpenGetInfoProductSize,
     required TResult Function(bool isButtonTop) checkButtonTop,
+    required TResult Function(String screen) updateCacheContent,
   }) {
     return updateFavouritesProducts();
   }
@@ -1384,6 +1406,7 @@ class _$UpdateFavouritesProductsCatalogEventImpl
     TResult? Function(String code)? getInfoServiceCard,
     TResult? Function(bool isOpenGetSizeProduct)? checkOpenGetInfoProductSize,
     TResult? Function(bool isButtonTop)? checkButtonTop,
+    TResult? Function(String screen)? updateCacheContent,
   }) {
     return updateFavouritesProducts?.call();
   }
@@ -1449,6 +1472,7 @@ class _$UpdateFavouritesProductsCatalogEventImpl
     TResult Function(String code)? getInfoServiceCard,
     TResult Function(bool isOpenGetSizeProduct)? checkOpenGetInfoProductSize,
     TResult Function(bool isButtonTop)? checkButtonTop,
+    TResult Function(String screen)? updateCacheContent,
     required TResult orElse(),
   }) {
     if (updateFavouritesProducts != null) {
@@ -1511,6 +1535,8 @@ class _$UpdateFavouritesProductsCatalogEventImpl
     required TResult Function(CheckOpenGetInfoProductSizeCatalogEvent value)
         checkOpenGetInfoProductSize,
     required TResult Function(CheckButtonTopCatalogEvent value) checkButtonTop,
+    required TResult Function(UpdateCacheContentCatalogEvent value)
+        updateCacheContent,
   }) {
     return updateFavouritesProducts(this);
   }
@@ -1561,6 +1587,7 @@ class _$UpdateFavouritesProductsCatalogEventImpl
     TResult? Function(CheckOpenGetInfoProductSizeCatalogEvent value)?
         checkOpenGetInfoProductSize,
     TResult? Function(CheckButtonTopCatalogEvent value)? checkButtonTop,
+    TResult? Function(UpdateCacheContentCatalogEvent value)? updateCacheContent,
   }) {
     return updateFavouritesProducts?.call(this);
   }
@@ -1611,6 +1638,7 @@ class _$UpdateFavouritesProductsCatalogEventImpl
     TResult Function(CheckOpenGetInfoProductSizeCatalogEvent value)?
         checkOpenGetInfoProductSize,
     TResult Function(CheckButtonTopCatalogEvent value)? checkButtonTop,
+    TResult Function(UpdateCacheContentCatalogEvent value)? updateCacheContent,
     required TResult orElse(),
   }) {
     if (updateFavouritesProducts != null) {
@@ -1841,6 +1869,7 @@ class _$SubCategoryatalogEventImpl implements SubCategoryatalogEvent {
     required TResult Function(bool isOpenGetSizeProduct)
         checkOpenGetInfoProductSize,
     required TResult Function(bool isButtonTop) checkButtonTop,
+    required TResult Function(String screen) updateCacheContent,
   }) {
     return subCategory(a, b, id, u, pid, item, selectedGenderIndex);
   }
@@ -1906,6 +1935,7 @@ class _$SubCategoryatalogEventImpl implements SubCategoryatalogEvent {
     TResult? Function(String code)? getInfoServiceCard,
     TResult? Function(bool isOpenGetSizeProduct)? checkOpenGetInfoProductSize,
     TResult? Function(bool isButtonTop)? checkButtonTop,
+    TResult? Function(String screen)? updateCacheContent,
   }) {
     return subCategory?.call(a, b, id, u, pid, item, selectedGenderIndex);
   }
@@ -1971,6 +2001,7 @@ class _$SubCategoryatalogEventImpl implements SubCategoryatalogEvent {
     TResult Function(String code)? getInfoServiceCard,
     TResult Function(bool isOpenGetSizeProduct)? checkOpenGetInfoProductSize,
     TResult Function(bool isButtonTop)? checkButtonTop,
+    TResult Function(String screen)? updateCacheContent,
     required TResult orElse(),
   }) {
     if (subCategory != null) {
@@ -2033,6 +2064,8 @@ class _$SubCategoryatalogEventImpl implements SubCategoryatalogEvent {
     required TResult Function(CheckOpenGetInfoProductSizeCatalogEvent value)
         checkOpenGetInfoProductSize,
     required TResult Function(CheckButtonTopCatalogEvent value) checkButtonTop,
+    required TResult Function(UpdateCacheContentCatalogEvent value)
+        updateCacheContent,
   }) {
     return subCategory(this);
   }
@@ -2083,6 +2116,7 @@ class _$SubCategoryatalogEventImpl implements SubCategoryatalogEvent {
     TResult? Function(CheckOpenGetInfoProductSizeCatalogEvent value)?
         checkOpenGetInfoProductSize,
     TResult? Function(CheckButtonTopCatalogEvent value)? checkButtonTop,
+    TResult? Function(UpdateCacheContentCatalogEvent value)? updateCacheContent,
   }) {
     return subCategory?.call(this);
   }
@@ -2133,6 +2167,7 @@ class _$SubCategoryatalogEventImpl implements SubCategoryatalogEvent {
     TResult Function(CheckOpenGetInfoProductSizeCatalogEvent value)?
         checkOpenGetInfoProductSize,
     TResult Function(CheckButtonTopCatalogEvent value)? checkButtonTop,
+    TResult Function(UpdateCacheContentCatalogEvent value)? updateCacheContent,
     required TResult orElse(),
   }) {
     if (subCategory != null) {
@@ -2304,6 +2339,7 @@ class _$BackPathMenuCatalogEventImpl implements BackPathMenuCatalogEvent {
     required TResult Function(bool isOpenGetSizeProduct)
         checkOpenGetInfoProductSize,
     required TResult Function(bool isButtonTop) checkButtonTop,
+    required TResult Function(String screen) updateCacheContent,
   }) {
     return backPathMenu(idParent);
   }
@@ -2369,6 +2405,7 @@ class _$BackPathMenuCatalogEventImpl implements BackPathMenuCatalogEvent {
     TResult? Function(String code)? getInfoServiceCard,
     TResult? Function(bool isOpenGetSizeProduct)? checkOpenGetInfoProductSize,
     TResult? Function(bool isButtonTop)? checkButtonTop,
+    TResult? Function(String screen)? updateCacheContent,
   }) {
     return backPathMenu?.call(idParent);
   }
@@ -2434,6 +2471,7 @@ class _$BackPathMenuCatalogEventImpl implements BackPathMenuCatalogEvent {
     TResult Function(String code)? getInfoServiceCard,
     TResult Function(bool isOpenGetSizeProduct)? checkOpenGetInfoProductSize,
     TResult Function(bool isButtonTop)? checkButtonTop,
+    TResult Function(String screen)? updateCacheContent,
     required TResult orElse(),
   }) {
     if (backPathMenu != null) {
@@ -2496,6 +2534,8 @@ class _$BackPathMenuCatalogEventImpl implements BackPathMenuCatalogEvent {
     required TResult Function(CheckOpenGetInfoProductSizeCatalogEvent value)
         checkOpenGetInfoProductSize,
     required TResult Function(CheckButtonTopCatalogEvent value) checkButtonTop,
+    required TResult Function(UpdateCacheContentCatalogEvent value)
+        updateCacheContent,
   }) {
     return backPathMenu(this);
   }
@@ -2546,6 +2586,7 @@ class _$BackPathMenuCatalogEventImpl implements BackPathMenuCatalogEvent {
     TResult? Function(CheckOpenGetInfoProductSizeCatalogEvent value)?
         checkOpenGetInfoProductSize,
     TResult? Function(CheckButtonTopCatalogEvent value)? checkButtonTop,
+    TResult? Function(UpdateCacheContentCatalogEvent value)? updateCacheContent,
   }) {
     return backPathMenu?.call(this);
   }
@@ -2596,6 +2637,7 @@ class _$BackPathMenuCatalogEventImpl implements BackPathMenuCatalogEvent {
     TResult Function(CheckOpenGetInfoProductSizeCatalogEvent value)?
         checkOpenGetInfoProductSize,
     TResult Function(CheckButtonTopCatalogEvent value)? checkButtonTop,
+    TResult Function(UpdateCacheContentCatalogEvent value)? updateCacheContent,
     required TResult orElse(),
   }) {
     if (backPathMenu != null) {
@@ -2784,6 +2826,7 @@ class _$SelectFilterCatalogEventImpl implements SelectFilterCatalogEvent {
     required TResult Function(bool isOpenGetSizeProduct)
         checkOpenGetInfoProductSize,
     required TResult Function(bool isButtonTop) checkButtonTop,
+    required TResult Function(String screen) updateCacheContent,
   }) {
     return selectFilter(index, indexItem, item);
   }
@@ -2849,6 +2892,7 @@ class _$SelectFilterCatalogEventImpl implements SelectFilterCatalogEvent {
     TResult? Function(String code)? getInfoServiceCard,
     TResult? Function(bool isOpenGetSizeProduct)? checkOpenGetInfoProductSize,
     TResult? Function(bool isButtonTop)? checkButtonTop,
+    TResult? Function(String screen)? updateCacheContent,
   }) {
     return selectFilter?.call(index, indexItem, item);
   }
@@ -2914,6 +2958,7 @@ class _$SelectFilterCatalogEventImpl implements SelectFilterCatalogEvent {
     TResult Function(String code)? getInfoServiceCard,
     TResult Function(bool isOpenGetSizeProduct)? checkOpenGetInfoProductSize,
     TResult Function(bool isButtonTop)? checkButtonTop,
+    TResult Function(String screen)? updateCacheContent,
     required TResult orElse(),
   }) {
     if (selectFilter != null) {
@@ -2976,6 +3021,8 @@ class _$SelectFilterCatalogEventImpl implements SelectFilterCatalogEvent {
     required TResult Function(CheckOpenGetInfoProductSizeCatalogEvent value)
         checkOpenGetInfoProductSize,
     required TResult Function(CheckButtonTopCatalogEvent value) checkButtonTop,
+    required TResult Function(UpdateCacheContentCatalogEvent value)
+        updateCacheContent,
   }) {
     return selectFilter(this);
   }
@@ -3026,6 +3073,7 @@ class _$SelectFilterCatalogEventImpl implements SelectFilterCatalogEvent {
     TResult? Function(CheckOpenGetInfoProductSizeCatalogEvent value)?
         checkOpenGetInfoProductSize,
     TResult? Function(CheckButtonTopCatalogEvent value)? checkButtonTop,
+    TResult? Function(UpdateCacheContentCatalogEvent value)? updateCacheContent,
   }) {
     return selectFilter?.call(this);
   }
@@ -3076,6 +3124,7 @@ class _$SelectFilterCatalogEventImpl implements SelectFilterCatalogEvent {
     TResult Function(CheckOpenGetInfoProductSizeCatalogEvent value)?
         checkOpenGetInfoProductSize,
     TResult Function(CheckButtonTopCatalogEvent value)? checkButtonTop,
+    TResult Function(UpdateCacheContentCatalogEvent value)? updateCacheContent,
     required TResult orElse(),
   }) {
     if (selectFilter != null) {
@@ -3269,6 +3318,7 @@ class _$DeleteFilterCatalogEventImpl implements DeleteFilterCatalogEvent {
     required TResult Function(bool isOpenGetSizeProduct)
         checkOpenGetInfoProductSize,
     required TResult Function(bool isButtonTop) checkButtonTop,
+    required TResult Function(String screen) updateCacheContent,
   }) {
     return deleteFilter(index, indexItem, item);
   }
@@ -3334,6 +3384,7 @@ class _$DeleteFilterCatalogEventImpl implements DeleteFilterCatalogEvent {
     TResult? Function(String code)? getInfoServiceCard,
     TResult? Function(bool isOpenGetSizeProduct)? checkOpenGetInfoProductSize,
     TResult? Function(bool isButtonTop)? checkButtonTop,
+    TResult? Function(String screen)? updateCacheContent,
   }) {
     return deleteFilter?.call(index, indexItem, item);
   }
@@ -3399,6 +3450,7 @@ class _$DeleteFilterCatalogEventImpl implements DeleteFilterCatalogEvent {
     TResult Function(String code)? getInfoServiceCard,
     TResult Function(bool isOpenGetSizeProduct)? checkOpenGetInfoProductSize,
     TResult Function(bool isButtonTop)? checkButtonTop,
+    TResult Function(String screen)? updateCacheContent,
     required TResult orElse(),
   }) {
     if (deleteFilter != null) {
@@ -3461,6 +3513,8 @@ class _$DeleteFilterCatalogEventImpl implements DeleteFilterCatalogEvent {
     required TResult Function(CheckOpenGetInfoProductSizeCatalogEvent value)
         checkOpenGetInfoProductSize,
     required TResult Function(CheckButtonTopCatalogEvent value) checkButtonTop,
+    required TResult Function(UpdateCacheContentCatalogEvent value)
+        updateCacheContent,
   }) {
     return deleteFilter(this);
   }
@@ -3511,6 +3565,7 @@ class _$DeleteFilterCatalogEventImpl implements DeleteFilterCatalogEvent {
     TResult? Function(CheckOpenGetInfoProductSizeCatalogEvent value)?
         checkOpenGetInfoProductSize,
     TResult? Function(CheckButtonTopCatalogEvent value)? checkButtonTop,
+    TResult? Function(UpdateCacheContentCatalogEvent value)? updateCacheContent,
   }) {
     return deleteFilter?.call(this);
   }
@@ -3561,6 +3616,7 @@ class _$DeleteFilterCatalogEventImpl implements DeleteFilterCatalogEvent {
     TResult Function(CheckOpenGetInfoProductSizeCatalogEvent value)?
         checkOpenGetInfoProductSize,
     TResult Function(CheckButtonTopCatalogEvent value)? checkButtonTop,
+    TResult Function(UpdateCacheContentCatalogEvent value)? updateCacheContent,
     required TResult orElse(),
   }) {
     if (deleteFilter != null) {
@@ -3753,6 +3809,7 @@ class _$DeleteCatalogFilterEventImpl implements DeleteCatalogFilterEvent {
     required TResult Function(bool isOpenGetSizeProduct)
         checkOpenGetInfoProductSize,
     required TResult Function(bool isButtonTop) checkButtonTop,
+    required TResult Function(String screen) updateCacheContent,
   }) {
     return deleteCatalogFilter(key, index, item);
   }
@@ -3818,6 +3875,7 @@ class _$DeleteCatalogFilterEventImpl implements DeleteCatalogFilterEvent {
     TResult? Function(String code)? getInfoServiceCard,
     TResult? Function(bool isOpenGetSizeProduct)? checkOpenGetInfoProductSize,
     TResult? Function(bool isButtonTop)? checkButtonTop,
+    TResult? Function(String screen)? updateCacheContent,
   }) {
     return deleteCatalogFilter?.call(key, index, item);
   }
@@ -3883,6 +3941,7 @@ class _$DeleteCatalogFilterEventImpl implements DeleteCatalogFilterEvent {
     TResult Function(String code)? getInfoServiceCard,
     TResult Function(bool isOpenGetSizeProduct)? checkOpenGetInfoProductSize,
     TResult Function(bool isButtonTop)? checkButtonTop,
+    TResult Function(String screen)? updateCacheContent,
     required TResult orElse(),
   }) {
     if (deleteCatalogFilter != null) {
@@ -3945,6 +4004,8 @@ class _$DeleteCatalogFilterEventImpl implements DeleteCatalogFilterEvent {
     required TResult Function(CheckOpenGetInfoProductSizeCatalogEvent value)
         checkOpenGetInfoProductSize,
     required TResult Function(CheckButtonTopCatalogEvent value) checkButtonTop,
+    required TResult Function(UpdateCacheContentCatalogEvent value)
+        updateCacheContent,
   }) {
     return deleteCatalogFilter(this);
   }
@@ -3995,6 +4056,7 @@ class _$DeleteCatalogFilterEventImpl implements DeleteCatalogFilterEvent {
     TResult? Function(CheckOpenGetInfoProductSizeCatalogEvent value)?
         checkOpenGetInfoProductSize,
     TResult? Function(CheckButtonTopCatalogEvent value)? checkButtonTop,
+    TResult? Function(UpdateCacheContentCatalogEvent value)? updateCacheContent,
   }) {
     return deleteCatalogFilter?.call(this);
   }
@@ -4045,6 +4107,7 @@ class _$DeleteCatalogFilterEventImpl implements DeleteCatalogFilterEvent {
     TResult Function(CheckOpenGetInfoProductSizeCatalogEvent value)?
         checkOpenGetInfoProductSize,
     TResult Function(CheckButtonTopCatalogEvent value)? checkButtonTop,
+    TResult Function(UpdateCacheContentCatalogEvent value)? updateCacheContent,
     required TResult orElse(),
   }) {
     if (deleteCatalogFilter != null) {
@@ -4232,6 +4295,7 @@ class _$AddFavouriteProductCatalogEventImpl
     required TResult Function(bool isOpenGetSizeProduct)
         checkOpenGetInfoProductSize,
     required TResult Function(bool isButtonTop) checkButtonTop,
+    required TResult Function(String screen) updateCacheContent,
   }) {
     return addFavouriteProduct(index, product);
   }
@@ -4297,6 +4361,7 @@ class _$AddFavouriteProductCatalogEventImpl
     TResult? Function(String code)? getInfoServiceCard,
     TResult? Function(bool isOpenGetSizeProduct)? checkOpenGetInfoProductSize,
     TResult? Function(bool isButtonTop)? checkButtonTop,
+    TResult? Function(String screen)? updateCacheContent,
   }) {
     return addFavouriteProduct?.call(index, product);
   }
@@ -4362,6 +4427,7 @@ class _$AddFavouriteProductCatalogEventImpl
     TResult Function(String code)? getInfoServiceCard,
     TResult Function(bool isOpenGetSizeProduct)? checkOpenGetInfoProductSize,
     TResult Function(bool isButtonTop)? checkButtonTop,
+    TResult Function(String screen)? updateCacheContent,
     required TResult orElse(),
   }) {
     if (addFavouriteProduct != null) {
@@ -4424,6 +4490,8 @@ class _$AddFavouriteProductCatalogEventImpl
     required TResult Function(CheckOpenGetInfoProductSizeCatalogEvent value)
         checkOpenGetInfoProductSize,
     required TResult Function(CheckButtonTopCatalogEvent value) checkButtonTop,
+    required TResult Function(UpdateCacheContentCatalogEvent value)
+        updateCacheContent,
   }) {
     return addFavouriteProduct(this);
   }
@@ -4474,6 +4542,7 @@ class _$AddFavouriteProductCatalogEventImpl
     TResult? Function(CheckOpenGetInfoProductSizeCatalogEvent value)?
         checkOpenGetInfoProductSize,
     TResult? Function(CheckButtonTopCatalogEvent value)? checkButtonTop,
+    TResult? Function(UpdateCacheContentCatalogEvent value)? updateCacheContent,
   }) {
     return addFavouriteProduct?.call(this);
   }
@@ -4524,6 +4593,7 @@ class _$AddFavouriteProductCatalogEventImpl
     TResult Function(CheckOpenGetInfoProductSizeCatalogEvent value)?
         checkOpenGetInfoProductSize,
     TResult Function(CheckButtonTopCatalogEvent value)? checkButtonTop,
+    TResult Function(UpdateCacheContentCatalogEvent value)? updateCacheContent,
     required TResult orElse(),
   }) {
     if (addFavouriteProduct != null) {
@@ -4688,6 +4758,7 @@ class _$DeleteFavouriteProductCatalogEventImpl
     required TResult Function(bool isOpenGetSizeProduct)
         checkOpenGetInfoProductSize,
     required TResult Function(bool isButtonTop) checkButtonTop,
+    required TResult Function(String screen) updateCacheContent,
   }) {
     return deleteFavouriteProduct(index);
   }
@@ -4753,6 +4824,7 @@ class _$DeleteFavouriteProductCatalogEventImpl
     TResult? Function(String code)? getInfoServiceCard,
     TResult? Function(bool isOpenGetSizeProduct)? checkOpenGetInfoProductSize,
     TResult? Function(bool isButtonTop)? checkButtonTop,
+    TResult? Function(String screen)? updateCacheContent,
   }) {
     return deleteFavouriteProduct?.call(index);
   }
@@ -4818,6 +4890,7 @@ class _$DeleteFavouriteProductCatalogEventImpl
     TResult Function(String code)? getInfoServiceCard,
     TResult Function(bool isOpenGetSizeProduct)? checkOpenGetInfoProductSize,
     TResult Function(bool isButtonTop)? checkButtonTop,
+    TResult Function(String screen)? updateCacheContent,
     required TResult orElse(),
   }) {
     if (deleteFavouriteProduct != null) {
@@ -4880,6 +4953,8 @@ class _$DeleteFavouriteProductCatalogEventImpl
     required TResult Function(CheckOpenGetInfoProductSizeCatalogEvent value)
         checkOpenGetInfoProductSize,
     required TResult Function(CheckButtonTopCatalogEvent value) checkButtonTop,
+    required TResult Function(UpdateCacheContentCatalogEvent value)
+        updateCacheContent,
   }) {
     return deleteFavouriteProduct(this);
   }
@@ -4930,6 +5005,7 @@ class _$DeleteFavouriteProductCatalogEventImpl
     TResult? Function(CheckOpenGetInfoProductSizeCatalogEvent value)?
         checkOpenGetInfoProductSize,
     TResult? Function(CheckButtonTopCatalogEvent value)? checkButtonTop,
+    TResult? Function(UpdateCacheContentCatalogEvent value)? updateCacheContent,
   }) {
     return deleteFavouriteProduct?.call(this);
   }
@@ -4980,6 +5056,7 @@ class _$DeleteFavouriteProductCatalogEventImpl
     TResult Function(CheckOpenGetInfoProductSizeCatalogEvent value)?
         checkOpenGetInfoProductSize,
     TResult Function(CheckButtonTopCatalogEvent value)? checkButtonTop,
+    TResult Function(UpdateCacheContentCatalogEvent value)? updateCacheContent,
     required TResult orElse(),
   }) {
     if (deleteFavouriteProduct != null) {
@@ -5114,6 +5191,7 @@ class _$PaginationProductCatalogEventImpl
     required TResult Function(bool isOpenGetSizeProduct)
         checkOpenGetInfoProductSize,
     required TResult Function(bool isButtonTop) checkButtonTop,
+    required TResult Function(String screen) updateCacheContent,
   }) {
     return paginationProduct();
   }
@@ -5179,6 +5257,7 @@ class _$PaginationProductCatalogEventImpl
     TResult? Function(String code)? getInfoServiceCard,
     TResult? Function(bool isOpenGetSizeProduct)? checkOpenGetInfoProductSize,
     TResult? Function(bool isButtonTop)? checkButtonTop,
+    TResult? Function(String screen)? updateCacheContent,
   }) {
     return paginationProduct?.call();
   }
@@ -5244,6 +5323,7 @@ class _$PaginationProductCatalogEventImpl
     TResult Function(String code)? getInfoServiceCard,
     TResult Function(bool isOpenGetSizeProduct)? checkOpenGetInfoProductSize,
     TResult Function(bool isButtonTop)? checkButtonTop,
+    TResult Function(String screen)? updateCacheContent,
     required TResult orElse(),
   }) {
     if (paginationProduct != null) {
@@ -5306,6 +5386,8 @@ class _$PaginationProductCatalogEventImpl
     required TResult Function(CheckOpenGetInfoProductSizeCatalogEvent value)
         checkOpenGetInfoProductSize,
     required TResult Function(CheckButtonTopCatalogEvent value) checkButtonTop,
+    required TResult Function(UpdateCacheContentCatalogEvent value)
+        updateCacheContent,
   }) {
     return paginationProduct(this);
   }
@@ -5356,6 +5438,7 @@ class _$PaginationProductCatalogEventImpl
     TResult? Function(CheckOpenGetInfoProductSizeCatalogEvent value)?
         checkOpenGetInfoProductSize,
     TResult? Function(CheckButtonTopCatalogEvent value)? checkButtonTop,
+    TResult? Function(UpdateCacheContentCatalogEvent value)? updateCacheContent,
   }) {
     return paginationProduct?.call(this);
   }
@@ -5406,6 +5489,7 @@ class _$PaginationProductCatalogEventImpl
     TResult Function(CheckOpenGetInfoProductSizeCatalogEvent value)?
         checkOpenGetInfoProductSize,
     TResult Function(CheckButtonTopCatalogEvent value)? checkButtonTop,
+    TResult Function(UpdateCacheContentCatalogEvent value)? updateCacheContent,
     required TResult orElse(),
   }) {
     if (paginationProduct != null) {
@@ -5556,6 +5640,7 @@ class _$SearchBrandCatalogEventImpl implements SearchBrandCatalogEvent {
     required TResult Function(bool isOpenGetSizeProduct)
         checkOpenGetInfoProductSize,
     required TResult Function(bool isButtonTop) checkButtonTop,
+    required TResult Function(String screen) updateCacheContent,
   }) {
     return searchBrand(query);
   }
@@ -5621,6 +5706,7 @@ class _$SearchBrandCatalogEventImpl implements SearchBrandCatalogEvent {
     TResult? Function(String code)? getInfoServiceCard,
     TResult? Function(bool isOpenGetSizeProduct)? checkOpenGetInfoProductSize,
     TResult? Function(bool isButtonTop)? checkButtonTop,
+    TResult? Function(String screen)? updateCacheContent,
   }) {
     return searchBrand?.call(query);
   }
@@ -5686,6 +5772,7 @@ class _$SearchBrandCatalogEventImpl implements SearchBrandCatalogEvent {
     TResult Function(String code)? getInfoServiceCard,
     TResult Function(bool isOpenGetSizeProduct)? checkOpenGetInfoProductSize,
     TResult Function(bool isButtonTop)? checkButtonTop,
+    TResult Function(String screen)? updateCacheContent,
     required TResult orElse(),
   }) {
     if (searchBrand != null) {
@@ -5748,6 +5835,8 @@ class _$SearchBrandCatalogEventImpl implements SearchBrandCatalogEvent {
     required TResult Function(CheckOpenGetInfoProductSizeCatalogEvent value)
         checkOpenGetInfoProductSize,
     required TResult Function(CheckButtonTopCatalogEvent value) checkButtonTop,
+    required TResult Function(UpdateCacheContentCatalogEvent value)
+        updateCacheContent,
   }) {
     return searchBrand(this);
   }
@@ -5798,6 +5887,7 @@ class _$SearchBrandCatalogEventImpl implements SearchBrandCatalogEvent {
     TResult? Function(CheckOpenGetInfoProductSizeCatalogEvent value)?
         checkOpenGetInfoProductSize,
     TResult? Function(CheckButtonTopCatalogEvent value)? checkButtonTop,
+    TResult? Function(UpdateCacheContentCatalogEvent value)? updateCacheContent,
   }) {
     return searchBrand?.call(this);
   }
@@ -5848,6 +5938,7 @@ class _$SearchBrandCatalogEventImpl implements SearchBrandCatalogEvent {
     TResult Function(CheckOpenGetInfoProductSizeCatalogEvent value)?
         checkOpenGetInfoProductSize,
     TResult Function(CheckButtonTopCatalogEvent value)? checkButtonTop,
+    TResult Function(UpdateCacheContentCatalogEvent value)? updateCacheContent,
     required TResult orElse(),
   }) {
     if (searchBrand != null) {
@@ -6021,6 +6112,7 @@ class _$PathMenuCatalogEventImpl implements PathMenuCatalogEvent {
     required TResult Function(bool isOpenGetSizeProduct)
         checkOpenGetInfoProductSize,
     required TResult Function(bool isButtonTop) checkButtonTop,
+    required TResult Function(String screen) updateCacheContent,
   }) {
     return pathMenu(item);
   }
@@ -6086,6 +6178,7 @@ class _$PathMenuCatalogEventImpl implements PathMenuCatalogEvent {
     TResult? Function(String code)? getInfoServiceCard,
     TResult? Function(bool isOpenGetSizeProduct)? checkOpenGetInfoProductSize,
     TResult? Function(bool isButtonTop)? checkButtonTop,
+    TResult? Function(String screen)? updateCacheContent,
   }) {
     return pathMenu?.call(item);
   }
@@ -6151,6 +6244,7 @@ class _$PathMenuCatalogEventImpl implements PathMenuCatalogEvent {
     TResult Function(String code)? getInfoServiceCard,
     TResult Function(bool isOpenGetSizeProduct)? checkOpenGetInfoProductSize,
     TResult Function(bool isButtonTop)? checkButtonTop,
+    TResult Function(String screen)? updateCacheContent,
     required TResult orElse(),
   }) {
     if (pathMenu != null) {
@@ -6213,6 +6307,8 @@ class _$PathMenuCatalogEventImpl implements PathMenuCatalogEvent {
     required TResult Function(CheckOpenGetInfoProductSizeCatalogEvent value)
         checkOpenGetInfoProductSize,
     required TResult Function(CheckButtonTopCatalogEvent value) checkButtonTop,
+    required TResult Function(UpdateCacheContentCatalogEvent value)
+        updateCacheContent,
   }) {
     return pathMenu(this);
   }
@@ -6263,6 +6359,7 @@ class _$PathMenuCatalogEventImpl implements PathMenuCatalogEvent {
     TResult? Function(CheckOpenGetInfoProductSizeCatalogEvent value)?
         checkOpenGetInfoProductSize,
     TResult? Function(CheckButtonTopCatalogEvent value)? checkButtonTop,
+    TResult? Function(UpdateCacheContentCatalogEvent value)? updateCacheContent,
   }) {
     return pathMenu?.call(this);
   }
@@ -6313,6 +6410,7 @@ class _$PathMenuCatalogEventImpl implements PathMenuCatalogEvent {
     TResult Function(CheckOpenGetInfoProductSizeCatalogEvent value)?
         checkOpenGetInfoProductSize,
     TResult Function(CheckButtonTopCatalogEvent value)? checkButtonTop,
+    TResult Function(UpdateCacheContentCatalogEvent value)? updateCacheContent,
     required TResult orElse(),
   }) {
     if (pathMenu != null) {
@@ -6479,6 +6577,7 @@ class _$RemovePathMenuCatalogEventImpl implements RemovePathMenuCatalogEvent {
     required TResult Function(bool isOpenGetSizeProduct)
         checkOpenGetInfoProductSize,
     required TResult Function(bool isButtonTop) checkButtonTop,
+    required TResult Function(String screen) updateCacheContent,
   }) {
     return removePathMenu(items);
   }
@@ -6544,6 +6643,7 @@ class _$RemovePathMenuCatalogEventImpl implements RemovePathMenuCatalogEvent {
     TResult? Function(String code)? getInfoServiceCard,
     TResult? Function(bool isOpenGetSizeProduct)? checkOpenGetInfoProductSize,
     TResult? Function(bool isButtonTop)? checkButtonTop,
+    TResult? Function(String screen)? updateCacheContent,
   }) {
     return removePathMenu?.call(items);
   }
@@ -6609,6 +6709,7 @@ class _$RemovePathMenuCatalogEventImpl implements RemovePathMenuCatalogEvent {
     TResult Function(String code)? getInfoServiceCard,
     TResult Function(bool isOpenGetSizeProduct)? checkOpenGetInfoProductSize,
     TResult Function(bool isButtonTop)? checkButtonTop,
+    TResult Function(String screen)? updateCacheContent,
     required TResult orElse(),
   }) {
     if (removePathMenu != null) {
@@ -6671,6 +6772,8 @@ class _$RemovePathMenuCatalogEventImpl implements RemovePathMenuCatalogEvent {
     required TResult Function(CheckOpenGetInfoProductSizeCatalogEvent value)
         checkOpenGetInfoProductSize,
     required TResult Function(CheckButtonTopCatalogEvent value) checkButtonTop,
+    required TResult Function(UpdateCacheContentCatalogEvent value)
+        updateCacheContent,
   }) {
     return removePathMenu(this);
   }
@@ -6721,6 +6824,7 @@ class _$RemovePathMenuCatalogEventImpl implements RemovePathMenuCatalogEvent {
     TResult? Function(CheckOpenGetInfoProductSizeCatalogEvent value)?
         checkOpenGetInfoProductSize,
     TResult? Function(CheckButtonTopCatalogEvent value)? checkButtonTop,
+    TResult? Function(UpdateCacheContentCatalogEvent value)? updateCacheContent,
   }) {
     return removePathMenu?.call(this);
   }
@@ -6771,6 +6875,7 @@ class _$RemovePathMenuCatalogEventImpl implements RemovePathMenuCatalogEvent {
     TResult Function(CheckOpenGetInfoProductSizeCatalogEvent value)?
         checkOpenGetInfoProductSize,
     TResult Function(CheckButtonTopCatalogEvent value)? checkButtonTop,
+    TResult Function(UpdateCacheContentCatalogEvent value)? updateCacheContent,
     required TResult orElse(),
   }) {
     if (removePathMenu != null) {
@@ -6938,6 +7043,7 @@ class _$PathBrandMenuCatalogEventImpl implements PathBrandMenuCatalogEvent {
     required TResult Function(bool isOpenGetSizeProduct)
         checkOpenGetInfoProductSize,
     required TResult Function(bool isButtonTop) checkButtonTop,
+    required TResult Function(String screen) updateCacheContent,
   }) {
     return pathBrandMenu(items);
   }
@@ -7003,6 +7109,7 @@ class _$PathBrandMenuCatalogEventImpl implements PathBrandMenuCatalogEvent {
     TResult? Function(String code)? getInfoServiceCard,
     TResult? Function(bool isOpenGetSizeProduct)? checkOpenGetInfoProductSize,
     TResult? Function(bool isButtonTop)? checkButtonTop,
+    TResult? Function(String screen)? updateCacheContent,
   }) {
     return pathBrandMenu?.call(items);
   }
@@ -7068,6 +7175,7 @@ class _$PathBrandMenuCatalogEventImpl implements PathBrandMenuCatalogEvent {
     TResult Function(String code)? getInfoServiceCard,
     TResult Function(bool isOpenGetSizeProduct)? checkOpenGetInfoProductSize,
     TResult Function(bool isButtonTop)? checkButtonTop,
+    TResult Function(String screen)? updateCacheContent,
     required TResult orElse(),
   }) {
     if (pathBrandMenu != null) {
@@ -7130,6 +7238,8 @@ class _$PathBrandMenuCatalogEventImpl implements PathBrandMenuCatalogEvent {
     required TResult Function(CheckOpenGetInfoProductSizeCatalogEvent value)
         checkOpenGetInfoProductSize,
     required TResult Function(CheckButtonTopCatalogEvent value) checkButtonTop,
+    required TResult Function(UpdateCacheContentCatalogEvent value)
+        updateCacheContent,
   }) {
     return pathBrandMenu(this);
   }
@@ -7180,6 +7290,7 @@ class _$PathBrandMenuCatalogEventImpl implements PathBrandMenuCatalogEvent {
     TResult? Function(CheckOpenGetInfoProductSizeCatalogEvent value)?
         checkOpenGetInfoProductSize,
     TResult? Function(CheckButtonTopCatalogEvent value)? checkButtonTop,
+    TResult? Function(UpdateCacheContentCatalogEvent value)? updateCacheContent,
   }) {
     return pathBrandMenu?.call(this);
   }
@@ -7230,6 +7341,7 @@ class _$PathBrandMenuCatalogEventImpl implements PathBrandMenuCatalogEvent {
     TResult Function(CheckOpenGetInfoProductSizeCatalogEvent value)?
         checkOpenGetInfoProductSize,
     TResult Function(CheckButtonTopCatalogEvent value)? checkButtonTop,
+    TResult Function(UpdateCacheContentCatalogEvent value)? updateCacheContent,
     required TResult orElse(),
   }) {
     if (pathBrandMenu != null) {
@@ -7392,6 +7504,7 @@ class _$SwitchTypePeopleCatalogEventImpl
     required TResult Function(bool isOpenGetSizeProduct)
         checkOpenGetInfoProductSize,
     required TResult Function(bool isButtonTop) checkButtonTop,
+    required TResult Function(String screen) updateCacheContent,
   }) {
     return switchTypePeople(selectIndexType);
   }
@@ -7457,6 +7570,7 @@ class _$SwitchTypePeopleCatalogEventImpl
     TResult? Function(String code)? getInfoServiceCard,
     TResult? Function(bool isOpenGetSizeProduct)? checkOpenGetInfoProductSize,
     TResult? Function(bool isButtonTop)? checkButtonTop,
+    TResult? Function(String screen)? updateCacheContent,
   }) {
     return switchTypePeople?.call(selectIndexType);
   }
@@ -7522,6 +7636,7 @@ class _$SwitchTypePeopleCatalogEventImpl
     TResult Function(String code)? getInfoServiceCard,
     TResult Function(bool isOpenGetSizeProduct)? checkOpenGetInfoProductSize,
     TResult Function(bool isButtonTop)? checkButtonTop,
+    TResult Function(String screen)? updateCacheContent,
     required TResult orElse(),
   }) {
     if (switchTypePeople != null) {
@@ -7584,6 +7699,8 @@ class _$SwitchTypePeopleCatalogEventImpl
     required TResult Function(CheckOpenGetInfoProductSizeCatalogEvent value)
         checkOpenGetInfoProductSize,
     required TResult Function(CheckButtonTopCatalogEvent value) checkButtonTop,
+    required TResult Function(UpdateCacheContentCatalogEvent value)
+        updateCacheContent,
   }) {
     return switchTypePeople(this);
   }
@@ -7634,6 +7751,7 @@ class _$SwitchTypePeopleCatalogEventImpl
     TResult? Function(CheckOpenGetInfoProductSizeCatalogEvent value)?
         checkOpenGetInfoProductSize,
     TResult? Function(CheckButtonTopCatalogEvent value)? checkButtonTop,
+    TResult? Function(UpdateCacheContentCatalogEvent value)? updateCacheContent,
   }) {
     return switchTypePeople?.call(this);
   }
@@ -7684,6 +7802,7 @@ class _$SwitchTypePeopleCatalogEventImpl
     TResult Function(CheckOpenGetInfoProductSizeCatalogEvent value)?
         checkOpenGetInfoProductSize,
     TResult Function(CheckButtonTopCatalogEvent value)? checkButtonTop,
+    TResult Function(UpdateCacheContentCatalogEvent value)? updateCacheContent,
     required TResult orElse(),
   }) {
     if (switchTypePeople != null) {
@@ -7854,6 +7973,7 @@ class _$GetInfoProductsCatalogEventImpl implements GetInfoProductsCatalogEvent {
     required TResult Function(bool isOpenGetSizeProduct)
         checkOpenGetInfoProductSize,
     required TResult Function(bool isButtonTop) checkButtonTop,
+    required TResult Function(String screen) updateCacheContent,
   }) {
     return getInfoProducts(path, isCleanHistory);
   }
@@ -7919,6 +8039,7 @@ class _$GetInfoProductsCatalogEventImpl implements GetInfoProductsCatalogEvent {
     TResult? Function(String code)? getInfoServiceCard,
     TResult? Function(bool isOpenGetSizeProduct)? checkOpenGetInfoProductSize,
     TResult? Function(bool isButtonTop)? checkButtonTop,
+    TResult? Function(String screen)? updateCacheContent,
   }) {
     return getInfoProducts?.call(path, isCleanHistory);
   }
@@ -7984,6 +8105,7 @@ class _$GetInfoProductsCatalogEventImpl implements GetInfoProductsCatalogEvent {
     TResult Function(String code)? getInfoServiceCard,
     TResult Function(bool isOpenGetSizeProduct)? checkOpenGetInfoProductSize,
     TResult Function(bool isButtonTop)? checkButtonTop,
+    TResult Function(String screen)? updateCacheContent,
     required TResult orElse(),
   }) {
     if (getInfoProducts != null) {
@@ -8046,6 +8168,8 @@ class _$GetInfoProductsCatalogEventImpl implements GetInfoProductsCatalogEvent {
     required TResult Function(CheckOpenGetInfoProductSizeCatalogEvent value)
         checkOpenGetInfoProductSize,
     required TResult Function(CheckButtonTopCatalogEvent value) checkButtonTop,
+    required TResult Function(UpdateCacheContentCatalogEvent value)
+        updateCacheContent,
   }) {
     return getInfoProducts(this);
   }
@@ -8096,6 +8220,7 @@ class _$GetInfoProductsCatalogEventImpl implements GetInfoProductsCatalogEvent {
     TResult? Function(CheckOpenGetInfoProductSizeCatalogEvent value)?
         checkOpenGetInfoProductSize,
     TResult? Function(CheckButtonTopCatalogEvent value)? checkButtonTop,
+    TResult? Function(UpdateCacheContentCatalogEvent value)? updateCacheContent,
   }) {
     return getInfoProducts?.call(this);
   }
@@ -8146,6 +8271,7 @@ class _$GetInfoProductsCatalogEventImpl implements GetInfoProductsCatalogEvent {
     TResult Function(CheckOpenGetInfoProductSizeCatalogEvent value)?
         checkOpenGetInfoProductSize,
     TResult Function(CheckButtonTopCatalogEvent value)? checkButtonTop,
+    TResult Function(UpdateCacheContentCatalogEvent value)? updateCacheContent,
     required TResult orElse(),
   }) {
     if (getInfoProducts != null) {
@@ -8310,6 +8436,7 @@ class _$UpdateInfoProductsCatalogEventImpl
     required TResult Function(bool isOpenGetSizeProduct)
         checkOpenGetInfoProductSize,
     required TResult Function(bool isButtonTop) checkButtonTop,
+    required TResult Function(String screen) updateCacheContent,
   }) {
     return updateInfoProducts(titleScreen);
   }
@@ -8375,6 +8502,7 @@ class _$UpdateInfoProductsCatalogEventImpl
     TResult? Function(String code)? getInfoServiceCard,
     TResult? Function(bool isOpenGetSizeProduct)? checkOpenGetInfoProductSize,
     TResult? Function(bool isButtonTop)? checkButtonTop,
+    TResult? Function(String screen)? updateCacheContent,
   }) {
     return updateInfoProducts?.call(titleScreen);
   }
@@ -8440,6 +8568,7 @@ class _$UpdateInfoProductsCatalogEventImpl
     TResult Function(String code)? getInfoServiceCard,
     TResult Function(bool isOpenGetSizeProduct)? checkOpenGetInfoProductSize,
     TResult Function(bool isButtonTop)? checkButtonTop,
+    TResult Function(String screen)? updateCacheContent,
     required TResult orElse(),
   }) {
     if (updateInfoProducts != null) {
@@ -8502,6 +8631,8 @@ class _$UpdateInfoProductsCatalogEventImpl
     required TResult Function(CheckOpenGetInfoProductSizeCatalogEvent value)
         checkOpenGetInfoProductSize,
     required TResult Function(CheckButtonTopCatalogEvent value) checkButtonTop,
+    required TResult Function(UpdateCacheContentCatalogEvent value)
+        updateCacheContent,
   }) {
     return updateInfoProducts(this);
   }
@@ -8552,6 +8683,7 @@ class _$UpdateInfoProductsCatalogEventImpl
     TResult? Function(CheckOpenGetInfoProductSizeCatalogEvent value)?
         checkOpenGetInfoProductSize,
     TResult? Function(CheckButtonTopCatalogEvent value)? checkButtonTop,
+    TResult? Function(UpdateCacheContentCatalogEvent value)? updateCacheContent,
   }) {
     return updateInfoProducts?.call(this);
   }
@@ -8602,6 +8734,7 @@ class _$UpdateInfoProductsCatalogEventImpl
     TResult Function(CheckOpenGetInfoProductSizeCatalogEvent value)?
         checkOpenGetInfoProductSize,
     TResult Function(CheckButtonTopCatalogEvent value)? checkButtonTop,
+    TResult Function(UpdateCacheContentCatalogEvent value)? updateCacheContent,
     required TResult orElse(),
   }) {
     if (updateInfoProducts != null) {
@@ -8828,6 +8961,7 @@ class _$GetInfoProductsPushNotificationCatalogEventImpl
     required TResult Function(bool isOpenGetSizeProduct)
         checkOpenGetInfoProductSize,
     required TResult Function(bool isButtonTop) checkButtonTop,
+    required TResult Function(String screen) updateCacheContent,
   }) {
     return getInfoProductsPushNotification(
         path, sort, filterNotifcation, messageId, isError);
@@ -8894,6 +9028,7 @@ class _$GetInfoProductsPushNotificationCatalogEventImpl
     TResult? Function(String code)? getInfoServiceCard,
     TResult? Function(bool isOpenGetSizeProduct)? checkOpenGetInfoProductSize,
     TResult? Function(bool isButtonTop)? checkButtonTop,
+    TResult? Function(String screen)? updateCacheContent,
   }) {
     return getInfoProductsPushNotification?.call(
         path, sort, filterNotifcation, messageId, isError);
@@ -8960,6 +9095,7 @@ class _$GetInfoProductsPushNotificationCatalogEventImpl
     TResult Function(String code)? getInfoServiceCard,
     TResult Function(bool isOpenGetSizeProduct)? checkOpenGetInfoProductSize,
     TResult Function(bool isButtonTop)? checkButtonTop,
+    TResult Function(String screen)? updateCacheContent,
     required TResult orElse(),
   }) {
     if (getInfoProductsPushNotification != null) {
@@ -9023,6 +9159,8 @@ class _$GetInfoProductsPushNotificationCatalogEventImpl
     required TResult Function(CheckOpenGetInfoProductSizeCatalogEvent value)
         checkOpenGetInfoProductSize,
     required TResult Function(CheckButtonTopCatalogEvent value) checkButtonTop,
+    required TResult Function(UpdateCacheContentCatalogEvent value)
+        updateCacheContent,
   }) {
     return getInfoProductsPushNotification(this);
   }
@@ -9073,6 +9211,7 @@ class _$GetInfoProductsPushNotificationCatalogEventImpl
     TResult? Function(CheckOpenGetInfoProductSizeCatalogEvent value)?
         checkOpenGetInfoProductSize,
     TResult? Function(CheckButtonTopCatalogEvent value)? checkButtonTop,
+    TResult? Function(UpdateCacheContentCatalogEvent value)? updateCacheContent,
   }) {
     return getInfoProductsPushNotification?.call(this);
   }
@@ -9123,6 +9262,7 @@ class _$GetInfoProductsPushNotificationCatalogEventImpl
     TResult Function(CheckOpenGetInfoProductSizeCatalogEvent value)?
         checkOpenGetInfoProductSize,
     TResult Function(CheckButtonTopCatalogEvent value)? checkButtonTop,
+    TResult Function(UpdateCacheContentCatalogEvent value)? updateCacheContent,
     required TResult orElse(),
   }) {
     if (getInfoProductsPushNotification != null) {
@@ -9387,6 +9527,7 @@ class _$GetInfoProductCatalogEventImpl implements GetInfoProductCatalogEvent {
     required TResult Function(bool isOpenGetSizeProduct)
         checkOpenGetInfoProductSize,
     required TResult Function(bool isButtonTop) checkButtonTop,
+    required TResult Function(String screen) updateCacheContent,
   }) {
     return getInfoProduct(code, titleScreen, typeAddProductToShoppingCart,
         identifierAddProductToShoppingCart, size, isUpdate, messageId);
@@ -9453,6 +9594,7 @@ class _$GetInfoProductCatalogEventImpl implements GetInfoProductCatalogEvent {
     TResult? Function(String code)? getInfoServiceCard,
     TResult? Function(bool isOpenGetSizeProduct)? checkOpenGetInfoProductSize,
     TResult? Function(bool isButtonTop)? checkButtonTop,
+    TResult? Function(String screen)? updateCacheContent,
   }) {
     return getInfoProduct?.call(code, titleScreen, typeAddProductToShoppingCart,
         identifierAddProductToShoppingCart, size, isUpdate, messageId);
@@ -9519,6 +9661,7 @@ class _$GetInfoProductCatalogEventImpl implements GetInfoProductCatalogEvent {
     TResult Function(String code)? getInfoServiceCard,
     TResult Function(bool isOpenGetSizeProduct)? checkOpenGetInfoProductSize,
     TResult Function(bool isButtonTop)? checkButtonTop,
+    TResult Function(String screen)? updateCacheContent,
     required TResult orElse(),
   }) {
     if (getInfoProduct != null) {
@@ -9582,6 +9725,8 @@ class _$GetInfoProductCatalogEventImpl implements GetInfoProductCatalogEvent {
     required TResult Function(CheckOpenGetInfoProductSizeCatalogEvent value)
         checkOpenGetInfoProductSize,
     required TResult Function(CheckButtonTopCatalogEvent value) checkButtonTop,
+    required TResult Function(UpdateCacheContentCatalogEvent value)
+        updateCacheContent,
   }) {
     return getInfoProduct(this);
   }
@@ -9632,6 +9777,7 @@ class _$GetInfoProductCatalogEventImpl implements GetInfoProductCatalogEvent {
     TResult? Function(CheckOpenGetInfoProductSizeCatalogEvent value)?
         checkOpenGetInfoProductSize,
     TResult? Function(CheckButtonTopCatalogEvent value)? checkButtonTop,
+    TResult? Function(UpdateCacheContentCatalogEvent value)? updateCacheContent,
   }) {
     return getInfoProduct?.call(this);
   }
@@ -9682,6 +9828,7 @@ class _$GetInfoProductCatalogEventImpl implements GetInfoProductCatalogEvent {
     TResult Function(CheckOpenGetInfoProductSizeCatalogEvent value)?
         checkOpenGetInfoProductSize,
     TResult Function(CheckButtonTopCatalogEvent value)? checkButtonTop,
+    TResult Function(UpdateCacheContentCatalogEvent value)? updateCacheContent,
     required TResult orElse(),
   }) {
     if (getInfoProduct != null) {
@@ -9852,6 +9999,7 @@ class _$SortProductsCatalogEventImpl implements SortProductsCatalogEvent {
     required TResult Function(bool isOpenGetSizeProduct)
         checkOpenGetInfoProductSize,
     required TResult Function(bool isButtonTop) checkButtonTop,
+    required TResult Function(String screen) updateCacheContent,
   }) {
     return sortProducts(value);
   }
@@ -9917,6 +10065,7 @@ class _$SortProductsCatalogEventImpl implements SortProductsCatalogEvent {
     TResult? Function(String code)? getInfoServiceCard,
     TResult? Function(bool isOpenGetSizeProduct)? checkOpenGetInfoProductSize,
     TResult? Function(bool isButtonTop)? checkButtonTop,
+    TResult? Function(String screen)? updateCacheContent,
   }) {
     return sortProducts?.call(value);
   }
@@ -9982,6 +10131,7 @@ class _$SortProductsCatalogEventImpl implements SortProductsCatalogEvent {
     TResult Function(String code)? getInfoServiceCard,
     TResult Function(bool isOpenGetSizeProduct)? checkOpenGetInfoProductSize,
     TResult Function(bool isButtonTop)? checkButtonTop,
+    TResult Function(String screen)? updateCacheContent,
     required TResult orElse(),
   }) {
     if (sortProducts != null) {
@@ -10044,6 +10194,8 @@ class _$SortProductsCatalogEventImpl implements SortProductsCatalogEvent {
     required TResult Function(CheckOpenGetInfoProductSizeCatalogEvent value)
         checkOpenGetInfoProductSize,
     required TResult Function(CheckButtonTopCatalogEvent value) checkButtonTop,
+    required TResult Function(UpdateCacheContentCatalogEvent value)
+        updateCacheContent,
   }) {
     return sortProducts(this);
   }
@@ -10094,6 +10246,7 @@ class _$SortProductsCatalogEventImpl implements SortProductsCatalogEvent {
     TResult? Function(CheckOpenGetInfoProductSizeCatalogEvent value)?
         checkOpenGetInfoProductSize,
     TResult? Function(CheckButtonTopCatalogEvent value)? checkButtonTop,
+    TResult? Function(UpdateCacheContentCatalogEvent value)? updateCacheContent,
   }) {
     return sortProducts?.call(this);
   }
@@ -10144,6 +10297,7 @@ class _$SortProductsCatalogEventImpl implements SortProductsCatalogEvent {
     TResult Function(CheckOpenGetInfoProductSizeCatalogEvent value)?
         checkOpenGetInfoProductSize,
     TResult Function(CheckButtonTopCatalogEvent value)? checkButtonTop,
+    TResult Function(UpdateCacheContentCatalogEvent value)? updateCacheContent,
     required TResult orElse(),
   }) {
     if (sortProducts != null) {
@@ -10277,6 +10431,7 @@ class _$GoBackProductInfoCategotyCatalogEventImpl
     required TResult Function(bool isOpenGetSizeProduct)
         checkOpenGetInfoProductSize,
     required TResult Function(bool isButtonTop) checkButtonTop,
+    required TResult Function(String screen) updateCacheContent,
   }) {
     return goBackProductInfo();
   }
@@ -10342,6 +10497,7 @@ class _$GoBackProductInfoCategotyCatalogEventImpl
     TResult? Function(String code)? getInfoServiceCard,
     TResult? Function(bool isOpenGetSizeProduct)? checkOpenGetInfoProductSize,
     TResult? Function(bool isButtonTop)? checkButtonTop,
+    TResult? Function(String screen)? updateCacheContent,
   }) {
     return goBackProductInfo?.call();
   }
@@ -10407,6 +10563,7 @@ class _$GoBackProductInfoCategotyCatalogEventImpl
     TResult Function(String code)? getInfoServiceCard,
     TResult Function(bool isOpenGetSizeProduct)? checkOpenGetInfoProductSize,
     TResult Function(bool isButtonTop)? checkButtonTop,
+    TResult Function(String screen)? updateCacheContent,
     required TResult orElse(),
   }) {
     if (goBackProductInfo != null) {
@@ -10469,6 +10626,8 @@ class _$GoBackProductInfoCategotyCatalogEventImpl
     required TResult Function(CheckOpenGetInfoProductSizeCatalogEvent value)
         checkOpenGetInfoProductSize,
     required TResult Function(CheckButtonTopCatalogEvent value) checkButtonTop,
+    required TResult Function(UpdateCacheContentCatalogEvent value)
+        updateCacheContent,
   }) {
     return goBackProductInfo(this);
   }
@@ -10519,6 +10678,7 @@ class _$GoBackProductInfoCategotyCatalogEventImpl
     TResult? Function(CheckOpenGetInfoProductSizeCatalogEvent value)?
         checkOpenGetInfoProductSize,
     TResult? Function(CheckButtonTopCatalogEvent value)? checkButtonTop,
+    TResult? Function(UpdateCacheContentCatalogEvent value)? updateCacheContent,
   }) {
     return goBackProductInfo?.call(this);
   }
@@ -10569,6 +10729,7 @@ class _$GoBackProductInfoCategotyCatalogEventImpl
     TResult Function(CheckOpenGetInfoProductSizeCatalogEvent value)?
         checkOpenGetInfoProductSize,
     TResult Function(CheckButtonTopCatalogEvent value)? checkButtonTop,
+    TResult Function(UpdateCacheContentCatalogEvent value)? updateCacheContent,
     required TResult orElse(),
   }) {
     if (goBackProductInfo != null) {
@@ -10694,6 +10855,7 @@ class _$GoBackCatalogInfoCategotyCatalogEventImpl
     required TResult Function(bool isOpenGetSizeProduct)
         checkOpenGetInfoProductSize,
     required TResult Function(bool isButtonTop) checkButtonTop,
+    required TResult Function(String screen) updateCacheContent,
   }) {
     return goBackCatalogInfo();
   }
@@ -10759,6 +10921,7 @@ class _$GoBackCatalogInfoCategotyCatalogEventImpl
     TResult? Function(String code)? getInfoServiceCard,
     TResult? Function(bool isOpenGetSizeProduct)? checkOpenGetInfoProductSize,
     TResult? Function(bool isButtonTop)? checkButtonTop,
+    TResult? Function(String screen)? updateCacheContent,
   }) {
     return goBackCatalogInfo?.call();
   }
@@ -10824,6 +10987,7 @@ class _$GoBackCatalogInfoCategotyCatalogEventImpl
     TResult Function(String code)? getInfoServiceCard,
     TResult Function(bool isOpenGetSizeProduct)? checkOpenGetInfoProductSize,
     TResult Function(bool isButtonTop)? checkButtonTop,
+    TResult Function(String screen)? updateCacheContent,
     required TResult orElse(),
   }) {
     if (goBackCatalogInfo != null) {
@@ -10886,6 +11050,8 @@ class _$GoBackCatalogInfoCategotyCatalogEventImpl
     required TResult Function(CheckOpenGetInfoProductSizeCatalogEvent value)
         checkOpenGetInfoProductSize,
     required TResult Function(CheckButtonTopCatalogEvent value) checkButtonTop,
+    required TResult Function(UpdateCacheContentCatalogEvent value)
+        updateCacheContent,
   }) {
     return goBackCatalogInfo(this);
   }
@@ -10936,6 +11102,7 @@ class _$GoBackCatalogInfoCategotyCatalogEventImpl
     TResult? Function(CheckOpenGetInfoProductSizeCatalogEvent value)?
         checkOpenGetInfoProductSize,
     TResult? Function(CheckButtonTopCatalogEvent value)? checkButtonTop,
+    TResult? Function(UpdateCacheContentCatalogEvent value)? updateCacheContent,
   }) {
     return goBackCatalogInfo?.call(this);
   }
@@ -10986,6 +11153,7 @@ class _$GoBackCatalogInfoCategotyCatalogEventImpl
     TResult Function(CheckOpenGetInfoProductSizeCatalogEvent value)?
         checkOpenGetInfoProductSize,
     TResult Function(CheckButtonTopCatalogEvent value)? checkButtonTop,
+    TResult Function(UpdateCacheContentCatalogEvent value)? updateCacheContent,
     required TResult orElse(),
   }) {
     if (goBackCatalogInfo != null) {
@@ -11153,6 +11321,7 @@ class _$ChangeSizeProductCatalogEventImpl
     required TResult Function(bool isOpenGetSizeProduct)
         checkOpenGetInfoProductSize,
     required TResult Function(bool isButtonTop) checkButtonTop,
+    required TResult Function(String screen) updateCacheContent,
   }) {
     return changeSizeProduct(selectSizeProduct);
   }
@@ -11218,6 +11387,7 @@ class _$ChangeSizeProductCatalogEventImpl
     TResult? Function(String code)? getInfoServiceCard,
     TResult? Function(bool isOpenGetSizeProduct)? checkOpenGetInfoProductSize,
     TResult? Function(bool isButtonTop)? checkButtonTop,
+    TResult? Function(String screen)? updateCacheContent,
   }) {
     return changeSizeProduct?.call(selectSizeProduct);
   }
@@ -11283,6 +11453,7 @@ class _$ChangeSizeProductCatalogEventImpl
     TResult Function(String code)? getInfoServiceCard,
     TResult Function(bool isOpenGetSizeProduct)? checkOpenGetInfoProductSize,
     TResult Function(bool isButtonTop)? checkButtonTop,
+    TResult Function(String screen)? updateCacheContent,
     required TResult orElse(),
   }) {
     if (changeSizeProduct != null) {
@@ -11345,6 +11516,8 @@ class _$ChangeSizeProductCatalogEventImpl
     required TResult Function(CheckOpenGetInfoProductSizeCatalogEvent value)
         checkOpenGetInfoProductSize,
     required TResult Function(CheckButtonTopCatalogEvent value) checkButtonTop,
+    required TResult Function(UpdateCacheContentCatalogEvent value)
+        updateCacheContent,
   }) {
     return changeSizeProduct(this);
   }
@@ -11395,6 +11568,7 @@ class _$ChangeSizeProductCatalogEventImpl
     TResult? Function(CheckOpenGetInfoProductSizeCatalogEvent value)?
         checkOpenGetInfoProductSize,
     TResult? Function(CheckButtonTopCatalogEvent value)? checkButtonTop,
+    TResult? Function(UpdateCacheContentCatalogEvent value)? updateCacheContent,
   }) {
     return changeSizeProduct?.call(this);
   }
@@ -11445,6 +11619,7 @@ class _$ChangeSizeProductCatalogEventImpl
     TResult Function(CheckOpenGetInfoProductSizeCatalogEvent value)?
         checkOpenGetInfoProductSize,
     TResult Function(CheckButtonTopCatalogEvent value)? checkButtonTop,
+    TResult Function(UpdateCacheContentCatalogEvent value)? updateCacheContent,
     required TResult orElse(),
   }) {
     if (changeSizeProduct != null) {
@@ -11609,6 +11784,7 @@ class _$RemoveSelectFilterCategotyCatalogEventImpl
     required TResult Function(bool isOpenGetSizeProduct)
         checkOpenGetInfoProductSize,
     required TResult Function(bool isButtonTop) checkButtonTop,
+    required TResult Function(String screen) updateCacheContent,
   }) {
     return removeSelectFilterCategory(index);
   }
@@ -11674,6 +11850,7 @@ class _$RemoveSelectFilterCategotyCatalogEventImpl
     TResult? Function(String code)? getInfoServiceCard,
     TResult? Function(bool isOpenGetSizeProduct)? checkOpenGetInfoProductSize,
     TResult? Function(bool isButtonTop)? checkButtonTop,
+    TResult? Function(String screen)? updateCacheContent,
   }) {
     return removeSelectFilterCategory?.call(index);
   }
@@ -11739,6 +11916,7 @@ class _$RemoveSelectFilterCategotyCatalogEventImpl
     TResult Function(String code)? getInfoServiceCard,
     TResult Function(bool isOpenGetSizeProduct)? checkOpenGetInfoProductSize,
     TResult Function(bool isButtonTop)? checkButtonTop,
+    TResult Function(String screen)? updateCacheContent,
     required TResult orElse(),
   }) {
     if (removeSelectFilterCategory != null) {
@@ -11801,6 +11979,8 @@ class _$RemoveSelectFilterCategotyCatalogEventImpl
     required TResult Function(CheckOpenGetInfoProductSizeCatalogEvent value)
         checkOpenGetInfoProductSize,
     required TResult Function(CheckButtonTopCatalogEvent value) checkButtonTop,
+    required TResult Function(UpdateCacheContentCatalogEvent value)
+        updateCacheContent,
   }) {
     return removeSelectFilterCategory(this);
   }
@@ -11851,6 +12031,7 @@ class _$RemoveSelectFilterCategotyCatalogEventImpl
     TResult? Function(CheckOpenGetInfoProductSizeCatalogEvent value)?
         checkOpenGetInfoProductSize,
     TResult? Function(CheckButtonTopCatalogEvent value)? checkButtonTop,
+    TResult? Function(UpdateCacheContentCatalogEvent value)? updateCacheContent,
   }) {
     return removeSelectFilterCategory?.call(this);
   }
@@ -11901,6 +12082,7 @@ class _$RemoveSelectFilterCategotyCatalogEventImpl
     TResult Function(CheckOpenGetInfoProductSizeCatalogEvent value)?
         checkOpenGetInfoProductSize,
     TResult Function(CheckButtonTopCatalogEvent value)? checkButtonTop,
+    TResult Function(UpdateCacheContentCatalogEvent value)? updateCacheContent,
     required TResult orElse(),
   }) {
     if (removeSelectFilterCategory != null) {
@@ -12037,6 +12219,7 @@ class _$RemoveSelectAllFiltersCategotyCatalogEventImpl
     required TResult Function(bool isOpenGetSizeProduct)
         checkOpenGetInfoProductSize,
     required TResult Function(bool isButtonTop) checkButtonTop,
+    required TResult Function(String screen) updateCacheContent,
   }) {
     return removeSelectAllFilters();
   }
@@ -12102,6 +12285,7 @@ class _$RemoveSelectAllFiltersCategotyCatalogEventImpl
     TResult? Function(String code)? getInfoServiceCard,
     TResult? Function(bool isOpenGetSizeProduct)? checkOpenGetInfoProductSize,
     TResult? Function(bool isButtonTop)? checkButtonTop,
+    TResult? Function(String screen)? updateCacheContent,
   }) {
     return removeSelectAllFilters?.call();
   }
@@ -12167,6 +12351,7 @@ class _$RemoveSelectAllFiltersCategotyCatalogEventImpl
     TResult Function(String code)? getInfoServiceCard,
     TResult Function(bool isOpenGetSizeProduct)? checkOpenGetInfoProductSize,
     TResult Function(bool isButtonTop)? checkButtonTop,
+    TResult Function(String screen)? updateCacheContent,
     required TResult orElse(),
   }) {
     if (removeSelectAllFilters != null) {
@@ -12229,6 +12414,8 @@ class _$RemoveSelectAllFiltersCategotyCatalogEventImpl
     required TResult Function(CheckOpenGetInfoProductSizeCatalogEvent value)
         checkOpenGetInfoProductSize,
     required TResult Function(CheckButtonTopCatalogEvent value) checkButtonTop,
+    required TResult Function(UpdateCacheContentCatalogEvent value)
+        updateCacheContent,
   }) {
     return removeSelectAllFilters(this);
   }
@@ -12279,6 +12466,7 @@ class _$RemoveSelectAllFiltersCategotyCatalogEventImpl
     TResult? Function(CheckOpenGetInfoProductSizeCatalogEvent value)?
         checkOpenGetInfoProductSize,
     TResult? Function(CheckButtonTopCatalogEvent value)? checkButtonTop,
+    TResult? Function(UpdateCacheContentCatalogEvent value)? updateCacheContent,
   }) {
     return removeSelectAllFilters?.call(this);
   }
@@ -12329,6 +12517,7 @@ class _$RemoveSelectAllFiltersCategotyCatalogEventImpl
     TResult Function(CheckOpenGetInfoProductSizeCatalogEvent value)?
         checkOpenGetInfoProductSize,
     TResult Function(CheckButtonTopCatalogEvent value)? checkButtonTop,
+    TResult Function(UpdateCacheContentCatalogEvent value)? updateCacheContent,
     required TResult orElse(),
   }) {
     if (removeSelectAllFilters != null) {
@@ -12550,6 +12739,7 @@ class _$AddProductToSoppingCartCatalogEventImpl
     required TResult Function(bool isOpenGetSizeProduct)
         checkOpenGetInfoProductSize,
     required TResult Function(bool isButtonTop) checkButtonTop,
+    required TResult Function(String screen) updateCacheContent,
   }) {
     return addProductToSoppingCart(code, titleScreen,
         typeAddProductToShoppingCart, identifierAddProductToShoppingCart, size);
@@ -12616,6 +12806,7 @@ class _$AddProductToSoppingCartCatalogEventImpl
     TResult? Function(String code)? getInfoServiceCard,
     TResult? Function(bool isOpenGetSizeProduct)? checkOpenGetInfoProductSize,
     TResult? Function(bool isButtonTop)? checkButtonTop,
+    TResult? Function(String screen)? updateCacheContent,
   }) {
     return addProductToSoppingCart?.call(code, titleScreen,
         typeAddProductToShoppingCart, identifierAddProductToShoppingCart, size);
@@ -12682,6 +12873,7 @@ class _$AddProductToSoppingCartCatalogEventImpl
     TResult Function(String code)? getInfoServiceCard,
     TResult Function(bool isOpenGetSizeProduct)? checkOpenGetInfoProductSize,
     TResult Function(bool isButtonTop)? checkButtonTop,
+    TResult Function(String screen)? updateCacheContent,
     required TResult orElse(),
   }) {
     if (addProductToSoppingCart != null) {
@@ -12749,6 +12941,8 @@ class _$AddProductToSoppingCartCatalogEventImpl
     required TResult Function(CheckOpenGetInfoProductSizeCatalogEvent value)
         checkOpenGetInfoProductSize,
     required TResult Function(CheckButtonTopCatalogEvent value) checkButtonTop,
+    required TResult Function(UpdateCacheContentCatalogEvent value)
+        updateCacheContent,
   }) {
     return addProductToSoppingCart(this);
   }
@@ -12799,6 +12993,7 @@ class _$AddProductToSoppingCartCatalogEventImpl
     TResult? Function(CheckOpenGetInfoProductSizeCatalogEvent value)?
         checkOpenGetInfoProductSize,
     TResult? Function(CheckButtonTopCatalogEvent value)? checkButtonTop,
+    TResult? Function(UpdateCacheContentCatalogEvent value)? updateCacheContent,
   }) {
     return addProductToSoppingCart?.call(this);
   }
@@ -12849,6 +13044,7 @@ class _$AddProductToSoppingCartCatalogEventImpl
     TResult Function(CheckOpenGetInfoProductSizeCatalogEvent value)?
         checkOpenGetInfoProductSize,
     TResult Function(CheckButtonTopCatalogEvent value)? checkButtonTop,
+    TResult Function(UpdateCacheContentCatalogEvent value)? updateCacheContent,
     required TResult orElse(),
   }) {
     if (addProductToSoppingCart != null) {
@@ -13032,6 +13228,7 @@ class _$CheckProductToSoppingCartCatalogEventImpl
     required TResult Function(bool isOpenGetSizeProduct)
         checkOpenGetInfoProductSize,
     required TResult Function(bool isButtonTop) checkButtonTop,
+    required TResult Function(String screen) updateCacheContent,
   }) {
     return checkProductToSoppingCart(size);
   }
@@ -13097,6 +13294,7 @@ class _$CheckProductToSoppingCartCatalogEventImpl
     TResult? Function(String code)? getInfoServiceCard,
     TResult? Function(bool isOpenGetSizeProduct)? checkOpenGetInfoProductSize,
     TResult? Function(bool isButtonTop)? checkButtonTop,
+    TResult? Function(String screen)? updateCacheContent,
   }) {
     return checkProductToSoppingCart?.call(size);
   }
@@ -13162,6 +13360,7 @@ class _$CheckProductToSoppingCartCatalogEventImpl
     TResult Function(String code)? getInfoServiceCard,
     TResult Function(bool isOpenGetSizeProduct)? checkOpenGetInfoProductSize,
     TResult Function(bool isButtonTop)? checkButtonTop,
+    TResult Function(String screen)? updateCacheContent,
     required TResult orElse(),
   }) {
     if (checkProductToSoppingCart != null) {
@@ -13224,6 +13423,8 @@ class _$CheckProductToSoppingCartCatalogEventImpl
     required TResult Function(CheckOpenGetInfoProductSizeCatalogEvent value)
         checkOpenGetInfoProductSize,
     required TResult Function(CheckButtonTopCatalogEvent value) checkButtonTop,
+    required TResult Function(UpdateCacheContentCatalogEvent value)
+        updateCacheContent,
   }) {
     return checkProductToSoppingCart(this);
   }
@@ -13274,6 +13475,7 @@ class _$CheckProductToSoppingCartCatalogEventImpl
     TResult? Function(CheckOpenGetInfoProductSizeCatalogEvent value)?
         checkOpenGetInfoProductSize,
     TResult? Function(CheckButtonTopCatalogEvent value)? checkButtonTop,
+    TResult? Function(UpdateCacheContentCatalogEvent value)? updateCacheContent,
   }) {
     return checkProductToSoppingCart?.call(this);
   }
@@ -13324,6 +13526,7 @@ class _$CheckProductToSoppingCartCatalogEventImpl
     TResult Function(CheckOpenGetInfoProductSizeCatalogEvent value)?
         checkOpenGetInfoProductSize,
     TResult Function(CheckButtonTopCatalogEvent value)? checkButtonTop,
+    TResult Function(UpdateCacheContentCatalogEvent value)? updateCacheContent,
     required TResult orElse(),
   }) {
     if (checkProductToSoppingCart != null) {
@@ -13505,6 +13708,7 @@ class _$GetInfoProductSizeCatalogEventImpl
     required TResult Function(bool isOpenGetSizeProduct)
         checkOpenGetInfoProductSize,
     required TResult Function(bool isButtonTop) checkButtonTop,
+    required TResult Function(String screen) updateCacheContent,
   }) {
     return getInfoProductSize(code, isShop, titleScreen);
   }
@@ -13570,6 +13774,7 @@ class _$GetInfoProductSizeCatalogEventImpl
     TResult? Function(String code)? getInfoServiceCard,
     TResult? Function(bool isOpenGetSizeProduct)? checkOpenGetInfoProductSize,
     TResult? Function(bool isButtonTop)? checkButtonTop,
+    TResult? Function(String screen)? updateCacheContent,
   }) {
     return getInfoProductSize?.call(code, isShop, titleScreen);
   }
@@ -13635,6 +13840,7 @@ class _$GetInfoProductSizeCatalogEventImpl
     TResult Function(String code)? getInfoServiceCard,
     TResult Function(bool isOpenGetSizeProduct)? checkOpenGetInfoProductSize,
     TResult Function(bool isButtonTop)? checkButtonTop,
+    TResult Function(String screen)? updateCacheContent,
     required TResult orElse(),
   }) {
     if (getInfoProductSize != null) {
@@ -13697,6 +13903,8 @@ class _$GetInfoProductSizeCatalogEventImpl
     required TResult Function(CheckOpenGetInfoProductSizeCatalogEvent value)
         checkOpenGetInfoProductSize,
     required TResult Function(CheckButtonTopCatalogEvent value) checkButtonTop,
+    required TResult Function(UpdateCacheContentCatalogEvent value)
+        updateCacheContent,
   }) {
     return getInfoProductSize(this);
   }
@@ -13747,6 +13955,7 @@ class _$GetInfoProductSizeCatalogEventImpl
     TResult? Function(CheckOpenGetInfoProductSizeCatalogEvent value)?
         checkOpenGetInfoProductSize,
     TResult? Function(CheckButtonTopCatalogEvent value)? checkButtonTop,
+    TResult? Function(UpdateCacheContentCatalogEvent value)? updateCacheContent,
   }) {
     return getInfoProductSize?.call(this);
   }
@@ -13797,6 +14006,7 @@ class _$GetInfoProductSizeCatalogEventImpl
     TResult Function(CheckOpenGetInfoProductSizeCatalogEvent value)?
         checkOpenGetInfoProductSize,
     TResult Function(CheckButtonTopCatalogEvent value)? checkButtonTop,
+    TResult Function(UpdateCacheContentCatalogEvent value)? updateCacheContent,
     required TResult orElse(),
   }) {
     if (getInfoProductSize != null) {
@@ -13964,6 +14174,7 @@ class _$GetInfoServiceCardCatalogEventImpl
     required TResult Function(bool isOpenGetSizeProduct)
         checkOpenGetInfoProductSize,
     required TResult Function(bool isButtonTop) checkButtonTop,
+    required TResult Function(String screen) updateCacheContent,
   }) {
     return getInfoServiceCard(code);
   }
@@ -14029,6 +14240,7 @@ class _$GetInfoServiceCardCatalogEventImpl
     TResult? Function(String code)? getInfoServiceCard,
     TResult? Function(bool isOpenGetSizeProduct)? checkOpenGetInfoProductSize,
     TResult? Function(bool isButtonTop)? checkButtonTop,
+    TResult? Function(String screen)? updateCacheContent,
   }) {
     return getInfoServiceCard?.call(code);
   }
@@ -14094,6 +14306,7 @@ class _$GetInfoServiceCardCatalogEventImpl
     TResult Function(String code)? getInfoServiceCard,
     TResult Function(bool isOpenGetSizeProduct)? checkOpenGetInfoProductSize,
     TResult Function(bool isButtonTop)? checkButtonTop,
+    TResult Function(String screen)? updateCacheContent,
     required TResult orElse(),
   }) {
     if (getInfoServiceCard != null) {
@@ -14156,6 +14369,8 @@ class _$GetInfoServiceCardCatalogEventImpl
     required TResult Function(CheckOpenGetInfoProductSizeCatalogEvent value)
         checkOpenGetInfoProductSize,
     required TResult Function(CheckButtonTopCatalogEvent value) checkButtonTop,
+    required TResult Function(UpdateCacheContentCatalogEvent value)
+        updateCacheContent,
   }) {
     return getInfoServiceCard(this);
   }
@@ -14206,6 +14421,7 @@ class _$GetInfoServiceCardCatalogEventImpl
     TResult? Function(CheckOpenGetInfoProductSizeCatalogEvent value)?
         checkOpenGetInfoProductSize,
     TResult? Function(CheckButtonTopCatalogEvent value)? checkButtonTop,
+    TResult? Function(UpdateCacheContentCatalogEvent value)? updateCacheContent,
   }) {
     return getInfoServiceCard?.call(this);
   }
@@ -14256,6 +14472,7 @@ class _$GetInfoServiceCardCatalogEventImpl
     TResult Function(CheckOpenGetInfoProductSizeCatalogEvent value)?
         checkOpenGetInfoProductSize,
     TResult Function(CheckButtonTopCatalogEvent value)? checkButtonTop,
+    TResult Function(UpdateCacheContentCatalogEvent value)? updateCacheContent,
     required TResult orElse(),
   }) {
     if (getInfoServiceCard != null) {
@@ -14421,6 +14638,7 @@ class _$CheckOpenGetInfoProductSizeCatalogEventImpl
     required TResult Function(bool isOpenGetSizeProduct)
         checkOpenGetInfoProductSize,
     required TResult Function(bool isButtonTop) checkButtonTop,
+    required TResult Function(String screen) updateCacheContent,
   }) {
     return checkOpenGetInfoProductSize(isOpenGetSizeProduct);
   }
@@ -14486,6 +14704,7 @@ class _$CheckOpenGetInfoProductSizeCatalogEventImpl
     TResult? Function(String code)? getInfoServiceCard,
     TResult? Function(bool isOpenGetSizeProduct)? checkOpenGetInfoProductSize,
     TResult? Function(bool isButtonTop)? checkButtonTop,
+    TResult? Function(String screen)? updateCacheContent,
   }) {
     return checkOpenGetInfoProductSize?.call(isOpenGetSizeProduct);
   }
@@ -14551,6 +14770,7 @@ class _$CheckOpenGetInfoProductSizeCatalogEventImpl
     TResult Function(String code)? getInfoServiceCard,
     TResult Function(bool isOpenGetSizeProduct)? checkOpenGetInfoProductSize,
     TResult Function(bool isButtonTop)? checkButtonTop,
+    TResult Function(String screen)? updateCacheContent,
     required TResult orElse(),
   }) {
     if (checkOpenGetInfoProductSize != null) {
@@ -14613,6 +14833,8 @@ class _$CheckOpenGetInfoProductSizeCatalogEventImpl
     required TResult Function(CheckOpenGetInfoProductSizeCatalogEvent value)
         checkOpenGetInfoProductSize,
     required TResult Function(CheckButtonTopCatalogEvent value) checkButtonTop,
+    required TResult Function(UpdateCacheContentCatalogEvent value)
+        updateCacheContent,
   }) {
     return checkOpenGetInfoProductSize(this);
   }
@@ -14663,6 +14885,7 @@ class _$CheckOpenGetInfoProductSizeCatalogEventImpl
     TResult? Function(CheckOpenGetInfoProductSizeCatalogEvent value)?
         checkOpenGetInfoProductSize,
     TResult? Function(CheckButtonTopCatalogEvent value)? checkButtonTop,
+    TResult? Function(UpdateCacheContentCatalogEvent value)? updateCacheContent,
   }) {
     return checkOpenGetInfoProductSize?.call(this);
   }
@@ -14713,6 +14936,7 @@ class _$CheckOpenGetInfoProductSizeCatalogEventImpl
     TResult Function(CheckOpenGetInfoProductSizeCatalogEvent value)?
         checkOpenGetInfoProductSize,
     TResult Function(CheckButtonTopCatalogEvent value)? checkButtonTop,
+    TResult Function(UpdateCacheContentCatalogEvent value)? updateCacheContent,
     required TResult orElse(),
   }) {
     if (checkOpenGetInfoProductSize != null) {
@@ -14874,6 +15098,7 @@ class _$CheckButtonTopCatalogEventImpl implements CheckButtonTopCatalogEvent {
     required TResult Function(bool isOpenGetSizeProduct)
         checkOpenGetInfoProductSize,
     required TResult Function(bool isButtonTop) checkButtonTop,
+    required TResult Function(String screen) updateCacheContent,
   }) {
     return checkButtonTop(isButtonTop);
   }
@@ -14939,6 +15164,7 @@ class _$CheckButtonTopCatalogEventImpl implements CheckButtonTopCatalogEvent {
     TResult? Function(String code)? getInfoServiceCard,
     TResult? Function(bool isOpenGetSizeProduct)? checkOpenGetInfoProductSize,
     TResult? Function(bool isButtonTop)? checkButtonTop,
+    TResult? Function(String screen)? updateCacheContent,
   }) {
     return checkButtonTop?.call(isButtonTop);
   }
@@ -15004,6 +15230,7 @@ class _$CheckButtonTopCatalogEventImpl implements CheckButtonTopCatalogEvent {
     TResult Function(String code)? getInfoServiceCard,
     TResult Function(bool isOpenGetSizeProduct)? checkOpenGetInfoProductSize,
     TResult Function(bool isButtonTop)? checkButtonTop,
+    TResult Function(String screen)? updateCacheContent,
     required TResult orElse(),
   }) {
     if (checkButtonTop != null) {
@@ -15066,6 +15293,8 @@ class _$CheckButtonTopCatalogEventImpl implements CheckButtonTopCatalogEvent {
     required TResult Function(CheckOpenGetInfoProductSizeCatalogEvent value)
         checkOpenGetInfoProductSize,
     required TResult Function(CheckButtonTopCatalogEvent value) checkButtonTop,
+    required TResult Function(UpdateCacheContentCatalogEvent value)
+        updateCacheContent,
   }) {
     return checkButtonTop(this);
   }
@@ -15116,6 +15345,7 @@ class _$CheckButtonTopCatalogEventImpl implements CheckButtonTopCatalogEvent {
     TResult? Function(CheckOpenGetInfoProductSizeCatalogEvent value)?
         checkOpenGetInfoProductSize,
     TResult? Function(CheckButtonTopCatalogEvent value)? checkButtonTop,
+    TResult? Function(UpdateCacheContentCatalogEvent value)? updateCacheContent,
   }) {
     return checkButtonTop?.call(this);
   }
@@ -15166,6 +15396,7 @@ class _$CheckButtonTopCatalogEventImpl implements CheckButtonTopCatalogEvent {
     TResult Function(CheckOpenGetInfoProductSizeCatalogEvent value)?
         checkOpenGetInfoProductSize,
     TResult Function(CheckButtonTopCatalogEvent value)? checkButtonTop,
+    TResult Function(UpdateCacheContentCatalogEvent value)? updateCacheContent,
     required TResult orElse(),
   }) {
     if (checkButtonTop != null) {
@@ -15185,6 +15416,467 @@ abstract class CheckButtonTopCatalogEvent implements CatalogEvent {
   /// with the given fields replaced by the non-null parameter values.
   @JsonKey(includeFromJson: false, includeToJson: false)
   _$$CheckButtonTopCatalogEventImplCopyWith<_$CheckButtonTopCatalogEventImpl>
+      get copyWith => throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+abstract class _$$UpdateCacheContentCatalogEventImplCopyWith<$Res> {
+  factory _$$UpdateCacheContentCatalogEventImplCopyWith(
+          _$UpdateCacheContentCatalogEventImpl value,
+          $Res Function(_$UpdateCacheContentCatalogEventImpl) then) =
+      __$$UpdateCacheContentCatalogEventImplCopyWithImpl<$Res>;
+  @useResult
+  $Res call({String screen});
+}
+
+/// @nodoc
+class __$$UpdateCacheContentCatalogEventImplCopyWithImpl<$Res>
+    extends _$CatalogEventCopyWithImpl<$Res,
+        _$UpdateCacheContentCatalogEventImpl>
+    implements _$$UpdateCacheContentCatalogEventImplCopyWith<$Res> {
+  __$$UpdateCacheContentCatalogEventImplCopyWithImpl(
+      _$UpdateCacheContentCatalogEventImpl _value,
+      $Res Function(_$UpdateCacheContentCatalogEventImpl) _then)
+      : super(_value, _then);
+
+  /// Create a copy of CatalogEvent
+  /// with the given fields replaced by the non-null parameter values.
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? screen = null,
+  }) {
+    return _then(_$UpdateCacheContentCatalogEventImpl(
+      screen: null == screen
+          ? _value.screen
+          : screen // ignore: cast_nullable_to_non_nullable
+              as String,
+    ));
+  }
+}
+
+/// @nodoc
+
+class _$UpdateCacheContentCatalogEventImpl
+    implements UpdateCacheContentCatalogEvent {
+  const _$UpdateCacheContentCatalogEventImpl({required this.screen});
+
+  @override
+  final String screen;
+
+  @override
+  String toString() {
+    return 'CatalogEvent.updateCacheContent(screen: $screen)';
+  }
+
+  @override
+  bool operator ==(Object other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$UpdateCacheContentCatalogEventImpl &&
+            (identical(other.screen, screen) || other.screen == screen));
+  }
+
+  @override
+  int get hashCode => Object.hash(runtimeType, screen);
+
+  /// Create a copy of CatalogEvent
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  @override
+  @pragma('vm:prefer-inline')
+  _$$UpdateCacheContentCatalogEventImplCopyWith<
+          _$UpdateCacheContentCatalogEventImpl>
+      get copyWith => __$$UpdateCacheContentCatalogEventImplCopyWithImpl<
+          _$UpdateCacheContentCatalogEventImpl>(this, _$identity);
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function() init,
+    required TResult Function() preloadData,
+    required TResult Function() updateFavouritesProducts,
+    required TResult Function(String a, int b, int id, String u, int pid,
+            MenuItemDataModel? item, int? selectedGenderIndex)
+        subCategory,
+    required TResult Function(int idParent) backPathMenu,
+    required TResult Function(
+            int index, int indexItem, FilterItemDataModel item)
+        selectFilter,
+    required TResult Function(
+            int index, int indexItem, FilterItemDataModel item)
+        deleteFilter,
+    required TResult Function(int key, int index, FilterItemDataModel item)
+        deleteCatalogFilter,
+    required TResult Function(int index, ProductDataModel product)
+        addFavouriteProduct,
+    required TResult Function(int index) deleteFavouriteProduct,
+    required TResult Function() paginationProduct,
+    required TResult Function(String query) searchBrand,
+    required TResult Function(MenuItemDataModel? item) pathMenu,
+    required TResult Function(List<MenuItemDataModel> items) removePathMenu,
+    required TResult Function(List<MenuItemDataModel> items) pathBrandMenu,
+    required TResult Function(int selectIndexType) switchTypePeople,
+    required TResult Function(String path, bool? isCleanHistory)
+        getInfoProducts,
+    required TResult Function(String titleScreen) updateInfoProducts,
+    required TResult Function(
+            String path,
+            String sort,
+            FilterNotifcationDataModel filterNotifcation,
+            String? messageId,
+            bool? isError)
+        getInfoProductsPushNotification,
+    required TResult Function(
+            String code,
+            String titleScreen,
+            String typeAddProductToShoppingCart,
+            String identifierAddProductToShoppingCart,
+            SkuProductDataModel? size,
+            bool? isUpdate,
+            String? messageId)
+        getInfoProduct,
+    required TResult Function(String value) sortProducts,
+    required TResult Function() goBackProductInfo,
+    required TResult Function() goBackCatalogInfo,
+    required TResult Function(SkuProductDataModel selectSizeProduct)
+        changeSizeProduct,
+    required TResult Function(int index) removeSelectFilterCategory,
+    required TResult Function() removeSelectAllFilters,
+    required TResult Function(
+            int code,
+            String titleScreen,
+            String typeAddProductToShoppingCart,
+            String identifierAddProductToShoppingCart,
+            SkuProductDataModel? size)
+        addProductToSoppingCart,
+    required TResult Function(SkuProductDataModel size)
+        checkProductToSoppingCart,
+    required TResult Function(String code, bool isShop, String titleScreen)
+        getInfoProductSize,
+    required TResult Function(String code) getInfoServiceCard,
+    required TResult Function(bool isOpenGetSizeProduct)
+        checkOpenGetInfoProductSize,
+    required TResult Function(bool isButtonTop) checkButtonTop,
+    required TResult Function(String screen) updateCacheContent,
+  }) {
+    return updateCacheContent(screen);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function()? init,
+    TResult? Function()? preloadData,
+    TResult? Function()? updateFavouritesProducts,
+    TResult? Function(String a, int b, int id, String u, int pid,
+            MenuItemDataModel? item, int? selectedGenderIndex)?
+        subCategory,
+    TResult? Function(int idParent)? backPathMenu,
+    TResult? Function(int index, int indexItem, FilterItemDataModel item)?
+        selectFilter,
+    TResult? Function(int index, int indexItem, FilterItemDataModel item)?
+        deleteFilter,
+    TResult? Function(int key, int index, FilterItemDataModel item)?
+        deleteCatalogFilter,
+    TResult? Function(int index, ProductDataModel product)? addFavouriteProduct,
+    TResult? Function(int index)? deleteFavouriteProduct,
+    TResult? Function()? paginationProduct,
+    TResult? Function(String query)? searchBrand,
+    TResult? Function(MenuItemDataModel? item)? pathMenu,
+    TResult? Function(List<MenuItemDataModel> items)? removePathMenu,
+    TResult? Function(List<MenuItemDataModel> items)? pathBrandMenu,
+    TResult? Function(int selectIndexType)? switchTypePeople,
+    TResult? Function(String path, bool? isCleanHistory)? getInfoProducts,
+    TResult? Function(String titleScreen)? updateInfoProducts,
+    TResult? Function(
+            String path,
+            String sort,
+            FilterNotifcationDataModel filterNotifcation,
+            String? messageId,
+            bool? isError)?
+        getInfoProductsPushNotification,
+    TResult? Function(
+            String code,
+            String titleScreen,
+            String typeAddProductToShoppingCart,
+            String identifierAddProductToShoppingCart,
+            SkuProductDataModel? size,
+            bool? isUpdate,
+            String? messageId)?
+        getInfoProduct,
+    TResult? Function(String value)? sortProducts,
+    TResult? Function()? goBackProductInfo,
+    TResult? Function()? goBackCatalogInfo,
+    TResult? Function(SkuProductDataModel selectSizeProduct)? changeSizeProduct,
+    TResult? Function(int index)? removeSelectFilterCategory,
+    TResult? Function()? removeSelectAllFilters,
+    TResult? Function(
+            int code,
+            String titleScreen,
+            String typeAddProductToShoppingCart,
+            String identifierAddProductToShoppingCart,
+            SkuProductDataModel? size)?
+        addProductToSoppingCart,
+    TResult? Function(SkuProductDataModel size)? checkProductToSoppingCart,
+    TResult? Function(String code, bool isShop, String titleScreen)?
+        getInfoProductSize,
+    TResult? Function(String code)? getInfoServiceCard,
+    TResult? Function(bool isOpenGetSizeProduct)? checkOpenGetInfoProductSize,
+    TResult? Function(bool isButtonTop)? checkButtonTop,
+    TResult? Function(String screen)? updateCacheContent,
+  }) {
+    return updateCacheContent?.call(screen);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? init,
+    TResult Function()? preloadData,
+    TResult Function()? updateFavouritesProducts,
+    TResult Function(String a, int b, int id, String u, int pid,
+            MenuItemDataModel? item, int? selectedGenderIndex)?
+        subCategory,
+    TResult Function(int idParent)? backPathMenu,
+    TResult Function(int index, int indexItem, FilterItemDataModel item)?
+        selectFilter,
+    TResult Function(int index, int indexItem, FilterItemDataModel item)?
+        deleteFilter,
+    TResult Function(int key, int index, FilterItemDataModel item)?
+        deleteCatalogFilter,
+    TResult Function(int index, ProductDataModel product)? addFavouriteProduct,
+    TResult Function(int index)? deleteFavouriteProduct,
+    TResult Function()? paginationProduct,
+    TResult Function(String query)? searchBrand,
+    TResult Function(MenuItemDataModel? item)? pathMenu,
+    TResult Function(List<MenuItemDataModel> items)? removePathMenu,
+    TResult Function(List<MenuItemDataModel> items)? pathBrandMenu,
+    TResult Function(int selectIndexType)? switchTypePeople,
+    TResult Function(String path, bool? isCleanHistory)? getInfoProducts,
+    TResult Function(String titleScreen)? updateInfoProducts,
+    TResult Function(
+            String path,
+            String sort,
+            FilterNotifcationDataModel filterNotifcation,
+            String? messageId,
+            bool? isError)?
+        getInfoProductsPushNotification,
+    TResult Function(
+            String code,
+            String titleScreen,
+            String typeAddProductToShoppingCart,
+            String identifierAddProductToShoppingCart,
+            SkuProductDataModel? size,
+            bool? isUpdate,
+            String? messageId)?
+        getInfoProduct,
+    TResult Function(String value)? sortProducts,
+    TResult Function()? goBackProductInfo,
+    TResult Function()? goBackCatalogInfo,
+    TResult Function(SkuProductDataModel selectSizeProduct)? changeSizeProduct,
+    TResult Function(int index)? removeSelectFilterCategory,
+    TResult Function()? removeSelectAllFilters,
+    TResult Function(
+            int code,
+            String titleScreen,
+            String typeAddProductToShoppingCart,
+            String identifierAddProductToShoppingCart,
+            SkuProductDataModel? size)?
+        addProductToSoppingCart,
+    TResult Function(SkuProductDataModel size)? checkProductToSoppingCart,
+    TResult Function(String code, bool isShop, String titleScreen)?
+        getInfoProductSize,
+    TResult Function(String code)? getInfoServiceCard,
+    TResult Function(bool isOpenGetSizeProduct)? checkOpenGetInfoProductSize,
+    TResult Function(bool isButtonTop)? checkButtonTop,
+    TResult Function(String screen)? updateCacheContent,
+    required TResult orElse(),
+  }) {
+    if (updateCacheContent != null) {
+      return updateCacheContent(screen);
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(InitCatalogEvent value) init,
+    required TResult Function(PreloadDataCatalogEvent value) preloadData,
+    required TResult Function(UpdateFavouritesProductsCatalogEvent value)
+        updateFavouritesProducts,
+    required TResult Function(SubCategoryatalogEvent value) subCategory,
+    required TResult Function(BackPathMenuCatalogEvent value) backPathMenu,
+    required TResult Function(SelectFilterCatalogEvent value) selectFilter,
+    required TResult Function(DeleteFilterCatalogEvent value) deleteFilter,
+    required TResult Function(DeleteCatalogFilterEvent value)
+        deleteCatalogFilter,
+    required TResult Function(AddFavouriteProductCatalogEvent value)
+        addFavouriteProduct,
+    required TResult Function(DeleteFavouriteProductCatalogEvent value)
+        deleteFavouriteProduct,
+    required TResult Function(PaginationProductCatalogEvent value)
+        paginationProduct,
+    required TResult Function(SearchBrandCatalogEvent value) searchBrand,
+    required TResult Function(PathMenuCatalogEvent value) pathMenu,
+    required TResult Function(RemovePathMenuCatalogEvent value) removePathMenu,
+    required TResult Function(PathBrandMenuCatalogEvent value) pathBrandMenu,
+    required TResult Function(SwitchTypePeopleCatalogEvent value)
+        switchTypePeople,
+    required TResult Function(GetInfoProductsCatalogEvent value)
+        getInfoProducts,
+    required TResult Function(UpdateInfoProductsCatalogEvent value)
+        updateInfoProducts,
+    required TResult Function(GetInfoProductsPushNotificationCatalogEvent value)
+        getInfoProductsPushNotification,
+    required TResult Function(GetInfoProductCatalogEvent value) getInfoProduct,
+    required TResult Function(SortProductsCatalogEvent value) sortProducts,
+    required TResult Function(GoBackProductInfoCategotyCatalogEvent value)
+        goBackProductInfo,
+    required TResult Function(GoBackCatalogInfoCategotyCatalogEvent value)
+        goBackCatalogInfo,
+    required TResult Function(ChangeSizeProductCatalogEvent value)
+        changeSizeProduct,
+    required TResult Function(RemoveSelectFilterCategotyCatalogEvent value)
+        removeSelectFilterCategory,
+    required TResult Function(RemoveSelectAllFiltersCategotyCatalogEvent value)
+        removeSelectAllFilters,
+    required TResult Function(AddProductToSoppingCartCatalogEvent value)
+        addProductToSoppingCart,
+    required TResult Function(CheckProductToSoppingCartCatalogEvent value)
+        checkProductToSoppingCart,
+    required TResult Function(GetInfoProductSizeCatalogEvent value)
+        getInfoProductSize,
+    required TResult Function(GetInfoServiceCardCatalogEvent value)
+        getInfoServiceCard,
+    required TResult Function(CheckOpenGetInfoProductSizeCatalogEvent value)
+        checkOpenGetInfoProductSize,
+    required TResult Function(CheckButtonTopCatalogEvent value) checkButtonTop,
+    required TResult Function(UpdateCacheContentCatalogEvent value)
+        updateCacheContent,
+  }) {
+    return updateCacheContent(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(InitCatalogEvent value)? init,
+    TResult? Function(PreloadDataCatalogEvent value)? preloadData,
+    TResult? Function(UpdateFavouritesProductsCatalogEvent value)?
+        updateFavouritesProducts,
+    TResult? Function(SubCategoryatalogEvent value)? subCategory,
+    TResult? Function(BackPathMenuCatalogEvent value)? backPathMenu,
+    TResult? Function(SelectFilterCatalogEvent value)? selectFilter,
+    TResult? Function(DeleteFilterCatalogEvent value)? deleteFilter,
+    TResult? Function(DeleteCatalogFilterEvent value)? deleteCatalogFilter,
+    TResult? Function(AddFavouriteProductCatalogEvent value)?
+        addFavouriteProduct,
+    TResult? Function(DeleteFavouriteProductCatalogEvent value)?
+        deleteFavouriteProduct,
+    TResult? Function(PaginationProductCatalogEvent value)? paginationProduct,
+    TResult? Function(SearchBrandCatalogEvent value)? searchBrand,
+    TResult? Function(PathMenuCatalogEvent value)? pathMenu,
+    TResult? Function(RemovePathMenuCatalogEvent value)? removePathMenu,
+    TResult? Function(PathBrandMenuCatalogEvent value)? pathBrandMenu,
+    TResult? Function(SwitchTypePeopleCatalogEvent value)? switchTypePeople,
+    TResult? Function(GetInfoProductsCatalogEvent value)? getInfoProducts,
+    TResult? Function(UpdateInfoProductsCatalogEvent value)? updateInfoProducts,
+    TResult? Function(GetInfoProductsPushNotificationCatalogEvent value)?
+        getInfoProductsPushNotification,
+    TResult? Function(GetInfoProductCatalogEvent value)? getInfoProduct,
+    TResult? Function(SortProductsCatalogEvent value)? sortProducts,
+    TResult? Function(GoBackProductInfoCategotyCatalogEvent value)?
+        goBackProductInfo,
+    TResult? Function(GoBackCatalogInfoCategotyCatalogEvent value)?
+        goBackCatalogInfo,
+    TResult? Function(ChangeSizeProductCatalogEvent value)? changeSizeProduct,
+    TResult? Function(RemoveSelectFilterCategotyCatalogEvent value)?
+        removeSelectFilterCategory,
+    TResult? Function(RemoveSelectAllFiltersCategotyCatalogEvent value)?
+        removeSelectAllFilters,
+    TResult? Function(AddProductToSoppingCartCatalogEvent value)?
+        addProductToSoppingCart,
+    TResult? Function(CheckProductToSoppingCartCatalogEvent value)?
+        checkProductToSoppingCart,
+    TResult? Function(GetInfoProductSizeCatalogEvent value)? getInfoProductSize,
+    TResult? Function(GetInfoServiceCardCatalogEvent value)? getInfoServiceCard,
+    TResult? Function(CheckOpenGetInfoProductSizeCatalogEvent value)?
+        checkOpenGetInfoProductSize,
+    TResult? Function(CheckButtonTopCatalogEvent value)? checkButtonTop,
+    TResult? Function(UpdateCacheContentCatalogEvent value)? updateCacheContent,
+  }) {
+    return updateCacheContent?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(InitCatalogEvent value)? init,
+    TResult Function(PreloadDataCatalogEvent value)? preloadData,
+    TResult Function(UpdateFavouritesProductsCatalogEvent value)?
+        updateFavouritesProducts,
+    TResult Function(SubCategoryatalogEvent value)? subCategory,
+    TResult Function(BackPathMenuCatalogEvent value)? backPathMenu,
+    TResult Function(SelectFilterCatalogEvent value)? selectFilter,
+    TResult Function(DeleteFilterCatalogEvent value)? deleteFilter,
+    TResult Function(DeleteCatalogFilterEvent value)? deleteCatalogFilter,
+    TResult Function(AddFavouriteProductCatalogEvent value)?
+        addFavouriteProduct,
+    TResult Function(DeleteFavouriteProductCatalogEvent value)?
+        deleteFavouriteProduct,
+    TResult Function(PaginationProductCatalogEvent value)? paginationProduct,
+    TResult Function(SearchBrandCatalogEvent value)? searchBrand,
+    TResult Function(PathMenuCatalogEvent value)? pathMenu,
+    TResult Function(RemovePathMenuCatalogEvent value)? removePathMenu,
+    TResult Function(PathBrandMenuCatalogEvent value)? pathBrandMenu,
+    TResult Function(SwitchTypePeopleCatalogEvent value)? switchTypePeople,
+    TResult Function(GetInfoProductsCatalogEvent value)? getInfoProducts,
+    TResult Function(UpdateInfoProductsCatalogEvent value)? updateInfoProducts,
+    TResult Function(GetInfoProductsPushNotificationCatalogEvent value)?
+        getInfoProductsPushNotification,
+    TResult Function(GetInfoProductCatalogEvent value)? getInfoProduct,
+    TResult Function(SortProductsCatalogEvent value)? sortProducts,
+    TResult Function(GoBackProductInfoCategotyCatalogEvent value)?
+        goBackProductInfo,
+    TResult Function(GoBackCatalogInfoCategotyCatalogEvent value)?
+        goBackCatalogInfo,
+    TResult Function(ChangeSizeProductCatalogEvent value)? changeSizeProduct,
+    TResult Function(RemoveSelectFilterCategotyCatalogEvent value)?
+        removeSelectFilterCategory,
+    TResult Function(RemoveSelectAllFiltersCategotyCatalogEvent value)?
+        removeSelectAllFilters,
+    TResult Function(AddProductToSoppingCartCatalogEvent value)?
+        addProductToSoppingCart,
+    TResult Function(CheckProductToSoppingCartCatalogEvent value)?
+        checkProductToSoppingCart,
+    TResult Function(GetInfoProductSizeCatalogEvent value)? getInfoProductSize,
+    TResult Function(GetInfoServiceCardCatalogEvent value)? getInfoServiceCard,
+    TResult Function(CheckOpenGetInfoProductSizeCatalogEvent value)?
+        checkOpenGetInfoProductSize,
+    TResult Function(CheckButtonTopCatalogEvent value)? checkButtonTop,
+    TResult Function(UpdateCacheContentCatalogEvent value)? updateCacheContent,
+    required TResult orElse(),
+  }) {
+    if (updateCacheContent != null) {
+      return updateCacheContent(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class UpdateCacheContentCatalogEvent implements CatalogEvent {
+  const factory UpdateCacheContentCatalogEvent({required final String screen}) =
+      _$UpdateCacheContentCatalogEventImpl;
+
+  String get screen;
+
+  /// Create a copy of CatalogEvent
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  _$$UpdateCacheContentCatalogEventImplCopyWith<
+          _$UpdateCacheContentCatalogEventImpl>
       get copyWith => throw _privateConstructorUsedError;
 }
 
@@ -15231,7 +15923,7 @@ mixin _$CatalogState {
             Map<int, List<FilterItemDataModel>> selectFilter,
             List<Map<int, FilterItemDataModel>> allSelectFilter,
             List<MenuItemDataModel> pathMenu,
-            List<MainCategoryModel> category,
+            List<ContentCacheInfoItemDataModel> category,
             CatalogProductsRequest request,
             int selectedGenderIndex,
             bool isAuth,
@@ -15247,6 +15939,8 @@ mixin _$CatalogState {
             bool isButtonTop,
             bool isPromotionsForPurchases,
             bool isSaleSectionVisible,
+            bool isLoadImage,
+            ContentCacheInfoDataModel? contentCacheInfo,
             int? indexProduct,
             ProductDataModel? favouriteProduct,
             PushNotificationMessageDataModel? notificationMessage,
@@ -15313,7 +16007,7 @@ mixin _$CatalogState {
             Map<int, List<FilterItemDataModel>> selectFilter,
             List<Map<int, FilterItemDataModel>> allSelectFilter,
             List<MenuItemDataModel> pathMenu,
-            List<MainCategoryModel> category,
+            List<ContentCacheInfoItemDataModel> category,
             CatalogProductsRequest request,
             int selectedGenderIndex,
             bool isAuth,
@@ -15329,6 +16023,8 @@ mixin _$CatalogState {
             bool isButtonTop,
             bool isPromotionsForPurchases,
             bool isSaleSectionVisible,
+            bool isLoadImage,
+            ContentCacheInfoDataModel? contentCacheInfo,
             int? indexProduct,
             ProductDataModel? favouriteProduct,
             PushNotificationMessageDataModel? notificationMessage,
@@ -15395,7 +16091,7 @@ mixin _$CatalogState {
             Map<int, List<FilterItemDataModel>> selectFilter,
             List<Map<int, FilterItemDataModel>> allSelectFilter,
             List<MenuItemDataModel> pathMenu,
-            List<MainCategoryModel> category,
+            List<ContentCacheInfoItemDataModel> category,
             CatalogProductsRequest request,
             int selectedGenderIndex,
             bool isAuth,
@@ -15411,6 +16107,8 @@ mixin _$CatalogState {
             bool isButtonTop,
             bool isPromotionsForPurchases,
             bool isSaleSectionVisible,
+            bool isLoadImage,
+            ContentCacheInfoDataModel? contentCacheInfo,
             int? indexProduct,
             ProductDataModel? favouriteProduct,
             PushNotificationMessageDataModel? notificationMessage,
@@ -15586,7 +16284,7 @@ class _$InitCatalogStateImpl implements InitCatalogState {
             Map<int, List<FilterItemDataModel>> selectFilter,
             List<Map<int, FilterItemDataModel>> allSelectFilter,
             List<MenuItemDataModel> pathMenu,
-            List<MainCategoryModel> category,
+            List<ContentCacheInfoItemDataModel> category,
             CatalogProductsRequest request,
             int selectedGenderIndex,
             bool isAuth,
@@ -15602,6 +16300,8 @@ class _$InitCatalogStateImpl implements InitCatalogState {
             bool isButtonTop,
             bool isPromotionsForPurchases,
             bool isSaleSectionVisible,
+            bool isLoadImage,
+            ContentCacheInfoDataModel? contentCacheInfo,
             int? indexProduct,
             ProductDataModel? favouriteProduct,
             PushNotificationMessageDataModel? notificationMessage,
@@ -15671,7 +16371,7 @@ class _$InitCatalogStateImpl implements InitCatalogState {
             Map<int, List<FilterItemDataModel>> selectFilter,
             List<Map<int, FilterItemDataModel>> allSelectFilter,
             List<MenuItemDataModel> pathMenu,
-            List<MainCategoryModel> category,
+            List<ContentCacheInfoItemDataModel> category,
             CatalogProductsRequest request,
             int selectedGenderIndex,
             bool isAuth,
@@ -15687,6 +16387,8 @@ class _$InitCatalogStateImpl implements InitCatalogState {
             bool isButtonTop,
             bool isPromotionsForPurchases,
             bool isSaleSectionVisible,
+            bool isLoadImage,
+            ContentCacheInfoDataModel? contentCacheInfo,
             int? indexProduct,
             ProductDataModel? favouriteProduct,
             PushNotificationMessageDataModel? notificationMessage,
@@ -15756,7 +16458,7 @@ class _$InitCatalogStateImpl implements InitCatalogState {
             Map<int, List<FilterItemDataModel>> selectFilter,
             List<Map<int, FilterItemDataModel>> allSelectFilter,
             List<MenuItemDataModel> pathMenu,
-            List<MainCategoryModel> category,
+            List<ContentCacheInfoItemDataModel> category,
             CatalogProductsRequest request,
             int selectedGenderIndex,
             bool isAuth,
@@ -15772,6 +16474,8 @@ class _$InitCatalogStateImpl implements InitCatalogState {
             bool isButtonTop,
             bool isPromotionsForPurchases,
             bool isSaleSectionVisible,
+            bool isLoadImage,
+            ContentCacheInfoDataModel? contentCacheInfo,
             int? indexProduct,
             ProductDataModel? favouriteProduct,
             PushNotificationMessageDataModel? notificationMessage,
@@ -15946,7 +16650,7 @@ class _$UploadCatalogStateImpl implements UploadCatalogState {
             Map<int, List<FilterItemDataModel>> selectFilter,
             List<Map<int, FilterItemDataModel>> allSelectFilter,
             List<MenuItemDataModel> pathMenu,
-            List<MainCategoryModel> category,
+            List<ContentCacheInfoItemDataModel> category,
             CatalogProductsRequest request,
             int selectedGenderIndex,
             bool isAuth,
@@ -15962,6 +16666,8 @@ class _$UploadCatalogStateImpl implements UploadCatalogState {
             bool isButtonTop,
             bool isPromotionsForPurchases,
             bool isSaleSectionVisible,
+            bool isLoadImage,
+            ContentCacheInfoDataModel? contentCacheInfo,
             int? indexProduct,
             ProductDataModel? favouriteProduct,
             PushNotificationMessageDataModel? notificationMessage,
@@ -16031,7 +16737,7 @@ class _$UploadCatalogStateImpl implements UploadCatalogState {
             Map<int, List<FilterItemDataModel>> selectFilter,
             List<Map<int, FilterItemDataModel>> allSelectFilter,
             List<MenuItemDataModel> pathMenu,
-            List<MainCategoryModel> category,
+            List<ContentCacheInfoItemDataModel> category,
             CatalogProductsRequest request,
             int selectedGenderIndex,
             bool isAuth,
@@ -16047,6 +16753,8 @@ class _$UploadCatalogStateImpl implements UploadCatalogState {
             bool isButtonTop,
             bool isPromotionsForPurchases,
             bool isSaleSectionVisible,
+            bool isLoadImage,
+            ContentCacheInfoDataModel? contentCacheInfo,
             int? indexProduct,
             ProductDataModel? favouriteProduct,
             PushNotificationMessageDataModel? notificationMessage,
@@ -16116,7 +16824,7 @@ class _$UploadCatalogStateImpl implements UploadCatalogState {
             Map<int, List<FilterItemDataModel>> selectFilter,
             List<Map<int, FilterItemDataModel>> allSelectFilter,
             List<MenuItemDataModel> pathMenu,
-            List<MainCategoryModel> category,
+            List<ContentCacheInfoItemDataModel> category,
             CatalogProductsRequest request,
             int selectedGenderIndex,
             bool isAuth,
@@ -16132,6 +16840,8 @@ class _$UploadCatalogStateImpl implements UploadCatalogState {
             bool isButtonTop,
             bool isPromotionsForPurchases,
             bool isSaleSectionVisible,
+            bool isLoadImage,
+            ContentCacheInfoDataModel? contentCacheInfo,
             int? indexProduct,
             ProductDataModel? favouriteProduct,
             PushNotificationMessageDataModel? notificationMessage,
@@ -16307,7 +17017,7 @@ class _$LoadingCatalogStateImpl implements LoadingCatalogState {
             Map<int, List<FilterItemDataModel>> selectFilter,
             List<Map<int, FilterItemDataModel>> allSelectFilter,
             List<MenuItemDataModel> pathMenu,
-            List<MainCategoryModel> category,
+            List<ContentCacheInfoItemDataModel> category,
             CatalogProductsRequest request,
             int selectedGenderIndex,
             bool isAuth,
@@ -16323,6 +17033,8 @@ class _$LoadingCatalogStateImpl implements LoadingCatalogState {
             bool isButtonTop,
             bool isPromotionsForPurchases,
             bool isSaleSectionVisible,
+            bool isLoadImage,
+            ContentCacheInfoDataModel? contentCacheInfo,
             int? indexProduct,
             ProductDataModel? favouriteProduct,
             PushNotificationMessageDataModel? notificationMessage,
@@ -16392,7 +17104,7 @@ class _$LoadingCatalogStateImpl implements LoadingCatalogState {
             Map<int, List<FilterItemDataModel>> selectFilter,
             List<Map<int, FilterItemDataModel>> allSelectFilter,
             List<MenuItemDataModel> pathMenu,
-            List<MainCategoryModel> category,
+            List<ContentCacheInfoItemDataModel> category,
             CatalogProductsRequest request,
             int selectedGenderIndex,
             bool isAuth,
@@ -16408,6 +17120,8 @@ class _$LoadingCatalogStateImpl implements LoadingCatalogState {
             bool isButtonTop,
             bool isPromotionsForPurchases,
             bool isSaleSectionVisible,
+            bool isLoadImage,
+            ContentCacheInfoDataModel? contentCacheInfo,
             int? indexProduct,
             ProductDataModel? favouriteProduct,
             PushNotificationMessageDataModel? notificationMessage,
@@ -16477,7 +17191,7 @@ class _$LoadingCatalogStateImpl implements LoadingCatalogState {
             Map<int, List<FilterItemDataModel>> selectFilter,
             List<Map<int, FilterItemDataModel>> allSelectFilter,
             List<MenuItemDataModel> pathMenu,
-            List<MainCategoryModel> category,
+            List<ContentCacheInfoItemDataModel> category,
             CatalogProductsRequest request,
             int selectedGenderIndex,
             bool isAuth,
@@ -16493,6 +17207,8 @@ class _$LoadingCatalogStateImpl implements LoadingCatalogState {
             bool isButtonTop,
             bool isPromotionsForPurchases,
             bool isSaleSectionVisible,
+            bool isLoadImage,
+            ContentCacheInfoDataModel? contentCacheInfo,
             int? indexProduct,
             ProductDataModel? favouriteProduct,
             PushNotificationMessageDataModel? notificationMessage,
@@ -16672,7 +17388,7 @@ class _$LoadingErrorButtonCatalogStateImpl
             Map<int, List<FilterItemDataModel>> selectFilter,
             List<Map<int, FilterItemDataModel>> allSelectFilter,
             List<MenuItemDataModel> pathMenu,
-            List<MainCategoryModel> category,
+            List<ContentCacheInfoItemDataModel> category,
             CatalogProductsRequest request,
             int selectedGenderIndex,
             bool isAuth,
@@ -16688,6 +17404,8 @@ class _$LoadingErrorButtonCatalogStateImpl
             bool isButtonTop,
             bool isPromotionsForPurchases,
             bool isSaleSectionVisible,
+            bool isLoadImage,
+            ContentCacheInfoDataModel? contentCacheInfo,
             int? indexProduct,
             ProductDataModel? favouriteProduct,
             PushNotificationMessageDataModel? notificationMessage,
@@ -16757,7 +17475,7 @@ class _$LoadingErrorButtonCatalogStateImpl
             Map<int, List<FilterItemDataModel>> selectFilter,
             List<Map<int, FilterItemDataModel>> allSelectFilter,
             List<MenuItemDataModel> pathMenu,
-            List<MainCategoryModel> category,
+            List<ContentCacheInfoItemDataModel> category,
             CatalogProductsRequest request,
             int selectedGenderIndex,
             bool isAuth,
@@ -16773,6 +17491,8 @@ class _$LoadingErrorButtonCatalogStateImpl
             bool isButtonTop,
             bool isPromotionsForPurchases,
             bool isSaleSectionVisible,
+            bool isLoadImage,
+            ContentCacheInfoDataModel? contentCacheInfo,
             int? indexProduct,
             ProductDataModel? favouriteProduct,
             PushNotificationMessageDataModel? notificationMessage,
@@ -16842,7 +17562,7 @@ class _$LoadingErrorButtonCatalogStateImpl
             Map<int, List<FilterItemDataModel>> selectFilter,
             List<Map<int, FilterItemDataModel>> allSelectFilter,
             List<MenuItemDataModel> pathMenu,
-            List<MainCategoryModel> category,
+            List<ContentCacheInfoItemDataModel> category,
             CatalogProductsRequest request,
             int selectedGenderIndex,
             bool isAuth,
@@ -16858,6 +17578,8 @@ class _$LoadingErrorButtonCatalogStateImpl
             bool isButtonTop,
             bool isPromotionsForPurchases,
             bool isSaleSectionVisible,
+            bool isLoadImage,
+            ContentCacheInfoDataModel? contentCacheInfo,
             int? indexProduct,
             ProductDataModel? favouriteProduct,
             PushNotificationMessageDataModel? notificationMessage,
@@ -17036,7 +17758,7 @@ class _$OpenSoppingCartCatalogStateImpl implements OpenSoppingCartCatalogState {
             Map<int, List<FilterItemDataModel>> selectFilter,
             List<Map<int, FilterItemDataModel>> allSelectFilter,
             List<MenuItemDataModel> pathMenu,
-            List<MainCategoryModel> category,
+            List<ContentCacheInfoItemDataModel> category,
             CatalogProductsRequest request,
             int selectedGenderIndex,
             bool isAuth,
@@ -17052,6 +17774,8 @@ class _$OpenSoppingCartCatalogStateImpl implements OpenSoppingCartCatalogState {
             bool isButtonTop,
             bool isPromotionsForPurchases,
             bool isSaleSectionVisible,
+            bool isLoadImage,
+            ContentCacheInfoDataModel? contentCacheInfo,
             int? indexProduct,
             ProductDataModel? favouriteProduct,
             PushNotificationMessageDataModel? notificationMessage,
@@ -17121,7 +17845,7 @@ class _$OpenSoppingCartCatalogStateImpl implements OpenSoppingCartCatalogState {
             Map<int, List<FilterItemDataModel>> selectFilter,
             List<Map<int, FilterItemDataModel>> allSelectFilter,
             List<MenuItemDataModel> pathMenu,
-            List<MainCategoryModel> category,
+            List<ContentCacheInfoItemDataModel> category,
             CatalogProductsRequest request,
             int selectedGenderIndex,
             bool isAuth,
@@ -17137,6 +17861,8 @@ class _$OpenSoppingCartCatalogStateImpl implements OpenSoppingCartCatalogState {
             bool isButtonTop,
             bool isPromotionsForPurchases,
             bool isSaleSectionVisible,
+            bool isLoadImage,
+            ContentCacheInfoDataModel? contentCacheInfo,
             int? indexProduct,
             ProductDataModel? favouriteProduct,
             PushNotificationMessageDataModel? notificationMessage,
@@ -17206,7 +17932,7 @@ class _$OpenSoppingCartCatalogStateImpl implements OpenSoppingCartCatalogState {
             Map<int, List<FilterItemDataModel>> selectFilter,
             List<Map<int, FilterItemDataModel>> allSelectFilter,
             List<MenuItemDataModel> pathMenu,
-            List<MainCategoryModel> category,
+            List<ContentCacheInfoItemDataModel> category,
             CatalogProductsRequest request,
             int selectedGenderIndex,
             bool isAuth,
@@ -17222,6 +17948,8 @@ class _$OpenSoppingCartCatalogStateImpl implements OpenSoppingCartCatalogState {
             bool isButtonTop,
             bool isPromotionsForPurchases,
             bool isSaleSectionVisible,
+            bool isLoadImage,
+            ContentCacheInfoDataModel? contentCacheInfo,
             int? indexProduct,
             ProductDataModel? favouriteProduct,
             PushNotificationMessageDataModel? notificationMessage,
@@ -17520,7 +18248,7 @@ class _$GetSizeProductCatalogStateImpl implements GetSizeProductCatalogState {
             Map<int, List<FilterItemDataModel>> selectFilter,
             List<Map<int, FilterItemDataModel>> allSelectFilter,
             List<MenuItemDataModel> pathMenu,
-            List<MainCategoryModel> category,
+            List<ContentCacheInfoItemDataModel> category,
             CatalogProductsRequest request,
             int selectedGenderIndex,
             bool isAuth,
@@ -17536,6 +18264,8 @@ class _$GetSizeProductCatalogStateImpl implements GetSizeProductCatalogState {
             bool isButtonTop,
             bool isPromotionsForPurchases,
             bool isSaleSectionVisible,
+            bool isLoadImage,
+            ContentCacheInfoDataModel? contentCacheInfo,
             int? indexProduct,
             ProductDataModel? favouriteProduct,
             PushNotificationMessageDataModel? notificationMessage,
@@ -17606,7 +18336,7 @@ class _$GetSizeProductCatalogStateImpl implements GetSizeProductCatalogState {
             Map<int, List<FilterItemDataModel>> selectFilter,
             List<Map<int, FilterItemDataModel>> allSelectFilter,
             List<MenuItemDataModel> pathMenu,
-            List<MainCategoryModel> category,
+            List<ContentCacheInfoItemDataModel> category,
             CatalogProductsRequest request,
             int selectedGenderIndex,
             bool isAuth,
@@ -17622,6 +18352,8 @@ class _$GetSizeProductCatalogStateImpl implements GetSizeProductCatalogState {
             bool isButtonTop,
             bool isPromotionsForPurchases,
             bool isSaleSectionVisible,
+            bool isLoadImage,
+            ContentCacheInfoDataModel? contentCacheInfo,
             int? indexProduct,
             ProductDataModel? favouriteProduct,
             PushNotificationMessageDataModel? notificationMessage,
@@ -17692,7 +18424,7 @@ class _$GetSizeProductCatalogStateImpl implements GetSizeProductCatalogState {
             Map<int, List<FilterItemDataModel>> selectFilter,
             List<Map<int, FilterItemDataModel>> allSelectFilter,
             List<MenuItemDataModel> pathMenu,
-            List<MainCategoryModel> category,
+            List<ContentCacheInfoItemDataModel> category,
             CatalogProductsRequest request,
             int selectedGenderIndex,
             bool isAuth,
@@ -17708,6 +18440,8 @@ class _$GetSizeProductCatalogStateImpl implements GetSizeProductCatalogState {
             bool isButtonTop,
             bool isPromotionsForPurchases,
             bool isSaleSectionVisible,
+            bool isLoadImage,
+            ContentCacheInfoDataModel? contentCacheInfo,
             int? indexProduct,
             ProductDataModel? favouriteProduct,
             PushNotificationMessageDataModel? notificationMessage,
@@ -17988,7 +18722,7 @@ class _$AddProductCatalogStateImpl implements AddProductCatalogState {
             Map<int, List<FilterItemDataModel>> selectFilter,
             List<Map<int, FilterItemDataModel>> allSelectFilter,
             List<MenuItemDataModel> pathMenu,
-            List<MainCategoryModel> category,
+            List<ContentCacheInfoItemDataModel> category,
             CatalogProductsRequest request,
             int selectedGenderIndex,
             bool isAuth,
@@ -18004,6 +18738,8 @@ class _$AddProductCatalogStateImpl implements AddProductCatalogState {
             bool isButtonTop,
             bool isPromotionsForPurchases,
             bool isSaleSectionVisible,
+            bool isLoadImage,
+            ContentCacheInfoDataModel? contentCacheInfo,
             int? indexProduct,
             ProductDataModel? favouriteProduct,
             PushNotificationMessageDataModel? notificationMessage,
@@ -18074,7 +18810,7 @@ class _$AddProductCatalogStateImpl implements AddProductCatalogState {
             Map<int, List<FilterItemDataModel>> selectFilter,
             List<Map<int, FilterItemDataModel>> allSelectFilter,
             List<MenuItemDataModel> pathMenu,
-            List<MainCategoryModel> category,
+            List<ContentCacheInfoItemDataModel> category,
             CatalogProductsRequest request,
             int selectedGenderIndex,
             bool isAuth,
@@ -18090,6 +18826,8 @@ class _$AddProductCatalogStateImpl implements AddProductCatalogState {
             bool isButtonTop,
             bool isPromotionsForPurchases,
             bool isSaleSectionVisible,
+            bool isLoadImage,
+            ContentCacheInfoDataModel? contentCacheInfo,
             int? indexProduct,
             ProductDataModel? favouriteProduct,
             PushNotificationMessageDataModel? notificationMessage,
@@ -18160,7 +18898,7 @@ class _$AddProductCatalogStateImpl implements AddProductCatalogState {
             Map<int, List<FilterItemDataModel>> selectFilter,
             List<Map<int, FilterItemDataModel>> allSelectFilter,
             List<MenuItemDataModel> pathMenu,
-            List<MainCategoryModel> category,
+            List<ContentCacheInfoItemDataModel> category,
             CatalogProductsRequest request,
             int selectedGenderIndex,
             bool isAuth,
@@ -18176,6 +18914,8 @@ class _$AddProductCatalogStateImpl implements AddProductCatalogState {
             bool isButtonTop,
             bool isPromotionsForPurchases,
             bool isSaleSectionVisible,
+            bool isLoadImage,
+            ContentCacheInfoDataModel? contentCacheInfo,
             int? indexProduct,
             ProductDataModel? favouriteProduct,
             PushNotificationMessageDataModel? notificationMessage,
@@ -18396,7 +19136,7 @@ class _$ErrorCatalogStateImpl implements ErrorCatalogState {
             Map<int, List<FilterItemDataModel>> selectFilter,
             List<Map<int, FilterItemDataModel>> allSelectFilter,
             List<MenuItemDataModel> pathMenu,
-            List<MainCategoryModel> category,
+            List<ContentCacheInfoItemDataModel> category,
             CatalogProductsRequest request,
             int selectedGenderIndex,
             bool isAuth,
@@ -18412,6 +19152,8 @@ class _$ErrorCatalogStateImpl implements ErrorCatalogState {
             bool isButtonTop,
             bool isPromotionsForPurchases,
             bool isSaleSectionVisible,
+            bool isLoadImage,
+            ContentCacheInfoDataModel? contentCacheInfo,
             int? indexProduct,
             ProductDataModel? favouriteProduct,
             PushNotificationMessageDataModel? notificationMessage,
@@ -18481,7 +19223,7 @@ class _$ErrorCatalogStateImpl implements ErrorCatalogState {
             Map<int, List<FilterItemDataModel>> selectFilter,
             List<Map<int, FilterItemDataModel>> allSelectFilter,
             List<MenuItemDataModel> pathMenu,
-            List<MainCategoryModel> category,
+            List<ContentCacheInfoItemDataModel> category,
             CatalogProductsRequest request,
             int selectedGenderIndex,
             bool isAuth,
@@ -18497,6 +19239,8 @@ class _$ErrorCatalogStateImpl implements ErrorCatalogState {
             bool isButtonTop,
             bool isPromotionsForPurchases,
             bool isSaleSectionVisible,
+            bool isLoadImage,
+            ContentCacheInfoDataModel? contentCacheInfo,
             int? indexProduct,
             ProductDataModel? favouriteProduct,
             PushNotificationMessageDataModel? notificationMessage,
@@ -18566,7 +19310,7 @@ class _$ErrorCatalogStateImpl implements ErrorCatalogState {
             Map<int, List<FilterItemDataModel>> selectFilter,
             List<Map<int, FilterItemDataModel>> allSelectFilter,
             List<MenuItemDataModel> pathMenu,
-            List<MainCategoryModel> category,
+            List<ContentCacheInfoItemDataModel> category,
             CatalogProductsRequest request,
             int selectedGenderIndex,
             bool isAuth,
@@ -18582,6 +19326,8 @@ class _$ErrorCatalogStateImpl implements ErrorCatalogState {
             bool isButtonTop,
             bool isPromotionsForPurchases,
             bool isSaleSectionVisible,
+            bool isLoadImage,
+            ContentCacheInfoDataModel? contentCacheInfo,
             int? indexProduct,
             ProductDataModel? favouriteProduct,
             PushNotificationMessageDataModel? notificationMessage,
@@ -18711,7 +19457,7 @@ abstract class _$$PreloadDataCompletedCatalogStateImplCopyWith<$Res> {
       Map<int, List<FilterItemDataModel>> selectFilter,
       List<Map<int, FilterItemDataModel>> allSelectFilter,
       List<MenuItemDataModel> pathMenu,
-      List<MainCategoryModel> category,
+      List<ContentCacheInfoItemDataModel> category,
       CatalogProductsRequest request,
       int selectedGenderIndex,
       bool isAuth,
@@ -18727,6 +19473,8 @@ abstract class _$$PreloadDataCompletedCatalogStateImplCopyWith<$Res> {
       bool isButtonTop,
       bool isPromotionsForPurchases,
       bool isSaleSectionVisible,
+      bool isLoadImage,
+      ContentCacheInfoDataModel? contentCacheInfo,
       int? indexProduct,
       ProductDataModel? favouriteProduct,
       PushNotificationMessageDataModel? notificationMessage,
@@ -18751,6 +19499,7 @@ abstract class _$$PreloadDataCompletedCatalogStateImplCopyWith<$Res> {
       String? title});
 
   $CatalogProductsRequestCopyWith<$Res> get request;
+  $ContentCacheInfoDataModelCopyWith<$Res>? get contentCacheInfo;
   $ProductDataModelCopyWith<$Res>? get favouriteProduct;
   $SkuProductDataModelCopyWith<$Res>? get selectSizeProduct;
   $FilterItemDataModelCopyWith<$Res>? get itemFileter;
@@ -18808,6 +19557,8 @@ class __$$PreloadDataCompletedCatalogStateImplCopyWithImpl<$Res>
     Object? isButtonTop = null,
     Object? isPromotionsForPurchases = null,
     Object? isSaleSectionVisible = null,
+    Object? isLoadImage = null,
+    Object? contentCacheInfo = freezed,
     Object? indexProduct = freezed,
     Object? favouriteProduct = freezed,
     Object? notificationMessage = freezed,
@@ -18907,7 +19658,7 @@ class __$$PreloadDataCompletedCatalogStateImplCopyWithImpl<$Res>
       category: null == category
           ? _value._category
           : category // ignore: cast_nullable_to_non_nullable
-              as List<MainCategoryModel>,
+              as List<ContentCacheInfoItemDataModel>,
       request: null == request
           ? _value.request
           : request // ignore: cast_nullable_to_non_nullable
@@ -18968,6 +19719,14 @@ class __$$PreloadDataCompletedCatalogStateImplCopyWithImpl<$Res>
           ? _value.isSaleSectionVisible
           : isSaleSectionVisible // ignore: cast_nullable_to_non_nullable
               as bool,
+      isLoadImage: null == isLoadImage
+          ? _value.isLoadImage
+          : isLoadImage // ignore: cast_nullable_to_non_nullable
+              as bool,
+      contentCacheInfo: freezed == contentCacheInfo
+          ? _value.contentCacheInfo
+          : contentCacheInfo // ignore: cast_nullable_to_non_nullable
+              as ContentCacheInfoDataModel?,
       indexProduct: freezed == indexProduct
           ? _value.indexProduct
           : indexProduct // ignore: cast_nullable_to_non_nullable
@@ -19066,6 +19825,21 @@ class __$$PreloadDataCompletedCatalogStateImplCopyWithImpl<$Res>
   $CatalogProductsRequestCopyWith<$Res> get request {
     return $CatalogProductsRequestCopyWith<$Res>(_value.request, (value) {
       return _then(_value.copyWith(request: value));
+    });
+  }
+
+  /// Create a copy of CatalogState
+  /// with the given fields replaced by the non-null parameter values.
+  @override
+  @pragma('vm:prefer-inline')
+  $ContentCacheInfoDataModelCopyWith<$Res>? get contentCacheInfo {
+    if (_value.contentCacheInfo == null) {
+      return null;
+    }
+
+    return $ContentCacheInfoDataModelCopyWith<$Res>(_value.contentCacheInfo!,
+        (value) {
+      return _then(_value.copyWith(contentCacheInfo: value));
     });
   }
 
@@ -19179,7 +19953,7 @@ class _$PreloadDataCompletedCatalogStateImpl
       required final Map<int, List<FilterItemDataModel>> selectFilter,
       required final List<Map<int, FilterItemDataModel>> allSelectFilter,
       required final List<MenuItemDataModel> pathMenu,
-      required final List<MainCategoryModel> category,
+      required final List<ContentCacheInfoItemDataModel> category,
       required this.request,
       required this.selectedGenderIndex,
       required this.isAuth,
@@ -19195,6 +19969,8 @@ class _$PreloadDataCompletedCatalogStateImpl
       required this.isButtonTop,
       required this.isPromotionsForPurchases,
       required this.isSaleSectionVisible,
+      required this.isLoadImage,
+      this.contentCacheInfo,
       this.indexProduct,
       this.favouriteProduct,
       this.notificationMessage,
@@ -19389,9 +20165,9 @@ class _$PreloadDataCompletedCatalogStateImpl
     return EqualUnmodifiableListView(_pathMenu);
   }
 
-  final List<MainCategoryModel> _category;
+  final List<ContentCacheInfoItemDataModel> _category;
   @override
-  List<MainCategoryModel> get category {
+  List<ContentCacheInfoItemDataModel> get category {
     if (_category is EqualUnmodifiableListView) return _category;
     // ignore: implicit_dynamic_type
     return EqualUnmodifiableListView(_category);
@@ -19433,6 +20209,10 @@ class _$PreloadDataCompletedCatalogStateImpl
   final bool isPromotionsForPurchases;
   @override
   final bool isSaleSectionVisible;
+  @override
+  final bool isLoadImage;
+  @override
+  final ContentCacheInfoDataModel? contentCacheInfo;
   @override
   final int? indexProduct;
   @override
@@ -19480,7 +20260,7 @@ class _$PreloadDataCompletedCatalogStateImpl
 
   @override
   String toString() {
-    return 'CatalogState.preloadDataCompleted(allBrands: $allBrands, defaultBrands: $defaultBrands, brands: $brands, menu: $menu, defaultProducts: $defaultProducts, products: $products, listProdcutsStyle: $listProdcutsStyle, listProdcutsAlso: $listProdcutsAlso, listProdcutsBrand: $listProdcutsBrand, listProdcutsComplect: $listProdcutsComplect, favouritesProducts: $favouritesProducts, favouritesProductsId: $favouritesProductsId, filter: $filter, listProductsCode: $listProductsCode, listCatalogPath: $listCatalogPath, selectFilter: $selectFilter, allSelectFilter: $allSelectFilter, pathMenu: $pathMenu, category: $category, request: $request, selectedGenderIndex: $selectedGenderIndex, isAuth: $isAuth, offset: $offset, userDiscount: $userDiscount, nowVersionApp: $nowVersionApp, updateVersionApp: $updateVersionApp, isUpdateVersionApp: $isUpdateVersionApp, isNotification: $isNotification, listSize: $listSize, isLoadGetSizeProduct: $isLoadGetSizeProduct, isOpenGetSizeProduct: $isOpenGetSizeProduct, isButtonTop: $isButtonTop, isPromotionsForPurchases: $isPromotionsForPurchases, isSaleSectionVisible: $isSaleSectionVisible, indexProduct: $indexProduct, favouriteProduct: $favouriteProduct, notificationMessage: $notificationMessage, selectSizeProduct: $selectSizeProduct, errorMessage: $errorMessage, typeError: $typeError, codeProduct: $codeProduct, sortInfo: $sortInfo, isShoppingCart: $isShoppingCart, isShoppingCartDetailsProduct: $isShoppingCartDetailsProduct, isError: $isError, isShopGetSizeProduct: $isShopGetSizeProduct, isLoadErrorButton: $isLoadErrorButton, keyFilterCatalog: $keyFilterCatalog, indexFileter: $indexFileter, indexItemFileter: $indexItemFileter, indexFilterCategory: $indexFilterCategory, itemFileter: $itemFileter, detailsProduct: $detailsProduct, catalogInfo: $catalogInfo, itemMenu: $itemMenu, title: $title)';
+    return 'CatalogState.preloadDataCompleted(allBrands: $allBrands, defaultBrands: $defaultBrands, brands: $brands, menu: $menu, defaultProducts: $defaultProducts, products: $products, listProdcutsStyle: $listProdcutsStyle, listProdcutsAlso: $listProdcutsAlso, listProdcutsBrand: $listProdcutsBrand, listProdcutsComplect: $listProdcutsComplect, favouritesProducts: $favouritesProducts, favouritesProductsId: $favouritesProductsId, filter: $filter, listProductsCode: $listProductsCode, listCatalogPath: $listCatalogPath, selectFilter: $selectFilter, allSelectFilter: $allSelectFilter, pathMenu: $pathMenu, category: $category, request: $request, selectedGenderIndex: $selectedGenderIndex, isAuth: $isAuth, offset: $offset, userDiscount: $userDiscount, nowVersionApp: $nowVersionApp, updateVersionApp: $updateVersionApp, isUpdateVersionApp: $isUpdateVersionApp, isNotification: $isNotification, listSize: $listSize, isLoadGetSizeProduct: $isLoadGetSizeProduct, isOpenGetSizeProduct: $isOpenGetSizeProduct, isButtonTop: $isButtonTop, isPromotionsForPurchases: $isPromotionsForPurchases, isSaleSectionVisible: $isSaleSectionVisible, isLoadImage: $isLoadImage, contentCacheInfo: $contentCacheInfo, indexProduct: $indexProduct, favouriteProduct: $favouriteProduct, notificationMessage: $notificationMessage, selectSizeProduct: $selectSizeProduct, errorMessage: $errorMessage, typeError: $typeError, codeProduct: $codeProduct, sortInfo: $sortInfo, isShoppingCart: $isShoppingCart, isShoppingCartDetailsProduct: $isShoppingCartDetailsProduct, isError: $isError, isShopGetSizeProduct: $isShopGetSizeProduct, isLoadErrorButton: $isLoadErrorButton, keyFilterCatalog: $keyFilterCatalog, indexFileter: $indexFileter, indexItemFileter: $indexItemFileter, indexFilterCategory: $indexFilterCategory, itemFileter: $itemFileter, detailsProduct: $detailsProduct, catalogInfo: $catalogInfo, itemMenu: $itemMenu, title: $title)';
   }
 
   @override
@@ -19546,6 +20326,10 @@ class _$PreloadDataCompletedCatalogStateImpl
                 other.isPromotionsForPurchases == isPromotionsForPurchases) &&
             (identical(other.isSaleSectionVisible, isSaleSectionVisible) ||
                 other.isSaleSectionVisible == isSaleSectionVisible) &&
+            (identical(other.isLoadImage, isLoadImage) ||
+                other.isLoadImage == isLoadImage) &&
+            (identical(other.contentCacheInfo, contentCacheInfo) ||
+                other.contentCacheInfo == contentCacheInfo) &&
             (identical(other.indexProduct, indexProduct) ||
                 other.indexProduct == indexProduct) &&
             (identical(other.favouriteProduct, favouriteProduct) ||
@@ -19576,10 +20360,8 @@ class _$PreloadDataCompletedCatalogStateImpl
                 other.keyFilterCatalog == keyFilterCatalog) &&
             (identical(other.indexFileter, indexFileter) ||
                 other.indexFileter == indexFileter) &&
-            (identical(other.indexItemFileter, indexItemFileter) ||
-                other.indexItemFileter == indexItemFileter) &&
-            (identical(other.indexFilterCategory, indexFilterCategory) ||
-                other.indexFilterCategory == indexFilterCategory) &&
+            (identical(other.indexItemFileter, indexItemFileter) || other.indexItemFileter == indexItemFileter) &&
+            (identical(other.indexFilterCategory, indexFilterCategory) || other.indexFilterCategory == indexFilterCategory) &&
             (identical(other.itemFileter, itemFileter) || other.itemFileter == itemFileter) &&
             (identical(other.detailsProduct, detailsProduct) || other.detailsProduct == detailsProduct) &&
             (identical(other.catalogInfo, catalogInfo) || other.catalogInfo == catalogInfo) &&
@@ -19624,6 +20406,8 @@ class _$PreloadDataCompletedCatalogStateImpl
         isButtonTop,
         isPromotionsForPurchases,
         isSaleSectionVisible,
+        isLoadImage,
+        contentCacheInfo,
         indexProduct,
         favouriteProduct,
         notificationMessage,
@@ -19700,7 +20484,7 @@ class _$PreloadDataCompletedCatalogStateImpl
             Map<int, List<FilterItemDataModel>> selectFilter,
             List<Map<int, FilterItemDataModel>> allSelectFilter,
             List<MenuItemDataModel> pathMenu,
-            List<MainCategoryModel> category,
+            List<ContentCacheInfoItemDataModel> category,
             CatalogProductsRequest request,
             int selectedGenderIndex,
             bool isAuth,
@@ -19716,6 +20500,8 @@ class _$PreloadDataCompletedCatalogStateImpl
             bool isButtonTop,
             bool isPromotionsForPurchases,
             bool isSaleSectionVisible,
+            bool isLoadImage,
+            ContentCacheInfoDataModel? contentCacheInfo,
             int? indexProduct,
             ProductDataModel? favouriteProduct,
             PushNotificationMessageDataModel? notificationMessage,
@@ -19775,6 +20561,8 @@ class _$PreloadDataCompletedCatalogStateImpl
         isButtonTop,
         isPromotionsForPurchases,
         isSaleSectionVisible,
+        isLoadImage,
+        contentCacheInfo,
         indexProduct,
         favouriteProduct,
         notificationMessage,
@@ -19841,7 +20629,7 @@ class _$PreloadDataCompletedCatalogStateImpl
             Map<int, List<FilterItemDataModel>> selectFilter,
             List<Map<int, FilterItemDataModel>> allSelectFilter,
             List<MenuItemDataModel> pathMenu,
-            List<MainCategoryModel> category,
+            List<ContentCacheInfoItemDataModel> category,
             CatalogProductsRequest request,
             int selectedGenderIndex,
             bool isAuth,
@@ -19857,6 +20645,8 @@ class _$PreloadDataCompletedCatalogStateImpl
             bool isButtonTop,
             bool isPromotionsForPurchases,
             bool isSaleSectionVisible,
+            bool isLoadImage,
+            ContentCacheInfoDataModel? contentCacheInfo,
             int? indexProduct,
             ProductDataModel? favouriteProduct,
             PushNotificationMessageDataModel? notificationMessage,
@@ -19916,6 +20706,8 @@ class _$PreloadDataCompletedCatalogStateImpl
         isButtonTop,
         isPromotionsForPurchases,
         isSaleSectionVisible,
+        isLoadImage,
+        contentCacheInfo,
         indexProduct,
         favouriteProduct,
         notificationMessage,
@@ -19982,7 +20774,7 @@ class _$PreloadDataCompletedCatalogStateImpl
             Map<int, List<FilterItemDataModel>> selectFilter,
             List<Map<int, FilterItemDataModel>> allSelectFilter,
             List<MenuItemDataModel> pathMenu,
-            List<MainCategoryModel> category,
+            List<ContentCacheInfoItemDataModel> category,
             CatalogProductsRequest request,
             int selectedGenderIndex,
             bool isAuth,
@@ -19998,6 +20790,8 @@ class _$PreloadDataCompletedCatalogStateImpl
             bool isButtonTop,
             bool isPromotionsForPurchases,
             bool isSaleSectionVisible,
+            bool isLoadImage,
+            ContentCacheInfoDataModel? contentCacheInfo,
             int? indexProduct,
             ProductDataModel? favouriteProduct,
             PushNotificationMessageDataModel? notificationMessage,
@@ -20059,6 +20853,8 @@ class _$PreloadDataCompletedCatalogStateImpl
           isButtonTop,
           isPromotionsForPurchases,
           isSaleSectionVisible,
+          isLoadImage,
+          contentCacheInfo,
           indexProduct,
           favouriteProduct,
           notificationMessage,
@@ -20164,7 +20960,7 @@ abstract class PreloadDataCompletedCatalogState implements CatalogState {
       required final Map<int, List<FilterItemDataModel>> selectFilter,
       required final List<Map<int, FilterItemDataModel>> allSelectFilter,
       required final List<MenuItemDataModel> pathMenu,
-      required final List<MainCategoryModel> category,
+      required final List<ContentCacheInfoItemDataModel> category,
       required final CatalogProductsRequest request,
       required final int selectedGenderIndex,
       required final bool isAuth,
@@ -20180,6 +20976,8 @@ abstract class PreloadDataCompletedCatalogState implements CatalogState {
       required final bool isButtonTop,
       required final bool isPromotionsForPurchases,
       required final bool isSaleSectionVisible,
+      required final bool isLoadImage,
+      final ContentCacheInfoDataModel? contentCacheInfo,
       final int? indexProduct,
       final ProductDataModel? favouriteProduct,
       final PushNotificationMessageDataModel? notificationMessage,
@@ -20221,7 +21019,7 @@ abstract class PreloadDataCompletedCatalogState implements CatalogState {
   Map<int, List<FilterItemDataModel>> get selectFilter;
   List<Map<int, FilterItemDataModel>> get allSelectFilter;
   List<MenuItemDataModel> get pathMenu;
-  List<MainCategoryModel> get category;
+  List<ContentCacheInfoItemDataModel> get category;
   CatalogProductsRequest get request;
   int get selectedGenderIndex;
   bool get isAuth;
@@ -20237,6 +21035,8 @@ abstract class PreloadDataCompletedCatalogState implements CatalogState {
   bool get isButtonTop;
   bool get isPromotionsForPurchases;
   bool get isSaleSectionVisible;
+  bool get isLoadImage;
+  ContentCacheInfoDataModel? get contentCacheInfo;
   int? get indexProduct;
   ProductDataModel? get favouriteProduct;
   PushNotificationMessageDataModel? get notificationMessage;

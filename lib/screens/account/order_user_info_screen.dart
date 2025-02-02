@@ -92,6 +92,19 @@ class _OrderUserInfoScreenState extends State<OrderUserInfoScreen> {
             context.navigateTo(
               SberbankPaymentWebViewRoute(
                 url: value.url,
+                onGoBack: () {
+                  context.read<AccountBloc>().add(
+                        AccountEvent.getInfoPayOrder(
+                          id: widget.orderId,
+                        ),
+                      );
+                  context.navigateTo(
+                    OrderUserInfoRoute(
+                      isPay: true,
+                      orderId: widget.orderId,
+                    ),
+                  );
+                },
               ),
             );
           },
@@ -411,7 +424,8 @@ class _OrderUserInfoScreenState extends State<OrderUserInfoScreen> {
                                                         listItems: const [],
                                                         favouritesProducts:
                                                             initState.favouritesProducts,
-                                                        codeProduct: orderInfo.products[index].id.toString(),
+                                                        codeProduct:
+                                                            orderInfo.products[index].id.toString(),
                                                         product: orderInfo.products[index],
                                                         titleScreen: 'Элемент списка заказа',
                                                       ),

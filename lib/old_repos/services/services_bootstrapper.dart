@@ -89,6 +89,13 @@ Future<void> initServices(GetIt getIt) async {
       ),
     )
     ..registerFactory(
+      () => ContentService(
+        dio,
+        getIt.get<ConverterService>(),
+        getIt.get<SharedPreferencesService>(),
+      ),
+    )
+    ..registerFactory(
       () => ErrorAnalyzerService(
         dio,
         getIt.get<ConverterService>(),

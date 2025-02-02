@@ -2895,12 +2895,14 @@ class SberbankPaymentWebViewRoute
   SberbankPaymentWebViewRoute({
     Key? key,
     required String url,
+    required VoidCallback onGoBack,
     List<PageRouteInfo>? children,
   }) : super(
           SberbankPaymentWebViewRoute.name,
           args: SberbankPaymentWebViewRouteArgs(
             key: key,
             url: url,
+            onGoBack: onGoBack,
           ),
           initialChildren: children,
         );
@@ -2914,6 +2916,7 @@ class SberbankPaymentWebViewRoute
       return SberbankPaymentWebViewScreen(
         key: args.key,
         url: args.url,
+        onGoBack: args.onGoBack,
       );
     },
   );
@@ -2923,15 +2926,18 @@ class SberbankPaymentWebViewRouteArgs {
   const SberbankPaymentWebViewRouteArgs({
     this.key,
     required this.url,
+    required this.onGoBack,
   });
 
   final Key? key;
 
   final String url;
 
+  final VoidCallback onGoBack;
+
   @override
   String toString() {
-    return 'SberbankPaymentWebViewRouteArgs{key: $key, url: $url}';
+    return 'SberbankPaymentWebViewRouteArgs{key: $key, url: $url, onGoBack: $onGoBack}';
   }
 }
 

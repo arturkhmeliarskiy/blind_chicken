@@ -29,7 +29,6 @@ class _CategoryScreenState extends State<CategoryScreen> {
     _selectedIndexGender = GetIt.I.get<UpdateDataService>().selectedIndexGender;
   }
 
-
   void _handleErrorDialog(CatalogState state) {
     state.maybeMap(
       preloadDataCompleted: (initState) {
@@ -70,8 +69,8 @@ class _CategoryScreenState extends State<CategoryScreen> {
               return Text(
                 'Повторить',
                 style: Theme.of(context).textTheme.displayMedium?.copyWith(
-                  color: BlindChickenColors.backgroundColor,
-                ),
+                      color: BlindChickenColors.backgroundColor,
+                    ),
                 textAlign: TextAlign.center,
               );
             }
@@ -84,15 +83,15 @@ class _CategoryScreenState extends State<CategoryScreen> {
 
   void _repeatRequest(PreloadDataCompletedCatalogState initState) {
     context.read<CatalogBloc>().add(
-      CatalogEvent.subCategory(
-        a: 'get-child-menu',
-        id: initState.itemMenu?.id ?? 0,
-        b: initState.itemMenu?.brand ?? 0,
-        u: initState.itemMenu?.url ?? '',
-        pid: initState.itemMenu?.idParent ?? 0,
-        item: initState.itemMenu,
-      ),
-    );
+          CatalogEvent.subCategory(
+            a: 'get-child-menu',
+            id: initState.itemMenu?.id ?? 0,
+            b: initState.itemMenu?.brand ?? 0,
+            u: initState.itemMenu?.url ?? '',
+            pid: initState.itemMenu?.idParent ?? 0,
+            item: initState.itemMenu,
+          ),
+        );
   }
 
   @override
@@ -146,8 +145,8 @@ class _CategoryScreenState extends State<CategoryScreen> {
             Text(
               'Поиск',
               style: Theme.of(context).textTheme.displayMedium?.copyWith(
-                color: BlindChickenColors.textInput,
-              ),
+                    color: BlindChickenColors.textInput,
+                  ),
             ),
           ],
         ),
@@ -185,19 +184,19 @@ class _CategoryScreenState extends State<CategoryScreen> {
     return InkWell(
       onTap: () {
         context.read<CatalogBloc>().add(
-          CatalogEvent.subCategory(
-            a: 'get-main-menu',
-            id: index,
-            b: 0,
-            u: '',
-            pid: 0,
-            selectedGenderIndex: index,
-          ),
-        );
+              CatalogEvent.subCategory(
+                a: 'get-main-menu',
+                id: index,
+                b: 0,
+                u: '',
+                pid: 0,
+                selectedGenderIndex: index,
+              ),
+            );
         setState(() => _selectedIndexGender = index);
         GetIt.I.get<AppMetricaEcommerceService>().openPages(
-          titleScreen: 'Раздел $label в меню',
-        );
+              titleScreen: 'Раздел $label в меню',
+            );
       },
       child: Text(
         label,
@@ -275,8 +274,8 @@ class _CategoryScreenState extends State<CategoryScreen> {
   Widget _buildBackButton(PreloadDataCompletedCatalogState initState) {
     return InkWell(
       onTap: () => context.read<CatalogBloc>().add(
-        CatalogEvent.backPathMenu(idParent: initState.selectedGenderIndex),
-      ),
+            CatalogEvent.backPathMenu(idParent: initState.selectedGenderIndex),
+          ),
       child: Row(
         children: [
           SvgPicture.asset(
@@ -290,8 +289,8 @@ class _CategoryScreenState extends State<CategoryScreen> {
             child: Text(
               initState.pathMenu.last.name,
               style: Theme.of(context).textTheme.displayMedium?.copyWith(
-                fontWeight: FontWeight.w600,
-              ),
+                    fontWeight: FontWeight.w600,
+                  ),
             ),
           ),
         ],
@@ -303,11 +302,11 @@ class _CategoryScreenState extends State<CategoryScreen> {
     return GestureDetector(
       onTap: () {
         context.read<CatalogBloc>().add(
-          CatalogEvent.getInfoProducts(
-            path: initState.pathMenu.last.url,
-            isCleanHistory: true,
-          ),
-        );
+              CatalogEvent.getInfoProducts(
+                path: initState.pathMenu.last.url,
+                isCleanHistory: true,
+              ),
+            );
         context.navigateTo(
           CatalogRoute(
             title: 'Все товары',
@@ -327,7 +326,7 @@ class _CategoryScreenState extends State<CategoryScreen> {
       builder: (context, state) {
         return state.maybeMap(
           preloadDataCompleted: (initState) => _buildCatalogList(initState),
-          load: (_) => _buildLoadingIndicator(),
+          load: (_) => _buildLoadingIndicator(context),
           orElse: () => const SizedBox(),
         );
       },
@@ -346,7 +345,7 @@ class _CategoryScreenState extends State<CategoryScreen> {
             Column(
               children: List.generate(
                 initState.menu.length,
-                    (index) => ItemCatalogMenu(
+                (index) => ItemCatalogMenu(
                   item: initState.menu[index],
                   onTap: () => _handleMenuItemTap(initState, index),
                   selectValue: const [],
@@ -364,19 +363,19 @@ class _CategoryScreenState extends State<CategoryScreen> {
     if (details.velocity.pixelsPerSecond.dx > 0) {
       if (initState.pathMenu.isNotEmpty) {
         context.read<CatalogBloc>().add(
-          CatalogEvent.backPathMenu(idParent: initState.selectedGenderIndex),
-        );
+              CatalogEvent.backPathMenu(idParent: initState.selectedGenderIndex),
+            );
       } else if (_selectedIndexGender != 1) {
         context.read<CatalogBloc>().add(
-          const CatalogEvent.subCategory(
-            a: 'get-main-menu',
-            id: 1,
-            b: 0,
-            u: '',
-            pid: 0,
-            selectedGenderIndex: 1,
-          ),
-        );
+              const CatalogEvent.subCategory(
+                a: 'get-main-menu',
+                id: 1,
+                b: 0,
+                u: '',
+                pid: 0,
+                selectedGenderIndex: 1,
+              ),
+            );
         setState(() => _selectedIndexGender = 1);
       }
     }
@@ -386,33 +385,35 @@ class _CategoryScreenState extends State<CategoryScreen> {
     logging('_handleBackNavigation', name: 'Debug', stackTrace: StackTrace.current);
     if (initState.pathMenu.isNotEmpty) {
       context.read<CatalogBloc>().add(
-        CatalogEvent.backPathMenu(idParent: initState.selectedGenderIndex),
-      );
+            CatalogEvent.backPathMenu(idParent: initState.selectedGenderIndex),
+          );
     } else if (_selectedIndexGender != 1) {
       context.read<CatalogBloc>().add(
-        const CatalogEvent.subCategory(
-          a: 'get-main-menu',
-          id: 1,
-          b: 0,
-          u: '',
-          pid: 0,
-          selectedGenderIndex: 1,
-        ),
-      );
+            const CatalogEvent.subCategory(
+              a: 'get-main-menu',
+              id: 1,
+              b: 0,
+              u: '',
+              pid: 0,
+              selectedGenderIndex: 1,
+            ),
+          );
       setState(() => _selectedIndexGender = 1);
     }
   }
 
   void _handleMenuItemTap(PreloadDataCompletedCatalogState initState, int index) {
     final item = initState.menu[index];
-    if (item.brand == 0 && item.sub == 0 && !['Подарочная карта', 'Бренды', 'Sale'].contains(item.name) &&
+    if (item.brand == 0 &&
+        item.sub == 0 &&
+        !['Подарочная карта', 'Бренды', 'Sale'].contains(item.name) &&
         !['/proverka-zreniya/', '/servisnaya-karta/'].contains(item.url)) {
       context.read<CatalogBloc>().add(
-        CatalogEvent.getInfoProducts(
-          path: item.url,
-          isCleanHistory: true,
-        ),
-      );
+            CatalogEvent.getInfoProducts(
+              path: item.url,
+              isCleanHistory: true,
+            ),
+          );
       context.navigateTo(
         CatalogRoute(
           title: item.name,
@@ -428,19 +429,19 @@ class _CategoryScreenState extends State<CategoryScreen> {
       context.navigateTo(VisionWarningRoute());
     } else if (item.name == 'Бренды') {
       context.read<BrandBloc>().add(
-        BrandEvent.getBrands(
-          selectTypePeople: initState.selectedGenderIndex,
-          titleScreen: 'бренды',
-        ),
-      );
+            BrandEvent.getBrands(
+              selectTypePeople: initState.selectedGenderIndex,
+              titleScreen: 'бренды',
+            ),
+          );
       context.navigateTo(BrandsRoute());
     } else if (item.name == 'Sale') {
       context.read<CatalogBloc>().add(
-        CatalogEvent.getInfoProducts(
-          path: item.url,
-          isCleanHistory: true,
-        ),
-      );
+            CatalogEvent.getInfoProducts(
+              path: item.url,
+              isCleanHistory: true,
+            ),
+          );
       context.navigateTo(
         CatalogRoute(
           title: item.name,
@@ -450,23 +451,89 @@ class _CategoryScreenState extends State<CategoryScreen> {
       GetIt.I.get<AppMetricaEcommerceService>().openPages(titleScreen: 'Sale в меню');
     } else {
       context.read<CatalogBloc>().add(
-        CatalogEvent.subCategory(
-          a: 'get-child-menu',
-          id: item.id,
-          b: item.brand,
-          u: item.url,
-          pid: item.idParent,
-          item: item,
-        ),
-      );
+            CatalogEvent.subCategory(
+              a: 'get-child-menu',
+              id: item.id,
+              b: item.brand,
+              u: item.url,
+              pid: item.idParent,
+              item: item,
+            ),
+          );
     }
   }
 
-  Widget _buildLoadingIndicator() {
-    return Center(
-      child: CircularProgressIndicator(
-        color: Colors.black,
-        backgroundColor: Colors.grey.shade400,
+  Widget _buildLoadingIndicator(BuildContext context) {
+    final width = MediaQuery.of(context).size.width;
+    return Padding(
+      padding: const EdgeInsets.only(top: 15),
+      child: SizedBox(
+        width: width,
+        child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            mainAxisAlignment: MainAxisAlignment.start,
+            children: [
+              Column(
+                children: List.generate(2, (index) {
+                  return Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    mainAxisAlignment: MainAxisAlignment.start,
+                    children: [
+                      BlindChickenLoading(
+                        height: 20,
+                        width: width * 0.5,
+                        borderRadius: BorderRadius.circular(5),
+                        margin: EdgeInsets.only(
+                          bottom: 31.5,
+                          left: 10,
+                          right: 10,
+                        ),
+                      ),
+                      BlindChickenLoading(
+                        height: 20,
+                        width: width * 0.4,
+                        borderRadius: BorderRadius.circular(5),
+                        margin: EdgeInsets.only(
+                          bottom: 31.5,
+                          left: 10,
+                          right: 10,
+                        ),
+                      ),
+                      BlindChickenLoading(
+                        height: 20,
+                        width: width * 0.3,
+                        borderRadius: BorderRadius.circular(5),
+                        margin: EdgeInsets.only(
+                          bottom: 31.5,
+                          left: 10,
+                          right: 10,
+                        ),
+                      ),
+                      BlindChickenLoading(
+                        height: 20,
+                        width: width * 0.4,
+                        borderRadius: BorderRadius.circular(5),
+                        margin: EdgeInsets.only(
+                          bottom: 31.5,
+                          left: 10,
+                          right: 10,
+                        ),
+                      ),
+                    ],
+                  );
+                }),
+              ),
+              BlindChickenLoading(
+                height: 20,
+                width: width * 0.5,
+                borderRadius: BorderRadius.circular(5),
+                margin: EdgeInsets.only(
+                  bottom: 31.5,
+                  left: 10,
+                  right: 10,
+                ),
+              ),
+            ]),
       ),
     );
   }

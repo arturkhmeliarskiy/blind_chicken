@@ -120,22 +120,26 @@ class CardInfoBloc extends Bloc<CardInfoEvent, CardInfoState> {
         messageId: event.messageId,
       );
 
-      final additionalProductsDescriptionStyle = await _catalogRepository.getAdditionalProductsDescription(
+      final additionalProductsDescriptionStyle =
+          await _catalogRepository.getAdditionalProductsDescription(
         code: event.code,
         block: 'style',
       );
 
-      final additionalProductsDescriptionAlso = await _catalogRepository.getAdditionalProductsDescription(
+      final additionalProductsDescriptionAlso =
+          await _catalogRepository.getAdditionalProductsDescription(
         code: event.code,
         block: 'also',
       );
 
-      final additionalProductsDescriptionBrand = await _catalogRepository.getAdditionalProductsDescription(
+      final additionalProductsDescriptionBrand =
+          await _catalogRepository.getAdditionalProductsDescription(
         code: event.code,
         block: 'brand',
       );
 
-      final additionalProductsDescriptionComplect = await _catalogRepository.getAdditionalProductsDescription(
+      final additionalProductsDescriptionComplect =
+          await _catalogRepository.getAdditionalProductsDescription(
         code: event.code,
         block: 'complect',
       );
@@ -143,7 +147,8 @@ class CardInfoBloc extends Bloc<CardInfoEvent, CardInfoState> {
 
       if (isAuth) {
         favouritesProductsInfo = await _favouritesRepository.getFavouritesProdcuts();
-        favouritesProductsId = favouritesProductsInfo.favorites.map((item) => int.parse(item)).toList();
+        favouritesProductsId =
+            favouritesProductsInfo.favorites.map((item) => int.parse(item)).toList();
         log(favouritesProductsInfo.toString());
       } else {
         favouritesProducts = _catalogRepository.getFavouritesProducts();
@@ -183,8 +188,11 @@ class CardInfoBloc extends Bloc<CardInfoEvent, CardInfoState> {
         titleScreen: event.messageId?.isNotEmpty ?? false ? 'Уведомление' : event.titleScreen,
         titleProduct: detailsProduct.name,
         codeProduct: detailsProduct.code.toString(),
-        type: event.messageId?.isNotEmpty ?? false ? 'Уведомление' : event.typeAddProductToShoppingCart,
-        identifier: event.messageId?.isNotEmpty ?? false ? '2' : event.identifierAddProductToShoppingCart,
+        type: event.messageId?.isNotEmpty ?? false
+            ? 'Уведомление'
+            : event.typeAddProductToShoppingCart,
+        identifier:
+            event.messageId?.isNotEmpty ?? false ? '2' : event.identifierAddProductToShoppingCart,
         sectionCategoriesPath: [],
         productCategoriesPath: [],
         priceActual: detailsProduct.price.yourPrice,
@@ -283,22 +291,26 @@ class CardInfoBloc extends Bloc<CardInfoEvent, CardInfoState> {
             genderIndex: _updateDataService.selectedIndexGender.toString(),
           );
 
-          final additionalProductsDescriptionStyle = await _catalogRepository.getAdditionalProductsDescription(
+          final additionalProductsDescriptionStyle =
+              await _catalogRepository.getAdditionalProductsDescription(
             code: listProductsCode.last,
             block: 'style',
           );
 
-          final additionalProductsDescriptionAlso = await _catalogRepository.getAdditionalProductsDescription(
+          final additionalProductsDescriptionAlso =
+              await _catalogRepository.getAdditionalProductsDescription(
             code: listProductsCode.last,
             block: 'also',
           );
 
-          final additionalProductsDescriptionBrand = await _catalogRepository.getAdditionalProductsDescription(
+          final additionalProductsDescriptionBrand =
+              await _catalogRepository.getAdditionalProductsDescription(
             code: listProductsCode.last,
             block: 'brand',
           );
 
-          final additionalProductsDescriptionComplect = await _catalogRepository.getAdditionalProductsDescription(
+          final additionalProductsDescriptionComplect =
+              await _catalogRepository.getAdditionalProductsDescription(
             code: listProductsCode.last,
             block: 'complect',
           );
@@ -345,7 +357,8 @@ class CardInfoBloc extends Bloc<CardInfoEvent, CardInfoState> {
 
       if (detailsProduct.errorMessage.isEmpty) {
         if (detailsProduct.sku.isNotEmpty) {
-          if (detailsProduct.sku.first.id.contains('-') && detailsProduct.sku.first.id.length > 10) {
+          if (detailsProduct.sku.first.id.contains('-') &&
+              detailsProduct.sku.first.id.length > 10) {
             emit(CardInfoState.getSizeProduct(
               code: event.code,
               listSize: detailsProduct.sku,
@@ -375,7 +388,8 @@ class CardInfoBloc extends Bloc<CardInfoEvent, CardInfoState> {
       }
 
       emit(initState.copyWith(
-        detailsProduct: detailsProduct.errorMessage.isNotEmpty ? initState.detailsProduct : detailsProduct,
+        detailsProduct:
+            detailsProduct.errorMessage.isNotEmpty ? initState.detailsProduct : detailsProduct,
         listSize: detailsProduct.sku,
         isLoadGetSizeProduct: false,
         codeProduct: event.code,
@@ -416,13 +430,15 @@ class CardInfoBloc extends Bloc<CardInfoEvent, CardInfoState> {
         favouritesInfo = await updateFavouritesProducts();
       }
 
-      if ((favouritesProductsInfo?.errorMessage.isEmpty ?? false) || favouritesInfo.errorMessage.isEmpty) {
+      if ((favouritesProductsInfo?.errorMessage.isEmpty ?? false) ||
+          favouritesInfo.errorMessage.isEmpty) {
         emit(const CardInfoState.load());
       }
       emit(
         initState.copyWith(
           favouritesProducts: favouritesInfo.products,
-          isError: (favouritesProductsInfo?.errorMessage.isNotEmpty ?? false) || favouritesInfo.errorMessage.isNotEmpty,
+          isError: (favouritesProductsInfo?.errorMessage.isNotEmpty ?? false) ||
+              favouritesInfo.errorMessage.isNotEmpty,
           errorMessage: MessageInfo.errorMessage,
           typeError: 'добавить товар в избранное',
           product: event.product,
@@ -449,7 +465,8 @@ class CardInfoBloc extends Bloc<CardInfoEvent, CardInfoState> {
           ) ??
           false;
       if (isAuth) {
-        favouritesProductsInfo = await _favouritesRepository.deleteFavouriteProdcut(code: event.index.toString());
+        favouritesProductsInfo =
+            await _favouritesRepository.deleteFavouriteProdcut(code: event.index.toString());
         favouritesInfo = await updateFavouritesProducts(
           isLocal: false,
         );
@@ -458,13 +475,15 @@ class CardInfoBloc extends Bloc<CardInfoEvent, CardInfoState> {
         favouritesInfo = await updateFavouritesProducts();
       }
 
-      if ((favouritesProductsInfo?.errorMessage.isEmpty ?? false) || favouritesInfo.errorMessage.isEmpty) {
+      if ((favouritesProductsInfo?.errorMessage.isEmpty ?? false) ||
+          favouritesInfo.errorMessage.isEmpty) {
         emit(const CardInfoState.load());
       }
       emit(
         initState.copyWith(
           favouritesProducts: favouritesInfo.products,
-          isError: (favouritesProductsInfo?.errorMessage.isNotEmpty ?? false) || favouritesInfo.errorMessage.isNotEmpty,
+          isError: (favouritesProductsInfo?.errorMessage.isNotEmpty ?? false) ||
+              favouritesInfo.errorMessage.isNotEmpty,
           errorMessage: MessageInfo.errorMessage,
           typeError: 'удалить товар из избранного',
           isLoadErrorButton: false,
@@ -473,7 +492,8 @@ class CardInfoBloc extends Bloc<CardInfoEvent, CardInfoState> {
     });
   }
 
-  Future<void> _changeSizeProduct(ChangeSizeProductCardInfoEvent event, Emitter<CardInfoState> emit) async {
+  Future<void> _changeSizeProduct(
+      ChangeSizeProductCardInfoEvent event, Emitter<CardInfoState> emit) async {
     state.mapOrNull(productInfoCard: (initState) {
       emit(initState.copyWith(
         selectSizeProduct: event.selectSizeProduct,
@@ -584,7 +604,9 @@ class CardInfoBloc extends Bloc<CardInfoEvent, CardInfoState> {
           false;
       final basketInfo = await getBasketInfo(isLocal: !isAuth);
       final soppingCart = basketInfo.basket.where(
-        (element) => int.parse(element.code) == (initState.detailsProduct?.code ?? 0) && element.sku == event.size.id,
+        (element) =>
+            int.parse(element.code) == (initState.detailsProduct?.code ?? 0) &&
+            element.sku == event.size.id,
       );
       emit(initState.copyWith(isShoppingCart: soppingCart.isNotEmpty));
     });
@@ -642,8 +664,10 @@ class CardInfoBloc extends Bloc<CardInfoEvent, CardInfoState> {
             count: basketInfo.basket[i].count,
             titleScreen: basketInfo.basket[i].product.titleScreen ?? '',
             searchQuery: basketInfo.basket[i].product.searchQuery ?? '',
-            typeAddProductToShoppingCart: basketInfo.basket[i].product.typeAddProductToShoppingCart ?? '',
-            identifierAddProductToShoppingCart: basketInfo.basket[i].product.identifierAddProductToShoppingCart ?? '',
+            typeAddProductToShoppingCart:
+                basketInfo.basket[i].product.typeAddProductToShoppingCart ?? '',
+            identifierAddProductToShoppingCart:
+                basketInfo.basket[i].product.identifierAddProductToShoppingCart ?? '',
             sectionCategoriesPath: basketInfo.basket[i].product.sectionCategoriesPath ?? [],
             productCategoriesPath: basketInfo.basket[i].product.productCategoriesPath ?? [],
           ),
@@ -693,8 +717,10 @@ class CardInfoBloc extends Bloc<CardInfoEvent, CardInfoState> {
             count: basketInfo.basket[i].count,
             titleScreen: basketInfo.basket[i].product.titleScreen ?? '',
             searchQuery: basketInfo.basket[i].product.searchQuery ?? '',
-            typeAddProductToShoppingCart: basketInfo.basket[i].product.typeAddProductToShoppingCart ?? '',
-            identifierAddProductToShoppingCart: basketInfo.basket[i].product.identifierAddProductToShoppingCart ?? '',
+            typeAddProductToShoppingCart:
+                basketInfo.basket[i].product.typeAddProductToShoppingCart ?? '',
+            identifierAddProductToShoppingCart:
+                basketInfo.basket[i].product.identifierAddProductToShoppingCart ?? '',
             sectionCategoriesPath: basketInfo.basket[i].product.sectionCategoriesPath ?? [],
             productCategoriesPath: basketInfo.basket[i].product.productCategoriesPath ?? [],
           ),

@@ -114,4 +114,7 @@ class CatalogEvent with _$CatalogEvent {
   const factory CatalogEvent.checkButtonTop({
     required bool isButtonTop,
   }) = CheckButtonTopCatalogEvent;
+  const factory CatalogEvent.updateCacheContent({
+    required String screen,
+  }) = UpdateCacheContentCatalogEvent;
 }

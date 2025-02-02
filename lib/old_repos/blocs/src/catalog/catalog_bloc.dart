@@ -1,5 +1,6 @@
 import 'dart:async';
 import 'dart:convert';
+import 'dart:isolate';
 import 'package:blind_chicken/core_config/utils/logging.dart';
 
 import 'package:appmetrica_plugin/appmetrica_plugin.dart';
@@ -11,6 +12,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:blind_chicken/old_repos/models/models.dart';
 import 'package:blind_chicken/old_repos/repositories/repositories.dart';
+import 'package:get_it/get_it.dart';
 import 'package:package_info_plus/package_info_plus.dart';
 import 'package:blind_chicken/old_repos/shared/shared.dart';
 import 'dart:io' show Platform;
@@ -31,6 +33,9 @@ class CatalogBloc extends Bloc<CatalogEvent, CatalogState> {
   final PushNotificationRepository _pushNotificationRepository;
   final AppMetricaEcommerceService _appMetricaEcommerceService;
   final FilterService _filterService;
+  final ContentRepository _contentRepository;
+  final CacheInfoService _cacheInfoService;
+  final BackgroundDataLoadingService _backgroundDataLoadingSerivce;
 
   CatalogBloc(
     this._catalogRepository,
@@ -44,6 +49,9 @@ class CatalogBloc extends Bloc<CatalogEvent, CatalogState> {
     this._pushNotificationRepository,
     this._appMetricaEcommerceService,
     this._filterService,
+    this._contentRepository,
+    this._cacheInfoService,
+    this._backgroundDataLoadingSerivce,
   ) : super(const CatalogState.init()) {
     on<CatalogEvent>((event, emit) => event.map<Future<void>>(
           init: (event) => _init(event, emit),
@@ -78,6 +86,7 @@ class CatalogBloc extends Bloc<CatalogEvent, CatalogState> {
           changeSizeProduct: (event) => _changeSizeProduct(event, emit),
           checkOpenGetInfoProductSize: (event) => _checkOpenGetInfoProductSize(event, emit),
           checkButtonTop: (event) => _checkButtonTop(event, emit),
+          updateCacheContent: (event) => _updateCacheContent(event, emit),
         ));
   }
 
@@ -218,6 +227,7 @@ class CatalogBloc extends Bloc<CatalogEvent, CatalogState> {
     FavouritesDataModel? favourites;
     FilterNotifcationDataModel? filterNotifcation;
     PushNotificationMessageDataModel? notitcationMessage;
+    ContentCacheInfoDataModel? contentCacheInfo;
     String appStoreInfoVersion = '';
     String type = '';
     String section = '';
@@ -226,6 +236,37 @@ class CatalogBloc extends Bloc<CatalogEvent, CatalogState> {
     String uid = '';
     String codeProduct = '';
     String idNews = '';
+
+    // cache data start
+
+    final isAppInstalled = _sharedPreferencesService.getBool(
+          key: SharedPrefKeys.appInstalled,
+        ) ??
+        false;
+
+    if (!isAppInstalled) {
+      _sharedPreferencesService.setString(
+        key: SharedPrefKeys.cacheChangeScreens,
+        value: '["home","women","men","children"]',
+      );
+    }
+
+    final listContent = _contentRepository.getContentCacheInfo();
+
+    if (listContent.isNotEmpty) {
+      for (int i = 0; i < listContent.length; i++) {
+        if (listContent[i].screen == 'home') {
+          contentCacheInfo = listContent[i];
+        }
+      }
+      if (contentCacheInfo?.info.isEmpty ?? true) {
+        contentCacheInfo = await _contentRepository.getDefaultContentInfo(screen: 'home');
+      }
+    } else {
+      contentCacheInfo = await _contentRepository.getDefaultContentInfo(screen: 'home');
+    }
+
+    // cache data end
 
     bool isAuth = _sharedPreferencesService.getBool(
           key: SharedPrefKeys.userAuthorized,
@@ -394,7 +435,17 @@ class CatalogBloc extends Bloc<CatalogEvent, CatalogState> {
           favouritesProductsId: favouritesProductsId,
           brands: _constatntsInfo.brandsWoman,
           defaultBrands: _constatntsInfo.brandsWoman,
-          category: _constatntsInfo.categoryWoman,
+          category: List.generate(
+            9,
+            (index) => ContentCacheInfoItemDataModel(
+              id: '',
+              title: 'info',
+              mobileImage: Uint8List(0),
+              tabletImage: Uint8List(0),
+              url: '',
+            ),
+          ).toList(),
+          contentCacheInfo: contentCacheInfo,
           allBrands: allBrands,
           request: CatalogProductsRequest(),
           listProdcutsAlso: [],
@@ -418,9 +469,27 @@ class CatalogBloc extends Bloc<CatalogEvent, CatalogState> {
           isOpenGetSizeProduct: false,
           isButtonTop: false,
           isPromotionsForPurchases: false,
+          isLoadImage: false,
           isSaleSectionVisible: countProductUrl.count > 0,
         ),
       );
+
+      // await Isolate.run(() async {
+      //   checkAndUpdateCacheContent(
+      //     screen: 'home',
+      //     isDataInDatabase: listContent.isNotEmpty,
+      //     sharedPreferencesService: _sharedPreferencesService,
+      //     contentRepository: _contentRepository,
+      //     cacheInfoService: _cacheInfoService,
+      //   );
+      // });
+      await Isolate.run(_readAndParseJson);
+
+      // _backgroundDataLoadingSerivce.checkAndUpdateCacheContent(
+      //   screen: 'home',
+      //   isDataInDatabase: listContent.isNotEmpty,
+      //   updateCacheContent: (screen) {},
+      // );
     }
   }
 
@@ -1000,27 +1069,51 @@ class CatalogBloc extends Bloc<CatalogEvent, CatalogState> {
     SwitchTypePeopleCatalogEvent event,
     Emitter<CatalogState> emit,
   ) async {
-    state.mapOrNull(preloadDataCompleted: (initState) {
-      List<MainCategoryModel> category = [];
+    await state.mapOrNull(preloadDataCompleted: (initState) async {
+      List<ContentCacheInfoItemDataModel> category = [];
       List<String> brands = [];
+      String screen = '';
       String name = '';
+
+      emit(
+        initState.copyWith(
+          isLoadImage: true,
+        ),
+      );
 
       switch (event.selectIndexType) {
         case 1:
-          category = _constatntsInfo.categoryWoman.toList();
+          screen = 'women';
           brands = _constatntsInfo.brandsWoman;
           _updateDataService.selectedIndexGender = 1;
           name = 'Женщинам';
         case 2:
-          category = _constatntsInfo.categoryMan.toList();
+          screen = 'men';
           brands = _constatntsInfo.brandsMan;
           _updateDataService.selectedIndexGender = 2;
           name = 'Мужчинам';
         case 3:
-          category = _constatntsInfo.categoryChild.toList();
+          screen = 'children';
           brands = _constatntsInfo.brandsChilren;
           _updateDataService.selectedIndexGender = 3;
           name = 'Детям';
+      }
+
+      final listContent = _contentRepository.getContentCacheInfo();
+
+      if (listContent.isNotEmpty) {
+        for (int i = 0; i < listContent.length; i++) {
+          if (listContent[i].screen == screen) {
+            category = listContent[i].info.toList();
+          }
+        }
+        if (category.isEmpty) {
+          final result = await _contentRepository.getDefaultContentInfo(screen: screen);
+          category = result.info.toList();
+        }
+      } else {
+        final result = await _contentRepository.getDefaultContentInfo(screen: screen);
+        category = result.info.toList();
       }
 
       List<MenuItemDataModel> pathMenu = [
@@ -1037,12 +1130,9 @@ class CatalogBloc extends Bloc<CatalogEvent, CatalogState> {
       ];
 
       if (!initState.isSaleSectionVisible) {
-        category.removeLast();
-        category.add(const MainCategoryModel(
-          title: 'Каталог брендов',
-          imagePath: 'brands',
-          pathMenu: '',
-        ));
+        category.removeWhere((item) => item.title == 'Спецпредложения');
+      } else {
+        category.removeWhere((item) => item.title == 'Бренды');
       }
 
       emit(
@@ -1053,7 +1143,16 @@ class CatalogBloc extends Bloc<CatalogEvent, CatalogState> {
           brands: brands,
           isNotification: false,
           isUpdateVersionApp: false,
+          isLoadImage: false,
         ),
+      );
+
+      await _backgroundDataLoadingSerivce.checkAndUpdateCacheContent(
+        screen: screen,
+        isDataInDatabase: listContent.isNotEmpty,
+        updateCacheContent: (screen) {
+          add(UpdateCacheContentCatalogEvent(screen: screen));
+        },
       );
     });
   }
@@ -1351,6 +1450,7 @@ class CatalogBloc extends Bloc<CatalogEvent, CatalogState> {
         isButtonTop: false,
         isPromotionsForPurchases: false,
         isSaleSectionVisible: false,
+        isLoadImage: false,
       ),
     );
   }
@@ -2281,4 +2381,251 @@ class CatalogBloc extends Bloc<CatalogEvent, CatalogState> {
       ));
     });
   }
+
+  Future<void> _updateCacheContent(
+    UpdateCacheContentCatalogEvent event,
+    Emitter<CatalogState> emit,
+  ) async {
+    state.mapOrNull(preloadDataCompleted: (initState) {
+      List<ContentCacheInfoItemDataModel> category = initState.category.toList();
+      ContentCacheInfoDataModel? contentCacheInfo = initState.contentCacheInfo;
+
+      final listContent = _contentRepository.getContentCacheInfo();
+
+      if (event.screen == 'home') {
+        for (int i = 0; i < listContent.length; i++) {
+          if (listContent[i].screen == 'home') {
+            contentCacheInfo = listContent[i];
+          }
+        }
+      } else {
+        for (int i = 0; i < listContent.length; i++) {
+          if (listContent[i].screen == event.screen) {
+            category = listContent[i].info.toList();
+          }
+        }
+      }
+
+      if (category.isNotEmpty) {
+        if (!initState.isSaleSectionVisible) {
+          category.removeWhere((item) => item.title == 'Спецпредложения');
+        } else {
+          category.removeWhere((item) => item.title == 'Бренды');
+        }
+      }
+
+      emit(initState.copyWith(
+        contentCacheInfo: contentCacheInfo,
+        category: category,
+      ));
+    });
+  }
 }
+
+void checkAndUpdateCacheContent({
+  required String screen,
+  required bool isDataInDatabase,
+  required SharedPreferencesService sharedPreferencesService,
+  required ContentRepository contentRepository,
+  required CacheInfoService cacheInfoService,
+}) async {
+  bool isScreenUpdate = false;
+  String _screen = '';
+
+  // final dateLastChangesCachedInformation = _sharedPreferencesService.getString(
+  //       key: SharedPrefKeys.dateLastChangesCachedInformation,
+  //     ) ??
+  //     '';
+
+  // final checkContent = await _contentRepository.checkContentInfo(
+  //   dateTime: dateLastChangesCachedInformation,
+  // );
+
+  // _sharedPreferencesService.setString(
+  //   key: SharedPrefKeys.dateLastChangesCachedInformation,
+  //   value: checkContent.dateTime,
+  // );
+
+  // _sharedPreferencesService.setString(
+  //   key: SharedPrefKeys.cacheChangeScreens,
+  //   value: '[]',
+  // );
+
+  final cacheChangeScreens = sharedPreferencesService.getString(
+        key: SharedPrefKeys.cacheChangeScreens,
+      ) ??
+      '';
+
+  List screensCacheChange = jsonDecode(cacheChangeScreens) as List;
+
+  for (int i = 0; i < screensCacheChange.length; i++) {
+    if (screensCacheChange[i] == screen) {
+      isScreenUpdate = true;
+      _screen = screen;
+    }
+  }
+
+  if (isScreenUpdate) {
+    final contentInfo = await contentRepository.getContentInfo(
+      screen: screen,
+    );
+
+    screensCacheChange.remove(screen);
+
+    sharedPreferencesService.setString(
+      key: SharedPrefKeys.cacheChangeScreens,
+      value: jsonEncode(screensCacheChange),
+    );
+
+    cacheInfoService.addCacheInfo(
+      CacheInfoDataModel(
+        screen: screen,
+        dateTime: contentInfo.dateTime,
+        content: contentInfo.content,
+        images: contentInfo.images,
+        info: List<Map<String, dynamic>>.from(
+          contentInfo.info.map(
+            (item) => ContentInfoItemDataModel(
+              id: item.id,
+              title: item.title,
+              mobileImage: item.mobileImage,
+              tabletImage: item.tabletImage,
+              url: item.url,
+            ).toJson(),
+          ),
+        ).toList(),
+      ),
+    );
+    // add(UpdateCacheContentCatalogEvent(screen: screen));
+  }
+
+  if (!isDataInDatabase && _screen != 'home') {
+    final contentInfo = await contentRepository.getDefaultContentInfo(screen: screen);
+
+    cacheInfoService.addCacheInfo(
+      CacheInfoDataModel(
+        screen: screen,
+        dateTime: contentInfo.dateTime,
+        content: contentInfo.content,
+        images: contentInfo.images,
+        info: List<Map<String, dynamic>>.from(
+          contentInfo.info.map(
+            (item) => ContentInfoItemDataModel(
+              id: item.id,
+              title: item.title,
+              mobileImage: item.mobileImage.toString(),
+              tabletImage: item.tabletImage.toString(),
+              url: item.url,
+            ).toJson(),
+          ),
+        ).toList(),
+      ),
+    );
+  }
+}
+
+// void _checkAndUpdateCacheContent(List<dynamic> args) async {
+//   SendPort responsePort = args[0];
+//   String screenInfo = args[1];
+//   // bool isDataInDatabase = args[2];
+//   // ContentRepository contentRepository = args[4];
+//   // bool isScreenUpdate = false;
+//   // String screen = '';
+
+//   // final cacheInfoService = GetIt.I.get<CacheInfoService>();
+//   // final sharedPreferencesService = GetIt.I.get<SharedPreferencesService>();
+
+//   // // final dateLastChangesCachedInformation = _sharedPreferencesService.getString(
+//   // //       key: SharedPrefKeys.dateLastChangesCachedInformation,
+//   // //     ) ??
+//   // //     '';
+
+//   // // final checkContent = await _contentRepository.checkContentInfo(
+//   // //   dateTime: dateLastChangesCachedInformation,
+//   // // );
+
+//   // // _sharedPreferencesService.setString(
+//   // //   key: SharedPrefKeys.dateLastChangesCachedInformation,
+//   // //   value: checkContent.dateTime,
+//   // // );
+
+//   // // _sharedPreferencesService.setString(
+//   // //   key: SharedPrefKeys.cacheChangeScreens,
+//   // //   value: '[]',
+//   // // );
+
+//   // final cacheChangeScreens = sharedPreferencesService.getString(
+//   //       key: SharedPrefKeys.cacheChangeScreens,
+//   //     ) ??
+//   //     '';
+
+//   // List screensCacheChange = jsonDecode(cacheChangeScreens) as List;
+
+//   // for (int i = 0; i < screensCacheChange.length; i++) {
+//   //   if (screensCacheChange[i] == screenInfo) {
+//   //     isScreenUpdate = true;
+//   //     screen = screenInfo;
+//   //   }
+//   // }
+
+//   // if (isScreenUpdate) {
+//   //   final contentInfo = await contentRepository.getContentInfo(
+//   //     screen: screenInfo,
+//   //   );
+
+//   //   screensCacheChange.remove(screenInfo);
+
+//   //   sharedPreferencesService.setString(
+//   //     key: SharedPrefKeys.cacheChangeScreens,
+//   //     value: jsonEncode(screensCacheChange),
+//   //   );
+
+//   //   cacheInfoService.addCacheInfo(
+//   //     CacheInfoDataModel(
+//   //       screen: screenInfo,
+//   //       dateTime: contentInfo.dateTime,
+//   //       content: contentInfo.content,
+//   //       images: contentInfo.images,
+//   //       info: List<Map<String, dynamic>>.from(
+//   //         contentInfo.info.map(
+//   //           (item) => ContentInfoItemDataModel(
+//   //             id: item.id,
+//   //             title: item.title,
+//   //             mobileImage: item.mobileImage,
+//   //             tabletImage: item.tabletImage,
+//   //             url: item.url,
+//   //           ).toJson(),
+//   //         ),
+//   //       ).toList(),
+//   //     ),
+//   //   );
+//   //   // add(UpdateCacheContentCatalogEvent(screen: screen));
+//   // }
+
+//   // if (!isDataInDatabase && screen != 'home') {
+//   //   final contentInfo = await contentRepository.getDefaultContentInfo(screen: screenInfo);
+
+//   //   cacheInfoService.addCacheInfo(
+//   //     CacheInfoDataModel(
+//   //       screen: screenInfo,
+//   //       dateTime: contentInfo.dateTime,
+//   //       content: contentInfo.content,
+//   //       images: contentInfo.images,
+//   //       info: List<Map<String, dynamic>>.from(
+//   //         contentInfo.info.map(
+//   //           (item) => ContentInfoItemDataModel(
+//   //             id: item.id,
+//   //             title: item.title,
+//   //             mobileImage: item.mobileImage.toString(),
+//   //             tabletImage: item.tabletImage.toString(),
+//   //             url: item.url,
+//   //           ).toJson(),
+//   //         ),
+//   //       ).toList(),
+//   //     ),
+//   //   );
+//   // }
+//   print(screenInfo);
+//   // Isolate.exit(responsePort, screenInfo);
+// }
+Future<void> _readAndParseJson() async {}

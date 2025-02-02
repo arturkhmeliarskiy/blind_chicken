@@ -20,7 +20,6 @@ AppMetricaConfig get _config => const AppMetricaConfig(
 
 Future<void> main() async {
   AppMetrica.runZoneGuarded(() async {
-
     WidgetsFlutterBinding.ensureInitialized();
 
     await Locator.initBeforeAppLaunch();
